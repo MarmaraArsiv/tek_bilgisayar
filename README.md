@@ -2311,19 +2311,6 @@ Son iki akademik yılda (2025-2026, 2026-2027) bölümde dersi görünmeyen hoca
 </details>
 
 <details>
-<summary><b>🖋 Yazarın Notları</b></summary>
-
-
-## 🖋 Yazarın Notları
-
-- 📝 🚀 Uzun vadeli plan: 2., 3. ve 4. sınıf derslerini ekleyerek arşivi büyütmek.
-- 📝 🚀 Ders özetleri ve ödev çözümlerini daha okunabilir Markdown formatına çevirmek.
-- 📝 🚀 Proje ve kod örneklerini düzenleyip görsel ve açıklama eklemek.
-- 📝 🚀 Bölüm içi ve bölüm dışı öğrenci ağını repo etrafında toplamak.
-- 📝 🚀 GitHub Pages ile görsel ve okunabilir bir web arayüzü oluşturmak.
-</details>
-
-<details>
 <summary><b>🆎 Hoca Kısaltmaları</b></summary>
 
 <h2 align='center'>🆎 Hoca Kısaltmaları</h2>
