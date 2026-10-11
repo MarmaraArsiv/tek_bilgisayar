@@ -137,8 +137,8 @@ pie showData
 | [4. Yıl Güz](./4-1/) | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ %20 | 1 / 5 |
 | [4. Yıl Bahar](./4-2/) | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ %20 | 1 / 5 |
 | [Mesleki Seçmeli](./Mesleki%20Seçmeli/) | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ %0 | 0 / 40 |
-| [Fakülte Teknik Seçmeli](./Fakülte%20Teknik%20Seçmeli/) | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ %0 | 0 / 8 |
 | [Üniversite Seçmeli](./Üniversite%20Seçmeli/) | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ %0 | 0 / 15 |
+| [Fakülte Teknik Seçmeli](./Fakülte%20Teknik%20Seçmeli/) | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ %0 | 0 / 8 |
 
 ### 🙋 Bu dersler katkını bekliyor
 Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölümüne göz at.
@@ -152,8 +152,8 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 - **4. Yıl Güz:** Bitirme Projesi 1, İş Hukuku ve Etiği, İş Yeri Eğitimi, Staj 2
 - **4. Yıl Bahar:** Bitirme Projesi, Bitirme Projesi 2, Sistem ve Sunucu Yönetimi, Teknik İngilizce
 - **Mesleki Seçmeli:** Açık Kaynak Kodlu Yazılımlar, Algoritma Analizi, Biçimsel Diller ve Otomata Teorisi, Bilgisayar Ağ Protokolleri, Bilgisayar Grafik, Bilgisayar Güvenliği, Blockchain Programlamaya Giriş, Bulut Bilişim, Dağıtık Sistemler, Derin Öğrenme ve Yapay Sinir Ağlarına Giriş, Eğitim Sistemleri Tasarımı, E-Ticarete Giriş, Gömülü Sistemler, Görüntü İşlemenin Temelleri, Güncel Yapay Zeka Yaklaşımları, İnsan-Bilgisayar Etkileşimi ve Görsellik, Kablosuz Ağlar, Kablosuz ve Mobil Ağlar, Kriptoloji, Linux Kabuk Programlama, Makine Öğrenimine Giriş, Mikrodenetleyiciler, Mobil Programlama, Mühendislik Matematiği ve Uygulamaları, Mühendislik Uygulamaları için Python, Nesnelerin İnterneti, Optimizasyon Teknikleri ve Uygulamaları, Oyun Yazılımı Geliştirme, Paralel Hesaplama, Rastgele Değişkenler, Sayısal İşaret İşleme, Simulasyon ve Modelleme, Sosyal Ağlarda Uygulamalı Metin Analizi, Veri Bilimine Giriş, Veri Madenciliği, Yapay Sinir Ağları, Yapay Zekâya Giriş, Yazılım Projelerinin Yönetimi, Web Programlama, Web Servisleri
-- **Fakülte Teknik Seçmeli:** Araştırma Planlama ve Yönetimi, Bilgi Sistemleri Yönetimi, Çok Disiplinli Takım Çalışması Deneyimi, Disiplinler Arası Proje Tasarımı, Mühendisler için Proje Yönetimi, Mühendislik ve Teknoloji Yönetimi, Veri Bilimi ve Veri Analitiğine Giriş, Yazılım Proje Yönetimi
 - **Üniversite Seçmeli:** Bilim Tarihi, Çevre ve Enerji, Fizibilite Hazırlama ve Uygulamaları, Girişimcilik, Girişimcilik ve İnovasyon, İş Psikolojisi, Kalite Yönetimi, Liderlik, Moda, Osmanlı Tarihi, Rapor Hazırlama ve Sunum Teknikleri, Sistem Mühendisliği, Sosyal Organizasyon, Teknik İletişim, Teknik Satış ve Pazarlama
+- **Fakülte Teknik Seçmeli:** Araştırma Planlama ve Yönetimi, Bilgi Sistemleri Yönetimi, Çok Disiplinli Takım Çalışması Deneyimi, Disiplinler Arası Proje Tasarımı, Mühendisler için Proje Yönetimi, Mühendislik ve Teknoloji Yönetimi, Veri Bilimi ve Veri Analitiğine Giriş, Yazılım Proje Yönetimi
 
 </details>
 <!-- DOLULUK_BITIS -->
