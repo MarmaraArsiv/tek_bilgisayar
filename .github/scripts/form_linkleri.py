@@ -34,6 +34,8 @@ ONAY_DEGERLERI = {"true", "doğru", "dogru", "evet", "x", "✓", "✔", "1", "on
 
 YILDIZ = re.compile(r"^( *)- ⭐ \*\*Yıldız Sayıları:\*\*$", re.M)
 GORUS = re.compile(r"^( *)- 💬 \*\*Öğrenci Görüşleri:\*\*$", re.M)
+UNVAN = re.compile(r"^(Prof\. Dr\.|Prof\.|Doç\. Dr\.|Dr\. Öğretim Üyesi|Öğr\. Gör\. Dr\.|Öğr\. Gör\."
+                   r"|Arş\. Gör\. Dr\.|Arş\. Gör\.|Dr\.)\s*")
 
 
 # ---------------------------------------------------------------- veri
@@ -72,6 +74,11 @@ def temiz(metin, uzunluk):
     return re.sub(r"([\[\]`*_|\\])", r"\\\1", metin)
 
 
+def unvansiz(ad):
+    """Hoca yorumları ünvansız ada göre eşleşir: hoca terfi edip README'de adı değişince eski yorumlar kaybolmaz."""
+    return UNVAN.sub("", ad.strip(), count=1)
+
+
 def veri_topla(f):
     oylar, ders_yorum, hoca_yorum = {}, {}, {}
     for s in csv_oku(f, "ders_oylama"):
@@ -80,13 +87,13 @@ def veri_topla(f):
                 (int(s["Dersi geçmek ne kadar kolay?"]), int(s["Ders mesleki açıdan gerekli mi?"])))
         except (KeyError, ValueError):
             continue
-    for anahtar, hedef, alan, yorum_alani in [
-            ("ders_yorumlama", ders_yorum, "Ders Seç", "Ders hakkındaki yorumun"),
-            ("hoca_yorumlama", hoca_yorum, "Hoca seç", "Hoca hakkındaki yorumun")]:
+    for anahtar, hedef, alan, yorum_alani, ad_anahtari in [
+            ("ders_yorumlama", ders_yorum, "Ders Seç", "Ders hakkındaki yorumun", str.strip),
+            ("hoca_yorumlama", hoca_yorum, "Hoca seç", "Hoca hakkındaki yorumun", unvansiz)]:
         for s in csv_oku(f, anahtar):
             if not onayli(s) or not (s.get(yorum_alani) or "").strip():
                 continue
-            hedef.setdefault(s[alan].strip(), []).append(
+            hedef.setdefault(ad_anahtari(s[alan]), []).append(
                 (temiz(s.get("İsmin nasıl gözüksün") or "Anonim", 40),
                  temiz(s[yorum_alani], YORUM_UZUNLUK), ay_yil(s.get("Timestamp") or s.get("Zaman damgası"))))
     for d in (ders_yorum, hoca_yorum):  # en yeni yorum üstte
@@ -203,7 +210,7 @@ def hoca_bolumu(metin, veri, f, hocalar, kart_emoji):
         govde.append(f"- **[{ad}]({kart})**" if kart else f"- **{ad}**")
         if ad in hocalar:  # hocalar.json'daki her hoca (önceki yıllarda ders verenler dahil) formda var
             link = url(f["hoca_yorumlama"], "hoca_alani", ad)
-            yorumlar = veri[2].get(ad, [])
+            yorumlar = veri[2].get(unvansiz(ad), [])
             for isim, yorum, tarih in yorumlar[:OZETTE_YORUM]:
                 govde.append(f"    - 👤 **_{isim}_**: {yorum}" + (f" ℹ️ Yorum **{tarih}** tarihinde yapılmıştır." if tarih else ""))
             if len(yorumlar) > OZETTE_YORUM:
@@ -233,7 +240,7 @@ def ders_blogu(metin, ders, veri, f, ozet):
 def hoca_blogu(metin, hoca, veri, f):
     metin = re.sub(r"^( *)- ⭐ \*\*Yıldız Sayıları:\*\*\n(?:\1 +.*\n)*", "", metin, flags=re.M)
     link = url(f["hoca_yorumlama"], "hoca_alani", hoca)
-    metin, _ = blok_degistir(metin, GORUS, gorus_satirlari(veri[2].get(hoca, []), link))
+    metin, _ = blok_degistir(metin, GORUS, gorus_satirlari(veri[2].get(unvansiz(hoca), []), link))
     return metin
 
 
