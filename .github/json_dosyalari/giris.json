@@ -3,13 +3,5 @@
     "aciklama": "Marmara Üniversitesi Teknoloji Fakültesi Bilgisayar Mühendisliği öğrencileri için düzenli, sürdürülebilir ve değer üreten bir akademik arşiv. Ders notları, ödev çözümleri, slaytlar, çıkmış sorular ve çalışma rehberleri tek bir yerde toplandı.",
     "geri_bildirim_aciklamasi": "📬 Öğrenciler ve hocalar, derslerle ilgili hakaret içermeyen geri bildirimlerinizi aşağıdaki linkler aracılığıyla anonim olarak paylaşabilirsiniz.",
     "katkida_bulunun": "## 🤝 Katkıda Bulunun\n\nElinde ders notu, slayt, çıkmış soru ya da ödev çözümü varsa arşive eklemek çok kolay:\n\n- 📁 **GitHub kullanmıyorsan:** [Google Drive klasörümüze](https://drive.google.com/drive/folders/1KRobMRVHpJxUKcCZdCEippSZ5SmgpkZq?usp=sharing) yükle. Önce BENİOKU dosyasını oku, sonra **Bilgisayar-Teknoloji** klasöründe kendi adınla bir klasör aç.\n- 🌐 **GitHub hesabın varsa:** Repoyu fork'la, dosyayı ilgili ders klasörüne yükle ve pull request gönder. Kurulum gerekmez, her şey tarayıcıdan yapılır.\n- 📖 **Adım adım rehber:** [CONTRIBUTING.md](CONTRIBUTING.md)\n\nPull request ile katkıda bulunanların adı sayfanın en altındaki **Katkıda Bulunanlar** listesine otomatik eklenir.\n\n### 📺 Video Rehberler\n- 🎬 **Repoya nasıl katkı yapılır?** (~10 dk): *yakında*\n- 🎬 **Repo nasıl kullanılır?** Klasör yapısı, ders README'leri ve aradığını bulma: *yakında*\n\n",
-    "sayac": "<p align=\"center\">\n<img src=\"https://komarev.com/ghpvc/?username=4c3bb1e56629b12169ddacd8e890a347caebf75&label=Görüntülenme+Sayısı&abbreviated=true&style=for-the-badge&color=orange\" width=\"400\" height=\"auto\"/>\n</p>\n\n",
-    "icindekiler": [
-        "[Katkıda Bulunun](#-katkıda-bulunun)",
-        "[Kavramlar](#-kavramlar)",
-        "[Arşiv Doluluk Durumu](#-arşiv-doluluk-durumu)",
-        "[Dersler](#-dersler)",
-        "[Seçmeli Dersler](#-seçmeli-dersler)",
-        "[Hocalar](#-hocalar)"
-    ]
+    "sayac": "<p align=\"center\">\n<img src=\"https://komarev.com/ghpvc/?username=4c3bb1e56629b12169ddacd8e890a347caebf75&label=Görüntülenme+Sayısı&abbreviated=true&style=for-the-badge&color=orange\" width=\"400\" height=\"auto\"/>\n</p>\n\n"
 }

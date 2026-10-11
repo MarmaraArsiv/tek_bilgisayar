@@ -29,19 +29,6 @@ Pull request ile katkıda bulunanların adı sayfanın en altındaki **Katkıda 
 </p>
 
 <details>
-<summary><b>🗂 İçindekiler</b></summary>
-
-## 🗂 İçindekiler
-
-- 🔗 [Katkıda Bulunun](#-katkıda-bulunun)
-- 🔗 [Kavramlar](#-kavramlar)
-- 🔗 [Arşiv Doluluk Durumu](#-arşiv-doluluk-durumu)
-- 🔗 [Dersler](#-dersler)
-- 🔗 [Seçmeli Dersler](#-seçmeli-dersler)
-- 🔗 [Hocalar](#-hocalar)
-</details>
-
-<details>
 <summary><b>🛠 Repo Kullanımı</b></summary>
 
 
