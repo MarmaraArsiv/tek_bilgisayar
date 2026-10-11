@@ -33,6 +33,7 @@ Dersi 2024-2025 ve 2025-2026 akademik yıllarında veren hocalar. Yorumlar hocan
 - **[Dr. Öğretim Üyesi Timur İnan](../../README.md#‍-dr-öğretim-üyesi-timur-i̇nan)**
     - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Dr.%20%C3%96%C4%9Fretim%20%C3%9Cyesi%20Timur%20%C4%B0nan) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 - **[Doç. Dr. Alper Nabi Akpolat](../../README.md#‍-doç-dr-alper-nabi-akpolat)**
+    - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Do%C3%A7.%20Dr.%20Alper%20Nabi%20Akpolat) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 
 ## 🤝 Katkıda Bulun
 

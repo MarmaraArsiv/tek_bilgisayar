@@ -201,7 +201,7 @@ def hoca_bolumu(metin, veri, f, hocalar, kart_emoji):
         gorulen.add(ad)
         kart = f"../../README.md{github_slug(kart_emoji[ad] + ' ' + ad)}" if ad in kart_emoji else None
         govde.append(f"- **[{ad}]({kart})**" if kart else f"- **{ad}**")
-        if hocalar.get(ad):  # aktif -> formda var
+        if ad in hocalar:  # hocalar.json'daki her hoca (önceki yıllarda ders verenler dahil) formda var
             link = url(f["hoca_yorumlama"], "hoca_alani", ad)
             yorumlar = veri[2].get(ad, [])
             for isim, yorum, tarih in yorumlar[:OZETTE_YORUM]:
@@ -230,14 +230,10 @@ def ders_blogu(metin, ders, veri, f, ozet):
     return metin
 
 
-def hoca_blogu(metin, hoca, aktif, veri, f):
+def hoca_blogu(metin, hoca, veri, f):
     metin = re.sub(r"^( *)- ⭐ \*\*Yıldız Sayıları:\*\*\n(?:\1 +.*\n)*", "", metin, flags=re.M)
-    if aktif:
-        link = url(f["hoca_yorumlama"], "hoca_alani", hoca)
-        satirlar = gorus_satirlari(veri[2].get(hoca, []), link)
-    else:
-        satirlar = ["- ℹ️ Son iki akademik yılda bölümde dersi görünmediği için yorum formunda yer almıyor."]
-    metin, _ = blok_degistir(metin, GORUS, satirlar)
+    link = url(f["hoca_yorumlama"], "hoca_alani", hoca)
+    metin, _ = blok_degistir(metin, GORUS, gorus_satirlari(veri[2].get(hoca, []), link))
     return metin
 
 
@@ -272,8 +268,7 @@ def main():
     except Exception as e:  # CSV'ler okunamazsa mevcut README'lere dokunma
         print("⚠️ Form cevapları okunamadı, README'ler değiştirilmedi:", e)
         sys.exit(0)
-    hocalar = {h["ad"]: h.get("hoca_aktif_gorevde_mi", True) is not False
-               for h in json.load(open("json_dosyalari/hocalar.json", encoding="utf-8"))["hocalar"]}
+    hocalar = {h["ad"] for h in json.load(open("json_dosyalari/hocalar.json", encoding="utf-8"))["hocalar"]}
     kok = open("README.md", encoding="utf-8").read()
     kart_emoji = {ad.strip(): e for e, ad in re.findall(r"^#### (\S+) (.+?) $", kok, flags=re.M) if e != "📘"}
     dosyalar = subprocess.run(["git", "-c", "core.quotepath=off", "ls-files", "*README.md"],
@@ -295,7 +290,7 @@ def main():
                     ders = urllib.parse.unquote(km.group(1)).split("/", 1)[1] if km else m.group(2)
                     b = ders_blogu(b, ders, veri, f, ozet=True)
                 elif m and m.group(2) in hocalar:
-                    b = hoca_blogu(b, m.group(2), hocalar[m.group(2)], veri, f)
+                    b = hoca_blogu(b, m.group(2), veri, f)
                 parcalar.append(b)
             yeni = ust_linkler("".join(parcalar), f)
         else:

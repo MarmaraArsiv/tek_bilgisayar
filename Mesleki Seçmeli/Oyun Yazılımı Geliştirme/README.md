@@ -22,6 +22,7 @@ Dersi 2024-2025 ve 2025-2026 akademik yıllarında veren hocalar. Yorumlar hocan
 - **[Arş. Gör. Dr. Abdullah Bal](../../README.md#‍-arş-gör-dr-abdullah-bal)**
     - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Ar%C5%9F.%20G%C3%B6r.%20Dr.%20Abdullah%20Bal) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 - **[Dr. Öğretim Üyesi Savaş Öztürk](../../README.md#‍-dr-öğretim-üyesi-savaş-öztürk)**
+    - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Dr.%20%C3%96%C4%9Fretim%20%C3%9Cyesi%20Sava%C5%9F%20%C3%96zt%C3%BCrk) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 
 ## 🤝 Katkıda Bulun
 

@@ -22,6 +22,7 @@
 Dersi 2022-2023 ve 2023-2024 akademik yıllarında veren hocalar. Yorumlar hocanın tüm derslerini kapsar.
 
 - **[Öğr. Gör. Dr. Gözde Karataş Baydoğmuş](../../README.md#‍-öğr-gör-dr-gözde-karataş-baydoğmuş)**
+    - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=%C3%96%C4%9Fr.%20G%C3%B6r.%20Dr.%20G%C3%B6zde%20Karata%C5%9F%20Baydo%C4%9Fmu%C5%9F) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 
 ## 🤝 Katkıda Bulun
 

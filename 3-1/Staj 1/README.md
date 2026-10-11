@@ -20,6 +20,7 @@
 Dersi 2020-2021 akademik yıllarında veren hocalar. Yorumlar hocanın tüm derslerini kapsar.
 
 - **[Prof. Dr. Ahmet Emin Kuzucuoğlu](../../README.md#‍-prof-dr-ahmet-emin-kuzucuoğlu)**
+    - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Prof.%20Dr.%20Ahmet%20Emin%20Kuzucuo%C4%9Flu) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 
 ## 🤝 Katkıda Bulun
 

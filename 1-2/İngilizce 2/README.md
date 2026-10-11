@@ -32,6 +32,7 @@ Dersi 2024-2025 ve 2025-2026 akademik yıllarında veren hocalar. Yorumlar hocan
 - **[Öğr. Gör. Dr. Işıl Ruacan Silahtaroğlu](../../README.md#‍-öğr-gör-dr-işıl-ruacan-silahtaroğlu)**
     - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=%C3%96%C4%9Fr.%20G%C3%B6r.%20Dr.%20I%C5%9F%C4%B1l%20Ruacan%20Silahtaro%C4%9Flu) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 - **[Öğr. Gör. Sanem Soner](../../README.md#‍-öğr-gör-sanem-soner)**
+    - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=%C3%96%C4%9Fr.%20G%C3%B6r.%20Sanem%20Soner) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 
 ## 🤝 Katkıda Bulun
 

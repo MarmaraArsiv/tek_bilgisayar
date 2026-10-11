@@ -20,6 +20,7 @@
 Dersi 2023-2024 ve 2024-2025 akademik yıllarında veren hocalar. Yorumlar hocanın tüm derslerini kapsar.
 
 - **[Dr. Sema Demir Yaylacı](../../README.md#‍-dr-sema-demir-yaylacı)**
+    - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Dr.%20Sema%20Demir%20Yaylac%C4%B1) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 
 ## 🤝 Katkıda Bulun
 
