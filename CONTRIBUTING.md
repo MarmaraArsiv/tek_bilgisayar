@@ -60,7 +60,7 @@ Ardından GitHub'da **Compare & pull request** butonuna bas.
 ## 📏 Dikkat Edilecekler
 
 - **Doğru klasör:** Dosyayı dersin bulunduğu dönem klasörüne koy (`1-1` = 1. sınıf güz, `1-2` = 1. sınıf bahar …). Seçmeli dersler `Mesleki Seçmeli/`, `Üniversite Seçmeli/` ve `Fakülte Teknik Seçmeli/` altında.
-- **Adlandırma:** Alt klasör ve dosya adları küçük harfle ve `_` ile yazılır: `çıkmış_sorular/`, `slaytlar_notlar/`, `ödev_1.pdf`. Ayrıntılar [STANDARTLAR.md](STANDARTLAR.md) dosyasında.
+- **Adlandırma:** Alt klasör ve dosya adları küçük harfle ve `_` ile yazılır: `çıkmış_sorular/`, `slaytlar_notlar/`, `ödev_1.pdf`. Ayrıntılar [STANDARTLAR.md](.github/STANDARTLAR.md) dosyasında.
 - **Kişisel bilgi yükleme:** Öğrenci numarası, ad-soyad listesi, telefon gibi başkalarına ait bilgileri yükleme; varsa karart.
 - **README'leri elle düzeltme:** README'ler otomatik üretiliyor. Bir hata görürsen [issue açman](https://github.com/MarmaraArsiv/tek_bilgisayar/issues) yeterli.
 - **Nazik ol:** Hoca ve ders yorumlarında hakaret içeren içerik kabul edilmez.

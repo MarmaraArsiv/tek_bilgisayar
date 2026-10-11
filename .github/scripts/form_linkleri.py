@@ -9,7 +9,7 @@
 - Ana README'nin başındaki "Geri Bildirimde Bulunun" linkleri.
 
 Yorumlar SADECE cevap tablosundaki "Onay" sütunu işaretliyse yayınlanır.
-Form adresleri, soru kimlikleri ve CSV linkleri: json_dosyalari/konfigurasyon.json.
+Form adresleri, soru kimlikleri ve CSV linkleri: .github/json_dosyalari/konfigurasyon.json.
 Test için FORM_CSV_DIZIN ortam değişkeniyle yerel CSV klasörü verilebilir
 (hoca_yorumlama.csv, ders_yorumlama.csv, ders_oylama.csv).
 Sadece Python standart kütüphanesi kullanılır.
@@ -25,7 +25,7 @@ import urllib.parse
 import unicodedata
 import urllib.request
 
-KONF = "json_dosyalari/konfigurasyon.json"
+KONF = ".github/json_dosyalari/konfigurasyon.json"
 DONEMLER = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2", "4-1", "4-2"]
 HAVUZLAR = ["Mesleki Seçmeli", "Fakülte Teknik Seçmeli", "Üniversite Seçmeli"]
 OZETTE_YORUM = 2          # ana sayfa ve dönem sayfasında gösterilen yorum sayısı
@@ -268,7 +268,7 @@ def main():
     except Exception as e:  # CSV'ler okunamazsa mevcut README'lere dokunma
         print("⚠️ Form cevapları okunamadı, README'ler değiştirilmedi:", e)
         sys.exit(0)
-    hocalar = {h["ad"] for h in json.load(open("json_dosyalari/hocalar.json", encoding="utf-8"))["hocalar"]}
+    hocalar = {h["ad"] for h in json.load(open(".github/json_dosyalari/hocalar.json", encoding="utf-8"))["hocalar"]}
     kok = open("README.md", encoding="utf-8").read()
     kart_emoji = {ad.strip(): e for e, ad in re.findall(r"^#### (\S+) (.+?) $", kok, flags=re.M) if e != "📘"}
     dosyalar = subprocess.run(["git", "-c", "core.quotepath=off", "ls-files", "*README.md"],

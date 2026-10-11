@@ -8,7 +8,7 @@
     "ders_yorumlama_csv": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRgugAdScfnup12mkEghq0eTr6hCLejAV7siT-n0fIAHYxmPf9QNmDMEb_ZF8TAHVmXxXhuQMsF4-3h/pub?single=true&output=csv&gid=1380861663",
     "hoca_oylama_csv": "",
     "hoca_yorumlama_csv": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRgugAdScfnup12mkEghq0eTr6hCLejAV7siT-n0fIAHYxmPf9QNmDMEb_ZF8TAHVmXxXhuQMsF4-3h/pub?single=true&output=csv&gid=1863830370",
-    "dokumanlar_repo_yolu": "..",
+    "dokumanlar_repo_yolu": "../..",
     "cikmislar": "",
     "formlar": {
         "hoca_yorumlama": {

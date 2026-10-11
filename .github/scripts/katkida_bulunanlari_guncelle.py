@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Merge edilmiş PR'lardan katkıda bulunanları toplayıp
-json_dosyalari/katkida_bulunanlar.json ve README.md'yi günceller.
+.github/json_dosyalari/katkida_bulunanlar.json ve README.md'yi günceller.
 
 - Merge edilmiş PR'ı olan her GitHub kullanıcısı listeye eklenir.
 - Seviye (h1/h2/h3), kişinin merge edilmiş PR'larındaki toplam commit sayısına göre belirlenir.
@@ -38,7 +38,7 @@ EMOJILER = ["⭐", "🌟", "💫", "✨", "🔹", ""]
 # Not: Java README aracının KatkidaBulunanlarWriter'ı fotoğraf basmıyor; o araç devreye girince ona da eklenmeli.
 AVATAR_BOYUTLARI = [100, 80, 64, 56, 48, 40]
 
-JSON_YOLU = "json_dosyalari/katkida_bulunanlar.json"
+JSON_YOLU = ".github/json_dosyalari/katkida_bulunanlar.json"
 README_YOLU = "README.md"
 
 # --------------------------------------------------------------------------
