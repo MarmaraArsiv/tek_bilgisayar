@@ -118,12 +118,12 @@ döneme değişebilir, kesin ve güncel bilgi için bölüm/fakülte öğrenci i
 
 ## 📊 Arşiv Doluluk Durumu
 
-Arşivdeki **119** dersin **27** tanesinde en az bir materyal var (genel doluluk **%23**).
+Arşivdeki **119** dersin **28** tanesinde en az bir materyal var (genel doluluk **%24**).
 
 ```mermaid
 pie showData
-  "Materyali olan" : 27
-  "Henüz boş" : 92
+  "Materyali olan" : 28
+  "Henüz boş" : 91
 ```
 
 | Dönem | Doluluk | Materyali olan ders |
@@ -131,7 +131,7 @@ pie showData
 | [1. Yıl Güz](./1-1/) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ %80 | 8 / 10 |
 | [1. Yıl Bahar](./1-2/) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ %89 | 8 / 9 |
 | [2. Yıl Güz](./2-1/) | 🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜ %50 | 4 / 8 |
-| [2. Yıl Bahar](./2-2/) | 🟩🟩🟩🟩🟩🟩🟩⬜⬜⬜ %71 | 5 / 7 |
+| [2. Yıl Bahar](./2-2/) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ %86 | 6 / 7 |
 | [3. Yıl Güz](./3-1/) | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ %0 | 0 / 6 |
 | [3. Yıl Bahar](./3-2/) | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ %0 | 0 / 6 |
 | [4. Yıl Güz](./4-1/) | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ %20 | 1 / 5 |
@@ -146,7 +146,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 - **1. Yıl Güz:** İş Sağlığı ve Güvenliği 1, Modern Biyolojiye Giriş
 - **1. Yıl Bahar:** Mühendislik Ekonomisi
 - **2. Yıl Güz:** Ayrık Matematik, Diferansiyel Denklemler, Olasılık ve İstatistik, Teknik İngilizce 1
-- **2. Yıl Bahar:** Mühendisler için İstatistik, Teknik İngilizce 2
+- **2. Yıl Bahar:** Teknik İngilizce 2
 - **3. Yıl Güz:** Algoritma Analizi ve Tasarımı, İşletim Sistemleri, Mikrodenetleyiciler, Sinyaller ve Sistemlere Giriş, Staj 1, Veritabanı Yönetim Sistemleri
 - **3. Yıl Bahar:** Biçimsel Diller ve Otomata Teorisi, Bilgisayar Organizasyonu ve Mimarisi, Bilimsel Araştırma ve Sunum Teknikleri 2, Sistem Programlama, Yazılım Mühendisliği, Web Programlama
 - **4. Yıl Güz:** Bitirme Projesi 1, İş Hukuku ve Etiği, İş Yeri Eğitimi, Staj 2
@@ -2426,11 +2426,11 @@ Bu bölümde reponun hazırlanmasında katkıda bulunan insanlar listelenmiştir
 <p align='center'><a href='https://github.com/yldzemin'><img src='https://github.com/yldzemin.png?size=200' width='100' alt='Mehmet Emin'></a></p>
 <h1 align='center'>⭐ <b><i>Mehmet Emin</i></b> ⭐<br><sub><a href='https://github.com/yldzemin'>GitHub</a> &nbsp;·&nbsp; <a href='https://www.linkedin.com/in/mehmet-emin-yildizz/'>LinkedIn</a></sub></h1>
 
+<p align='center'><a href='https://github.com/ism00efe'><img src='https://github.com/ism00efe.png?size=200' width='100' alt='İsmail Efe Terlemez'></a></p>
+<h1 align='center'>⭐ <b><i>İsmail Efe Terlemez</i></b> ⭐<br><sub><a href='https://github.com/ism00efe'>GitHub</a></sub></h1>
+
 <p align='center'><a href='https://github.com/thozoz'><img src='https://github.com/thozoz.png?size=160' width='80' alt='Efe Özan'></a></p>
 <h2 align='center'>🌟 <b><i>Efe Özan</i></b> 🌟<br><sub><a href='https://github.com/thozoz'>GitHub</a></sub></h2>
-
-<p align='center'><a href='https://github.com/ism00efe'><img src='https://github.com/ism00efe.png?size=160' width='80' alt='İsmail Efe Terlemez'></a></p>
-<h2 align='center'>🌟 <b><i>İsmail Efe Terlemez</i></b> 🌟<br><sub><a href='https://github.com/ism00efe'>GitHub</a></sub></h2>
 
 </details>
 
