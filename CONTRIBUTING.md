@@ -30,7 +30,9 @@ Elinde bir ders notu, slayt, çıkmış soru, ödev çözümü ya da faydalı bi
 1. Sağ üstteki **Fork** butonuna bas. Reponun bir kopyası senin hesabında oluşur.
 2. Kendi kopyanda dosyayı koyacağın dersin klasörüne gir. Örnek: `2-1/Nesne Yönelimli Programlama/`
 3. **Add file → Upload files** ile dosyalarını sürükle-bırak yap.
-   - Yeni bir alt klasör gerekiyorsa adını dosya adının başına yaz: `çıkmış_sorular/2025_vize.pdf`
+   - Dosyalar türüne ve yılına göre klasörlenir: `çıkmış_sorular/2025/vize.pdf`. Yıl, eğitim-öğretim yılının ilk
+     yılıdır (2025-2026 → `2025`). Klasör henüz yoksa bilgisayarında `2025` adlı bir klasöre koyup klasörü
+     sürükle-bırak yap; GitHub klasörü de oluşturur.
 4. En alta kısa bir açıklama yazıp **Commit changes** de.
 5. Üstte çıkan **Contribute → Open pull request** butonuna bas ve isteği gönder.
 6. İsteğin onaylanınca adın **Katkıda Bulunanlar** listesine otomatik olarak eklenir.
@@ -60,7 +62,8 @@ Ardından GitHub'da **Compare & pull request** butonuna bas.
 ## 📏 Dikkat Edilecekler
 
 - **Doğru klasör:** Dosyayı dersin bulunduğu dönem klasörüne koy (`1-1` = 1. sınıf güz, `1-2` = 1. sınıf bahar …). Seçmeli dersler `Mesleki Seçmeli/`, `Üniversite Seçmeli/` ve `Fakülte Teknik Seçmeli/` altında.
-- **Adlandırma:** Alt klasör ve dosya adları küçük harfle ve `_` ile yazılır: `çıkmış_sorular/`, `slaytlar_notlar/`, `ödev_1.pdf`. Ayrıntılar [STANDARTLAR.md](.github/STANDARTLAR.md) dosyasında.
+- **Adlandırma:** Alt klasör ve dosya adları küçük harfle ve `_` ile yazılır: `çıkmış_sorular/`, `slaytlar_notlar/`, `ödev_1.pdf`.
+  Her türün altında yıl klasörü olur: `slaytlar_notlar/2025/`. Ayrıntılar [STANDARTLAR.md](.github/STANDARTLAR.md) dosyasında.
 - **Kişisel bilgi yükleme:** Öğrenci numarası, ad-soyad listesi, telefon gibi başkalarına ait bilgileri yükleme; varsa karart.
 - **README'leri elle düzeltme:** README'ler otomatik üretiliyor. Bir hata görürsen [issue açman](https://github.com/MarmaraArsiv/tek_bilgisayar/issues) yeterli.
 - **Nazik ol:** Hoca ve ders yorumlarında hakaret içeren içerik kabul edilmez.
