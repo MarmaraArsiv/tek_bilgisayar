@@ -26,8 +26,7 @@ import unicodedata
 import urllib.request
 
 KONF = ".github/json_dosyalari/konfigurasyon.json"
-DONEMLER = ["1-1", "1-2", "2-1", "2-2", "3-1", "3-2", "4-1", "4-2"]
-HAVUZLAR = ["Mesleki Seçmeli", "Fakülte Teknik Seçmeli", "Üniversite Seçmeli"]
+DONEMLER_JSON = ".github/json_dosyalari/donemler.json"
 OZETTE_YORUM = 2          # ana sayfa ve dönem sayfasında gösterilen yorum sayısı
 YORUM_UZUNLUK = 1500
 ONAY_DEGERLERI = {"true", "doğru", "dogru", "evet", "x", "✓", "✔", "1", "onay", "onaylandı"}
@@ -275,6 +274,10 @@ def main():
     except Exception as e:  # CSV'ler okunamazsa mevcut README'lere dokunma
         print("⚠️ Form cevapları okunamadı, README'ler değiştirilmedi:", e)
         sys.exit(0)
+    with open(DONEMLER_JSON, encoding="utf-8") as d:
+        dj = json.load(d)
+    donemler = [x["klasor"] for x in dj["donemler"]]
+    havuzlar = [h["klasor"] for h in dj.get("havuzlar", [])]
     hocalar = {h["ad"] for h in json.load(open(".github/json_dosyalari/hocalar.json", encoding="utf-8"))["hocalar"]}
     kok = open("README.md", encoding="utf-8").read()
     kart_emoji = {ad.strip(): e for e, ad in re.findall(r"^#### (\S+) (.+?) $", kok, flags=re.M) if e != "📘"}
@@ -284,9 +287,9 @@ def main():
     for yol in filter(None, dosyalar):
         t = open(yol, encoding="utf-8").read()
         parca = yol.split("/")
-        if len(parca) == 3 and parca[0] in DONEMLER + HAVUZLAR:  # ders sayfası: tüm yorumlar
+        if len(parca) == 3 and parca[0] in donemler + havuzlar:  # ders sayfası: tüm yorumlar
             yeni = hoca_bolumu(ders_blogu(t, parca[1], veri, f, ozet=False), veri, f, hocalar, kart_emoji)
-        elif len(parca) == 2 and parca[0] in DONEMLER:  # dönem sayfası: "### 📘 Ders" blokları
+        elif len(parca) == 2 and parca[0] in donemler:  # dönem sayfası: "### 📘 Ders" blokları
             yeni = "".join(ders_blogu(b, m.group(1).strip(), veri, f, ozet=True) if m else b
                            for m, b in bloklara_bol(t, r"^### 📘 (.+?)\s*$"))
         elif yol == "README.md":

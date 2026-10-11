@@ -7,6 +7,7 @@
 Bölümler README'de <!-- X_BASLANGIC --> / <!-- X_BITIS --> işaretleri arasına yazılır.
 Sadece Python standart kütüphanesi kullanılır.
 """
+import json
 import os
 import re
 import sys
@@ -14,13 +15,7 @@ import sys
 DOLULUK_AKTIF = True
 
 README_YOLU = "README.md"
-DONEMLER = [
-    ("1-1", "1. Yıl Güz"), ("1-2", "1. Yıl Bahar"),
-    ("2-1", "2. Yıl Güz"), ("2-2", "2. Yıl Bahar"),
-    ("3-1", "3. Yıl Güz"), ("3-2", "3. Yıl Bahar"),
-    ("4-1", "4. Yıl Güz"), ("4-2", "4. Yıl Bahar"),
-]
-HAVUZLAR = ["Mesleki Seçmeli", "Fakülte Teknik Seçmeli", "Üniversite Seçmeli"]
+DONEMLER_JSON = ".github/json_dosyalari/donemler.json"
 MATERYAL_SAYILMAYANLAR = {"readme.md", "readme.txt", ".gitkeep"}
 
 
@@ -45,6 +40,14 @@ def materyal_sayisi(ders_yolu):
                for d in dosyalar if d.lower() not in MATERYAL_SAYILMAYANLAR)
 
 
+def donem_ve_havuzlar():
+    """(klasör, tablodaki ad) çiftleri: önce dönemler, sonra seçmeli havuzları (donemler.json sırasıyla)."""
+    with open(DONEMLER_JSON, encoding="utf-8") as f:
+        d = json.load(f)
+    return ([(x["klasor"], f"{x['yil']}. Yıl {x['donem']}") for x in d["donemler"]]
+            + [(h["klasor"], h["klasor"]) for h in d.get("havuzlar", [])])
+
+
 def cubuk(oran, uzunluk=10):
     dolu = round(oran * uzunluk)
     return "🟩" * dolu + "⬜" * (uzunluk - dolu)
@@ -54,7 +57,7 @@ def doluluk():
     satirlar = ["| Dönem | Doluluk | Materyali olan ders |", "|---|---|---|"]
     bos_listeleri = []
     toplam_dolu = toplam = 0
-    for klasor, ad in DONEMLER + [(h, h) for h in HAVUZLAR]:
+    for klasor, ad in donem_ve_havuzlar():
         liste = dersler(klasor)
         if not liste:
             continue
