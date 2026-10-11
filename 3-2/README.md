@@ -3,7 +3,6 @@
 ## 📚 Dönemin Zorunlu Dersleri
 
 
-
 ### 📘 Bilgisayar Organizasyonu ve Mimarisi
 
 #### 📄 Ders Bilgileri

@@ -2,7 +2,9 @@
     "donemler": [
         {
             "donem_adi": "1. Sınıf Güz Dönemi",
-            "yil": 1, "donem": "Güz",
+            "klasor": "1-1",
+            "yil": 1,
+            "donem": "Güz",
             "genel_tavsiyeler": [
                 "Bölümle doğrudan ilgili tek ders Bilgisayar Mühendisliğine Giriş; diğer dersler lise düzeyine yakındır.",
                 "Ödev ve projelere önem vermek ileride faydalı oluyor."
@@ -10,10 +12,71 @@
         },
         {
             "donem_adi": "1. Sınıf Bahar Dönemi",
-            "yil": 1, "donem": "Bahar",
+            "klasor": "1-2",
+            "yil": 1,
+            "donem": "Bahar",
             "genel_tavsiyeler": [
                 "Bilgisayar Programlama ve Bilgisayar Donanımı dersleri bölüme giriş niteliğinde, lab'larını kaçırmayın."
             ]
+        },
+        {
+            "donem_adi": "2. Sınıf Güz Dönemi",
+            "klasor": "2-1",
+            "yil": 2,
+            "donem": "Güz",
+            "genel_tavsiyeler": []
+        },
+        {
+            "donem_adi": "2. Sınıf Bahar Dönemi",
+            "klasor": "2-2",
+            "yil": 2,
+            "donem": "Bahar",
+            "genel_tavsiyeler": []
+        },
+        {
+            "donem_adi": "3. Sınıf Güz Dönemi",
+            "klasor": "3-1",
+            "yil": 3,
+            "donem": "Güz",
+            "genel_tavsiyeler": []
+        },
+        {
+            "donem_adi": "3. Sınıf Bahar Dönemi",
+            "klasor": "3-2",
+            "yil": 3,
+            "donem": "Bahar",
+            "genel_tavsiyeler": []
+        },
+        {
+            "donem_adi": "4. Sınıf Güz Dönemi",
+            "klasor": "4-1",
+            "yil": 4,
+            "donem": "Güz",
+            "genel_tavsiyeler": []
+        },
+        {
+            "donem_adi": "4. Sınıf Bahar Dönemi",
+            "klasor": "4-2",
+            "yil": 4,
+            "donem": "Bahar",
+            "genel_tavsiyeler": []
+        }
+    ],
+    "havuzlar": [
+        {
+            "ad": "Mesleki Seçmeli",
+            "klasor": "Mesleki Seçmeli",
+            "aciklama": "Mühendislik Fakültesi'nin teknik seçmeli ders havuzu."
+        },
+        {
+            "ad": "Üniversite Seçmeli",
+            "klasor": "Üniversite Seçmeli",
+            "aciklama": "Bölüm dışı/sosyal içerikli üniversite seçmelik ders havuzu."
+        },
+        {
+            "ad": "Fakülte Teknik Seçmeli",
+            "klasor": "Fakülte Teknik Seçmeli",
+            "aciklama": "Teknoloji Fakültesi genelindeki teknik seçmeli ders havuzu (8. yarıyıl). **Sadece 2026 sonrası müfredatta var** — 2026 öncesi müfredatta karşılığı yok."
         }
     ]
 }

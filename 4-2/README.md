@@ -3,7 +3,6 @@
 ## 📚 Dönemin Zorunlu Dersleri
 
 
-
 ### 📘 Sistem ve Sunucu Yönetimi
 
 #### 📄 Ders Bilgileri

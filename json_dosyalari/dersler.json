@@ -1,447 +1,4744 @@
 {
     "bolum_adi": "Dersler",
-    "bolum_aciklamasi": "Bu bölümde, tüm dersler hakkında detaylı bilgiler ve kaynaklar bulunmaktadır. Öğrenciler bu bölümü kullanarak ders materyallerine ve içeriklerine ulaşabilirler.",
-    "ders_klasoru_bulunamadi_mesaji": "Henüz dersle alakalı bir döküman ne yazık ki yok. Katkıda bulunmak istersen lütfen bizimle iletişime geç...",
-    "guncel_olmayan_ders_aciklamasi": "Bu ders artık müfredata dahil değildir. Ya tamamen kaldırılmış, ya ismi ve içeriği güncellenmiş ya da birleştirilmiş olabilir.",
-    "en_populer_ders": {
-        "ders_adi": "",
-        "oy_sayisi": 0
-    },
+    "bolum_aciklamasi": "📄 Bu bölümde, tüm dersler hakkında detaylı bilgiler ve kaynaklar bulunmaktadır. Öğrenciler bu bölümü kullanarak ders materyallerine ve içeriklerine ulaşabilirler.",
+    "secmeli_bolum_adi": "Seçmeli Dersler",
+    "secmeli_bolum_aciklamasi": "📌 Bu dersler belirli bir yıl/döneme sabit değildir, öğrenciler ilgili yarıyıllarda havuzdan seçer. Hangi dersin hangi dönemde açıldığı değişebilir. Etiketlenmemiş dersler her iki müfredatta da ortaktır.",
+    "katkida_bulun_metni": "Bu derse ait notun, çıkmış sorun, ödev çözümün ya da faydalı bir kaynağın varsa [📖 katkıda bulunma rehberine](../../CONTRIBUTING.md) göz at, birkaç dakikada ekleyebilirsin!",
     "dersler": [
         {
             "ad": "Algoritma ve Programlamaya Giriş",
+            "klasor": "1-1/Algoritma ve Programlamaya Giriş",
             "yil": 1,
             "donem": "Güz",
             "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
                 {
-                    "ad": "Doç. Dr. Buket Doğan",
-                    "kisaltma": "BD"
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        }
+                    ]
                 },
                 {
-                    "ad": "Doç. Dr. Ayşe Berna Altınel",
-                    "kisaltma": "ABA"
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Arş. Gör. Semiha Koç",
+                            "not": "teori/lab"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
                 }
             ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [
-                "[📊 Slaytlar ve Ders Notları](./slaytlar_notlar/)",
-                "[📝 Haftalık Ödevler (works1-7)](./ödevler/)"
-            ],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
+            "derse_dair_oneriler": []
         },
         {
             "ad": "Bilgisayar Mühendisliğine Giriş",
+            "klasor": "1-1/Bilgisayar Mühendisliğine Giriş",
             "yil": 1,
             "donem": "Güz",
             "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
                 {
-                    "ad": "Prof. Dr. Serhat Özekes",
-                    "kisaltma": "SÖ"
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        },
+                        {
+                            "ad": "Arş. Gör. Semiha Koç",
+                            "not": "atölye"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
                 }
             ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [
-                "[📓 Ders Notları (AI, DB, Etik, Makine Dili...)](./slaytlar_notlar/)",
-                "[🛠️ Atölye Dersi (haftalık uygulamalar)](./at%C3%B6lye_notlar%C4%B1/)",
-                "[📝 Atölye Ödevleri](./at%C3%B6lye_%C3%B6devleri/)"
-            ],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
+            "derse_dair_oneriler": []
         },
         {
             "ad": "Fizik 1",
+            "klasor": "1-1/Fizik 1",
             "yil": 1,
             "donem": "Güz",
             "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
                 {
-                    "ad": "Prof. Dr. Şahin Uyaver",
-                    "kisaltma": "ŞU"
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Adil Güler"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
                 }
             ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [
-                "[📊 Haftalık Slaytlar (Week 1-13)](./slaytlar_notlar/)",
-                "[📝 Ödevler](./ödevler/)",
-                "[📄 Çıkmış Vize Soruları](./çıkmış_sorular/)"
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "İngilizce 1",
+            "klasor": "1-1/İngilizce 1",
+            "yil": 1,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Işıl Ruacan Silahtaroğlu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Işıl Ruacan Silahtaroğlu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Fevziye Esin Şahin"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. İrem Konca"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Aysu Öztürk"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Abdullah Mert Pekel"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Abdullah Mert Pekel"
+                        }
+                    ]
+                }
             ],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
+            "derse_dair_oneriler": []
         },
         {
             "ad": "Kimya",
+            "klasor": "1-1/Kimya",
             "yil": 1,
             "donem": "Güz",
             "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
+            "mufredat": "2026 Öncesi",
+            "mufredat_notu": "2026 sonrası müfredatta bu ders yok, yerine \"Modern Biyolojiye Giriş\" eklenmiş.",
+            "akademisyenler": [
                 {
-                    "ad": "Prof. Dr. Canan Doğan",
-                    "kisaltma": "CD"
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Canan Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Zeynel Şahin"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Zeynel Şahin"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Zeynel Şahin"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Mehmet Sayıp Eroğlu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Sabahattin Deniz"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Sabahattin Deniz"
+                        }
+                    ]
                 }
             ],
             "derse_dair_oneriler": [
                 {
                     "oneri_sahibi": "Arşiv Notu",
                     "oneriler": [
-                        "Kimya hocamız Zeynel Hoca, Yıldız Teknik'in Genel Kimya notlarını biraz değiştirip kullanıyordu, bu yüzden klasörde o notlar da bulunuyor."
+                        "Kimya hocamız Zeynel Şahin, Yıldız Teknik'in Genel Kimya notlarını biraz değiştirip kullanıyordu, bu yüzden klasörde o notlar da bulunuyor."
                     ]
                 }
-            ],
-            "faydali_olabilecek_kaynaklar": [
-                "[📘 Genel Kimya: İlkeler ve Modern Uygulamalar](./GENEL_KIMYA_Ilkeler_ve_Modern_Uygulamala.pdf)",
-                "[📊 Haftalık Konu Sunumları (14 hafta, .ppt)](././)"
-            ],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
             ]
         },
         {
             "ad": "Lineer Cebir",
+            "klasor": "1-1/Lineer Cebir",
             "yil": 1,
             "donem": "Güz",
             "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
                 {
-                    "ad": "Dr. Öğretim Üyesi Neşe Özdemir",
-                    "kisaltma": "NÖ"
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Adil Güler"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Adil Güler"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhan Eker"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Hülya Yılmaz"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Hülya Yılmaz"
+                        }
+                    ]
                 }
             ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [
-                "T.S. Blyth and E.F. Robertson, Basic Linear Algebra, Springer, 4th Edition, 2007.",
-                "Mehmet Ali Karaca, Lineer Cebir Çözümlü Problemleri, İTÜ Vakfı Yayınları, 2006.",
-                "Gilbert Strang, Introduction to Linear Algebra, Wellesley-Cambridge Press, 1998.",
-                "Serge Lang, Introduction to Linear Algebra, Springer Verlag, 1986.",
-                "[📓 Ders Notları](./slaytlar_notlar/)",
-                "[📝 Çalışma Soruları](./%C3%A7al%C4%B1%C5%9Fma_sorular%C4%B1/)",
-                "[📄 Çıkmış Arasınav (2025 Güz)](./çıkmış_sorular/)"
-            ],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
+            "derse_dair_oneriler": []
         },
         {
             "ad": "Matematik 1",
+            "klasor": "1-1/Matematik 1",
             "yil": 1,
             "donem": "Güz",
             "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
                 {
-                    "ad": "Dr. Öğretim Üyesi Neşe Özdemir",
-                    "kisaltma": "NÖ"
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Nazlı Yazıcı Gözütok"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Nazlı Yazıcı Gözütok"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Bahar Kırık Rácz"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Bahar Kırık Rácz"
+                        }
+                    ]
                 }
             ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [
-                "[📓 Ders Notları (hiperbolik fonksiyonlar, integral uygulamaları)](./slaytlar_notlar/)",
-                "[📝 Thomas Calculus Çalışma Soruları](./%C3%A7al%C4%B1%C5%9Fma_sorular%C4%B1/)",
-                "[📄 Çıkmış Arasınav (2025 Güz)](./çıkmış_sorular/)"
-            ],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
+            "derse_dair_oneriler": []
         },
         {
             "ad": "Türkçe 1",
+            "klasor": "1-1/Türkçe 1",
             "yil": 1,
             "donem": "Güz",
             "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
                 {
-                    "ad": "Öğr. Gör. Dr. Mehmet Kocakaplan",
-                    "kisaltma": "MK"
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Mehmet Kocakaplan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Mehmet Kocakaplan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Mehmet Kocakaplan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Mehmet Vehbi Büker"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Yasemin Bulut"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Nurgül Yıldız"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Nurgül Yıldız"
+                        }
+                    ]
                 }
             ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
+            "derse_dair_oneriler": []
         },
         {
-            "ad": "İngilizce 1",
+            "ad": "Modern Biyolojiye Giriş",
+            "klasor": "1-1/Modern Biyolojiye Giriş",
             "yil": 1,
             "donem": "Güz",
             "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [
                 {
-                    "ad": "Öğr. Gör. Dr. Işıl Ruacan Silahtaroğlu",
-                    "kisaltma": "IRS"
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ayşe Ceren Çalıkoğlu Koyuncu"
+                        }
+                    ]
                 }
             ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "İş Sağlığı ve Güvenliği 1",
+            "klasor": "1-1/İş Sağlığı ve Güvenliği 1",
+            "yil": 1,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Yahya Bozkurt"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
         },
         {
             "ad": "Bilgisayar Donanımı",
+            "klasor": "1-2/Bilgisayar Donanımı",
             "yil": 1,
             "donem": "Bahar",
             "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
                 {
-                    "ad": "Prof. Dr. Ali Buldu",
-                    "kisaltma": "ABul"
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
                 }
             ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [
-                "[🛠️ Lab (haftalık uygulamalar + Dönem Projesi)](./lablar/)",
-                "[📊 Marmara Donanım Notları (14 hafta sunum)](./slaytlar_notlar/)"
-            ],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
+            "derse_dair_oneriler": []
         },
         {
             "ad": "Bilgisayar Programlama 1",
+            "klasor": "1-2/Bilgisayar Programlama 1",
             "yil": 1,
             "donem": "Bahar",
             "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
                 {
-                    "ad": "Dr. Öğretim Üyesi Anıl Baş",
-                    "kisaltma": "ABaş"
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Arş. Gör. Semiha Koç",
+                            "not": "lab"
+                        }
+                    ]
                 },
                 {
-                    "ad": "Doç. Dr. Ayşe Berna Altınel",
-                    "kisaltma": "ABA"
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        }
+                    ]
                 },
                 {
-                    "ad": "Arş. Gör. Semiha Koç",
-                    "kisaltma": "SK"
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
                 }
             ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [
-                "[💻 Algo (C örnekleri: pointer, dizi, recursive)](./slaytlar_notlar/)",
-                "[🧪 Lab (Lab 0-10)](./lablar/)",
-                "[❓ Quiz Örneği](./quizler/)"
-            ],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
+            "derse_dair_oneriler": []
         },
         {
             "ad": "Bilimsel Araştırma ve Sunum Teknikleri",
+            "klasor": "1-2/Bilimsel Araştırma ve Sunum Teknikleri",
             "yil": 1,
             "donem": "Bahar",
             "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
+            "mufredat": "2026 Öncesi",
+            "mufredat_notu": "2026 sonrası müfredatta 3. yıl bahar dönemine taşınmış ve \"Bilimsel Araştırma ve Sunum Teknikleri 2\" olarak anılıyor.",
+            "akademisyenler": [
                 {
-                    "ad": "Doç. Dr. Buket Doğan",
-                    "kisaltma": "BD"
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
                 }
             ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [
-                "[📊 Ders Slaytları (LaTeX, hipotez testleri, WoS kullanımı)](./slaytlar_notlar/)",
-                "[📝 Ödevler](./ödevler/)",
-                "[📄 Sınav Hazırlık Dosyaları](./%C3%A7al%C4%B1%C5%9Fma_sorular%C4%B1/)"
-            ],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
+            "derse_dair_oneriler": []
         },
         {
             "ad": "Fizik 2",
+            "klasor": "1-2/Fizik 2",
             "yil": 1,
             "donem": "Bahar",
             "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
                 {
-                    "ad": "Prof. Dr. Şahin Uyaver",
-                    "kisaltma": "ŞU"
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Adil Güler"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
                 }
             ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [
-                "[📋 Ders İzlencesi (Syllabus)](./Syllabus.pdf)",
-                "[📊 Haftalık Ders Slaytları](./slaytlar_notlar/)",
-                "[❓ Ders İçi Sorular](./%C3%A7al%C4%B1%C5%9Fma_sorular%C4%B1/)",
-                "[📄 Çıkmış Vize Soruları](./çıkmış_sorular/)"
-            ],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
-        },
-        {
-            "ad": "İş Sağlığı ve Güvenliği 2",
-            "yil": 1,
-            "donem": "Bahar",
-            "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
-                {
-                    "ad": "Prof. Dr. İsmail Kıyak",
-                    "kisaltma": "İK"
-                }
-            ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [
-                "[📸 Tahtanın Fotoğrafları (haftalık ders anlatımı)](./tahta_notlar%C4%B1/)"
-            ],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
-        },
-        {
-            "ad": "Matematik 2",
-            "yil": 1,
-            "donem": "Bahar",
-            "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
-                {
-                    "ad": "Dr. Öğretim Üyesi Neşe Özdemir",
-                    "kisaltma": "NÖ"
-                }
-            ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [
-                "[📋 Ders İzlencesi](./Ders-Izlence-Mat1086.pdf)",
-                "[📓 Ders Notları (küresel koordinatlar, seriler, vektörler)](./slaytlar_notlar/)",
-                "[📝 Haftalık Ödevler](./%C3%A7al%C4%B1%C5%9Fma_sorular%C4%B1/)"
-            ],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
-        },
-        {
-            "ad": "Türkçe 2",
-            "yil": 1,
-            "donem": "Bahar",
-            "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
-                {
-                    "ad": "Öğr. Gör. Dr. Mehmet Kocakaplan",
-                    "kisaltma": "MK"
-                }
-            ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
+            "derse_dair_oneriler": []
         },
         {
             "ad": "İngilizce 2",
+            "klasor": "1-2/İngilizce 2",
             "yil": 1,
             "donem": "Bahar",
             "tip": "Zorunlu",
-            "guncel_mi": true,
-            "dersi_veren_hocalar": [
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
                 {
-                    "ad": "Öğr. Gör. Dr. Işıl Ruacan Silahtaroğlu",
-                    "kisaltma": "IRS"
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Işıl Ruacan Silahtaroğlu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Sanem Soner"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. İrem Konca"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Sanem Soner"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Abdullah Mert Pekel"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Abdullah Mert Pekel"
+                        }
+                    ]
                 }
             ],
-            "derse_dair_oneriler": [],
-            "faydali_olabilecek_kaynaklar": [],
-            "ogrenci_gorusleri": [],
-            "yillara_gore_yildiz_sayilari": [],
-            "kolaylik_puani": 0,
-            "gereklilik_puani": 0,
-            "oy_sayisi": 0,
-            "mufredatlar": [
-                "2026"
-            ]
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "İş Sağlığı ve Güvenliği 2",
+            "klasor": "1-2/İş Sağlığı ve Güvenliği 2",
+            "yil": 1,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "2026 sonrası müfredatta \"İş Sağlığı ve Güvenliği 2\" olarak anılıyor (1. yarıyılda ayrıca \"İş Sağlığı ve Güvenliği 1\" eklenmiş).",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. İsmail Kıyak"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. İsmail Kıyak"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. İsmail Kıyak"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. İsmail Kıyak"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. İsmail Kıyak"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. İsmail Kıyak"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Matematik 2",
+            "klasor": "1-2/Matematik 2",
+            "yil": 1,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Nazlı Yazıcı Gözütok"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Nazlı Yazıcı Gözütok"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Nazlı Yazıcı Gözütok"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Bahar Kırık Rácz"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Türkçe 2",
+            "klasor": "1-2/Türkçe 2",
+            "yil": 1,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Mehmet Kocakaplan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Mehmet Kocakaplan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Mehmet Vehbi Büker"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Yasemin Bulut"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Nurgül Yıldız"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Nurgül Yıldız"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Mühendislik Ekonomisi",
+            "klasor": "1-2/Mühendislik Ekonomisi",
+            "yil": 1,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Mantık Devreleri",
+            "klasor": "2-1/Mantık Devreleri",
+            "yil": 2,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        },
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        },
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        },
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        },
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        },
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ayşe Yayla"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Uğur Kesen"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Nesne Yönelimli Programlama",
+            "klasor": "2-1/Nesne Yönelimli Programlama",
+            "yil": 2,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Arş. Gör. Dr. Merve Pınar"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        },
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Bilgisayar Programlama 2",
+            "klasor": "2-1/Bilgisayar Programlama 2",
+            "yil": 2,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Öncesi",
+            "mufredat_notu": "2026 sonrası müfredatta ayrı bir \"Bilgisayar Programlama 2\" dersi yok.",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Emrah Dikbıyık"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Emrah Dikbıyık"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "İnsan-Bilgisayar Etkileşimi ve Görsellik",
+            "klasor": "2-1/İnsan-Bilgisayar Etkileşimi ve Görsellik",
+            "yil": 2,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Öncesi (Zorunlu)",
+            "mufredat_notu": "2026 sonrası müfredatta zorunlu değil, Mesleki Seçmeli havuzuna taşınmış.",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Arş. Gör. Dr. Abdullah Bal"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Lutfi Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Lutfi Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Lutfi Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Ayrık Matematik",
+            "klasor": "2-1/Ayrık Matematik",
+            "yil": 2,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Timur İnan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Timur İnan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Timur İnan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Nazlı Yazıcı Gözütok"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Nazlı Yazıcı Gözütok"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Suat Koç"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Suat Koç"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Diferansiyel Denklemler",
+            "klasor": "2-1/Diferansiyel Denklemler",
+            "yil": 2,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Burhan Tiryakioğlu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhan Eker"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Halil İbrahim Çelik"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Ayşe Neşe Dernek"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Olasılık ve İstatistik",
+            "klasor": "2-1/Olasılık ve İstatistik",
+            "yil": 2,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Teknik İngilizce 1",
+            "klasor": "2-1/Teknik İngilizce 1",
+            "yil": 2,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Bilgisayar Ağlarına Giriş",
+            "klasor": "2-2/Bilgisayar Ağlarına Giriş",
+            "yil": 2,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Elektronik Devrelere Giriş",
+            "klasor": "2-2/Elektronik Devrelere Giriş",
+            "yil": 2,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "2026 öncesi müfredatta 4. yarıyılda (burada), 2026 sonrası müfredatta 2. yarıyılda (1-2) yer alıyor.",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Timur İnan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Alper Nabi Akpolat"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Alper Nabi Akpolat"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Alper Nabi Akpolat"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Serkan Aydın"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Pınar Özkan Bakbak"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Mikroişlemciler",
+            "klasor": "2-2/Mikroişlemciler",
+            "yil": 2,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Serkan Aydın"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Serkan Aydın"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Serkan Aydın"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Serkan Aydın"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ulvi Başpınar"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ulvi Başpınar"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Sayısal Analiz",
+            "klasor": "2-2/Sayısal Analiz",
+            "yil": 2,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Mehmet Fatih Karaaslan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Dursun Üstündağ"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Dursun Üstündağ"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Veri Yapıları ve Algoritmalar",
+            "klasor": "2-2/Veri Yapıları ve Algoritmalar",
+            "yil": 2,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Abdulsamet Aktaş"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Emrah Dikbıyık"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        },
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Mühendisler için İstatistik",
+            "klasor": "2-2/Mühendisler için İstatistik",
+            "yil": 2,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Öncesi",
+            "mufredat_notu": "2026 sonrası müfredatta yerine \"Olasılık ve İstatistik\" (2-1) dersi var.",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Özge Cağcağ Yolcu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Özge Cağcağ Yolcu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Özge Cağcağ Yolcu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Özge Cağcağ Yolcu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Arş. Gör. Dr. Busenur Kızılaslan"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Teknik İngilizce 2",
+            "klasor": "2-2/Teknik İngilizce 2",
+            "yil": 2,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Staj 1",
+            "klasor": "3-1/Staj 1",
+            "yil": 3,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Ahmet Emin Kuzucuoğlu"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Veritabanı Yönetim Sistemleri",
+            "klasor": "3-1/Veritabanı Yönetim Sistemleri",
+            "yil": 3,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Arş. Gör. Dr. Büşra Büyüktanır"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Öğr. Gör. Dr. Esra Çalık Bayazıt"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Öğr. Gör. Dr. Esra Çalık Bayazıt"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "İşletim Sistemleri",
+            "klasor": "3-1/İşletim Sistemleri",
+            "yil": 3,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Abdulsamet Aktaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Abdulsamet Aktaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Mikrodenetleyiciler",
+            "klasor": "3-1/Mikrodenetleyiciler",
+            "yil": 3,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Öncesi (Zorunlu)",
+            "mufredat_notu": "2026 sonrası müfredatta zorunlu değil, Mesleki Seçmeli havuzuna taşınmış.",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Timur İnan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Timur İnan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Timur İnan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Hasan Hüseyin Çelik"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Hasan Hüseyin Çelik"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Hasan Hüseyin Çelik"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Hasan Hüseyin Çelik"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Sinyaller ve Sistemlere Giriş",
+            "klasor": "3-1/Sinyaller ve Sistemlere Giriş",
+            "yil": 3,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "2026 sonrası müfredatta \"Sinyaller ve Sistemler\" adıyla anılıyor.",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Algoritma Analizi ve Tasarımı",
+            "klasor": "3-1/Algoritma Analizi ve Tasarımı",
+            "yil": 3,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta bu içerik \"Algoritma Analizi\" adıyla Mesleki Seçmeli havuzunda yer alıyor.",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Bilgisayar Organizasyonu ve Mimarisi",
+            "klasor": "3-2/Bilgisayar Organizasyonu ve Mimarisi",
+            "yil": 3,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Vedat Topuz"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Vedat Topuz"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Web Programlama",
+            "klasor": "3-2/Web Programlama",
+            "yil": 3,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Öncesi (Zorunlu)",
+            "mufredat_notu": "2026 sonrası müfredatta zorunlu değil, Mesleki Seçmeli havuzuna taşınmış.",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Emrah Dikbıyık"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Selman Şişman"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Selman Şişman"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Sistem Programlama",
+            "klasor": "3-2/Sistem Programlama",
+            "yil": 3,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Yazılım Mühendisliği",
+            "klasor": "3-2/Yazılım Mühendisliği",
+            "yil": 3,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Halil Özkan"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Biçimsel Diller ve Otomata Teorisi",
+            "klasor": "3-2/Biçimsel Diller ve Otomata Teorisi",
+            "yil": 3,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta bu ders Mesleki Seçmeli havuzunda yer alıyor.",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Bilimsel Araştırma ve Sunum Teknikleri 2",
+            "klasor": "3-2/Bilimsel Araştırma ve Sunum Teknikleri 2",
+            "yil": 3,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta bu ders 1. yıl bahar döneminde (1-2) yer alıyor.",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Staj 2",
+            "klasor": "4-1/Staj 2",
+            "yil": 4,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "İş Yeri Eğitimi",
+            "klasor": "4-1/İş Yeri Eğitimi",
+            "yil": 4,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        },
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        },
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        },
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        },
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        },
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        },
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        },
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        },
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        },
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Atatürk İlkeleri ve İnkılap Tarihi 1",
+            "klasor": "4-1/Atatürk İlkeleri ve İnkılap Tarihi 1",
+            "yil": 4,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Oya Ayhan Girit"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Oya Ayhan Girit"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Oya Ayhan Girit"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Oya Ayhan Girit"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Oya Ayhan Girit"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Oya Ayhan Girit"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "İş Hukuku ve Etiği",
+            "klasor": "4-1/İş Hukuku ve Etiği",
+            "yil": 4,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Bitirme Projesi 1",
+            "klasor": "4-1/Bitirme Projesi 1",
+            "yil": 4,
+            "donem": "Güz",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta tek parça \"Bitirme Projesi\" olarak 4. yıl bahar döneminde (4-2) yer alıyor.",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Sistem ve Sunucu Yönetimi",
+            "klasor": "4-2/Sistem ve Sunucu Yönetimi",
+            "yil": 4,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Mustafa Şahin"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Mustafa Şahin"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Mustafa Şahin"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Esra Çalık Bayazıt"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Gökhan Akın"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Bitirme Projesi",
+            "klasor": "4-2/Bitirme Projesi",
+            "yil": 4,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Öncesi",
+            "mufredat_notu": "2026 sonrası müfredatta \"Bitirme Projesi 1\" (4-1) ve \"Bitirme Projesi 2\" (4-2) olarak ikiye bölünmüş.",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Neşe Özdemir"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Timur İnan"
+                        },
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        },
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Abdulsamet Aktaş"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        },
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Timur İnan"
+                        },
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        },
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        },
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        },
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        },
+                        {
+                            "ad": "Prof. Dr. Ali Buldu"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        },
+                        {
+                            "ad": "Doç. Dr. Buket Doğan"
+                        },
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        },
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        },
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        },
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Atatürk İlkeleri ve İnkılap Tarihi 2",
+            "klasor": "4-2/Atatürk İlkeleri ve İnkılap Tarihi 2",
+            "yil": 4,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Oya Ayhan Girit"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Oya Ayhan Girit"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Oya Ayhan Girit"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Oya Ayhan Girit"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Oya Ayhan Girit"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Teknik İngilizce",
+            "klasor": "4-2/Teknik İngilizce",
+            "yil": 4,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Öncesi",
+            "mufredat_notu": "2026 sonrası müfredatta yerine \"Teknik İngilizce 1\" (2-1) ve \"Teknik İngilizce 2\" (2-2) var.",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Bitirme Projesi 2",
+            "klasor": "4-2/Bitirme Projesi 2",
+            "yil": 4,
+            "donem": "Bahar",
+            "tip": "Zorunlu",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta tek parça \"Bitirme Projesi\" olarak yer alıyor (Bitirme Projesi 1, 4-1'de).",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Algoritma Analizi",
+            "klasor": "Mesleki Seçmeli/Algoritma Analizi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Öncesi",
+            "mufredat_notu": "2026 sonrası müfredatta \"Algoritma Analizi ve Tasarımı\" adıyla ve zorunlu olarak yer alıyor, bkz. 3-1.",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Açık Kaynak Kodlu Yazılımlar",
+            "klasor": "Mesleki Seçmeli/Açık Kaynak Kodlu Yazılımlar",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Halil Özkan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Halil Özkan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Halil Özkan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Halil Özkan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Halil Özkan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Halil Özkan"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Bilgisayar Ağ Protokolleri",
+            "klasor": "Mesleki Seçmeli/Bilgisayar Ağ Protokolleri",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Osman Cihan Akar"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Osman Cihan Akar"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Osman Cihan Akar"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Osman Cihan Akar"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Osman Cihan Akar"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Osman Cihan Akar"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Osman Cihan Akar"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Bilgisayar Grafik",
+            "klasor": "Mesleki Seçmeli/Bilgisayar Grafik",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Ata Hürdoğan Demiray"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Ata Hürdoğan Demiray"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Ata Hürdoğan Demiray"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Anıl Baş"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Bilgisayar Güvenliği",
+            "klasor": "Mesleki Seçmeli/Bilgisayar Güvenliği",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Barış İnceişçi"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Barış İnceişçi"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Biçimsel Diller ve Otomata Teorisi",
+            "klasor": "Mesleki Seçmeli/Biçimsel Diller ve Otomata Teorisi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Öncesi",
+            "mufredat_notu": "2026 sonrası müfredatta zorunlu olarak yer alıyor, bkz. 3-2.",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Abdulsamet Aktaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Abdulsamet Aktaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Mustafa Cem Kasapbaşı"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Blockchain Programlamaya Giriş",
+            "klasor": "Mesleki Seçmeli/Blockchain Programlamaya Giriş",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Bulut Bilişim",
+            "klasor": "Mesleki Seçmeli/Bulut Bilişim",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Dağıtık Sistemler",
+            "klasor": "Mesleki Seçmeli/Dağıtık Sistemler",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Derin Öğrenme ve Yapay Sinir Ağlarına Giriş",
+            "klasor": "Mesleki Seçmeli/Derin Öğrenme ve Yapay Sinir Ağlarına Giriş",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "E-Ticarete Giriş",
+            "klasor": "Mesleki Seçmeli/E-Ticarete Giriş",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Sema Demir Yaylacı"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Sema Demir Yaylacı"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Eğitim Sistemleri Tasarımı",
+            "klasor": "Mesleki Seçmeli/Eğitim Sistemleri Tasarımı",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Gömülü Sistemler",
+            "klasor": "Mesleki Seçmeli/Gömülü Sistemler",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Sebahattin Babur"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ayşe Yayla"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Görüntü İşlemenin Temelleri",
+            "klasor": "Mesleki Seçmeli/Görüntü İşlemenin Temelleri",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Önder Demir"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Güncel Yapay Zeka Yaklaşımları",
+            "klasor": "Mesleki Seçmeli/Güncel Yapay Zeka Yaklaşımları",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Kablosuz Ağlar",
+            "klasor": "Mesleki Seçmeli/Kablosuz Ağlar",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Öncesi",
+            "mufredat_notu": "2026 sonrası müfredatta yerine \"Kablosuz ve Mobil Ağlar\" eklenmiş.",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Osman Cihan Akar"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Osman Cihan Akar"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Osman Cihan Akar"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Osman Cihan Akar"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Kablosuz ve Mobil Ağlar",
+            "klasor": "Mesleki Seçmeli/Kablosuz ve Mobil Ağlar",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Kriptoloji",
+            "klasor": "Mesleki Seçmeli/Kriptoloji",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Linux Kabuk Programlama",
+            "klasor": "Mesleki Seçmeli/Linux Kabuk Programlama",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Makine Öğrenimine Giriş",
+            "klasor": "Mesleki Seçmeli/Makine Öğrenimine Giriş",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Mikrodenetleyiciler",
+            "klasor": "Mesleki Seçmeli/Mikrodenetleyiciler",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Mobil Programlama",
+            "klasor": "Mesleki Seçmeli/Mobil Programlama",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Timur İnan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Timur İnan"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Timur İnan"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Mühendislik Matematiği ve Uygulamaları",
+            "klasor": "Mesleki Seçmeli/Mühendislik Matematiği ve Uygulamaları",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Mühendislik Uygulamaları için Python",
+            "klasor": "Mesleki Seçmeli/Mühendislik Uygulamaları için Python",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Nesnelerin İnterneti",
+            "klasor": "Mesleki Seçmeli/Nesnelerin İnterneti",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Optimizasyon Teknikleri ve Uygulamaları",
+            "klasor": "Mesleki Seçmeli/Optimizasyon Teknikleri ve Uygulamaları",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Oyun Yazılımı Geliştirme",
+            "klasor": "Mesleki Seçmeli/Oyun Yazılımı Geliştirme",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Arş. Gör. Dr. Abdullah Bal"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Savaş Öztürk"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Paralel Hesaplama",
+            "klasor": "Mesleki Seçmeli/Paralel Hesaplama",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Rastgele Değişkenler",
+            "klasor": "Mesleki Seçmeli/Rastgele Değişkenler",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Sayısal İşaret İşleme",
+            "klasor": "Mesleki Seçmeli/Sayısal İşaret İşleme",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ömer Akgün"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Simulasyon ve Modelleme",
+            "klasor": "Mesleki Seçmeli/Simulasyon ve Modelleme",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Sebahattin Babur"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Sebahattin Babur"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Şahin Uyaver"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Banu Çalış Uslu"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Sosyal Ağlarda Uygulamalı Metin Analizi",
+            "klasor": "Mesleki Seçmeli/Sosyal Ağlarda Uygulamalı Metin Analizi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Veri Bilimine Giriş",
+            "klasor": "Mesleki Seçmeli/Veri Bilimine Giriş",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Veri Madenciliği",
+            "klasor": "Mesleki Seçmeli/Veri Madenciliği",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Doç. Dr. Ayşe Berna Altınel"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Web Programlama",
+            "klasor": "Mesleki Seçmeli/Web Programlama",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta bu ders zorunludur, bkz. [`3-2/Web Programlama`](../../3-2/Web%20Programlama/).",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Web Servisleri",
+            "klasor": "Mesleki Seçmeli/Web Servisleri",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Ahmet Bozdağ"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Ahmet Bozdağ"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Onur Türk"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Onur Türk"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Ahmet Bozdağ"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Yapay Sinir Ağları",
+            "klasor": "Mesleki Seçmeli/Yapay Sinir Ağları",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2026-2027",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Serhat Özekes"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Uğur Çekmez"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2020-2021",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Yapay Zekâya Giriş",
+            "klasor": "Mesleki Seçmeli/Yapay Zekâya Giriş",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Öncesi",
+            "mufredat_notu": "2026 sonrası müfredatta yerine \"Güncel Yapay Zeka Yaklaşımları\" eklenmiş.",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Prof. Dr. Kazım Yıldız"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Uğur Çekmez"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Yazılım Projelerinin Yönetimi",
+            "klasor": "Mesleki Seçmeli/Yazılım Projelerinin Yönetimi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Halil Özkan"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "İnsan-Bilgisayar Etkileşimi ve Görsellik",
+            "klasor": "Mesleki Seçmeli/İnsan-Bilgisayar Etkileşimi ve Görsellik",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Bilim Tarihi",
+            "klasor": "Üniversite Seçmeli/Bilim Tarihi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Emre Akın"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Emre Akın"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Öğretim Üyesi Emre Akın"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2021-2022",
+                    "hocalar": [
+                        {
+                            "ad": "Dr. Hulusi Ersoy"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Fizibilite Hazırlama ve Uygulamaları",
+            "klasor": "Üniversite Seçmeli/Fizibilite Hazırlama ve Uygulamaları",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Girişimcilik",
+            "klasor": "Üniversite Seçmeli/Girişimcilik",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Neslihan Bayraktar"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Girişimcilik ve İnovasyon",
+            "klasor": "Üniversite Seçmeli/Girişimcilik ve İnovasyon",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Kalite Yönetimi",
+            "klasor": "Üniversite Seçmeli/Kalite Yönetimi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Liderlik",
+            "klasor": "Üniversite Seçmeli/Liderlik",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Moda",
+            "klasor": "Üniversite Seçmeli/Moda",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Osmanlı Tarihi",
+            "klasor": "Üniversite Seçmeli/Osmanlı Tarihi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Rapor Hazırlama ve Sunum Teknikleri",
+            "klasor": "Üniversite Seçmeli/Rapor Hazırlama ve Sunum Teknikleri",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Sistem Mühendisliği",
+            "klasor": "Üniversite Seçmeli/Sistem Mühendisliği",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Sosyal Organizasyon",
+            "klasor": "Üniversite Seçmeli/Sosyal Organizasyon",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Teknik Satış ve Pazarlama",
+            "klasor": "Üniversite Seçmeli/Teknik Satış ve Pazarlama",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [
+                {
+                    "yil": "2025-2026",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Nur Demirbaş Hergüner"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2024-2025",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Nur Demirbaş Hergüner"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2023-2024",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Nur Demirbaş Hergüner"
+                        }
+                    ]
+                },
+                {
+                    "yil": "2022-2023",
+                    "hocalar": [
+                        {
+                            "ad": "Öğr. Gör. Dr. Nur Demirbaş Hergüner"
+                        }
+                    ]
+                }
+            ],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Teknik İletişim",
+            "klasor": "Üniversite Seçmeli/Teknik İletişim",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Çevre ve Enerji",
+            "klasor": "Üniversite Seçmeli/Çevre ve Enerji",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "İş Psikolojisi",
+            "klasor": "Üniversite Seçmeli/İş Psikolojisi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "Her İki Müfredat",
+            "mufredat_notu": "",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Araştırma Planlama ve Yönetimi",
+            "klasor": "Fakülte Teknik Seçmeli/Araştırma Planlama ve Yönetimi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Bilgi Sistemleri Yönetimi",
+            "klasor": "Fakülte Teknik Seçmeli/Bilgi Sistemleri Yönetimi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Disiplinler Arası Proje Tasarımı",
+            "klasor": "Fakülte Teknik Seçmeli/Disiplinler Arası Proje Tasarımı",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Mühendisler için Proje Yönetimi",
+            "klasor": "Fakülte Teknik Seçmeli/Mühendisler için Proje Yönetimi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Mühendislik ve Teknoloji Yönetimi",
+            "klasor": "Fakülte Teknik Seçmeli/Mühendislik ve Teknoloji Yönetimi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Veri Bilimi ve Veri Analitiğine Giriş",
+            "klasor": "Fakülte Teknik Seçmeli/Veri Bilimi ve Veri Analitiğine Giriş",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Yazılım Proje Yönetimi",
+            "klasor": "Fakülte Teknik Seçmeli/Yazılım Proje Yönetimi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
+        },
+        {
+            "ad": "Çok Disiplinli Takım Çalışması Deneyimi",
+            "klasor": "Fakülte Teknik Seçmeli/Çok Disiplinli Takım Çalışması Deneyimi",
+            "yil": 0,
+            "donem": "",
+            "tip": "Seçmeli",
+            "mufredat": "2026 Sonrası",
+            "mufredat_notu": "2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.",
+            "akademisyenler": [],
+            "derse_dair_oneriler": []
         }
     ]
 }

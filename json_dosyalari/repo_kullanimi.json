@@ -15,5 +15,74 @@
         "Özet ve ödevleri birleştirip kendi öğrenme sürecinize uyarlayabilirsiniz."
     ],
     "kavram": "Kavramlar",
-    "kavramlar": []
+    "kavram_aciklamasi": "📌 Bölümle ilgili sık karşılaşılan terimlerin kısa açıklamaları. Not: tarih/şart gibi somut rakamlar dönemden\ndöneme değişebilir, kesin ve güncel bilgi için bölüm/fakülte öğrenci işlerine danışın.",
+    "kavramlar": [
+        {
+            "kavram": "Bütünleme Sınavı",
+            "aciklamalar": [
+                "**S: Bütünleme sınavı nedir?** **C:** Final sınavının ardından yapılan, dersten başarısız olanların\n    (ve şartlı geçenlerin isterlerse) girebildiği ek bir sınavdır. Bütünlemeye giren bir öğrencinin notu,\n    final notunun yerini alır — geri dönüş yoktur."
+            ]
+        },
+        {
+            "kavram": "Çan Eğrisi",
+            "aciklamalar": [
+                "**S: Çan eğrisi nedir?** **C:** Bir sınıfın sınav sonuçlarının ortalama ve standart sapmasına göre\n    harf notlarının belirlendiği bağıl bir değerlendirme yöntemidir. Her hoca kullanmak zorunda değildir;\n    bazı dersler mutlak (bareme dayalı) notlandırılır."
+            ]
+        },
+        {
+            "kavram": "DC Notu / Şartlı Geçme",
+            "aciklamalar": [
+                "**S: DC nedir?** **C:** Şartlı geçme notudur — dersi geçmiş sayılırsınız ama not ortalamanız\n    (GANO) yeterince yüksek değilse dersi tekrar almanız istenebilir. Bütünlemeye isteğe bağlı girilebilir."
+            ]
+        },
+        {
+            "kavram": "GANO / AGNO",
+            "aciklamalar": [
+                "**S: GANO nedir?** **C:** Genel Ağırlıklı Not Ortalaması — o ana kadar alınan tüm derslerin kredi\n    ağırlıklı not ortalamasıdır. Mezuniyet, ÇAP/yandal başvurusu gibi şartlarda kullanılır."
+            ]
+        },
+        {
+            "kavram": "YANO",
+            "aciklamalar": [
+                "**S: YANO nedir?** **C:** Yarıyıl Ağırlıklı Not Ortalaması — yalnızca ilgili dönemde alınan derslerin\n    kredi ağırlıklı not ortalamasıdır. Her dönem sıfırdan hesaplanır; GANO ise tüm dönemleri kapsar."
+            ]
+        },
+        {
+            "kavram": "Mazeret Sınavı",
+            "aciklamalar": [
+                "**S: Mazeret sınavı nedir?** **C:** Sağlık raporu, resmi belgeli bir mazeret vb. nedenle vize/finale\n    giremeyen öğrenciler için düzenlenen, geçerli belgeyle başvurulan ek sınavdır."
+            ]
+        },
+        {
+            "kavram": "ÇAP / Yandal",
+            "aciklamalar": [
+                "**S: ÇAP nedir?** **C:** Çift Anadal Programı — uygun GANO'ya sahip öğrencilerin, okurken ikinci bir\n    bölümden de lisans diploması almasını sağlayan program.",
+                "**S: Yandal nedir?** **C:** Diploma vermeyen, ikinci bir alanda sertifika niteliğinde daha hafif bir\n    program."
+            ]
+        },
+        {
+            "kavram": "Staj 1 / Staj 2",
+            "aciklamalar": [
+                "**S: Staj 1/II nedir?** **C:** Müfredatta 3. ve 4. yıllarda yer alan, işletmede kısa süreli uygulamalı\n    çalışmayı zorunlu kılan derslerdir. Bkz. [`3-1/Staj 1`](./3-1/Staj%201) ve [`4-1/Staj 2`](./4-1/Staj%202)."
+            ]
+        },
+        {
+            "kavram": "İş Yeri Eğitimi",
+            "aciklamalar": [
+                "**S: İş Yeri Eğitimi nedir?** **C:** Staj'dan daha kapsamlı, bir dönem boyunca işletmede tam zamanlı\n    çalışmayı içeren müfredat dersi (bkz. [müfredat](./M%C3%BCfredat/) — 7. yarıyılda 28 AKTS ile oldukça\n    yüklü bir ders). Bkz. [`4-1/İş Yeri Eğitimi`](./4-1/%C4%B0%C5%9F%20Yeri%20E%C4%9Fitimi)."
+            ]
+        },
+        {
+            "kavram": "Bitirme Projesi",
+            "aciklamalar": [
+                "**S: Bitirme Projesi nedir?** **C:** Son dönemde bir danışman hoca eşliğinde yürütülen, mezuniyet\n    şartı olan bitirme çalışmasıdır. Bkz. [`4-2/Bitirme Projesi`](./4-2/Bitirme%20Projesi)."
+            ]
+        },
+        {
+            "kavram": "Mesleki Seçmeli / Üniversite Seçmeli",
+            "aciklamalar": [
+                "**S: Aralarındaki fark ne?** **C:** Mesleki Seçmeli dersler bölüm içi teknik derslerdir (örn. Veri\n    Madenciliği, Bilgisayar Güvenliği). Üniversite Seçmeli dersler ise bölüm dışı, daha genel/sosyal\n    içeriklidir (örn. Girişimcilik, Osmanlı Tarihi). Bkz. [Seçmeli Dersler](#-seçmeli-dersler)."
+            ]
+        }
+    ]
 }

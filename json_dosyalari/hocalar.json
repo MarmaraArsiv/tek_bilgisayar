@@ -1,59 +1,41 @@
 {
     "bolum_adi": "Hocalar",
-    "bolum_aciklamasi": "Bu bölüm, Marmara Üniversitesi Teknoloji Fakültesi Bilgisayar Mühendisliği bölümündeki hocaların detaylı bilgilerini içerir. Hocaların adları, ofis bilgileri, araştırma sayfalarının bağlantıları ve verdikleri bazı dersler bu bölümde listelenmektedir. Hocaların puanlamaları tamamen subjektiftir ve 0-10 yıldız arasında yapılmıştır.",
-    "en_populer_hoca": {
-        "hoca_adi": "",
-        "oy_sayisi": 0
-    },
+    "bolum_aciklamasi": "📚 Bu bölüm, Marmara Üniversitesi Teknoloji Fakültesi Bilgisayar Mühendisliği bölümündeki hocaların detaylı bilgilerini içerir. Hocaların adları, ofis bilgileri, araştırma sayfalarının bağlantıları ve verdikleri bazı dersler bu bölümde listelenmektedir. Hocaların puanlamaları tamamen subjektiftir ve 0-10 yıldız arasında yapılmıştır.",
+    "gruplar": [
+        {
+            "ad": "Profesörler",
+            "aciklama": ""
+        },
+        {
+            "ad": "Doçentler",
+            "aciklama": ""
+        },
+        {
+            "ad": "Doktor Öğretim Üyeleri",
+            "aciklama": ""
+        },
+        {
+            "ad": "Öğretim Görevlileri",
+            "aciklama": ""
+        },
+        {
+            "ad": "Araştırma Görevlileri",
+            "aciklama": ""
+        },
+        {
+            "ad": "Diğer Bölümlerden Ders Veren Hocalar",
+            "aciklama": "Bölüme servis dersi (Fizik, Matematik, Kimya, Türk Dili, İngilizce vb.) veren, başka bölümlerden gelen hocalar."
+        },
+        {
+            "ad": "Önceki Yıllarda Ders Veren Hocalar",
+            "aciklama": "Son iki akademik yılda (2025-2026, 2026-2027) bölümde dersi görünmeyen hocalar."
+        }
+    ],
     "hocalar": [
         {
-            "ad": "Prof. Dr. Serhat Özekes",
-            "ofis": "T4-233",
-            "link": "https://avesis.marmara.edu.tr/15070",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Bilgisayar Mühendisliğine Giriş",
-                "Yapay Sinir Ağları",
-                "İş Yeri Eğitimi",
-                "Görüntü İşlemenin Temelleri",
-                "Bitirme Projesi",
-                "Teknik İngilizce"
-            ]
-        },
-        {
-            "ad": "Doç. Dr. Buket Doğan",
-            "ofis": "T4-106",
-            "link": "https://avesis.marmara.edu.tr/buketb",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": false,
-            "dersler": [
-                "Algoritma ve Programlamaya Giriş",
-                "Veritabanı Yönetim Sistemleri",
-                "İş Yeri Eğitimi",
-                "Bilgisayar Programlama 1",
-                "Yazılım Mühendisliği",
-                "Bitirme Projesi",
-                "Bilimsel Araştırma ve Sunum Teknikleri"
-            ]
-        },
-        {
-            "ad": "Doç. Dr. Ayşe Berna Altınel",
-            "ofis": "T4-202",
-            "link": "https://avesis.marmara.edu.tr/berna.altinel",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": false,
-            "dersler": [
-                "Algoritma ve Programlamaya Giriş",
-                "Bilgisayar Programlama 2",
-                "İş Yeri Eğitimi",
-                "Bilgisayar Programlama 1",
-                "Veri Madenciliği",
-                "Bitirme Projesi"
-            ]
-        },
-        {
             "ad": "Prof. Dr. Ali Buldu",
+            "kisaltma": "ABul",
+            "grup": "Profesörler",
             "ofis": "T4-234",
             "link": "https://avesis.marmara.edu.tr/alibuldu",
             "hoca_aktif_gorevde_mi": true,
@@ -67,6 +49,8 @@
         },
         {
             "ad": "Prof. Dr. Kazım Yıldız",
+            "kisaltma": "KY",
+            "grup": "Profesörler",
             "ofis": "T4-107",
             "link": "https://avesis.marmara.edu.tr/kazim.yildiz",
             "hoca_aktif_gorevde_mi": true,
@@ -83,7 +67,26 @@
             ]
         },
         {
+            "ad": "Prof. Dr. Serhat Özekes",
+            "kisaltma": "SÖ",
+            "grup": "Profesörler",
+            "ofis": "T4-233",
+            "link": "https://avesis.marmara.edu.tr/15070",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Bilgisayar Mühendisliğine Giriş",
+                "Yapay Sinir Ağları",
+                "İş Yeri Eğitimi",
+                "Görüntü İşlemenin Temelleri",
+                "Bitirme Projesi",
+                "Teknik İngilizce"
+            ]
+        },
+        {
             "ad": "Prof. Dr. Şahin Uyaver",
+            "kisaltma": "ŞU",
+            "grup": "Profesörler",
             "ofis": "T4-225",
             "link": "https://avesis.marmara.edu.tr/15193",
             "hoca_aktif_gorevde_mi": true,
@@ -99,7 +102,71 @@
             ]
         },
         {
+            "ad": "Doç. Dr. Ayşe Berna Altınel",
+            "kisaltma": "ABA",
+            "grup": "Doçentler",
+            "ofis": "T4-202",
+            "link": "https://avesis.marmara.edu.tr/berna.altinel",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": false,
+            "dersler": [
+                "Algoritma ve Programlamaya Giriş",
+                "Bilgisayar Programlama 2",
+                "İş Yeri Eğitimi",
+                "Bilgisayar Programlama 1",
+                "Veri Madenciliği",
+                "Bitirme Projesi"
+            ]
+        },
+        {
+            "ad": "Doç. Dr. Buket Doğan",
+            "kisaltma": "BD",
+            "grup": "Doçentler",
+            "ofis": "T4-106",
+            "link": "https://avesis.marmara.edu.tr/buketb",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": false,
+            "dersler": [
+                "Algoritma ve Programlamaya Giriş",
+                "Veritabanı Yönetim Sistemleri",
+                "İş Yeri Eğitimi",
+                "Bilgisayar Programlama 1",
+                "Yazılım Mühendisliği",
+                "Bitirme Projesi",
+                "Bilimsel Araştırma ve Sunum Teknikleri"
+            ]
+        },
+        {
+            "ad": "Doç. Dr. Lutfi Özdemir",
+            "kisaltma": "LÖ",
+            "grup": "Doçentler",
+            "ofis": "",
+            "link": "https://avesis.marmara.edu.tr/lozdemir",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "İnsan-Bilgisayar Etkileşimi ve Görsellik"
+            ]
+        },
+        {
+            "ad": "Doç. Dr. Ömer Akgün",
+            "kisaltma": "ÖA",
+            "grup": "Doçentler",
+            "ofis": "T4-225",
+            "link": "https://avesis.marmara.edu.tr/oakgun",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Sinyaller ve Sistemlere Giriş",
+                "Fizik 1",
+                "Sayısal İşaret İşleme",
+                "Fizik 2"
+            ]
+        },
+        {
             "ad": "Doç. Dr. Önder Demir",
+            "kisaltma": "ÖD",
+            "grup": "Doçentler",
             "ofis": "T4-105",
             "link": "https://avesis.marmara.edu.tr/odemir",
             "hoca_aktif_gorevde_mi": true,
@@ -116,20 +183,73 @@
             ]
         },
         {
-            "ad": "Doç. Dr. Ömer Akgün",
-            "ofis": "T4-225",
-            "link": "https://avesis.marmara.edu.tr/oakgun",
+            "ad": "Dr. Öğretim Üyesi Abdulsamet Aktaş",
+            "kisaltma": "AA",
+            "grup": "Doktor Öğretim Üyeleri",
+            "ofis": "T2-104",
+            "link": "https://avesis.marmara.edu.tr/abdulsamet.aktas",
             "hoca_aktif_gorevde_mi": true,
             "erkek_mi": true,
             "dersler": [
-                "Sinyaller ve Sistemlere Giriş",
-                "Fizik 1",
-                "Sayısal İşaret İşleme",
-                "Fizik 2"
+                "İşletim Sistemleri",
+                "Biçimsel Diller ve Otomata Teorisi",
+                "Veri Yapıları ve Algoritmalar",
+                "Bitirme Projesi"
+            ]
+        },
+        {
+            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş",
+            "kisaltma": "AS",
+            "grup": "Doktor Öğretim Üyeleri",
+            "ofis": "T4-222",
+            "link": "https://avesis.marmara.edu.tr/ali.sarikas",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Mantık Devreleri",
+                "İş Yeri Eğitimi",
+                "Bilgisayar Donanımı",
+                "Bilgisayar Organizasyonu ve Mimarisi",
+                "Gömülü Sistemler",
+                "Bitirme Projesi"
+            ]
+        },
+        {
+            "ad": "Dr. Öğretim Üyesi Anıl Baş",
+            "kisaltma": "ABaş",
+            "grup": "Doktor Öğretim Üyeleri",
+            "ofis": "T4-111",
+            "link": "https://avesis.marmara.edu.tr/anil.bas",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "İnsan-Bilgisayar Etkileşimi ve Görsellik",
+                "Bilgisayar Grafik",
+                "İş Yeri Eğitimi",
+                "Bilgisayar Programlama 1",
+                "Web Programlama",
+                "Bitirme Projesi",
+                "Teknik İngilizce"
+            ]
+        },
+        {
+            "ad": "Dr. Öğretim Üyesi Emrah Dikbıyık",
+            "kisaltma": "ED",
+            "grup": "Doktor Öğretim Üyeleri",
+            "ofis": "",
+            "link": "https://avesis.marmara.edu.tr/emrah.dikbiyik",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Bilgisayar Programlama 2",
+                "Veri Yapıları ve Algoritmalar",
+                "Web Programlama"
             ]
         },
         {
             "ad": "Dr. Öğretim Üyesi Eyüp Emre Ülkü",
+            "kisaltma": "EEÜ",
+            "grup": "Doktor Öğretim Üyeleri",
             "ofis": "T4-110",
             "link": "https://avesis.marmara.edu.tr/emre.ulku",
             "hoca_aktif_gorevde_mi": true,
@@ -146,52 +266,9 @@
             ]
         },
         {
-            "ad": "Dr. Öğretim Üyesi Ali Sarıkaş",
-            "ofis": "T4-222",
-            "link": "https://avesis.marmara.edu.tr/ali.sarikas",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Mantık Devreleri",
-                "İş Yeri Eğitimi",
-                "Bilgisayar Donanımı",
-                "Bilgisayar Organizasyonu ve Mimarisi",
-                "Gömülü Sistemler",
-                "Bitirme Projesi"
-            ]
-        },
-        {
-            "ad": "Dr. Öğretim Üyesi Anıl Baş",
-            "ofis": "T4-111",
-            "link": "https://avesis.marmara.edu.tr/anil.bas",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "İnsan-Bilgisayar Etkileşimi ve Görsellik",
-                "Bilgisayar Grafik",
-                "İş Yeri Eğitimi",
-                "Bilgisayar Programlama 1",
-                "Web Programlama",
-                "Bitirme Projesi",
-                "Teknik İngilizce"
-            ]
-        },
-        {
-            "ad": "Dr. Öğretim Üyesi Timur İnan",
-            "ofis": "T4-223",
-            "link": "https://avesis.marmara.edu.tr/timur.inan",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Mikrodenetleyiciler",
-                "Ayrık Matematik",
-                "Elektronik Devrelere Giriş",
-                "Mobil Programlama",
-                "Bitirme Projesi"
-            ]
-        },
-        {
             "ad": "Dr. Öğretim Üyesi Neşe Özdemir",
+            "kisaltma": "NÖ",
+            "grup": "Doktor Öğretim Üyeleri",
             "ofis": "T4-224",
             "link": "https://avesis.marmara.edu.tr/15631",
             "hoca_aktif_gorevde_mi": true,
@@ -207,32 +284,126 @@
             ]
         },
         {
-            "ad": "Dr. Öğretim Üyesi Abdulsamet Aktaş",
-            "ofis": "T2-104",
-            "link": "https://avesis.marmara.edu.tr/abdulsamet.aktas",
+            "ad": "Dr. Öğretim Üyesi Serkan Aydın",
+            "kisaltma": "SA",
+            "grup": "Doktor Öğretim Üyeleri",
+            "ofis": "MYO 4016",
+            "link": "https://avesis.marmara.edu.tr/serkan.aydin",
             "hoca_aktif_gorevde_mi": true,
             "erkek_mi": true,
             "dersler": [
-                "İşletim Sistemleri",
-                "Biçimsel Diller ve Otomata Teorisi",
-                "Veri Yapıları ve Algoritmalar",
+                "Mikroişlemciler",
+                "Elektronik Devrelere Giriş"
+            ]
+        },
+        {
+            "ad": "Dr. Öğretim Üyesi Timur İnan",
+            "kisaltma": "Tİ",
+            "grup": "Doktor Öğretim Üyeleri",
+            "ofis": "T4-223",
+            "link": "https://avesis.marmara.edu.tr/timur.inan",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Mikrodenetleyiciler",
+                "Ayrık Matematik",
+                "Elektronik Devrelere Giriş",
+                "Mobil Programlama",
                 "Bitirme Projesi"
             ]
         },
         {
-            "ad": "Dr. Öğretim Üyesi Emrah Dikbıyık",
+            "ad": "Öğr. Gör. Ahmet Bozdağ",
+            "kisaltma": "AB",
+            "grup": "Öğretim Görevlileri",
             "ofis": "",
-            "link": "https://avesis.marmara.edu.tr/emrah.dikbiyik",
+            "link": "",
             "hoca_aktif_gorevde_mi": true,
             "erkek_mi": true,
             "dersler": [
-                "Bilgisayar Programlama 2",
-                "Veri Yapıları ve Algoritmalar",
-                "Web Programlama"
+                "Web Servisleri"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Ata Hürdoğan Demiray",
+            "kisaltma": "AHD",
+            "grup": "Öğretim Görevlileri",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Bilgisayar Grafik"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Barış İnceişçi",
+            "kisaltma": "Bİ",
+            "grup": "Öğretim Görevlileri",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Bilgisayar Güvenliği"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Halil Özkan",
+            "kisaltma": "HÖ",
+            "grup": "Öğretim Görevlileri",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Yazılım Mühendisliği",
+                "Açık Kaynak Kodlu Yazılımlar",
+                "Yazılım Projelerinin Yönetimi"
+            ]
+        },
+        {
+            "ad": "Dr. Mustafa Şahin",
+            "kisaltma": "MŞ",
+            "grup": "Öğretim Görevlileri",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Sistem ve Sunucu Yönetimi"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Osman Cihan Akar",
+            "kisaltma": "OCA",
+            "grup": "Öğretim Görevlileri",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Bilgisayar Ağ Protokolleri",
+                "Kablosuz Ağlar"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Sebahattin Babur",
+            "kisaltma": "SB",
+            "grup": "Öğretim Görevlileri",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Gömülü Sistemler",
+                "Simulasyon ve Modelleme"
             ]
         },
         {
             "ad": "Arş. Gör. Dr. Abdullah Bal",
+            "kisaltma": "ABal",
+            "grup": "Araştırma Görevlileri",
             "ofis": "T2-118",
             "link": "https://avesis.marmara.edu.tr/abdullah.bal",
             "hoca_aktif_gorevde_mi": true,
@@ -244,6 +415,8 @@
         },
         {
             "ad": "Arş. Gör. Dr. Büşra Büyüktanır",
+            "kisaltma": "BB",
+            "grup": "Araştırma Görevlileri",
             "ofis": "T2-103",
             "link": "https://avesis.marmara.edu.tr/14523",
             "hoca_aktif_gorevde_mi": true,
@@ -253,7 +426,29 @@
             ]
         },
         {
+            "ad": "Arş. Gör. Damla Mengüş",
+            "kisaltma": "DM",
+            "grup": "Araştırma Görevlileri",
+            "ofis": "T4-118",
+            "link": "https://avesis.marmara.edu.tr/14920",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": false,
+            "dersler": []
+        },
+        {
+            "ad": "Arş. Gör. Merve Hazan İşcan",
+            "kisaltma": "MHİ",
+            "grup": "Araştırma Görevlileri",
+            "ofis": "T4-101",
+            "link": "https://avesis.marmara.edu.tr/14923",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": false,
+            "dersler": []
+        },
+        {
             "ad": "Arş. Gör. Dr. Merve Pınar",
+            "kisaltma": "MP",
+            "grup": "Araştırma Görevlileri",
             "ofis": "T2-101",
             "link": "https://avesis.marmara.edu.tr/14501",
             "hoca_aktif_gorevde_mi": true,
@@ -263,31 +458,9 @@
             ]
         },
         {
-            "ad": "Arş. Gör. Damla Mengüş",
-            "ofis": "T4-118",
-            "link": "https://avesis.marmara.edu.tr/14920",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": false,
-            "dersler": []
-        },
-        {
-            "ad": "Arş. Gör. Şeyda Karcı Şen",
-            "ofis": "T4-118",
-            "link": "https://avesis.marmara.edu.tr/14921",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": false,
-            "dersler": []
-        },
-        {
-            "ad": "Arş. Gör. Merve Hazan İşcan",
-            "ofis": "T4-101",
-            "link": "https://avesis.marmara.edu.tr/14923",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": false,
-            "dersler": []
-        },
-        {
             "ad": "Arş. Gör. Nursaç Kurt",
+            "kisaltma": "NK",
+            "grup": "Araştırma Görevlileri",
             "ofis": "T2-103",
             "link": "https://avesis.marmara.edu.tr/15397",
             "hoca_aktif_gorevde_mi": true,
@@ -296,6 +469,8 @@
         },
         {
             "ad": "Arş. Gör. Semiha Koç",
+            "kisaltma": "SK",
+            "grup": "Araştırma Görevlileri",
             "ofis": "T4-101",
             "link": "https://avesis.marmara.edu.tr/15469",
             "hoca_aktif_gorevde_mi": true,
@@ -307,7 +482,19 @@
             ]
         },
         {
+            "ad": "Arş. Gör. Şeyda Karcı Şen",
+            "kisaltma": "ŞKŞ",
+            "grup": "Araştırma Görevlileri",
+            "ofis": "T4-118",
+            "link": "https://avesis.marmara.edu.tr/14921",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": false,
+            "dersler": []
+        },
+        {
             "ad": "Arş. Gör. Ziya Anıl Şen",
+            "kisaltma": "ZAŞ",
+            "grup": "Araştırma Görevlileri",
             "ofis": "T4-Z01",
             "link": "https://avesis.marmara.edu.tr/15908",
             "hoca_aktif_gorevde_mi": true,
@@ -315,7 +502,171 @@
             "dersler": []
         },
         {
+            "ad": "Dr. Öğretim Üyesi Ayşe Ceren Çalıkoğlu Koyuncu",
+            "kisaltma": "ACÇK",
+            "grup": "Diğer Bölümlerden Ders Veren Hocalar",
+            "ofis": "T3-318",
+            "link": "https://avesis.marmara.edu.tr/aceren",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": false,
+            "dersler": [
+                "Modern Biyolojiye Giriş"
+            ]
+        },
+        {
+            "ad": "Prof. Dr. Canan Doğan",
+            "kisaltma": "CD",
+            "grup": "Diğer Bölümlerden Ders Veren Hocalar",
+            "ofis": "T3-333",
+            "link": "https://avesis.marmara.edu.tr/canan.dogan",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": false,
+            "dersler": [
+                "Kimya"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Dr. Işıl Ruacan Silahtaroğlu",
+            "kisaltma": "IRS",
+            "grup": "Diğer Bölümlerden Ders Veren Hocalar",
+            "ofis": "",
+            "link": "https://avesis.marmara.edu.tr/isil.silahtaroglu",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": false,
+            "dersler": [
+                "İngilizce 1",
+                "İngilizce 2"
+            ]
+        },
+        {
+            "ad": "Prof. Dr. İsmail Kıyak",
+            "kisaltma": "İK",
+            "grup": "Diğer Bölümlerden Ders Veren Hocalar",
+            "ofis": "T4-232",
+            "link": "https://avesis.marmara.edu.tr/imkiyak",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "İş Sağlığı ve Güvenliği 2"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Dr. Mehmet Kocakaplan",
+            "kisaltma": "MK",
+            "grup": "Diğer Bölümlerden Ders Veren Hocalar",
+            "ofis": "",
+            "link": "https://avesis.marmara.edu.tr/mkocakaplan",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Türkçe 1",
+                "Türkçe 2"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Neslihan Bayraktar",
+            "kisaltma": "NB",
+            "grup": "Diğer Bölümlerden Ders Veren Hocalar",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": false,
+            "dersler": [
+                "Girişimcilik"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Dr. Nur Demirbaş Hergüner",
+            "kisaltma": "NDH",
+            "grup": "Diğer Bölümlerden Ders Veren Hocalar",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Teknik Satış ve Pazarlama"
+            ]
+        },
+        {
+            "ad": "Dr. Öğretim Üyesi Oya Ayhan Girit",
+            "kisaltma": "OAG",
+            "grup": "Diğer Bölümlerden Ders Veren Hocalar",
+            "ofis": "",
+            "link": "https://avesis.marmara.edu.tr/oya.girit",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": false,
+            "dersler": [
+                "Atatürk İlkeleri ve İnkılap Tarihi 1",
+                "Atatürk İlkeleri ve İnkılap Tarihi 2"
+            ]
+        },
+        {
+            "ad": "Prof. Dr. Yahya Bozkurt",
+            "kisaltma": "YB",
+            "grup": "Diğer Bölümlerden Ders Veren Hocalar",
+            "ofis": "T3-207",
+            "link": "https://avesis.marmara.edu.tr/ybozkurt",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "İş Sağlığı ve Güvenliği 1"
+            ]
+        },
+        {
+            "ad": "Dr. Öğretim Üyesi Zeynel Şahin",
+            "kisaltma": "ZŞ",
+            "grup": "Diğer Bölümlerden Ders Veren Hocalar",
+            "ofis": "T3-322",
+            "link": "https://avesis.marmara.edu.tr/14505",
+            "hoca_aktif_gorevde_mi": true,
+            "erkek_mi": true,
+            "dersler": [
+                "Kimya"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Abdullah Mert Pekel",
+            "kisaltma": "AMP",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "https://avesis.marmara.edu.tr/abdullah.pekel",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "İngilizce 1",
+                "İngilizce 2"
+            ]
+        },
+        {
+            "ad": "Prof. Dr. Adil Güler",
+            "kisaltma": "AG",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "T4-217",
+            "link": "https://avesis.marmara.edu.tr/adil.guler",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Fizik 1",
+                "Lineer Cebir",
+                "Fizik 2"
+            ]
+        },
+        {
+            "ad": "Prof. Dr. Ahmet Emin Kuzucuoğlu",
+            "kisaltma": "AEK",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "T4-108 / T4-228",
+            "link": "https://avesis.marmara.edu.tr/kuzucuoglu",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Staj 1"
+            ]
+        },
+        {
             "ad": "Doç. Dr. Alper Nabi Akpolat",
+            "kisaltma": "ANA",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
             "ofis": "T4-218",
             "link": "https://avesis.marmara.edu.tr/alper.nabi",
             "hoca_aktif_gorevde_mi": false,
@@ -325,57 +676,33 @@
             ]
         },
         {
-            "ad": "Doç. Dr. Lutfi Özdemir",
+            "ad": "Öğr. Gör. Aysu Öztürk",
+            "kisaltma": "AÖ",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
             "ofis": "",
-            "link": "https://avesis.marmara.edu.tr/lozdemir",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "İnsan-Bilgisayar Etkileşimi ve Görsellik"
-            ]
-        },
-        {
-            "ad": "Doç. Dr. Mustafa Cem Kasapbaşı",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Biçimsel Diller ve Otomata Teorisi"
-            ]
-        },
-        {
-            "ad": "Dr. Mustafa Şahin",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Sistem ve Sunucu Yönetimi"
-            ]
-        },
-        {
-            "ad": "Dr. Selman Şişman",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Web Programlama"
-            ]
-        },
-        {
-            "ad": "Dr. Sema Demir Yaylacı",
-            "ofis": "",
-            "link": "",
+            "link": "https://avesis.marmara.edu.tr/aysuozturk",
             "hoca_aktif_gorevde_mi": false,
             "erkek_mi": false,
             "dersler": [
-                "E-Ticarete Giriş"
+                "İngilizce 1"
+            ]
+        },
+        {
+            "ad": "Prof. Ayşe Neşe Dernek",
+            "kisaltma": "AND",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "https://avesis.marmara.edu.tr/ndernek",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": false,
+            "dersler": [
+                "Diferansiyel Denklemler"
             ]
         },
         {
             "ad": "Dr. Öğretim Üyesi Ayşe Yayla",
+            "kisaltma": "AY",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
             "ofis": "",
             "link": "https://avesis.marmara.edu.tr/acetinkaya",
             "hoca_aktif_gorevde_mi": false,
@@ -386,7 +713,22 @@
             ]
         },
         {
+            "ad": "Prof. Dr. Bahar Kırık Rácz",
+            "kisaltma": "BKR",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "GZFC003",
+            "link": "https://avesis.marmara.edu.tr/bahar.kirik",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": false,
+            "dersler": [
+                "Matematik 1",
+                "Matematik 2"
+            ]
+        },
+        {
             "ad": "Dr. Öğretim Üyesi Banu Çalış Uslu",
+            "kisaltma": "BÇU",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
             "ofis": "M1-111",
             "link": "https://avesis.marmara.edu.tr/bcalis",
             "hoca_aktif_gorevde_mi": false,
@@ -396,118 +738,57 @@
             ]
         },
         {
-            "ad": "Dr. Öğretim Üyesi Hasan Hüseyin Çelik",
-            "ofis": "T4-204",
-            "link": "https://avesis.marmara.edu.tr/hcelik",
+            "ad": "Doç. Dr. Burhan Tiryakioğlu",
+            "kisaltma": "BT",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "GZFC026",
+            "link": "https://avesis.marmara.edu.tr/burhan.tiryakioglu",
             "hoca_aktif_gorevde_mi": false,
             "erkek_mi": true,
             "dersler": [
-                "Mikrodenetleyiciler"
+                "Diferansiyel Denklemler"
             ]
         },
         {
-            "ad": "Dr. Öğretim Üyesi Pınar Özkan Bakbak",
-            "ofis": "T4-215",
-            "link": "https://avesis.marmara.edu.tr/14526",
+            "ad": "Arş. Gör. Dr. Busenur Kızılaslan",
+            "kisaltma": "BK",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "",
             "hoca_aktif_gorevde_mi": false,
             "erkek_mi": false,
             "dersler": [
-                "Elektronik Devrelere Giriş"
+                "Mühendisler için İstatistik"
             ]
         },
         {
-            "ad": "Dr. Öğretim Üyesi Savaş Öztürk",
-            "ofis": "T4-231 / T4-205",
-            "link": "https://avesis.marmara.edu.tr/savas.ozturk",
+            "ad": "Prof. Dr. Dursun Üstündağ",
+            "kisaltma": "DÜ",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "GZFA023",
+            "link": "https://avesis.marmara.edu.tr/dustundag",
             "hoca_aktif_gorevde_mi": false,
             "erkek_mi": true,
             "dersler": [
-                "Oyun Yazılımı Geliştirme"
+                "Sayısal Analiz"
             ]
         },
         {
-            "ad": "Dr. Öğretim Üyesi Serkan Aydın",
-            "ofis": "MYO 4016",
-            "link": "https://avesis.marmara.edu.tr/serkan.aydin",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Mikroişlemciler",
-                "Elektronik Devrelere Giriş"
-            ]
-        },
-        {
-            "ad": "Dr. Öğretim Üyesi Ulvi Başpınar",
-            "ofis": "T4-219",
-            "link": "https://avesis.marmara.edu.tr/ubaspinar",
+            "ad": "Dr. Öğretim Üyesi Emre Akın",
+            "kisaltma": "EA",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "T3-331",
+            "link": "https://avesis.marmara.edu.tr/emre.akin",
             "hoca_aktif_gorevde_mi": false,
             "erkek_mi": true,
             "dersler": [
-                "Mikroişlemciler"
-            ]
-        },
-        {
-            "ad": "Dr. Öğretim Üyesi Uğur Kesen",
-            "ofis": "T1-344",
-            "link": "https://avesis.marmara.edu.tr/ukesen",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Mantık Devreleri"
-            ]
-        },
-        {
-            "ad": "Prof. Dr. Ahmet Emin Kuzucuoğlu",
-            "ofis": "T4-108 / T4-228",
-            "link": "https://avesis.marmara.edu.tr/kuzucuoglu",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Staj 1"
-            ]
-        },
-        {
-            "ad": "Prof. Dr. Vedat Topuz",
-            "ofis": "",
-            "link": "https://avesis.marmara.edu.tr/vtopuz",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Bilgisayar Organizasyonu ve Mimarisi"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Ahmet Bozdağ",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Web Servisleri"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Ata Hürdoğan Demiray",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Bilgisayar Grafik"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Barış İnceişçi",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Bilgisayar Güvenliği"
+                "Bilim Tarihi"
             ]
         },
         {
             "ad": "Öğr. Gör. Dr. Esra Çalık Bayazıt",
+            "kisaltma": "EÇB",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
             "ofis": "",
             "link": "",
             "hoca_aktif_gorevde_mi": false,
@@ -518,7 +799,21 @@
             ]
         },
         {
+            "ad": "Öğr. Gör. Fevziye Esin Şahin",
+            "kisaltma": "FEŞ",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": false,
+            "dersler": [
+                "İngilizce 1"
+            ]
+        },
+        {
             "ad": "Öğr. Gör. Dr. Gökhan Akın",
+            "kisaltma": "GA",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
             "ofis": "",
             "link": "",
             "hoca_aktif_gorevde_mi": false,
@@ -529,6 +824,8 @@
         },
         {
             "ad": "Öğr. Gör. Dr. Gözde Karataş Baydoğmuş",
+            "kisaltma": "GKB",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
             "ofis": "",
             "link": "https://avesis.marmara.edu.tr/gkaratas",
             "hoca_aktif_gorevde_mi": false,
@@ -544,74 +841,11 @@
             ]
         },
         {
-            "ad": "Öğr. Gör. Dr. Uğur Çekmez",
+            "ad": "Dr. Öğretim Üyesi Halil İbrahim Çelik",
+            "kisaltma": "HİÇ",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
             "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Yapay Sinir Ağları",
-                "Yapay Zekâya Giriş"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Halil Özkan",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Yazılım Mühendisliği",
-                "Açık Kaynak Kodlu Yazılımlar",
-                "Yazılım Projelerinin Yönetimi"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Onur Türk",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Web Servisleri"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Osman Cihan Akar",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Bilgisayar Ağ Protokolleri",
-                "Kablosuz Ağlar"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Sebahattin Babur",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Gömülü Sistemler",
-                "Simulasyon ve Modelleme"
-            ]
-        },
-        {
-            "ad": "Arş. Gör. Dr. Busenur Kızılaslan",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": false,
-            "dersler": [
-                "Mühendisler için İstatistik"
-            ]
-        },
-        {
-            "ad": "Doç. Dr. Burhan Tiryakioğlu",
-            "ofis": "GZFC026",
-            "link": "https://avesis.marmara.edu.tr/burhan.tiryakioglu",
+            "link": "https://avesis.marmara.edu.tr/hicelik",
             "hoca_aktif_gorevde_mi": false,
             "erkek_mi": true,
             "dersler": [
@@ -619,7 +853,58 @@
             ]
         },
         {
+            "ad": "Dr. Öğretim Üyesi Hasan Hüseyin Çelik",
+            "kisaltma": "HHÇ",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "T4-204",
+            "link": "https://avesis.marmara.edu.tr/hcelik",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Mikrodenetleyiciler"
+            ]
+        },
+        {
+            "ad": "Dr. Hulusi Ersoy",
+            "kisaltma": "HE",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Bilim Tarihi"
+            ]
+        },
+        {
+            "ad": "Prof. Dr. Hülya Yılmaz",
+            "kisaltma": "HY",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "GZFA024",
+            "link": "https://avesis.marmara.edu.tr/hbagdatli",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": false,
+            "dersler": [
+                "Lineer Cebir"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Dr. İrem Konca",
+            "kisaltma": "İKon",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": false,
+            "dersler": [
+                "İngilizce 1",
+                "İngilizce 2"
+            ]
+        },
+        {
             "ad": "Doç. Dr. Mehmet Fatih Karaaslan",
+            "kisaltma": "MFK",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
             "ofis": "GZFA019",
             "link": "https://avesis.marmara.edu.tr/14962",
             "hoca_aktif_gorevde_mi": false,
@@ -629,7 +914,46 @@
             ]
         },
         {
+            "ad": "Prof. Dr. Mehmet Sayıp Eroğlu",
+            "kisaltma": "MSE",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "T3-206",
+            "link": "https://avesis.marmara.edu.tr/mehmet.eroglu",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Kimya"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Dr. Mehmet Vehbi Büker",
+            "kisaltma": "MVB",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "https://avesis.marmara.edu.tr/15214",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Türkçe 1",
+                "Türkçe 2"
+            ]
+        },
+        {
+            "ad": "Doç. Dr. Mustafa Cem Kasapbaşı",
+            "kisaltma": "MCK",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Biçimsel Diller ve Otomata Teorisi"
+            ]
+        },
+        {
             "ad": "Doç. Dr. Nazlı Yazıcı Gözütok",
+            "kisaltma": "NYG",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
             "ofis": "GZFA016",
             "link": "https://avesis.marmara.edu.tr/14754",
             "hoca_aktif_gorevde_mi": false,
@@ -641,266 +965,9 @@
             ]
         },
         {
-            "ad": "Doç. Dr. Sabahattin Deniz",
-            "ofis": "T1-326",
-            "link": "https://avesis.marmara.edu.tr/sdeniz",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Kimya"
-            ]
-        },
-        {
-            "ad": "Doç. Dr. Suat Koç",
-            "ofis": "GZFA003",
-            "link": "https://avesis.marmara.edu.tr/suat.koc",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Ayrık Matematik"
-            ]
-        },
-        {
-            "ad": "Dr. Hulusi Ersoy",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Bilim Tarihi"
-            ]
-        },
-        {
-            "ad": "Dr. Öğretim Üyesi Ayşe Ceren Çalıkoğlu Koyuncu",
-            "ofis": "T3-318",
-            "link": "https://avesis.marmara.edu.tr/aceren",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": false,
-            "dersler": [
-                "Modern Biyolojiye Giriş"
-            ]
-        },
-        {
-            "ad": "Dr. Öğretim Üyesi Emre Akın",
-            "ofis": "T3-331",
-            "link": "https://avesis.marmara.edu.tr/emre.akin",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Bilim Tarihi"
-            ]
-        },
-        {
-            "ad": "Dr. Öğretim Üyesi Halil İbrahim Çelik",
-            "ofis": "",
-            "link": "https://avesis.marmara.edu.tr/hicelik",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Diferansiyel Denklemler"
-            ]
-        },
-        {
-            "ad": "Dr. Öğretim Üyesi Oya Ayhan Girit",
-            "ofis": "",
-            "link": "https://avesis.marmara.edu.tr/oya.girit",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": false,
-            "dersler": [
-                "Atatürk İlkeleri ve İnkılap Tarihi 1",
-                "Atatürk İlkeleri ve İnkılap Tarihi 2"
-            ]
-        },
-        {
-            "ad": "Dr. Öğretim Üyesi Zeynel Şahin",
-            "ofis": "T3-322",
-            "link": "https://avesis.marmara.edu.tr/14505",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Kimya"
-            ]
-        },
-        {
-            "ad": "Prof. Ayşe Neşe Dernek",
-            "ofis": "",
-            "link": "https://avesis.marmara.edu.tr/ndernek",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": false,
-            "dersler": [
-                "Diferansiyel Denklemler"
-            ]
-        },
-        {
-            "ad": "Prof. Dr. Adil Güler",
-            "ofis": "T4-217",
-            "link": "https://avesis.marmara.edu.tr/adil.guler",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Fizik 1",
-                "Lineer Cebir",
-                "Fizik 2"
-            ]
-        },
-        {
-            "ad": "Prof. Dr. Bahar Kırık Rácz",
-            "ofis": "GZFC003",
-            "link": "https://avesis.marmara.edu.tr/bahar.kirik",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": false,
-            "dersler": [
-                "Matematik 1",
-                "Matematik 2"
-            ]
-        },
-        {
-            "ad": "Prof. Dr. Canan Doğan",
-            "ofis": "T3-333",
-            "link": "https://avesis.marmara.edu.tr/canan.dogan",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": false,
-            "dersler": [
-                "Kimya"
-            ]
-        },
-        {
-            "ad": "Prof. Dr. Dursun Üstündağ",
-            "ofis": "GZFA023",
-            "link": "https://avesis.marmara.edu.tr/dustundag",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Sayısal Analiz"
-            ]
-        },
-        {
-            "ad": "Prof. Dr. Hülya Yılmaz",
-            "ofis": "GZFA024",
-            "link": "https://avesis.marmara.edu.tr/hbagdatli",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": false,
-            "dersler": [
-                "Lineer Cebir"
-            ]
-        },
-        {
-            "ad": "Prof. Dr. Mehmet Sayıp Eroğlu",
-            "ofis": "T3-206",
-            "link": "https://avesis.marmara.edu.tr/mehmet.eroglu",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Kimya"
-            ]
-        },
-        {
-            "ad": "Prof. Dr. Serhan Eker",
-            "ofis": "GZFC001",
-            "link": "https://avesis.marmara.edu.tr/14791",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Lineer Cebir",
-                "Diferansiyel Denklemler"
-            ]
-        },
-        {
-            "ad": "Prof. Dr. Yahya Bozkurt",
-            "ofis": "T3-207",
-            "link": "https://avesis.marmara.edu.tr/ybozkurt",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "İş Sağlığı ve Güvenliği 1"
-            ]
-        },
-        {
-            "ad": "Prof. Dr. Özge Cağcağ Yolcu",
-            "ofis": "C020",
-            "link": "https://avesis.marmara.edu.tr/14583",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": false,
-            "dersler": [
-                "Mühendisler için İstatistik"
-            ]
-        },
-        {
-            "ad": "Prof. Dr. İsmail Kıyak",
-            "ofis": "T4-232",
-            "link": "https://avesis.marmara.edu.tr/imkiyak",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "İş Sağlığı ve Güvenliği 2"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Abdullah Mert Pekel",
-            "ofis": "",
-            "link": "https://avesis.marmara.edu.tr/abdullah.pekel",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "İngilizce 1",
-                "İngilizce 2"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Aysu Öztürk",
-            "ofis": "",
-            "link": "https://avesis.marmara.edu.tr/aysuozturk",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": false,
-            "dersler": [
-                "İngilizce 1"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Dr. Işıl Ruacan Silahtaroğlu",
-            "ofis": "",
-            "link": "https://avesis.marmara.edu.tr/isil.silahtaroglu",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": false,
-            "dersler": [
-                "İngilizce 1",
-                "İngilizce 2"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Dr. Mehmet Kocakaplan",
-            "ofis": "",
-            "link": "https://avesis.marmara.edu.tr/mkocakaplan",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Türkçe 1",
-                "Türkçe 2"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Dr. Mehmet Vehbi Büker",
-            "ofis": "",
-            "link": "https://avesis.marmara.edu.tr/15214",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": true,
-            "dersler": [
-                "Türkçe 1",
-                "Türkçe 2"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Dr. Nur Demirbaş Hergüner",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": true,
-            "dersler": [
-                "Teknik Satış ve Pazarlama"
-            ]
-        },
-        {
             "ad": "Öğr. Gör. Dr. Nurgül Yıldız",
+            "kisaltma": "NY",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
             "ofis": "",
             "link": "https://avesis.marmara.edu.tr/nurgul.yildiz",
             "hoca_aktif_gorevde_mi": false,
@@ -911,7 +978,179 @@
             ]
         },
         {
+            "ad": "Öğr. Gör. Onur Türk",
+            "kisaltma": "OT",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Web Servisleri"
+            ]
+        },
+        {
+            "ad": "Prof. Dr. Özge Cağcağ Yolcu",
+            "kisaltma": "ÖCY",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "C020",
+            "link": "https://avesis.marmara.edu.tr/14583",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": false,
+            "dersler": [
+                "Mühendisler için İstatistik"
+            ]
+        },
+        {
+            "ad": "Dr. Öğretim Üyesi Pınar Özkan Bakbak",
+            "kisaltma": "PÖB",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "T4-215",
+            "link": "https://avesis.marmara.edu.tr/14526",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": false,
+            "dersler": [
+                "Elektronik Devrelere Giriş"
+            ]
+        },
+        {
+            "ad": "Doç. Dr. Sabahattin Deniz",
+            "kisaltma": "SD",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "T1-326",
+            "link": "https://avesis.marmara.edu.tr/sdeniz",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Kimya"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Sanem Soner",
+            "kisaltma": "SS",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": false,
+            "dersler": [
+                "İngilizce 2"
+            ]
+        },
+        {
+            "ad": "Dr. Öğretim Üyesi Savaş Öztürk",
+            "kisaltma": "SÖzt",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "T4-231 / T4-205",
+            "link": "https://avesis.marmara.edu.tr/savas.ozturk",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Oyun Yazılımı Geliştirme"
+            ]
+        },
+        {
+            "ad": "Dr. Selman Şişman",
+            "kisaltma": "SŞ",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Web Programlama"
+            ]
+        },
+        {
+            "ad": "Dr. Sema Demir Yaylacı",
+            "kisaltma": "SDY",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": false,
+            "dersler": [
+                "E-Ticarete Giriş"
+            ]
+        },
+        {
+            "ad": "Prof. Dr. Serhan Eker",
+            "kisaltma": "SE",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "GZFC001",
+            "link": "https://avesis.marmara.edu.tr/14791",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Lineer Cebir",
+                "Diferansiyel Denklemler"
+            ]
+        },
+        {
+            "ad": "Doç. Dr. Suat Koç",
+            "kisaltma": "SKoç",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "GZFA003",
+            "link": "https://avesis.marmara.edu.tr/suat.koc",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Ayrık Matematik"
+            ]
+        },
+        {
+            "ad": "Öğr. Gör. Dr. Uğur Çekmez",
+            "kisaltma": "UÇ",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Yapay Sinir Ağları",
+                "Yapay Zekâya Giriş"
+            ]
+        },
+        {
+            "ad": "Dr. Öğretim Üyesi Uğur Kesen",
+            "kisaltma": "UK",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "T1-344",
+            "link": "https://avesis.marmara.edu.tr/ukesen",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Mantık Devreleri"
+            ]
+        },
+        {
+            "ad": "Dr. Öğretim Üyesi Ulvi Başpınar",
+            "kisaltma": "UB",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "T4-219",
+            "link": "https://avesis.marmara.edu.tr/ubaspinar",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Mikroişlemciler"
+            ]
+        },
+        {
+            "ad": "Prof. Dr. Vedat Topuz",
+            "kisaltma": "VT",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
+            "ofis": "",
+            "link": "https://avesis.marmara.edu.tr/vtopuz",
+            "hoca_aktif_gorevde_mi": false,
+            "erkek_mi": true,
+            "dersler": [
+                "Bilgisayar Organizasyonu ve Mimarisi"
+            ]
+        },
+        {
             "ad": "Öğr. Gör. Dr. Yasemin Bulut",
+            "kisaltma": "YBul",
+            "grup": "Önceki Yıllarda Ders Veren Hocalar",
             "ofis": "",
             "link": "https://avesis.marmara.edu.tr/yasemin.bulut",
             "hoca_aktif_gorevde_mi": false,
@@ -919,47 +1158,6 @@
             "dersler": [
                 "Türkçe 1",
                 "Türkçe 2"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Dr. İrem Konca",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": false,
-            "dersler": [
-                "İngilizce 1",
-                "İngilizce 2"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Fevziye Esin Şahin",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": false,
-            "dersler": [
-                "İngilizce 1"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Neslihan Bayraktar",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": true,
-            "erkek_mi": false,
-            "dersler": [
-                "Girişimcilik"
-            ]
-        },
-        {
-            "ad": "Öğr. Gör. Sanem Soner",
-            "ofis": "",
-            "link": "",
-            "hoca_aktif_gorevde_mi": false,
-            "erkek_mi": false,
-            "dersler": [
-                "İngilizce 2"
             ]
         }
     ]

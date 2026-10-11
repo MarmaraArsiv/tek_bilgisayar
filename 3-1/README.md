@@ -3,7 +3,6 @@
 ## 📚 Dönemin Zorunlu Dersleri
 
 
-
 ### 📘 Staj 1
 
 #### 📄 Ders Bilgileri
