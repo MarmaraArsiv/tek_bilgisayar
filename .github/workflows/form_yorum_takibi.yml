@@ -1,0 +1,73 @@
+name: Form Yorum Takibi
+
+# Telegram'dan onaylanan yorumları ~10 dakika içinde README'ye taşır (anahtar/token gerekmez).
+# GitHub'ın zamanlayıcısı (cron) 5 dakikalık işleri çok aksattığı için her çalışma bir sonrakini
+# kendisi sıraya koyar. Aradaki 5 dakika "form-bekleme" ortamının Wait timer ayarından gelir
+# (Settings → Environments); beklerken runner harcanmaz. Elle çalıştırınca da önce 5 dk bekler.
+# Zincir koparsa README Otomatik Güncelleme iş akışı (her push'ta ve her gün) yeniden başlatır.
+# Durdurmak için: Actions → Form Yorum Takibi → ⋯ → Disable workflow.
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+# Aynı anda en fazla bir çalışma ve bir bekleyen olur, fazlası iptal edilir: zincir hep tek kalır.
+concurrency:
+  group: form-yorum-takibi
+  cancel-in-progress: false
+
+jobs:
+  kontrol:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment:
+      name: form-bekleme
+      deployment: false
+    steps:
+      - name: Bir sonraki kontrolü sıraya koy
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          # Wait timer ayarlı değilse zincir saniyeler içinde dönerdi; o durumda devam etme.
+          olusma=$(gh api "repos/$GH_REPO/actions/runs/$GITHUB_RUN_ID" --jq .created_at)
+          gecen=$(( $(date +%s) - $(date -d "$olusma" +%s) ))
+          echo "Sıraya girdikten $gecen saniye sonra başladı."
+          if [ "$gecen" -lt 240 ]; then
+            echo "::warning::form-bekleme ortamında 5 dakikalık Wait timer yok, zincir durduruldu."
+            exit 0
+          fi
+          for deneme in 1 2 3; do
+            gh workflow run form_yorum_takibi.yml --ref main && exit 0
+            sleep 15
+          done
+          echo "::error::Bir sonraki kontrol sıraya konamadı."
+          exit 1
+
+      - uses: actions/checkout@v4
+        if: ${{ !cancelled() }}
+        with:
+          ref: main
+
+      - name: Form cevaplarına bak, değişiklik varsa commit et
+        if: ${{ !cancelled() }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          for deneme in 1 2 3; do
+            python3 .github/scripts/form_linkleri.py
+            git add -A -- '*README.md'
+            if git diff --cached --quiet; then
+              echo "Değişiklik yok."
+              exit 0
+            fi
+            git commit -q -m "README otomatik güncellendi"
+            git push -q && exit 0
+            # Bu arada main'e başka commit geldiyse en güncel hâlinden baştan üret
+            git fetch -q origin main
+            git reset -q --hard origin/main
+          done
+          exit 1
