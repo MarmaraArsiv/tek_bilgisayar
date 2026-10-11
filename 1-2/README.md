@@ -1,8 +1,5 @@
 # 📅 1. Sınıf Bahar Dönemi
 
-## 📝 Genel Tavsiyeler
-
-- 💡 Bilgisayar Programlama ve Bilgisayar Donanımı dersleri bölüme giriş niteliğinde, lab'larını kaçırmayın.
 ## 📚 Dönemin Zorunlu Dersleri
 
 

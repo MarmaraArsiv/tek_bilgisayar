@@ -1,9 +1,5 @@
 # 📅 1. Sınıf Güz Dönemi
 
-## 📝 Genel Tavsiyeler
-
-- 💡 Bölümle doğrudan ilgili tek ders Bilgisayar Mühendisliğine Giriş; diğer dersler lise düzeyine yakındır.
-- 💡 Ödev ve projelere önem vermek ileride faydalı oluyor.
 ## 📚 Dönemin Zorunlu Dersleri
 
 

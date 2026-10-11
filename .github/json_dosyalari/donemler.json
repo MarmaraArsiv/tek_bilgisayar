@@ -5,19 +5,14 @@
             "klasor": "1-1",
             "yil": 1,
             "donem": "Güz",
-            "genel_tavsiyeler": [
-                "Bölümle doğrudan ilgili tek ders Bilgisayar Mühendisliğine Giriş; diğer dersler lise düzeyine yakındır.",
-                "Ödev ve projelere önem vermek ileride faydalı oluyor."
-            ]
+            "genel_tavsiyeler": []
         },
         {
             "donem_adi": "1. Sınıf Bahar Dönemi",
             "klasor": "1-2",
             "yil": 1,
             "donem": "Bahar",
-            "genel_tavsiyeler": [
-                "Bilgisayar Programlama ve Bilgisayar Donanımı dersleri bölüme giriş niteliğinde, lab'larını kaçırmayın."
-            ]
+            "genel_tavsiyeler": []
         },
         {
             "donem_adi": "2. Sınıf Güz Dönemi",
