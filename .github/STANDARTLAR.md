@@ -72,7 +72,8 @@ Ders dizini **içindeki** tüm alt klasörler bu kurala uyar: tümü küçük ha
 
 ### 3.3 Yıl Dizinleri
 - Dört haneli yıl: `2024`, `2025`
-- Dönem bazlı ise: `2024-2025`
+- Yıl, eğitim-öğretim yılının ilk yılıdır: 2025-2026 yılının hem güz hem bahar dönemi `2025/` altına girer.
+- `2025-2026` gibi aralık yazılmaz.
 
 ---
 
