@@ -173,30 +173,6 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 ### 🗓 1. Yıl - Güz
 
 
-#### 📘 İş Sağlığı ve Güvenliği 1 
-  - 🏷️ **Ders Tipi:** Zorunlu
-  - 🏷️ **Müfredat:** 2026 Sonrası
-  - ⭐ **Yıldız Sayıları:**
-      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=%C4%B0%C5%9F%20Sa%C4%9Fl%C4%B1%C4%9F%C4%B1%20ve%20G%C3%BCvenli%C4%9Fi%201) anonim şekilde oylamaya katılabilirsiniz.
-  - 💬 **Öğrenci Görüşleri:**
-      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=%C4%B0%C5%9F%20Sa%C4%9Fl%C4%B1%C4%9F%C4%B1%20ve%20G%C3%BCvenli%C4%9Fi%201) anonim şekilde görüşlerinizi belirtebilirsiniz.
-  - 👨‍🏫 👩‍🏫 **Dersi Yürüten Akademisyenler:**
-    - **2026-2027**: [YB](#‍-prof-dr-yahya-bozkurt)
-  - 📂 [Ders Klasörü](./1-1/%C4%B0%C5%9F%20Sa%C4%9Fl%C4%B1%C4%9F%C4%B1%20ve%20G%C3%BCvenli%C4%9Fi%201)
-
-
-#### 📘 Modern Biyolojiye Giriş 
-  - 🏷️ **Ders Tipi:** Zorunlu
-  - 🏷️ **Müfredat:** 2026 Sonrası
-  - ⭐ **Yıldız Sayıları:**
-      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Modern%20Biyolojiye%20Giri%C5%9F) anonim şekilde oylamaya katılabilirsiniz.
-  - 💬 **Öğrenci Görüşleri:**
-      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Modern%20Biyolojiye%20Giri%C5%9F) anonim şekilde görüşlerinizi belirtebilirsiniz.
-  - 👨‍🏫 👩‍🏫 **Dersi Yürüten Akademisyenler:**
-    - **2026-2027**: [ACÇK](#‍-dr-öğretim-üyesi-ayşe-ceren-çalıkoğlu-koyuncu)
-  - 📂 [Ders Klasörü](./1-1/Modern%20Biyolojiye%20Giri%C5%9F)
-
-
 #### 📘 Algoritma ve Programlamaya Giriş 
   - 🏷️ **Ders Tipi:** Zorunlu
   - 🏷️ **Müfredat:** Her İki Müfredat
@@ -248,7 +224,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Kimya 
   - 🏷️ **Ders Tipi:** Zorunlu
   - 🏷️ **Müfredat:** 2026 Öncesi
-      - ℹ️ 2026 sonrası müfredatta yerine "Modern Biyolojiye Giriş" eklenmiş.
+      - ℹ️ 2026 sonrası müfredatta bu ders yok, yerine "Modern Biyolojiye Giriş" eklenmiş.
   - ⭐ **Yıldız Sayıları:**
       - ✅ Dersi Kolay Geçer Miyim: ★★★★★★★★☆☆
       - 🎯 Ders Mesleki Açıdan Gerekli Mi: ★★☆☆☆☆☆☆☆☆
@@ -296,17 +272,31 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
     - **2026-2027**: [MK](#‍-öğr-gör-dr-mehmet-kocakaplan)
   - 📂 [Ders Klasörü](./1-1/T%C3%BCrk%C3%A7e%201)
 
-### 🗓 1. Yıl - Bahar
 
-
-#### 📘 Mühendislik Ekonomisi 
+#### 📘 Modern Biyolojiye Giriş 
   - 🏷️ **Ders Tipi:** Zorunlu
   - 🏷️ **Müfredat:** 2026 Sonrası
   - ⭐ **Yıldız Sayıları:**
-      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=M%C3%BChendislik%20Ekonomisi) anonim şekilde oylamaya katılabilirsiniz.
+      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Modern%20Biyolojiye%20Giri%C5%9F) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
-      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=M%C3%BChendislik%20Ekonomisi) anonim şekilde görüşlerinizi belirtebilirsiniz.
-  - 📂 [Ders Klasörü](./1-2/M%C3%BChendislik%20Ekonomisi)
+      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Modern%20Biyolojiye%20Giri%C5%9F) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 👨‍🏫 👩‍🏫 **Dersi Yürüten Akademisyenler:**
+    - **2026-2027**: [ACÇK](#‍-dr-öğretim-üyesi-ayşe-ceren-çalıkoğlu-koyuncu)
+  - 📂 [Ders Klasörü](./1-1/Modern%20Biyolojiye%20Giri%C5%9F)
+
+
+#### 📘 İş Sağlığı ve Güvenliği 1 
+  - 🏷️ **Ders Tipi:** Zorunlu
+  - 🏷️ **Müfredat:** 2026 Sonrası
+  - ⭐ **Yıldız Sayıları:**
+      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=%C4%B0%C5%9F%20Sa%C4%9Fl%C4%B1%C4%9F%C4%B1%20ve%20G%C3%BCvenli%C4%9Fi%201) anonim şekilde oylamaya katılabilirsiniz.
+  - 💬 **Öğrenci Görüşleri:**
+      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=%C4%B0%C5%9F%20Sa%C4%9Fl%C4%B1%C4%9F%C4%B1%20ve%20G%C3%BCvenli%C4%9Fi%201) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 👨‍🏫 👩‍🏫 **Dersi Yürüten Akademisyenler:**
+    - **2026-2027**: [YB](#‍-prof-dr-yahya-bozkurt)
+  - 📂 [Ders Klasörü](./1-1/%C4%B0%C5%9F%20Sa%C4%9Fl%C4%B1%C4%9F%C4%B1%20ve%20G%C3%BCvenli%C4%9Fi%201)
+
+### 🗓 1. Yıl - Bahar
 
 
 #### 📘 Bilgisayar Donanımı 
@@ -336,7 +326,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Bilimsel Araştırma ve Sunum Teknikleri 
   - 🏷️ **Ders Tipi:** Zorunlu
   - 🏷️ **Müfredat:** 2026 Öncesi
-      - ℹ️ 2026 sonrası müfredatta 3. yıl bahar dönemine taşınmış, "Bilimsel Araştırma ve Sunum Teknikleri 2" olarak anılıyor.
+      - ℹ️ 2026 sonrası müfredatta 3. yıl bahar dönemine taşınmış ve "Bilimsel Araştırma ve Sunum Teknikleri 2" olarak anılıyor.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Bilimsel%20Ara%C5%9Ft%C4%B1rma%20ve%20Sunum%20Teknikleri) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -373,7 +363,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 İş Sağlığı ve Güvenliği 2 
   - 🏷️ **Ders Tipi:** Zorunlu
   - 🏷️ **Müfredat:** Her İki Müfredat
-      - ℹ️ 2026 sonrası müfredatta "İş Sağlığı ve Güvenliği 2" olarak anılıyor.
+      - ℹ️ 2026 sonrası müfredatta "İş Sağlığı ve Güvenliği 2" olarak anılıyor (1. yarıyılda ayrıca "İş Sağlığı ve Güvenliği 1" eklenmiş).
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=%C4%B0%C5%9F%20Sa%C4%9Fl%C4%B1%C4%9F%C4%B1%20ve%20G%C3%BCvenli%C4%9Fi%202) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -406,27 +396,17 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
     - **2025-2026**: [MK](#‍-öğr-gör-dr-mehmet-kocakaplan)
   - 📂 [Ders Klasörü](./1-2/T%C3%BCrk%C3%A7e%202)
 
+
+#### 📘 Mühendislik Ekonomisi 
+  - 🏷️ **Ders Tipi:** Zorunlu
+  - 🏷️ **Müfredat:** 2026 Sonrası
+  - ⭐ **Yıldız Sayıları:**
+      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=M%C3%BChendislik%20Ekonomisi) anonim şekilde oylamaya katılabilirsiniz.
+  - 💬 **Öğrenci Görüşleri:**
+      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=M%C3%BChendislik%20Ekonomisi) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 📂 [Ders Klasörü](./1-2/M%C3%BChendislik%20Ekonomisi)
+
 ### 🗓 2. Yıl - Güz
-
-
-#### 📘 Teknik İngilizce 1 
-  - 🏷️ **Ders Tipi:** Zorunlu
-  - 🏷️ **Müfredat:** 2026 Sonrası
-  - ⭐ **Yıldız Sayıları:**
-      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Teknik%20%C4%B0ngilizce%201) anonim şekilde oylamaya katılabilirsiniz.
-  - 💬 **Öğrenci Görüşleri:**
-      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Teknik%20%C4%B0ngilizce%201) anonim şekilde görüşlerinizi belirtebilirsiniz.
-  - 📂 [Ders Klasörü](./2-1/Teknik%20%C4%B0ngilizce%201)
-
-
-#### 📘 Olasılık ve İstatistik 
-  - 🏷️ **Ders Tipi:** Zorunlu
-  - 🏷️ **Müfredat:** 2026 Sonrası
-  - ⭐ **Yıldız Sayıları:**
-      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Olas%C4%B1l%C4%B1k%20ve%20%C4%B0statistik) anonim şekilde oylamaya katılabilirsiniz.
-  - 💬 **Öğrenci Görüşleri:**
-      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Olas%C4%B1l%C4%B1k%20ve%20%C4%B0statistik) anonim şekilde görüşlerinizi belirtebilirsiniz.
-  - 📂 [Ders Klasörü](./2-1/Olas%C4%B1l%C4%B1k%20ve%20%C4%B0statistik)
 
 
 #### 📘 Mantık Devreleri 
@@ -502,17 +482,27 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
     - **2026-2027**: [NÖ](#‍-dr-öğretim-üyesi-neşe-özdemir)
   - 📂 [Ders Klasörü](./2-1/Diferansiyel%20Denklemler)
 
-### 🗓 2. Yıl - Bahar
 
-
-#### 📘 Teknik İngilizce 2 
+#### 📘 Olasılık ve İstatistik 
   - 🏷️ **Ders Tipi:** Zorunlu
   - 🏷️ **Müfredat:** 2026 Sonrası
   - ⭐ **Yıldız Sayıları:**
-      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Teknik%20%C4%B0ngilizce%202) anonim şekilde oylamaya katılabilirsiniz.
+      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Olas%C4%B1l%C4%B1k%20ve%20%C4%B0statistik) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
-      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Teknik%20%C4%B0ngilizce%202) anonim şekilde görüşlerinizi belirtebilirsiniz.
-  - 📂 [Ders Klasörü](./2-2/Teknik%20%C4%B0ngilizce%202)
+      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Olas%C4%B1l%C4%B1k%20ve%20%C4%B0statistik) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 📂 [Ders Klasörü](./2-1/Olas%C4%B1l%C4%B1k%20ve%20%C4%B0statistik)
+
+
+#### 📘 Teknik İngilizce 1 
+  - 🏷️ **Ders Tipi:** Zorunlu
+  - 🏷️ **Müfredat:** 2026 Sonrası
+  - ⭐ **Yıldız Sayıları:**
+      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Teknik%20%C4%B0ngilizce%201) anonim şekilde oylamaya katılabilirsiniz.
+  - 💬 **Öğrenci Görüşleri:**
+      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Teknik%20%C4%B0ngilizce%201) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 📂 [Ders Klasörü](./2-1/Teknik%20%C4%B0ngilizce%201)
+
+### 🗓 2. Yıl - Bahar
 
 
 #### 📘 Bilgisayar Ağlarına Giriş 
@@ -530,7 +520,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Elektronik Devrelere Giriş 
   - 🏷️ **Ders Tipi:** Zorunlu
   - 🏷️ **Müfredat:** Her İki Müfredat
-      - ℹ️ 2026 öncesi müfredatta 4. yarıyılda (burada), 2026 sonrası müfredatta 2. yarıyılda yer alıyor.
+      - ℹ️ 2026 öncesi müfredatta 4. yarıyılda (burada), 2026 sonrası müfredatta 2. yarıyılda (1-2) yer alıyor.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Elektronik%20Devrelere%20Giri%C5%9F) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -579,7 +569,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Mühendisler için İstatistik 
   - 🏷️ **Ders Tipi:** Zorunlu
   - 🏷️ **Müfredat:** 2026 Öncesi
-      - ℹ️ 2026 sonrası müfredatta yerine "Olasılık ve İstatistik" dersi var.
+      - ℹ️ 2026 sonrası müfredatta yerine "Olasılık ve İstatistik" (2-1) dersi var.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=M%C3%BChendisler%20i%C3%A7in%20%C4%B0statistik) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -588,18 +578,17 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
     - **2025-2026**: [NÖ](#‍-dr-öğretim-üyesi-neşe-özdemir)
   - 📂 [Ders Klasörü](./2-2/M%C3%BChendisler%20i%C3%A7in%20%C4%B0statistik)
 
-### 🗓 3. Yıl - Güz
 
-
-#### 📘 Algoritma Analizi ve Tasarımı 
+#### 📘 Teknik İngilizce 2 
   - 🏷️ **Ders Tipi:** Zorunlu
   - 🏷️ **Müfredat:** 2026 Sonrası
-      - ℹ️ 2026 öncesi müfredatta "Algoritma Analizi" adıyla Mesleki Seçmeli havuzunda yer alıyor.
   - ⭐ **Yıldız Sayıları:**
-      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Algoritma%20Analizi%20ve%20Tasar%C4%B1m%C4%B1) anonim şekilde oylamaya katılabilirsiniz.
+      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Teknik%20%C4%B0ngilizce%202) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
-      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Algoritma%20Analizi%20ve%20Tasar%C4%B1m%C4%B1) anonim şekilde görüşlerinizi belirtebilirsiniz.
-  - 📂 [Ders Klasörü](./3-1/Algoritma%20Analizi%20ve%20Tasar%C4%B1m%C4%B1)
+      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Teknik%20%C4%B0ngilizce%202) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 📂 [Ders Klasörü](./2-2/Teknik%20%C4%B0ngilizce%202)
+
+### 🗓 3. Yıl - Güz
 
 
 #### 📘 Staj 1 
@@ -663,29 +652,18 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
     - **2026-2027**: [ÖA](#‍-doç-dr-ömer-akgün)
   - 📂 [Ders Klasörü](./3-1/Sinyaller%20ve%20Sistemlere%20Giri%C5%9F)
 
+
+#### 📘 Algoritma Analizi ve Tasarımı 
+  - 🏷️ **Ders Tipi:** Zorunlu
+  - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta bu içerik "Algoritma Analizi" adıyla Mesleki Seçmeli havuzunda yer alıyor.
+  - ⭐ **Yıldız Sayıları:**
+      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Algoritma%20Analizi%20ve%20Tasar%C4%B1m%C4%B1) anonim şekilde oylamaya katılabilirsiniz.
+  - 💬 **Öğrenci Görüşleri:**
+      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Algoritma%20Analizi%20ve%20Tasar%C4%B1m%C4%B1) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 📂 [Ders Klasörü](./3-1/Algoritma%20Analizi%20ve%20Tasar%C4%B1m%C4%B1)
+
 ### 🗓 3. Yıl - Bahar
-
-
-#### 📘 Bilimsel Araştırma ve Sunum Teknikleri 2 
-  - 🏷️ **Ders Tipi:** Zorunlu
-  - 🏷️ **Müfredat:** 2026 Sonrası
-      - ℹ️ 2026 öncesi müfredatta 1. yıl bahar döneminde yer alıyor.
-  - ⭐ **Yıldız Sayıları:**
-      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Bilimsel%20Ara%C5%9Ft%C4%B1rma%20ve%20Sunum%20Teknikleri%202) anonim şekilde oylamaya katılabilirsiniz.
-  - 💬 **Öğrenci Görüşleri:**
-      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Bilimsel%20Ara%C5%9Ft%C4%B1rma%20ve%20Sunum%20Teknikleri%202) anonim şekilde görüşlerinizi belirtebilirsiniz.
-  - 📂 [Ders Klasörü](./3-2/Bilimsel%20Ara%C5%9Ft%C4%B1rma%20ve%20Sunum%20Teknikleri%202)
-
-
-#### 📘 Biçimsel Diller ve Otomata Teorisi 
-  - 🏷️ **Ders Tipi:** Zorunlu
-  - 🏷️ **Müfredat:** 2026 Sonrası
-      - ℹ️ 2026 öncesi müfredatta Mesleki Seçmeli havuzunda yer alıyor.
-  - ⭐ **Yıldız Sayıları:**
-      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Bi%C3%A7imsel%20Diller%20ve%20Otomata%20Teorisi) anonim şekilde oylamaya katılabilirsiniz.
-  - 💬 **Öğrenci Görüşleri:**
-      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Bi%C3%A7imsel%20Diller%20ve%20Otomata%20Teorisi) anonim şekilde görüşlerinizi belirtebilirsiniz.
-  - 📂 [Ders Klasörü](./3-2/Bi%C3%A7imsel%20Diller%20ve%20Otomata%20Teorisi)
 
 
 #### 📘 Bilgisayar Organizasyonu ve Mimarisi 
@@ -736,28 +714,29 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
     - **2025-2026**: [BD](#‍-doç-dr-buket-doğan)
   - 📂 [Ders Klasörü](./3-2/Yaz%C4%B1l%C4%B1m%20M%C3%BChendisli%C4%9Fi)
 
+
+#### 📘 Biçimsel Diller ve Otomata Teorisi 
+  - 🏷️ **Ders Tipi:** Zorunlu
+  - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta bu ders Mesleki Seçmeli havuzunda yer alıyor.
+  - ⭐ **Yıldız Sayıları:**
+      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Bi%C3%A7imsel%20Diller%20ve%20Otomata%20Teorisi) anonim şekilde oylamaya katılabilirsiniz.
+  - 💬 **Öğrenci Görüşleri:**
+      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Bi%C3%A7imsel%20Diller%20ve%20Otomata%20Teorisi) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 📂 [Ders Klasörü](./3-2/Bi%C3%A7imsel%20Diller%20ve%20Otomata%20Teorisi)
+
+
+#### 📘 Bilimsel Araştırma ve Sunum Teknikleri 2 
+  - 🏷️ **Ders Tipi:** Zorunlu
+  - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta bu ders 1. yıl bahar döneminde (1-2) yer alıyor.
+  - ⭐ **Yıldız Sayıları:**
+      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Bilimsel%20Ara%C5%9Ft%C4%B1rma%20ve%20Sunum%20Teknikleri%202) anonim şekilde oylamaya katılabilirsiniz.
+  - 💬 **Öğrenci Görüşleri:**
+      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Bilimsel%20Ara%C5%9Ft%C4%B1rma%20ve%20Sunum%20Teknikleri%202) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 📂 [Ders Klasörü](./3-2/Bilimsel%20Ara%C5%9Ft%C4%B1rma%20ve%20Sunum%20Teknikleri%202)
+
 ### 🗓 4. Yıl - Güz
-
-
-#### 📘 Bitirme Projesi 1 
-  - 🏷️ **Ders Tipi:** Zorunlu
-  - 🏷️ **Müfredat:** 2026 Sonrası
-      - ℹ️ 2026 öncesi müfredatta tek parça "Bitirme Projesi" olarak 4. yıl bahar döneminde yer alıyor.
-  - ⭐ **Yıldız Sayıları:**
-      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Bitirme%20Projesi%201) anonim şekilde oylamaya katılabilirsiniz.
-  - 💬 **Öğrenci Görüşleri:**
-      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Bitirme%20Projesi%201) anonim şekilde görüşlerinizi belirtebilirsiniz.
-  - 📂 [Ders Klasörü](./4-1/Bitirme%20Projesi%201)
-
-
-#### 📘 İş Hukuku ve Etiği 
-  - 🏷️ **Ders Tipi:** Zorunlu
-  - 🏷️ **Müfredat:** 2026 Sonrası
-  - ⭐ **Yıldız Sayıları:**
-      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=%C4%B0%C5%9F%20Hukuku%20ve%20Eti%C4%9Fi) anonim şekilde oylamaya katılabilirsiniz.
-  - 💬 **Öğrenci Görüşleri:**
-      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=%C4%B0%C5%9F%20Hukuku%20ve%20Eti%C4%9Fi) anonim şekilde görüşlerinizi belirtebilirsiniz.
-  - 📂 [Ders Klasörü](./4-1/%C4%B0%C5%9F%20Hukuku%20ve%20Eti%C4%9Fi)
 
 
 #### 📘 Staj 2 
@@ -793,18 +772,28 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
     - **2026-2027**: [OAG](#‍-dr-öğretim-üyesi-oya-ayhan-girit)
   - 📂 [Ders Klasörü](./4-1/Atat%C3%BCrk%20%C4%B0lkeleri%20ve%20%C4%B0nk%C4%B1lap%20Tarihi%201)
 
-### 🗓 4. Yıl - Bahar
 
-
-#### 📘 Bitirme Projesi 2 
+#### 📘 İş Hukuku ve Etiği 
   - 🏷️ **Ders Tipi:** Zorunlu
   - 🏷️ **Müfredat:** 2026 Sonrası
-      - ℹ️ 2026 öncesi müfredatta tek parça "Bitirme Projesi" olarak yer alıyor.
   - ⭐ **Yıldız Sayıları:**
-      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Bitirme%20Projesi%202) anonim şekilde oylamaya katılabilirsiniz.
+      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=%C4%B0%C5%9F%20Hukuku%20ve%20Eti%C4%9Fi) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
-      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Bitirme%20Projesi%202) anonim şekilde görüşlerinizi belirtebilirsiniz.
-  - 📂 [Ders Klasörü](./4-2/Bitirme%20Projesi%202)
+      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=%C4%B0%C5%9F%20Hukuku%20ve%20Eti%C4%9Fi) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 📂 [Ders Klasörü](./4-1/%C4%B0%C5%9F%20Hukuku%20ve%20Eti%C4%9Fi)
+
+
+#### 📘 Bitirme Projesi 1 
+  - 🏷️ **Ders Tipi:** Zorunlu
+  - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta tek parça "Bitirme Projesi" olarak 4. yıl bahar döneminde (4-2) yer alıyor.
+  - ⭐ **Yıldız Sayıları:**
+      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Bitirme%20Projesi%201) anonim şekilde oylamaya katılabilirsiniz.
+  - 💬 **Öğrenci Görüşleri:**
+      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Bitirme%20Projesi%201) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 📂 [Ders Klasörü](./4-1/Bitirme%20Projesi%201)
+
+### 🗓 4. Yıl - Bahar
 
 
 #### 📘 Sistem ve Sunucu Yönetimi 
@@ -822,7 +811,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Bitirme Projesi 
   - 🏷️ **Ders Tipi:** Zorunlu
   - 🏷️ **Müfredat:** 2026 Öncesi
-      - ℹ️ 2026 sonrası müfredatta "Bitirme Projesi 1" ve "Bitirme Projesi 2" olarak ikiye bölünmüş.
+      - ℹ️ 2026 sonrası müfredatta "Bitirme Projesi 1" (4-1) ve "Bitirme Projesi 2" (4-2) olarak ikiye bölünmüş.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Bitirme%20Projesi) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -855,6 +844,17 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
   - 👨‍🏫 👩‍🏫 **Dersi Yürüten Akademisyenler:**
     - **2025-2026**: [SÖ](#‍-prof-dr-serhat-özekes)
   - 📂 [Ders Klasörü](./4-2/Teknik%20%C4%B0ngilizce)
+
+
+#### 📘 Bitirme Projesi 2 
+  - 🏷️ **Ders Tipi:** Zorunlu
+  - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta tek parça "Bitirme Projesi" olarak yer alıyor (Bitirme Projesi 1, 4-1'de).
+  - ⭐ **Yıldız Sayıları:**
+      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Bitirme%20Projesi%202) anonim şekilde oylamaya katılabilirsiniz.
+  - 💬 **Öğrenci Görüşleri:**
+      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Bitirme%20Projesi%202) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 📂 [Ders Klasörü](./4-2/Bitirme%20Projesi%202)
 </details>
 
 <details>
@@ -868,6 +868,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Algoritma Analizi 
   - 🏷️ **Ders Tipi:** Seçmeli
   - 🏷️ **Müfredat:** 2026 Öncesi
+      - ℹ️ 2026 sonrası müfredatta "Algoritma Analizi ve Tasarımı" adıyla ve zorunlu olarak yer alıyor, bkz. 3-1.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Algoritma%20Analizi) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -923,6 +924,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Biçimsel Diller ve Otomata Teorisi 
   - 🏷️ **Ders Tipi:** Seçmeli
   - 🏷️ **Müfredat:** 2026 Öncesi
+      - ℹ️ 2026 sonrası müfredatta zorunlu olarak yer alıyor, bkz. 3-2.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Bi%C3%A7imsel%20Diller%20ve%20Otomata%20Teorisi) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -1021,6 +1023,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Kablosuz Ağlar 
   - 🏷️ **Ders Tipi:** Seçmeli
   - 🏷️ **Müfredat:** 2026 Öncesi
+      - ℹ️ 2026 sonrası müfredatta yerine "Kablosuz ve Mobil Ağlar" eklenmiş.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Kablosuz%20A%C4%9Flar) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -1205,6 +1208,16 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
     - **2025-2026**: [ABA](#‍-doç-dr-ayşe-berna-altınel)
   - 📂 [Ders Klasörü](./Mesleki%20Se%C3%A7meli/Veri%20Madencili%C4%9Fi)
 
+#### 📘 Web Programlama 
+  - 🏷️ **Ders Tipi:** Seçmeli
+  - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta bu ders zorunludur, bkz. [`3-2/Web Programlama`](../../3-2/Web%20Programlama/).
+  - ⭐ **Yıldız Sayıları:**
+      - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Web%20Programlama) anonim şekilde oylamaya katılabilirsiniz.
+  - 💬 **Öğrenci Görüşleri:**
+      - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSdZ8qteiUcKRU6hkYA33RnwXt5C2PIgAxK6ZMsE9PIr9xa7-g/viewform?usp=pp_url&entry.874814544=Web%20Programlama) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 📂 [Ders Klasörü](./Mesleki%20Se%C3%A7meli/Web%20Programlama)
+
 #### 📘 Web Servisleri 
   - 🏷️ **Ders Tipi:** Seçmeli
   - 🏷️ **Müfredat:** Her İki Müfredat
@@ -1230,6 +1243,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Yapay Zekâya Giriş 
   - 🏷️ **Ders Tipi:** Seçmeli
   - 🏷️ **Müfredat:** 2026 Öncesi
+      - ℹ️ 2026 sonrası müfredatta yerine "Güncel Yapay Zeka Yaklaşımları" eklenmiş.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Yapay%20Zek%C3%A2ya%20Giri%C5%9F) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -1406,6 +1420,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Araştırma Planlama ve Yönetimi 
   - 🏷️ **Ders Tipi:** Seçmeli
   - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Ara%C5%9Ft%C4%B1rma%20Planlama%20ve%20Y%C3%B6netimi) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -1415,6 +1430,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Bilgi Sistemleri Yönetimi 
   - 🏷️ **Ders Tipi:** Seçmeli
   - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Bilgi%20Sistemleri%20Y%C3%B6netimi) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -1424,6 +1440,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Disiplinler Arası Proje Tasarımı 
   - 🏷️ **Ders Tipi:** Seçmeli
   - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Disiplinler%20Aras%C4%B1%20Proje%20Tasar%C4%B1m%C4%B1) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -1433,6 +1450,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Mühendisler için Proje Yönetimi 
   - 🏷️ **Ders Tipi:** Seçmeli
   - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=M%C3%BChendisler%20i%C3%A7in%20Proje%20Y%C3%B6netimi) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -1442,6 +1460,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Mühendislik ve Teknoloji Yönetimi 
   - 🏷️ **Ders Tipi:** Seçmeli
   - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=M%C3%BChendislik%20ve%20Teknoloji%20Y%C3%B6netimi) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -1451,6 +1470,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Veri Bilimi ve Veri Analitiğine Giriş 
   - 🏷️ **Ders Tipi:** Seçmeli
   - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Veri%20Bilimi%20ve%20Veri%20Analiti%C4%9Fine%20Giri%C5%9F) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -1460,6 +1480,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Yazılım Proje Yönetimi 
   - 🏷️ **Ders Tipi:** Seçmeli
   - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=Yaz%C4%B1l%C4%B1m%20Proje%20Y%C3%B6netimi) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
@@ -1469,6 +1490,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 #### 📘 Çok Disiplinli Takım Çalışması Deneyimi 
   - 🏷️ **Ders Tipi:** Seçmeli
   - 🏷️ **Müfredat:** 2026 Sonrası
+      - ℹ️ 2026 öncesi müfredatta bu havuzun karşılığı yok, tamamen yeni bir seçmeli havuzudur.
   - ⭐ **Yıldız Sayıları:**
       - ℹ️ Henüz yıldız veren yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSeT-6WtaEJERW5OcUyvBFAX6bhmzT8Op8utM8AXhNaCtruTRA/viewform?usp=pp_url&entry.1850083761=%C3%87ok%20Disiplinli%20Tak%C4%B1m%20%C3%87al%C4%B1%C5%9Fmas%C4%B1%20Deneyimi) anonim şekilde oylamaya katılabilirsiniz.
   - 💬 **Öğrenci Görüşleri:**
