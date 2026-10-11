@@ -33,5 +33,16 @@
             "ders_oylama_csv": "https://docs.google.com/spreadsheets/d/e/2PACX-1vRgugAdScfnup12mkEghq0eTr6hCLejAV7siT-n0fIAHYxmPf9QNmDMEb_ZF8TAHVmXxXhuQMsF4-3h/pub?single=true&output=csv&gid=1337764308"
         },
         "not": "Yorumlar yalnızca cevap tablosundaki 'Onay' sütunu işaretliyse README'ye girer. Hoca oylama formu yok."
+    },
+    "mufredat": {
+        "secenekler": [
+            "Her İki Müfredat",
+            "2026 Öncesi",
+            "2026 Sonrası",
+            "2026 Öncesi (Zorunlu)"
+        ],
+        "eski_mufredat_oneki": "2026 Öncesi",
+        "eski_mufredat_notu_yili": "2026-2027",
+        "eski_mufredat_notu": "bu yıl yeni girenler bu dersi alamaz; ders yalnızca 2026 öncesi müfredattaki öğrenciler için açıldı"
     }
 }
