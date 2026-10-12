@@ -1,28 +1,30 @@
 /**
- * Marmara Arşiv — Telegram onay botu (form_olustur.gs ile AYNI Apps Script projesine ikinci dosya olarak eklenir)
+ * Marmara Arşiv — Telegram onay botu (bütün bölümler için TEK bot)
  *
- * Her sabah onay bekleyen form yorumlarını Telegram'dan gönderir; "✅ Onayla / ❌ Reddet" tuşlarına
- * basınca cevap tablosundaki "Onay" sütununa "Onay" ya da "Red" yazar.
- * README'yi GitHub tarafı günceller: "README Otomatik Güncelleme" iş akışı 5 dakikada bir tabloya bakar,
- * yeni onay varsa işleyip kapanır. Bu yüzden burada GitHub anahtarı yok.
+ * Her sabah bütün bölümlerin onay bekleyen form yorumlarını Telegram'dan gönderir; "✅ Onayla / ❌ Reddet"
+ * tuşlarına basınca cevap tablosundaki "Onay" sütununa "Onay" ya da "Red" yazar. README'leri GitHub tarafı
+ * günceller (her repodaki "Form Yorum Takibi" iş akışı tabloları birkaç dakikada bir okur), burada GitHub anahtarı yok.
  *
- * Kurulum:
- *   1. Telegram'da @BotFather → /newbot → verdiği token'ı Proje Ayarları (⚙️) → Komut dosyası
- *      özellikleri'ne TG_TOKEN adıyla ekle. Her bölümün kendi botu olmalı (iki proje aynı botu
- *      dinlerse tuş basışlarını birbirinden kapar).
- *   2. Kendi botuna Telegram'dan /start yaz.
- *   3. Proje Ayarları (⚙️) → Saat dilimi: "(GMT+03:00) İstanbul" seç.
- *   4. Fonksiyon listesinden telegramKur'u seçip ▶ Çalıştır.
+ * Kurulum (form projesinden ayrı bir Apps Script projesi olabilir):
+ *   1. Proje Ayarları (⚙️) → Komut dosyası özellikleri:
+ *        TG_TOKEN  = @BotFather'ın verdiği token (koda ya da repoya ASLA yazma)
+ *        TABLOLAR  = cevap tablolarının kimlikleri, virgülle (form projesindeki formAyarlari günlüğe yazar)
+ *      Aynı sayfada saat dilimi: "(GMT+03:00) İstanbul".
+ *   2. Botuna Telegram'dan /start yaz, sonra telegramKur'u bir kez çalıştır.
+ * Eski tek bölümlü bottan geçerken telegramKur'u yeniden çalıştırmaya gerek yok: fonksiyon adları ve kayıtlar aynı.
  */
 
-// Token koda yazılmaz: Proje Ayarları (⚙️) → Komut dosyası özellikleri → TG_TOKEN
-const TELEGRAM_TOKEN = PropertiesService.getScriptProperties().getProperty('TG_TOKEN') || '';
 const BILDIRIM_SAATI = 9;    // her sabah kaçta mesaj gelsin
-const CEVAP_TABLOSU_ID = '';  // form_olustur.gs ile aynı projedeyse boş kalır ("tablo" özelliği kullanılır)
-const ARSIV_ADI = 'tek_bilgisayar';
+const VARSAYILAN_ARSIV = 'tek_bilgisayar';  // sayfa adında bölüm yazmayan (ilk kurulumun) tablosu
+
+function ozellik_(ad) {
+  return PropertiesService.getScriptProperties().getProperty(ad);
+}
 
 function tg_(metod, veri) {
-  const yanit = UrlFetchApp.fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/${metod}`, {
+  const token = ozellik_('TG_TOKEN');
+  if (!token) throw new Error('Proje Ayarları → Komut dosyası özellikleri\'ne TG_TOKEN ekle.');
+  const yanit = UrlFetchApp.fetch(`https://api.telegram.org/bot${token}/${metod}`, {
     method: 'post', contentType: 'application/json', payload: JSON.stringify(veri || {}),
     muteHttpExceptions: true,
   });
@@ -31,7 +33,6 @@ function tg_(metod, veri) {
 
 /** Bir kez çalıştırılır: sahibin sohbetini kaydeder ve zamanlayıcıları kurar. */
 function telegramKur() {
-  if (!TELEGRAM_TOKEN) throw new Error('Önce Proje Ayarları → Komut dosyası özellikleri\'ne TG_TOKEN ekle.');
   const props = PropertiesService.getScriptProperties();
   tg_('deleteWebhook', {});
   const guncellemeler = tg_('getUpdates', { timeout: 0 }).result || [];
@@ -56,26 +57,37 @@ function telegramKur() {
   gunlukBildirim();
 }
 
-/** Cevap tablosundaki yorum sayfaları: [{sayfa, tur, sutun}] */
+/** TABLOLAR özelliğindeki cevap tablolarının kimlikleri (eski kurulumda "tablo" özelliği). */
+function tablolar_() {
+  const liste = (ozellik_('TABLOLAR') || ozellik_('tablo') || '').split(',').map(s => s.trim()).filter(Boolean);
+  if (!liste.length) throw new Error('Proje Ayarları → Komut dosyası özellikleri\'ne TABLOLAR ekle.');
+  return liste;
+}
+
+/** Yorum sayfaları: [{sayfa, tablo (sıra no), arsiv, tur, onay, yorum, konu, isim}] */
 function yorumSayfalari_() {
-  const id = PropertiesService.getScriptProperties().getProperty('tablo') || CEVAP_TABLOSU_ID;
   const sonuc = [];
-  for (const sayfa of SpreadsheetApp.openById(id).getSheets()) {
-    const baslik = sayfa.getRange(1, 1, 1, Math.max(1, sayfa.getLastColumn())).getValues()[0].map(String);
-    const yorum = baslik.findIndex(b => /hakkındaki yorumun/.test(b));
-    if (yorum < 0) continue;
-    let onay = baslik.findIndex(b => b.trim().toLowerCase() === 'onay');
-    if (onay < 0) {  // "Onay" sütunu yoksa ekle
-      onay = baslik.filter(b => b !== '').length;
-      sayfa.getRange(1, onay + 1).setValue('Onay');
+  tablolar_().forEach((id, tablo) => {
+    for (const sayfa of SpreadsheetApp.openById(id).getSheets()) {
+      const baslik = sayfa.getRange(1, 1, 1, Math.max(1, sayfa.getLastColumn())).getValues()[0].map(String);
+      const yorum = baslik.findIndex(b => /hakkındaki yorumun/.test(b));
+      if (yorum < 0) continue;
+      let onay = baslik.findIndex(b => b.trim().toLowerCase() === 'onay');
+      if (onay < 0) {  // "Onay" sütunu yoksa ekle
+        onay = baslik.filter(b => b !== '').length;
+        sayfa.getRange(1, onay + 1).setValue('Onay');
+      }
+      // Ortak tablonun sayfaları "tek_siber • Hoca Yorumlama" diye adlandırılır.
+      const ad = sayfa.getName();
+      sonuc.push({
+        sayfa, tablo, onay, yorum,
+        arsiv: ad.indexOf('•') >= 0 ? ad.split('•')[0].trim() : VARSAYILAN_ARSIV,
+        konu: baslik.findIndex(b => /seç$/i.test(b.trim())),
+        isim: baslik.findIndex(b => /İsmin/.test(b)),
+        tur: /Hoca/.test(baslik[yorum]) ? '🎓 Hoca' : '📘 Ders',
+      });
     }
-    sonuc.push({
-      sayfa, onay, yorum,
-      konu: baslik.findIndex(b => /seç$/i.test(b.trim())),
-      isim: baslik.findIndex(b => /İsmin/.test(b)),
-      tur: /Hoca/.test(baslik[yorum]) ? '🎓 Hoca' : '📘 Ders',
-    });
-  }
+  });
   return sonuc;
 }
 
@@ -96,19 +108,20 @@ function bekleyenler_() {
 
 /** Her sabah: onay bekleyen yorumları tek tek gönderir (bekleyen yoksa mesaj atmaz). */
 function gunlukBildirim() {
-  const chat = PropertiesService.getScriptProperties().getProperty('TG_CHAT');
+  const chat = ozellik_('TG_CHAT');
   if (!chat) return;
   const bekleyen = bekleyenler_();
   if (!bekleyen.length) return;
-  tg_('sendMessage', { chat_id: chat, text: `☀️ Günaydın! ${ARSIV_ADI} arşivinde onay bekleyen ${bekleyen.length} yorum var:` });
+  tg_('sendMessage', { chat_id: chat, text: `☀️ Günaydın! Onay bekleyen ${bekleyen.length} yorum var:` });
   for (const b of bekleyen) {
     const tarih = b.zaman instanceof Date ? Utilities.formatDate(b.zaman, 'Europe/Istanbul', 'dd.MM.yyyy HH:mm') : b.zaman;
+    const kimlik = `${b.s.tablo}|${b.s.sayfa.getSheetId()}|${b.satir}`;
     tg_('sendMessage', {
       chat_id: chat,
-      text: `${b.s.tur}: ${b.konu}\n👤 ${b.isim}   📅 ${tarih}\n\n${b.yorum.slice(0, 3500)}`,
+      text: `🏛 ${b.s.arsiv}\n${b.s.tur}: ${b.konu}\n👤 ${b.isim}   📅 ${tarih}\n\n${b.yorum.slice(0, 3500)}`,
       reply_markup: { inline_keyboard: [[
-        { text: '✅ Onayla', callback_data: `o|${b.s.sayfa.getSheetId()}|${b.satir}` },
-        { text: '❌ Reddet', callback_data: `r|${b.s.sayfa.getSheetId()}|${b.satir}` },
+        { text: '✅ Onayla', callback_data: `o|${kimlik}` },
+        { text: '❌ Reddet', callback_data: `r|${kimlik}` },
       ]] },
     });
   }
@@ -125,6 +138,7 @@ function tgYokla() {
       offset: Number(props.getProperty('TG_OFFSET') || 0), timeout: 0,
       allowed_updates: ['callback_query', 'message'],
     }).result || [];
+    let sayfalar = null;
     for (const u of guncellemeler) {
       props.setProperty('TG_OFFSET', String(u.update_id + 1));
       if (u.message && String(u.message.chat.id) === chat && u.message.text === '/bekleyen') {
@@ -133,8 +147,11 @@ function tgYokla() {
       }
       const c = u.callback_query;
       if (!c || String(c.message.chat.id) !== chat) continue;
-      const [islem, sayfaId, satir] = c.data.split('|');
-      const s = yorumSayfalari_().find(x => String(x.sayfa.getSheetId()) === sayfaId);
+      // "o|tablo|sayfa|satır"; eski tek tablolu bottan kalan mesajlar "o|sayfa|satır"
+      const p = c.data.split('|');
+      const [islem, tablo, sayfaId, satir] = p.length === 3 ? [p[0], '0', p[1], p[2]] : p;
+      sayfalar = sayfalar || yorumSayfalari_();
+      const s = sayfalar.find(x => String(x.tablo) === tablo && String(x.sayfa.getSheetId()) === sayfaId);
       if (!s) continue;
       s.sayfa.getRange(Number(satir), s.onay + 1).setValue(islem === 'o' ? 'Onay' : 'Red');
       tg_('answerCallbackQuery', { callback_query_id: c.id, text: islem === 'o' ? 'Onaylandı' : 'Reddedildi' });
