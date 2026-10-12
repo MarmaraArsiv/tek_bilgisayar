@@ -1693,7 +1693,8 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 - 🚪 **Ofis:** T4-110
 - 🔗 **Araştırma Sayfası:** [https://avesis.marmara.edu.tr/emre.ulku](https://avesis.marmara.edu.tr/emre.ulku)
 - 💬 **Öğrenci Görüşleri:**
-  - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Dr.%20%C3%96%C4%9Fretim%20%C3%9Cyesi%20Ey%C3%BCp%20Emre%20%C3%9Clk%C3%BC) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 👤 **_Dersi dinleyen biri_**: İyi hocadır ℹ️ Yorum **10.2026** tarihinde yapılmıştır.
+    - ℹ️ Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Dr.%20%C3%96%C4%9Fretim%20%C3%9Cyesi%20Ey%C3%BCp%20Emre%20%C3%9Clk%C3%BC) anonim şekilde görüşlerinizi belirtebilirsiniz.
 - 📚 **Verdiği Dersler:**
   - 📖 [Nesne Yönelimli Programlama](#-nesne-yönelimli-programlama) (2020-2021 → 2025-2026)
   - 📖 [İşletim Sistemleri](#-i̇şletim-sistemleri) (2020-2021 → 2025-2026)
