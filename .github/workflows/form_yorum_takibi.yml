@@ -4,25 +4,49 @@ name: Form Yorum Takibi
 # GitHub'ın zamanlayıcısı (cron) 5 dakikalık işleri çok aksattığı için her çalışma bir sonrakini
 # kendisi sıraya koyar. Aradaki 5 dakika "form-bekleme" ortamının Wait timer ayarından gelir
 # (Settings → Environments); beklerken runner harcanmaz. Elle çalıştırınca da önce 5 dk bekler.
-# Zincir koparsa README Otomatik Güncelleme iş akışı (her push'ta ve her gün) yeniden başlatır.
+# Zincir koparsa saatlik yedek kontrol (aşağıdaki schedule) ve README Otomatik Güncelleme iş akışı
+# (her push'ta ve her gün) yeniden başlatır.
 # Durdurmak için: Actions → Form Yorum Takibi → ⋯ → Disable workflow.
 
 on:
   workflow_dispatch:
+  schedule:
+    # Yedek: zincir GitHub'ın geçici bir hatasıyla koptuysa en geç ~1 saatte yeniden başlar.
+    - cron: "23 * * * *"
 
 permissions:
   contents: write
   actions: write
 
-# Aynı anda en fazla bir çalışma ve bir bekleyen olur, fazlası iptal edilir: zincir hep tek kalır.
-concurrency:
-  group: form-yorum-takibi
-  cancel-in-progress: false
-
 jobs:
+  canlandir:
+    if: ${{ github.event_name == 'schedule' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Zincir kopmuşsa yeniden başlat
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          dene() { for bekle in 0 10 30 60; do sleep $bekle; "$@" && return 0; done; return 1; }
+          aktif=$(dene gh run list --workflow form_yorum_takibi.yml --event workflow_dispatch --limit 10 \
+                  --json status --jq '[.[] | select(.status != "completed")] | length')
+          if [ "$aktif" -gt 0 ]; then
+            echo "Zincir çalışıyor."
+            exit 0
+          fi
+          echo "Zincir kopmuş, yeniden başlatılıyor."
+          dene gh workflow run form_yorum_takibi.yml --ref main
+
   kontrol:
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
+    # Aynı anda en fazla bir çalışma ve bir bekleyen olur, fazlası iptal edilir: zincir hep tek kalır.
+    concurrency:
+      group: form-yorum-takibi
+      cancel-in-progress: false
     environment:
       name: form-bekleme
       deployment: false
@@ -32,19 +56,21 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
+          # GitHub API'si arada geçici hata verir; her çağrı artan aralıklarla (toplam ~4 dk) yeniden denenir.
+          dene() { for bekle in 0 10 20 40 60 90; do sleep $bekle; "$@" && return 0; done; return 1; }
           # Wait timer ayarlı değilse zincir saniyeler içinde dönerdi; o durumda devam etme.
-          olusma=$(gh api "repos/$GH_REPO/actions/runs/$GITHUB_RUN_ID" --jq .created_at)
-          gecen=$(( $(date +%s) - $(date -d "$olusma" +%s) ))
-          echo "Sıraya girdikten $gecen saniye sonra başladı."
-          if [ "$gecen" -lt 240 ]; then
-            echo "::warning::form-bekleme ortamında 5 dakikalık Wait timer yok, zincir durduruldu."
-            exit 0
+          if olusma=$(dene gh api "repos/$GH_REPO/actions/runs/$GITHUB_RUN_ID" --jq .created_at); then
+            gecen=$(( $(date +%s) - $(date -d "$olusma" +%s) ))
+            echo "Sıraya girdikten $gecen saniye sonra başladı."
+            if [ "$gecen" -lt 240 ]; then
+              echo "::warning::form-bekleme ortamında 5 dakikalık Wait timer yok, zincir durduruldu."
+              exit 0
+            fi
+          else
+            echo "::warning::Çalışmanın başlangıç zamanı okunamadı; yine de sıraya konuyor."
           fi
-          for deneme in 1 2 3; do
-            gh workflow run form_yorum_takibi.yml --ref main && exit 0
-            sleep 15
-          done
-          echo "::error::Bir sonraki kontrol sıraya konamadı."
+          dene gh workflow run form_yorum_takibi.yml --ref main && exit 0
+          echo "::error::Bir sonraki kontrol sıraya konamadı; saatlik yedek kontrol yeniden başlatacak."
           exit 1
 
       - uses: actions/checkout@v4

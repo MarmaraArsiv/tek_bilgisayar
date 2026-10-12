@@ -6,7 +6,7 @@ on:
     branches: [main]
   schedule:
     # Her gün ~09:07 (TR): tam güncelleme. Saat başında GitHub yoğun olduğu için 07. dakika.
-    # Onaylanan yorumları 5 dakikada bir form_yorum_takibi.yml taşır.
+    # Onaylanan yorumları 5-6 dakikada bir form_yorum_takibi.yml taşır.
     - cron: "7 6 * * *"
   workflow_dispatch:
 
@@ -63,10 +63,11 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}
         run: |
-          aktif=$(gh run list --workflow form_yorum_takibi.yml --limit 10 --json status \
-                  --jq '[.[] | select(.status != "completed")] | length' || echo 0)
+          dene() { for bekle in 0 10 30 60; do sleep $bekle; "$@" && return 0; done; return 1; }
+          aktif=$(dene gh run list --workflow form_yorum_takibi.yml --event workflow_dispatch --limit 10 \
+                  --json status --jq '[.[] | select(.status != "completed")] | length' || echo 0)
           if [ "${aktif:-0}" -gt 0 ]; then
             echo "Form yorum takibi zaten çalışıyor."
           else
-            gh workflow run form_yorum_takibi.yml --ref main || echo "::warning::Form yorum takibi başlatılamadı."
+            dene gh workflow run form_yorum_takibi.yml --ref main || echo "::warning::Form yorum takibi başlatılamadı."
           fi
