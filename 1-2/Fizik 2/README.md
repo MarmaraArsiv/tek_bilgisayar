@@ -34,7 +34,8 @@ Dersi 2024-2025 ve 2025-2026 akademik yıllarında veren hocalar. Yorumlar hocan
 - **[Prof. Dr. Şahin Uyaver](../../README.md#‍-prof-dr-şahin-uyaver)**
     - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Prof.%20Dr.%20%C5%9Eahin%20Uyaver) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 - **[Prof. Dr. Adil Güler](../../README.md#‍-prof-dr-adil-güler)**
-    - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Prof.%20Dr.%20Adil%20G%C3%BCler) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
+    - 👤 **_Fizik 2 ye girmiş biri_**: Sınıfın ortalaması 34 tü ℹ️ Yorum **10.2026** tarihinde yapılmıştır.
+    - ✍️ Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Prof.%20Dr.%20Adil%20G%C3%BCler) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 
 ## 🤝 Katkıda Bulun
 

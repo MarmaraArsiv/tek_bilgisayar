@@ -1647,7 +1647,8 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 - 🚪 **Ofis:** T2-104
 - 🔗 **Araştırma Sayfası:** [https://avesis.marmara.edu.tr/abdulsamet.aktas](https://avesis.marmara.edu.tr/abdulsamet.aktas)
 - 💬 **Öğrenci Görüşleri:**
-  - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Dr.%20%C3%96%C4%9Fretim%20%C3%9Cyesi%20Abdulsamet%20Akta%C5%9F) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 👤 **_Sınava girmiş biri_**: Vize finalin yarısını test yarısını klasik sorar ℹ️ Yorum **10.2026** tarihinde yapılmıştır.
+    - ℹ️ Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Dr.%20%C3%96%C4%9Fretim%20%C3%9Cyesi%20Abdulsamet%20Akta%C5%9F) anonim şekilde görüşlerinizi belirtebilirsiniz.
 - 📚 **Verdiği Dersler:**
   - 📖 [İşletim Sistemleri](#-i̇şletim-sistemleri) (2025-2026 → 2026-2027)
   - 📖 [Biçimsel Diller ve Otomata Teorisi](#-biçimsel-diller-ve-otomata-teorisi) (2025-2026 → 2026-2027)
@@ -1989,7 +1990,8 @@ Son iki akademik yılda (2025-2026, 2026-2027) bölümde dersi görünmeyen hoca
 - 🚪 **Ofis:** T4-217
 - 🔗 **Araştırma Sayfası:** [https://avesis.marmara.edu.tr/adil.guler](https://avesis.marmara.edu.tr/adil.guler)
 - 💬 **Öğrenci Görüşleri:**
-  - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Prof.%20Dr.%20Adil%20G%C3%BCler) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 👤 **_Fizik 2 ye girmiş biri_**: Sınıfın ortalaması 34 tü ℹ️ Yorum **10.2026** tarihinde yapılmıştır.
+    - ℹ️ Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Prof.%20Dr.%20Adil%20G%C3%BCler) anonim şekilde görüşlerinizi belirtebilirsiniz.
 - 📚 **Verdiği Dersler:**
   - 📖 [Fizik 1](#-fizik-1) (2024-2025)
   - 📖 [Lineer Cebir](#-lineer-cebir) (2023-2024 → 2024-2025)
