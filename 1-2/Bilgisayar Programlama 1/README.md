@@ -44,7 +44,8 @@ Dersi 2024-2025 ve 2025-2026 akademik yıllarında veren hocalar. Yorumlar hocan
 - **[Arş. Gör. Semiha Koç](../../README.md#‍-arş-gör-semiha-koç)**
     - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Ar%C5%9F.%20G%C3%B6r.%20Semiha%20Ko%C3%A7) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 - **[Doç. Dr. Buket Doğan](../../README.md#‍-doç-dr-buket-doğan)**
-    - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Do%C3%A7.%20Dr.%20Buket%20Do%C4%9Fan) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
+    - 👤 **_Ödev yapmamış biri_**: Ödev yapın ℹ️ Yorum **10.2026** tarihinde yapılmıştır.
+    - ✍️ Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Do%C3%A7.%20Dr.%20Buket%20Do%C4%9Fan) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 
 ## 🤝 Katkıda Bulun
 

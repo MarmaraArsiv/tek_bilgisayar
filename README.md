@@ -1596,7 +1596,8 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 - 🚪 **Ofis:** T4-106
 - 🔗 **Araştırma Sayfası:** [https://avesis.marmara.edu.tr/buketb](https://avesis.marmara.edu.tr/buketb)
 - 💬 **Öğrenci Görüşleri:**
-  - ℹ️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Do%C3%A7.%20Dr.%20Buket%20Do%C4%9Fan) anonim şekilde görüşlerinizi belirtebilirsiniz.
+  - 👤 **_Ödev yapmamış biri_**: Ödev yapın ℹ️ Yorum **10.2026** tarihinde yapılmıştır.
+    - ℹ️ Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Do%C3%A7.%20Dr.%20Buket%20Do%C4%9Fan) anonim şekilde görüşlerinizi belirtebilirsiniz.
 - 📚 **Verdiği Dersler:**
   - 📖 [Algoritma ve Programlamaya Giriş](#-algoritma-ve-programlamaya-giriş) (2020-2021 → 2026-2027)
   - 📖 [Veritabanı Yönetim Sistemleri](#-veritabanı-yönetim-sistemleri) (2020-2021 → 2026-2027)
@@ -1647,6 +1648,7 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 - 🚪 **Ofis:** T2-104
 - 🔗 **Araştırma Sayfası:** [https://avesis.marmara.edu.tr/abdulsamet.aktas](https://avesis.marmara.edu.tr/abdulsamet.aktas)
 - 💬 **Öğrenci Görüşleri:**
+  - 👤 **_Mutlu öğrenci_**: Dersi bayram tatiline denk gelmedi diye online yapıp yoklama almamıştı ℹ️ Yorum **10.2026** tarihinde yapılmıştır.
   - 👤 **_Sınava girmiş biri_**: Vize finalin yarısını test yarısını klasik sorar ℹ️ Yorum **10.2026** tarihinde yapılmıştır.
     - ℹ️ Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Dr.%20%C3%96%C4%9Fretim%20%C3%9Cyesi%20Abdulsamet%20Akta%C5%9F) anonim şekilde görüşlerinizi belirtebilirsiniz.
 - 📚 **Verdiği Dersler:**

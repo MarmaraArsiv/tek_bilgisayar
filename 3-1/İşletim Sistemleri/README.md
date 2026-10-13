@@ -33,6 +33,7 @@
 Dersi 2025-2026 ve 2026-2027 akademik yıllarında veren hocalar. Yorumlar hocanın tüm derslerini kapsar.
 
 - **[Dr. Öğretim Üyesi Abdulsamet Aktaş](../../README.md#‍-dr-öğretim-üyesi-abdulsamet-aktaş)**
+    - 👤 **_Mutlu öğrenci_**: Dersi bayram tatiline denk gelmedi diye online yapıp yoklama almamıştı ℹ️ Yorum **10.2026** tarihinde yapılmıştır.
     - 👤 **_Sınava girmiş biri_**: Vize finalin yarısını test yarısını klasik sorar ℹ️ Yorum **10.2026** tarihinde yapılmıştır.
     - ✍️ Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Dr.%20%C3%96%C4%9Fretim%20%C3%9Cyesi%20Abdulsamet%20Akta%C5%9F) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 - **[Dr. Öğretim Üyesi Eyüp Emre Ülkü](../../README.md#‍-dr-öğretim-üyesi-eyüp-emre-ülkü)**

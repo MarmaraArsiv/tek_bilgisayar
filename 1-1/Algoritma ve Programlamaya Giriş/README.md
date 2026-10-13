@@ -39,7 +39,8 @@
 Dersi 2025-2026 ve 2026-2027 akademik yıllarında veren hocalar. Yorumlar hocanın tüm derslerini kapsar.
 
 - **[Doç. Dr. Buket Doğan](../../README.md#‍-doç-dr-buket-doğan)**
-    - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Do%C3%A7.%20Dr.%20Buket%20Do%C4%9Fan) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
+    - 👤 **_Ödev yapmamış biri_**: Ödev yapın ℹ️ Yorum **10.2026** tarihinde yapılmıştır.
+    - ✍️ Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Do%C3%A7.%20Dr.%20Buket%20Do%C4%9Fan) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 - **[Doç. Dr. Ayşe Berna Altınel](../../README.md#‍-doç-dr-ayşe-berna-altınel)**
     - ✍️ Henüz yorum yok. Siz de [linkten](https://docs.google.com/forms/d/e/1FAIpQLSf6Txu1KWmryvpjWyisuoEw9ikBP24hA-aOIvzKoEhhvxScFQ/viewform?usp=pp_url&entry.689017401=Do%C3%A7.%20Dr.%20Ay%C5%9Fe%20Berna%20Alt%C4%B1nel) bu hoca hakkında anonim şekilde görüşlerinizi belirtebilirsiniz.
 - **[Arş. Gör. Semiha Koç](../../README.md#‍-arş-gör-semiha-koç)**
