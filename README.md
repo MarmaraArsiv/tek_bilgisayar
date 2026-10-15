@@ -105,21 +105,21 @@ döneme değişebilir, kesin ve güncel bilgi için bölüm/fakülte öğrenci i
 
 ## 📊 Arşiv Doluluk Durumu
 
-Arşivdeki **119** dersin **28** tanesinde en az bir materyal var (genel doluluk **%24**).
+Arşivdeki **119** dersin **30** tanesinde en az bir materyal var (genel doluluk **%25**).
 
 ```mermaid
 pie showData
-  "Materyali olan" : 28
-  "Henüz boş" : 91
+  "Materyali olan" : 30
+  "Henüz boş" : 89
 ```
 
 | Dönem | Doluluk | Materyali olan ders |
 |---|---|---|
 | [1. Yıl Güz](./1-1/) | 🟩🟩🟩🟩🟩🟩🟩🟩⬜⬜ %80 | 8 / 10 |
 | [1. Yıl Bahar](./1-2/) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ %89 | 8 / 9 |
-| [2. Yıl Güz](./2-1/) | 🟩🟩🟩🟩🟩⬜⬜⬜⬜⬜ %50 | 4 / 8 |
+| [2. Yıl Güz](./2-1/) | 🟩🟩🟩🟩🟩🟩⬜⬜⬜⬜ %62 | 5 / 8 |
 | [2. Yıl Bahar](./2-2/) | 🟩🟩🟩🟩🟩🟩🟩🟩🟩⬜ %86 | 6 / 7 |
-| [3. Yıl Güz](./3-1/) | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ %0 | 0 / 6 |
+| [3. Yıl Güz](./3-1/) | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ %17 | 1 / 6 |
 | [3. Yıl Bahar](./3-2/) | ⬜⬜⬜⬜⬜⬜⬜⬜⬜⬜ %0 | 0 / 6 |
 | [4. Yıl Güz](./4-1/) | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ %20 | 1 / 5 |
 | [4. Yıl Bahar](./4-2/) | 🟩🟩⬜⬜⬜⬜⬜⬜⬜⬜ %20 | 1 / 5 |
@@ -132,9 +132,9 @@ Elinde bu derslerden materyal varsa yukarıdaki **🤝 Katkıda Bulunun** bölü
 
 - **1. Yıl Güz:** İş Sağlığı ve Güvenliği 1, Modern Biyolojiye Giriş
 - **1. Yıl Bahar:** Mühendislik Ekonomisi
-- **2. Yıl Güz:** Ayrık Matematik, Diferansiyel Denklemler, Olasılık ve İstatistik, Teknik İngilizce 1
+- **2. Yıl Güz:** Ayrık Matematik, Olasılık ve İstatistik, Teknik İngilizce 1
 - **2. Yıl Bahar:** Teknik İngilizce 2
-- **3. Yıl Güz:** Algoritma Analizi ve Tasarımı, İşletim Sistemleri, Mikrodenetleyiciler, Sinyaller ve Sistemlere Giriş, Staj 1, Veritabanı Yönetim Sistemleri
+- **3. Yıl Güz:** Algoritma Analizi ve Tasarımı, Mikrodenetleyiciler, Sinyaller ve Sistemlere Giriş, Staj 1, Veritabanı Yönetim Sistemleri
 - **3. Yıl Bahar:** Biçimsel Diller ve Otomata Teorisi, Bilgisayar Organizasyonu ve Mimarisi, Bilimsel Araştırma ve Sunum Teknikleri 2, Sistem Programlama, Yazılım Mühendisliği, Web Programlama
 - **4. Yıl Güz:** Bitirme Projesi 1, İş Hukuku ve Etiği, İş Yeri Eğitimi, Staj 2
 - **4. Yıl Bahar:** Bitirme Projesi, Bitirme Projesi 2, Sistem ve Sunucu Yönetimi, Teknik İngilizce
