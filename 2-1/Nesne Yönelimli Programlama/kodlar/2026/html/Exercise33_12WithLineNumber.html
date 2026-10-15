@@ -1,0 +1,300 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Exercise33_12.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "Exercise33_12.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;package jsfexercise;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;import java.util.ArrayList;
+  4&nbsp;&nbsp;import java.util.Collections;
+  5&nbsp;&nbsp;import java.util.Stack;
+  6&nbsp;&nbsp;import javax.faces.bean.ManagedBean;
+  7&nbsp;&nbsp;import javax.faces.bean.RequestScoped;
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;@ManagedBean
+ 10&nbsp;&nbsp;@RequestScoped
+ 11&nbsp;&nbsp;public class Exercise33_12 {
+ 12&nbsp;&nbsp;  private int value1;
+ 13&nbsp;&nbsp;  private int value2;
+ 14&nbsp;&nbsp;  private int value3;
+ 15&nbsp;&nbsp;  private int value4;
+ 16&nbsp;&nbsp;  
+ 17&nbsp;&nbsp;  public int getValue1() {
+ 18&nbsp;&nbsp;    return value1;
+ 19&nbsp;&nbsp;  }
+ 20&nbsp;&nbsp;  
+ 21&nbsp;&nbsp;  public int getValue2() {
+ 22&nbsp;&nbsp;    return value2;
+ 23&nbsp;&nbsp;  }
+ 24&nbsp;&nbsp;    
+ 25&nbsp;&nbsp;  public int getValue3() {
+ 26&nbsp;&nbsp;    return value3;
+ 27&nbsp;&nbsp;  }
+ 28&nbsp;&nbsp;  
+ 29&nbsp;&nbsp;  public int getValue4() {
+ 30&nbsp;&nbsp;    return value4;
+ 31&nbsp;&nbsp;  }
+ 32&nbsp;&nbsp;  
+ 33&nbsp;&nbsp;  public void setValue1(int value1) {
+ 34&nbsp;&nbsp;    this.value1 = value1;
+ 35&nbsp;&nbsp;  }
+ 36&nbsp;&nbsp;    
+ 37&nbsp;&nbsp;  public void setValue2(int value2) {
+ 38&nbsp;&nbsp;    this.value2 = value2;
+ 39&nbsp;&nbsp;  }
+ 40&nbsp;&nbsp;
+ 41&nbsp;&nbsp;  public void setValue3(int value3) {
+ 42&nbsp;&nbsp;    this.value3 = value3;
+ 43&nbsp;&nbsp;  }
+ 44&nbsp;&nbsp;
+ 45&nbsp;&nbsp;  public void setValue4(int value4) {
+ 46&nbsp;&nbsp;    this.value4 = value4;
+ 47&nbsp;&nbsp;  }
+ 48&nbsp;&nbsp;
+ 49&nbsp;&nbsp;  public void refresh() {
+ 50&nbsp;&nbsp;  }
+ 51&nbsp;&nbsp;
+ 52&nbsp;&nbsp;  public String getResponse() {   
+ 53&nbsp;&nbsp;    String solution = findSolution(value1, value2, value3, value4);
+ 54&nbsp;&nbsp;    if (solution.equals(<span class = "literal">"No solution"</span>))
+ 55&nbsp;&nbsp;      <span class = "keyword">return</span> solution;
+ 56&nbsp;&nbsp;    <span class = "keyword">else</span>
+ 57&nbsp;&nbsp;      <span class = "keyword">return</span> solution + <span class = "literal">" is 24"</span>;
+ 58&nbsp;&nbsp;  }
+ 59&nbsp;&nbsp;  
+ 60&nbsp;&nbsp;  <span class = "comment">/* Finds a solution for the four cards */</span>
+ 61&nbsp;&nbsp;  <span class = "keyword">public</span> String findSolution(<span class = "keyword">int</span> a, <span class = "keyword">int</span> b, <span class = "keyword">int</span> c, <span class = "keyword">int</span> d) {
+ 62&nbsp;&nbsp;    String noSolution = <span class = "literal">"No solution"</span>;
+ 63&nbsp;&nbsp;    String solution;
+ 64&nbsp;&nbsp;    String[] operators = {<span class = "literal">"+"</span>, <span class = "literal">"-"</span>, <span class = "literal">"*"</span>, <span class = "literal">"/"</span>};
+ 65&nbsp;&nbsp;    <span class = "keyword">int</span>[][] allCombinations = {     		
+ 66&nbsp;&nbsp;    	{ a, b, c, d }, { d, a, b, c },
+ 67&nbsp;&nbsp;        { c, d, a, b }, { b, c, d, a }, { a, b, d, c }, { c, a, b, d },
+ 68&nbsp;&nbsp;        { d, c, a, b }, { b, d, c, a }, { a, d, c, b }, { b, a, d, c },
+ 69&nbsp;&nbsp;        { c, b, a, d }, { d, c, b, a }, { a, c, b, d }, { d, a, c, b },
+ 70&nbsp;&nbsp;        { b, d, a, c }, { c, b, d, a }, { b, a, c, d }, { d, b, a, c },
+ 71&nbsp;&nbsp;        { c, d, b, a }, { a, c, d, b }, { a, d, b, c }, { c, a, d, b },
+ 72&nbsp;&nbsp;        { b, c, a, d }, { d, b, c, a } };
+ 73&nbsp;&nbsp;    
+ 74&nbsp;&nbsp;    <span class = "keyword">for</span> (String firstOp : operators)  
+ 75&nbsp;&nbsp;      <span class = "keyword">for</span> (String secondOp : operators)
+ 76&nbsp;&nbsp;        <span class = "keyword">for</span> (String thirdOp : operators)
+ 77&nbsp;&nbsp;          <span class = "keyword">for</span> (<span class = "keyword">int</span>[] cardNums : allCombinations)
+ 78&nbsp;&nbsp;            <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">3</span>; i++)
+ 79&nbsp;&nbsp;              <span class = "keyword">for</span> (<span class = "keyword">int</span> j = <span class = "literal">0</span>; j &lt; <span class = "literal">5</span>; j++) {
+ 80&nbsp;&nbsp;                <span class = "keyword">if</span> (i == <span class = "literal">0</span>) {
+ 81&nbsp;&nbsp;                  <span class = "keyword">if</span> (j == <span class = "literal">0</span>) {
+ 82&nbsp;&nbsp;                    <span class = "comment">// Create an expression in the form a firstOp b secondOp c thirdOp d</span>
+ 83&nbsp;&nbsp;                    solution = cardNums[<span class = "literal">0</span>] + firstOp
+ 84&nbsp;&nbsp;                        + cardNums[<span class = "literal">1</span>] + secondOp
+ 85&nbsp;&nbsp;                        + cardNums[<span class = "literal">2</span>] + thirdOp
+ 86&nbsp;&nbsp;                        + cardNums[<span class = "literal">3</span>];
+ 87&nbsp;&nbsp;                    <span class = "keyword">if</span> (EvaluateExpression
+ 88&nbsp;&nbsp;                        .evaluateExpression(solution) == <span class = "literal">24</span>)
+ 89&nbsp;&nbsp;                      <span class = "keyword">return</span> solution;
+ 90&nbsp;&nbsp;                  } <span class = "keyword">else</span> <span class = "keyword">if</span> (j == <span class = "literal">1</span>) {
+ 91&nbsp;&nbsp;                    <span class = "comment">// Create an expression in the form (a firstOp b) secondOp c thirdOp d</span>
+ 92&nbsp;&nbsp;                    solution = <span class = "literal">"("</span> + cardNums[<span class = "literal">0</span>] + firstOp
+ 93&nbsp;&nbsp;                        + cardNums[<span class = "literal">1</span>] + <span class = "literal">")"</span> + secondOp
+ 94&nbsp;&nbsp;                        + cardNums[<span class = "literal">2</span>] + thirdOp
+ 95&nbsp;&nbsp;                        + cardNums[<span class = "literal">3</span>];
+ 96&nbsp;&nbsp;                    <span class = "keyword">if</span> (EvaluateExpression
+ 97&nbsp;&nbsp;                        .evaluateExpression(solution) == <span class = "literal">24</span>)
+ 98&nbsp;&nbsp;                      <span class = "keyword">return</span> solution;
+ 99&nbsp;&nbsp;                  } <span class = "keyword">else</span> <span class = "keyword">if</span> (j == <span class = "literal">2</span>) {
+100&nbsp;&nbsp;                    <span class = "comment">// Create an expression in the form a firstOp (b secondOp c) thirdOp d</span>
+101&nbsp;&nbsp;                    solution = cardNums[<span class = "literal">0</span>] + firstOp + <span class = "literal">"("</span>
+102&nbsp;&nbsp;                        + cardNums[<span class = "literal">1</span>] + secondOp
+103&nbsp;&nbsp;                        + cardNums[<span class = "literal">2</span>] + <span class = "literal">")"</span> + thirdOp
+104&nbsp;&nbsp;                        + cardNums[<span class = "literal">3</span>];
+105&nbsp;&nbsp;                    <span class = "keyword">if</span> (EvaluateExpression
+106&nbsp;&nbsp;                        .evaluateExpression(solution) == <span class = "literal">24</span>)
+107&nbsp;&nbsp;                      <span class = "keyword">return</span> solution;
+108&nbsp;&nbsp;                  } <span class = "keyword">else</span> <span class = "keyword">if</span> (j == <span class = "literal">3</span>) {
+109&nbsp;&nbsp;                    <span class = "comment">// Create an expression in the form a firstOp b secondOp (c thirdOp d)</span>
+110&nbsp;&nbsp;                    solution = cardNums[<span class = "literal">0</span>] + firstOp
+111&nbsp;&nbsp;                        + cardNums[<span class = "literal">1</span>] + secondOp + <span class = "literal">"("</span>
+112&nbsp;&nbsp;                        + cardNums[<span class = "literal">2</span>] + thirdOp
+113&nbsp;&nbsp;                        + cardNums[<span class = "literal">3</span>] + <span class = "literal">")"</span>;
+114&nbsp;&nbsp;                    <span class = "keyword">if</span> (EvaluateExpression
+115&nbsp;&nbsp;                        .evaluateExpression(solution) == <span class = "literal">24</span>)
+116&nbsp;&nbsp;                      <span class = "keyword">return</span> solution;
+117&nbsp;&nbsp;                  } <span class = "keyword">else</span> <span class = "keyword">if</span> (j == <span class = "literal">4</span>) {
+118&nbsp;&nbsp;                    <span class = "comment">// Create an expression in the form (a firstOp b) secondOp (c thirdOp d)</span>
+119&nbsp;&nbsp;                    solution = <span class = "literal">"("</span> + cardNums[<span class = "literal">0</span>] + firstOp
+120&nbsp;&nbsp;                        + cardNums[<span class = "literal">1</span>] + <span class = "literal">")"</span> + secondOp
+121&nbsp;&nbsp;                        + <span class = "literal">"("</span> + cardNums[<span class = "literal">2</span>] + thirdOp
+122&nbsp;&nbsp;                        + cardNums[<span class = "literal">3</span>] + <span class = "literal">")"</span>;
+123&nbsp;&nbsp;                    <span class = "keyword">if</span> (EvaluateExpression
+124&nbsp;&nbsp;                        .evaluateExpression(solution) == <span class = "literal">24</span>)
+125&nbsp;&nbsp;                      <span class = "keyword">return</span> solution;
+126&nbsp;&nbsp;                  }
+127&nbsp;&nbsp;                } <span class = "keyword">else</span> <span class = "keyword">if</span> (i == <span class = "literal">1</span>) {
+128&nbsp;&nbsp;                  <span class = "keyword">if</span> (j == <span class = "literal">0</span>) {
+129&nbsp;&nbsp;                    solution = <span class = "literal">"("</span> + cardNums[<span class = "literal">0</span>] + firstOp
+130&nbsp;&nbsp;                        + cardNums[<span class = "literal">1</span>] + secondOp
+131&nbsp;&nbsp;                        + cardNums[<span class = "literal">2</span>] + <span class = "literal">")"</span> + thirdOp
+132&nbsp;&nbsp;                        + cardNums[<span class = "literal">3</span>];
+133&nbsp;&nbsp;                    <span class = "keyword">if</span> (EvaluateExpression
+134&nbsp;&nbsp;                        .evaluateExpression(solution) == <span class = "literal">24</span>)
+135&nbsp;&nbsp;                      <span class = "keyword">return</span> solution;
+136&nbsp;&nbsp;                  } <span class = "keyword">else</span> <span class = "keyword">if</span> (j == <span class = "literal">1</span>) {
+137&nbsp;&nbsp;                    solution = <span class = "literal">"(("</span> + cardNums[<span class = "literal">0</span>] + firstOp
+138&nbsp;&nbsp;                        + cardNums[<span class = "literal">1</span>] + <span class = "literal">")"</span> + secondOp
+139&nbsp;&nbsp;                        + cardNums[<span class = "literal">2</span>] + <span class = "literal">")"</span> + thirdOp
+140&nbsp;&nbsp;                        + cardNums[<span class = "literal">3</span>];
+141&nbsp;&nbsp;                    <span class = "keyword">if</span> (EvaluateExpression
+142&nbsp;&nbsp;                        .evaluateExpression(solution) == <span class = "literal">24</span>)
+143&nbsp;&nbsp;                      <span class = "keyword">return</span> solution;
+144&nbsp;&nbsp;                  } <span class = "keyword">else</span> <span class = "keyword">if</span> (j == <span class = "literal">2</span>) {
+145&nbsp;&nbsp;                    solution = <span class = "literal">"("</span> + cardNums[<span class = "literal">0</span>] + firstOp
+146&nbsp;&nbsp;                        + <span class = "literal">"("</span> + cardNums[<span class = "literal">1</span>] + secondOp
+147&nbsp;&nbsp;                        + cardNums[<span class = "literal">2</span>] + <span class = "literal">"))"</span> + thirdOp
+148&nbsp;&nbsp;                        + cardNums[<span class = "literal">3</span>];
+149&nbsp;&nbsp;                    <span class = "keyword">if</span> (EvaluateExpression
+150&nbsp;&nbsp;                        .evaluateExpression(solution) == <span class = "literal">24</span>)
+151&nbsp;&nbsp;                      <span class = "keyword">return</span> solution;
+152&nbsp;&nbsp;                  }
+153&nbsp;&nbsp;                } <span class = "keyword">else</span> <span class = "keyword">if</span> (i == <span class = "literal">2</span>) {
+154&nbsp;&nbsp;                  <span class = "keyword">if</span> (j == <span class = "literal">0</span>) {
+155&nbsp;&nbsp;                    solution = cardNums[<span class = "literal">0</span>] + firstOp + <span class = "literal">"("</span>
+156&nbsp;&nbsp;                        + cardNums[<span class = "literal">1</span>] + secondOp
+157&nbsp;&nbsp;                        + cardNums[<span class = "literal">2</span>] + thirdOp
+158&nbsp;&nbsp;                        + cardNums[<span class = "literal">3</span>] + <span class = "literal">")"</span>;
+159&nbsp;&nbsp;                    <span class = "keyword">if</span> (EvaluateExpression
+160&nbsp;&nbsp;                        .evaluateExpression(solution) == <span class = "literal">24</span>)
+161&nbsp;&nbsp;                      <span class = "keyword">return</span> solution;
+162&nbsp;&nbsp;                  } <span class = "keyword">else</span> <span class = "keyword">if</span> (j == <span class = "literal">1</span>) {
+163&nbsp;&nbsp;                    solution = cardNums[<span class = "literal">0</span>] + firstOp + <span class = "literal">"(("</span>
+164&nbsp;&nbsp;                        + cardNums[<span class = "literal">1</span>] + secondOp
+165&nbsp;&nbsp;                        + cardNums[<span class = "literal">2</span>] + <span class = "literal">")"</span> + thirdOp
+166&nbsp;&nbsp;                        + cardNums[<span class = "literal">3</span>] + <span class = "literal">")"</span>;
+167&nbsp;&nbsp;                    <span class = "keyword">if</span> (EvaluateExpression
+168&nbsp;&nbsp;                        .evaluateExpression(solution) == <span class = "literal">24</span>)
+169&nbsp;&nbsp;                      <span class = "keyword">return</span> solution;
+170&nbsp;&nbsp;                  } <span class = "keyword">else</span> <span class = "keyword">if</span> (j == <span class = "literal">2</span>) {
+171&nbsp;&nbsp;                    solution = cardNums[<span class = "literal">0</span>] + firstOp + <span class = "literal">"("</span>
+172&nbsp;&nbsp;                        + cardNums[<span class = "literal">1</span>] + secondOp + <span class = "literal">"("</span>
+173&nbsp;&nbsp;                        + cardNums[<span class = "literal">2</span>] + thirdOp
+174&nbsp;&nbsp;                        + cardNums[<span class = "literal">3</span>] + <span class = "literal">"))"</span>;
+175&nbsp;&nbsp;                    <span class = "keyword">if</span> (EvaluateExpression
+176&nbsp;&nbsp;                        .evaluateExpression(solution) == <span class = "literal">24</span>)
+177&nbsp;&nbsp;                      <span class = "keyword">return</span> solution;
+178&nbsp;&nbsp;                  }
+179&nbsp;&nbsp;                }
+180&nbsp;&nbsp;              }
+181&nbsp;&nbsp;    
+182&nbsp;&nbsp;    <span class = "keyword">return</span> noSolution;
+183&nbsp;&nbsp;  }
+184&nbsp;&nbsp;  
+185&nbsp;&nbsp;  <span class = "comment">/* Class to evaluate card Expression */</span>
+186&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">class</span> EvaluateExpression {
+187&nbsp;&nbsp;    <span class = "comment">/** Evaluate an expression */</span>
+188&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">double</span> evaluateExpression(String expression) {
+189&nbsp;&nbsp;      <span class = "comment">// Create operandStack to store operands</span>
+190&nbsp;&nbsp;      Stack&lt;Double&gt; operandStack = <span class = "keyword">new</span> Stack&lt;Double&gt;();
+191&nbsp;&nbsp;
+192&nbsp;&nbsp;      <span class = "comment">// Create operatorStack to store operators</span>
+193&nbsp;&nbsp;      Stack&lt;Character&gt; operatorStack = <span class = "keyword">new</span> Stack&lt;Character&gt;();
+194&nbsp;&nbsp;
+195&nbsp;&nbsp;      <span class = "comment">// Extract operands and operators</span>
+196&nbsp;&nbsp;      java.util.StringTokenizer tokens = <span class = "keyword">new</span> java.util.StringTokenizer(
+197&nbsp;&nbsp;          expression, <span class = "literal">"()+-<span class = "comment">/*", true);
+198&nbsp;&nbsp;
+199&nbsp;&nbsp;      LINECOMMENTPhase 1: Scan tokens
+200&nbsp;&nbsp;      while (tokens.hasMoreTokens()) {
+201&nbsp;&nbsp;        String token = tokens.nextToken().trim(); LINECOMMENTExtract a token
+202&nbsp;&nbsp;        if (token.length() == 0) LINECOMMENTBlank space
+203&nbsp;&nbsp;          continue; LINECOMMENTBack to the while loop to extract the next
+204&nbsp;&nbsp;        LINECOMMENTtoken
+205&nbsp;&nbsp;        else if (token.charAt(0) == '+' || token.charAt(0) == '-') {
+206&nbsp;&nbsp;          LINECOMMENTProcess all +, -, *, / in the top of the operator stack
+207&nbsp;&nbsp;          while (!operatorStack.isEmpty()
+208&nbsp;&nbsp;              && (operatorStack.peek().equals('+')
+209&nbsp;&nbsp;                  || operatorStack.peek().equals('-')
+210&nbsp;&nbsp;                  || operatorStack.peek().equals('*') || operatorStack
+211&nbsp;&nbsp;                  .peek().equals('/'))) {
+212&nbsp;&nbsp;            processAnOperator(operandStack, operatorStack);
+213&nbsp;&nbsp;          }
+214&nbsp;&nbsp;
+215&nbsp;&nbsp;          LINECOMMENTPush the + or - operator into the operator stack
+216&nbsp;&nbsp;          operatorStack.push(new Character(token.charAt(0)));
+217&nbsp;&nbsp;        } else if (token.charAt(0) == '*' || token.charAt(0) == '/') {
+218&nbsp;&nbsp;          LINECOMMENTProcess all *, / in the top of the operator stack
+219&nbsp;&nbsp;          while (!operatorStack.isEmpty()
+220&nbsp;&nbsp;              && (operatorStack.peek().equals('*') || operatorStack
+221&nbsp;&nbsp;                  .peek().equals('/'))) {
+222&nbsp;&nbsp;            processAnOperator(operandStack, operatorStack);
+223&nbsp;&nbsp;          }
+224&nbsp;&nbsp;
+225&nbsp;&nbsp;          LINECOMMENTPush the * or / operator into the operator stack
+226&nbsp;&nbsp;          operatorStack.push(new Character(token.charAt(0)));
+227&nbsp;&nbsp;        } else if (token.trim().charAt(0) == '(') {
+228&nbsp;&nbsp;          operatorStack.push(new Character('(')); LINECOMMENTPush '(' to stack
+229&nbsp;&nbsp;        } else if (token.trim().charAt(0) == ')') {
+230&nbsp;&nbsp;          LINECOMMENTProcess all the operators in the stack until seeing '('
+231&nbsp;&nbsp;          while (!operatorStack.peek().equals('(')) {
+232&nbsp;&nbsp;            processAnOperator(operandStack, operatorStack);
+233&nbsp;&nbsp;          }
+234&nbsp;&nbsp;
+235&nbsp;&nbsp;          operatorStack.pop(); LINECOMMENTPop the '(' symbol from the stack
+236&nbsp;&nbsp;        } else { LINECOMMENTAn operand scanned
+237&nbsp;&nbsp;          LINECOMMENTPush an operand to the stack
+238&nbsp;&nbsp;          operandStack.push(new Double(token));
+239&nbsp;&nbsp;        }
+240&nbsp;&nbsp;      }
+241&nbsp;&nbsp;
+242&nbsp;&nbsp;      LINECOMMENTPhase 2: process all the remaining operators in the stack
+243&nbsp;&nbsp;      while (!operatorStack.isEmpty()) {
+244&nbsp;&nbsp;        processAnOperator(operandStack, operatorStack);
+245&nbsp;&nbsp;      }
+246&nbsp;&nbsp;
+247&nbsp;&nbsp;      LINECOMMENTReturn the result
+248&nbsp;&nbsp;      return ((Double) (operandStack.pop())).doubleValue();
+249&nbsp;&nbsp;    }
+250&nbsp;&nbsp;
+251&nbsp;&nbsp;    /**
+252&nbsp;&nbsp;     * Process one opeator: Take an operator from operatorStack and apply it
+253&nbsp;&nbsp;     * on the operands in the operandStack
+254&nbsp;&nbsp;     */</span>
+255&nbsp;&nbsp;    public static void processAnOperator(Stack&lt;Double&gt; operandStack,
+256&nbsp;&nbsp;        Stack&lt;Character&gt; operatorStack) {
+257&nbsp;&nbsp;      if (operatorStack.peek().equals(<span class = "literal">'+'</span>)) {
+258&nbsp;&nbsp;        operatorStack.pop();
+259&nbsp;&nbsp;        double op1 = ((Double) (operandStack.pop())).doubleValue();
+260&nbsp;&nbsp;        double op2 = ((Double) (operandStack.pop())).doubleValue();
+261&nbsp;&nbsp;        operandStack.push(new Double(op2 + op1));
+262&nbsp;&nbsp;      } else if (operatorStack.peek().equals(<span class = "literal">'-'</span>)) {
+263&nbsp;&nbsp;        operatorStack.pop();
+264&nbsp;&nbsp;        double op1 = ((Double) (operandStack.pop())).doubleValue();
+265&nbsp;&nbsp;        double op2 = ((Double) (operandStack.pop())).doubleValue();
+266&nbsp;&nbsp;        operandStack.push(new Double(op2 - op1));
+267&nbsp;&nbsp;      } else if (operatorStack.peek().equals(<span class = "literal">'*'</span>)) {
+268&nbsp;&nbsp;        operatorStack.pop();
+269&nbsp;&nbsp;        double op1 = ((Double) (operandStack.pop())).doubleValue();
+270&nbsp;&nbsp;        double op2 = ((Double) (operandStack.pop())).doubleValue();
+271&nbsp;&nbsp;        operandStack.push(new Double(op2 * op1));
+272&nbsp;&nbsp;      } else if (operatorStack.peek().equals(<span class = "literal">'/'</span>)) {
+273&nbsp;&nbsp;        operatorStack.pop();
+274&nbsp;&nbsp;        double op1 = ((Double) (operandStack.pop())).doubleValue();
+275&nbsp;&nbsp;        double op2 = ((Double) (operandStack.pop())).doubleValue();
+276&nbsp;&nbsp;        operandStack.push(new Double(op2 / op1));
+277&nbsp;&nbsp;      }
+278&nbsp;&nbsp;    }
+279&nbsp;&nbsp;  }  
+280&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

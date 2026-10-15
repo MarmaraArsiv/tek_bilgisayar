@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - JSplitPaneDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "JSplitPaneDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> JSplitPaneDemo <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  <span class = "keyword">public</span> JSplitPaneDemo() {
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;    JSplitPane jSplitPane2 = <span class = "keyword">new</span> JSplitPane(JSplitPane.VERTICAL_SPLIT,
+  9&nbsp;&nbsp;      <span class = "keyword">new</span> JButton(<span class = "literal">"Top Component"</span>), <span class = "keyword">new</span> JButton(<span class = "literal">"Bottom Component"</span>));
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;    add(jSplitPane2, BorderLayout.CENTER);
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;  }
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 17&nbsp;&nbsp;    JSplitPaneDemo applet = <span class = "keyword">new</span> JSplitPaneDemo();
+ 18&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 19&nbsp;&nbsp;    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+ 20&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+ 21&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"JSplitPaneDemo"</span>);
+ 22&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+ 23&nbsp;&nbsp;    applet.init();
+ 24&nbsp;&nbsp;    applet.start();
+ 25&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+ 26&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+ 27&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 28&nbsp;&nbsp;  }
+ 29&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

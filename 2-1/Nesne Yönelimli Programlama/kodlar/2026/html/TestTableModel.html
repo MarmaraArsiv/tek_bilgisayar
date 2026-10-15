@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestTableModel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestTableModelWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.table.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestTableModel <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">// Create table column names</span>
+  <span class = "keyword">private</span> String[] columnNames =
+    {<span class = "literal">"Country"</span>, <span class = "literal">"Capital"</span>, <span class = "literal">"Population in Millions"</span>, <span class = "literal">"Democracy"</span>};
+
+  <span class = "comment">// Create table data</span>
+  <span class = "keyword">private</span> Object[][] data = {
+    {<span class = "literal">"USA"</span>, <span class = "literal">"Washington DC"</span>, <span class = "literal">280</span>, <span class = "keyword">true</span>},
+    {<span class = "literal">"Canada"</span>, <span class = "literal">"Ottawa"</span>, <span class = "literal">32</span>, <span class = "keyword">true</span>}
+  };
+
+  <span class = "comment">// Create a model</span>
+  <span class = "keyword">private</span> DefaultTableModel tableModel =
+    <span class = "keyword">new</span> DefaultTableModel(data, columnNames);
+
+  <span class = "comment">// Create a table</span>
+  <span class = "keyword">private</span> JTable jTable1 = <span class = "keyword">new</span> JTable(tableModel);
+
+  <span class = "keyword">public</span> TestTableModel() {
+    add(<span class = "keyword">new</span> JScrollPane(jTable1));
+
+    tableModel.addRow(<span class = "keyword">new</span> Object[]{<span class = "literal">"France"</span>, <span class = "literal">"Paris"</span>, <span class = "literal">60</span>, <span class = "keyword">true</span>});
+    tableModel.insertRow(<span class = "literal">0</span>, <span class = "keyword">new</span> Object[]
+      {<span class = "literal">"India"</span>, <span class = "literal">"New Delhi"</span>, <span class = "literal">1046</span>, <span class = "keyword">true</span>});
+    tableModel.removeRow(<span class = "literal">1</span>);
+    tableModel.addColumn(<span class = "literal">"Area"</span>);
+    tableModel.setValueAt(<span class = "literal">10</span>, <span class = "literal">0</span>, <span class = "literal">4</span>);
+    tableModel.setValueAt(<span class = "literal">20</span>, <span class = "literal">1</span>, <span class = "literal">4</span>);
+    tableModel.setValueAt(<span class = "literal">30</span>, <span class = "literal">2</span>, <span class = "literal">4</span>);
+  }
+
+  //Main method
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TestTableModel applet = <span class = "keyword">new</span> TestTableModel();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"TestTableModel"</span>);
+    frame.getContentPane().add(applet, java.awt.BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 6E - Circle9.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">// Circle9.java: The circle class that extends GeometricObject
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> Circle9 <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> GeometricObject {
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> radius;
+
+  <FONT COLOR="#008000">/** Construct a circle with default properties */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> Circle9() {
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">(<FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">.<FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">);
+  }
+
+  <FONT COLOR="#008000">/** Construct a circle with a specified radius */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> Circle9(<FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> radius) {
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">(radius, <FONT COLOR="#0000ff">"white"</FONT>, <FONT COLOR="#000080"><B>false</B></FONT><FONT COLOR="#000000">);
+  }
+
+  <FONT COLOR="#008000">/** Construct a circle with specified radius, filled, and color */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> Circle9(<FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> radius, String color, <FONT COLOR="#000080"><B>boolean</B></FONT><FONT COLOR="#000000"> filled) {
+    <FONT COLOR="#000080"><B>super</B></FONT><FONT COLOR="#000000">(color, filled);
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.radius = radius;
+  }
+
+  <FONT COLOR="#008000">/** Return radius */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> getRadius() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> radius;
+  }
+
+  <FONT COLOR="#008000">/** Set a new radius */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> setRadius(<FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> radius) {
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.radius = radius;
+  }
+
+  <FONT COLOR="#008000">/** Implement the findArea method defined in GeometricObject */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> findArea() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> radius * radius * Math.PI;
+  }
+
+  <FONT COLOR="#008000">/** Implement the findPerimeter method defined in GeometricObject*/<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> findPerimeter() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#0000ff">2</FONT><FONT COLOR="#000000"> * radius * Math.PI;
+  }
+
+  <FONT COLOR="#008000">/** Override the toString() method defined in the Object class */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> String toString() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#0000ff">"[Circle] radius = "</FONT> + radius;
+  }
+}
+</pre>

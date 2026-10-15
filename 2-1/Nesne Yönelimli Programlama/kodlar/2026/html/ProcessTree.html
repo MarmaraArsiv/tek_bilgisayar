@@ -1,0 +1,154 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 6E - ProcessTree.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.event.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.tree.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> ProcessTree <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JApplet {
+  <FONT COLOR="#008000">// Create a combo box for choosing selection modes
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JComboBox jcboSelectionMode = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JComboBox(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> String[]{
+    <FONT COLOR="#0000ff">"CONTIGUOUS_TREE_SELECTION"</FONT>, <FONT COLOR="#0000ff">"DISCONTIGUOUS_TREE_SELECTION"</FONT>,
+    <FONT COLOR="#0000ff">"SINGLE_TREE_SELECTION"</FONT>});
+
+  <FONT COLOR="#008000">// Create two buttons
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JButton jbtAdd = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JButton(<FONT COLOR="#0000ff">"Add Node"</FONT>);
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JButton jbtRemove = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JButton(<FONT COLOR="#0000ff">"Remove Selected Node"</FONT>);
+
+  <FONT COLOR="#008000">// Declare two trees
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JTree jTree1, jTree2;
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> ProcessTree() {
+    <FONT COLOR="#008000">// Create the first tree
+<FONT COLOR="#000000">    DefaultMutableTreeNode root, europe, northAmerica, us;
+
+    europe = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"Europe"</FONT>);
+    europe.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"UK"</FONT>));
+    europe.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"Germany"</FONT>));
+    europe.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"France"</FONT>));
+    europe.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"Norway"</FONT>));
+
+    northAmerica = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"North America"</FONT>);
+    us = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"US"</FONT>);
+    us.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"California"</FONT>));
+    us.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"Texas"</FONT>));
+    us.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"New York"</FONT>));
+    us.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"Florida"</FONT>));
+    us.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"Illinois"</FONT>));
+    northAmerica.add(us);
+    northAmerica.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"Canada"</FONT>));
+
+    root = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(<FONT COLOR="#0000ff">"World"</FONT>);
+    root.add(europe);
+    root.add(northAmerica);
+
+    jcboSelectionMode.setSelectedIndex(<FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">);
+
+    JPanel p1 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    p1.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">"selectionMode"</FONT>));
+    p1.add(jcboSelectionMode);
+    p1.add(jbtAdd);
+    p1.add(jbtRemove);
+
+    JPanel p2 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    p2.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> GridLayout(<FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">2</FONT><FONT COLOR="#000000">));
+    p2.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JScrollPane(jTree1 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTree(root)));
+    p2.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JScrollPane(jTree2 =
+      <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTree(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultTreeModel(root))));
+
+    getContentPane().add(p1, BorderLayout.NORTH);
+    getContentPane().add(p2, BorderLayout.CENTER);
+
+    <FONT COLOR="#008000">// Register listeners
+<FONT COLOR="#000000">    jcboSelectionMode.addActionListener(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> ActionListener() {
+      <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> actionPerformed(ActionEvent e) {
+        <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (jcboSelectionMode.getSelectedItem().
+            equals(<FONT COLOR="#0000ff">"CONTIGUOUS_TREE_SELECTION"</FONT>))
+          jTree1.getSelectionModel().setSelectionMode(
+              TreeSelectionModel.CONTIGUOUS_TREE_SELECTION);
+        <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (jcboSelectionMode.getSelectedItem().
+            equals(<FONT COLOR="#0000ff">"DISCONTIGUOUS_TREE_SELECTION"</FONT>))
+          jTree1.getSelectionModel().setSelectionMode(
+            TreeSelectionModel.DISCONTIGUOUS_TREE_SELECTION);
+        <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000">
+          jTree1.getSelectionModel().setSelectionMode(
+                TreeSelectionModel.SINGLE_TREE_SELECTION);
+      }
+    });
+
+    jbtAdd.addActionListener(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> ActionListener() {
+      <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> actionPerformed(ActionEvent e) {
+        DefaultMutableTreeNode parent = (DefaultMutableTreeNode)
+          jTree1.getLastSelectedPathComponent();
+
+        <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (parent == <FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">) {
+          JOptionPane.showMessageDialog(<FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">,
+            <FONT COLOR="#0000ff">"No node in the first tree is selected"</FONT>);
+          <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000">;
+        }
+
+        <FONT COLOR="#008000">// Enter a new node
+<FONT COLOR="#000000">        String nodeName = JOptionPane.showInputDialog(
+          <FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">"Enter a name for this new node"</FONT>, <FONT COLOR="#0000ff">"Add a Child"</FONT>,
+          JOptionPane.QUESTION_MESSAGE);
+
+        <FONT COLOR="#008000">// Insert the new node as a child of treeNode
+<FONT COLOR="#000000">        parent.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DefaultMutableTreeNode(nodeName));
+
+        <FONT COLOR="#008000">// Reload the model since a new tree node is added
+<FONT COLOR="#000000">        ((DefaultTreeModel)(jTree1.getModel())).reload();
+        ((DefaultTreeModel)(jTree2.getModel())).reload();
+      }
+    });
+
+    jbtRemove.addActionListener(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> ActionListener() {
+      <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> actionPerformed(ActionEvent e) {
+        <FONT COLOR="#008000">// Get all selected paths
+<FONT COLOR="#000000">        TreePath[] paths = jTree1.getSelectionPaths();
+
+        <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (paths == <FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">) {
+          JOptionPane.showMessageDialog(<FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">,
+            <FONT COLOR="#0000ff">"No node in the left tree is selected"</FONT>);
+          <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000">;
+        }
+
+        <FONT COLOR="#008000">// Remove all selected nodes
+<FONT COLOR="#000000">        <FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i = <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">; i &lt; paths.length; i++) {
+          DefaultMutableTreeNode node = (DefaultMutableTreeNode)
+              (paths[i].getLastPathComponent());
+
+          <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (node.isRoot()) {
+            JOptionPane.showMessageDialog(<FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">,
+              <FONT COLOR="#0000ff">"Cannot remove the root"</FONT>);
+          }
+          <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000">
+            node.removeFromParent();
+        }
+
+        <FONT COLOR="#008000">// Reload the model since a new tree node is added
+<FONT COLOR="#000000">        ((DefaultTreeModel)(jTree1.getModel())).reload();
+        ((DefaultTreeModel)(jTree2.getModel())).reload();
+      }
+    });
+  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    ProcessTree applet = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> ProcessTree();
+    JFrame frame = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JFrame();
+    <FONT COLOR="#008000">//EXIT_ON_CLOSE == 3
+<FONT COLOR="#000000">    frame.setDefaultCloseOperation(<FONT COLOR="#0000ff">3</FONT><FONT COLOR="#000000">);
+    frame.setTitle(<FONT COLOR="#0000ff">"ProcessTree"</FONT>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<FONT COLOR="#0000ff">650</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">320</FONT><FONT COLOR="#000000">);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <FONT COLOR="#0000ff">2</FONT><FONT COLOR="#000000">,
+                      (d.height - frame.getSize().height) / <FONT COLOR="#0000ff">2</FONT><FONT COLOR="#000000">);
+    frame.setVisible(<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+  }
+}
+</pre>

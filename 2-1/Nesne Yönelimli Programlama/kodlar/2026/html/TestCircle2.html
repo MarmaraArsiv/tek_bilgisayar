@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - TestCircle2.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestCircle2 {
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    System.out.println(<span class = "literal">"Before creating objects"</span>);
+    System.out.println(<span class = "literal">"The number of Circle objects is "</span> +
+      Circle2.numberOfObjects);
+
+    <span class = "comment">// Create c1</span>
+    Circle2 c1 = <span class = "keyword">new</span> Circle2();
+
+    <span class = "comment">// Display c1 BEFORE c2 is created</span>
+    System.out.println(<span class = "literal">"\nAfter creating c1"</span>);
+    System.out.println(<span class = "literal">"c1: radius ("</span> + c1.radius +
+      <span class = "literal">") and number of Circle objects ("</span> +
+      c1.numberOfObjects + <span class = "literal">")"</span>);
+
+    <span class = "comment">// Create c2</span>
+    Circle2 c2 = <span class = "keyword">new</span> Circle2(<span class = "literal">5</span>);
+
+    <span class = "comment">// Modify c1</span>
+    c1.radius = <span class = "literal">9</span>;
+
+    <span class = "comment">// Display c1 and c2 AFTER c2 was created</span>
+    System.out.println(<span class = "literal">"\nAfter creating c2 and modifying c1"</span>);
+    System.out.println(<span class = "literal">"c1: radius ("</span> + c1.radius +
+      <span class = "literal">") and number of Circle objects ("</span> +
+      c1.numberOfObjects + <span class = "literal">")"</span>);
+    System.out.println(<span class = "literal">"c2: radius ("</span> + c2.radius +
+      <span class = "literal">") and number of Circle objects ("</span> +
+      c2.numberOfObjects + <span class = "literal">")"</span>);
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SimpleSpinner.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "SimpleSpinner.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.event.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.BorderLayout;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> SimpleSpinner <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  <span class = "comment">// Create a JSpinner</span>
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> JSpinner spinner = <span class = "keyword">new</span> JSpinner();
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;  <span class = "comment">// Create a JLabel</span>
+ 10&nbsp;&nbsp;  <span class = "keyword">private</span> JLabel label = <span class = "keyword">new</span> JLabel(<span class = "literal">""</span>, JLabel.CENTER);
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;  <span class = "keyword">public</span> SimpleSpinner() {
+ 13&nbsp;&nbsp;    <span class = "comment">// Add spinner and label to the UI</span>
+ 14&nbsp;&nbsp;    add(spinner, BorderLayout.NORTH);
+ 15&nbsp;&nbsp;    add(label, BorderLayout.CENTER);
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    <span class = "comment">// Register and create a listener</span>
+ 18&nbsp;&nbsp;    spinner.addChangeListener(<span class = "keyword">new</span> ChangeListener() {
+ 19&nbsp;&nbsp;      @Override 
+ 20&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> stateChanged(javax.swing.event.ChangeEvent e) {
+ 21&nbsp;&nbsp;        label.setText(<span class = "literal">"Previous value: "</span> + spinner.getPreviousValue()
+ 22&nbsp;&nbsp;          + <span class = "literal">" Current value: "</span> + spinner.getValue()
+ 23&nbsp;&nbsp;          + <span class = "literal">" Next value: "</span> + spinner.getNextValue());
+ 24&nbsp;&nbsp;      }
+ 25&nbsp;&nbsp;    });
+ 26&nbsp;&nbsp;  }
+ 27&nbsp;&nbsp;
+ 28&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 29&nbsp;&nbsp;    javax.swing.JFrame frame = <span class = "keyword">new</span> javax.swing.JFrame(
+ 30&nbsp;&nbsp;        <span class = "literal">"SimpleSpinner"</span>);
+ 31&nbsp;&nbsp;
+ 32&nbsp;&nbsp;    SimpleSpinner applet = <span class = "keyword">new</span> SimpleSpinner();
+ 33&nbsp;&nbsp;
+ 34&nbsp;&nbsp;    <span class = "comment">// Add the applet instance to the frame</span>
+ 35&nbsp;&nbsp;    frame.getContentPane().add(applet, java.awt.BorderLayout.CENTER);
+ 36&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 37&nbsp;&nbsp;
+ 38&nbsp;&nbsp;    <span class = "comment">// Invoke init and start</span>
+ 39&nbsp;&nbsp;    applet.init();
+ 40&nbsp;&nbsp;    applet.start();
+ 41&nbsp;&nbsp;
+ 42&nbsp;&nbsp;    <span class = "comment">// Display the frame</span>
+ 43&nbsp;&nbsp;    frame.setSize(<span class = "literal">300</span>, <span class = "literal">300</span>);
+ 44&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 45&nbsp;&nbsp;  }
+ 46&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

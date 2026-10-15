@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 6E - AccountWithoutSyncNew.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.util.concurrent.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.util.concurrent.locks.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> AccountWithoutSyncNew {
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> Account account = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Account();
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    ExecutorService executor = Executors.newCachedThreadPool();
+
+    <FONT COLOR="#008000">// Create and launch 100 threads
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i = <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">; i &lt; <FONT COLOR="#0000ff">100</FONT><FONT COLOR="#000000">; i++) {
+      executor.execute(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> AddAPennyThread());
+    }
+
+    executor.shutdown();
+
+    <FONT COLOR="#008000">// Wait until all tasks are finished
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>while</B></FONT><FONT COLOR="#000000"> (!executor.isTerminated()) {
+    }
+
+    System.out.println(<FONT COLOR="#0000ff">"What is balance ? "</FONT> + account.getBalance());
+  }
+
+  <FONT COLOR="#008000">// A thread for adding a penny to the account
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> AddAPennyThread <FONT COLOR="#000080"><B>implements</B></FONT><FONT COLOR="#000000"> Runnable {
+    <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> run() {
+      account.deposit(<FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">);
+    }
+  }
+
+  <FONT COLOR="#008000">// An inner class for account
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> Account {
+    ReentrantReadWriteLock lock = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> ReentrantReadWriteLock();
+    Lock readLock = lock.readLock();
+    Lock writeLock = lock.writeLock();
+
+    <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> balance = <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">;
+
+    <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> getBalance() {
+      <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> balance;
+    }
+
+    <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> deposit(<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> amount) {
+      writeLock.lock();
+      <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> newBalance = balance + amount;
+
+      <FONT COLOR="#008000">// This delay is deliberately added to magnify the
+<FONT COLOR="#000000">      <FONT COLOR="#008000">// data-corruption problem and make it easy to see.
+<FONT COLOR="#000000">      <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+        Thread.sleep(<FONT COLOR="#0000ff">5</FONT><FONT COLOR="#000000">);
+      }
+      <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (InterruptedException ex) {
+      }
+
+      balance = newBalance;
+      writeLock.unlock();
+    }
+  }
+}
+</pre>

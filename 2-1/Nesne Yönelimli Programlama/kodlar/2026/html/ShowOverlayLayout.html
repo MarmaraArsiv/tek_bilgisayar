@@ -1,0 +1,129 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowOverlayLayout.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ShowOverlayLayoutWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ShowOverlayLayout <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> JButton jbt1 = <span class = "keyword">new</span> JButton(<span class = "literal">"Button 1"</span>);
+  <span class = "keyword">private</span> JButton jbt2 = <span class = "keyword">new</span> JButton(<span class = "literal">"Button 2"</span>);
+
+  <span class = "keyword">private</span> JTextField jtfButton1AlignmentX = <span class = "keyword">new</span> JTextField(<span class = "literal">4</span>);
+  <span class = "keyword">private</span> JTextField jtfButton1AlignmentY = <span class = "keyword">new</span> JTextField(<span class = "literal">4</span>);
+  <span class = "keyword">private</span> JTextField jtfButton2AlignmentX = <span class = "keyword">new</span> JTextField(<span class = "literal">4</span>);
+  <span class = "keyword">private</span> JTextField jtfButton2AlignmentY = <span class = "keyword">new</span> JTextField(<span class = "literal">4</span>);
+  <span class = "keyword">private</span> JComboBox jcboButton1Opaque = <span class = "keyword">new</span> JComboBox(
+    <span class = "keyword">new</span> Object[]{<span class = "keyword">new</span> Boolean(<span class = "keyword">true</span>), <span class = "keyword">new</span> Boolean(<span class = "keyword">false</span>)});
+
+  <span class = "comment">// Panel p1 to hold two buttons</span>
+  <span class = "keyword">private</span> JPanel p1 = <span class = "keyword">new</span> JPanel();
+
+  <span class = "keyword">public</span> ShowOverlayLayout() {
+    <span class = "comment">// Add two buttons to p1 of OverlayLayout</span>
+    p1.setLayout(<span class = "keyword">new</span> OverlayLayout(p1));
+    p1.add(jbt1);
+    p1.add(jbt2);
+
+    JPanel p2 = <span class = "keyword">new</span> JPanel();
+    p2.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">5</span>, <span class = "literal">1</span>));
+    p2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Button 1's alignmentX"</span>));
+    p2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Button 1's alignmentY"</span>));
+    p2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Button 2's alignmentX"</span>));
+    p2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Button 2's alignmentY"</span>));
+    p2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Button 1's opaque"</span>));
+
+    JPanel p3 = <span class = "keyword">new</span> JPanel();
+    p3.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">5</span>, <span class = "literal">1</span>));
+    p3.add(jtfButton1AlignmentX);
+    p3.add(jtfButton1AlignmentY);
+    p3.add(jtfButton2AlignmentX);
+    p3.add(jtfButton2AlignmentY);
+    p3.add(jcboButton1Opaque);
+
+    JPanel p4 = <span class = "keyword">new</span> JPanel();
+    p4.setLayout(<span class = "keyword">new</span> BorderLayout(<span class = "literal">4</span>, <span class = "literal">4</span>));
+    p4.add(p2, BorderLayout.WEST);
+    p4.add(p3, BorderLayout.CENTER);
+
+    add(p1, BorderLayout.CENTER);
+    add(p4, BorderLayout.WEST);
+
+    jtfButton1AlignmentX.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jbt1.setAlignmentX(
+          Float.parseFloat(jtfButton1AlignmentX.getText()));
+        p1.revalidate(); <span class = "comment">// Cause the components to be rearranged</span>
+        p1.repaint(); <span class = "comment">// Cause the viewing area to be repainted</span>
+      }
+    });
+    jtfButton1AlignmentY.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jbt1.setAlignmentY(
+          Float.parseFloat(jtfButton1AlignmentY.getText()));
+        p1.revalidate(); <span class = "comment">// Cause the components to be rearranged</span>
+        p1.repaint(); <span class = "comment">// Cause the viewing area to be repainted</span>
+      }
+    });
+    jtfButton2AlignmentX.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jbt2.setAlignmentX(
+          Float.parseFloat(jtfButton2AlignmentX.getText()));
+        p1.revalidate(); <span class = "comment">// Cause the components to be rearranged</span>
+        p1.repaint(); <span class = "comment">// Cause the viewing area to be repainted</span>
+      }
+    });
+    jtfButton2AlignmentY.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jbt2.setAlignmentY(
+          Float.parseFloat(jtfButton2AlignmentY.getText()));
+        p1.revalidate(); <span class = "comment">// Cause the components to be rearranged</span>
+        p1.repaint(); <span class = "comment">// Cause the viewing area to be repainted</span>
+      }
+    });
+    jcboButton1Opaque.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jbt1.setOpaque(((Boolean)(jcboButton1Opaque.
+          getSelectedItem())).booleanValue());
+        p1.revalidate(); <span class = "comment">// Cause the components to be rearranged</span>
+        p1.repaint(); <span class = "comment">// Cause the viewing area to be repainted</span>
+      }
+    });
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ShowOverlayLayout applet = <span class = "keyword">new</span> ShowOverlayLayout();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"ShowOverlayLayout"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>, (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

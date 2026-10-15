@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DrawHexagon.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "DrawHexagonWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.JFrame;
+<span class = "keyword">import</span> javax.swing.JPanel;
+<span class = "keyword">import</span> java.awt.Graphics;
+<span class = "keyword">import</span> java.awt.Polygon;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> DrawHexagon <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">public</span> DrawHexagon() {
+    setTitle(<span class = "literal">"DrawHexagon"</span>);
+    add(<span class = "keyword">new</span> HexagonPanel());
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    DrawHexagon frame = <span class = "keyword">new</span> DrawHexagon();
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(<span class = "literal">200</span>, <span class = "literal">250</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+
+<span class = "comment">// Draw a polygon in the panel</span>
+<span class = "keyword">class</span> HexagonPanel <span class = "keyword">extends</span> JPanel {
+  @Override
+  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+    <span class = "keyword">super</span>.paintComponent(g);
+
+    <span class = "keyword">int</span> xCenter = getWidth() / <span class = "literal">2</span>;
+    <span class = "keyword">int</span> yCenter = getHeight() / <span class = "literal">2</span>;
+    <span class = "keyword">int</span> radius = (<span class = "keyword">int</span>)(Math.min(getWidth(), getHeight()) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">4</span>);
+
+    <span class = "comment">// Create a Polygon object</span>
+    Polygon polygon = <span class = "keyword">new</span> Polygon();
+
+    <span class = "comment">// Add points to the polygon</span>
+    <span class = "keyword">double</span> angle = <span class = "literal">0</span>;
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">6</span>; i++) {
+      polygon.addPoint((<span class = "keyword">int</span>)(xCenter + radius * Math.cos(angle)), 
+        (<span class = "keyword">int</span>)(yCenter - radius * Math.sin(angle)));
+      
+      angle += <span class = "literal">2</span> * Math.PI / <span class = "literal">6</span>;
+    }
+
+    <span class = "comment">// Draw the polygon</span>
+    g.drawPolygon(polygon);
+  }
+}
+</pre>
+</body>
+</html>

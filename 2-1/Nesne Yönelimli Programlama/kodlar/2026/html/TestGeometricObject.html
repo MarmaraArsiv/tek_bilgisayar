@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestGeometricObject.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestGeometricObjectWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestGeometricObject {
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Declare and initialize two geometric objects</span>
+    GeometricObject geoObject1 = <span class = "keyword">new</span> Circle(<span class = "literal">5</span>);
+    GeometricObject geoObject2 = <span class = "keyword">new</span> Rectangle(<span class = "literal">5</span>, <span class = "literal">3</span>);
+
+    System.out.println(<span class = "literal">"The two objects have the same area? "</span> +
+      equalArea(geoObject1, geoObject2));
+
+    <span class = "comment">// Display circle</span>
+    displayGeometricObject(geoObject1);
+
+    <span class = "comment">// Display rectangle</span>
+    displayGeometricObject(geoObject2);
+  }
+
+  <span class = "comment">/** A method for comparing the areas of two geometric objects */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">boolean</span> equalArea(GeometricObject object1,
+      GeometricObject object2) {
+    <span class = "keyword">return</span> object1.getArea() == object2.getArea();
+  }
+
+  <span class = "comment">/** A method for displaying a geometric object */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> displayGeometricObject(GeometricObject object) {
+    System.out.println();
+    System.out.println(<span class = "literal">"The area is "</span> + object.getArea());
+    System.out.println(<span class = "literal">"The perimeter is "</span> + object.getPerimeter());
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestGeometricObject" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

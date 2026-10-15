@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Intro to Java Programming, 6E - NewRecordDialog.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> java.util.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> java.awt.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> java.awt.event.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> javax.swing.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> javax.swing.table.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">public</span> <span class = "keyword">class</span> NewRecordDialog <span class = "keyword">extends</span> JDialog <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">private</span> JButton jbtOK = <span class = "keyword">new</span> JButton(<span class = "literal">"OK"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">private</span> JButton jbtCancel = <span class = "keyword">new</span> JButton(<span class = "literal">"Cancel"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">private</span> DefaultTableModel tableModel = <span class = "keyword">new</span> DefaultTableModel(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">private</span> JTable jTable1 = <span class = "keyword">new</span> JTable(tableModel)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">private</span> Vector newRecord;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">/** Creates new form NewRecordDialog */</span><span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> NewRecordDialog(Frame parent,<span class = "literal"></span> <span class = "keyword">boolean</span> modal)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">super</span>(parent,<span class = "literal"></span> modal)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> setTitle(<span class = "literal">"Insert a New Record"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> setModal(<span class = "keyword">true</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> JPanel jPanel1 = <span class = "keyword">new</span> JPanel(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> jPanel1.add(jbtOK)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> jPanel1.add(jbtCancel)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> jbtOK.addActionListener(<span class = "keyword">new</span> ActionListener(<span class = "literal"></span>)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> setVisible(<span class = "keyword">false</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> jbtCancel.addActionListener(<span class = "keyword">new</span> ActionListener(<span class = "literal"></span>)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> newRecord = <span class = "keyword">null</span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> setVisible(<span class = "keyword">false</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> add(jPanel1,<span class = "literal"></span> BorderLayout.SOUTH)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> add(<span class = "keyword">new</span> JScrollPane(jTable1)<span class = "literal"></span>,<span class = "literal"></span> BorderLayout.CENTER)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> NewRecordDialog(<span class = "literal"></span>)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">this</span>(<span class = "keyword">null</span>,<span class = "literal"></span> <span class = "keyword">true</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> Vector getNewRecord(<span class = "literal"></span>)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">return</span> newRecord;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">/** Display the table */</span><span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">void</span> displayTable(Vector columnHeaderVector)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">this</span>.setSize(<span class = "keyword">new</span> Dimension(<span class = "literal">400</span>,<span class = "literal"></span> <span class = "literal">100</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> tableModel.setColumnIdentifiers(columnHeaderVector)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Must create a new vector for a new record</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> tableModel.addRow(newRecord = <span class = "keyword">new</span> Vector(<span class = "literal"></span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> setVisible(<span class = "keyword">true</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+</pre>
+</body>
+</html>

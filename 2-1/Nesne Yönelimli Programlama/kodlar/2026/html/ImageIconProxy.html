@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Intro to Java Programming, 6E - ImageIconProxy.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> java.awt.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> javax.swing.ImageIcon;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">public</span> <span class = "keyword">class</span> ImageIconProxy <span class = "keyword">extends</span> ImageIcon <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">private</span> java.net.URL url;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">private</span> String filename;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">private</span> ImageIcon image;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">/** Constructs a proxy for delayed loading of an image file */</span><span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> ImageIconProxy(String filename)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">this</span>.filename = filename;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">/** Constructs a proxy for delayed loading of an image from URL */</span><span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> ImageIconProxy(java.net.URL url)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">this</span>.url = url;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">/** Override paintIcon to display image icon */</span><span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">void</span> paintIcon(Component c,<span class = "literal"></span> Graphics g,<span class = "literal"></span> <span class = "keyword">int</span> x,<span class = "literal"></span> <span class = "keyword">int</span> y)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Load the image if it hasn't been loaded yet.</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">if</span> <span class = "literal"></span>(image == <span class = "keyword">null</span>)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">if</span> <span class = "literal"></span>(filename != <span class = "keyword">null</span>)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> System.out.println(<span class = "literal">"Loading "</span> <span class = "literal"></span>+<span class = "literal"></span> filename)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> image = <span class = "keyword">new</span> ImageIcon(filename)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">else</span> <span class = "keyword">if</span> <span class = "literal"></span>(url != <span class = "keyword">null</span>)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> System.out.println(<span class = "literal">"Loading "</span> <span class = "literal"></span>+<span class = "literal"></span> url)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> image = <span class = "keyword">new</span> ImageIcon(url)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> image.paintIcon(c,<span class = "literal"></span> g,<span class = "literal"></span> x,<span class = "literal"></span> y)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">/** Override getIconWidth to return icon width */</span><span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">int</span> getIconWidth(<span class = "literal"></span>)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">return</span> <span class = "literal"></span>(image == <span class = "keyword">null</span>)<span class = "literal"></span> ? <span class = "literal">200</span> : image.getIconWidth(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">/** Override getIconHeight to return icon height */</span><span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">int</span> getIconHeight(<span class = "literal"></span>)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">return</span> <span class = "literal"></span>(image == <span class = "keyword">null</span>)<span class = "literal"></span> ? <span class = "literal">100</span> : image.getIconHeight(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+</pre>
+</body>
+</html>

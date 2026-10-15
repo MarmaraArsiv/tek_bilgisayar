@@ -1,0 +1,30 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - TestCircle3.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestCircle3 {
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a Circle with radius 5.0</span>
+    Circle3 myCircle = <span class = "keyword">new</span> Circle3(<span class = "literal">5</span>.<span class = "literal">0</span>);
+    System.out.println(<span class = "literal">"The area of the circle of radius "</span>
+      + myCircle.getRadius() + <span class = "literal">" is "</span> + myCircle.getArea());
+
+    <span class = "comment">// Increase myCircle's radius by 10%</span>
+    myCircle.setRadius(myCircle.getRadius() * <span class = "literal">1</span>.<span class = "literal">1</span>);
+    System.out.println(<span class = "literal">"The area of the circle of radius "</span>
+      + myCircle.getRadius() + <span class = "literal">" is "</span> + myCircle.getArea());
+  }
+}
+</pre>
+</body>
+</html>

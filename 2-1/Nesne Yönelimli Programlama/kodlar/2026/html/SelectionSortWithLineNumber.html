@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SelectionSort.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "SelectionSort.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> SelectionSort {
+  2&nbsp;&nbsp;  <span class = "comment">/** The method for sorting the numbers */</span>
+  3&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> selectionSort(<span class = "keyword">double</span>[] list) {
+  4&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; list.length - <span class = "literal">1</span>; i++) {
+  5&nbsp;&nbsp;      <span class = "comment">// Find the minimum in the list[i..list.length-1]</span>
+  6&nbsp;&nbsp;      <span class = "keyword">double</span> currentMin = list[i];
+  7&nbsp;&nbsp;      <span class = "keyword">int</span> currentMinIndex = i;
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> j = i + <span class = "literal">1</span>; j &lt; list.length; j++) {
+ 10&nbsp;&nbsp;        <span class = "keyword">if</span> (currentMin &gt; list[j]) {
+ 11&nbsp;&nbsp;          currentMin = list[j];
+ 12&nbsp;&nbsp;          currentMinIndex = j;
+ 13&nbsp;&nbsp;        }
+ 14&nbsp;&nbsp;      }
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;      <span class = "comment">// Swap list[i] with list[currentMinIndex] if necessary;</span>
+ 17&nbsp;&nbsp;      <span class = "keyword">if</span> (currentMinIndex != i) {
+ 18&nbsp;&nbsp;        list[currentMinIndex] = list[i];
+ 19&nbsp;&nbsp;        list[i] = currentMin;
+ 20&nbsp;&nbsp;      }
+ 21&nbsp;&nbsp;    }
+ 22&nbsp;&nbsp;  }
+ 23&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "SelectionSort" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

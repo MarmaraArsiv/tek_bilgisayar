@@ -1,0 +1,193 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - JavaToHTML4E.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">/**
+ *
+ * Usage: Copy this class to the folder, run it with java JavaToHTMLftim * to generate
+ *   HTM file for all the .java file in this folder. The generated .htm files are
+ *   stored in the same folder
+ */<FONT COLOR="#000000">
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.util.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.io.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> JavaToHTML4E {
+  <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> BufferedReader input;
+  <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> BufferedWriter output;
+  <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> Set keywordSet;
+  <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>boolean</B></FONT><FONT COLOR="#000000"> commentPara = <FONT COLOR="#000080"><B>false</B></FONT><FONT COLOR="#000000">;
+  <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>boolean</B></FONT><FONT COLOR="#000000"> stringToken = <FONT COLOR="#000080"><B>false</B></FONT><FONT COLOR="#000000">;
+  <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> String outputFileName;
+  <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> String inputFileName;
+
+  <FONT COLOR="#008000">/** Main method */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    <FONT COLOR="#008000">// Array of all Java keywords + true + null
+<FONT COLOR="#000000">    String[] keywordString = {<FONT COLOR="#0000ff">"abstract"</FONT>, <FONT COLOR="#0000ff">"finally"</FONT>, <FONT COLOR="#0000ff">"public"</FONT>,
+      <FONT COLOR="#0000ff">"boolean"</FONT>, <FONT COLOR="#0000ff">"float"</FONT>, <FONT COLOR="#0000ff">"return"</FONT>, <FONT COLOR="#0000ff">"break"</FONT>, <FONT COLOR="#0000ff">"for"</FONT>, <FONT COLOR="#0000ff">"short"</FONT>, <FONT COLOR="#0000ff">"byte"</FONT>,
+      <FONT COLOR="#0000ff">"goto"</FONT>, <FONT COLOR="#0000ff">"static"</FONT>, <FONT COLOR="#0000ff">"case"</FONT>, <FONT COLOR="#0000ff">"if"</FONT>, <FONT COLOR="#0000ff">"super"</FONT>, <FONT COLOR="#0000ff">"catch"</FONT>, <FONT COLOR="#0000ff">"implements"</FONT>,
+      <FONT COLOR="#0000ff">"switch"</FONT>, <FONT COLOR="#0000ff">"char"</FONT>, <FONT COLOR="#0000ff">"import"</FONT>, <FONT COLOR="#0000ff">"synchronized"</FONT>, <FONT COLOR="#0000ff">"class"</FONT>,
+      <FONT COLOR="#0000ff">"instanceof"</FONT>, <FONT COLOR="#0000ff">"this"</FONT>, <FONT COLOR="#0000ff">"const"</FONT>, <FONT COLOR="#0000ff">"int"</FONT>, <FONT COLOR="#0000ff">"throw"</FONT>, <FONT COLOR="#0000ff">"continue"</FONT>,
+      <FONT COLOR="#0000ff">"interface"</FONT>, <FONT COLOR="#0000ff">"throws"</FONT>, <FONT COLOR="#0000ff">"default"</FONT>, <FONT COLOR="#0000ff">"long"</FONT>, <FONT COLOR="#0000ff">"transient"</FONT>, <FONT COLOR="#0000ff">"do"</FONT>,
+      <FONT COLOR="#0000ff">"native"</FONT>, <FONT COLOR="#0000ff">"try"</FONT>, <FONT COLOR="#0000ff">"double"</FONT>, <FONT COLOR="#0000ff">"new"</FONT>, <FONT COLOR="#0000ff">"void"</FONT>, <FONT COLOR="#0000ff">"else"</FONT>, <FONT COLOR="#0000ff">"package"</FONT>,
+      <FONT COLOR="#0000ff">"volatile"</FONT>, <FONT COLOR="#0000ff">"extends"</FONT>, <FONT COLOR="#0000ff">"private"</FONT>, <FONT COLOR="#0000ff">"while"</FONT>, <FONT COLOR="#0000ff">"final"</FONT>,
+      <FONT COLOR="#0000ff">"protected"</FONT>, <FONT COLOR="#0000ff">"true"</FONT>, <FONT COLOR="#0000ff">"false"</FONT>, <FONT COLOR="#0000ff">"null"</FONT>};
+
+    keywordSet = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> HashSet(Arrays.asList(keywordString));
+
+    <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+      <FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i = 0; i &lt; args.length; i++) {
+        <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (args[i].endsWith(<FONT COLOR="#0000ff">".java"</FONT>) && !(args[i].equals(<FONT COLOR="#0000ff">"JavaToHTMLftim.java"</FONT>)) ) {
+          input = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BufferedReader(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> FileReader(args[i]));
+
+          inputFileName = args[i];
+          <FONT COLOR="#008000">// -4 for .doc original files and -5 for .java original files
+<FONT COLOR="#000000">          outputFileName = <FONT COLOR="#0000ff">"c:\\intro5eInstructorCD\\slide\\html\\"</FONT> +
+            args[i].substring(0, args[i].length() - 5) + <FONT COLOR="#0000ff">".html"</FONT>;
+
+          System.out.println(<FONT COLOR="#0000ff">"File "</FONT> + args[i] + <FONT COLOR="#0000ff">"'s HTML version is "</FONT>);
+          System.out.println(<FONT COLOR="#0000ff">" stored to "</FONT> + outputFileName);
+
+          output = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BufferedWriter(
+            <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> FileWriter(outputFileName));
+
+          JavaToHTMLftim();
+        }
+      }
+    }
+    <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (Exception ex) {
+    }
+  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> JavaToHTMLftim() {
+    <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+      output.write(<FONT COLOR="#0000ff">"&lt;HTML&gt;"</FONT>);
+      output.newLine();
+      output.write(<FONT COLOR="#0000ff">"&lt;HEAD&gt;"</FONT>);
+      output.newLine();
+      output.write(<FONT COLOR="#0000ff">"&lt;TITLE&gt;Intro to Java Programming, 5E - "</FONT> + inputFileName + <FONT COLOR="#0000ff">"&lt;/TITLE&gt;"</FONT>);
+      output.newLine();
+
+      output.write(<FONT COLOR="#0000ff">"&lt;META HTTP-EQUIV=\"Content-Type\" CONTENT=\"text/html; charset=windows-1252\"&gt;"</FONT>);
+      output.newLine();
+
+      output.write(<FONT COLOR="#0000ff">"&lt;/HEAD&gt;"</FONT>);
+      output.newLine();
+      output.write(<FONT COLOR="#0000ff">"&lt;basefont size=5&gt;"</FONT>);
+      output.write(<FONT COLOR="#0000ff">"&lt;pre&gt;"</FONT>);
+
+      String line ;
+
+      <FONT COLOR="#000080"><B>while</B></FONT><FONT COLOR="#000000"> ((line = input.readLine()) != <FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">) {
+        processLine(line);
+      }
+
+      output.write(<FONT COLOR="#0000ff">"&lt;/pre&gt;"</FONT>);
+    }
+    <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (Exception ex) {
+      System.out.println(ex);
+    }
+    <FONT COLOR="#000080"><B>finally</B></FONT><FONT COLOR="#000000"> {
+      <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+        input.close();
+        output.close();
+      }
+      <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (Exception ex) {
+      }
+    }
+  }
+
+  <FONT COLOR="#008000">/** Process a line*/<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> processLine(String line) <FONT COLOR="#000080"><B>throws</B></FONT><FONT COLOR="#000000"> Exception {
+    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (line.length() == 0) {
+      output.newLine();
+      <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000">;
+    }
+
+    <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i = 0;
+
+    StringTokenizer st = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> StringTokenizer(
+      line, <FONT COLOR="#0000ff">"\r\n\t [];(){},"</FONT>, <FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+    String token;
+    <FONT COLOR="#000080"><B>boolean</B></FONT><FONT COLOR="#000000"> commentPreviousLine = <FONT COLOR="#000080"><B>false</B></FONT><FONT COLOR="#000000">;
+
+    <FONT COLOR="#000080"><B>while</B></FONT><FONT COLOR="#000000"> (st.hasMoreTokens()) {
+      token = filterToken(st.nextToken());
+
+      <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (token == <FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">) <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000">;
+      <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (token.length() == 0) <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000">;
+
+      <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (token.length() &gt; 1 && token.startsWith(<FONT COLOR="#0000ff">"//"</FONT>)) {
+        output.write(<FONT COLOR="#0000ff">"&lt;FONT COLOR=\"#008000\"&gt;"</FONT>);
+        output.write(token);
+        commentPreviousLine = <FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">;
+      }
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (token.length() &gt; 1 && token.startsWith(<FONT COLOR="#0000ff">"/*"</FONT>)) {
+        commentPara = <FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">;
+        output.write(<FONT COLOR="#0000ff">"&lt;FONT COLOR=\"#008000\"&gt;"</FONT>);
+        output.write(token);
+      }
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> ((token.length() &gt; 1) && token.endsWith(<FONT COLOR="#0000ff">"*/"</FONT>)) {
+        output.write(token);
+        output.write(<FONT COLOR="#0000ff">"&lt;FONT COLOR=\"#000000\"&gt;"</FONT>);
+        commentPara = <FONT COLOR="#000080"><B>false</B></FONT><FONT COLOR="#000000">;
+      }
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (token.startsWith(<FONT COLOR="#0000ff">"\""</FONT>) && token.endsWith(<FONT COLOR="#0000ff">"\""</FONT>) && (token.length() &gt; 1)) {
+        output.write(<FONT COLOR="#0000ff">"&lt;FONT COLOR=\"#0000ff\"&gt;"</FONT> + token + <FONT COLOR="#0000ff">"&lt;/FONT&gt;"</FONT>);
+      }
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (token.startsWith(<FONT COLOR="#0000ff">"\""</FONT>) && token.endsWith(<FONT COLOR="#0000ff">"\""</FONT>) && (token.length() == 1)) {
+        <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (stringToken) {
+          output.write(token + <FONT COLOR="#0000ff">"&lt;/FONT&gt;"</FONT>);
+          stringToken = <FONT COLOR="#000080"><B>false</B></FONT><FONT COLOR="#000000">;
+        }
+        <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> {
+          output.write(<FONT COLOR="#0000ff">"&lt;FONT COLOR=\"#0000ff\"&gt;"</FONT> + token);
+          stringToken = <FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">;
+        }
+      }
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (token.startsWith(<FONT COLOR="#0000ff">"\""</FONT>)) {
+        output.write(<FONT COLOR="#0000ff">"&lt;FONT COLOR=\"#0000ff\"&gt;"</FONT>);
+        output.write(token);
+        stringToken = <FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">;
+      }
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (token.endsWith(<FONT COLOR="#0000ff">"\""</FONT>) && (!token.endsWith(<FONT COLOR="#0000ff">"\\\""</FONT>))) {
+        output.write(token);
+        output.write(<FONT COLOR="#0000ff">"&lt;/FONT&gt;"</FONT>);
+        stringToken = <FONT COLOR="#000080"><B>false</B></FONT><FONT COLOR="#000000">;
+      }
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (!commentPara && !commentPreviousLine && keywordSet.contains(token)) {
+        output.write(<FONT COLOR="#0000ff">"&lt;FONT COLOR=\"#000080\"&gt;&lt;B&gt;"</FONT> + token +
+         <FONT COLOR="#0000ff">"&lt;/B&gt;&lt;/FONT&gt;&lt;FONT COLOR=\"#000000\"&gt;"</FONT>);
+      }
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> {
+        output.write(token);
+      }
+    }
+
+    output.newLine();
+    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (commentPreviousLine) {
+      commentPreviousLine = <FONT COLOR="#000080"><B>false</B></FONT><FONT COLOR="#000000">;
+      output.write(<FONT COLOR="#0000ff">"&lt;FONT COLOR=\"#000000\"&gt;"</FONT>);
+    }
+  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> String filterToken(String token) {
+    StringBuffer tokenBuffer = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> StringBuffer();
+
+    <FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i=0; i&lt;token.length(); i++) {
+      <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (token.charAt(i) == '&lt;') {
+        tokenBuffer.append(<FONT COLOR="#0000ff">"&lt;"</FONT>);
+      }
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (token.charAt(i) == '&gt;') {
+         tokenBuffer.append(<FONT COLOR="#0000ff">"&gt;"</FONT>);
+      }
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> {
+        tokenBuffer.append(token.charAt(i));
+      }
+    }
+
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> tokenBuffer.toString();
+  }
+}
+</pre>

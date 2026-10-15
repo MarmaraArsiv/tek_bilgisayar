@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - WildCardDemo1.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "WildCardDemo1WithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> WildCardDemo1 {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args ) {
+     GenericStack&lt;Integer&gt; intStack = <span class = "keyword">new</span> GenericStack&lt;Integer&gt;();
+     intStack.push(<span class = "literal">1</span>); <span class = "comment">// 1 is autoboxed into new Integer(1)</span>
+     intStack.push(<span class = "literal">2</span>);
+     intStack.push(<span class = "literal">-</span><span class = "literal">2</span>);
+
+<span class = "comment">// Error:     System.out.print("The max number is " + max(intStack));</span>
+  }
+
+  <span class = "comment">/** Find the maximum in a stack of numbers */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">double</span> max(GenericStack&lt;Number&gt; stack) {
+     <span class = "keyword">double</span> max = stack.pop().doubleValue(); <span class = "comment">// initialize max</span>
+
+     <span class = "keyword">while</span> (!stack.isEmpty()) {
+       <span class = "keyword">double</span> value = stack.pop().doubleValue();
+       <span class = "keyword">if</span> (value &gt; max)
+         max = value;
+     }
+
+     <span class = "keyword">return</span> max;
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "WildCardDemo1" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

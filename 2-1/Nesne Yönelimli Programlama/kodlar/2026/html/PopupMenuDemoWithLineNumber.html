@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - PopupMenuDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "PopupMenuDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> PopupMenuDemo <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  <span class = "keyword">private</span> JPopupMenu jPopupMenu1 = <span class = "keyword">new</span> JPopupMenu();
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> JMenuItem jmiNew = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"New"</span>,
+  8&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"image/new.gif"</span>)));
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> JMenuItem jmiOpen = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"Open"</span>,
+ 10&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"image/open.gif"</span>)));
+ 11&nbsp;&nbsp;  <span class = "keyword">private</span> JMenuItem jmiPrint = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"Print"</span>,
+ 12&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"image/print.gif"</span>)));
+ 13&nbsp;&nbsp;  <span class = "keyword">private</span> JMenuItem jmiExit = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"Exit"</span>);
+ 14&nbsp;&nbsp;  <span class = "keyword">private</span> JTextArea jTextArea1 = <span class = "keyword">new</span> JTextArea();
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;  <span class = "keyword">public</span> PopupMenuDemo() {
+ 17&nbsp;&nbsp;    jPopupMenu1.add(jmiNew);
+ 18&nbsp;&nbsp;    jPopupMenu1.add(jmiOpen);
+ 19&nbsp;&nbsp;    jPopupMenu1.addSeparator();
+ 20&nbsp;&nbsp;    jPopupMenu1.add(jmiPrint);
+ 21&nbsp;&nbsp;    jPopupMenu1.addSeparator();
+ 22&nbsp;&nbsp;    jPopupMenu1.add(jmiExit);
+ 23&nbsp;&nbsp;    jPopupMenu1.add(jmiExit);
+ 24&nbsp;&nbsp;
+ 25&nbsp;&nbsp;    add(<span class = "keyword">new</span> JScrollPane(jTextArea1), BorderLayout.CENTER);
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;    jmiNew.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 28&nbsp;&nbsp;      @Override
+ 29&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 30&nbsp;&nbsp;        System.out.println(<span class = "literal">"Process New"</span>);
+ 31&nbsp;&nbsp;      }
+ 32&nbsp;&nbsp;    });
+ 33&nbsp;&nbsp;    jmiOpen.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 34&nbsp;&nbsp;      @Override
+ 35&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 36&nbsp;&nbsp;        System.out.println(<span class = "literal">"Process Open"</span>);
+ 37&nbsp;&nbsp;      }
+ 38&nbsp;&nbsp;    });
+ 39&nbsp;&nbsp;    jmiPrint.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 40&nbsp;&nbsp;      @Override
+ 41&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 42&nbsp;&nbsp;        System.out.println(<span class = "literal">"Process Print"</span>);
+ 43&nbsp;&nbsp;      }
+ 44&nbsp;&nbsp;    });
+ 45&nbsp;&nbsp;    jmiExit.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 46&nbsp;&nbsp;      @Override
+ 47&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 48&nbsp;&nbsp;        System.exit(<span class = "literal">1</span>);
+ 49&nbsp;&nbsp;      }
+ 50&nbsp;&nbsp;    });
+ 51&nbsp;&nbsp;    jTextArea1.addMouseListener(<span class = "keyword">new</span> MouseAdapter() {
+ 52&nbsp;&nbsp;      @Override
+ 53&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> mousePressed(MouseEvent e) { <span class = "comment">// For Motif</span>
+ 54&nbsp;&nbsp;        showPopup(e);
+ 55&nbsp;&nbsp;      }
+ 56&nbsp;&nbsp;
+ 57&nbsp;&nbsp;      @Override
+ 58&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> mouseReleased(MouseEvent e) { <span class = "comment">// For Windows</span>
+ 59&nbsp;&nbsp;        showPopup(e);
+ 60&nbsp;&nbsp;      }
+ 61&nbsp;&nbsp;    });
+ 62&nbsp;&nbsp;  }
+ 63&nbsp;&nbsp;
+ 64&nbsp;&nbsp;  <span class = "comment">/** Display popup menu when triggered */</span>
+ 65&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">void</span> showPopup(java.awt.event.MouseEvent evt) {
+ 66&nbsp;&nbsp;    <span class = "keyword">if</span> (evt.isPopupTrigger())
+ 67&nbsp;&nbsp;      jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
+ 68&nbsp;&nbsp;  }
+ 69&nbsp;&nbsp;
+ 70&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 71&nbsp;&nbsp;    PopupMenuDemo applet = <span class = "keyword">new</span> PopupMenuDemo();
+ 72&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 73&nbsp;&nbsp;    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+ 74&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+ 75&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"PopupMenuDemo"</span>);
+ 76&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+ 77&nbsp;&nbsp;    applet.init();
+ 78&nbsp;&nbsp;    applet.start();
+ 79&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+ 80&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+ 81&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 82&nbsp;&nbsp;  }
+ 83&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Intro to Java Programming, 6E - AdditionTutorConsoleInput.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> javax.swing.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> java.util.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">public</span> <span class = "keyword">class</span> AdditionTutorConsoleInput <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[<span class = "literal"></span>]<span class = "literal"></span> args)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">int</span> number1 = <span class = "literal"></span>(<span class = "keyword">int</span>)<span class = "literal"></span>(System.currentTimeMillis(<span class = "literal"></span>)<span class = "literal"></span> <span class = "literal"></span>%<span class = "literal"></span> <span class = "literal">10</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">int</span> number2 = <span class = "literal"></span>(<span class = "keyword">int</span>)<span class = "literal"></span>(System.currentTimeMillis(<span class = "literal"></span>)<span class = "literal"></span> <span class = "literal"></span>*<span class = "literal"></span> <span class = "literal">7</span> <span class = "literal"></span>%<span class = "literal"></span> <span class = "literal">10</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> Scanner input = <span class = "keyword">new</span> Scanner(System.in)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> System.out.print(<span class = "literal">"What is "</span> <span class = "literal"></span>+<span class = "literal"></span> number1 <span class = "literal"></span>+<span class = "literal"></span> <span class = "literal">" <span class = "literal"></span>+<span class = "literal"></span> "</span> <span class = "literal"></span>+<span class = "literal"></span> number2 <span class = "literal"></span>+<span class = "literal"></span> <span class = "literal">"? "</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">int</span> answer = input.nextInt(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> System.out.println(number1 <span class = "literal"></span>+<span class = "literal"></span> <span class = "literal">" <span class = "literal"></span>+<span class = "literal"></span> "</span> <span class = "literal"></span>+<span class = "literal"></span> number2 <span class = "literal"></span>+<span class = "literal"></span> <span class = "literal">" = "</span> <span class = "literal"></span>+<span class = "literal"></span> answer <span class = "literal"></span>+<span class = "literal"></span> <span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal">" is "</span> <span class = "literal"></span>+<span class = "literal"></span> <span class = "literal"></span>(number1 <span class = "literal"></span>+<span class = "literal"></span> number2 == answer)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+</pre>
+</body>
+</html>

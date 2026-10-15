@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Person1.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "Person1WithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> Person1 <span class = "keyword">implements</span> Comparable&lt;Person1&gt; {
+  <span class = "keyword">private</span> Name name;
+  <span class = "keyword">private</span> Address address;
+
+  <span class = "comment">/** Construct a person with default properties */</span>
+  <span class = "keyword">public</span> Person1() {
+    <span class = "keyword">this</span>(<span class = "keyword">new</span> Name(<span class = "literal">"Jill"</span>, <span class = "literal">'S'</span>, <span class = "literal">"Barr"</span>),
+      <span class = "keyword">new</span> Address(<span class = "literal">"100 Main"</span>, <span class = "literal">"Savannah"</span>, <span class = "literal">"GA"</span>, <span class = "literal">"31411"</span>));
+  }
+
+  <span class = "comment">/** Construct a person with specified name and address */</span>
+  <span class = "keyword">public</span> Person1(Name name, Address address) {
+    <span class = "keyword">this</span>.name = name;
+    <span class = "keyword">this</span>.address = address;
+  }
+
+  <span class = "comment">/** Return name */</span>
+  <span class = "keyword">public</span> Name getName() {
+    <span class = "keyword">return</span> name;
+  }
+
+  <span class = "comment">/** Set a new name */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setName(Name name) {
+    <span class = "keyword">this</span>.name = name;
+  }
+
+  <span class = "comment">/** Return address */</span>
+  <span class = "keyword">public</span> Address getAddress() {
+    <span class = "keyword">return</span> address;
+  }
+
+  <span class = "comment">/** Set a new address */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setAddress(Address address) {
+    <span class = "keyword">this</span>.address = address;
+  }
+
+  @Override <span class = "comment">/** Override the toString method */</span>
+  <span class = "keyword">public</span> String toString() {
+    <span class = "keyword">return</span> <span class = "literal">'\n'</span> + name.getFullName() + <span class = "literal">'\n'</span> +
+      address.getFullAddress() + <span class = "literal">'\n'</span>;
+  }
+
+  <span class = "comment">/** Implement compareTo in the Comparable interface */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> compareTo(Person1 o) {
+    <span class = "keyword">return</span> name.compareTo(o.name);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "Person1" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

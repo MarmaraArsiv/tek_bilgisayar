@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Intro to Java Programming, 6E - EnumeratedTypeDemo1.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> EnumeratedTypeDemo1 <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[<span class = "literal"></span>]<span class = "literal"></span> args)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> Day day1 = Day.FRIDAY;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> Day day2 = Day.THURSDAY;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> System.out.println(<span class = "literal">"day1's name is "</span> <span class = "literal"></span>+<span class = "literal"></span> day1.name(<span class = "literal"></span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> System.out.println(<span class = "literal">"day2's name is "</span> <span class = "literal"></span>+<span class = "literal"></span> day2.name(<span class = "literal"></span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> System.out.println(<span class = "literal">"day1's ordinal is "</span> <span class = "literal"></span>+<span class = "literal"></span> day1.ordinal(<span class = "literal"></span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> System.out.println(<span class = "literal">"day2's ordinal is "</span> <span class = "literal"></span>+<span class = "literal"></span> day2.ordinal(<span class = "literal"></span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> System.out.println(<span class = "literal">"day1.equals(day2)<span class = "literal"></span> returns "</span> <span class = "literal"></span>+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> day1.equals(day2)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> System.out.println(<span class = "literal">"day1.toString(<span class = "literal"></span>)<span class = "literal"></span> returns "</span> <span class = "literal"></span>+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> day1.toString(<span class = "literal"></span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> System.out.println(<span class = "literal">"day1.compareTo(day2)<span class = "literal"></span> returns "</span> <span class = "literal"></span>+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> day1.compareTo(day2)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">enum</span> Day <span class = "literal"></span>{SUNDAY,<span class = "literal"></span> MONDAY,<span class = "literal"></span> TUESDAY,<span class = "literal"></span> WEDNESDAY,<span class = "literal"></span> THURSDAY,<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> FRIDAY,<span class = "literal"></span> SATURDAY}<span class = "literal"></span><span class = "literal"></span>
+</pre>
+</body>
+</html>

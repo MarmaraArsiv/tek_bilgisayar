@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestStackQueue.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestStackQueue.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestStackQueue {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  3&nbsp;&nbsp;    <span class = "comment">// Create a stack</span>
+  4&nbsp;&nbsp;    GenericStack&lt;String&gt; stack = <span class = "keyword">new</span> GenericStack&lt;&gt;();
+  5&nbsp;&nbsp;
+  6&nbsp;&nbsp;    <span class = "comment">// Add elements to the stack</span>
+  7&nbsp;&nbsp;    stack.push(<span class = "literal">"Tom"</span>); <span class = "comment">// Push it to the stack</span>
+  8&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">1</span>) "</span> + stack);
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;    stack.push(<span class = "literal">"Susan"</span>); <span class = "comment">// Push it to the the stack</span>
+ 11&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">2</span>) "</span> + stack);
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;    stack.push(<span class = "literal">"Kim"</span>); <span class = "comment">// Push it to the stack</span>
+ 14&nbsp;&nbsp;    stack.push(<span class = "literal">"Michael"</span>); <span class = "comment">// Push it to the stack</span>
+ 15&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">3</span>) "</span> + stack);
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    <span class = "comment">// Remove elements from the stack</span>
+ 18&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">4</span>) "</span> + stack.pop());
+ 19&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">5</span>) "</span> + stack.pop());
+ 20&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">6</span>) "</span> + stack);
+ 21&nbsp;&nbsp;
+ 22&nbsp;&nbsp;    <span class = "comment">// Create a queue</span>
+ 23&nbsp;&nbsp;    GenericQueue&lt;String&gt; queue = <span class = "keyword">new</span> GenericQueue&lt;&gt;();
+ 24&nbsp;&nbsp;
+ 25&nbsp;&nbsp;    <span class = "comment">// Add elements to the queue</span>
+ 26&nbsp;&nbsp;    queue.enqueue(<span class = "literal">"Tom"</span>); <span class = "comment">// Add it to the queue</span>
+ 27&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">7</span>) "</span> + queue);
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;    queue.enqueue(<span class = "literal">"Susan"</span>); <span class = "comment">// Add it to the queue</span>
+ 30&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">8</span>) "</span> + queue);
+ 31&nbsp;&nbsp;
+ 32&nbsp;&nbsp;    queue.enqueue(<span class = "literal">"Kim"</span>); <span class = "comment">// Add it to the queue</span>
+ 33&nbsp;&nbsp;    queue.enqueue(<span class = "literal">"Michael"</span>); <span class = "comment">// Add it to the queue</span>
+ 34&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">9</span>) "</span> + queue);
+ 35&nbsp;&nbsp;
+ 36&nbsp;&nbsp;    <span class = "comment">// Remove elements from the queue</span>
+ 37&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">10</span>) "</span> + queue.dequeue());
+ 38&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">11</span>) "</span> + queue.dequeue());
+ 39&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">12</span>) "</span> + queue);
+ 40&nbsp;&nbsp;  }
+ 41&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestStackQueue" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

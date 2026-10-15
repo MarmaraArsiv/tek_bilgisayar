@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - CallBackImpl.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "CallBackImplWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.rmi.*;
+<span class = "keyword">import</span> java.rmi.server.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> CallBackImpl <span class = "keyword">extends</span> UnicastRemoteObject
+    <span class = "keyword">implements</span> CallBack {
+  <span class = "comment">// The client will be called by the server through callback</span>
+  <span class = "keyword">private</span> TicTacToeClientRMI thisClient;
+
+  <span class = "comment">/** Constructor */</span>
+  <span class = "keyword">public</span> CallBackImpl(Object client) <span class = "keyword">throws</span> RemoteException {
+    thisClient = (TicTacToeClientRMI)client;
+  }
+
+  <span class = "comment">/** The server notifies the client for taking a turn */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> takeTurn(<span class = "keyword">boolean</span> turn) <span class = "keyword">throws</span> RemoteException {
+    thisClient.setMyTurn(turn);
+  }
+
+  <span class = "comment">/** The server sends a message to be displayed by the client */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> notify(String message) <span class = "keyword">throws</span> RemoteException {
+    thisClient.setMessage(message);
+  }
+
+  <span class = "comment">/** The server notifies a client of the other player's move */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> mark(<span class = "keyword">int</span> row, <span class = "keyword">int</span> column, <span class = "keyword">char</span> token)
+      <span class = "keyword">throws</span> RemoteException {
+    thisClient.mark(row, column, token);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "CallBackImpl" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

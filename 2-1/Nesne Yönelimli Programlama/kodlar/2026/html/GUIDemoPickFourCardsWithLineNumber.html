@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - GUIDemoPickFourCards.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "GUIDemoPickFourCards.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  5&nbsp;&nbsp;
+  6&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> GUIDemoPickFourCards <span class = "keyword">extends</span> JApplet {
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> JLabel jlblCard1 = <span class = "keyword">new</span> JLabel();
+  8&nbsp;&nbsp;  <span class = "keyword">private</span> JLabel jlblCard2 = <span class = "keyword">new</span> JLabel();
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> JLabel jlblCard3 = <span class = "keyword">new</span> JLabel();
+ 10&nbsp;&nbsp;  <span class = "keyword">private</span> JLabel jlblCard4 = <span class = "keyword">new</span> JLabel();
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtRefresh = <span class = "keyword">new</span> JButton(<span class = "literal">"Refresh"</span>);
+ 13&nbsp;&nbsp;  <span class = "keyword">private</span> ImageIcon[] cardIcons = <span class = "keyword">new</span> ImageIcon[<span class = "literal">52</span>];
+ 14&nbsp;&nbsp;  <span class = "keyword">private</span> JPanel panel1 = <span class = "keyword">new</span> JPanel();
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;  <span class = "keyword">private</span> ArrayList&lt;Integer&gt; list = <span class = "keyword">new</span> ArrayList&lt;Integer&gt;();
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;  <span class = "keyword">public</span> GUIDemoPickFourCards() {
+ 19&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">52</span>; i++)
+ 20&nbsp;&nbsp;      list.add(i);
+ 21&nbsp;&nbsp;
+ 22&nbsp;&nbsp;    <span class = "comment">// Load the image icons</span>
+ 23&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">52</span>; i++)
+ 24&nbsp;&nbsp;      cardIcons[i] = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/card/"</span> + (i + <span class = "literal">1</span>) + <span class = "literal">".png"</span>);
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;    panel1.add(jlblCard1);
+ 27&nbsp;&nbsp;    panel1.add(jlblCard2);
+ 28&nbsp;&nbsp;    panel1.add(jlblCard3);
+ 29&nbsp;&nbsp;    panel1.add(jlblCard4);
+ 30&nbsp;&nbsp;
+ 31&nbsp;&nbsp;    JPanel panel3 = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> FlowLayout(FlowLayout.RIGHT));
+ 32&nbsp;&nbsp;    panel3.add(jbtRefresh);
+ 33&nbsp;&nbsp;
+ 34&nbsp;&nbsp;    add(panel1, BorderLayout.CENTER);
+ 35&nbsp;&nbsp;    add(panel3, BorderLayout.SOUTH);
+ 36&nbsp;&nbsp;
+ 37&nbsp;&nbsp;    refresh();
+ 38&nbsp;&nbsp;
+ 39&nbsp;&nbsp;    jbtRefresh.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 40&nbsp;&nbsp;      @Override
+ 41&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 42&nbsp;&nbsp;        refresh();
+ 43&nbsp;&nbsp;      }
+ 44&nbsp;&nbsp;    });
+ 45&nbsp;&nbsp;
+ 46&nbsp;&nbsp;  }
+ 47&nbsp;&nbsp;
+ 48&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">void</span> refresh() {
+ 49&nbsp;&nbsp;    Collections.shuffle(list);
+ 50&nbsp;&nbsp;
+ 51&nbsp;&nbsp;    <span class = "keyword">int</span> index1 = list.get(<span class = "literal">0</span>);
+ 52&nbsp;&nbsp;    <span class = "keyword">int</span> index2 = list.get(<span class = "literal">1</span>);
+ 53&nbsp;&nbsp;    <span class = "keyword">int</span> index3 = list.get(<span class = "literal">2</span>);
+ 54&nbsp;&nbsp;    <span class = "keyword">int</span> index4 = list.get(<span class = "literal">3</span>);
+ 55&nbsp;&nbsp;
+ 56&nbsp;&nbsp;    jlblCard1.setIcon(cardIcons[index1]);
+ 57&nbsp;&nbsp;    jlblCard2.setIcon(cardIcons[index2]);
+ 58&nbsp;&nbsp;    jlblCard3.setIcon(cardIcons[index3]);
+ 59&nbsp;&nbsp;    jlblCard4.setIcon(cardIcons[index4]);
+ 60&nbsp;&nbsp;  }
+ 61&nbsp;&nbsp;
+ 62&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 63&nbsp;&nbsp;    GUIDemoPickFourCards applet = <span class = "keyword">new</span> GUIDemoPickFourCards();
+ 64&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 65&nbsp;&nbsp;    <span class = "comment">// EXIT_ON_CLOSE == 3</span>
+ 66&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+ 67&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"GUIDemoPickFourCards"</span>);
+ 68&nbsp;&nbsp;    frame.add(applet, BorderLayout.CENTER);
+ 69&nbsp;&nbsp;    applet.init();
+ 70&nbsp;&nbsp;    applet.start();
+ 71&nbsp;&nbsp;    frame.pack();
+ 72&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+ 73&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 74&nbsp;&nbsp;  }
+ 75&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

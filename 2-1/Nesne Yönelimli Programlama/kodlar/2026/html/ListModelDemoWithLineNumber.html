@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ListModelDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ListModelDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ListModelDemo <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  <span class = "keyword">private</span> DefaultListModel&lt;String&gt; listModel 
+  7&nbsp;&nbsp;    = <span class = "keyword">new</span> DefaultListModel&lt;String&gt;();
+  8&nbsp;&nbsp;  <span class = "keyword">private</span> JList&lt;String&gt; jlst = <span class = "keyword">new</span> JList&lt;String&gt;(listModel);
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtAdd = <span class = "keyword">new</span> JButton(<span class = "literal">"Add new item"</span>);
+ 10&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtRemove = <span class = "keyword">new</span> JButton(<span class = "literal">"Remove selected item"</span>);
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;  <span class = "comment">/** Construct the applet */</span>
+ 13&nbsp;&nbsp;  <span class = "keyword">public</span> ListModelDemo() {
+ 14&nbsp;&nbsp;    <span class = "comment">// Add items to the list model</span>
+ 15&nbsp;&nbsp;    listModel.addElement(<span class = "literal">"Item1"</span>);
+ 16&nbsp;&nbsp;    listModel.addElement(<span class = "literal">"Item2"</span>);
+ 17&nbsp;&nbsp;    listModel.addElement(<span class = "literal">"Item3"</span>);
+ 18&nbsp;&nbsp;    listModel.addElement(<span class = "literal">"Item4"</span>);
+ 19&nbsp;&nbsp;    listModel.addElement(<span class = "literal">"Item5"</span>);
+ 20&nbsp;&nbsp;    listModel.addElement(<span class = "literal">"Item6"</span>);
+ 21&nbsp;&nbsp;
+ 22&nbsp;&nbsp;    JPanel panel = <span class = "keyword">new</span> JPanel();
+ 23&nbsp;&nbsp;    panel.add(jbtAdd);
+ 24&nbsp;&nbsp;    panel.add(jbtRemove);
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;    add(panel, BorderLayout.NORTH);
+ 27&nbsp;&nbsp;    add(<span class = "keyword">new</span> JScrollPane(jlst), BorderLayout.CENTER);
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;    <span class = "comment">// Register listeners</span>
+ 30&nbsp;&nbsp;    jbtAdd.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 31&nbsp;&nbsp;      @Override
+ 32&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 33&nbsp;&nbsp;        String newItem =
+ 34&nbsp;&nbsp;          JOptionPane.showInputDialog(<span class = "literal">"Enter a new item"</span>);
+ 35&nbsp;&nbsp;
+ 36&nbsp;&nbsp;        <span class = "keyword">if</span> (newItem != <span class = "keyword">null</span>)
+ 37&nbsp;&nbsp;          <span class = "keyword">if</span> (jlst.getSelectedIndex() == <span class = "literal">-</span><span class = "literal">1</span>)
+ 38&nbsp;&nbsp;            listModel.addElement(newItem);
+ 39&nbsp;&nbsp;          <span class = "keyword">else</span>
+ 40&nbsp;&nbsp;            listModel.add(jlst.getSelectedIndex(), newItem);
+ 41&nbsp;&nbsp;      }
+ 42&nbsp;&nbsp;    });
+ 43&nbsp;&nbsp;
+ 44&nbsp;&nbsp;    jbtRemove.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 45&nbsp;&nbsp;      @Override
+ 46&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 47&nbsp;&nbsp;        listModel.remove(jlst.getSelectedIndex());
+ 48&nbsp;&nbsp;      }
+ 49&nbsp;&nbsp;    });
+ 50&nbsp;&nbsp;  }
+ 51&nbsp;&nbsp;
+ 52&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 53&nbsp;&nbsp;    ListModelDemo applet = <span class = "keyword">new</span> ListModelDemo();
+ 54&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 55&nbsp;&nbsp;    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+ 56&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+ 57&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"ListModelDemo"</span>);
+ 58&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+ 59&nbsp;&nbsp;    applet.init();
+ 60&nbsp;&nbsp;    applet.start();
+ 61&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>, <span class = "literal">320</span>);
+ 62&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+ 63&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 64&nbsp;&nbsp;  }
+ 65&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

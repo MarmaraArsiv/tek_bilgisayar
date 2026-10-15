@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ImagePatternDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ImagePatternDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+
+<span class = "keyword">import</span> javafx.application.Application;
+<span class = "keyword">import</span> <span class = "keyword">static</span> javafx.application.Application.launch;
+<span class = "keyword">import</span> javafx.scene.Scene;
+<span class = "keyword">import</span> javafx.scene.image.Image;
+<span class = "keyword">import</span> javafx.scene.layout.Pane;
+<span class = "keyword">import</span> javafx.scene.paint.Color;
+<span class = "keyword">import</span> javafx.scene.paint.ImagePattern;
+<span class = "keyword">import</span> javafx.scene.shape.Circle;
+<span class = "keyword">import</span> javafx.scene.shape.Polygon;
+<span class = "keyword">import</span> javafx.scene.shape.Rectangle;
+<span class = "keyword">import</span> javafx.stage.Stage;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ImagePatternDemo <span class = "keyword">extends</span> Application {
+  <span class = "keyword">private</span> <span class = "keyword">static</span> <span class = "keyword">final</span> String imageURL =
+    <span class = "literal">"http://www.cs.armstrong.edu/liang/common/image/ohioMap.gif"</span>;
+
+  @Override <span class = "comment">// Override the start method in the Application class</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {
+    Pane pane = <span class = "keyword">new</span> Pane();
+
+    Rectangle rectangle1 = <span class = "keyword">new</span> Rectangle(<span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">50</span>, <span class = "literal">50</span>);
+    Rectangle rectangle2 = <span class = "keyword">new</span> Rectangle(<span class = "literal">70</span>, <span class = "literal">10</span>, <span class = "literal">50</span>, <span class = "literal">50</span>);
+    Rectangle rectangle3 = <span class = "keyword">new</span> Rectangle(<span class = "literal">130</span>, <span class = "literal">10</span>, <span class = "literal">50</span>, <span class = "literal">50</span>);
+    Rectangle rectangle4 = <span class = "keyword">new</span> Rectangle(<span class = "literal">190</span>, <span class = "literal">10</span>, <span class = "literal">50</span>, <span class = "literal">50</span>);
+
+    Image image = <span class = "keyword">new</span> Image(imageURL);
+    rectangle1.setFill(<span class = "keyword">new</span> ImagePattern(image, <span class = "literal">0</span>, <span class = "literal">0</span>, <span class = "literal">1</span>, <span class = "literal">1</span>, <span class = "keyword">true</span>));
+    rectangle2.setFill(<span class = "keyword">new</span> ImagePattern(image, <span class = "literal">0</span>, <span class = "literal">0</span>, <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">5</span>, <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">5</span>, <span class = "keyword">true</span>));
+    rectangle3.setFill(<span class = "keyword">new</span> ImagePattern(image, <span class = "literal">0</span>, <span class = "literal">0</span>, <span class = "literal">50</span>, <span class = "literal">50</span>, <span class = "keyword">false</span>));
+    rectangle4.setFill(<span class = "keyword">new</span> ImagePattern(image, <span class = "literal">0</span>, <span class = "literal">0</span>, <span class = "literal">25</span>, <span class = "literal">25</span>, <span class = "keyword">false</span>));
+    
+    pane.getChildren().addAll(rectangle1, rectangle2, 
+      rectangle3, rectangle4);
+    Scene scene = <span class = "keyword">new</span> Scene(pane, <span class = "literal">300</span>, <span class = "literal">250</span>);           
+    primaryStage.setTitle(<span class = "literal">"ImagePatternDemo"</span>); <span class = "comment">// Set the window title</span>
+    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the window</span>
+    primaryStage.show(); <span class = "comment">// Display the window</span>
+  }
+
+  <span class = "comment">// Lauch the program from command-line</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    launch(args);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "ImagePatternDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

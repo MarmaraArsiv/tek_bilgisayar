@@ -1,0 +1,97 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowInternalFrame.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ShowInternalFrame.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ShowInternalFrame <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  <span class = "comment">// Create image icons</span>
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> ImageIcon USIcon =
+  8&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/usIcon.gif"</span>));
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> ImageIcon CanadaIcon =
+ 10&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/caIcon.gif"</span>));
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;  <span class = "keyword">private</span> JMenuBar jMenuBar1 = <span class = "keyword">new</span> JMenuBar();
+ 13&nbsp;&nbsp;  <span class = "keyword">private</span> JMenuItem jmiUS = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"US"</span>);
+ 14&nbsp;&nbsp;  <span class = "keyword">private</span> JMenuItem jmiCanada = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"Canada"</span>);
+ 15&nbsp;&nbsp;  <span class = "keyword">private</span> JLabel jlblImage = <span class = "keyword">new</span> JLabel(USIcon, JLabel.CENTER);
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;  <span class = "comment">// Create JDesktopPane to hold the internal frame</span>
+ 18&nbsp;&nbsp;  <span class = "keyword">private</span> JDesktopPane desktop = <span class = "keyword">new</span> JDesktopPane();
+ 19&nbsp;&nbsp;  <span class = "keyword">private</span> JInternalFrame internalFrame =
+ 20&nbsp;&nbsp;    <span class = "keyword">new</span> JInternalFrame(<span class = "literal">"US"</span>, <span class = "keyword">true</span>, <span class = "keyword">true</span>, <span class = "keyword">true</span>, <span class = "keyword">true</span>);
+ 21&nbsp;&nbsp;
+ 22&nbsp;&nbsp;  <span class = "keyword">public</span> ShowInternalFrame() {
+ 23&nbsp;&nbsp;    desktop.add(internalFrame);
+ 24&nbsp;&nbsp;
+ 25&nbsp;&nbsp;    <span class = "keyword">this</span>.setSize(<span class = "keyword">new</span> Dimension(<span class = "literal">400</span>, <span class = "literal">300</span>));
+ 26&nbsp;&nbsp;    <span class = "keyword">this</span>.getContentPane().add(desktop, BorderLayout.CENTER);
+ 27&nbsp;&nbsp;
+ 28&nbsp;&nbsp;    jlblImage.setIcon(USIcon);
+ 29&nbsp;&nbsp;    internalFrame.setFrameIcon(USIcon);
+ 30&nbsp;&nbsp;
+ 31&nbsp;&nbsp;    internalFrame.add(jlblImage);
+ 32&nbsp;&nbsp;    internalFrame.setLocation(<span class = "literal">20</span>, <span class = "literal">20</span>);
+ 33&nbsp;&nbsp;    internalFrame.setSize(<span class = "literal">100</span>, <span class = "literal">100</span>);
+ 34&nbsp;&nbsp;    internalFrame.setVisible(<span class = "keyword">true</span>);
+ 35&nbsp;&nbsp;
+ 36&nbsp;&nbsp;    JMenu jMenu1 = <span class = "keyword">new</span> JMenu(<span class = "literal">"Flags"</span>);
+ 37&nbsp;&nbsp;    jMenuBar1.add(jMenu1);
+ 38&nbsp;&nbsp;    jMenu1.add(jmiUS);
+ 39&nbsp;&nbsp;    jMenu1.add(jmiCanada);
+ 40&nbsp;&nbsp;
+ 41&nbsp;&nbsp;    <span class = "keyword">this</span>.setJMenuBar(jMenuBar1);
+ 42&nbsp;&nbsp;
+ 43&nbsp;&nbsp;    jmiUS.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 44&nbsp;&nbsp;      @Override
+ 45&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 46&nbsp;&nbsp;        jlblImage.setIcon(USIcon);
+ 47&nbsp;&nbsp;        internalFrame.setFrameIcon(USIcon);
+ 48&nbsp;&nbsp;        internalFrame.setTitle(<span class = "literal">"US"</span>);
+ 49&nbsp;&nbsp;      }
+ 50&nbsp;&nbsp;    });
+ 51&nbsp;&nbsp;
+ 52&nbsp;&nbsp;    jmiCanada.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 53&nbsp;&nbsp;      @Override
+ 54&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 55&nbsp;&nbsp;        jlblImage.setIcon(CanadaIcon);
+ 56&nbsp;&nbsp;        internalFrame.setFrameIcon(CanadaIcon);
+ 57&nbsp;&nbsp;        internalFrame.setTitle(<span class = "literal">"Canada"</span>);
+ 58&nbsp;&nbsp;      }
+ 59&nbsp;&nbsp;    });
+ 60&nbsp;&nbsp;  }
+ 61&nbsp;&nbsp;
+ 62&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 63&nbsp;&nbsp;    ShowInternalFrame applet = <span class = "keyword">new</span> ShowInternalFrame();
+ 64&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 65&nbsp;&nbsp;    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+ 66&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+ 67&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"ShowInternalFrame"</span>);
+ 68&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+ 69&nbsp;&nbsp;    applet.init();
+ 70&nbsp;&nbsp;    applet.start();
+ 71&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+ 72&nbsp;&nbsp;    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+ 73&nbsp;&nbsp;    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+ 74&nbsp;&nbsp;      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+ 75&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 76&nbsp;&nbsp;  }
+ 77&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

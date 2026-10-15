@@ -1,0 +1,144 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TablePropertiesDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TablePropertiesDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.event.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TablePropertiesDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">// Create table column names</span>
+  <span class = "keyword">private</span> String[] columnNames =
+    {<span class = "literal">"Country"</span>, <span class = "literal">"Capital"</span>, <span class = "literal">"Population in Millions"</span>, <span class = "literal">"Democracy"</span>};
+
+  <span class = "comment">// Create table data</span>
+  <span class = "keyword">private</span> Object[][] rowData = {
+    {<span class = "literal">"USA"</span>, <span class = "literal">"Washington DC"</span>, <span class = "literal">280</span>, <span class = "keyword">true</span>},
+    {<span class = "literal">"Canada"</span>, <span class = "literal">"Ottawa"</span>, <span class = "literal">32</span>, <span class = "keyword">true</span>},
+    {<span class = "literal">"United Kingdom"</span>, <span class = "literal">"London"</span>, <span class = "literal">60</span>, <span class = "keyword">true</span>},
+    {<span class = "literal">"Germany"</span>, <span class = "literal">"Berlin"</span>, <span class = "literal">83</span>, <span class = "keyword">true</span>},
+    {<span class = "literal">"France"</span>, <span class = "literal">"Paris"</span>, <span class = "literal">60</span>, <span class = "keyword">true</span>},
+    {<span class = "literal">"Norway"</span>, <span class = "literal">"Oslo"</span>, <span class = "literal">4</span><span class = "literal">.</span><span class = "literal">5</span>, <span class = "keyword">true</span>},
+    {<span class = "literal">"India"</span>, <span class = "literal">"New Delhi"</span>, <span class = "literal">1046</span>, <span class = "keyword">true</span>}
+  };
+
+  <span class = "comment">// Create a table</span>
+  <span class = "keyword">private</span> JTable jTable1 = <span class = "keyword">new</span> JTable(rowData, columnNames);
+
+  <span class = "comment">// Create two spinners</span>
+  <span class = "keyword">private</span> JSpinner jspiRowHeight =
+    <span class = "keyword">new</span> JSpinner(<span class = "keyword">new</span> SpinnerNumberModel(<span class = "literal">16</span>, <span class = "literal">1</span>, <span class = "literal">50</span>, <span class = "literal">1</span>));
+  <span class = "keyword">private</span> JSpinner jspiRowMargin =
+    <span class = "keyword">new</span> JSpinner(<span class = "keyword">new</span> SpinnerNumberModel(<span class = "literal">1</span>, <span class = "literal">1</span>, <span class = "literal">50</span>, <span class = "literal">1</span>));
+
+  <span class = "comment">// Create a checkbox</span>
+  <span class = "keyword">private</span> JCheckBox jchkShowGrid = <span class = "keyword">new</span> JCheckBox(<span class = "literal">"showGrid"</span>, <span class = "keyword">true</span>);
+
+  <span class = "comment">// Create a combo box</span>
+  <span class = "keyword">private</span> JComboBox jcboAutoResizeMode = <span class = "keyword">new</span> JComboBox(<span class = "keyword">new</span> String[]{
+    <span class = "literal">"AUTO_RESIZE_OFF"</span>, <span class = "literal">"AUTO_RESIZE_LAST_COLUMN"</span>,
+    <span class = "literal">"AUTO_RESIZE_SUBSEQUENT_COLUMNS"</span>, <span class = "literal">"AUTO_RESIZE_NEXT_COLUMN"</span>,
+    <span class = "literal">"AUTO_RESIZE_ALL_COLUMNS"</span>});
+
+  <span class = "keyword">public</span> TablePropertiesDemo() {
+    JPanel panel1 = <span class = "keyword">new</span> JPanel();
+    panel1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"rowHeight"</span>));
+    panel1.add(jspiRowHeight);
+    panel1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"rowMargin"</span>));
+    panel1.add(jspiRowMargin);
+    panel1.add(jchkShowGrid);
+
+    JPanel panel2 = <span class = "keyword">new</span> JPanel();
+    panel2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"autoResizeMode"</span>));
+    panel2.add(jcboAutoResizeMode);
+
+    add(panel1, BorderLayout.SOUTH);
+    add(panel2, BorderLayout.NORTH);
+    add(<span class = "keyword">new</span> JScrollPane(jTable1));
+
+    <span class = "comment">// Initialize jTable1</span>
+    jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+    jTable1.setGridColor(Color.BLUE);
+    jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    jTable1.setSelectionBackground(Color.RED);
+    jTable1.setSelectionForeground(Color.WHITE);
+
+    <span class = "comment">// Register and create a listener for jspiRowHeight</span>
+    jspiRowHeight.addChangeListener(<span class = "keyword">new</span> ChangeListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> stateChanged(ChangeEvent e) {
+        jTable1.setRowHeight(
+          ((Integer)(jspiRowHeight.getValue())).intValue());
+      }
+    });
+
+    <span class = "comment">// Register and create a listener for jspiRowMargin</span>
+    jspiRowMargin.addChangeListener(<span class = "keyword">new</span> ChangeListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> stateChanged(ChangeEvent e) {
+        jTable1.setRowMargin(
+          ((Integer)(jspiRowMargin.getValue())).intValue());
+      }
+    });
+
+    <span class = "comment">// Register and create a listener for jchkShowGrid</span>
+    jchkShowGrid.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jTable1.setShowGrid(jchkShowGrid.isSelected());
+      }
+    });
+
+    <span class = "comment">// Register and create a listener for jcboAutoResizeMode</span>
+    jcboAutoResizeMode.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        String selectedItem =
+          (String)jcboAutoResizeMode.getSelectedItem();
+
+        <span class = "keyword">if</span> (selectedItem.equals(<span class = "literal">"AUTO_RESIZE_OFF"</span>))
+          jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
+        <span class = "keyword">else</span> <span class = "keyword">if</span> (selectedItem.equals(<span class = "literal">"AUTO_RESIZE_LAST_COLUMN"</span>))
+          jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_LAST_COLUMN);
+        <span class = "keyword">else</span> <span class = "keyword">if</span> (selectedItem.equals
+                 (<span class = "literal">"AUTO_RESIZE_SUBSEQUENT_COLUMNS"</span>))
+          jTable1.setAutoResizeMode(
+            JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
+        <span class = "keyword">else</span> <span class = "keyword">if</span> (selectedItem.equals(<span class = "literal">"AUTO_RESIZE_NEXT_COLUMN"</span>))
+          jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_NEXT_COLUMN);
+        <span class = "keyword">else</span> <span class = "keyword">if</span> (selectedItem.equals(<span class = "literal">"AUTO_RESIZE_ALL_COLUMNS"</span>))
+          jTable1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+      }
+    });
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TablePropertiesDemo applet = <span class = "keyword">new</span> TablePropertiesDemo();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"TablePropertiesDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+                      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

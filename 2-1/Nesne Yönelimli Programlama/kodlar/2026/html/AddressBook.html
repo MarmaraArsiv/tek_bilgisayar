@@ -1,0 +1,238 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - AddressBook.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "AddressBookWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.io.*;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.border.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> AddressBook <span class = "keyword">extends</span> JFrame {
+  <span class = "comment">// Specify the size of five string fields in the record</span>
+  <span class = "keyword">final</span> <span class = "keyword">static</span> <span class = "keyword">int</span> NAME_SIZE = <span class = "literal">32</span>;
+  <span class = "keyword">final</span> <span class = "keyword">static</span> <span class = "keyword">int</span> STREET_SIZE = <span class = "literal">32</span>;
+  <span class = "keyword">final</span> <span class = "keyword">static</span> <span class = "keyword">int</span> CITY_SIZE = <span class = "literal">20</span>;
+  <span class = "keyword">final</span> <span class = "keyword">static</span> <span class = "keyword">int</span> STATE_SIZE = <span class = "literal">2</span>;
+  <span class = "keyword">final</span> <span class = "keyword">static</span> <span class = "keyword">int</span> ZIP_SIZE = <span class = "literal">5</span>;
+  <span class = "keyword">final</span> <span class = "keyword">static</span> <span class = "keyword">int</span> RECORD_SIZE =
+    (NAME_SIZE + STREET_SIZE + CITY_SIZE + STATE_SIZE + ZIP_SIZE);
+
+  <span class = "comment">// Access address.dat using RandomAccessFile</span>
+  <span class = "keyword">private</span> RandomAccessFile raf;
+
+  <span class = "comment">// Text fields</span>
+  <span class = "keyword">private</span> JTextField jtfName = <span class = "keyword">new</span> JTextField(NAME_SIZE);
+  <span class = "keyword">private</span> JTextField jtfStreet = <span class = "keyword">new</span> JTextField(STREET_SIZE);
+  <span class = "keyword">private</span> JTextField jtfCity = <span class = "keyword">new</span> JTextField(CITY_SIZE);
+  <span class = "keyword">private</span> JTextField jtfState = <span class = "keyword">new</span> JTextField(STATE_SIZE);
+  <span class = "keyword">private</span> JTextField jtfZip = <span class = "keyword">new</span> JTextField(ZIP_SIZE);
+
+  <span class = "comment">// Buttons</span>
+  <span class = "keyword">private</span> JButton jbtAdd = <span class = "keyword">new</span> JButton(<span class = "literal">"Add"</span>);
+  <span class = "keyword">private</span> JButton jbtFirst = <span class = "keyword">new</span> JButton(<span class = "literal">"First"</span>);
+  <span class = "keyword">private</span> JButton jbtNext = <span class = "keyword">new</span> JButton(<span class = "literal">"Next"</span>);
+  <span class = "keyword">private</span> JButton jbtPrevious = <span class = "keyword">new</span> JButton(<span class = "literal">"Previous"</span>);
+  <span class = "keyword">private</span> JButton jbtLast = <span class = "keyword">new</span> JButton(<span class = "literal">"Last"</span>);
+
+  <span class = "keyword">public</span> AddressBook() {
+    <span class = "comment">// Open or create a random access file</span>
+    <span class = "keyword">try</span> {
+      raf = <span class = "keyword">new</span> RandomAccessFile(<span class = "literal">"address.dat"</span>, <span class = "literal">"rw"</span>);
+    }
+    <span class = "keyword">catch</span>(IOException ex) {
+      System.out.print(<span class = "literal">"Error: "</span> + ex);
+      System.exit(<span class = "literal">1</span>);
+    }
+
+    <span class = "comment">// Panel p1 for holding labels Name, Street, and City</span>
+    JPanel p1 = <span class = "keyword">new</span> JPanel();
+    p1.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">3</span>, <span class = "literal">1</span>));
+    p1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Name"</span>));
+    p1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Street"</span>));
+    p1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"City"</span>));
+
+    <span class = "comment">// Panel jpState for holding state</span>
+    JPanel jpState = <span class = "keyword">new</span> JPanel();
+    jpState.setLayout(<span class = "keyword">new</span> BorderLayout());
+    jpState.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"State"</span>), BorderLayout.WEST);
+    jpState.add(jtfState, BorderLayout.CENTER);
+
+    <span class = "comment">// Panel jpZip for holding zip</span>
+    JPanel jpZip = <span class = "keyword">new</span> JPanel();
+    jpZip.setLayout(<span class = "keyword">new</span> BorderLayout());
+    jpZip.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Zip"</span>), BorderLayout.WEST);
+    jpZip.add(jtfZip, BorderLayout.CENTER);
+
+    <span class = "comment">// Panel p2 for holding jpState and jpZip</span>
+    JPanel p2 = <span class = "keyword">new</span> JPanel();
+    p2.setLayout(<span class = "keyword">new</span> BorderLayout());
+    p2.add(jpState, BorderLayout.WEST);
+    p2.add(jpZip, BorderLayout.CENTER);
+
+    <span class = "comment">// Panel p3 for holding jtfCity and p2</span>
+    JPanel p3 = <span class = "keyword">new</span> JPanel();
+    p3.setLayout(<span class = "keyword">new</span> BorderLayout());
+    p3.add(jtfCity, BorderLayout.CENTER);
+    p3.add(p2, BorderLayout.EAST);
+
+    <span class = "comment">// Panel p4 for holding jtfName, jtfStreet, and p3</span>
+    JPanel p4 = <span class = "keyword">new</span> JPanel();
+    p4.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">3</span>, <span class = "literal">1</span>));
+    p4.add(jtfName);
+    p4.add(jtfStreet);
+    p4.add(p3);
+
+    <span class = "comment">// Place p1 and p4 into jpAddress</span>
+    JPanel jpAddress = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> BorderLayout());
+    jpAddress.add(p1, BorderLayout.WEST);
+    jpAddress.add(p4, BorderLayout.CENTER);
+
+    <span class = "comment">// Set the panel with line border</span>
+    jpAddress.setBorder(<span class = "keyword">new</span> BevelBorder(BevelBorder.RAISED));
+
+    <span class = "comment">// Add buttons to a panel</span>
+    JPanel jpButton = <span class = "keyword">new</span> JPanel();
+    jpButton.add(jbtAdd);
+    jpButton.add(jbtFirst);
+    jpButton.add(jbtNext);
+    jpButton.add(jbtPrevious);
+    jpButton.add(jbtLast);
+
+    <span class = "comment">// Add jpAddress and jpButton to the frame</span>
+    add(jpAddress, BorderLayout.CENTER);
+    add(jpButton, BorderLayout.SOUTH);
+
+    jbtAdd.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        writeAddress();
+      }
+    });
+    jbtFirst.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "keyword">try</span> {
+          <span class = "keyword">if</span> (raf.length() &gt; <span class = "literal">0</span>) readAddress(<span class = "literal">0</span>);
+        }
+        <span class = "keyword">catch</span> (IOException ex) {
+          ex.printStackTrace();
+        }
+      }
+    });
+    jbtNext.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "keyword">try</span> {
+          <span class = "keyword">long</span> currentPosition = raf.getFilePointer();
+          <span class = "keyword">if</span> (currentPosition &lt; raf.length())
+            readAddress(currentPosition);
+        }
+        <span class = "keyword">catch</span> (IOException ex) {
+          ex.printStackTrace();
+        }
+      }
+    });
+    jbtPrevious.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "keyword">try</span> {
+          <span class = "keyword">long</span> currentPosition = raf.getFilePointer();
+          <span class = "keyword">if</span> (currentPosition - <span class = "literal">2</span> * RECORD_SIZE &gt; <span class = "literal">0</span>)
+            <span class = "comment">// Why 2 * 2 * RECORD_SIZE? See the follow-up remarks</span>
+            readAddress(currentPosition - <span class = "literal">2</span> * <span class = "literal">2</span> * RECORD_SIZE);
+          <span class = "keyword">else</span>
+            readAddress(<span class = "literal">0</span>);
+        }
+        <span class = "keyword">catch</span> (IOException ex) {
+          ex.printStackTrace();
+        }
+      }
+    });
+    jbtLast.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "keyword">try</span> {
+          <span class = "keyword">long</span> lastPosition = raf.length();
+          <span class = "keyword">if</span> (lastPosition &gt; <span class = "literal">0</span>)
+            <span class = "comment">// Why 2 * RECORD_SIZE? See the follow-up remarks</span>
+            readAddress(lastPosition - <span class = "literal">2</span> * RECORD_SIZE);
+        }
+        <span class = "keyword">catch</span> (IOException ex) {
+          ex.printStackTrace();
+        }
+      }
+    });
+
+    <span class = "comment">// Display the first record if exists</span>
+    <span class = "keyword">try</span> {
+      <span class = "keyword">if</span> (raf.length() &gt; <span class = "literal">0</span>) readAddress(<span class = "literal">0</span>);
+    }
+    <span class = "keyword">catch</span> (IOException ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  <span class = "comment">/** Write a record at the end of the file */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> writeAddress() {
+    <span class = "keyword">try</span> {
+      raf.seek(raf.length());
+      FixedLengthStringIO.writeFixedLengthString(
+        jtfName.getText(), NAME_SIZE, raf);
+      FixedLengthStringIO.writeFixedLengthString(
+        jtfStreet.getText(), STREET_SIZE, raf);
+      FixedLengthStringIO.writeFixedLengthString(
+        jtfCity.getText(), CITY_SIZE, raf);
+      FixedLengthStringIO.writeFixedLengthString(
+        jtfState.getText(), STATE_SIZE, raf);
+      FixedLengthStringIO.writeFixedLengthString(
+        jtfZip.getText(), ZIP_SIZE, raf);
+    }
+    <span class = "keyword">catch</span> (IOException ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  <span class = "comment">/** Read a record at the specified position */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> readAddress(<span class = "keyword">long</span> position) <span class = "keyword">throws</span> IOException {
+    raf.seek(position);
+    String name = FixedLengthStringIO.readFixedLengthString(
+      NAME_SIZE, raf);
+    String street = FixedLengthStringIO.readFixedLengthString(
+      STREET_SIZE, raf);
+    String city = FixedLengthStringIO.readFixedLengthString(
+      CITY_SIZE, raf);
+    String state = FixedLengthStringIO.readFixedLengthString(
+      STATE_SIZE, raf);
+    String zip = FixedLengthStringIO.readFixedLengthString(
+      ZIP_SIZE, raf);
+
+    jtfName.setText(name);
+    jtfStreet.setText(street);
+    jtfCity.setText(city);
+    jtfState.setText(state);
+    jtfZip.setText(zip);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    AddressBook frame = <span class = "keyword">new</span> AddressBook();
+    frame.pack();
+    frame.setTitle(<span class = "literal">"AddressBook"</span>);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

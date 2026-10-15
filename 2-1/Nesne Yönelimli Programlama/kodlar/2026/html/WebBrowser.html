@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - WebBrowser.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "WebBrowserWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.net.URL;
+<span class = "keyword">import</span> javax.swing.event.*;
+<span class = "keyword">import</span> java.io.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> WebBrowser <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">// JEditor pane to view HTML files</span>
+  <span class = "keyword">private</span> JEditorPane jep = <span class = "keyword">new</span> JEditorPane();
+
+  <span class = "comment">// Label for URL</span>
+  <span class = "keyword">private</span> JLabel jlblURL = <span class = "keyword">new</span> JLabel(<span class = "literal">"URL"</span>);
+
+  <span class = "comment">// Text field for entering URL</span>
+  <span class = "keyword">private</span> JTextField jtfURL = <span class = "keyword">new</span> JTextField();
+
+  <span class = "comment">/** Initialize the applet */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> init() {
+    <span class = "comment">// Create a panel jpURL to hold the label and text field</span>
+    JPanel jpURL = <span class = "keyword">new</span> JPanel();
+    jpURL.setLayout(<span class = "keyword">new</span> BorderLayout());
+    jpURL.add(jlblURL, BorderLayout.WEST);
+    jpURL.add(jtfURL, BorderLayout.CENTER);
+
+    <span class = "comment">// Place jpURL and jspViewer in the applet</span>
+    add(<span class = "keyword">new</span> JScrollPane(jep), BorderLayout.CENTER);
+    add(jpURL, BorderLayout.NORTH);
+
+    <span class = "comment">// Set jep noneditable</span>
+    jep.setEditable(<span class = "keyword">false</span>);
+
+    <span class = "comment">// Register listener</span>
+    jep.addHyperlinkListener(<span class = "keyword">new</span> HyperlinkListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> hyperlinkUpdate(HyperlinkEvent e) {
+        <span class = "keyword">try</span> {
+          jep.setPage(e.getURL());
+        }
+        <span class = "keyword">catch</span> (IOException ex) {
+          System.out.println(ex);
+        }
+      }
+    });
+    jtfURL.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "keyword">try</span> {
+          <span class = "comment">// Get the URL from text field</span>
+          URL url = <span class = "keyword">new</span> URL(jtfURL.getText().trim());
+
+          <span class = "comment">// Display the HTML file</span>
+          jep.setPage(url);
+        }
+        <span class = "keyword">catch</span> (IOException ex) {
+          System.out.println(ex);
+        }
+      }
+    });
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a frame</span>
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"Web Browser"</span>);
+
+    <span class = "comment">// Create an instance of ViewRemoteFile</span>
+    WebBrowser applet = <span class = "keyword">new</span> WebBrowser();
+
+    <span class = "comment">// Add the applet instance to the frame</span>
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+
+    <span class = "comment">// Invoke init() and start()</span>
+    applet.init();
+    applet.start();
+
+    <span class = "comment">// Display the frame</span>
+    frame.setSize(<span class = "literal">300</span>, <span class = "literal">300</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

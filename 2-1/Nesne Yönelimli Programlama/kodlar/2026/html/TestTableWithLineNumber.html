@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestTable.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestTable.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestTable <span class = "keyword">extends</span> JApplet {
+  4&nbsp;&nbsp;  <span class = "comment">// Create table column names</span>
+  5&nbsp;&nbsp;  <span class = "keyword">private</span> String[] columnNames =
+  6&nbsp;&nbsp;    {<span class = "literal">"Country"</span>, <span class = "literal">"Capital"</span>, <span class = "literal">"Population in Millions"</span>, <span class = "literal">"Democracy"</span>};
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;  <span class = "comment">// Create table data</span>
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> Object[][] data = {
+ 10&nbsp;&nbsp;    {<span class = "literal">"USA"</span>, <span class = "literal">"Washington DC"</span>, <span class = "literal">280</span>, <span class = "keyword">true</span>},
+ 11&nbsp;&nbsp;    {<span class = "literal">"Canada"</span>, <span class = "literal">"Ottawa"</span>, <span class = "literal">32</span>, <span class = "keyword">true</span>},
+ 12&nbsp;&nbsp;    {<span class = "literal">"United Kingdom"</span>, <span class = "literal">"London"</span>, <span class = "literal">60</span>, <span class = "keyword">true</span>},
+ 13&nbsp;&nbsp;    {<span class = "literal">"Germany"</span>, <span class = "literal">"Berlin"</span>, <span class = "literal">83</span>, <span class = "keyword">true</span>},
+ 14&nbsp;&nbsp;    {<span class = "literal">"France"</span>, <span class = "literal">"Paris"</span>, <span class = "literal">60</span>, <span class = "keyword">true</span>},
+ 15&nbsp;&nbsp;    {<span class = "literal">"Norway"</span>, <span class = "literal">"Oslo"</span>, <span class = "literal">4</span><span class = "literal">.</span><span class = "literal">5</span>, <span class = "keyword">true</span>},
+ 16&nbsp;&nbsp;    {<span class = "literal">"India"</span>, <span class = "literal">"New Delhi"</span>, <span class = "literal">1046</span>, <span class = "keyword">true</span>}
+ 17&nbsp;&nbsp;  };
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;  <span class = "comment">// Create a table</span>
+ 20&nbsp;&nbsp;  <span class = "keyword">private</span> JTable jTable1 = <span class = "keyword">new</span> JTable(data, columnNames);
+ 21&nbsp;&nbsp;
+ 22&nbsp;&nbsp;  <span class = "keyword">public</span> TestTable() {
+ 23&nbsp;&nbsp;    add(<span class = "keyword">new</span> JScrollPane(jTable1));
+ 24&nbsp;&nbsp;  }
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;  //Main method
+ 27&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 28&nbsp;&nbsp;    TestTable applet = <span class = "keyword">new</span> TestTable();
+ 29&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 30&nbsp;&nbsp;    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+ 31&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+ 32&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"TestTable"</span>);
+ 33&nbsp;&nbsp;    frame.getContentPane().add(applet, java.awt.BorderLayout.CENTER);
+ 34&nbsp;&nbsp;    applet.init();
+ 35&nbsp;&nbsp;    applet.start();
+ 36&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+ 37&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+ 38&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 39&nbsp;&nbsp;  }
+ 40&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

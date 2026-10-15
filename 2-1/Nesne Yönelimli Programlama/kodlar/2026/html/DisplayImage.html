@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DisplayImage.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "DisplayImageWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> DisplayImage <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">public</span> DisplayImage() {
+    add(<span class = "keyword">new</span> ImagePanel());
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    JFrame frame = <span class = "keyword">new</span> DisplayImage();
+    frame.setTitle(<span class = "literal">"DisplayImage"</span>);
+    frame.setSize(<span class = "literal">300</span>, <span class = "literal">300</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame   </span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+
+<span class = "keyword">class</span> ImagePanel <span class = "keyword">extends</span> JPanel {
+  <span class = "keyword">private</span> ImageIcon imageIcon = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/us.gif"</span>);
+  <span class = "keyword">private</span> Image image = imageIcon.getImage();
+
+  @Override <span class = "comment">/** Draw image on the panel */</span>
+  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+    <span class = "keyword">super</span>.paintComponent(g);
+
+    <span class = "keyword">if</span> (image != <span class = "keyword">null</span>)
+      g.drawImage(image, <span class = "literal">0</span>, <span class = "literal">0</span>, getWidth(), getHeight(), <span class = "keyword">this</span>);
+  }
+}
+</pre>
+</body>
+</html>

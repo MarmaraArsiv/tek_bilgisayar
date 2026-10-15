@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Temp.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TempWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.Date;
+<span class = "keyword">import</span> javafx.animation.KeyFrame;
+<span class = "keyword">import</span> javafx.animation.Timeline;
+<span class = "keyword">import</span> javafx.application.Application;
+<span class = "keyword">import</span> javafx.event.ActionEvent;
+<span class = "keyword">import</span> javafx.event.EventHandler;
+<span class = "keyword">import</span> javafx.scene.layout.Pane;
+<span class = "keyword">import</span> javafx.stage.Stage;
+<span class = "keyword">import</span> javafx.scene.*;
+<span class = "keyword">import</span> javafx.scene.control.Label;
+<span class = "keyword">import</span> javafx.util.Duration;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> Temp <span class = "keyword">extends</span> Application {
+
+  @Override <span class = "comment">// Override the start method in the Application class</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {
+    <span class = "comment">// Create a pane to hold the image views</span>
+    Pane pane = <span class = "keyword">new</span> Pane();
+
+    <span class = "keyword">final</span> Label label = <span class = "keyword">new</span> Label();
+    pane.getChildren().add(label);
+
+
+    EventHandler&lt;ActionEvent&gt; h = <span class = "keyword">new</span> EventHandler&lt;ActionEvent&gt;() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> handle(ActionEvent event) {
+        label.setText(<span class = "literal">" "</span> + <span class = "keyword">new</span> Date());
+        System.out.println(<span class = "literal">"called every <span class = "literal">1</span> second on UI thread"</span>);
+      }
+    };
+    Timeline fiveSecondsWonder = <span class = "keyword">new</span> Timeline(<span class = "keyword">new</span> KeyFrame(Duration.seconds(<span class = "literal">1</span>), h));
+
+    fiveSecondsWonder.setCycleCount(Timeline.INDEFINITE);
+    fiveSecondsWonder.play();
+
+
+    <span class = "comment">// Create a scene and place it in the stage</span>
+    Scene scene = <span class = "keyword">new</span> Scene(pane);
+    primaryStage.setTitle(<span class = "literal">"ShowImage"</span>); <span class = "comment">// Set the stage title</span>
+    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the stage</span>
+    primaryStage.show(); <span class = "comment">// Display the stage</span>
+  }
+
+  <span class = "comment">/**
+   * The main method is only needed for the IDE with limited
+   * JavaFX support. Not needed for running from the command line.
+   */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    launch(args);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "Temp" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

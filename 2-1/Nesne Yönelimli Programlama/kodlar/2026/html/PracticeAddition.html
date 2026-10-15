@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 6E - PracticeAddition.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> PracticeAddition {
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> number1 = (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000">)(System.currentTimeMillis() % <FONT COLOR="#0000ff">10</FONT><FONT COLOR="#000000">);
+    <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> number2 = (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000">)(System.currentTimeMillis() * <FONT COLOR="#0000ff">7</FONT><FONT COLOR="#000000"> % <FONT COLOR="#0000ff">10</FONT><FONT COLOR="#000000">);
+
+    String answerString = JOptionPane.showInputDialog
+      (<FONT COLOR="#0000ff">"What is "</FONT> + number1 + <FONT COLOR="#0000ff">" + "</FONT> + number2 + <FONT COLOR="#0000ff">"?"</FONT>);
+
+    <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> answer = Integer.parseInt(answerString);
+
+    JOptionPane.showMessageDialog(<FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">,
+      number1 + <FONT COLOR="#0000ff">" + "</FONT> + number2 + <FONT COLOR="#0000ff">" = "</FONT> + answer + <FONT COLOR="#0000ff">" is "</FONT> +
+      (number1 + number2 == answer));
+  }
+}
+</pre>

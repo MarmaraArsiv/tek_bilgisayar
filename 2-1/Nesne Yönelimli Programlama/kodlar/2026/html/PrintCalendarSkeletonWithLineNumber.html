@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - PrintCalendarSkeleton.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "PrintCalendarSkeleton.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.Scanner;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> PrintCalendarSkeleton {
+  4&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  6&nbsp;&nbsp;    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;    <span class = "comment">// Prompt the user to enter year </span>
+  9&nbsp;&nbsp;    System.out.print(<span class = "literal">"Enter full year (e.g., <span class = "literal">2001</span>): "</span>);
+ 10&nbsp;&nbsp;    <span class = "keyword">int</span> year = input.nextInt();
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;    <span class = "comment">// Prompt the user to enter month </span>
+ 13&nbsp;&nbsp;    System.out.print(<span class = "literal">"Enter month as number between <span class = "literal">1</span> and 12: "</span>);
+ 14&nbsp;&nbsp;    <span class = "keyword">int</span> month = input.nextInt();
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;    <span class = "comment">// Print calendar for the month of the year</span>
+ 17&nbsp;&nbsp;    printMonth(year, month);
+ 18&nbsp;&nbsp;  }
+ 19&nbsp;&nbsp;
+ 20&nbsp;&nbsp;  <span class = "comment">/** A stub for printMonth may look like this */</span>
+ 21&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> printMonth(<span class = "keyword">int</span> year, <span class = "keyword">int</span> month) {
+ 22&nbsp;&nbsp;    System.out.print(month + <span class = "literal">" "</span> + year);
+ 23&nbsp;&nbsp;  }
+ 24&nbsp;&nbsp;
+ 25&nbsp;&nbsp;  <span class = "comment">/** A stub for printMonthTitle may look like this */</span>
+ 26&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> printMonthTitle(<span class = "keyword">int</span> year, <span class = "keyword">int</span> month) {
+ 27&nbsp;&nbsp;  }
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;  <span class = "comment">/** A stub for getMonthBody may look like this */</span>
+ 30&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> printMonthBody(<span class = "keyword">int</span> year, <span class = "keyword">int</span> month) {
+ 31&nbsp;&nbsp;  }
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;  <span class = "comment">/** A stub for getMonthName may look like this */</span>
+ 34&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> String getMonthName(<span class = "keyword">int</span> month) {
+ 35&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"January"</span>; <span class = "comment">// A dummy value</span>
+ 36&nbsp;&nbsp;  }
+ 37&nbsp;&nbsp;
+ 38&nbsp;&nbsp;  <span class = "comment">/** A stub for getMonthName may look like this */</span>
+ 39&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">int</span> getStartDay(<span class = "keyword">int</span> year, <span class = "keyword">int</span> month) {
+ 40&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">1</span>; <span class = "comment">// A dummy value</span>
+ 41&nbsp;&nbsp;  }
+ 42&nbsp;&nbsp;
+ 43&nbsp;&nbsp;  <span class = "comment">/** A stub for getTotalNumberOfDays may look like this */</span>
+ 44&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">int</span> getTotalNumberOfDays(<span class = "keyword">int</span> year, <span class = "keyword">int</span> month) {
+ 45&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">10000</span>; <span class = "comment">// A dummy value</span>
+ 46&nbsp;&nbsp;  }
+ 47&nbsp;&nbsp;
+ 48&nbsp;&nbsp;  <span class = "comment">/** A stub for getNumberOfDaysInMonth may look like this */</span>
+ 49&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">int</span> getNumberOfDaysInMonth(<span class = "keyword">int</span> year, <span class = "keyword">int</span> month) {
+ 50&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">31</span>; <span class = "comment">// A dummy value</span>
+ 51&nbsp;&nbsp;  }
+ 52&nbsp;&nbsp;
+ 53&nbsp;&nbsp;  <span class = "comment">/** A stub for getTotalNumberOfDays may look like this */</span>
+ 54&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">boolean</span> isLeapYear(<span class = "keyword">int</span> year) {
+ 55&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "keyword">true</span>; <span class = "comment">// A dummy value</span>
+ 56&nbsp;&nbsp;  }
+ 57&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "PrintCalendarSkeleton" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TabPaneDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TabPaneDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> javafx.application.Application;
+<span class = "keyword">import</span> javafx.scene.Scene;
+<span class = "keyword">import</span> javafx.scene.control.Tab;
+<span class = "keyword">import</span> javafx.scene.control.TabPane;
+<span class = "keyword">import</span> javafx.scene.layout.StackPane;
+<span class = "keyword">import</span> javafx.scene.shape.Circle;
+<span class = "keyword">import</span> javafx.scene.shape.Ellipse;
+<span class = "keyword">import</span> javafx.scene.shape.Line;
+<span class = "keyword">import</span> javafx.scene.shape.Rectangle;
+<span class = "keyword">import</span> javafx.stage.Stage;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TabPaneDemo <span class = "keyword">extends</span> Application {   
+  @Override <span class = "comment">// Override the start method in the Application class</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {   
+    TabPane tabPane = <span class = "keyword">new</span> TabPane();
+    Tab tab1 = <span class = "keyword">new</span> Tab(<span class = "literal">"Line"</span>);
+    StackPane pane1 = <span class = "keyword">new</span> StackPane();
+    pane1.getChildren().add(<span class = "keyword">new</span> Line(<span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">80</span>, <span class = "literal">80</span>));
+    tab1.setContent(pane1);
+    Tab tab2 = <span class = "keyword">new</span> Tab(<span class = "literal">"Rectangle"</span>);
+    tab2.setContent(<span class = "keyword">new</span> Rectangle(<span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">200</span>, <span class = "literal">200</span>));
+    Tab tab3 = <span class = "keyword">new</span> Tab(<span class = "literal">"Circle"</span>);
+    tab3.setContent(<span class = "keyword">new</span> Circle(<span class = "literal">50</span>, <span class = "literal">50</span>, <span class = "literal">20</span>));    
+    Tab tab4 = <span class = "keyword">new</span> Tab(<span class = "literal">"Ellipse"</span>);
+    tab4.setContent(<span class = "keyword">new</span> Ellipse(<span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">100</span>, <span class = "literal">80</span>));
+    tabPane.getTabs().addAll(tab1, tab2, tab3, tab4);
+
+    Scene scene = <span class = "keyword">new</span> Scene(tabPane, <span class = "literal">300</span>, <span class = "literal">250</span>);  
+    primaryStage.setTitle(<span class = "literal">"DisplayFigure"</span>); <span class = "comment">// Set the window title</span>
+    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the window</span>
+    primaryStage.show(); <span class = "comment">// Display the window</span>
+  }
+
+  <span class = "comment">/**
+   * The main method is only needed for the IDE with limited
+   * JavaFX support. Not needed for running from the command line.
+   * line.
+   */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    launch(args);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TabPaneDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

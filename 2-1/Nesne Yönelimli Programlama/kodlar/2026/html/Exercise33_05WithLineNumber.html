@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Exercise33_05.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "Exercise33_05.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">package</span> jsfexercise;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.faces.bean.ManagedBean;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> javax.faces.bean.SessionScoped;
+  5&nbsp;&nbsp;
+  6&nbsp;&nbsp;@ManagedBean
+  7&nbsp;&nbsp;@SessionScoped
+  8&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> Exercise33_05 {
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">final</span> <span class = "keyword">int</span> SIZE = <span class = "literal">10</span>;
+ 10&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span>[] first = <span class = "keyword">new</span> <span class = "keyword">int</span>[SIZE];
+ 11&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span>[] second = <span class = "keyword">new</span> <span class = "keyword">int</span>[SIZE];
+ 12&nbsp;&nbsp;  <span class = "keyword">private</span> String[] useranswer = <span class = "keyword">new</span> String[SIZE];
+ 13&nbsp;&nbsp;  <span class = "keyword">private</span> String[] eval = <span class = "keyword">new</span> String[SIZE];
+ 14&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span> count = <span class = "literal">0</span>;
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;  <span class = "keyword">public</span> Exercise33_05() {
+ 17&nbsp;&nbsp;    generateNumbers();
+ 18&nbsp;&nbsp;  }
+ 19&nbsp;&nbsp;  
+ 20&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> generateNumbers() {
+ 21&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; SIZE; i++) {
+ 22&nbsp;&nbsp;      first[i] = (<span class = "keyword">int</span>)(Math.random() * <span class = "literal">20</span>) + <span class = "literal">10</span>;
+ 23&nbsp;&nbsp;      second[i] = (<span class = "keyword">int</span>)(Math.random() * <span class = "literal">10</span>);
+ 24&nbsp;&nbsp;      useranswer[i] = <span class = "literal">""</span>;
+ 25&nbsp;&nbsp;    }
+ 26&nbsp;&nbsp;  }
+ 27&nbsp;&nbsp;
+ 28&nbsp;&nbsp;  <span class = "keyword">public</span> String getQuestion(Long i) {
+ 29&nbsp;&nbsp;    <span class = "keyword">return</span> first[i.intValue()] + <span class = "literal">" + "</span> + second[i.intValue()] + <span class = "literal">" = "</span>;
+ 30&nbsp;&nbsp;  }
+ 31&nbsp;&nbsp;
+ 32&nbsp;&nbsp;  <span class = "keyword">public</span> String getEvaluation() {
+ 33&nbsp;&nbsp;    count = <span class = "literal">0</span>;
+ 34&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; SIZE; i++) {
+ 35&nbsp;&nbsp;      <span class = "keyword">if</span> (useranswer[i].trim().length() == <span class = "literal">0</span>)
+ 36&nbsp;&nbsp;        eval[i] = <span class = "literal">"You did not give an answer"</span>;
+ 37&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (first[i] + second[i] == Integer.parseInt(useranswer[i])) {
+ 38&nbsp;&nbsp;        eval[i] =  <span class = "literal">"Correct"</span>;
+ 39&nbsp;&nbsp;        count++;
+ 40&nbsp;&nbsp;      } <span class = "keyword">else</span> {
+ 41&nbsp;&nbsp;        eval[i] = <span class = "literal">"Wrong"</span>;
+ 42&nbsp;&nbsp;      }
+ 43&nbsp;&nbsp;    }
+ 44&nbsp;&nbsp;
+ 45&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"Exercise33_05a"</span>;
+ 46&nbsp;&nbsp;  }
+ 47&nbsp;&nbsp;
+ 48&nbsp;&nbsp;  <span class = "keyword">public</span> String getResult(Long i) {
+ 49&nbsp;&nbsp;    <span class = "keyword">return</span> first[i.intValue()] + <span class = "literal">" + "</span> + second[i.intValue()] + <span class = "literal">" = "</span> + useranswer[i.intValue()] + <span class = "literal">"\t"</span> + eval[i.intValue()];
+ 50&nbsp;&nbsp;  }
+ 51&nbsp;&nbsp;
+ 52&nbsp;&nbsp;  <span class = "keyword">public</span> String getCount() {
+ 53&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"There are  "</span> + count + <span class = "literal">" correct guesses"</span>;
+ 54&nbsp;&nbsp;  }
+ 55&nbsp;&nbsp;
+ 56&nbsp;&nbsp;  <span class = "keyword">public</span> String[] getUseranswer() {
+ 57&nbsp;&nbsp;    <span class = "keyword">return</span> useranswer;
+ 58&nbsp;&nbsp;  }
+ 59&nbsp;&nbsp;
+ 60&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setUseranswer(String[] value) {
+ 61&nbsp;&nbsp;    useranswer = value;
+ 62&nbsp;&nbsp;  }
+ 63&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

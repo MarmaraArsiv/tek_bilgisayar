@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - MyImageCellRenderer.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "MyImageCellRendererWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.table.*;
+<span class = "keyword">import</span> java.awt.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> MyImageCellRenderer <span class = "keyword">extends</span> DefaultTableCellRenderer {
+  <span class = "comment">/** Override this method in DefaultTableCellRenderer */</span>
+  <span class = "keyword">public</span> Component getTableCellRendererComponent
+      (JTable table, Object value, <span class = "keyword">boolean</span> isSelected,
+       <span class = "keyword">boolean</span> isFocused, <span class = "keyword">int</span> row, <span class = "keyword">int</span> column) {
+    Image image = ((ImageIcon)value).getImage();
+    ImageViewer imageViewer = <span class = "keyword">new</span> ImageViewer(image);
+
+    <span class = "keyword">return</span> imageViewer;
+  }
+}
+</pre>
+</body>
+</html>

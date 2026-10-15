@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Intro to Java Programming, 6E - MixedContent.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> javax.servlet.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> javax.servlet.http.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> java.io.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">public</span> <span class = "keyword">class</span> MixedContent <span class = "keyword">extends</span> HttpServlet <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">/** Process the HTTP Get request */</span><span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">void</span> doGet(HttpServletRequest request,<span class = "literal"></span> HttpServletResponse<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> response)<span class = "literal"></span> <span class = "keyword">throws</span> ServletException,<span class = "literal"></span> IOException <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> response.setContentType(<span class = "literal">"text/html"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> PrintWriter out = response.getWriter(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String country = request.getParameter(<span class = "literal">"country"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> out.println(<span class = "literal">"&lt;img src = \"/liangweb/"</span> <span class = "literal"></span>+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal">"ImageContentWithDrawing\"</span> align=right&gt;<span class = "literal">")<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> out.println(<span class = "literal">"This is a clock created using a Java program "</span> <span class = "literal"></span>+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal">"and sent to the browser by a servlet."</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> out.close(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+</pre>
+</body>
+</html>

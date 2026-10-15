@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Tree.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "Tree.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">interface</span> Tree&lt;E&gt; <span class = "keyword">extends</span> Iterable&lt;E&gt; {
+  2&nbsp;&nbsp;  <span class = "comment">/** Return true if the element is in the tree */</span>
+  3&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> search(E e);
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;  <span class = "comment">/** Insert element o into the binary tree
+  6&nbsp;&nbsp;   * Return true if the element is inserted successfully */</span>
+  7&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> insert(E e);
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;  <span class = "comment">/** Delete the specified element from the tree
+ 10&nbsp;&nbsp;   * Return true if the element is deleted successfully */</span>
+ 11&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> delete(E e);
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;  <span class = "comment">/** Inorder traversal from the root*/</span>
+ 14&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> inorder();
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;  <span class = "comment">/** Postorder traversal from the root */</span>
+ 17&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> postorder();
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;  <span class = "comment">/** Preorder traversal from the root */</span>
+ 20&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> preorder();
+ 21&nbsp;&nbsp;
+ 22&nbsp;&nbsp;  <span class = "comment">/** Get the number of nodes in the tree */</span>
+ 23&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> getSize();
+ 24&nbsp;&nbsp;
+ 25&nbsp;&nbsp;  <span class = "comment">/** Return true if the tree is empty */</span>
+ 26&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> isEmpty();
+ 27&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "Tree" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

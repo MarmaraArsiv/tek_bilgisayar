@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ComboBoxCellRendererDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ComboBoxCellRendererDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ComboBoxCellRendererDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> <span class = "keyword">final</span> <span class = "keyword">static</span> <span class = "keyword">int</span> NUMBER_OF_NATIONS = <span class = "literal">7</span>;
+  <span class = "keyword">private</span> String[] nations = <span class = "keyword">new</span> String[] {<span class = "literal">"Denmark"</span>,
+    <span class = "literal">"Germany"</span>, <span class = "literal">"China"</span>, <span class = "literal">"India"</span>, <span class = "literal">"Norway"</span>, <span class = "literal">"UK"</span>, <span class = "literal">"US"</span>};
+  <span class = "keyword">private</span> ImageIcon[] icons = <span class = "keyword">new</span> ImageIcon[NUMBER_OF_NATIONS];
+  <span class = "keyword">private</span> ImageIcon[] bigIcons = <span class = "keyword">new</span> ImageIcon[NUMBER_OF_NATIONS];
+
+  <span class = "comment">// Create a combo box model</span>
+  <span class = "keyword">private</span> DefaultComboBoxModel model = <span class = "keyword">new</span> DefaultComboBoxModel();
+
+  <span class = "comment">// Create a combo box with the specified model</span>
+  <span class = "keyword">private</span> JComboBox jcboCountries = <span class = "keyword">new</span> JComboBox(model);
+
+  <span class = "comment">// Create a list cell renderer</span>
+  <span class = "keyword">private</span> MyListCellRenderer renderer = <span class = "keyword">new</span> MyListCellRenderer();
+
+  <span class = "comment">// Create a label for displaying iamge</span>
+  <span class = "keyword">private</span> JLabel jlblImage = <span class = "keyword">new</span> JLabel(<span class = "literal">""</span>, JLabel.CENTER);
+
+  <span class = "comment">/** Construct the applet */</span>
+  <span class = "keyword">public</span> ComboBoxCellRendererDemo() {
+    <span class = "comment">// Load small and large image icons</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; NUMBER_OF_NATIONS; i++) {
+      icons[i] = <span class = "keyword">new</span> ImageIcon(getClass().getResource(
+        <span class = "literal">"/image/flagIcon"</span> + i + <span class = "literal">".gif"</span>));
+      model.addElement(<span class = "keyword">new</span> Object[]{icons[i], nations[i]});
+
+      bigIcons[i] = <span class = "keyword">new</span> ImageIcon(getClass().getResource(
+        <span class = "literal">"/image/flag"</span> + i + <span class = "literal">".gif"</span>));
+    }
+
+    <span class = "comment">// Set list cell renderer for the combo box</span>
+    jcboCountries.setRenderer(renderer);
+    jlblImage.setIcon(bigIcons[<span class = "literal">0</span>]);
+    add(jcboCountries, java.awt.BorderLayout.NORTH);
+    add(jlblImage, java.awt.BorderLayout.CENTER);
+
+    <span class = "comment">// Register listener</span>
+    jcboCountries.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(java.awt.event.ActionEvent e) {
+        jlblImage.setIcon(bigIcons[jcboCountries.getSelectedIndex()]);
+      }
+    });
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ComboBoxCellRendererDemo applet = <span class = "keyword">new</span> ComboBoxCellRendererDemo();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"ComboBoxCellRendererDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

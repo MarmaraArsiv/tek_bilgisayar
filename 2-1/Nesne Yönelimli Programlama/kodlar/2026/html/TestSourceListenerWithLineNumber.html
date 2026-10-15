@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestSourceListener.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestSourceListener.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestSourceListener {
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  6&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"TestSourceListener"</span>);
+  7&nbsp;&nbsp;    <span class = "comment">// Create a source object</span>
+  8&nbsp;&nbsp;    JButton jbt = <span class = "keyword">new</span> JButton(<span class = "literal">"OK"</span>);
+  9&nbsp;&nbsp;    frame.add(jbt);
+ 10&nbsp;&nbsp;    frame.setSize(<span class = "literal">200</span>, <span class = "literal">200</span>);
+ 11&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;    <span class = "comment">// Create a listener</span>
+ 14&nbsp;&nbsp;    MyListener listener = <span class = "keyword">new</span> MyListener();
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;    <span class = "comment">// Register a listener</span>
+ 17&nbsp;&nbsp;    jbt.addActionListener(listener);
+ 18&nbsp;&nbsp;  }
+ 19&nbsp;&nbsp;}
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;<span class = "comment">/** MyListener class */</span>
+ 22&nbsp;&nbsp;<span class = "keyword">class</span> MyListener <span class = "keyword">implements</span> ActionListener {
+ 23&nbsp;&nbsp;  @Override
+ 24&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 25&nbsp;&nbsp;    System.out.println(<span class = "literal">"I will process it!"</span>);
+ 26&nbsp;&nbsp;  }
+ 27&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>Intro to Java Programming, 6E - RaiseFlagPlayAnthem.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> javax.swing.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> java.awt.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> java.awt.event.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> java.applet.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> java.net.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">public</span> <span class = "keyword">class</span> RaiseFlagPlayAnthem <span class = "keyword">extends</span> JApplet <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> RaiseFlagPlayAnthem(<span class = "literal"></span>)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> URL imageURL = <span class = "keyword">this</span>.getClass(<span class = "literal"></span>)<span class = "literal"></span>.getResource(<span class = "literal">"image/us.gif"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> Image image = <span class = "keyword">new</span> ImageIcon(imageURL)<span class = "literal"></span>.getImage(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> add(<span class = "keyword">new</span> FlagAnthemPanel(image)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">class</span> FlagAnthemPanel <span class = "keyword">extends</span> JPanel<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">implements</span> ActionListener <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">private</span> Image image;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">private</span> Timer timer = <span class = "keyword">new</span> Timer(<span class = "literal">400</span>,<span class = "literal"></span> <span class = "keyword">this</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">int</span> x = <span class = "literal">20</span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">int</span> y = <span class = "literal">150</span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> FlagAnthemPanel(Image image)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">this</span>.image = image;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> timer.start(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> URL audioURL = <span class = "keyword">this</span>.getClass(<span class = "literal"></span>)<span class = "literal"></span>.getResource(<span class = "literal">"audio/us.mid"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+AudioClip audioClip = Applet.newAudioClip(audioURL)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+audioClip.play(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">void</span> paintComponent(Graphics g)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">super</span>.paintComponent(g)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">if</span> <span class = "literal"></span>(y &gt;<span class = "literal"></span> <span class = "literal">0</span>)<span class = "literal"></span> y <span class = "literal"></span>-= <span class = "literal">1</span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> g.drawImage(image,<span class = "literal"></span> x,<span class = "literal"></span> y,<span class = "literal"></span> <span class = "literal">60</span>,<span class = "literal"></span> <span class = "literal">40</span>,<span class = "literal"></span> <span class = "keyword">this</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> repaint(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[<span class = "literal"></span>]<span class = "literal"></span> args)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Create a frame</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"RaiseFlagPlayAnthem"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Create an instance of the applet</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> JApplet applet = <span class = "keyword">new</span> RaiseFlagPlayAnthem(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Add the applet to the frame</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> frame.add(applet,<span class = "literal"></span> BorderLayout.CENTER)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Invoke applet's init method</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> applet.init(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Display the frame</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> frame.setSize(<span class = "literal">300</span>,<span class = "literal"></span> <span class = "literal">200</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> frame.setVisible(<span class = "keyword">true</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+</pre>
+</body>
+</html>

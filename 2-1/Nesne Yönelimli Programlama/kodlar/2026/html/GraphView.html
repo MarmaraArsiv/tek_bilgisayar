@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - GraphView.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "GraphViewWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> javafx.scene.layout.Pane;
+<span class = "keyword">import</span> javafx.scene.shape.Circle;
+<span class = "keyword">import</span> javafx.scene.shape.Line;
+<span class = "keyword">import</span> javafx.scene.text.Text;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> GraphView <span class = "keyword">extends</span> Pane {
+  <span class = "keyword">private</span> Graph&lt;? <span class = "keyword">extends</span> Displayable&gt; graph;
+  
+  <span class = "keyword">public</span> GraphView(Graph&lt;? <span class = "keyword">extends</span> Displayable&gt; graph) {
+    <span class = "keyword">this</span>.graph = graph;
+    
+    <span class = "comment">// Draw vertices</span>
+    java.util.List&lt;? <span class = "keyword">extends</span> Displayable&gt; vertices 
+      = graph.getVertices();    
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; graph.getSize(); i++) {
+      <span class = "keyword">int</span> x = vertices.get(i).getX();
+      <span class = "keyword">int</span> y = vertices.get(i).getY();
+      String name = vertices.get(i).getName();
+      
+      getChildren().add(<span class = "keyword">new</span> Circle(x, y, <span class = "literal">16</span>)); <span class = "comment">// Display a vertex</span>
+      getChildren().add(<span class = "keyword">new</span> Text(x - <span class = "literal">8</span>, y - <span class = "literal">18</span>, name)); 
+    }
+    
+    <span class = "comment">// Draw edges for pairs of vertices</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; graph.getSize(); i++) {
+      java.util.List&lt;Integer&gt; neighbors = graph.getNeighbors(i);
+      <span class = "keyword">int</span> x1 = graph.getVertex(i).getX();
+      <span class = "keyword">int</span> y1 = graph.getVertex(i).getY();
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> v: neighbors) {
+        <span class = "keyword">int</span> x2 = graph.getVertex(v).getX();
+        <span class = "keyword">int</span> y2 = graph.getVertex(v).getY();
+        
+        <span class = "comment">// Draw an edge for (i, v)</span>
+        getChildren().add(<span class = "keyword">new</span> Line(x1, y1, x2, y2)); 
+      }
+    }
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "GraphView" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

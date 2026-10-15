@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SentinelValue.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "SentinelValue.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.Scanner; 
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> SentinelValue {
+  4&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  6&nbsp;&nbsp;    <span class = "comment">// Create a Scanner</span>
+  7&nbsp;&nbsp;    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;    <span class = "comment">// Read an initial data</span>
+ 10&nbsp;&nbsp;    System.out.print(
+ 11&nbsp;&nbsp;      <span class = "literal">"Enter an integer (the input ends if it is <span class = "literal">0</span>): "</span>);
+ 12&nbsp;&nbsp;    <span class = "keyword">int</span> data = input.nextInt();
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;    <span class = "comment">// Keep reading data until the input is 0</span>
+ 15&nbsp;&nbsp;    <span class = "keyword">int</span> sum = <span class = "literal">0</span>;
+ 16&nbsp;&nbsp;    <span class = "keyword">while</span> (data != <span class = "literal">0</span>) {
+ 17&nbsp;&nbsp;      sum += data;
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;      <span class = "comment">// Read the next data</span>
+ 20&nbsp;&nbsp;      System.out.print(
+ 21&nbsp;&nbsp;        <span class = "literal">"Enter an integer (the input ends if it is <span class = "literal">0</span>): "</span>);
+ 22&nbsp;&nbsp;      data = input.nextInt();
+ 23&nbsp;&nbsp;    }
+ 24&nbsp;&nbsp;
+ 25&nbsp;&nbsp;    System.out.println(<span class = "literal">"The sum is "</span> + sum);
+ 26&nbsp;&nbsp;  }
+ 27&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "SentinelValue" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

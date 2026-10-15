@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - Circle4.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> Circle4 <span class = "keyword">extends</span> GeometricObject1 {
+  <span class = "keyword">private</span> <span class = "keyword">double</span> radius;
+
+  <span class = "keyword">public</span> Circle4() {
+  }
+
+  <span class = "keyword">public</span> Circle4(<span class = "keyword">double</span> radius) {
+	<span class = "keyword">super</span>();
+    <span class = "keyword">this</span>.radius = radius;
+  }
+
+  <span class = "keyword">public</span> Circle4(<span class = "keyword">double</span> radius, String color, <span class = "keyword">boolean</span> filled) {
+    <span class = "keyword">super</span>(color, filled);
+    <span class = "keyword">this</span>.radius = radius;
+    //setColor(color);
+    //setFilled(filled);
+  }
+
+  <span class = "comment">/** Return radius */</span>
+  <span class = "keyword">public</span> <span class = "keyword">double</span> getRadius() {
+    <span class = "keyword">return</span> radius;
+  }
+
+  <span class = "comment">/** Set a new radius */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setRadius(<span class = "keyword">double</span> radius) {
+    <span class = "keyword">this</span>.radius = radius;
+  }
+
+  <span class = "comment">/** Return area */</span>
+  <span class = "keyword">public</span> <span class = "keyword">double</span> getArea() {
+    <span class = "keyword">return</span> radius * radius * Math.PI;
+  }
+  
+  <span class = "comment">/** Return diameter */</span>
+  <span class = "keyword">public</span> <span class = "keyword">double</span> getDiameter() {
+    <span class = "keyword">return</span> <span class = "literal">2</span> * radius;
+  }
+  
+  <span class = "comment">/** Return perimeter */</span>
+  <span class = "keyword">public</span> <span class = "keyword">double</span> getPerimeter() {
+    <span class = "keyword">return</span> <span class = "literal">2</span> * radius * Math.PI;
+  }
+
+  <span class = "comment">/* Print the circle info */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> printCircle() {
+    System.out.println(toString() + <span class = "literal">"The circle is created "</span> + getDateCreated() +
+      <span class = "literal">" and the radius is "</span> + radius);
+  }
+  
+  <span class = "keyword">public</span> String toString() {
+    <span class = "keyword">return</span> <span class = "literal">"Circle WWWW "</span> + getColor() + <span class = "keyword">super</span>.toString();
+  }
+}
+</pre>
+</body>
+</html>

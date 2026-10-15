@@ -1,0 +1,77 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ParallelSum.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ParallelSumWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.concurrent.RecursiveTask;
+<span class = "keyword">import</span> java.util.concurrent.ForkJoinPool;
+<span class = "keyword">import</span> java.util.Arrays;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ParallelSum <span class = "keyword">extends</span> RecursiveTask&lt;Integer&gt; {
+  <span class = "keyword">private</span> <span class = "keyword">int</span>[] list;
+  <span class = "keyword">private</span> <span class = "keyword">int</span> low;
+  <span class = "keyword">private</span> <span class = "keyword">int</span> high;
+
+  <span class = "keyword">private</span> <span class = "keyword">static</span> <span class = "keyword">final</span> <span class = "keyword">int</span> THRESHOLD = <span class = "literal">50</span>;
+
+  <span class = "keyword">public</span> ParallelSum(<span class = "keyword">int</span>[] list, <span class = "keyword">int</span> low, <span class = "keyword">int</span> high) {
+    <span class = "keyword">this</span>.list = list;
+    <span class = "keyword">this</span>.low = low;
+    <span class = "keyword">this</span>.high = high;
+  }
+
+  @Override
+  <span class = "keyword">public</span> Integer compute() {
+    <span class = "keyword">if</span> (high - low &lt; THRESHOLD) {
+      <span class = "keyword">int</span> sum = <span class = "literal">0</span>;
+
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = low; i &lt; high; ++i)
+        sum += list[i];
+
+      <span class = "keyword">return</span> <span class = "keyword">new</span> Integer(sum);
+    } 
+    <span class = "keyword">else</span> {
+      <span class = "keyword">int</span> mid = (low + high) / <span class = "literal">2</span>;
+
+      RecursiveTask&lt;Integer&gt; left = <span class = "keyword">new</span> ParallelSum(list, low, mid);
+      RecursiveTask&lt;Integer&gt; right = <span class = "keyword">new</span> ParallelSum(list, mid, high);
+
+      right.fork();
+      left.fork(); 
+      <span class = "keyword">return</span> <span class = "keyword">new</span> Integer(left.join().intValue() + right.join().intValue());
+    }
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "keyword">int</span>[] list = <span class = "keyword">new</span> <span class = "keyword">int</span>[<span class = "literal">1000000</span>];
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; list.length; i++)
+      list[i] = <span class = "literal">1</span>;
+    
+    RecursiveTask&lt;Integer&gt; sumTask = <span class = "keyword">new</span> ParallelSum(list, <span class = "literal">0</span>, list.length);
+    ForkJoinPool mainPool = <span class = "keyword">new</span> ForkJoinPool();
+ 
+    <span class = "keyword">int</span> result = mainPool.invoke(sumTask);
+    System.out.println(result);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "ParallelSum" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

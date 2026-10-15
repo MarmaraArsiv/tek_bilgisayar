@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - LeapYear.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "LeapYearWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.Scanner; 
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> LeapYear {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String args[]) {
+    <span class = "comment">// Create a Scanner</span>
+    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+    System.out.print(<span class = "literal">"Enter a year: "</span>);
+    <span class = "keyword">int</span> year = input.nextInt();
+
+    <span class = "comment">// Check if the year is a leap year </span>
+    <span class = "keyword">boolean</span> isLeapYear = 
+      (year % <span class = "literal">4</span> == <span class = "literal">0</span> && year % <span class = "literal">100</span> != <span class = "literal">0</span>) || (year % <span class = "literal">400</span> == <span class = "literal">0</span>);
+
+    <span class = "comment">// Display the result in a message dialog box</span>
+    System.out.println(year + <span class = "literal">" is a leap year? "</span> + isLeapYear);   
+  } 
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "LeapYear" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

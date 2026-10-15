@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - UseCustomFrame.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "UseCustomFrame.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> UseCustomFrame {  
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  5&nbsp;&nbsp;    CustomFrame frame1 = <span class = "keyword">new</span> CustomFrame(); <span class = "comment">// Create a frame</span>
+  6&nbsp;&nbsp;    frame1.setTitle(<span class = "literal">"Window 1"</span>); <span class = "comment">// Set frame title</span>
+  7&nbsp;&nbsp;    frame1.setLocation(<span class = "literal">200</span>, <span class = "literal">100</span>); <span class = "comment">// Set frame location</span>
+  8&nbsp;&nbsp;    frame1.setVisible(<span class = "keyword">true</span>); <span class = "comment">// Display frame</span>
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;    CustomFrame frame2 = <span class = "keyword">new</span> CustomFrame(); <span class = "comment">// Create another frame</span>
+ 11&nbsp;&nbsp;    frame2.setTitle(<span class = "literal">"Window 2"</span>); <span class = "comment">// Set frame title</span>
+ 12&nbsp;&nbsp;    frame2.setLocation(<span class = "literal">200</span>, <span class = "literal">300</span>); <span class = "comment">// Set frame location</span>
+ 13&nbsp;&nbsp;    frame2.setVisible(<span class = "keyword">true</span>); <span class = "comment">// Display frame</span>
+ 14&nbsp;&nbsp;  }
+ 15&nbsp;&nbsp;}
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;<span class = "keyword">class</span> CustomFrame <span class = "keyword">extends</span> JFrame {
+ 18&nbsp;&nbsp;  <span class = "keyword">public</span> CustomFrame() {
+ 19&nbsp;&nbsp;    <span class = "comment">// Create a button with text OK </span>
+ 20&nbsp;&nbsp;    JButton jbtOK = <span class = "keyword">new</span> JButton(<span class = "literal">"OK"</span>); 
+ 21&nbsp;&nbsp;
+ 22&nbsp;&nbsp;    <span class = "comment">// Create a label with text "Enter your name: "</span>
+ 23&nbsp;&nbsp;    JLabel jlblName = <span class = "keyword">new</span> JLabel(<span class = "literal">"Enter your name: "</span>); 
+ 24&nbsp;&nbsp;
+ 25&nbsp;&nbsp;    <span class = "comment">// Create a text field with text "Type Name Here"</span>
+ 26&nbsp;&nbsp;    JTextField jtfName = <span class = "keyword">new</span> JTextField(<span class = "literal">"Type Name Here"</span>); 
+ 27&nbsp;&nbsp;
+ 28&nbsp;&nbsp;    <span class = "comment">// Create a check box with text bold</span>
+ 29&nbsp;&nbsp;    JCheckBox jchkBold = <span class = "keyword">new</span> JCheckBox(<span class = "literal">"Bold"</span>); 
+ 30&nbsp;&nbsp;
+ 31&nbsp;&nbsp;    <span class = "comment">// Create a radio button with text red</span>
+ 32&nbsp;&nbsp;    JRadioButton jrbRed = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"Red"</span>); 
+ 33&nbsp;&nbsp;
+ 34&nbsp;&nbsp;    <span class = "comment">// Create a combo box with choices red, green, and blue</span>
+ 35&nbsp;&nbsp;    JComboBox jcboColor = <span class = "keyword">new</span> JComboBox(<span class = "keyword">new</span> String[]{<span class = "literal">"Red"</span>, 
+ 36&nbsp;&nbsp;      <span class = "literal">"Green"</span>, <span class = "literal">"Blue"</span>}); 
+ 37&nbsp;&nbsp;
+ 38&nbsp;&nbsp;    <span class = "comment">// Create a panel to group components</span>
+ 39&nbsp;&nbsp;    JPanel panel = <span class = "keyword">new</span> JPanel();
+ 40&nbsp;&nbsp;    panel.add(jbtOK); <span class = "comment">// Add the button to the panel</span>
+ 41&nbsp;&nbsp;    panel.add(jlblName); <span class = "comment">// Add the label to the panel</span>
+ 42&nbsp;&nbsp;    panel.add(jtfName); <span class = "comment">// Add the text field to the panel</span>
+ 43&nbsp;&nbsp;    panel.add(jchkBold); <span class = "comment">// Add the check box to the panel</span>
+ 44&nbsp;&nbsp;    panel.add(jrbRed); <span class = "comment">// Add the radio button to the panel</span>
+ 45&nbsp;&nbsp;    panel.add(jcboColor); <span class = "comment">// Add the combo box to the panel</span>
+ 46&nbsp;&nbsp;    
+ 47&nbsp;&nbsp;    add(panel); <span class = "comment">// Add the panel to the frame</span>
+ 48&nbsp;&nbsp;    setSize(<span class = "literal">450</span>, <span class = "literal">70</span>); <span class = "comment">// Set frame's size</span>
+ 49&nbsp;&nbsp;    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 50&nbsp;&nbsp;  }
+ 51&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

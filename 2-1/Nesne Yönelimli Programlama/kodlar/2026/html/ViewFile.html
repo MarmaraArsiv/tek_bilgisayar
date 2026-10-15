@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - ViewFile.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">// ViewFile.java: Read a text file and store it in a text area
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.event.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.io.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> ViewFile <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JFrame <FONT COLOR="#000080"><B>implements</B></FONT><FONT COLOR="#000000"> ActionListener {
+  <FONT COLOR="#008000">// Button to view view
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JButton jbtView = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JButton(<FONT COLOR="#0000ff">"View"</FONT>);
+
+  <FONT COLOR="#008000">// Text field to receive file name
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JTextField jtfFilename = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextField(<FONT COLOR="#0000ff">12</FONT><FONT COLOR="#000000">);
+
+  <FONT COLOR="#008000">// Text area to display file
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JTextArea jtaFile = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextArea();
+
+  <FONT COLOR="#008000">// Obtain the system line separator
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> String lineSeparator = (String)java.security.
+    AccessController.doPrivileged(
+    <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> sun.security.action.GetPropertyAction(<FONT COLOR="#0000ff">"line.separator"</FONT>));
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    ViewFile frame = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> ViewFile();
+    frame.setTitle(<FONT COLOR="#0000ff">"ViewFile"</FONT>);
+    frame.setSize(<FONT COLOR="#0000ff">400</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">300</FONT><FONT COLOR="#000000">);
+    frame.setVisible(<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> ViewFile() {
+    <FONT COLOR="#008000">// Panel p to hold a label, a text field, and a button
+<FONT COLOR="#000000">    Panel p = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Panel();
+    p.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BorderLayout());
+    p.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Label(<FONT COLOR="#0000ff">"Filename"</FONT>), BorderLayout.WEST);
+    p.add(jtfFilename, BorderLayout.CENTER);
+    jtfFilename.setBackground(Color.yellow);
+    jtfFilename.setForeground(Color.red);
+    p.add(jbtView, BorderLayout.EAST);
+
+    <FONT COLOR="#008000">// Add jtaFile to a scroll pane
+<FONT COLOR="#000000">    JScrollPane jsp = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JScrollPane(jtaFile);
+
+    <FONT COLOR="#008000">// Add jsp and p to the frame
+<FONT COLOR="#000000">    getContentPane().add(jsp, BorderLayout.CENTER);
+    getContentPane().add(p, BorderLayout.SOUTH);
+
+    <FONT COLOR="#008000">// Register listener
+<FONT COLOR="#000000">    jbtView.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+  }
+
+  <FONT COLOR="#008000">/** Handle the <FONT COLOR="#0000ff">"View"</FONT> button */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> actionPerformed(ActionEvent e) {
+    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (e.getSource() == jbtView)
+      showFile();
+  }
+
+  <FONT COLOR="#008000">/** Display the file in the text area */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> showFile() {
+    <FONT COLOR="#008000">// Use a BufferedReader to read text from the file
+<FONT COLOR="#000000">    BufferedReader infile = <FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">;
+
+    <FONT COLOR="#008000">// Get file name from the text field
+<FONT COLOR="#000000">    String filename = jtfFilename.getText().trim();
+
+    String inLine;
+
+    <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+      <FONT COLOR="#008000">// Create a buffered stream
+<FONT COLOR="#000000">      infile = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BufferedReader(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> FileReader(filename));
+
+      <FONT COLOR="#008000">// Read a line and append the line to the text area
+<FONT COLOR="#000000">      <FONT COLOR="#000080"><B>while</B></FONT><FONT COLOR="#000000"> ((inLine = infile.readLine()) != <FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">) {
+        jtaFile.append(inLine + lineSeparator);
+      }
+    }
+    <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (FileNotFoundException ex) {
+      System.out.println(<FONT COLOR="#0000ff">"File not found: "</FONT> + filename);
+    }
+    <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (IOException ex) {
+      System.out.println(ex.getMessage());
+    }
+    <FONT COLOR="#000080"><B>finally</B></FONT><FONT COLOR="#000000"> {
+      <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+        <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (infile != <FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">) infile.close();
+      }
+      <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (IOException ex) {
+        System.out.println(ex.getMessage());
+      }
+    }
+  }
+}
+</pre>

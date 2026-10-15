@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ReadFileUsingJFileChooser.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ReadFileUsingJFileChooser.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.Scanner; 
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JFileChooser;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ReadFileUsingJFileChooser {
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) <span class = "keyword">throws</span> Exception {
+  6&nbsp;&nbsp;    JFileChooser fileChooser = <span class = "keyword">new</span> JFileChooser();
+  7&nbsp;&nbsp;    <span class = "keyword">if</span> (fileChooser.showOpenDialog(<span class = "keyword">null</span>)
+  8&nbsp;&nbsp;        == JFileChooser.APPROVE_OPTION) {
+  9&nbsp;&nbsp;      <span class = "comment">// Get the selected file</span>
+ 10&nbsp;&nbsp;      java.io.File file = fileChooser.getSelectedFile();
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;      <span class = "comment">// Create a Scanner for the file</span>
+ 13&nbsp;&nbsp;      Scanner input = <span class = "keyword">new</span> Scanner(file);
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;      <span class = "comment">// Read text from the file</span>
+ 16&nbsp;&nbsp;      <span class = "keyword">while</span> (input.hasNext()) {
+ 17&nbsp;&nbsp;        System.out.println(input.nextLine());
+ 18&nbsp;&nbsp;      }
+ 19&nbsp;&nbsp;
+ 20&nbsp;&nbsp;      <span class = "comment">// Close the file</span>
+ 21&nbsp;&nbsp;      input.close();
+ 22&nbsp;&nbsp;    }
+ 23&nbsp;&nbsp;    <span class = "keyword">else</span> {
+ 24&nbsp;&nbsp;      System.out.println(<span class = "literal">"No file selected"</span>);
+ 25&nbsp;&nbsp;    }
+ 26&nbsp;&nbsp;  }
+ 27&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - RotateDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "RotateDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> javafx.application.Application;
+<span class = "keyword">import</span> javafx.scene.Scene;
+<span class = "keyword">import</span> javafx.scene.layout.Pane;
+<span class = "keyword">import</span> javafx.scene.paint.Color;
+<span class = "keyword">import</span> javafx.scene.shape.Rectangle;
+<span class = "keyword">import</span> javafx.stage.Stage;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> RotateDemo <span class = "keyword">extends</span> Application {
+  @Override <span class = "comment">// Override the start method in the Application class</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {   
+    Pane pane = <span class = "keyword">new</span> Pane();
+    java.util.Random random = <span class = "keyword">new</span> java.util.Random();
+    <span class = "comment">// The radius of the circle for anchoring rectangles</span>
+    <span class = "keyword">double</span> radius = <span class = "literal">90</span>; 
+    <span class = "keyword">double</span> width = <span class = "literal">20</span>; <span class = "comment">// Width of the rectangle</span>
+    <span class = "keyword">double</span> height = <span class = "literal">40</span>; <span class = "comment">// Height of the rectangle</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">8</span>; i++) {
+      <span class = "comment">// Center of a rectangle</span>
+      <span class = "keyword">double</span> x = <span class = "literal">150</span> + radius * Math.cos(i * <span class = "literal">2</span> * Math.PI / <span class = "literal">8</span>);
+      <span class = "keyword">double</span> y = <span class = "literal">150</span> + radius * Math.sin(i * <span class = "literal">2</span> * Math.PI / <span class = "literal">8</span>);              
+      Rectangle rectangle = <span class = "keyword">new</span> Rectangle(
+        x - width / <span class = "literal">2</span>, y - height / <span class = "literal">2</span>, width, height);  
+      rectangle.setFill(Color.WHITE);
+      rectangle.setStroke(Color.color(random.nextDouble(), 
+        random.nextDouble(), random.nextDouble()));
+      rectangle.setRotate(i * <span class = "literal">360</span> / <span class = "literal">8</span>); <span class = "comment">// Rotate the rectangle</span>
+      pane.getChildren().add(rectangle);
+    }
+
+    Scene scene = <span class = "keyword">new</span> Scene(pane, <span class = "literal">300</span>, <span class = "literal">300</span>);           
+    primaryStage.setTitle(<span class = "literal">"RotateDemo"</span>); <span class = "comment">// Set the window title</span>
+    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the window</span>
+    primaryStage.show(); <span class = "comment">// Display the window</span>
+  }
+
+  <span class = "comment">// Lauch the program from command-line</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    launch(args);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "RotateDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

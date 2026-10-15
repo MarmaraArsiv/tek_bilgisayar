@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - MyTableModel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "MyTableModelWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.table.*;
+<span class = "keyword">import</span> java.util.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> MyTableModel <span class = "keyword">extends</span> DefaultTableModel {
+  <span class = "keyword">public</span> MyTableModel() {
+  }
+
+  <span class = "comment">/** Construct a table model with specified data and columnNames */</span>
+  <span class = "keyword">public</span> MyTableModel(Object[][] data, Object[] columnNames) {
+    <span class = "keyword">super</span>(data, columnNames);
+  }
+
+  <span class = "comment">/** Override this method to return a class for the column */</span>
+  <span class = "keyword">public</span> Class getColumnClass(<span class = "keyword">int</span> column) {
+    <span class = "keyword">return</span> getValueAt(<span class = "literal">0</span>, column).getClass();
+  }
+
+  <span class = "comment">/** Override this method to return true if cell is editable */</span>
+  <span class = "keyword">public</span> <span class = "keyword">boolean</span> isCellEditable(<span class = "keyword">int</span> row, <span class = "keyword">int</span> column) {
+    Class columnClass = getColumnClass(column);
+    <span class = "keyword">return</span> columnClass != ImageIcon.<span class = "keyword">class</span> &&
+      columnClass != Date.<span class = "keyword">class</span>;
+  }
+}
+</pre>
+</body>
+</html>

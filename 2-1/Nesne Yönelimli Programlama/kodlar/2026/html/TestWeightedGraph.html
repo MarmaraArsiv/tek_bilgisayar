@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestWeightedGraph.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestWeightedGraphWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestWeightedGraph {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    String[] vertices = {<span class = "literal">"Seattle"</span>, <span class = "literal">"San Francisco"</span>, <span class = "literal">"Los Angeles"</span>,
+      <span class = "literal">"Denver"</span>, <span class = "literal">"Kansas City"</span>, <span class = "literal">"Chicago"</span>, <span class = "literal">"Boston"</span>, <span class = "literal">"New York"</span>,
+      <span class = "literal">"Atlanta"</span>, <span class = "literal">"Miami"</span>, <span class = "literal">"Dallas"</span>, <span class = "literal">"Houston"</span>};
+
+    <span class = "keyword">int</span>[][] edges = {
+      {<span class = "literal">0</span>, <span class = "literal">1</span>, <span class = "literal">807</span>}, {<span class = "literal">0</span>, <span class = "literal">3</span>, <span class = "literal">1331</span>}, {<span class = "literal">0</span>, <span class = "literal">5</span>, <span class = "literal">2097</span>},
+      {<span class = "literal">1</span>, <span class = "literal">0</span>, <span class = "literal">807</span>}, {<span class = "literal">1</span>, <span class = "literal">2</span>, <span class = "literal">381</span>}, {<span class = "literal">1</span>, <span class = "literal">3</span>, <span class = "literal">1267</span>},
+      {<span class = "literal">2</span>, <span class = "literal">1</span>, <span class = "literal">381</span>}, {<span class = "literal">2</span>, <span class = "literal">3</span>, <span class = "literal">1015</span>}, {<span class = "literal">2</span>, <span class = "literal">4</span>, <span class = "literal">1663</span>}, {<span class = "literal">2</span>, <span class = "literal">10</span>, <span class = "literal">1435</span>},
+      {<span class = "literal">3</span>, <span class = "literal">0</span>, <span class = "literal">1331</span>}, {<span class = "literal">3</span>, <span class = "literal">1</span>, <span class = "literal">1267</span>}, {<span class = "literal">3</span>, <span class = "literal">2</span>, <span class = "literal">1015</span>}, {<span class = "literal">3</span>, <span class = "literal">4</span>, <span class = "literal">599</span>}, 
+        {<span class = "literal">3</span>, <span class = "literal">5</span>, <span class = "literal">1003</span>},
+      {<span class = "literal">4</span>, <span class = "literal">2</span>, <span class = "literal">1663</span>}, {<span class = "literal">4</span>, <span class = "literal">3</span>, <span class = "literal">599</span>}, {<span class = "literal">4</span>, <span class = "literal">5</span>, <span class = "literal">533</span>}, {<span class = "literal">4</span>, <span class = "literal">7</span>, <span class = "literal">1260</span>},
+        {<span class = "literal">4</span>, <span class = "literal">8</span>, <span class = "literal">864</span>}, {<span class = "literal">4</span>, <span class = "literal">10</span>, <span class = "literal">496</span>},
+      {<span class = "literal">5</span>, <span class = "literal">0</span>, <span class = "literal">2097</span>}, {<span class = "literal">5</span>, <span class = "literal">3</span>, <span class = "literal">1003</span>}, {<span class = "literal">5</span>, <span class = "literal">4</span>, <span class = "literal">533</span>}, 
+        {<span class = "literal">5</span>, <span class = "literal">6</span>, <span class = "literal">983</span>}, {<span class = "literal">5</span>, <span class = "literal">7</span>, <span class = "literal">787</span>},
+      {<span class = "literal">6</span>, <span class = "literal">5</span>, <span class = "literal">983</span>}, {<span class = "literal">6</span>, <span class = "literal">7</span>, <span class = "literal">214</span>},
+      {<span class = "literal">7</span>, <span class = "literal">4</span>, <span class = "literal">1260</span>}, {<span class = "literal">7</span>, <span class = "literal">5</span>, <span class = "literal">787</span>}, {<span class = "literal">7</span>, <span class = "literal">6</span>, <span class = "literal">214</span>}, {<span class = "literal">7</span>, <span class = "literal">8</span>, <span class = "literal">888</span>},
+      {<span class = "literal">8</span>, <span class = "literal">4</span>, <span class = "literal">864</span>}, {<span class = "literal">8</span>, <span class = "literal">7</span>, <span class = "literal">888</span>}, {<span class = "literal">8</span>, <span class = "literal">9</span>, <span class = "literal">661</span>}, 
+        {<span class = "literal">8</span>, <span class = "literal">10</span>, <span class = "literal">781</span>}, {<span class = "literal">8</span>, <span class = "literal">11</span>, <span class = "literal">810</span>},
+      {<span class = "literal">9</span>, <span class = "literal">8</span>, <span class = "literal">661</span>}, {<span class = "literal">9</span>, <span class = "literal">11</span>, <span class = "literal">1187</span>},
+      {<span class = "literal">10</span>, <span class = "literal">2</span>, <span class = "literal">1435</span>}, {<span class = "literal">10</span>, <span class = "literal">4</span>, <span class = "literal">496</span>}, {<span class = "literal">10</span>, <span class = "literal">8</span>, <span class = "literal">781</span>}, {<span class = "literal">10</span>, <span class = "literal">11</span>, <span class = "literal">239</span>},
+      {<span class = "literal">11</span>, <span class = "literal">8</span>, <span class = "literal">810</span>}, {<span class = "literal">11</span>, <span class = "literal">9</span>, <span class = "literal">1187</span>}, {<span class = "literal">11</span>, <span class = "literal">10</span>, <span class = "literal">239</span>}
+    };
+
+    WeightedGraph&lt;String&gt; graph1 = 
+      <span class = "keyword">new</span> WeightedGraph&lt;&gt;(vertices, edges);
+    System.out.println(<span class = "literal">"The number of vertices in graph1: "</span> 
+      + graph1.getSize());
+    System.out.println(<span class = "literal">"The vertex with index <span class = "literal">1</span> is "</span> 
+      + graph1.getVertex(<span class = "literal">1</span>));
+    System.out.println(<span class = "literal">"The index for Miami is "</span> + 
+      graph1.getIndex(<span class = "literal">"Miami"</span>));
+    System.out.println(<span class = "literal">"The edges for graph1:"</span>);
+    graph1.printWeightedEdges();
+
+    edges = <span class = "keyword">new</span> <span class = "keyword">int</span>[][] {
+      {<span class = "literal">0</span>, <span class = "literal">1</span>, <span class = "literal">2</span>}, {<span class = "literal">0</span>, <span class = "literal">3</span>, <span class = "literal">8</span>}, 
+      {<span class = "literal">1</span>, <span class = "literal">0</span>, <span class = "literal">2</span>}, {<span class = "literal">1</span>, <span class = "literal">2</span>, <span class = "literal">7</span>}, {<span class = "literal">1</span>, <span class = "literal">3</span>, <span class = "literal">3</span>},
+      {<span class = "literal">2</span>, <span class = "literal">1</span>, <span class = "literal">7</span>}, {<span class = "literal">2</span>, <span class = "literal">3</span>, <span class = "literal">4</span>}, {<span class = "literal">2</span>, <span class = "literal">4</span>, <span class = "literal">5</span>},
+      {<span class = "literal">3</span>, <span class = "literal">0</span>, <span class = "literal">8</span>}, {<span class = "literal">3</span>, <span class = "literal">1</span>, <span class = "literal">3</span>}, {<span class = "literal">3</span>, <span class = "literal">2</span>, <span class = "literal">4</span>}, {<span class = "literal">3</span>, <span class = "literal">4</span>, <span class = "literal">6</span>},
+      {<span class = "literal">4</span>, <span class = "literal">2</span>, <span class = "literal">5</span>}, {<span class = "literal">4</span>, <span class = "literal">3</span>, <span class = "literal">6</span>}
+    };
+    WeightedGraph&lt;Integer&gt; graph2 = <span class = "keyword">new</span> WeightedGraph&lt;&gt;(edges, <span class = "literal">5</span>);
+    System.out.println(<span class = "literal">"\nThe edges for graph2:"</span>);
+    graph2.printWeightedEdges();
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestWeightedGraph" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

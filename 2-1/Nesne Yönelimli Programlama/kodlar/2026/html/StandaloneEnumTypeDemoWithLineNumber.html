@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - StandaloneEnumTypeDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "StandaloneEnumTypeDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> StandaloneEnumTypeDemo {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  3&nbsp;&nbsp;    Day day1 = Day.FRIDAY;
+  4&nbsp;&nbsp;    Day day2 = Day.THURSDAY;
+  5&nbsp;&nbsp;    
+  6&nbsp;&nbsp;    System.out.println(<span class = "literal">"day1's name is "</span> + day1.name());
+  7&nbsp;&nbsp;    System.out.println(<span class = "literal">"day2's name is "</span> + day2.name());
+  8&nbsp;&nbsp;    System.out.println(<span class = "literal">"day1's ordinal is "</span> + day1.ordinal());
+  9&nbsp;&nbsp;    System.out.println(<span class = "literal">"day2's ordinal is "</span> + day2.ordinal());  
+ 10&nbsp;&nbsp;    
+ 11&nbsp;&nbsp;    System.out.println(<span class = "literal">"day1.equals(day2) returns "</span> + 
+ 12&nbsp;&nbsp;      day1.equals(day2));  
+ 13&nbsp;&nbsp;    System.out.println(<span class = "literal">"day1.toString() returns "</span> + 
+ 14&nbsp;&nbsp;      day1.toString()); 
+ 15&nbsp;&nbsp;    System.out.println(<span class = "literal">"day1.compareTo(day2) returns "</span> + 
+ 16&nbsp;&nbsp;      day1.compareTo(day2));
+ 17&nbsp;&nbsp;  }
+ 18&nbsp;&nbsp;}
+ 19&nbsp;&nbsp;
+ 20&nbsp;&nbsp;<span class = "keyword">enum</span> Day {SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, 
+ 21&nbsp;&nbsp;  FRIDAY, SATURDAY}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "StandaloneEnumTypeDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

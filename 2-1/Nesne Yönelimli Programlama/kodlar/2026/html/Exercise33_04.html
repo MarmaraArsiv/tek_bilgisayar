@@ -1,0 +1,79 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Exercise33_04.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "Exercise33_04WithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">package</span> jsfexercise;
+
+<span class = "keyword">import</span> javax.enterprise.context.SessionScoped;
+<span class = "keyword">import</span> javax.inject.Named;
+
+@Named
+@SessionScoped
+<span class = "keyword">public</span> <span class = "keyword">class</span> Exercise33_04 <span class = "keyword">implements</span> java.io.Serializable {
+  <span class = "keyword">private</span> <span class = "keyword">double</span> loanAmount;
+  <span class = "keyword">private</span> <span class = "keyword">double</span> annualInterestRate;
+  <span class = "keyword">private</span> <span class = "keyword">int</span> numberOfYears;
+
+  <span class = "keyword">public</span> <span class = "keyword">double</span> getLoanAmount() {
+    <span class = "keyword">return</span> loanAmount;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setLoanAmount(<span class = "keyword">double</span> loanAmount) {
+    <span class = "keyword">this</span>.loanAmount = loanAmount;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">double</span> getAnnualInterestRate() {
+    <span class = "keyword">return</span> annualInterestRate;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setAnnualInterestRate(<span class = "keyword">double</span> annualInterestRate) {
+    <span class = "keyword">this</span>.annualInterestRate = annualInterestRate;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getNumberOfYears() {
+    <span class = "keyword">return</span> numberOfYears;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setNumberOfYears(<span class = "keyword">int</span> numberOfYears) {
+    <span class = "keyword">this</span>.numberOfYears = numberOfYears;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> clear() {
+    annualInterestRate = <span class = "literal">0</span>;
+    numberOfYears = <span class = "literal">0</span>;
+    loanAmount = <span class = "literal">0</span>;
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">double</span> getMonthlyPayment() {
+    <span class = "keyword">double</span> monthlyInterestRate = annualInterestRate / <span class = "literal">1200</span>;
+    <span class = "keyword">return</span>  loanAmount * monthlyInterestRate / (<span class = "literal">1</span>
+      - <span class = "literal">1</span> / Math.pow(<span class = "literal">1</span> + monthlyInterestRate, numberOfYears * <span class = "literal">12</span>));
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">double</span> getTotalPayment() {
+    <span class = "keyword">return</span> getMonthlyPayment() * numberOfYears * <span class = "literal">12</span>;
+  }
+  
+  <span class = "keyword">public</span> String getResult() {
+    <span class = "keyword">return</span> <span class = "literal">"Loan Amount: "</span> + loanAmount + <span class = "literal">"&lt;br /&gt;"</span> +
+           <span class = "literal">"Annual Interest Rate: "</span> + annualInterestRate + <span class = "literal">"&lt;br /&gt;"</span> + 
+           <span class = "literal">"Number of Years: "</span> + numberOfYears + <span class = "literal">"&lt;br /&gt;"</span> + 
+           <span class = "literal">"Monthly Payment: "</span> + getMonthlyPayment() + <span class = "literal">"&lt;br /&gt;"</span> +
+           <span class = "literal">"Monthly Payment: "</span> + getTotalPayment();
+  }
+}
+</pre>
+</body>
+</html>

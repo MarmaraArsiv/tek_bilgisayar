@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - AnonymousHandlerDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "AnonymousHandlerDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> javafx.application.Application;
+<span class = "keyword">import</span> javafx.event.ActionEvent;
+<span class = "keyword">import</span> javafx.event.EventHandler;
+<span class = "keyword">import</span> javafx.geometry.Pos;
+<span class = "keyword">import</span> javafx.scene.Scene;
+<span class = "keyword">import</span> javafx.scene.control.Button;
+<span class = "keyword">import</span> javafx.scene.layout.HBox;
+<span class = "keyword">import</span> javafx.stage.Stage;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> AnonymousHandlerDemo <span class = "keyword">extends</span> Application {
+  @Override <span class = "comment">// Override the start method in the Application class</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {
+    <span class = "comment">// Hold two buttons in an HBox</span>
+    HBox hBox = <span class = "keyword">new</span> HBox();
+    hBox.setSpacing(<span class = "literal">10</span>);
+    hBox.setAlignment(Pos.CENTER);
+    Button btNew = <span class = "keyword">new</span> Button(<span class = "literal">"New"</span>);
+    Button btOpen = <span class = "keyword">new</span> Button(<span class = "literal">"Open"</span>);
+    Button btSave = <span class = "keyword">new</span> Button(<span class = "literal">"Save"</span>);
+    Button btPrint = <span class = "keyword">new</span> Button(<span class = "literal">"Print"</span>);
+    hBox.getChildren().addAll(btNew, btOpen, btSave, btPrint);
+    
+    <span class = "comment">// Create and register the handler</span>
+    btNew.setOnAction(<span class = "keyword">new</span> EventHandler&lt;ActionEvent&gt;() {
+      @Override <span class = "comment">// Override the handle method</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> handle(ActionEvent e) {
+        System.out.println(<span class = "literal">"Process New"</span>);
+      }
+    });
+
+    btOpen.setOnAction(<span class = "keyword">new</span> EventHandler&lt;ActionEvent&gt;() {
+      @Override <span class = "comment">// Override the handle method</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> handle(ActionEvent e) {
+        System.out.println(<span class = "literal">"Process Open"</span>);
+      }
+    });
+    
+    btSave.setOnAction(<span class = "keyword">new</span> EventHandler&lt;ActionEvent&gt;() {
+      @Override <span class = "comment">// Override the handle method</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> handle(ActionEvent e) {
+        System.out.println(<span class = "literal">"Process Save"</span>);
+      }
+    });
+    
+    btPrint.setOnAction(<span class = "keyword">new</span> EventHandler&lt;ActionEvent&gt;() {
+      @Override <span class = "comment">// Override the handle method</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> handle(ActionEvent e) {
+        System.out.println(<span class = "literal">"Process Print"</span>);
+      }
+    });
+
+    <span class = "comment">// Create a scene and place it in the stage</span>
+    Scene scene = <span class = "keyword">new</span> Scene(hBox, <span class = "literal">300</span>, <span class = "literal">50</span>);
+    primaryStage.setTitle(<span class = "literal">"AnonymousHandlerDemo"</span>); <span class = "comment">// Set title</span>
+    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the stage</span>
+    primaryStage.show(); <span class = "comment">// Display the stage</span>
+  }
+  
+  <span class = "comment">/**
+   * The main method is only needed for the IDE with limited
+   * JavaFX support. Not needed for running from the command line.
+   */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    launch(args);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "AnonymousHandlerDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

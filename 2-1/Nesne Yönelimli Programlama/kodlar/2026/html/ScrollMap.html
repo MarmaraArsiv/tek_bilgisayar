@@ -1,0 +1,123 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ScrollMap.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ScrollMapWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.border.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ScrollMap <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">// Create images in labels</span>
+  <span class = "keyword">private</span> JLabel lblIndianaMap = <span class = "keyword">new</span> JLabel(
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"image/indianaMap.gif"</span>)));
+  <span class = "keyword">private</span> JLabel lblOhioMap = <span class = "keyword">new</span> JLabel(
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/ohioMap.gif"</span>)));
+
+  <span class = "comment">// Create a scroll pane to scroll map in the labels</span>
+  <span class = "keyword">private</span> JScrollPane jspMap = <span class = "keyword">new</span> JScrollPane(lblIndianaMap);
+
+  <span class = "keyword">public</span> ScrollMap() {
+    <span class = "comment">// Create a combo box for selecting maps</span>
+    JComboBox jcboMap = <span class = "keyword">new</span> JComboBox(<span class = "keyword">new</span> String[]{<span class = "literal">"Indiana"</span>,
+      <span class = "literal">"Ohio"</span>});
+
+    <span class = "comment">// Panel p to hold combo box</span>
+    JPanel p = <span class = "keyword">new</span> JPanel();
+    p.setLayout(<span class = "keyword">new</span> BorderLayout());
+    p.add(jcboMap);
+    p.setBorder(<span class = "keyword">new</span> TitledBorder(<span class = "literal">"Select a map to display"</span>));
+
+    <span class = "comment">// Set row header, column header and corner header</span>
+    jspMap.setColumnHeaderView(<span class = "keyword">new</span> JLabel(<span class = "keyword">new</span> ImageIcon(getClass().
+      getResource(<span class = "literal">"/image/horizontalRuler.gif"</span>))));
+    jspMap.setRowHeaderView(<span class = "keyword">new</span> JLabel(<span class = "keyword">new</span> ImageIcon(getClass().
+      getResource(<span class = "literal">"/image/verticalRuler.gif"</span>))));
+    jspMap.setCorner(JScrollPane.UPPER_LEFT_CORNER,
+      <span class = "keyword">new</span> CornerPanel(JScrollPane.UPPER_LEFT_CORNER));
+    jspMap.setCorner(ScrollPaneConstants.UPPER_RIGHT_CORNER,
+      <span class = "keyword">new</span> CornerPanel(JScrollPane.UPPER_RIGHT_CORNER));
+    jspMap.setCorner(JScrollPane.LOWER_RIGHT_CORNER,
+      <span class = "keyword">new</span> CornerPanel(JScrollPane.LOWER_RIGHT_CORNER));
+    jspMap.setCorner(JScrollPane.LOWER_LEFT_CORNER,
+      <span class = "keyword">new</span> CornerPanel(JScrollPane.LOWER_LEFT_CORNER));
+
+    <span class = "comment">// Add the scroll pane and combo box panel to the frame</span>
+    add(jspMap, BorderLayout.CENTER);
+    add(p, BorderLayout.NORTH);
+
+    <span class = "comment">// Register listener</span>
+    jcboMap.addItemListener(<span class = "keyword">new</span> ItemListener() {
+      <span class = "comment">/** Show the selected map */</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> itemStateChanged(ItemEvent e) {
+        String selectedItem = (String)e.getItem();
+        <span class = "keyword">if</span> (selectedItem.equals(<span class = "literal">"Indiana"</span>)) {
+          <span class = "comment">// Set a new view in the view port</span>
+          jspMap.setViewportView(lblIndianaMap);
+        }
+        <span class = "keyword">else</span> <span class = "keyword">if</span> (selectedItem.equals(<span class = "literal">"Ohio"</span>)) {
+          <span class = "comment">// Set a new view in the view port</span>
+          jspMap.setViewportView(lblOhioMap);
+        }
+
+        <span class = "comment">// Revalidate the scroll pane</span>
+        jspMap.revalidate();
+      }
+    });
+  }
+  
+  <span class = "comment">// A panel displaying a line used for scroll pane corner</span>
+  <span class = "keyword">class</span> CornerPanel <span class = "keyword">extends</span> JPanel {
+    <span class = "comment">// Line location</span>
+    <span class = "keyword">private</span> String location;
+  
+    <span class = "keyword">public</span> CornerPanel(String location) {
+      <span class = "keyword">this</span>.location = location;
+    }
+  
+    @Override <span class = "comment">/** Draw a line depending on the location */</span>
+    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+      <span class = "keyword">super</span>.paintComponents(g);
+  
+      <span class = "keyword">if</span> (location == <span class = "literal">"UPPER_LEFT_CORNER"</span>)
+        g.drawLine(<span class = "literal">0</span>, getHeight(), getWidth(), <span class = "literal">0</span>);
+      <span class = "keyword">else</span> <span class = "keyword">if</span> (location == <span class = "literal">"UPPER_RIGHT_CORNER"</span>)
+        g.drawLine(<span class = "literal">0</span>, <span class = "literal">0</span>, getWidth(), getHeight());
+      <span class = "keyword">else</span> <span class = "keyword">if</span> (location == <span class = "literal">"LOWER_RIGHT_CORNER"</span>)
+        g.drawLine(<span class = "literal">0</span>, getHeight(), getWidth(), <span class = "literal">0</span>);
+      <span class = "keyword">else</span> <span class = "keyword">if</span> (location == <span class = "literal">"LOWER_LEFT_CORNER"</span>)
+        g.drawLine(<span class = "literal">0</span>, <span class = "literal">0</span>, getWidth(), getHeight());
+    }
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ScrollMap applet = <span class = "keyword">new</span> ScrollMap();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"ScrollMap"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

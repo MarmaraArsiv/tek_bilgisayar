@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - HeapSort.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "HeapSort.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> HeapSort {
+  2&nbsp;&nbsp;  <span class = "comment">/** Heap sort method */</span>
+  3&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> &lt;E <span class = "keyword">extends</span> Comparable&lt;E&gt;&gt; <span class = "keyword">void</span> heapSort(E[] list) {
+  4&nbsp;&nbsp;    <span class = "comment">// Create a Heap of integers</span>
+  5&nbsp;&nbsp;    Heap&lt;E&gt; heap = <span class = "keyword">new</span> Heap&lt;&gt;();
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;    <span class = "comment">// Add elements to the heap</span>
+  8&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; list.length; i++)
+  9&nbsp;&nbsp;      heap.add(list[i]);
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;    <span class = "comment">// Remove elements from the heap</span>
+ 12&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = list.length - <span class = "literal">1</span>; i &gt;= <span class = "literal">0</span>; i--)
+ 13&nbsp;&nbsp;      list[i] = heap.remove();
+ 14&nbsp;&nbsp;  }
+ 15&nbsp;&nbsp;  
+ 16&nbsp;&nbsp;  <span class = "comment">/** A test method */</span>
+ 17&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 18&nbsp;&nbsp;    Integer[] list = {<span class = "literal">-</span><span class = "literal">44</span>, <span class = "literal">-</span><span class = "literal">5</span>, <span class = "literal">-</span><span class = "literal">3</span>, <span class = "literal">3</span>, <span class = "literal">3</span>, <span class = "literal">1</span>, <span class = "literal">-</span><span class = "literal">4</span>, <span class = "literal">0</span>, <span class = "literal">1</span>, <span class = "literal">2</span>, <span class = "literal">4</span>, <span class = "literal">5</span>, <span class = "literal">53</span>}; 
+ 19&nbsp;&nbsp;    heapSort(list);
+ 20&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; list.length; i++)
+ 21&nbsp;&nbsp;      System.out.print(list[i] + <span class = "literal">" "</span>);
+ 22&nbsp;&nbsp;  }
+ 23&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "HeapSort" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

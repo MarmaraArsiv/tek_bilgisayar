@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestWindowEvent.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestWindowEvent.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JFrame;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestWindowEvent <span class = "keyword">extends</span> JFrame {
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  6&nbsp;&nbsp;    TestWindowEvent frame = <span class = "keyword">new</span> TestWindowEvent();
+  7&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+  8&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  9&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"TestWindowEvent"</span>);
+ 10&nbsp;&nbsp;    frame.setSize(<span class = "literal">220</span>, <span class = "literal">80</span>);
+ 11&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 12&nbsp;&nbsp;  }
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;  <span class = "keyword">public</span> TestWindowEvent() {
+ 15&nbsp;&nbsp;    addWindowListener(<span class = "keyword">new</span> WindowListener() {
+ 16&nbsp;&nbsp;      <span class = "comment">/**
+ 17&nbsp;&nbsp;       * Handler for window deiconified event
+ 18&nbsp;&nbsp;       * Invoked when a window is changed from a minimized
+ 19&nbsp;&nbsp;       * to a normal state.
+ 20&nbsp;&nbsp;       */</span>
+ 21&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> windowDeiconified(WindowEvent event) {
+ 22&nbsp;&nbsp;        System.out.println(<span class = "literal">"Window deiconified"</span>);
+ 23&nbsp;&nbsp;      }
+ 24&nbsp;&nbsp;
+ 25&nbsp;&nbsp;      <span class = "comment">/**
+ 26&nbsp;&nbsp;       * Handler for window iconified event
+ 27&nbsp;&nbsp;       * Invoked when a window is changed from a normal to a
+ 28&nbsp;&nbsp;       * minimized state. For many platforms, a minimized window
+ 29&nbsp;&nbsp;       * is displayed as the icon specified in the window's
+ 30&nbsp;&nbsp;       * iconImage property.
+ 31&nbsp;&nbsp;       */</span>
+ 32&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> windowIconified(WindowEvent event) {
+ 33&nbsp;&nbsp;        System.out.println(<span class = "literal">"Window iconified"</span>);
+ 34&nbsp;&nbsp;      }
+ 35&nbsp;&nbsp;
+ 36&nbsp;&nbsp;      <span class = "comment">/**
+ 37&nbsp;&nbsp;       * Handler for window activated event
+ 38&nbsp;&nbsp;       * Invoked when the window is set to be the user's
+ 39&nbsp;&nbsp;       * active window, which means the window (or one of its
+ 40&nbsp;&nbsp;       * subcomponents) will receive keyboard events.
+ 41&nbsp;&nbsp;       */</span>
+ 42&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> windowActivated(WindowEvent event) {
+ 43&nbsp;&nbsp;        System.out.println(<span class = "literal">"Window activated"</span>);
+ 44&nbsp;&nbsp;      }
+ 45&nbsp;&nbsp;
+ 46&nbsp;&nbsp;      <span class = "comment">/**
+ 47&nbsp;&nbsp;       * Handler for window deactivated event
+ 48&nbsp;&nbsp;       * Invoked when a window is no longer the user's active
+ 49&nbsp;&nbsp;       * window, which means that keyboard events will no longer
+ 50&nbsp;&nbsp;       * be delivered to the window or its subcomponents.
+ 51&nbsp;&nbsp;       */</span>
+ 52&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> windowDeactivated(WindowEvent event) {
+ 53&nbsp;&nbsp;        System.out.println(<span class = "literal">"Window deactivated"</span>);
+ 54&nbsp;&nbsp;      }
+ 55&nbsp;&nbsp;
+ 56&nbsp;&nbsp;      <span class = "comment">/**
+ 57&nbsp;&nbsp;       * Handler for window opened event
+ 58&nbsp;&nbsp;       * Invoked the first time a window is made visible.
+ 59&nbsp;&nbsp;       */</span>
+ 60&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> windowOpened(WindowEvent event) {
+ 61&nbsp;&nbsp;        System.out.println(<span class = "literal">"Window opened"</span>);
+ 62&nbsp;&nbsp;      }
+ 63&nbsp;&nbsp;
+ 64&nbsp;&nbsp;      <span class = "comment">/**
+ 65&nbsp;&nbsp;       * Handler for window closing event
+ 66&nbsp;&nbsp;       * Invoked when the user attempts to close the window
+ 67&nbsp;&nbsp;       * from the window's system menu.  If the program does not
+ 68&nbsp;&nbsp;       * explicitly hide or dispose the window while processing
+ 69&nbsp;&nbsp;       * this event, the window close operation will be cancelled.
+ 70&nbsp;&nbsp;       */</span>
+ 71&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> windowClosing(WindowEvent event) {
+ 72&nbsp;&nbsp;        System.out.println(<span class = "literal">"Window closing"</span>);
+ 73&nbsp;&nbsp;      }
+ 74&nbsp;&nbsp;
+ 75&nbsp;&nbsp;      <span class = "comment">/**
+ 76&nbsp;&nbsp;       * Handler for window closed event
+ 77&nbsp;&nbsp;       * Invoked when a window has been closed as the result
+ 78&nbsp;&nbsp;       * of calling dispose on the window.
+ 79&nbsp;&nbsp;       */</span>
+ 80&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> windowClosed(WindowEvent event) {
+ 81&nbsp;&nbsp;        System.out.println(<span class = "literal">"Window closed"</span>);
+ 82&nbsp;&nbsp;      }
+ 83&nbsp;&nbsp;    });
+ 84&nbsp;&nbsp;  }
+ 85&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

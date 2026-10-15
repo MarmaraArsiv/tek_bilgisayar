@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ViewController.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ViewController.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.MouseEvent; 
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ViewController <span class = "keyword">extends</span> CircleView {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> ViewController() {
+  5&nbsp;&nbsp;    <span class = "comment">// Register mouse listener</span>
+  6&nbsp;&nbsp;    addMouseListener(<span class = "keyword">new</span> java.awt.event.MouseAdapter() {
+  7&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> mousePressed(java.awt.event.MouseEvent e) {
+  8&nbsp;&nbsp;        CircleModel model = getModel(); <span class = "comment">// Get model</span>
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;        <span class = "keyword">if</span> (model != <span class = "keyword">null</span>) 
+ 11&nbsp;&nbsp;          <span class = "keyword">if</span> (e.getButton() == MouseEvent.BUTTON1) 
+ 12&nbsp;&nbsp;            model.setRadius(model.getRadius() + <span class = "literal">5</span>); <span class = "comment">// Left button</span>
+ 13&nbsp;&nbsp;          <span class = "keyword">else</span> <span class = "keyword">if</span> (e.getButton() == MouseEvent.BUTTON3)
+ 14&nbsp;&nbsp;            model.setRadius(model.getRadius() - <span class = "literal">5</span>); <span class = "comment">// Right button</span>
+ 15&nbsp;&nbsp;      }
+ 16&nbsp;&nbsp;    });
+ 17&nbsp;&nbsp;  }
+ 18&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

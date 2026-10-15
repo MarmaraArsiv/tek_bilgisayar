@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DisplayLabel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "DisplayLabelWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*; 
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> DisplayLabel <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> DisplayLabel() {
+    add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Great!"</span>, JLabel.CENTER));
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a frame</span>
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"Applet is in the frame"</span>);
+
+    <span class = "comment">// Create an instance of the applet</span>
+    DisplayLabel applet = <span class = "keyword">new</span> DisplayLabel();
+
+    <span class = "comment">// Add the applet to the frame</span>
+    frame.add(applet);
+
+    <span class = "comment">// Display the frame</span>
+    frame.setSize(<span class = "literal">300</span>, <span class = "literal">100</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame   </span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

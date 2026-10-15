@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ChineseZodiac.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ChineseZodiacWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.Scanner;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ChineseZodiac {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+    
+    System.out.print(<span class = "literal">"Enter a year: "</span>);
+    <span class = "keyword">int</span> year = input.nextInt();
+    
+    <span class = "keyword">switch</span> (year % <span class = "literal">12</span>) {
+      <span class = "keyword">case</span> 0: System.out.println(<span class = "literal">"monkey"</span>); <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> 1: System.out.println(<span class = "literal">"rooster"</span>); <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> 2: System.out.println(<span class = "literal">"dog"</span>); <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> 3: System.out.println(<span class = "literal">"pig"</span>); <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> 4: System.out.println(<span class = "literal">"rat"</span>); <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> 5: System.out.println(<span class = "literal">"ox"</span>); <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> 6: System.out.println(<span class = "literal">"tiger"</span>); <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> 7: System.out.println(<span class = "literal">"rabbit"</span>); <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> 8: System.out.println(<span class = "literal">"dragon"</span>); <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> 9: System.out.println(<span class = "literal">"snake"</span>); <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> 10: System.out.println(<span class = "literal">"horse"</span>); <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> 11: System.out.println(<span class = "literal">"sheep"</span>); <span class = "keyword">break</span>;
+    }
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "ChineseZodiac" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

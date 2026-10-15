@@ -1,0 +1,197 @@
+<html>
+<head>
+<title>Intro to Java Programming, 6E - SimpleRegistration.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> javax.servlet.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "keyword">import</span> javax.servlet.http.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "keyword">import</span> java.io.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "keyword">import</span> java.sql.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "keyword">public</span> <span class = "keyword">class</span> SimpleRegistration <span class = "keyword">extends</span> HttpServlet <span class = "literal"></span>{<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Use a prepared statement to store a student into the database</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">private</span> PreparedStatement pstmt;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">/** Initialize global variables */</span><span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">void</span> init(<span class = "literal"></span>)<span class = "literal"></span> <span class = "keyword">throws</span> ServletException <span class = "literal"></span>{<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> initializeJdbc(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">/** Process the HTTP Post request */</span><span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">void</span> doPost(HttpServletRequest request,<span class = "literal"></span> HttpServletResponse
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> response)<span class = "literal"></span> <span class = "keyword">throws</span> ServletException,<span class = "literal"></span> IOException <span class = "literal"></span>{<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> response.setContentType(<span class = "literal">"text/html"</span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> PrintWriter out = response.getWriter(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Obtain parameters from the client</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String lastName = request.getParameter(<span class = "literal">"lastName"</span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String firstName = request.getParameter(<span class = "literal">"firstName"</span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String mi = request.getParameter(<span class = "literal">"mi"</span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String phone = request.getParameter(<span class = "literal">"telephone"</span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String email = request.getParameter(<span class = "literal">"email"</span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String address = request.getParameter(<span class = "literal">"street"</span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String city = request.getParameter(<span class = "literal">"city"</span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String state = request.getParameter(<span class = "literal">"state"</span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String zip = request.getParameter(<span class = "literal">"zip"</span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">try</span> <span class = "literal"></span>{<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">if</span> <span class = "literal"></span>(lastName.length(<span class = "literal"></span>)<span class = "literal"></span> == <span class = "literal">0</span> || firstName.length(<span class = "literal"></span>)<span class = "literal"></span> == <span class = "literal">0</span>)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> out.println(<span class = "literal">"Last Name and First Name are required"</span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">return</span>;<span class = "literal"></span> <span class = "comment">// End the method</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> storeStudent(lastName,<span class = "literal"></span> firstName,<span class = "literal"></span> mi,<span class = "literal"></span> phone,<span class = "literal"></span> email,<span class = "literal"></span> address,<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> city,<span class = "literal"></span> state,<span class = "literal"></span> zip)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> out.println(firstName <span class = "literal"></span>+<span class = "literal"></span> <span class = "literal">" "</span> <span class = "literal"></span>+<span class = "literal"></span> lastName <span class = "literal"></span>+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal">" is now registered in the database"</span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">catch</span>(Exception ex)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> out.println(<span class = "literal">"Error: "</span> <span class = "literal"></span>+<span class = "literal"></span> ex.getMessage(<span class = "literal"></span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">finally</span> <span class = "literal"></span>{<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> out.close(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span> <span class = "comment">// Close stream</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">/** Initialize database connection */</span><span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">private</span> <span class = "keyword">void</span> initializeJdbc(<span class = "literal"></span>)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">try</span> <span class = "literal"></span>{<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Declare driver and connection string</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String driver = <span class = "literal">"sun.jdbc.odbc.JdbcOdbcDriver"</span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String connectionString = <span class = "literal">"jdbc:odbc:exampleMDBDataSource"</span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// For MySQL</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// String driver = "com.mysql.jdbc.Driver";</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// String connectionString = "jdbc:mysql://localhost/test";</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// For Oracle</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// String driver = "oracle.jdbc.driver.OracleDriver";</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// String connectionString = "jdbc:oracle:" +</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">//   "thin:scott/tiger@tiger.armstrong.edu:1521:orcl";</span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Load the driver</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> Class.forName(driver)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Connect to the sample database</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> Connection conn = DriverManager.getConnection
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>(connectionString)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Create a Statement</span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> pstmt = conn.prepareStatement(<span class = "literal">"insert into Address "</span> <span class = "literal"></span>+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal">"(lastName,<span class = "literal"></span> firstName,<span class = "literal"></span> mi,<span class = "literal"></span> telephone,<span class = "literal"></span> email,<span class = "literal"></span> street,<span class = "literal"></span> city,<span class = "literal"></span> "</span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>+<span class = "literal"></span> <span class = "literal">"state,<span class = "literal"></span> zip)<span class = "literal"></span> values <span class = "literal"></span>(?,<span class = "literal"></span> ?,<span class = "literal"></span> ?,<span class = "literal"></span> ?,<span class = "literal"></span> ?,<span class = "literal"></span> ?,<span class = "literal"></span> ?,<span class = "literal"></span> ?,<span class = "literal"></span> ?)"</span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">catch</span> <span class = "literal"></span>(Exception ex)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> ex.printStackTrace(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">/** Store a student record to the database */</span><span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">private</span> <span class = "keyword">void</span> storeStudent(String lastName,<span class = "literal"></span> String firstName,<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String mi,<span class = "literal"></span> String phone,<span class = "literal"></span> String email,<span class = "literal"></span> String address,<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> String city,<span class = "literal"></span> String state,<span class = "literal"></span> String zip)<span class = "literal"></span> <span class = "keyword">throws</span> SQLException <span class = "literal"></span>{<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> pstmt.setString(<span class = "literal">1</span>,<span class = "literal"></span> lastName)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> pstmt.setString(<span class = "literal">2</span>,<span class = "literal"></span> firstName)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> pstmt.setString(<span class = "literal">3</span>,<span class = "literal"></span> mi)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> pstmt.setString(<span class = "literal">4</span>,<span class = "literal"></span> phone)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> pstmt.setString(<span class = "literal">5</span>,<span class = "literal"></span> email)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> pstmt.setString(<span class = "literal">6</span>,<span class = "literal"></span> address)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> pstmt.setString(<span class = "literal">7</span>,<span class = "literal"></span> city)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> pstmt.setString(<span class = "literal">8</span>,<span class = "literal"></span> state)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> pstmt.setString(<span class = "literal">9</span>,<span class = "literal"></span> zip)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> pstmt.executeUpdate(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span>
+<span class = "literal"></span>
+<span class = "literal"></span>}<span class = "literal"></span>
+<span class = "literal"></span>
+</pre>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - HoldComponents.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "HoldComponentsWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> HoldComponents {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+
+    <span class = "comment">// Add a button to frame</span>
+    JButton jbtOK = <span class = "keyword">new</span> JButton(<span class = "literal">"OK"</span>);
+    frame.add(jbtOK);
+
+    frame.setTitle(<span class = "literal">"Window 1"</span>);
+    frame.setSize(<span class = "literal">200</span>, <span class = "literal">150</span>);
+    frame.setLocation(<span class = "literal">200</span>, <span class = "literal">100</span>);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

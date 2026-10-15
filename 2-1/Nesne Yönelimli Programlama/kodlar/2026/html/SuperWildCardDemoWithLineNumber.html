@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SuperWildCardDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "SuperWildCardDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> SuperWildCardDemo {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  3&nbsp;&nbsp;    GenericStack&lt;String&gt; stack1 = <span class = "keyword">new</span> GenericStack&lt;String&gt;();
+  4&nbsp;&nbsp;    GenericStack&lt;Object&gt; stack2 = <span class = "keyword">new</span> GenericStack&lt;Object&gt;();
+  5&nbsp;&nbsp;    stack2.push(<span class = "literal">"Java"</span>);
+  6&nbsp;&nbsp;    stack2.push(<span class = "literal">2</span>);
+  7&nbsp;&nbsp;    stack1.push(<span class = "literal">"Sun"</span>);
+  8&nbsp;&nbsp;    add(stack1, stack2);
+  9&nbsp;&nbsp;    AnyWildCardDemo.print(stack2);
+ 10&nbsp;&nbsp;  }
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> &lt;T&gt; <span class = "keyword">void</span> add(GenericStack&lt;T&gt; stack1,
+ 13&nbsp;&nbsp;      GenericStack&lt;? <span class = "keyword">super</span> T&gt; stack2) {
+ 14&nbsp;&nbsp;    <span class = "keyword">while</span> (!stack1.isEmpty())
+ 15&nbsp;&nbsp;      stack2.push(stack1.pop());
+ 16&nbsp;&nbsp;  }
+ 17&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "SuperWildCardDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

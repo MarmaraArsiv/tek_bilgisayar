@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - MVCDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "MVCDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> MVCDemo <span class = "keyword">extends</span> JApplet  {
+  <span class = "keyword">private</span> JButton jbtController = <span class = "keyword">new</span> JButton(<span class = "literal">"Show Controller"</span>);
+  <span class = "keyword">private</span> JButton jbtView = <span class = "keyword">new</span> JButton(<span class = "literal">"Show View"</span>);
+  <span class = "keyword">private</span> CircleModel model = <span class = "keyword">new</span> CircleModel();
+
+  <span class = "keyword">public</span> MVCDemo() {
+    setLayout(<span class = "keyword">new</span> FlowLayout());
+    add(jbtController);
+    add(jbtView);
+
+    jbtController.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"Controller"</span>);
+        CircleController controller = <span class = "keyword">new</span> CircleController();
+        controller.setModel(model);
+        frame.add(controller);
+        frame.setSize(<span class = "literal">200</span>, <span class = "literal">200</span>);
+        frame.setLocation(<span class = "literal">200</span>, <span class = "literal">200</span>);
+        frame.setVisible(<span class = "keyword">true</span>);
+      }
+    });
+
+    jbtView.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"View"</span>);
+        CircleView view = <span class = "keyword">new</span> CircleView();
+        view.setModel(model);
+        frame.add(view);
+        frame.setSize(<span class = "literal">500</span>, <span class = "literal">200</span>);
+        frame.setLocation(<span class = "literal">200</span>, <span class = "literal">200</span>);
+        frame.setVisible(<span class = "keyword">true</span>);
+      }
+    });
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    MVCDemo applet = <span class = "keyword">new</span> MVCDemo();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setTitle(<span class = "literal">"MVCDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    frame.setSize(<span class = "literal">400</span>, <span class = "literal">320</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

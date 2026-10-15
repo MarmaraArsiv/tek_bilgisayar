@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TableCellRendererEditorDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TableCellRendererEditorDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.util.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TableCellRendererEditorDemo <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  <span class = "comment">// Create table column names</span>
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> String[] columnNames =
+  8&nbsp;&nbsp;    {<span class = "literal">"Title"</span>, <span class = "literal">"Copies Needed"</span>, <span class = "literal">"Publisher"</span>, <span class = "literal">"Date Published"</span>,
+  9&nbsp;&nbsp;     <span class = "literal">"In-stock"</span>, <span class = "literal">"Book Photo"</span>};
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;  <span class = "comment">// Create image icons</span>
+ 12&nbsp;&nbsp;  <span class = "keyword">private</span> ImageIcon intro1eImageIcon = <span class = "keyword">new</span> ImageIcon(
+ 13&nbsp;&nbsp;    getClass().getResource(<span class = "literal">"/image/intro1e.gif"</span>));
+ 14&nbsp;&nbsp;  <span class = "keyword">private</span> ImageIcon intro2eImageIcon = <span class = "keyword">new</span> ImageIcon(
+ 15&nbsp;&nbsp;    getClass().getResource(<span class = "literal">"/image/intro2e.gif"</span>));
+ 16&nbsp;&nbsp;  <span class = "keyword">private</span> ImageIcon intro3eImageIcon = <span class = "keyword">new</span> ImageIcon(
+ 17&nbsp;&nbsp;    getClass().getResource(<span class = "literal">"/image/intro3e.jpg"</span>));
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;  <span class = "comment">// Create table data</span>
+ 20&nbsp;&nbsp;  <span class = "keyword">private</span> Object[][] rowData = {
+ 21&nbsp;&nbsp;    {<span class = "literal">"Introduction to Java Programming"</span>, <span class = "literal">120</span>,
+ 22&nbsp;&nbsp;     <span class = "literal">"Que Education & Training"</span>,
+ 23&nbsp;&nbsp;      <span class = "keyword">new</span> GregorianCalendar(<span class = "literal">1998</span>, <span class = "literal">1</span><span class = "literal">-</span><span class = "literal">1</span>, <span class = "literal">6</span>).getTime(),
+ 24&nbsp;&nbsp;      <span class = "keyword">false</span>, intro1eImageIcon},
+ 25&nbsp;&nbsp;    {<span class = "literal">"Introduction to Java Programming, 2E"</span>, <span class = "literal">220</span>,
+ 26&nbsp;&nbsp;     <span class = "literal">"Que Education & Training"</span>,
+ 27&nbsp;&nbsp;      <span class = "keyword">new</span> GregorianCalendar(<span class = "literal">1999</span>, <span class = "literal">1</span><span class = "literal">-</span><span class = "literal">1</span>, <span class = "literal">6</span>).getTime(),
+ 28&nbsp;&nbsp;      <span class = "keyword">false</span>, intro2eImageIcon},
+ 29&nbsp;&nbsp;    {<span class = "literal">"Introduction to Java Programming, 3E"</span>, <span class = "literal">220</span>,
+ 30&nbsp;&nbsp;      <span class = "literal">"Prentice Hall"</span>,
+ 31&nbsp;&nbsp;      <span class = "keyword">new</span> GregorianCalendar(<span class = "literal">2000</span>, <span class = "literal">12</span><span class = "literal">-</span><span class = "literal">1</span>, <span class = "literal">0</span>).getTime(),
+ 32&nbsp;&nbsp;      <span class = "keyword">true</span>, intro3eImageIcon},
+ 33&nbsp;&nbsp;  };
+ 34&nbsp;&nbsp;
+ 35&nbsp;&nbsp;  <span class = "comment">// Create a table model</span>
+ 36&nbsp;&nbsp;  <span class = "keyword">private</span> MyTableModel tableModel = <span class = "keyword">new</span> MyTableModel(
+ 37&nbsp;&nbsp;    rowData, columnNames);
+ 38&nbsp;&nbsp;
+ 39&nbsp;&nbsp;  <span class = "comment">// Create a table</span>
+ 40&nbsp;&nbsp;  <span class = "keyword">private</span> JTable jTable1 = <span class = "keyword">new</span> JTable(tableModel);
+ 41&nbsp;&nbsp;
+ 42&nbsp;&nbsp;  <span class = "keyword">public</span> TableCellRendererEditorDemo() {
+ 43&nbsp;&nbsp;    jTable1.setRowHeight(<span class = "literal">60</span>);
+ 44&nbsp;&nbsp;    add(<span class = "keyword">new</span> JScrollPane(jTable1),
+ 45&nbsp;&nbsp;      BorderLayout.CENTER);
+ 46&nbsp;&nbsp;  }
+ 47&nbsp;&nbsp;
+ 48&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 49&nbsp;&nbsp;    TableCellRendererEditorDemo applet =
+ 50&nbsp;&nbsp;      <span class = "keyword">new</span> TableCellRendererEditorDemo();
+ 51&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 52&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 53&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"Table Cell Renderer and Editor Demo"</span>);
+ 54&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+ 55&nbsp;&nbsp;    applet.init();
+ 56&nbsp;&nbsp;    applet.start();
+ 57&nbsp;&nbsp;    frame.pack();
+ 58&nbsp;&nbsp;    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+ 59&nbsp;&nbsp;    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+ 60&nbsp;&nbsp;                      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+ 61&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 62&nbsp;&nbsp;  }
+ 63&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - CalculatorJSFBean.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "CalculatorJSFBeanWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">package</span> jsf2demo;
+
+<span class = "keyword">import</span> javax.inject.Named;
+<span class = "keyword">import</span> javax.enterprise.context.RequestScoped;
+
+@Named(value = <span class = "literal">"calculator"</span>)
+@RequestScoped
+<span class = "keyword">public</span> <span class = "keyword">class</span> CalculatorJSFBean {
+  <span class = "keyword">private</span> Double number1;
+  <span class = "keyword">private</span> Double number2;
+  <span class = "keyword">private</span> Double result;
+  
+  <span class = "keyword">public</span> CalculatorJSFBean() {
+  }
+  
+  <span class = "keyword">public</span> Double getNumber1() {
+    <span class = "keyword">return</span>  number1;
+  }
+  
+  <span class = "keyword">public</span> Double getNumber2() {
+    <span class = "keyword">return</span> number2;
+  }
+    
+  <span class = "keyword">public</span> Double getResult() {
+    <span class = "keyword">return</span> result;
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setNumber1(Double number1) {
+    <span class = "keyword">this</span>.number1 = number1;
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setNumber2(Double number2) {
+    <span class = "keyword">this</span>.number2 = number2;
+  }
+    
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setResult(Double result) {
+    <span class = "keyword">this</span>.result = result;
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">void</span> add() {
+    result = number1 + number2;
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">void</span> subtract() {
+    result = number1 - number2;
+  }
+    
+  <span class = "keyword">public</span> <span class = "keyword">void</span> divide() {
+    result = number1 / number2;
+  }
+      
+  <span class = "keyword">public</span> <span class = "keyword">void</span> multiply() {
+    result = number1 * number2;
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "CalculatorJSFBean" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

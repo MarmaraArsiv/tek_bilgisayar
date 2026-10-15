@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DisplayImagePlayAudio.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "DisplayImagePlayAudio.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.net.URL;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.applet.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> DisplayImagePlayAudio <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  <span class = "keyword">private</span> AudioClip audioClip;
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;  <span class = "keyword">public</span> DisplayImagePlayAudio() {
+  9&nbsp;&nbsp;    URL urlForImage = getClass().getResource(<span class = "literal">"image/denmark.gif"</span>);
+ 10&nbsp;&nbsp;    add(<span class = "keyword">new</span> JLabel(<span class = "keyword">new</span> ImageIcon(urlForImage)));
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;    URL urlForAudio = getClass().getResource(<span class = "literal">"audio/denmark.mid"</span>);
+ 13&nbsp;&nbsp;    audioClip = Applet.newAudioClip(urlForAudio);
+ 14&nbsp;&nbsp;    audioClip.loop();
+ 15&nbsp;&nbsp;  }
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;  @Override
+ 18&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> start() {
+ 19&nbsp;&nbsp;    <span class = "keyword">if</span> (audioClip != <span class = "keyword">null</span>) audioClip.loop();
+ 20&nbsp;&nbsp;  }
+ 21&nbsp;&nbsp;
+ 22&nbsp;&nbsp;  @Override
+ 23&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> stop() {
+ 24&nbsp;&nbsp;    <span class = "keyword">if</span> (audioClip != <span class = "keyword">null</span>) audioClip.stop();
+ 25&nbsp;&nbsp;  }
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 28&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 29&nbsp;&nbsp;    <span class = "comment">// Create a frame</span>
+ 30&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"DisplayImagePlayAudio"</span>);
+ 31&nbsp;&nbsp;
+ 32&nbsp;&nbsp;    <span class = "comment">// Create an instance of the applet</span>
+ 33&nbsp;&nbsp;    DisplayImagePlayAudio applet = <span class = "keyword">new</span> DisplayImagePlayAudio();
+ 34&nbsp;&nbsp;    applet.init();
+ 35&nbsp;&nbsp;
+ 36&nbsp;&nbsp;    <span class = "comment">// Add the applet instance to the frame</span>
+ 37&nbsp;&nbsp;    frame.add(applet, java.awt.BorderLayout.CENTER);
+ 38&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 39&nbsp;&nbsp;
+ 40&nbsp;&nbsp;    <span class = "comment">// Display the frame</span>
+ 41&nbsp;&nbsp;    frame.setSize(<span class = "literal">200</span>, <span class = "literal">500</span>);
+ 42&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 43&nbsp;&nbsp;  }
+ 44&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

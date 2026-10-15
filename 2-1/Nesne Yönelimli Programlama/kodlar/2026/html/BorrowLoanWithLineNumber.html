@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - BorrowLoan.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "BorrowLoan.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> BorrowLoan {
+  2&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+  3&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  4&nbsp;&nbsp;    <span class = "comment">// Create a name</span>
+  5&nbsp;&nbsp;    Name name = <span class = "keyword">new</span> Name(<span class = "literal">"John"</span>, <span class = "literal">'D'</span>, <span class = "literal">"Smith"</span>);
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;    <span class = "comment">// Create an address</span>
+  8&nbsp;&nbsp;    Address address = <span class = "keyword">new</span> Address(<span class = "literal">"100 Main Street"</span>, <span class = "literal">"Savannah"</span>,
+  9&nbsp;&nbsp;      <span class = "literal">"GA"</span>, <span class = "literal">"31419"</span>);
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;    <span class = "comment">// Create a loan</span>
+ 12&nbsp;&nbsp;    Loan loan = <span class = "keyword">new</span> Loan(<span class = "literal">5</span><span class = "literal">.</span><span class = "literal">5</span>, <span class = "literal">15</span>, <span class = "literal">250000</span>);
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;    <span class = "comment">// Create a borrower</span>
+ 15&nbsp;&nbsp;    Borrower borrower = <span class = "keyword">new</span> Borrower(name, address);
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    borrower.setLoan(loan);
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;    <span class = "comment">// Display loan information</span>
+ 20&nbsp;&nbsp;    System.out.println(borrower.toString());
+ 21&nbsp;&nbsp;  }
+ 22&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "BorrowLoan" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

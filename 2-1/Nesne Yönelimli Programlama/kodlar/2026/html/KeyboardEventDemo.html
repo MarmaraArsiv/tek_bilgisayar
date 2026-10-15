@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - KeyboardEventDemo.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.event.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> KeyboardEventDemo <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JFrame {
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> KeyboardPanel keyboardPanel = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> KeyboardPanel();
+
+  <FONT COLOR="#008000">/** Initialize UI */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> KeyboardEventDemo() {
+    <FONT COLOR="#008000">// Add the keyboard panel to accept and display user input
+<FONT COLOR="#000000">    getContentPane().add(keyboardPanel);
+
+    <FONT COLOR="#008000">// Set focus
+<FONT COLOR="#000000">    keyboardPanel.setFocusable(<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+  }
+
+  <FONT COLOR="#008000">/** Main method */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    KeyboardEventDemo frame = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> KeyboardEventDemo();
+    frame.setTitle(<FONT COLOR="#0000ff">"KeyboardEventDemo"</FONT>);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(<FONT COLOR="#0000ff">300</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">300</FONT><FONT COLOR="#000000">);
+    frame.setVisible(<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+  }
+}
+
+<FONT COLOR="#008000">// KeyboardPanel for receiving key input
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> KeyboardPanel <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JPanel <FONT COLOR="#000080"><B>implements</B></FONT><FONT COLOR="#000000"> KeyListener {
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> x = <FONT COLOR="#0000ff">100</FONT><FONT COLOR="#000000">;
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> y = <FONT COLOR="#0000ff">100</FONT><FONT COLOR="#000000">;
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>char</B></FONT><FONT COLOR="#000000"> keyChar = 'A'; <FONT COLOR="#008000">// Default key
+<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> KeyboardPanel() {
+    addKeyListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">); <FONT COLOR="#008000">// Register listener
+<FONT COLOR="#000000">  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> keyReleased(KeyEvent e) {
+  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> keyTyped(KeyEvent e) {
+  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> keyPressed(KeyEvent e) {
+    <FONT COLOR="#000080"><B>switch</B></FONT><FONT COLOR="#000000"> (e.getKeyCode()) {
+      <FONT COLOR="#000080"><B>case</B></FONT><FONT COLOR="#000000"> KeyEvent.VK_DOWN: y += <FONT COLOR="#0000ff">10</FONT><FONT COLOR="#000000">; <FONT COLOR="#000080"><B>break</B></FONT><FONT COLOR="#000000">;
+      <FONT COLOR="#000080"><B>case</B></FONT><FONT COLOR="#000000"> KeyEvent.VK_UP: y -= <FONT COLOR="#0000ff">10</FONT><FONT COLOR="#000000">; <FONT COLOR="#000080"><B>break</B></FONT><FONT COLOR="#000000">;
+      <FONT COLOR="#000080"><B>case</B></FONT><FONT COLOR="#000000"> KeyEvent.VK_LEFT: x -= <FONT COLOR="#0000ff">10</FONT><FONT COLOR="#000000">; <FONT COLOR="#000080"><B>break</B></FONT><FONT COLOR="#000000">;
+      <FONT COLOR="#000080"><B>case</B></FONT><FONT COLOR="#000000"> KeyEvent.VK_RIGHT: x += <FONT COLOR="#0000ff">10</FONT><FONT COLOR="#000000">; <FONT COLOR="#000080"><B>break</B></FONT><FONT COLOR="#000000">;
+      default: keyChar = e.getKeyChar();
+    }
+
+    repaint();
+  }
+
+  <FONT COLOR="#008000">/** Draw the character */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>protected</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> paintComponent(Graphics g) {
+    <FONT COLOR="#000080"><B>super</B></FONT><FONT COLOR="#000000">.paintComponent(g);
+
+    g.setFont(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Font(<FONT COLOR="#0000ff">"TimesRoman"</FONT>, Font.PLAIN, <FONT COLOR="#0000ff">24</FONT><FONT COLOR="#000000">));
+    g.drawString(String.valueOf(keyChar), x, y);
+  }
+}
+</pre>

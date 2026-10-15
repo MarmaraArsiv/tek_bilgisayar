@@ -1,0 +1,285 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TheTour.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TheTour.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.BorderLayout;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JApplet;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JFrame;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.Color;
+  5&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.ActionEvent;
+  6&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.ActionListener;
+  7&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  8&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;<span class = "keyword">class</span> TheTour <span class = "keyword">extends</span> JApplet {
+ 11&nbsp;&nbsp;  	<span class = "keyword">static</span> <span class = "keyword">private</span> <span class = "keyword">int</span>[][] analysis = { 
+ 12&nbsp;&nbsp;  		{ <span class = "literal">4</span>, <span class = "literal">5</span>, <span class = "literal">3</span>, <span class = "literal">6</span>, <span class = "literal">6</span>, <span class = "literal">6</span>, <span class = "literal">5</span>, <span class = "literal">6</span> },
+ 13&nbsp;&nbsp;  		{ <span class = "literal">2</span>, <span class = "literal">5</span>, <span class = "literal">7</span>, <span class = "literal">7</span>, <span class = "literal">2</span>, <span class = "literal">3</span>, <span class = "literal">6</span>, <span class = "literal">5</span> }, 
+ 14&nbsp;&nbsp;  		{ <span class = "literal">4</span>, <span class = "literal">5</span>, <span class = "literal">1</span>, <span class = "literal">1</span>, <span class = "literal">1</span>, <span class = "literal">2</span>, <span class = "literal">1</span>, <span class = "literal">5</span> },
+ 15&nbsp;&nbsp;  		{ <span class = "literal">4</span>, <span class = "literal">8</span>, <span class = "literal">3</span>, <span class = "literal">4</span>, <span class = "literal">7</span>, <span class = "literal">7</span>, <span class = "literal">5</span>, <span class = "literal">8</span> }, 
+ 16&nbsp;&nbsp;  		{ <span class = "literal">4</span>, <span class = "literal">5</span>, <span class = "literal">2</span>, <span class = "literal">2</span>, <span class = "literal">6</span>, <span class = "literal">6</span>, <span class = "literal">4</span>, <span class = "literal">8</span> },
+ 17&nbsp;&nbsp;  		{ <span class = "literal">1</span>, <span class = "literal">5</span>, <span class = "literal">1</span>, <span class = "literal">8</span>, <span class = "literal">7</span>, <span class = "literal">7</span>, <span class = "literal">1</span>, <span class = "literal">7</span> }, 
+ 18&nbsp;&nbsp;  		{ <span class = "literal">3</span>, <span class = "literal">3</span>, <span class = "literal">3</span>, <span class = "literal">6</span>, <span class = "literal">3</span>, <span class = "literal">3</span>, <span class = "literal">1</span>, <span class = "literal">6</span> },
+ 19&nbsp;&nbsp;  		{ <span class = "literal">2</span>, <span class = "literal">8</span>, <span class = "literal">2</span>, <span class = "literal">2</span>, <span class = "literal">2</span>, <span class = "literal">7</span>, <span class = "literal">1</span>, <span class = "literal">8</span> } };
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;	  <span class = "keyword">public</span> TheTour() {
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;	    add(<span class = "keyword">new</span> InternalWorks());
+ 24&nbsp;&nbsp;
+ 25&nbsp;&nbsp;	  }
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;	 
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;	  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 30&nbsp;&nbsp;
+ 31&nbsp;&nbsp;		TheTour applet = <span class = "keyword">new</span> TheTour();
+ 32&nbsp;&nbsp;	    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 33&nbsp;&nbsp;	    frame.setDefaultCloseOperation(JFrame. EXIT_ON_CLOSE);
+ 34&nbsp;&nbsp;	    frame.setTitle( <span class = "literal">"Knight's Tour"</span>);
+ 35&nbsp;&nbsp;	    frame.getContentPane().add(applet, BorderLayout.CENTER);
+ 36&nbsp;&nbsp;	    frame.setSize(<span class = "literal">400</span>, <span class = "literal">310</span>);
+ 37&nbsp;&nbsp;	    frame. setVisible(<span class = "keyword">true</span>);
+ 38&nbsp;&nbsp;	  }
+ 39&nbsp;&nbsp;
+ 40&nbsp;&nbsp;
+ 41&nbsp;&nbsp;	  
+ 42&nbsp;&nbsp;	  
+ 43&nbsp;&nbsp;
+ 44&nbsp;&nbsp;	  <span class = "keyword">private</span> <span class = "keyword">class</span> InternalWorks <span class = "keyword">extends</span> JPanel {
+ 45&nbsp;&nbsp;
+ 46&nbsp;&nbsp;	  	<span class = "keyword">private</span> KnightTour tour = <span class = "keyword">new</span> KnightTour();
+ 47&nbsp;&nbsp;
+ 48&nbsp;&nbsp;	  	<span class = "keyword">private</span> JButton jbtSuspend = <span class = "keyword">new</span> JButton(<span class = "literal">"Suspend"</span>);
+ 49&nbsp;&nbsp;	  	<span class = "keyword">private</span> JButton jbtResume = <span class = "keyword">new</span> JButton(<span class = "literal">"Resume"</span>);
+ 50&nbsp;&nbsp;	  	<span class = "keyword">private</span> JButton jbtReset = <span class = "keyword">new</span> JButton(<span class = "literal">"Reset"</span>);
+ 51&nbsp;&nbsp;	  	<span class = "keyword">private</span> JTextField XBox  = <span class = "keyword">new</span>  JTextField();
+ 52&nbsp;&nbsp;	  	<span class = "keyword">private</span> JTextField YBox  = <span class = "keyword">new</span>  JTextField();
+ 53&nbsp;&nbsp;	  	<span class = "keyword">protected</span> Timer timer = <span class = "keyword">new</span> Timer(<span class = "literal">500</span>, <span class = "keyword">new</span> TimerListener());
+ 54&nbsp;&nbsp;
+ 55&nbsp;&nbsp;	  	<span class = "keyword">private</span> <span class = "keyword">boolean</span> active = <span class = "keyword">false</span>;
+ 56&nbsp;&nbsp;
+ 57&nbsp;&nbsp;	  	<span class = "keyword">private</span> <span class = "keyword">int</span> knightX;
+ 58&nbsp;&nbsp;
+ 59&nbsp;&nbsp;	  	<span class = "keyword">private</span> <span class = "keyword">int</span> knightY;
+ 60&nbsp;&nbsp;
+ 61&nbsp;&nbsp;	  	<span class = "keyword">private</span> <span class = "keyword">byte</span>[][] path = <span class = "keyword">new</span> <span class = "keyword">byte</span>[<span class = "literal">8</span>][<span class = "literal">8</span>];
+ 62&nbsp;&nbsp;
+ 63&nbsp;&nbsp;	  	<span class = "keyword">private</span> <span class = "keyword">int</span> keeper = <span class = "literal">0</span>;
+ 64&nbsp;&nbsp;
+ 65&nbsp;&nbsp;
+ 66&nbsp;&nbsp;
+ 67&nbsp;&nbsp;	  	<span class = "keyword">private</span> <span class = "keyword">class</span> TimerListener <span class = "keyword">implements</span> ActionListener {
+ 68&nbsp;&nbsp;	  	  @Override <span class = "comment">// Updates the scroll bars</span>
+ 69&nbsp;&nbsp;	  		<span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 70&nbsp;&nbsp;	  			updateByOne();
+ 71&nbsp;&nbsp;	  		}
+ 72&nbsp;&nbsp;	  	}
+ 73&nbsp;&nbsp;
+ 74&nbsp;&nbsp;	  	<span class = "keyword">private</span> <span class = "keyword">void</span> updateByOne() {
+ 75&nbsp;&nbsp;	  		<span class = "comment">// Looks at the analysis array and determines where to go next, also</span>
+ 76&nbsp;&nbsp;	  		<span class = "comment">// draws arrow</span>
+ 77&nbsp;&nbsp;	  		<span class = "keyword">if</span> (active) {
+ 78&nbsp;&nbsp;	  			<span class = "keyword">int</span> oldX = knightX;
+ 79&nbsp;&nbsp;	  			<span class = "keyword">int</span> oldY = knightY;
+ 80&nbsp;&nbsp;	  			<span class = "keyword">switch</span> (analysis[knightY][knightX]) {
+ 81&nbsp;&nbsp;	  			<span class = "keyword">case</span> 1:
+ 82&nbsp;&nbsp;	  				knightX++;
+ 83&nbsp;&nbsp;	  				knightY -= <span class = "literal">2</span>;
+ 84&nbsp;&nbsp;	  				<span class = "keyword">break</span>;
+ 85&nbsp;&nbsp;	  			<span class = "keyword">case</span> 2:
+ 86&nbsp;&nbsp;	  				knightX += <span class = "literal">2</span>;
+ 87&nbsp;&nbsp;	  				knightY--;
+ 88&nbsp;&nbsp;	  				<span class = "keyword">break</span>;
+ 89&nbsp;&nbsp;	  			<span class = "keyword">case</span> 3:
+ 90&nbsp;&nbsp;	  				knightX += <span class = "literal">2</span>;
+ 91&nbsp;&nbsp;	  				knightY++;
+ 92&nbsp;&nbsp;	  				<span class = "keyword">break</span>;
+ 93&nbsp;&nbsp;	  			<span class = "keyword">case</span> 4:
+ 94&nbsp;&nbsp;	  				knightX++;
+ 95&nbsp;&nbsp;	  				knightY += <span class = "literal">2</span>;
+ 96&nbsp;&nbsp;	  				<span class = "keyword">break</span>;
+ 97&nbsp;&nbsp;	  			<span class = "keyword">case</span> 5:
+ 98&nbsp;&nbsp;	  				knightX--;
+ 99&nbsp;&nbsp;	  				knightY += <span class = "literal">2</span>;
+100&nbsp;&nbsp;	  				<span class = "keyword">break</span>;
+101&nbsp;&nbsp;	  			<span class = "keyword">case</span> 6:
+102&nbsp;&nbsp;	  				knightX -= <span class = "literal">2</span>;
+103&nbsp;&nbsp;	  				knightY++;
+104&nbsp;&nbsp;	  				<span class = "keyword">break</span>;
+105&nbsp;&nbsp;	  			<span class = "keyword">case</span> 7:
+106&nbsp;&nbsp;	  				knightX -= <span class = "literal">2</span>;
+107&nbsp;&nbsp;	  				knightY--;
+108&nbsp;&nbsp;	  				<span class = "keyword">break</span>;
+109&nbsp;&nbsp;	  			<span class = "keyword">case</span> 8:
+110&nbsp;&nbsp;	  				knightX--;
+111&nbsp;&nbsp;	  				knightY -= <span class = "literal">2</span>;
+112&nbsp;&nbsp;	  				<span class = "keyword">break</span>;
+113&nbsp;&nbsp;	  			}
+114&nbsp;&nbsp;	  			path[oldY][oldX] = <span class = "literal">1</span>;
+115&nbsp;&nbsp;	  			<span class = "keyword">if</span> ((knightX &gt; <span class = "literal">7</span>) || (knightX &lt; <span class = "literal">0</span>) || (knightY &gt; <span class = "literal">7</span>)
+116&nbsp;&nbsp;	  					|| (knightY &lt; <span class = "literal">0</span>)) {
+117&nbsp;&nbsp;	  				System.out
+118&nbsp;&nbsp;	  						.println(<span class = "literal">"Error: "</span> + oldX + <span class = "literal">"  "</span> + oldY + <span class = "literal">"\n"</span>
+119&nbsp;&nbsp;	  								+ knightX + <span class = "literal">" "</span> + knightY + <span class = "literal">"\n"</span>
+120&nbsp;&nbsp;	  								+ analysis[oldY][oldX]);
+121&nbsp;&nbsp;	  				System.exit(<span class = "literal">0</span>);
+122&nbsp;&nbsp;	  			}
+123&nbsp;&nbsp;	  			path[knightY][knightX] = <span class = "literal">2</span>;
+124&nbsp;&nbsp;
+125&nbsp;&nbsp;	  			redrawMatrix();
+126&nbsp;&nbsp;	  			keeper++;
+127&nbsp;&nbsp;	  			<span class = "keyword">if</span> (keeper == <span class = "literal">64</span>) {
+128&nbsp;&nbsp;	  				timer.setDelay(<span class = "literal">1000</span>);
+129&nbsp;&nbsp;	  				path = <span class = "keyword">new</span> <span class = "keyword">byte</span>[<span class = "literal">8</span>][<span class = "literal">8</span>];
+130&nbsp;&nbsp;	  			}
+131&nbsp;&nbsp;	  			tour.updateMatrix(path);
+132&nbsp;&nbsp;	  		}
+133&nbsp;&nbsp;	  	}
+134&nbsp;&nbsp;
+135&nbsp;&nbsp;	  	<span class = "keyword">private</span> <span class = "keyword">void</span> redrawMatrix() {
+136&nbsp;&nbsp;	  		System.out.println(<span class = "literal">"\n\n\n\n\n\n\n\n"</span>);<span class = "comment">// clears the console</span>
+137&nbsp;&nbsp;	  		<span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt;= <span class = "literal">7</span>; i++) {
+138&nbsp;&nbsp;	  			<span class = "keyword">for</span> (<span class = "keyword">int</span> j = <span class = "literal">0</span>; j &lt;= <span class = "literal">7</span>; j++)
+139&nbsp;&nbsp;	  				System.out.print(<span class = "literal">""</span> + path[i][j]);
+140&nbsp;&nbsp;	  			System.out.println(<span class = "literal">""</span>);<span class = "comment">// moves to next line</span>
+141&nbsp;&nbsp;	  		}
+142&nbsp;&nbsp;	  	}
+143&nbsp;&nbsp;
+144&nbsp;&nbsp;	  	<span class = "keyword">public</span> InternalWorks() {
+145&nbsp;&nbsp;	  		<span class = "comment">// Group buttons in a panel</span>
+146&nbsp;&nbsp;	  		JPanel panel = <span class = "keyword">new</span> JPanel();
+147&nbsp;&nbsp;	  		XBox.setText(<span class = "literal">"1"</span>);
+148&nbsp;&nbsp;	  		YBox.setText(<span class = "literal">"1"</span>);
+149&nbsp;&nbsp;	  		panel.add(jbtSuspend);
+150&nbsp;&nbsp;	  		panel.add(jbtResume);
+151&nbsp;&nbsp;	  		panel.add(jbtReset);
+152&nbsp;&nbsp;	  		panel.add(XBox, BorderLayout.WEST );
+153&nbsp;&nbsp;	  		panel.add(YBox,  BorderLayout.NORTH );
+154&nbsp;&nbsp;	  		timer.start();
+155&nbsp;&nbsp;	  		tour.setBorder(<span class = "keyword">new</span> javax.swing.border.LineBorder(Color.red));
+156&nbsp;&nbsp;	  		setLayout(<span class = "keyword">new</span> BorderLayout());
+157&nbsp;&nbsp;	  		add(tour, BorderLayout.CENTER);
+158&nbsp;&nbsp;	  		add(panel, BorderLayout.SOUTH);
+159&nbsp;&nbsp;	  		<span class = "comment">// Register listeners</span>
+160&nbsp;&nbsp;	  		jbtSuspend.addActionListener(<span class = "keyword">new</span> ActionListener() {
+161&nbsp;&nbsp;	  		  @Override
+162&nbsp;&nbsp;	  			<span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+163&nbsp;&nbsp;	  				active = <span class = "keyword">false</span>;
+164&nbsp;&nbsp;	  			}
+165&nbsp;&nbsp;	  		});
+166&nbsp;&nbsp;	  		jbtResume.addActionListener(<span class = "keyword">new</span> ActionListener() {
+167&nbsp;&nbsp;	  		  @Override
+168&nbsp;&nbsp;	  			<span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+169&nbsp;&nbsp;	  				active = <span class = "keyword">true</span>;
+170&nbsp;&nbsp;	  			}
+171&nbsp;&nbsp;	  		});
+172&nbsp;&nbsp;	  		jbtReset.addActionListener(<span class = "keyword">new</span> ActionListener() {
+173&nbsp;&nbsp;	  		  @Override
+174&nbsp;&nbsp;	  			<span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+175&nbsp;&nbsp;	  			    <span class = "keyword">try</span> {
+176&nbsp;&nbsp;	  			       knightX = Integer.parseInt(XBox.getText());
+177&nbsp;&nbsp;	  			       knightY = Integer.parseInt(YBox.getText());
+178&nbsp;&nbsp;	  			       path = <span class = "keyword">new</span> <span class = "keyword">byte</span>[<span class = "literal">8</span>][<span class = "literal">8</span>];
+179&nbsp;&nbsp;	  			       <span class = "keyword">if</span> (knightX &gt;= <span class = "literal">8</span> || knightX &lt; <span class = "literal">0</span>)
+180&nbsp;&nbsp;	  			    	   knightX = <span class = "literal">4</span>;
+181&nbsp;&nbsp;	  			       <span class = "keyword">if</span> (knightY &gt;= <span class = "literal">8</span> || knightY &lt; <span class = "literal">0</span>)
+182&nbsp;&nbsp;	  			    	   knightY = <span class = "literal">4</span>;
+183&nbsp;&nbsp;	  			       path[knightY][knightX] = <span class = "literal">2</span>;
+184&nbsp;&nbsp;	  			       keeper = <span class = "literal">0</span>;
+185&nbsp;&nbsp;	  			    } <span class = "keyword">catch</span> (NumberFormatException nfe) {
+186&nbsp;&nbsp;	  			    	System.out.println(<span class = "literal">"NumberFormatException: "</span> + nfe.getMessage());
+187&nbsp;&nbsp;	  			    }
+188&nbsp;&nbsp;	  				
+189&nbsp;&nbsp;	  			}
+190&nbsp;&nbsp;	  		});
+191&nbsp;&nbsp;	  	}
+192&nbsp;&nbsp;
+193&nbsp;&nbsp;	  }
+194&nbsp;&nbsp;	  
+195&nbsp;&nbsp;	  
+196&nbsp;&nbsp;
+197&nbsp;&nbsp;
+198&nbsp;&nbsp;
+199&nbsp;&nbsp;
+200&nbsp;&nbsp;	  <span class = "keyword">private</span> <span class = "keyword">class</span> KnightTour <span class = "keyword">extends</span> JPanel {
+201&nbsp;&nbsp;	    <span class = "keyword">private</span> <span class = "keyword">int</span> delay = <span class = "literal">10</span>;
+202&nbsp;&nbsp;	   
+203&nbsp;&nbsp;
+204&nbsp;&nbsp;	    <span class = "comment">// Create a timer with delay 10 ms</span>
+205&nbsp;&nbsp;	    <span class = "keyword">protected</span> Timer timer = <span class = "keyword">new</span> Timer(delay, <span class = "keyword">new</span> TimerListener());
+206&nbsp;&nbsp;
+207&nbsp;&nbsp;	    <span class = "keyword">private</span> <span class = "keyword">byte</span>[][] spaces = <span class = "keyword">new</span> <span class = "keyword">byte</span>[<span class = "literal">8</span>][<span class = "literal">8</span>];
+208&nbsp;&nbsp;
+209&nbsp;&nbsp;	    
+210&nbsp;&nbsp;	    <span class = "keyword">public</span> <span class = "keyword">void</span> updateMatrix(<span class = "keyword">byte</span>[][] input){
+211&nbsp;&nbsp;	  	  spaces = input;
+212&nbsp;&nbsp;	    }
+213&nbsp;&nbsp;	    <span class = "keyword">public</span> KnightTour() {
+214&nbsp;&nbsp;	      timer.start();
+215&nbsp;&nbsp;	    }
+216&nbsp;&nbsp;	   
+217&nbsp;&nbsp;
+218&nbsp;&nbsp;
+219&nbsp;&nbsp;	    <span class = "keyword">private</span> <span class = "keyword">class</span> TimerListener <span class = "keyword">implements</span> ActionListener {
+220&nbsp;&nbsp;	      <span class = "comment">/** Handle the action event */</span>
+221&nbsp;&nbsp;	      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+222&nbsp;&nbsp;	        repaint();
+223&nbsp;&nbsp;	        
+224&nbsp;&nbsp;	      }
+225&nbsp;&nbsp;	    }
+226&nbsp;&nbsp;
+227&nbsp;&nbsp;	    @Override	    
+228&nbsp;&nbsp;	    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+229&nbsp;&nbsp;	      <span class = "keyword">super</span>.paintComponent(g);
+230&nbsp;&nbsp;	      <span class = "keyword">int</span> width = getSize().width;
+231&nbsp;&nbsp;	      
+232&nbsp;&nbsp;	      <span class = "keyword">int</span> height = getSize().height;
+233&nbsp;&nbsp;	      g.clearRect(<span class = "literal">0</span>,<span class = "literal">0</span>,width,height);
+234&nbsp;&nbsp;	      <span class = "keyword">for</span> (<span class = "keyword">int</span> i=0; i &lt; <span class = "literal">8</span>; i++){
+235&nbsp;&nbsp;	      	g.setColor(Color.gray);
+236&nbsp;&nbsp;	      	g.drawLine(<span class = "literal">0</span>,i*(height / <span class = "literal">8</span>),width, i*(height / <span class = "literal">8</span>));
+237&nbsp;&nbsp;	      	g.drawLine(i*(width / <span class = "literal">8</span>),<span class = "literal">0</span>,i*(width / <span class = "literal">8</span>),height);
+238&nbsp;&nbsp;	          <span class = "keyword">for</span> (<span class = "keyword">int</span> j=0; j&lt;<span class = "literal">8</span>; j++){
+239&nbsp;&nbsp;	          	<span class = "keyword">if</span> (spaces[i][j] ==1){
+240&nbsp;&nbsp;	          		g.setColor(Color.red);
+241&nbsp;&nbsp;	          		g.drawString(<span class = "literal">"X"</span>, (<span class = "literal">1</span><span class = "literal">+</span><span class = "literal">2</span>*j)*(width/<span class = "literal">16</span>), (<span class = "literal">1</span><span class = "literal">+</span><span class = "literal">2</span>*i)*(height/<span class = "literal">16</span>));
+242&nbsp;&nbsp;	          	} <span class = "keyword">else</span> <span class = "keyword">if</span> (spaces[i][j] == <span class = "literal">2</span>){
+243&nbsp;&nbsp;	          		g.setColor(Color.black);
+244&nbsp;&nbsp;	          		g.drawString(<span class = "literal">"k"</span>, (<span class = "literal">1</span><span class = "literal">+</span><span class = "literal">2</span>*j)*(width/<span class = "literal">16</span>), (<span class = "literal">1</span><span class = "literal">+</span><span class = "literal">2</span>*i)*(height/<span class = "literal">16</span>));
+245&nbsp;&nbsp;	          	}
+246&nbsp;&nbsp;	          }
+247&nbsp;&nbsp;	      }
+248&nbsp;&nbsp;
+249&nbsp;&nbsp;	    }
+250&nbsp;&nbsp;	    
+251&nbsp;&nbsp;
+252&nbsp;&nbsp;	    <span class = "keyword">public</span> <span class = "keyword">void</span> suspend() {
+253&nbsp;&nbsp;	      timer.stop(); <span class = "comment">// Suspend timer</span>
+254&nbsp;&nbsp;	    }
+255&nbsp;&nbsp;
+256&nbsp;&nbsp;	    <span class = "keyword">public</span> <span class = "keyword">void</span> resume() {
+257&nbsp;&nbsp;	      timer.start(); <span class = "comment">// Resume timer</span>
+258&nbsp;&nbsp;	    }
+259&nbsp;&nbsp;
+260&nbsp;&nbsp;	    <span class = "keyword">public</span> <span class = "keyword">void</span> setDelay(<span class = "keyword">int</span> delay) {
+261&nbsp;&nbsp;	      <span class = "keyword">this</span>.delay = delay;
+262&nbsp;&nbsp;	      timer.setDelay(delay);
+263&nbsp;&nbsp;	    }
+264&nbsp;&nbsp;	  }
+265&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

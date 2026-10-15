@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestBinarySearch.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestBinarySearch.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestBinarySearch {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  3&nbsp;&nbsp;	  <span class = "keyword">int</span>[] list = {<span class = "literal">2</span>, <span class = "literal">4</span>, <span class = "literal">7</span>, <span class = "literal">10</span>, <span class = "literal">11</span>, <span class = "literal">45</span>, <span class = "literal">50</span>, <span class = "literal">59</span>, <span class = "literal">60</span>, <span class = "literal">66</span>, <span class = "literal">69</span>, <span class = "literal">70</span>, <span class = "literal">79</span>};
+  4&nbsp;&nbsp;	  <span class = "keyword">int</span> i = BinarySearch.binarySearch(list, <span class = "literal">2</span>); <span class = "comment">// Returns 0</span>
+  5&nbsp;&nbsp;	  System.out.println(i);
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;	  <span class = "keyword">int</span> j = BinarySearch.binarySearch(list, <span class = "literal">11</span>); <span class = "comment">// Returns 4</span>
+  8&nbsp;&nbsp;	  System.out.println(j);
+  9&nbsp;&nbsp;	  <span class = "keyword">int</span> k = BinarySearch.binarySearch(list, <span class = "literal">12</span>); <span class = "comment">// Returns –6</span>
+ 10&nbsp;&nbsp;	  System.out.println(k);
+ 11&nbsp;&nbsp;	  <span class = "keyword">int</span> l = BinarySearch.binarySearch(list, <span class = "literal">1</span>); <span class = "comment">// Returns –1</span>
+ 12&nbsp;&nbsp;	  System.out.println(l);
+ 13&nbsp;&nbsp;	  <span class = "keyword">int</span> m = BinarySearch.binarySearch(list, <span class = "literal">3</span>); <span class = "comment">// Returns –2	  </span>
+ 14&nbsp;&nbsp;	  System.out.println(l);
+ 15&nbsp;&nbsp;  }
+ 16&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestBinarySearch" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestFileClass.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestFileClassWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestFileClass {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    java.io.File file = <span class = "keyword">new</span> java.io.File(<span class = "literal">"image/us.gif"</span>);
+    System.out.println(<span class = "literal">"Does it exist? "</span> + file.exists());
+    System.out.println(<span class = "literal">"The file has "</span> + file.length() + <span class = "literal">" bytes"</span>);
+    System.out.println(<span class = "literal">"Can it be read? "</span> + file.canRead());
+    System.out.println(<span class = "literal">"Can it be written? "</span> + file.canWrite());
+    System.out.println(<span class = "literal">"Is it a directory? "</span> + file.isDirectory());
+    System.out.println(<span class = "literal">"Is it a file? "</span> + file.isFile());
+    System.out.println(<span class = "literal">"Is it absolute? "</span> + file.isAbsolute());
+    System.out.println(<span class = "literal">"Is it hidden? "</span> + file.isHidden());
+    System.out.println(<span class = "literal">"Absolute path is "</span> +
+      file.getAbsolutePath());
+    System.out.println(<span class = "literal">"Last modified on "</span> +
+      <span class = "keyword">new</span> java.util.Date(file.lastModified()));
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestFileClass" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

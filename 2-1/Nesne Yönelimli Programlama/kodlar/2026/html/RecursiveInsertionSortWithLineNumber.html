@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - RecursiveInsertionSort.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "RecursiveInsertionSort.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> RecursiveInsertionSort {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> sort(<span class = "keyword">double</span>[] list) {
+  3&nbsp;&nbsp;    sort(list, list.length - <span class = "literal">1</span>);
+  4&nbsp;&nbsp;  }
+  5&nbsp;&nbsp;
+  6&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> sort(<span class = "keyword">double</span>[] list, <span class = "keyword">int</span> high) {
+  7&nbsp;&nbsp;    <span class = "keyword">if</span> (high &gt; <span class = "literal">0</span>) {
+  8&nbsp;&nbsp;      <span class = "comment">// Sort the list[0 ... high – 1]</span>
+  9&nbsp;&nbsp;      sort(list, high - <span class = "literal">1</span>);
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;      <span class = "comment">// Insert list[high] into list</span>
+ 12&nbsp;&nbsp;      <span class = "keyword">double</span> lastElement = list[high];
+ 13&nbsp;&nbsp;      <span class = "keyword">int</span> k;
+ 14&nbsp;&nbsp;      <span class = "keyword">for</span> (k = high - <span class = "literal">1</span>; k &gt;= <span class = "literal">0</span> && list[k] &gt; lastElement; k--) {
+ 15&nbsp;&nbsp;        list[k + <span class = "literal">1</span>] = list[k];
+ 16&nbsp;&nbsp;      }
+ 17&nbsp;&nbsp;      list[k + <span class = "literal">1</span>] = lastElement;
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;    }
+ 20&nbsp;&nbsp;  }
+ 21&nbsp;&nbsp;
+ 22&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 23&nbsp;&nbsp;    <span class = "keyword">double</span>[] list = {<span class = "literal">7</span>, <span class = "literal">1</span>, <span class = "literal">2</span>, <span class = "literal">8</span>, <span class = "literal">3</span>, <span class = "literal">4</span>, <span class = "literal">5</span>, <span class = "literal">6</span>};
+ 24&nbsp;&nbsp;    sort(list);
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; list.length; i++)
+ 27&nbsp;&nbsp;      System.out.print(list[i] + <span class = "literal">" "</span>);
+ 28&nbsp;&nbsp;  }
+ 29&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "RecursiveInsertionSort" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

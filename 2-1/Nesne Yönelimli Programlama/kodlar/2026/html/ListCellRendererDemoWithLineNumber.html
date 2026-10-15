@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ListCellRendererDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ListCellRendererDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.event.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ListCellRendererDemo <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">final</span> <span class = "keyword">static</span> <span class = "keyword">int</span> NUMBER_OF_NATIONS = <span class = "literal">7</span>;
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> String[] nations = <span class = "keyword">new</span> String[]
+  8&nbsp;&nbsp;    {<span class = "literal">"Denmark"</span>, <span class = "literal">"Germany"</span>, <span class = "literal">"China"</span>, <span class = "literal">"India"</span>, <span class = "literal">"Norway"</span>, <span class = "literal">"UK"</span>, <span class = "literal">"US"</span>};
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> ImageIcon[] icons = <span class = "keyword">new</span> ImageIcon[NUMBER_OF_NATIONS];
+ 10&nbsp;&nbsp;  <span class = "keyword">private</span> ImageIcon[] bigIcons = <span class = "keyword">new</span> ImageIcon[NUMBER_OF_NATIONS];
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;  <span class = "comment">// Create a list model</span>
+ 13&nbsp;&nbsp;  <span class = "keyword">private</span> DefaultListModel listModel = <span class = "keyword">new</span> DefaultListModel();
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;  <span class = "comment">// Create a list using the list model</span>
+ 16&nbsp;&nbsp;  <span class = "keyword">private</span> JList jlstNations = <span class = "keyword">new</span> JList(listModel);
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;  <span class = "comment">// Create a list cell renderer</span>
+ 19&nbsp;&nbsp;  <span class = "keyword">private</span> ListCellRenderer renderer = <span class = "keyword">new</span> MyListCellRenderer();
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;  <span class = "comment">// Create a split pane</span>
+ 22&nbsp;&nbsp;  <span class = "keyword">private</span> JSplitPane jSplitPane1 = <span class = "keyword">new</span> JSplitPane();
+ 23&nbsp;&nbsp;
+ 24&nbsp;&nbsp;  <span class = "comment">// Create a label for displaying iamge</span>
+ 25&nbsp;&nbsp;  <span class = "keyword">private</span> JLabel jlblImage = <span class = "keyword">new</span> JLabel(<span class = "literal">""</span>, JLabel.CENTER);
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;  <span class = "comment">/** Construct ListCellRenderer */</span>
+ 28&nbsp;&nbsp;  <span class = "keyword">public</span> ListCellRendererDemo() {
+ 29&nbsp;&nbsp;    <span class = "comment">// Load small and large image icons</span>
+ 30&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; NUMBER_OF_NATIONS; i++) {
+ 31&nbsp;&nbsp;      icons[i] = <span class = "keyword">new</span> ImageIcon(getClass().getResource(
+ 32&nbsp;&nbsp;        <span class = "literal">"/image/flagIcon"</span> + i + <span class = "literal">".gif"</span>));
+ 33&nbsp;&nbsp;      listModel.addElement(<span class = "keyword">new</span> Object[]{icons[i], nations[i]});
+ 34&nbsp;&nbsp;
+ 35&nbsp;&nbsp;      bigIcons[i] = <span class = "keyword">new</span> ImageIcon(getClass().getResource(
+ 36&nbsp;&nbsp;        <span class = "literal">"/image/flag"</span> + i + <span class = "literal">".gif"</span>));
+ 37&nbsp;&nbsp;    }
+ 38&nbsp;&nbsp;
+ 39&nbsp;&nbsp;    <span class = "comment">// Set list cell renderer</span>
+ 40&nbsp;&nbsp;    jlstNations.setCellRenderer(renderer);
+ 41&nbsp;&nbsp;    jlstNations.setPreferredSize(<span class = "keyword">new</span> Dimension(<span class = "literal">200</span>, <span class = "literal">200</span>));
+ 42&nbsp;&nbsp;    jSplitPane1.setLeftComponent(<span class = "keyword">new</span> JScrollPane(jlstNations));
+ 43&nbsp;&nbsp;    jSplitPane1.setRightComponent(jlblImage);
+ 44&nbsp;&nbsp;    jlstNations.setSelectedIndex(<span class = "literal">0</span>);
+ 45&nbsp;&nbsp;    jlblImage.setIcon(bigIcons[<span class = "literal">0</span>]);
+ 46&nbsp;&nbsp;    add(jSplitPane1, BorderLayout.CENTER);
+ 47&nbsp;&nbsp;
+ 48&nbsp;&nbsp;    <span class = "comment">// Register listener</span>
+ 49&nbsp;&nbsp;    jlstNations.addListSelectionListener(<span class = "keyword">new</span> ListSelectionListener() {
+ 50&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> valueChanged(ListSelectionEvent e) {
+ 51&nbsp;&nbsp;        jlblImage.setIcon(bigIcons[jlstNations.getSelectedIndex()]);
+ 52&nbsp;&nbsp;      }
+ 53&nbsp;&nbsp;    });
+ 54&nbsp;&nbsp;  }
+ 55&nbsp;&nbsp;
+ 56&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 57&nbsp;&nbsp;    ListCellRendererDemo applet = <span class = "keyword">new</span> ListCellRendererDemo();
+ 58&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 59&nbsp;&nbsp;    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+ 60&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+ 61&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"ListCellRendererDemo"</span>);
+ 62&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+ 63&nbsp;&nbsp;    applet.init();
+ 64&nbsp;&nbsp;    applet.start();
+ 65&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>, <span class = "literal">320</span>);
+ 66&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+ 67&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 68&nbsp;&nbsp;  }
+ 69&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

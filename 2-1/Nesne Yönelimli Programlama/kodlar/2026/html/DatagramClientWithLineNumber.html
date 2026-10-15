@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DatagramClient.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "DatagramClient.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.io.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.net.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.util.*;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  5&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  6&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> DatagramClient <span class = "keyword">extends</span> JFrame {
+  9&nbsp;&nbsp;  <span class = "comment">// Text field for receiving radius</span>
+ 10&nbsp;&nbsp;  <span class = "keyword">private</span> JTextField jtf = <span class = "keyword">new</span> JTextField();
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;  <span class = "comment">// Text area to display contents</span>
+ 13&nbsp;&nbsp;  <span class = "keyword">private</span> JTextArea jta = <span class = "keyword">new</span> JTextArea();
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;  <span class = "comment">// Datagram socket</span>
+ 16&nbsp;&nbsp;  <span class = "keyword">private</span> DatagramSocket socket;
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;  <span class = "comment">// The byte array for sending and receiving datagram packets</span>
+ 19&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">byte</span>[] buf = <span class = "keyword">new</span> <span class = "keyword">byte</span>[<span class = "literal">256</span>];
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;  <span class = "comment">// Server InetAddress</span>
+ 22&nbsp;&nbsp;  <span class = "keyword">private</span> InetAddress address;
+ 23&nbsp;&nbsp;
+ 24&nbsp;&nbsp;  <span class = "comment">// The packet sent to the server</span>
+ 25&nbsp;&nbsp;  <span class = "keyword">private</span> DatagramPacket sendPacket;
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;  <span class = "comment">// The packet received from the server</span>
+ 28&nbsp;&nbsp;  <span class = "keyword">private</span> DatagramPacket receivePacket;
+ 29&nbsp;&nbsp;
+ 30&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 31&nbsp;&nbsp;    <span class = "keyword">new</span> DatagramClient();
+ 32&nbsp;&nbsp;  }
+ 33&nbsp;&nbsp;
+ 34&nbsp;&nbsp;  <span class = "keyword">public</span> DatagramClient() {
+ 35&nbsp;&nbsp;    <span class = "comment">// Panel p to hold the label and text field</span>
+ 36&nbsp;&nbsp;    JPanel p = <span class = "keyword">new</span> JPanel();
+ 37&nbsp;&nbsp;    p.setLayout(<span class = "keyword">new</span> BorderLayout());
+ 38&nbsp;&nbsp;    p.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Enter radius"</span>), BorderLayout.WEST);
+ 39&nbsp;&nbsp;    p.add(jtf, BorderLayout.CENTER);
+ 40&nbsp;&nbsp;    jtf.setHorizontalAlignment(JTextField.RIGHT);
+ 41&nbsp;&nbsp;
+ 42&nbsp;&nbsp;    setLayout(<span class = "keyword">new</span> BorderLayout());
+ 43&nbsp;&nbsp;    add(p, BorderLayout.NORTH);
+ 44&nbsp;&nbsp;    add(<span class = "keyword">new</span> JScrollPane(jta), BorderLayout.CENTER);
+ 45&nbsp;&nbsp;
+ 46&nbsp;&nbsp;    jtf.addActionListener(<span class = "keyword">new</span> ButtonListener()); <span class = "comment">// Register listener</span>
+ 47&nbsp;&nbsp;
+ 48&nbsp;&nbsp;    setTitle(<span class = "literal">"DatagramClient"</span>);
+ 49&nbsp;&nbsp;    setSize(<span class = "literal">500</span>, <span class = "literal">300</span>);
+ 50&nbsp;&nbsp;    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 51&nbsp;&nbsp;    setVisible(<span class = "keyword">true</span>); <span class = "comment">// It is necessary to show the frame here!</span>
+ 52&nbsp;&nbsp;
+ 53&nbsp;&nbsp;    <span class = "keyword">try</span> {
+ 54&nbsp;&nbsp;      <span class = "comment">// get a datagram socket</span>
+ 55&nbsp;&nbsp;      socket = <span class = "keyword">new</span> DatagramSocket();
+ 56&nbsp;&nbsp;      address = InetAddress.getByName(<span class = "literal">"localhost"</span>);
+ 57&nbsp;&nbsp;      sendPacket =
+ 58&nbsp;&nbsp;        <span class = "keyword">new</span> DatagramPacket(buf, buf.length, address, <span class = "literal">8000</span>);
+ 59&nbsp;&nbsp;      receivePacket = <span class = "keyword">new</span> DatagramPacket(buf, buf.length);
+ 60&nbsp;&nbsp;    }
+ 61&nbsp;&nbsp;    <span class = "keyword">catch</span> (IOException ex) {
+ 62&nbsp;&nbsp;      ex.printStackTrace();
+ 63&nbsp;&nbsp;    }
+ 64&nbsp;&nbsp;  }
+ 65&nbsp;&nbsp;
+ 66&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">class</span> ButtonListener <span class = "keyword">implements</span> ActionListener {
+ 67&nbsp;&nbsp;    @Override
+ 68&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 69&nbsp;&nbsp;      <span class = "keyword">try</span> {
+ 70&nbsp;&nbsp;        <span class = "comment">// Initialize buffer for each iteration</span>
+ 71&nbsp;&nbsp;        Arrays.fill(buf, (<span class = "keyword">byte</span>)<span class = "literal">0</span>);
+ 72&nbsp;&nbsp;
+ 73&nbsp;&nbsp;        <span class = "comment">// send radius to the server in a packet</span>
+ 74&nbsp;&nbsp;        sendPacket.setData(jtf.getText().trim().getBytes());
+ 75&nbsp;&nbsp;        socket.send(sendPacket);
+ 76&nbsp;&nbsp;
+ 77&nbsp;&nbsp;        <span class = "comment">// receive area from the server in a packet</span>
+ 78&nbsp;&nbsp;        socket.receive(receivePacket);
+ 79&nbsp;&nbsp;
+ 80&nbsp;&nbsp;        <span class = "comment">// Display to the text area</span>
+ 81&nbsp;&nbsp;        jta.append(<span class = "literal">"Radius is "</span> + jtf.getText().trim() + <span class = "literal">"\n"</span>);
+ 82&nbsp;&nbsp;        jta.append(<span class = "literal">"Area received from the server is "</span>
+ 83&nbsp;&nbsp;          +  Double.parseDouble(<span class = "keyword">new</span> String(buf).trim()) + <span class = "literal">'\n'</span>);
+ 84&nbsp;&nbsp;      }
+ 85&nbsp;&nbsp;      <span class = "keyword">catch</span> (IOException ex) {
+ 86&nbsp;&nbsp;        ex.printStackTrace();
+ 87&nbsp;&nbsp;      }
+ 88&nbsp;&nbsp;    }
+ 89&nbsp;&nbsp;  }
+ 90&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

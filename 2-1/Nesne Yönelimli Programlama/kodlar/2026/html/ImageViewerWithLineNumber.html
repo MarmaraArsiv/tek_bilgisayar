@@ -1,0 +1,101 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ImageViewer.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ImageViewer.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ImageViewer <span class = "keyword">extends</span> JPanel {
+  5&nbsp;&nbsp;  <span class = "comment">/** Hold value of property image */</span>
+  6&nbsp;&nbsp;  <span class = "keyword">private</span> java.awt.Image image;
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;  <span class = "comment">/** Hold value of property stretched */</span>
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">boolean</span> stretched = <span class = "keyword">true</span>;
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;  <span class = "comment">/** Hold value of property xCoordinate */</span>
+ 12&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span> xCoordinate;
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;  <span class = "comment">/** Hold value of property yCoordinate */</span>
+ 15&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span> yCoordinate;
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;  <span class = "comment">/** Construct an empty image viewer */</span>
+ 18&nbsp;&nbsp;  <span class = "keyword">public</span> ImageViewer() {
+ 19&nbsp;&nbsp;  }
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;  <span class = "comment">/** Construct an image viewer for a specified Image object */</span>
+ 22&nbsp;&nbsp;  <span class = "keyword">public</span> ImageViewer(Image image) {
+ 23&nbsp;&nbsp;    <span class = "keyword">this</span>.image = image;
+ 24&nbsp;&nbsp;  }
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;  @Override
+ 27&nbsp;&nbsp;  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+ 28&nbsp;&nbsp;    <span class = "keyword">super</span>.paintComponent(g);
+ 29&nbsp;&nbsp;
+ 30&nbsp;&nbsp;    <span class = "keyword">if</span> (image != <span class = "keyword">null</span>)
+ 31&nbsp;&nbsp;      <span class = "keyword">if</span> (isStretched())
+ 32&nbsp;&nbsp;        g.drawImage(image, xCoordinate, yCoordinate,
+ 33&nbsp;&nbsp;          getSize().width, getSize().height, <span class = "keyword">this</span>);
+ 34&nbsp;&nbsp;      <span class = "keyword">else</span>
+ 35&nbsp;&nbsp;        g.drawImage(image, xCoordinate, yCoordinate, <span class = "keyword">this</span>);
+ 36&nbsp;&nbsp;  }
+ 37&nbsp;&nbsp;
+ 38&nbsp;&nbsp;  <span class = "comment">/** Return value of property image */</span>
+ 39&nbsp;&nbsp;  <span class = "keyword">public</span> java.awt.Image getImage() {
+ 40&nbsp;&nbsp;    <span class = "keyword">return</span> image;
+ 41&nbsp;&nbsp;  }
+ 42&nbsp;&nbsp;
+ 43&nbsp;&nbsp;  <span class = "comment">/** Set a new value for property image */</span>
+ 44&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setImage(java.awt.Image image) {
+ 45&nbsp;&nbsp;    <span class = "keyword">this</span>.image = image;
+ 46&nbsp;&nbsp;    repaint();
+ 47&nbsp;&nbsp;  }
+ 48&nbsp;&nbsp;
+ 49&nbsp;&nbsp;  <span class = "comment">/** Return value of property stretched */</span>
+ 50&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> isStretched() {
+ 51&nbsp;&nbsp;    <span class = "keyword">return</span> stretched;
+ 52&nbsp;&nbsp;  }
+ 53&nbsp;&nbsp;
+ 54&nbsp;&nbsp;  <span class = "comment">/** Set a new value for property stretched */</span>
+ 55&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setStretched(<span class = "keyword">boolean</span> stretched) {
+ 56&nbsp;&nbsp;    <span class = "keyword">this</span>.stretched = stretched;
+ 57&nbsp;&nbsp;    repaint();
+ 58&nbsp;&nbsp;  }
+ 59&nbsp;&nbsp;
+ 60&nbsp;&nbsp;  <span class = "comment">/** Return value of property xCoordinate */</span>
+ 61&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> getXCoordinate() {
+ 62&nbsp;&nbsp;    <span class = "keyword">return</span> xCoordinate;
+ 63&nbsp;&nbsp;  }
+ 64&nbsp;&nbsp;
+ 65&nbsp;&nbsp;  <span class = "comment">/** Set a new value for property xCoordinate */</span>
+ 66&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setXCoordinate(<span class = "keyword">int</span> xCoordinate) {
+ 67&nbsp;&nbsp;    <span class = "keyword">this</span>.xCoordinate = xCoordinate;
+ 68&nbsp;&nbsp;    repaint();
+ 69&nbsp;&nbsp;  }
+ 70&nbsp;&nbsp;
+ 71&nbsp;&nbsp;  <span class = "comment">/** Return value of property yCoordinate */</span>
+ 72&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> getYCoordinate() {
+ 73&nbsp;&nbsp;    <span class = "keyword">return</span> yCoordinate;
+ 74&nbsp;&nbsp;  }
+ 75&nbsp;&nbsp;
+ 76&nbsp;&nbsp;  <span class = "comment">/** Set a new value for property yCoordinate */</span>
+ 77&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setYCoordinate(<span class = "keyword">int</span> yCoordinate) {
+ 78&nbsp;&nbsp;    <span class = "keyword">this</span>.yCoordinate = yCoordinate;
+ 79&nbsp;&nbsp;    repaint();
+ 80&nbsp;&nbsp;  }
+ 81&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

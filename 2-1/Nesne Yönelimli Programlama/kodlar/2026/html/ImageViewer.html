@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ImageViewer.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ImageViewerWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ImageViewer <span class = "keyword">extends</span> JPanel {
+  <span class = "comment">/** Hold value of property image */</span>
+  <span class = "keyword">private</span> java.awt.Image image;
+
+  <span class = "comment">/** Hold value of property stretched */</span>
+  <span class = "keyword">private</span> <span class = "keyword">boolean</span> stretched = <span class = "keyword">true</span>;
+
+  <span class = "comment">/** Hold value of property xCoordinate */</span>
+  <span class = "keyword">private</span> <span class = "keyword">int</span> xCoordinate;
+
+  <span class = "comment">/** Hold value of property yCoordinate */</span>
+  <span class = "keyword">private</span> <span class = "keyword">int</span> yCoordinate;
+
+  <span class = "comment">/** Construct an empty image viewer */</span>
+  <span class = "keyword">public</span> ImageViewer() {
+  }
+
+  <span class = "comment">/** Construct an image viewer for a specified Image object */</span>
+  <span class = "keyword">public</span> ImageViewer(Image image) {
+    <span class = "keyword">this</span>.image = image;
+  }
+
+  @Override
+  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+    <span class = "keyword">super</span>.paintComponent(g);
+
+    <span class = "keyword">if</span> (image != <span class = "keyword">null</span>)
+      <span class = "keyword">if</span> (isStretched())
+        g.drawImage(image, xCoordinate, yCoordinate,
+          getSize().width, getSize().height, <span class = "keyword">this</span>);
+      <span class = "keyword">else</span>
+        g.drawImage(image, xCoordinate, yCoordinate, <span class = "keyword">this</span>);
+  }
+
+  <span class = "comment">/** Return value of property image */</span>
+  <span class = "keyword">public</span> java.awt.Image getImage() {
+    <span class = "keyword">return</span> image;
+  }
+
+  <span class = "comment">/** Set a new value for property image */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setImage(java.awt.Image image) {
+    <span class = "keyword">this</span>.image = image;
+    repaint();
+  }
+
+  <span class = "comment">/** Return value of property stretched */</span>
+  <span class = "keyword">public</span> <span class = "keyword">boolean</span> isStretched() {
+    <span class = "keyword">return</span> stretched;
+  }
+
+  <span class = "comment">/** Set a new value for property stretched */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setStretched(<span class = "keyword">boolean</span> stretched) {
+    <span class = "keyword">this</span>.stretched = stretched;
+    repaint();
+  }
+
+  <span class = "comment">/** Return value of property xCoordinate */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getXCoordinate() {
+    <span class = "keyword">return</span> xCoordinate;
+  }
+
+  <span class = "comment">/** Set a new value for property xCoordinate */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setXCoordinate(<span class = "keyword">int</span> xCoordinate) {
+    <span class = "keyword">this</span>.xCoordinate = xCoordinate;
+    repaint();
+  }
+
+  <span class = "comment">/** Return value of property yCoordinate */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getYCoordinate() {
+    <span class = "keyword">return</span> yCoordinate;
+  }
+
+  <span class = "comment">/** Set a new value for property yCoordinate */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setYCoordinate(<span class = "keyword">int</span> yCoordinate) {
+    <span class = "keyword">this</span>.yCoordinate = yCoordinate;
+    repaint();
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Intro to Java Programming, 7E - DisplayRBTree.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> javax.swing.JApplet;
+<span class = "keyword">import</span> javax.swing.JFrame;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> DisplayRBTree <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> DisplayRBTree() {
+    RBTree&lt;Integer&gt; tree = <span class = "keyword">new</span> RBTree&lt;Integer&gt;();    
+    add(<span class = "keyword">new</span> RBTreeView(tree));
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"DisplayRBTree"</span>);
+    JApplet applet = <span class = "keyword">new</span> DisplayRBTree();
+    frame.add(applet);
+    frame.setSize(<span class = "literal">500</span>, <span class = "literal">300</span>);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

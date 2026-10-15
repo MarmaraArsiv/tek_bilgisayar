@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - InsertionSort.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "InsertionSortWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> InsertionSort {
+  <span class = "comment">/** The method for sorting the numbers */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> insertionSort(<span class = "keyword">double</span>[] list) {
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">1</span>; i &lt; list.length; i++) {
+      <span class = "comment">/** insert list[i] into a sorted sublist list[0..i-1] so that
+           list[0..i] is sorted. */</span>
+      <span class = "keyword">double</span> currentElement = list[i];
+      <span class = "keyword">int</span> k;
+      <span class = "keyword">for</span> (k = i - <span class = "literal">1</span>; k &gt;= <span class = "literal">0</span> && list[k] &gt; currentElement; k--) {
+        list[k + <span class = "literal">1</span>] = list[k];
+      }
+
+      <span class = "comment">// Insert the current element into list[k+1]</span>
+      list[k + <span class = "literal">1</span>] = currentElement;
+    }
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "InsertionSort" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - CallBack.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "CallBackWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.rmi.*;
+
+<span class = "keyword">public</span> <span class = "keyword">interface</span> CallBack <span class = "keyword">extends</span> Remote {
+  <span class = "comment">/** The server notifies the client for taking a turn */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> takeTurn(<span class = "keyword">boolean</span> turn) <span class = "keyword">throws</span> RemoteException;
+
+  <span class = "comment">/** The server sends a message to be displayed by the client */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> notify(java.lang.String message)
+    <span class = "keyword">throws</span> RemoteException;
+
+  <span class = "comment">/** The server notifies a client of the other player's move */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> mark(<span class = "keyword">int</span> row, <span class = "keyword">int</span> column, <span class = "keyword">char</span> token)
+    <span class = "keyword">throws</span> RemoteException;
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "CallBack" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

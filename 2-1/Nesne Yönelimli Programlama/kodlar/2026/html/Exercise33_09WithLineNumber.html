@@ -1,0 +1,223 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Exercise33_09.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "Exercise33_09.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">package</span> jsfexercise;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.sql.Connection;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> java.sql.DriverManager;
+  5&nbsp;&nbsp;<span class = "keyword">import</span> java.sql.PreparedStatement;
+  6&nbsp;&nbsp;<span class = "keyword">import</span> java.sql.ResultSet;
+  7&nbsp;&nbsp;<span class = "keyword">import</span> java.sql.SQLException;
+  8&nbsp;&nbsp;<span class = "keyword">import</span> javax.enterprise.context.ApplicationScoped;
+  9&nbsp;&nbsp;<span class = "keyword">import</span> javax.inject.Named;
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;<span class = "comment">/**
+ 12&nbsp;&nbsp; *
+ 13&nbsp;&nbsp; * @author Mando
+ 14&nbsp;&nbsp; */</span>
+ 15&nbsp;&nbsp;@Named
+ 16&nbsp;&nbsp;@ApplicationScoped
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> Exercise33_09 {
+ 19&nbsp;&nbsp;    String id;
+ 20&nbsp;&nbsp;    String lastName;
+ 21&nbsp;&nbsp;    String firstName;
+ 22&nbsp;&nbsp;    String mi;
+ 23&nbsp;&nbsp;    String address;
+ 24&nbsp;&nbsp;    String city;
+ 25&nbsp;&nbsp;    String state;
+ 26&nbsp;&nbsp;    String telephone;
+ 27&nbsp;&nbsp;    PreparedStatement preparedStatementForView;
+ 28&nbsp;&nbsp;    PreparedStatement preparedStatementForInsert;
+ 29&nbsp;&nbsp;    PreparedStatement preparedStatementForUpdate;
+ 30&nbsp;&nbsp;    String status;
+ 31&nbsp;&nbsp;
+ 32&nbsp;&nbsp;    <span class = "comment">/** Creates a new instance of Exercise44_09 */</span>
+ 33&nbsp;&nbsp;    <span class = "keyword">public</span> Exercise33_09() {
+ 34&nbsp;&nbsp;        id = lastName = firstName = mi = address = city = state = telephone = <span class = "literal">""</span>;
+ 35&nbsp;&nbsp;        initializeJdbc();
+ 36&nbsp;&nbsp;    }
+ 37&nbsp;&nbsp;
+ 38&nbsp;&nbsp;    <span class = "keyword">private</span> <span class = "keyword">void</span> initializeJdbc() {        
+ 39&nbsp;&nbsp;        <span class = "keyword">try</span> {
+ 40&nbsp;&nbsp;            Class.forName(<span class = "literal">"com.mysql.jdbc.Driver"</span>);
+ 41&nbsp;&nbsp;            System.out.println(<span class = "literal">"Driver loaded"</span>);
+ 42&nbsp;&nbsp;
+ 43&nbsp;&nbsp;            Connection connection = DriverManager.getConnection(
+ 44&nbsp;&nbsp;                    <span class = "literal">"jdbc:mysql://localhost/javabook"</span>, <span class = "literal">"scott"</span>, <span class = "literal">"tiger"</span>);
+ 45&nbsp;&nbsp;            System.out.println(<span class = "literal">"Database connected"</span>);
+ 46&nbsp;&nbsp;
+ 47&nbsp;&nbsp;            String queryStringForView = <span class = "literal">"select lastName, firstName, "</span>
+ 48&nbsp;&nbsp;                    + <span class = "literal">"mi, address, city, state, telephone from Staff "</span>
+ 49&nbsp;&nbsp;                    + <span class = "literal">"where id = ?"</span>;
+ 50&nbsp;&nbsp;
+ 51&nbsp;&nbsp;            preparedStatementForView =
+ 52&nbsp;&nbsp;                    connection.prepareStatement(queryStringForView);
+ 53&nbsp;&nbsp;
+ 54&nbsp;&nbsp;            String queryStringForInsert = <span class = "literal">"insert into Staff ( id, lastName, "</span>
+ 55&nbsp;&nbsp;                    + <span class = "literal">"firstName, mi, address, city, state, telephone) values "</span>
+ 56&nbsp;&nbsp;                    + <span class = "literal">"( ?, ?, ?, ?, ?, ?, ?, ?)"</span>;
+ 57&nbsp;&nbsp;
+ 58&nbsp;&nbsp;            preparedStatementForInsert =
+ 59&nbsp;&nbsp;                    connection.prepareStatement(queryStringForInsert);
+ 60&nbsp;&nbsp;
+ 61&nbsp;&nbsp;            String queryStringForUpdate = <span class = "literal">"update Staff set lastName = ?, "</span>
+ 62&nbsp;&nbsp;                    + <span class = "literal">"firstName = ?, mi = ?, address = ?, city = ?, state = ?,"</span>
+ 63&nbsp;&nbsp;                    + <span class = "literal">" telephone = ? where id = ?"</span>;
+ 64&nbsp;&nbsp;
+ 65&nbsp;&nbsp;            preparedStatementForUpdate =
+ 66&nbsp;&nbsp;                    connection.prepareStatement(queryStringForUpdate);
+ 67&nbsp;&nbsp;        } <span class = "keyword">catch</span> (Exception ex) {
+ 68&nbsp;&nbsp;            ex.printStackTrace();
+ 69&nbsp;&nbsp;        }
+ 70&nbsp;&nbsp;    }
+ 71&nbsp;&nbsp;
+ 72&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> setId(String id) {
+ 73&nbsp;&nbsp;        <span class = "keyword">this</span>.id = id;
+ 74&nbsp;&nbsp;    }
+ 75&nbsp;&nbsp;
+ 76&nbsp;&nbsp;    <span class = "keyword">public</span> String getId() {
+ 77&nbsp;&nbsp;        <span class = "keyword">return</span> id;
+ 78&nbsp;&nbsp;    }
+ 79&nbsp;&nbsp;
+ 80&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> setLastName(String lastName) {
+ 81&nbsp;&nbsp;        <span class = "keyword">this</span>.lastName = lastName;
+ 82&nbsp;&nbsp;    }
+ 83&nbsp;&nbsp;
+ 84&nbsp;&nbsp;    <span class = "keyword">public</span> String getLastName() {
+ 85&nbsp;&nbsp;        <span class = "keyword">return</span> lastName;
+ 86&nbsp;&nbsp;    }
+ 87&nbsp;&nbsp;
+ 88&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> setFirstName(String firstName) {
+ 89&nbsp;&nbsp;        <span class = "keyword">this</span>.firstName = firstName;
+ 90&nbsp;&nbsp;    }
+ 91&nbsp;&nbsp;
+ 92&nbsp;&nbsp;    <span class = "keyword">public</span> String getFirstName() {
+ 93&nbsp;&nbsp;        <span class = "keyword">return</span> firstName;
+ 94&nbsp;&nbsp;    }
+ 95&nbsp;&nbsp;
+ 96&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> setMi(String mi) {
+ 97&nbsp;&nbsp;        <span class = "keyword">this</span>.mi = mi;
+ 98&nbsp;&nbsp;    }
+ 99&nbsp;&nbsp;
+100&nbsp;&nbsp;    <span class = "keyword">public</span> String getMi() {
+101&nbsp;&nbsp;        <span class = "keyword">return</span> mi;
+102&nbsp;&nbsp;    }
+103&nbsp;&nbsp;
+104&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> setAddress(String address) {
+105&nbsp;&nbsp;        <span class = "keyword">this</span>.address = address;
+106&nbsp;&nbsp;    }
+107&nbsp;&nbsp;
+108&nbsp;&nbsp;    <span class = "keyword">public</span> String getAddress() {
+109&nbsp;&nbsp;        <span class = "keyword">return</span> address;
+110&nbsp;&nbsp;    }
+111&nbsp;&nbsp;
+112&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> setCity(String city) {
+113&nbsp;&nbsp;        <span class = "keyword">this</span>.city = city;
+114&nbsp;&nbsp;    }
+115&nbsp;&nbsp;
+116&nbsp;&nbsp;    <span class = "keyword">public</span> String getCity() {
+117&nbsp;&nbsp;        <span class = "keyword">return</span> city;
+118&nbsp;&nbsp;    }
+119&nbsp;&nbsp;
+120&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> setState(String state) {
+121&nbsp;&nbsp;        <span class = "keyword">this</span>.state = state;
+122&nbsp;&nbsp;    }
+123&nbsp;&nbsp;
+124&nbsp;&nbsp;    <span class = "keyword">public</span> String getState() {
+125&nbsp;&nbsp;        <span class = "keyword">return</span> state;
+126&nbsp;&nbsp;    }
+127&nbsp;&nbsp;
+128&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> setTelephone(String telephone) {
+129&nbsp;&nbsp;        <span class = "keyword">this</span>.telephone = telephone;
+130&nbsp;&nbsp;    }
+131&nbsp;&nbsp;
+132&nbsp;&nbsp;    <span class = "keyword">public</span> String getTelephone() {
+133&nbsp;&nbsp;        <span class = "keyword">return</span> telephone;
+134&nbsp;&nbsp;    }
+135&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> setStatus(String status){
+136&nbsp;&nbsp;        <span class = "keyword">this</span>.status = status;
+137&nbsp;&nbsp;    }
+138&nbsp;&nbsp;    <span class = "keyword">public</span> String getStatus(){
+139&nbsp;&nbsp;        <span class = "keyword">return</span> status;
+140&nbsp;&nbsp;    }
+141&nbsp;&nbsp;
+142&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> view() {
+143&nbsp;&nbsp;        System.out.println(id);
+144&nbsp;&nbsp;        <span class = "keyword">try</span> {
+145&nbsp;&nbsp;            preparedStatementForView.setString(<span class = "literal">1</span>, id);
+146&nbsp;&nbsp;            ResultSet rset = preparedStatementForView.executeQuery();
+147&nbsp;&nbsp;
+148&nbsp;&nbsp;            <span class = "keyword">if</span> (rset.next()) {
+149&nbsp;&nbsp;                lastName = rset.getString(<span class = "literal">1</span>);
+150&nbsp;&nbsp;                firstName = rset.getString(<span class = "literal">2</span>);
+151&nbsp;&nbsp;                mi = rset.getString(<span class = "literal">3</span>);
+152&nbsp;&nbsp;                address = rset.getString(<span class = "literal">4</span>);
+153&nbsp;&nbsp;                city = rset.getString(<span class = "literal">5</span>);
+154&nbsp;&nbsp;                state = rset.getString(<span class = "literal">6</span>);
+155&nbsp;&nbsp;                telephone = rset.getString(<span class = "literal">7</span>);
+156&nbsp;&nbsp;            } <span class = "keyword">else</span> {
+157&nbsp;&nbsp;                System.out.println(<span class = "literal">"Not found"</span>);
+158&nbsp;&nbsp;            }
+159&nbsp;&nbsp;            status = <span class = "literal">"Date retrieved"</span>;
+160&nbsp;&nbsp;        } <span class = "keyword">catch</span> (SQLException ex) {
+161&nbsp;&nbsp;            ex.printStackTrace();
+162&nbsp;&nbsp;        }
+163&nbsp;&nbsp;    }
+164&nbsp;&nbsp;
+165&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> insert() {
+166&nbsp;&nbsp;        <span class = "keyword">try</span> {
+167&nbsp;&nbsp;            preparedStatementForInsert.setString(<span class = "literal">1</span>, id);
+168&nbsp;&nbsp;            preparedStatementForInsert.setString(<span class = "literal">2</span>, lastName);
+169&nbsp;&nbsp;            preparedStatementForInsert.setString(<span class = "literal">3</span>, firstName);
+170&nbsp;&nbsp;            preparedStatementForInsert.setString(<span class = "literal">4</span>, mi);
+171&nbsp;&nbsp;            preparedStatementForInsert.setString(<span class = "literal">5</span>, address);
+172&nbsp;&nbsp;            preparedStatementForInsert.setString(<span class = "literal">6</span>, city);
+173&nbsp;&nbsp;            preparedStatementForInsert.setString(<span class = "literal">7</span>, state);
+174&nbsp;&nbsp;            preparedStatementForInsert.setString(<span class = "literal">8</span>, telephone);
+175&nbsp;&nbsp;            preparedStatementForInsert.executeUpdate();
+176&nbsp;&nbsp;            status = <span class = "literal">"Inserted"</span>;
+177&nbsp;&nbsp;        } <span class = "keyword">catch</span> (SQLException ex) {
+178&nbsp;&nbsp;            ex.printStackTrace();
+179&nbsp;&nbsp;        }
+180&nbsp;&nbsp;    }
+181&nbsp;&nbsp;
+182&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> update() {
+183&nbsp;&nbsp;        <span class = "keyword">try</span> {
+184&nbsp;&nbsp;            preparedStatementForUpdate.setString(<span class = "literal">8</span>, id);
+185&nbsp;&nbsp;            preparedStatementForUpdate.setString(<span class = "literal">1</span>, lastName);
+186&nbsp;&nbsp;            preparedStatementForUpdate.setString(<span class = "literal">2</span>, firstName);
+187&nbsp;&nbsp;            preparedStatementForUpdate.setString(<span class = "literal">3</span>, mi);
+188&nbsp;&nbsp;            preparedStatementForUpdate.setString(<span class = "literal">4</span>, address);
+189&nbsp;&nbsp;            preparedStatementForUpdate.setString(<span class = "literal">5</span>, city);
+190&nbsp;&nbsp;            preparedStatementForUpdate.setString(<span class = "literal">6</span>, state);
+191&nbsp;&nbsp;            preparedStatementForUpdate.setString(<span class = "literal">7</span>, telephone);
+192&nbsp;&nbsp;            preparedStatementForUpdate.executeUpdate();
+193&nbsp;&nbsp;            status = <span class = "literal">"Updated"</span>;
+194&nbsp;&nbsp;        } <span class = "keyword">catch</span> (SQLException ex) {
+195&nbsp;&nbsp;            ex.printStackTrace();
+196&nbsp;&nbsp;        }
+197&nbsp;&nbsp;    }
+198&nbsp;&nbsp;
+199&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> clear() {
+200&nbsp;&nbsp;        status = <span class = "literal">"Cleared"</span>;
+201&nbsp;&nbsp;        id = lastName = firstName = mi = address = city = state = telephone = <span class = "literal">""</span>;
+202&nbsp;&nbsp;    }
+203&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

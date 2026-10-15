@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestCourseWithEnrollmentEvent.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestCourseWithEnrollmentEventWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestCourseWithEnrollmentEvent {
+  CourseWithEnrollmentEvent course =
+    <span class = "keyword">new</span> CourseWithEnrollmentEvent(<span class = "literal">"Java Programming"</span>);
+
+  <span class = "keyword">public</span> TestCourseWithEnrollmentEvent() {
+    course.setEnrollmentCap(<span class = "literal">2</span>);
+    EnrollmentListener listener = <span class = "keyword">new</span> NewListener();
+    course.addEnrollmentListener(listener);
+    course.addStudent(<span class = "literal">"John Smith"</span>);
+    course.addStudent(<span class = "literal">"Jim Peterson"</span>);
+    course.addStudent(<span class = "literal">"Tim Johnson"</span>);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "keyword">new</span> TestCourseWithEnrollmentEvent();
+  }
+
+  <span class = "keyword">private</span> <span class = "keyword">class</span> NewListener <span class = "keyword">implements</span> EnrollmentListener {
+    <span class = "keyword">public</span> <span class = "keyword">void</span> enrollmentExceeded(EnrollmentEvent e) {
+      System.out.println(e.getStudentToEnroll() + <span class = "literal">" attempted to "</span> 
+        + <span class = "literal">"enroll. The enrollment cap is "</span> + e.getEnrollmentCap());
+    }
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - StillClock.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "StillClockWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.util.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> StillClock <span class = "keyword">extends</span> JPanel {
+  <span class = "keyword">private</span> <span class = "keyword">int</span> hour;
+  <span class = "keyword">private</span> <span class = "keyword">int</span> minute;
+  <span class = "keyword">private</span> <span class = "keyword">int</span> second;
+
+  <span class = "comment">/** Construct a default clock with the current time*/</span>
+  <span class = "keyword">public</span> StillClock() {
+    setCurrentTime();
+  }
+
+  <span class = "comment">/** Construct a clock with specified hour, minute, and second */</span>
+  <span class = "keyword">public</span> StillClock(<span class = "keyword">int</span> hour, <span class = "keyword">int</span> minute, <span class = "keyword">int</span> second) {
+    <span class = "keyword">this</span>.hour = hour;
+    <span class = "keyword">this</span>.minute = minute;
+    <span class = "keyword">this</span>.second = second;
+  }
+
+  <span class = "comment">/** Return hour */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getHour() {
+    <span class = "keyword">return</span> hour;
+  }
+
+  <span class = "comment">/** Set a new hour */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setHour(<span class = "keyword">int</span> hour) {
+    <span class = "keyword">this</span>.hour = hour;
+    repaint();
+  }
+
+  <span class = "comment">/** Return minute */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getMinute() {
+    <span class = "keyword">return</span> minute;
+  }
+
+  <span class = "comment">/** Set a new minute */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setMinute(<span class = "keyword">int</span> minute) {
+    <span class = "keyword">this</span>.minute = minute;
+    repaint();
+  }
+
+  <span class = "comment">/** Return second */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getSecond() {
+    <span class = "keyword">return</span> second;
+  }
+
+  <span class = "comment">/** Set a new second */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setSecond(<span class = "keyword">int</span> second) {
+    <span class = "keyword">this</span>.second = second;
+    repaint();
+  }
+
+  @Override <span class = "comment">/** Draw the clock */</span>
+  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+    <span class = "keyword">super</span>.paintComponent(g);
+
+    <span class = "comment">// Initialize clock parameters</span>
+    <span class = "keyword">int</span> clockRadius =
+      (<span class = "keyword">int</span>)(Math.min(getWidth(), getHeight()) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span> * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">5</span>);
+    <span class = "keyword">int</span> xCenter = getWidth() / <span class = "literal">2</span>;
+    <span class = "keyword">int</span> yCenter = getHeight() / <span class = "literal">2</span>;
+
+    <span class = "comment">// Draw circle</span>
+    g.setColor(Color.black);
+    g.drawOval(xCenter - clockRadius, yCenter - clockRadius,
+      <span class = "literal">2</span> * clockRadius, <span class = "literal">2</span> * clockRadius);
+    g.drawString(<span class = "literal">"12"</span>, xCenter - <span class = "literal">5</span>, yCenter - clockRadius + <span class = "literal">12</span>);
+    g.drawString(<span class = "literal">"9"</span>, xCenter - clockRadius + <span class = "literal">3</span>, yCenter + <span class = "literal">5</span>);
+    g.drawString(<span class = "literal">"3"</span>, xCenter + clockRadius - <span class = "literal">10</span>, yCenter + <span class = "literal">3</span>);
+    g.drawString(<span class = "literal">"6"</span>, xCenter - <span class = "literal">3</span>, yCenter + clockRadius - <span class = "literal">3</span>);
+
+    <span class = "comment">// Draw second hand</span>
+    <span class = "keyword">int</span> sLength = (<span class = "keyword">int</span>)(clockRadius * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span>);
+    <span class = "keyword">int</span> xSecond = (<span class = "keyword">int</span>)(xCenter + sLength *
+      Math.sin(second * (<span class = "literal">2</span> * Math.PI / <span class = "literal">60</span>)));
+    <span class = "keyword">int</span> ySecond = (<span class = "keyword">int</span>)(yCenter - sLength *
+      Math.cos(second * (<span class = "literal">2</span> * Math.PI / <span class = "literal">60</span>)));
+    g.setColor(Color.red);
+    g.drawLine(xCenter, yCenter, xSecond, ySecond);
+
+    <span class = "comment">// Draw minute hand</span>
+    <span class = "keyword">int</span> mLength = (<span class = "keyword">int</span>)(clockRadius * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">65</span>);
+    <span class = "keyword">int</span> xMinute = (<span class = "keyword">int</span>)(xCenter + mLength *
+      Math.sin(minute * (<span class = "literal">2</span> * Math.PI / <span class = "literal">60</span>)));
+    <span class = "keyword">int</span> yMinute = (<span class = "keyword">int</span>)(yCenter - mLength *
+      Math.cos(minute * (<span class = "literal">2</span> * Math.PI / <span class = "literal">60</span>)));
+    g.setColor(Color.blue);
+    g.drawLine(xCenter, yCenter, xMinute, yMinute);
+
+    <span class = "comment">// Draw hour hand</span>
+    <span class = "keyword">int</span> hLength = (<span class = "keyword">int</span>)(clockRadius * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">5</span>);
+    <span class = "keyword">int</span> xHour = (<span class = "keyword">int</span>)(xCenter + hLength *
+      Math.sin((hour % <span class = "literal">12</span> + minute / <span class = "literal">60</span><span class = "literal">.</span><span class = "literal">0</span>) * (<span class = "literal">2</span> * Math.PI / <span class = "literal">12</span>)));
+    <span class = "keyword">int</span> yHour = (<span class = "keyword">int</span>)(yCenter - hLength *
+      Math.cos((hour % <span class = "literal">12</span> + minute / <span class = "literal">60</span><span class = "literal">.</span><span class = "literal">0</span>) * (<span class = "literal">2</span> * Math.PI / <span class = "literal">12</span>)));
+    g.setColor(Color.green);
+    g.drawLine(xCenter, yCenter, xHour, yHour);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setCurrentTime() {
+    <span class = "comment">// Construct a calendar for the current date and time</span>
+    Calendar calendar = <span class = "keyword">new</span> GregorianCalendar();
+
+    <span class = "comment">// Set current hour, minute and second</span>
+    <span class = "keyword">this</span>.hour = calendar.get(Calendar.HOUR_OF_DAY);
+    <span class = "keyword">this</span>.minute = calendar.get(Calendar.MINUTE);
+    <span class = "keyword">this</span>.second = calendar.get(Calendar.SECOND);
+  }
+
+  @Override
+  <span class = "keyword">public</span> Dimension getPreferredSize() {
+    <span class = "keyword">return</span> <span class = "keyword">new</span> Dimension(<span class = "literal">200</span>, <span class = "literal">200</span>);
+  }
+}
+</pre>
+</body>
+</html>

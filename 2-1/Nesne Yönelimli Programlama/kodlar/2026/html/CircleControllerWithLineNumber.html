@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - CircleController.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "CircleController.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> CircleController <span class = "keyword">extends</span> JPanel {
+  6&nbsp;&nbsp;  <span class = "keyword">private</span> CircleModel model;
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> JTextField jtfRadius = <span class = "keyword">new</span> JTextField();
+  8&nbsp;&nbsp;  <span class = "keyword">private</span> JComboBox jcboFilled = <span class = "keyword">new</span> JComboBox(<span class = "keyword">new</span> Boolean[]{
+  9&nbsp;&nbsp;    <span class = "keyword">new</span> Boolean(<span class = "keyword">false</span>), <span class = "keyword">new</span> Boolean(<span class = "keyword">true</span>)});
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;  <span class = "comment">/** Creates new form CircleController */</span>
+ 12&nbsp;&nbsp;  <span class = "keyword">public</span> CircleController() {
+ 13&nbsp;&nbsp;    <span class = "comment">// Panel to group labels</span>
+ 14&nbsp;&nbsp;    JPanel panel1 = <span class = "keyword">new</span> JPanel();
+ 15&nbsp;&nbsp;    panel1.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">1</span>));
+ 16&nbsp;&nbsp;    panel1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Radius"</span>));
+ 17&nbsp;&nbsp;    panel1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Filled"</span>));
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;    <span class = "comment">// Panel to group text field, combo box, and another panel</span>
+ 20&nbsp;&nbsp;    JPanel panel2 = <span class = "keyword">new</span> JPanel();
+ 21&nbsp;&nbsp;    panel2.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">1</span>));
+ 22&nbsp;&nbsp;    panel2.add(jtfRadius);
+ 23&nbsp;&nbsp;    panel2.add(jcboFilled);
+ 24&nbsp;&nbsp;
+ 25&nbsp;&nbsp;    setLayout(<span class = "keyword">new</span> BorderLayout());
+ 26&nbsp;&nbsp;    add(panel1, BorderLayout.WEST);
+ 27&nbsp;&nbsp;    add(panel2, BorderLayout.CENTER);
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;    <span class = "comment">// Register listeners</span>
+ 30&nbsp;&nbsp;    jtfRadius.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 31&nbsp;&nbsp;      @Override
+ 32&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 33&nbsp;&nbsp;        <span class = "keyword">if</span> (model != <span class = "keyword">null</span>) <span class = "comment">// Set radius in the model </span>
+ 34&nbsp;&nbsp;          model.setRadius(Double.parseDouble(jtfRadius.getText()));
+ 35&nbsp;&nbsp;      }
+ 36&nbsp;&nbsp;    });
+ 37&nbsp;&nbsp;    jcboFilled.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 38&nbsp;&nbsp;      @Override
+ 39&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 40&nbsp;&nbsp;        <span class = "keyword">if</span> (model != <span class = "keyword">null</span>) <span class = "comment">// Set filled property value in the model</span>
+ 41&nbsp;&nbsp;          model.setFilled(((Boolean)jcboFilled.getSelectedItem()).
+ 42&nbsp;&nbsp;            booleanValue());
+ 43&nbsp;&nbsp;      }
+ 44&nbsp;&nbsp;    });
+ 45&nbsp;&nbsp;  }
+ 46&nbsp;&nbsp;
+ 47&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setModel(CircleModel newModel) {
+ 48&nbsp;&nbsp;    model = newModel;
+ 49&nbsp;&nbsp;  }
+ 50&nbsp;&nbsp;
+ 51&nbsp;&nbsp;  <span class = "keyword">public</span> CircleModel getModel() {
+ 52&nbsp;&nbsp;    <span class = "keyword">return</span> model;
+ 53&nbsp;&nbsp;  }
+ 54&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

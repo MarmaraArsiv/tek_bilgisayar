@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - AccountApplet.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">// AccountApplet.java: Use custom exception classes
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.event.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.border.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> AccountApplet <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JApplet
+  <FONT COLOR="#000080"><B>implements</B></FONT><FONT COLOR="#000000"> ActionListener {
+  <FONT COLOR="#008000">// Declare text fields
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JTextField jtfID, jtfBalance, jtfDeposit, jtfWithdraw;
+
+  <FONT COLOR="#008000">// Declare Deposit and Withdraw buttons
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JButton jbtDeposit, jbtWithdraw;
+
+  <FONT COLOR="#008000">// Create an account with initial balance $1000
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> Account account = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Account(<FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">1000</FONT><FONT COLOR="#000000">);
+
+  <FONT COLOR="#008000">// Create a label for showing status
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JLabel jlblStatus = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel();
+
+  <FONT COLOR="#008000">/** Initialize the applet */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> AccountApplet() {
+    <FONT COLOR="#008000">// Panel p1 to group ID and Balance labels and text fields
+<FONT COLOR="#000000">    JPanel p1 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    p1.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> GridLayout(<FONT COLOR="#0000ff">2</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">2</FONT><FONT COLOR="#000000">));
+    p1.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">"Account ID"</FONT>));
+    p1.add(jtfID = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextField(<FONT COLOR="#0000ff">4</FONT><FONT COLOR="#000000">));
+    p1.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">"Account Balance"</FONT>));
+    p1.add(jtfBalance = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextField(<FONT COLOR="#0000ff">4</FONT><FONT COLOR="#000000">));
+    jtfID.setEditable(<FONT COLOR="#000080"><B>false</B></FONT><FONT COLOR="#000000">);
+    jtfBalance.setEditable(<FONT COLOR="#000080"><B>false</B></FONT><FONT COLOR="#000000">);
+    p1.setBorder(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> TitledBorder(<FONT COLOR="#0000ff">"Display Account Information"</FONT>));
+
+    <FONT COLOR="#008000">// Panel p2 to group deposit amount and Deposit button and
+<FONT COLOR="#000000">    <FONT COLOR="#008000">// withdraw amount and Withdraw button
+<FONT COLOR="#000000">    JPanel p2 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    p2.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> GridLayout(<FONT COLOR="#0000ff">2</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">3</FONT><FONT COLOR="#000000">));
+    p2.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">"Deposit"</FONT>));
+    p2.add(jtfDeposit = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextField(<FONT COLOR="#0000ff">4</FONT><FONT COLOR="#000000">));
+    p2.add(jbtDeposit = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JButton(<FONT COLOR="#0000ff">"Deposit"</FONT>));
+    p2.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">"Withdraw"</FONT>));
+    p2.add(jtfWithdraw = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextField(<FONT COLOR="#0000ff">4</FONT><FONT COLOR="#000000">));
+    p2.add(jbtWithdraw = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JButton(<FONT COLOR="#0000ff">"Withdraw"</FONT>));
+    p2.setBorder(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> TitledBorder(<FONT COLOR="#0000ff">"Deposit or withdraw funds"</FONT>));
+
+    <FONT COLOR="#008000">// Place panels p1, p2, and label in the applet
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.getContentPane().add(p1, BorderLayout.WEST);
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.getContentPane().add(p2, BorderLayout.CENTER);
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.getContentPane().add(jlblStatus, BorderLayout.SOUTH);
+
+    <FONT COLOR="#008000">// Refresh ID and Balance fields
+<FONT COLOR="#000000">    refreshFields();
+
+    <FONT COLOR="#008000">// Register listener
+<FONT COLOR="#000000">    jbtDeposit.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+    jbtWithdraw.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+  }
+
+  <FONT COLOR="#008000">/** Handle ActionEvent */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> actionPerformed(ActionEvent e) {
+    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (e.getSource() == jbtDeposit) {
+      <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+        <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> depositValue = (Double.valueOf(
+          jtfDeposit.getText().trim())).doubleValue();
+        account.deposit(depositValue);
+        refreshFields();
+        jlblStatus.setText(<FONT COLOR="#0000ff">"Transaction Processed"</FONT>);
+      }
+      <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (NegativeAmountException ex) {
+        jlblStatus.setText(<FONT COLOR="#0000ff">"Negative Amount"</FONT>);
+      }
+    }
+    <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (e.getSource() == jbtWithdraw) {
+      <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+        <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> withdrawValue = (Double.valueOf(
+          jtfWithdraw.getText().trim())).doubleValue();
+        account.withdraw(withdrawValue);
+        refreshFields();
+        jlblStatus.setText(<FONT COLOR="#0000ff">"Transaction Processed"</FONT>);
+      }
+      <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (NegativeAmountException ex) {
+        jlblStatus.setText(<FONT COLOR="#0000ff">"Negative Amount"</FONT>);
+      }
+      <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (InsufficientFundException ex) {
+        jlblStatus.setText(<FONT COLOR="#0000ff">"Insufficient Funds"</FONT>);
+      }
+    }
+  }
+
+  <FONT COLOR="#008000">/** Update the display for account balance */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> refreshFields() {
+    jtfID.setText(String.valueOf(account.getId()));
+    jtfBalance.setText(String.valueOf(account.getBalance()));
+  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    <FONT COLOR="#008000">// Create a frame
+<FONT COLOR="#000000">    JFrame frame = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JFrame(<FONT COLOR="#0000ff">"AccountApplet"</FONT>);
+
+    <FONT COLOR="#008000">// Create an instance of the applet
+<FONT COLOR="#000000">    AccountApplet applet = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> AccountApplet();
+
+    <FONT COLOR="#008000">// Add the applet instance to the frame
+<FONT COLOR="#000000">    frame.getContentPane().add(applet, BorderLayout.CENTER);
+
+    <FONT COLOR="#008000">// Display the frame
+<FONT COLOR="#000000">    frame.setSize(<FONT COLOR="#0000ff">300</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">300</FONT><FONT COLOR="#000000">);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+  }
+}
+</pre>

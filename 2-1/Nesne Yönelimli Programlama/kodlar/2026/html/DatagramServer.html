@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DatagramServer.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "DatagramServerWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.io.*;
+<span class = "keyword">import</span> java.net.*;
+<span class = "keyword">import</span> java.util.*;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> DatagramServer <span class = "keyword">extends</span> JFrame {
+  <span class = "comment">// Text area for displaying contents</span>
+  <span class = "keyword">private</span> JTextArea jta = <span class = "keyword">new</span> JTextArea();
+
+  <span class = "comment">// The byte array for sending and receiving datagram packets</span>
+  <span class = "keyword">private</span> <span class = "keyword">byte</span>[] buf = <span class = "keyword">new</span> <span class = "keyword">byte</span>[<span class = "literal">256</span>];
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "keyword">new</span> DatagramServer();
+  }
+
+  <span class = "keyword">public</span> DatagramServer() {
+    <span class = "comment">// Place text area on the frame</span>
+    setLayout(<span class = "keyword">new</span> BorderLayout());
+    add(<span class = "keyword">new</span> JScrollPane(jta), BorderLayout.CENTER);
+
+    setTitle(<span class = "literal">"DatagramServer"</span>);
+    setSize(<span class = "literal">500</span>, <span class = "literal">300</span>);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setVisible(<span class = "keyword">true</span>); <span class = "comment">// It is necessary to show the frame here!</span>
+
+    <span class = "keyword">try</span> {
+      <span class = "comment">// Create a server socket</span>
+      DatagramSocket socket = <span class = "keyword">new</span> DatagramSocket(<span class = "literal">8000</span>);
+      jta.append(<span class = "literal">"Server started at "</span> + <span class = "keyword">new</span> Date() + <span class = "literal">'\n'</span>);
+
+      <span class = "comment">// Create a packet for receiving data</span>
+      DatagramPacket receivePacket =
+        <span class = "keyword">new</span> DatagramPacket(buf, buf.length);
+
+      <span class = "comment">// Create a packet for sending data</span>
+      DatagramPacket sendPacket =
+        <span class = "keyword">new</span> DatagramPacket(buf, buf.length);
+
+      <span class = "keyword">while</span> (<span class = "keyword">true</span>) {
+        <span class = "comment">// Initialize buffer for each iteration</span>
+        Arrays.fill(buf, (<span class = "keyword">byte</span>)<span class = "literal">0</span>);
+
+        <span class = "comment">// Receive radius from the client in a packet</span>
+        socket.receive(receivePacket);
+        jta.append(<span class = "literal">"The client host name is "</span> +
+          receivePacket.getAddress().getHostName() +
+          <span class = "literal">" and port number is "</span> + receivePacket.getPort() + <span class = "literal">'\n'</span>);
+        jta.append(<span class = "literal">"Radius received from client is "</span> +
+          <span class = "keyword">new</span> String(buf).trim() +  <span class = "literal">'\n'</span>);
+
+        <span class = "comment">// Compute area</span>
+        <span class = "keyword">double</span> radius = Double.parseDouble(<span class = "keyword">new</span> String(buf).trim());
+        <span class = "keyword">double</span> area = radius * radius * Math.PI;
+        jta.append(<span class = "literal">"Area is "</span> + area + <span class = "literal">'\n'</span>);
+
+        <span class = "comment">// Send area to the client in a packet</span>
+        sendPacket.setAddress(receivePacket.getAddress());
+        sendPacket.setPort(receivePacket.getPort());
+        sendPacket.setData(<span class = "keyword">new</span> Double(area).toString().getBytes());
+        socket.send(sendPacket);
+      }
+    }
+    <span class = "keyword">catch</span>(IOException ex) {
+      ex.printStackTrace();
+    }
+  }
+}
+</pre>
+</body>
+</html>

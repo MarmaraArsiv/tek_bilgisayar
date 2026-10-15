@@ -1,0 +1,67 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DisplayFigure.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "DisplayFigure.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> DisplayFigure <span class = "keyword">extends</span> JApplet {
+  5&nbsp;&nbsp;  <span class = "keyword">private</span> JTabbedPane jtpFigures = <span class = "keyword">new</span> JTabbedPane();
+  6&nbsp;&nbsp;  <span class = "keyword">private</span> FigurePanel squarePanel = <span class = "keyword">new</span> FigurePanel();
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> FigurePanel rectanglePanel = <span class = "keyword">new</span> FigurePanel();
+  8&nbsp;&nbsp;  <span class = "keyword">private</span> FigurePanel circlePanel = <span class = "keyword">new</span> FigurePanel();
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> FigurePanel ovalPanel = <span class = "keyword">new</span> FigurePanel();
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;  <span class = "keyword">public</span> DisplayFigure() {
+ 12&nbsp;&nbsp;    squarePanel.setType(FigurePanel.LINE);
+ 13&nbsp;&nbsp;    rectanglePanel.setType(FigurePanel.RECTANGLE);
+ 14&nbsp;&nbsp;    circlePanel.setType(FigurePanel.ROUND_RECTANGLE);
+ 15&nbsp;&nbsp;    ovalPanel.setType(FigurePanel.OVAL);
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    add(jtpFigures, BorderLayout.CENTER);
+ 18&nbsp;&nbsp;    jtpFigures.add(squarePanel, <span class = "literal">"Line"</span>);
+ 19&nbsp;&nbsp;    jtpFigures.add(rectanglePanel, <span class = "literal">"Rectangle"</span>);
+ 20&nbsp;&nbsp;    jtpFigures.add(circlePanel, <span class = "literal">"Round Rectangle"</span>);
+ 21&nbsp;&nbsp;    jtpFigures.add(ovalPanel, <span class = "literal">"Oval"</span>);
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;    jtpFigures.setToolTipTextAt(<span class = "literal">0</span>, <span class = "literal">"Square"</span>);
+ 24&nbsp;&nbsp;    jtpFigures.setToolTipTextAt(<span class = "literal">1</span>, <span class = "literal">"Rectangle"</span>);
+ 25&nbsp;&nbsp;    jtpFigures.setToolTipTextAt(<span class = "literal">2</span>, <span class = "literal">"Circle"</span>);
+ 26&nbsp;&nbsp;    jtpFigures.setToolTipTextAt(<span class = "literal">3</span>, <span class = "literal">"Oval"</span>);
+ 27&nbsp;&nbsp;  }
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 30&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 31&nbsp;&nbsp;    <span class = "comment">// Create a frame</span>
+ 32&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"DisplayFigure"</span>);
+ 33&nbsp;&nbsp;
+ 34&nbsp;&nbsp;    <span class = "comment">// Create an instance of the applet</span>
+ 35&nbsp;&nbsp;    DisplayFigure applet = <span class = "keyword">new</span> DisplayFigure();
+ 36&nbsp;&nbsp;    applet.init();
+ 37&nbsp;&nbsp;
+ 38&nbsp;&nbsp;    <span class = "comment">// Add the applet instance to the frame</span>
+ 39&nbsp;&nbsp;    frame.add(applet, java.awt.BorderLayout.CENTER);
+ 40&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 41&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+ 42&nbsp;&nbsp;
+ 43&nbsp;&nbsp;    <span class = "comment">// Display the frame</span>
+ 44&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>, <span class = "literal">200</span>);
+ 45&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 46&nbsp;&nbsp;  }
+ 47&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

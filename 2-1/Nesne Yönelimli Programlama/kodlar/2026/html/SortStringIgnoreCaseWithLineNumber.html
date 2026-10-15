@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SortStringIgnoreCase.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "SortStringIgnoreCase.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> SortStringIgnoreCase {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  3&nbsp;&nbsp;    String[] cities = {<span class = "literal">"Atlanta"</span>, <span class = "literal">"Savannah"</span>, <span class = "literal">"new York"</span>, <span class = "literal">"dallas"</span>};
+  4&nbsp;&nbsp;    java.util.Arrays.sort(cities, 
+  5&nbsp;&nbsp;        (s1, s2) -&gt; {<span class = "keyword">return</span> s1.compareToIgnoreCase(s2);});
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;    <span class = "keyword">for</span> (String s : cities) {
+  8&nbsp;&nbsp;      System.out.print(s + <span class = "literal">" "</span>);
+  9&nbsp;&nbsp;    }
+ 10&nbsp;&nbsp;  }
+ 11&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "SortStringIgnoreCase" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

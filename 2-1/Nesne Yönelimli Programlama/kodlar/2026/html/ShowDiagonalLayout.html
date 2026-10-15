@@ -1,0 +1,105 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowDiagonalLayout.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ShowDiagonalLayoutWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.border.*;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ShowDiagonalLayout <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> FlowLayout flowLayout = <span class = "keyword">new</span> FlowLayout();
+  <span class = "keyword">private</span> GridLayout gridLayout = <span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">2</span>);
+  <span class = "keyword">private</span> DiagonalLayout diagonalLayout = <span class = "keyword">new</span> DiagonalLayout();
+
+  <span class = "keyword">private</span> JButton jbt1 = <span class = "keyword">new</span> JButton(<span class = "literal">"Button 1"</span>);
+  <span class = "keyword">private</span> JButton jbt2 = <span class = "keyword">new</span> JButton(<span class = "literal">"Button 2"</span>);
+  <span class = "keyword">private</span> JButton jbt3 = <span class = "keyword">new</span> JButton(<span class = "literal">"Button 3"</span>);
+  <span class = "keyword">private</span> JButton jbt4 = <span class = "keyword">new</span> JButton(<span class = "literal">"Button 4"</span>);
+
+  <span class = "keyword">private</span> JRadioButton jrbFlowLayout =
+    <span class = "keyword">new</span> JRadioButton(<span class = "literal">"FlowLayout"</span>);
+  <span class = "keyword">private</span> JRadioButton jrbGridLayout =
+    <span class = "keyword">new</span> JRadioButton(<span class = "literal">"GridLayout"</span>);
+  <span class = "keyword">private</span> JRadioButton jrbDiagonalLayout =
+    <span class = "keyword">new</span> JRadioButton(<span class = "literal">"DiagonalLayout"</span>, <span class = "keyword">true</span>);
+
+  <span class = "keyword">private</span> JPanel jPanel2 = <span class = "keyword">new</span> JPanel();
+
+  <span class = "keyword">public</span> ShowDiagonalLayout() {
+    <span class = "comment">// Set default layout in jPanel2</span>
+    jPanel2.setLayout(diagonalLayout);
+    jPanel2.add(jbt1);
+    jPanel2.add(jbt2);
+    jPanel2.add(jbt3);
+    jPanel2.add(jbt4);
+    jPanel2.setBorder(<span class = "keyword">new</span> LineBorder(Color.black));
+
+    JPanel jPanel1 = <span class = "keyword">new</span> JPanel();
+    jPanel1.setBorder(<span class = "keyword">new</span> TitledBorder(<span class = "literal">"Select a Layout Manager"</span>));
+    jPanel1.add(jrbFlowLayout);
+    jPanel1.add(jrbGridLayout);
+    jPanel1.add(jrbDiagonalLayout);
+
+    ButtonGroup buttonGroup1 = <span class = "keyword">new</span> ButtonGroup();
+    buttonGroup1.add(jrbFlowLayout);
+    buttonGroup1.add(jrbGridLayout);
+    buttonGroup1.add(jrbDiagonalLayout);
+
+    add(jPanel1, BorderLayout.SOUTH);
+    add(jPanel2, BorderLayout.CENTER);
+
+    jrbFlowLayout.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jPanel2.setLayout(flowLayout);
+        jPanel2.validate();
+      }
+    });
+    jrbGridLayout.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jPanel2.setLayout(gridLayout);
+        jPanel2.validate();
+      }
+    });
+    jrbDiagonalLayout.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jPanel2.setLayout(diagonalLayout);
+        jPanel2.validate();
+      }
+    });
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ShowDiagonalLayout applet = <span class = "keyword">new</span> ShowDiagonalLayout();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"ShowDiagonalLayout"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

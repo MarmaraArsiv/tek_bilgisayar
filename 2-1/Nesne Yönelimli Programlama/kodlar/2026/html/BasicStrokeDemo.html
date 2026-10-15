@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - BasicStrokeDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "BasicStrokeDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.geom.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> BasicStrokeDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> BasicStrokeDemo() {
+    add(<span class = "keyword">new</span> ShapePanel());
+  }
+
+  <span class = "keyword">class</span> ShapePanel <span class = "keyword">extends</span> JPanel {
+    @Override
+    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+      <span class = "keyword">super</span>.paintComponent(g);
+  
+      Graphics2D g2d = (Graphics2D)g;
+  
+      g2d.setStroke(<span class = "keyword">new</span> BasicStroke(<span class = "literal">15</span><span class = "literal">.</span><span class = "literal">0f</span>, BasicStroke.CAP_ROUND, 
+        BasicStroke.JOIN_BEVEL));
+      g2d.draw(<span class = "keyword">new</span> Line2D.Double(<span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">40</span>, <span class = "literal">80</span>));
+      
+      g2d.translate(<span class = "literal">100</span>, <span class = "literal">0</span>); 
+      g2d.setStroke(<span class = "keyword">new</span> BasicStroke(<span class = "literal">15</span><span class = "literal">.</span><span class = "literal">0f</span>, BasicStroke.CAP_SQUARE, 
+          BasicStroke.JOIN_BEVEL));
+      g2d.draw(<span class = "keyword">new</span> Line2D.Double(<span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">40</span>, <span class = "literal">80</span>));
+      
+      g2d.translate(<span class = "literal">100</span>, <span class = "literal">0</span>); 
+      g2d.setStroke(<span class = "keyword">new</span> BasicStroke(<span class = "literal">15</span><span class = "literal">.</span><span class = "literal">0f</span>, BasicStroke.CAP_BUTT, 
+          BasicStroke.JOIN_BEVEL));
+      g2d.draw(<span class = "keyword">new</span> Line2D.Double(<span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">40</span>, <span class = "literal">80</span>));
+
+      g2d.translate(<span class = "literal">100</span>, <span class = "literal">0</span>); 
+      g2d.draw(<span class = "keyword">new</span> Rectangle2D.Double(<span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">30</span>, <span class = "literal">70</span>));
+      
+      g2d.translate(<span class = "literal">100</span>, <span class = "literal">0</span>); 
+      g2d.setStroke(<span class = "keyword">new</span> BasicStroke(<span class = "literal">15</span><span class = "literal">.</span><span class = "literal">0f</span>, BasicStroke.CAP_ROUND, 
+        BasicStroke.JOIN_MITER));
+      g2d.draw(<span class = "keyword">new</span> Rectangle2D.Double(<span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">30</span>, <span class = "literal">70</span>));
+      
+      g2d.translate(<span class = "literal">100</span>, <span class = "literal">0</span>); 
+      g2d.setStroke(<span class = "keyword">new</span> BasicStroke(<span class = "literal">15</span><span class = "literal">.</span><span class = "literal">0f</span>, BasicStroke.CAP_SQUARE, 
+        BasicStroke.JOIN_ROUND));
+      g2d.draw(<span class = "keyword">new</span> Rectangle2D.Double(<span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">30</span>, <span class = "literal">70</span>));
+  
+      g2d.translate(<span class = "literal">100</span>, <span class = "literal">0</span>); 
+      g2d.setStroke(<span class = "keyword">new</span> BasicStroke(<span class = "literal">4</span><span class = "literal">.</span><span class = "literal">0f</span>, BasicStroke.CAP_SQUARE,
+        BasicStroke.JOIN_ROUND, <span class = "literal">1</span><span class = "literal">.</span><span class = "literal">0f</span>, <span class = "keyword">new</span> <span class = "keyword">float</span>[]{<span class = "literal">8</span>}, <span class = "literal">0</span>));
+      g2d.draw(<span class = "keyword">new</span> Line2D.Double(<span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">40</span>, <span class = "literal">80</span>)); 
+    }
+  }
+  
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    BasicStrokeDemo applet = <span class = "keyword">new</span> BasicStrokeDemo();
+    applet.init();
+    applet.start();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setTitle(<span class = "literal">"BasicStrokeDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    frame.setSize(<span class = "literal">800</span>, <span class = "literal">130</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

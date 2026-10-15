@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>Intro to Java Programming, 6E - Figure24_1.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "comment">// Figure24_1.java: Figures 24.1</span>
+<span class = "keyword">import</span> java.awt.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> javax.swing.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">public</span> <span class = "keyword">class</span> Figure24_1 <span class = "keyword">extends</span> JApplet <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[<span class = "literal"></span>]<span class = "literal"></span> args)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> JToolBar toolBar = <span class = "keyword">new</span> JToolBar(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> toolBar.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal"></span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> toolBar.add(<span class = "keyword">new</span> JButton(<span class = "literal">"ABC"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> toolBar.add(<span class = "keyword">new</span> JButton(<span class = "literal">"DEF"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"My Menus"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "comment">//    frame.getContentPane().add(toolBar, BorderLayout.SOUTH);</span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> frame.setSize(<span class = "literal">300</span>,<span class = "literal"></span> <span class = "literal">200</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> frame.setVisible(<span class = "keyword">true</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> JMenuBar jmb = <span class = "keyword">new</span> JMenuBar(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> frame.setJMenuBar(jmb)<span class = "literal"></span>;<span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Attach a menu bar to a frame</span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> JMenu fileMenu = <span class = "keyword">new</span> JMenu(<span class = "literal">"File"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> JMenu helpMenu = <span class = "keyword">new</span> JMenu(<span class = "literal">"Help"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> jmb.add(fileMenu)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> jmb.add(helpMenu)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> JMenuItem jmiNew,<span class = "literal"></span> jmiOpen;<span class = "literal"></span><span class = "literal"></span>
+fileMenu.add(jmiNew = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"New"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+fileMenu.add(jmiOpen = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"Open"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+jmiNew.setIcon(<span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/new.gif"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+jmiOpen.setIcon(<span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/open.gif"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+helpMenu.setMnemonic(<span class = "literal">'H'</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+fileMenu.setMnemonic(<span class = "literal">'F'</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+jmiNew.setMnemonic(<span class = "literal">'N'</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+jmiOpen.setMnemonic(<span class = "literal">'O'</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "comment">//    fileMenu.add(new JMenuItem("New"));</span>
+<span class = "literal"></span>/<span class = "literal"></span>/fileMenu.add(<span class = "keyword">new</span> JMenuItem(<span class = "literal">"Open"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+fileMenu.addSeparator(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+fileMenu.add(<span class = "keyword">new</span> JMenuItem(<span class = "literal">"Print"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+fileMenu.addSeparator(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+fileMenu.add(<span class = "keyword">new</span> JMenuItem(<span class = "literal">"Exit"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> JMenu softwareHelpSubMenu = <span class = "keyword">new</span> JMenu(<span class = "literal">"Software"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+JMenu hardwareHelpSubMenu = <span class = "keyword">new</span> JMenu(<span class = "literal">"Hardware"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+helpMenu.add(softwareHelpSubMenu)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+helpMenu.add(hardwareHelpSubMenu)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+softwareHelpSubMenu.add(<span class = "keyword">new</span> JMenuItem(<span class = "literal">"Unix"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+softwareHelpSubMenu.add(<span class = "keyword">new</span> JMenuItem(<span class = "literal">"NT"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+softwareHelpSubMenu.add(<span class = "keyword">new</span> JMenuItem(<span class = "literal">"Win95"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+helpMenu.add(<span class = "keyword">new</span> JCheckBoxMenuItem(<span class = "literal">"Check it"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> JMenu colorHelpSubMenu = <span class = "keyword">new</span> JMenu(<span class = "literal">"Color"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> helpMenu.add(colorHelpSubMenu)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> JRadioButtonMenuItem jrbmiBlue,<span class = "literal"></span> jrbmiYellow,<span class = "literal"></span> jrbmiRed;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> colorHelpSubMenu.add(jrbmiBlue =<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">new</span> JRadioButtonMenuItem(<span class = "literal">"Blue"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> colorHelpSubMenu.add(jrbmiYellow =<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">new</span> JRadioButtonMenuItem(<span class = "literal">"Yellow"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> colorHelpSubMenu.add(jrbmiRed =<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">new</span> JRadioButtonMenuItem(<span class = "literal">"Red"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> ButtonGroup btg = <span class = "keyword">new</span> ButtonGroup(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> btg.add(jrbmiBlue)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> btg.add(jrbmiYellow)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> btg.add(jrbmiRed)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+</pre>
+</body>
+</html>

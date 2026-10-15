@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestFrame.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestFrameWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.JFrame;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestFrame {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    JFrame frame1 = <span class = "keyword">new</span> JFrame();
+    frame1.setTitle(<span class = "literal">"Window 1"</span>);
+    frame1.setSize(<span class = "literal">200</span>, <span class = "literal">150</span>);
+    frame1.setLocation(<span class = "literal">200</span>, <span class = "literal">100</span>);
+    frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame1.setVisible(<span class = "keyword">true</span>);
+
+    JFrame frame2 = <span class = "keyword">new</span> JFrame();
+    frame2.setTitle(<span class = "literal">"Window 2"</span>);
+    frame2.setSize(<span class = "literal">200</span>, <span class = "literal">150</span>);
+    frame2.setLocation(<span class = "literal">410</span>, <span class = "literal">100</span>);
+    frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame2.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ExecutorDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ExecutorDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.concurrent.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ExecutorDemo {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  5&nbsp;&nbsp;    <span class = "comment">// Create a fixed thread pool with maximum three threads</span>
+  6&nbsp;&nbsp;    ExecutorService executor = Executors.newFixedThreadPool(<span class = "literal">3</span>);
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;    <span class = "comment">// Submit runnable tasks to the executor</span>
+  9&nbsp;&nbsp;    executor.execute(<span class = "keyword">new</span> PrintChar(<span class = "literal">'a'</span>, <span class = "literal">100</span>));
+ 10&nbsp;&nbsp;    executor.execute(<span class = "keyword">new</span> PrintChar(<span class = "literal">'b'</span>, <span class = "literal">100</span>));
+ 11&nbsp;&nbsp;    executor.execute(<span class = "keyword">new</span> PrintNum(<span class = "literal">100</span>));
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;    <span class = "comment">// Shut down the executor</span>
+ 14&nbsp;&nbsp;    executor.shutdown();
+ 15&nbsp;&nbsp;  }
+ 16&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "ExecutorDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

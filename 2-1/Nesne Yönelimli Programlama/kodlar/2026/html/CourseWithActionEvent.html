@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - CourseWithActionEvent.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "CourseWithActionEventWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.*;
+<span class = "keyword">import</span> java.awt.event.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> CourseWithActionEvent {
+  <span class = "keyword">private</span> String courseName = <span class = "literal">"default name"</span>;
+  <span class = "keyword">private</span> ArrayList&lt;String&gt; students = <span class = "keyword">new</span> ArrayList&lt;String&gt;();
+  <span class = "keyword">private</span> <span class = "keyword">int</span> enrollmentCap = <span class = "literal">10</span>;
+  <span class = "keyword">private</span> ArrayList&lt;ActionListener&gt; actionListenerList;
+
+  <span class = "keyword">public</span> CourseWithActionEvent() {
+  }
+
+  <span class = "keyword">public</span> CourseWithActionEvent(String courseName) {
+    <span class = "keyword">this</span>.courseName = courseName;
+  }
+
+  <span class = "keyword">public</span> String getCourseName() {
+    <span class = "keyword">return</span> courseName;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> addStudent(String student) {
+    <span class = "keyword">if</span> (students.size() &gt;= enrollmentCap)  <span class = "comment">// Fire ActionEvent</span>
+      processEvent(<span class = "keyword">new</span> ActionEvent(<span class = "keyword">this</span>,
+        ActionEvent.ACTION_PERFORMED, <span class = "keyword">null</span>));
+    <span class = "keyword">else</span>
+      students.add(student);
+  }
+
+  <span class = "keyword">public</span> ArrayList&lt;String&gt; getStudents() {
+    <span class = "keyword">return</span> students;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getNumberOfStudents() {
+    <span class = "keyword">return</span> students.size();
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getEnrollmentCap() {
+    <span class = "keyword">return</span> enrollmentCap;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setEnrollmentCap(<span class = "keyword">int</span> enrollmentCap) {
+    <span class = "keyword">this</span>.enrollmentCap = enrollmentCap;
+  }
+
+  <span class = "comment">/** Register an action event listener */</span>
+  <span class = "keyword">public</span> <span class = "keyword">synchronized</span> <span class = "keyword">void</span> addActionListener
+      (ActionListener listener) {
+    <span class = "keyword">if</span> (actionListenerList == <span class = "keyword">null</span>) {
+      actionListenerList = <span class = "keyword">new</span> ArrayList&lt;ActionListener&gt;(<span class = "literal">2</span>);
+    }
+
+    <span class = "keyword">if</span> (!actionListenerList.contains(listener)) {
+      actionListenerList.add(listener);
+    }
+  }
+
+  <span class = "comment">/** Remove an action event listener */</span>
+  <span class = "keyword">public</span> <span class = "keyword">synchronized</span> <span class = "keyword">void</span> removeActionListener
+      (ActionListener listener) {
+    <span class = "keyword">if</span> (actionListenerList != 
+        <span class = "keyword">null</span> && actionListenerList.contains(listener)) {
+      actionListenerList.remove(listener);
+    }
+  }
+
+  <span class = "comment">/** Fire ActionEvent */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> processEvent(ActionEvent e) {
+    ArrayList&lt;ActionListener&gt; list;
+
+    <span class = "keyword">synchronized</span> (<span class = "keyword">this</span>) {
+      <span class = "keyword">if</span> (actionListenerList == <span class = "keyword">null</span>) <span class = "keyword">return</span>;
+      list = (ArrayList&lt;ActionListener&gt;)actionListenerList.clone();
+    }
+
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; list.size(); i++) {
+      ActionListener listener = (ActionListener)list.get(i);
+      listener.actionPerformed(e);
+    }
+  }
+}
+</pre>
+</body>
+</html>

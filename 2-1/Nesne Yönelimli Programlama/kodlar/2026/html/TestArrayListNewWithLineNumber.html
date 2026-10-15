@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestArrayListNew.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestArrayListNew.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestArrayListNew {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  5&nbsp;&nbsp;    <span class = "comment">// Create a list to store cities</span>
+  6&nbsp;&nbsp;    ArrayList&lt;String&gt; cityList = <span class = "keyword">new</span> ArrayList&lt;String&gt;();
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;    <span class = "comment">// Add some cities in the list</span>
+  9&nbsp;&nbsp;    cityList.add(<span class = "literal">"London"</span>);
+ 10&nbsp;&nbsp;    cityList.add(<span class = "literal">"New York"</span>);
+ 11&nbsp;&nbsp;    cityList.add(<span class = "literal">"Paris"</span>);
+ 12&nbsp;&nbsp;    cityList.add(<span class = "literal">"Toronto"</span>);
+ 13&nbsp;&nbsp;    cityList.add(<span class = "literal">"Hong Kong"</span>);
+ 14&nbsp;&nbsp;    cityList.add(<span class = "literal">"Singapore"</span>);
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;    System.out.println(<span class = "literal">"List size? "</span> + cityList.size());
+ 17&nbsp;&nbsp;    System.out.println(<span class = "literal">"Is Toronto in the list? "</span> +
+ 18&nbsp;&nbsp;      cityList.contains(<span class = "literal">"Toronto"</span>));
+ 19&nbsp;&nbsp;    System.out.println(<span class = "literal">"The location of New York in the list? "</span>
+ 20&nbsp;&nbsp;      + cityList.indexOf(<span class = "literal">"New York"</span>));
+ 21&nbsp;&nbsp;    System.out.println(<span class = "literal">"Is the list empty? "</span> +
+ 22&nbsp;&nbsp;      cityList.isEmpty()); <span class = "comment">// Print false</span>
+ 23&nbsp;&nbsp;
+ 24&nbsp;&nbsp;    <span class = "comment">// Insert a new city at index 2</span>
+ 25&nbsp;&nbsp;    cityList.add(<span class = "literal">2</span>, <span class = "literal">"Beijing"</span>);
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;    <span class = "comment">// Remove a city from the list</span>
+ 28&nbsp;&nbsp;    cityList.remove(<span class = "literal">"Toronto"</span>);
+ 29&nbsp;&nbsp;
+ 30&nbsp;&nbsp;    <span class = "comment">// Remove a city at index 1</span>
+ 31&nbsp;&nbsp;    cityList.remove(<span class = "literal">1</span>);
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;    <span class = "comment">// Display London Beijing Paris Hong Kong Singapore</span>
+ 34&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; cityList.size(); i++)
+ 35&nbsp;&nbsp;      System.out.print(cityList.get(i) + <span class = "literal">" "</span>);
+ 36&nbsp;&nbsp;    System.out.println();
+ 37&nbsp;&nbsp;
+ 38&nbsp;&nbsp;    <span class = "comment">// Create a list to store two circles</span>
+ 39&nbsp;&nbsp;    ArrayList&lt;Circle&gt; list = <span class = "keyword">new</span> ArrayList&lt;Circle&gt;();
+ 40&nbsp;&nbsp;
+ 41&nbsp;&nbsp;    <span class = "comment">// Add a circle and a cylinder</span>
+ 42&nbsp;&nbsp;    list.add(<span class = "keyword">new</span> Circle(<span class = "literal">2</span>));
+ 43&nbsp;&nbsp;    list.add(<span class = "keyword">new</span> Circle(<span class = "literal">3</span>));
+ 44&nbsp;&nbsp;
+ 45&nbsp;&nbsp;    <span class = "comment">// Display the area of the first circle in the list</span>
+ 46&nbsp;&nbsp;    System.out.println(<span class = "literal">"The area of the circle? "</span> +
+ 47&nbsp;&nbsp;      ((Circle)list.get(<span class = "literal">0</span>)).getArea());
+ 48&nbsp;&nbsp;  }
+ 49&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestArrayListNew" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

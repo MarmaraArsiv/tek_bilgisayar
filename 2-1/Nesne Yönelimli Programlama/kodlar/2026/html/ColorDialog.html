@@ -1,0 +1,140 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ColorDialog.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ColorDialogWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.event.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ColorDialog <span class = "keyword">extends</span> JDialog {
+  <span class = "comment">// Declare color component values and selected color</span>
+  <span class = "keyword">private</span> <span class = "keyword">int</span> redValue, greenValue, blueValue;
+  <span class = "keyword">private</span> Color color = <span class = "keyword">null</span>;
+
+  <span class = "comment">// Create sliders</span>
+  <span class = "keyword">private</span> JSlider jslRed = <span class = "keyword">new</span> JSlider(<span class = "literal">0</span>, <span class = "literal">128</span>);
+  <span class = "keyword">private</span> JSlider jslGreen = <span class = "keyword">new</span> JSlider(<span class = "literal">0</span>, <span class = "literal">128</span>);
+  <span class = "keyword">private</span> JSlider jslBlue = <span class = "keyword">new</span> JSlider(<span class = "literal">0</span>, <span class = "literal">128</span>);
+
+  <span class = "comment">// Create two buttons</span>
+  <span class = "keyword">private</span> JButton jbtOK = <span class = "keyword">new</span> JButton(<span class = "literal">"OK"</span>);
+  <span class = "keyword">private</span> JButton jbtCancel = <span class = "keyword">new</span> JButton(<span class = "literal">"Cancel"</span>);
+
+  <span class = "comment">// Create a panel to display the selected color</span>
+  <span class = "keyword">private</span> JPanel jpSelectedColor = <span class = "keyword">new</span> JPanel();
+
+  <span class = "keyword">public</span> ColorDialog() {
+    <span class = "keyword">this</span>(<span class = "keyword">null</span>, <span class = "keyword">true</span>);
+  }
+
+  <span class = "keyword">public</span> ColorDialog(java.awt.Frame parent, <span class = "keyword">boolean</span> modal) {
+    <span class = "keyword">super</span>(parent, modal);
+    setTitle(<span class = "literal">"Choose Color"</span>);
+
+    <span class = "comment">// Group two buttons OK and Cancel</span>
+    JPanel jpButtons = <span class = "keyword">new</span> JPanel();
+    jpButtons.add(jbtOK);
+    jpButtons.add(jbtCancel);
+
+    <span class = "comment">// Group labels</span>
+    JPanel jpLabels = <span class = "keyword">new</span> JPanel();
+    jpLabels.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">3</span>, <span class = "literal">0</span>));
+    jpLabels.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Red"</span>));
+    jpLabels.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Green"</span>));
+    jpLabels.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Blue"</span>));
+
+    <span class = "comment">// Group sliders for selecting red, green, and blue colors</span>
+    JPanel jpSliders = <span class = "keyword">new</span> JPanel();
+    jpSliders.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">3</span>, <span class = "literal">0</span>));
+    jpSliders.add(jslRed);
+    jpSliders.add(jslGreen);
+    jpSliders.add(jslBlue);
+
+    <span class = "comment">// Group jpLabels and jpSliders</span>
+    JPanel jpSelectColor = <span class = "keyword">new</span> JPanel();
+    jpSelectColor.setLayout(<span class = "keyword">new</span> BorderLayout());
+    jpSelectColor.setBorder(
+      BorderFactory.createTitledBorder(<span class = "literal">"Select Color"</span>));
+    jpSelectColor.add(jpLabels, BorderLayout.WEST);
+    jpSelectColor.add(jpSliders, BorderLayout.CENTER);
+
+    <span class = "comment">// Group jpSelectColor and jpSelectedColor</span>
+    JPanel jpColor = <span class = "keyword">new</span> JPanel();
+    jpColor.setLayout(<span class = "keyword">new</span> BorderLayout());
+    jpColor.add(jpSelectColor, BorderLayout.SOUTH);
+    jpColor.add(jpSelectedColor, BorderLayout.CENTER);
+
+    <span class = "comment">// Place jpButtons and jpColor into the dialog box</span>
+    add(jpButtons, BorderLayout.SOUTH);
+    add(jpColor, BorderLayout.CENTER);
+    pack();
+
+    jbtOK.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        setVisible(<span class = "keyword">false</span>);
+      }
+    });
+
+    jbtCancel.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        color = <span class = "keyword">null</span>;
+        setVisible(<span class = "keyword">false</span>);
+      }
+    });
+
+    jslRed.addChangeListener(<span class = "keyword">new</span> ChangeListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> stateChanged(ChangeEvent e) {
+        redValue = jslRed.getValue();
+        color = <span class = "keyword">new</span> Color(redValue, greenValue, blueValue);
+        jpSelectedColor.setBackground(color);
+      }
+    });
+
+    jslGreen.addChangeListener(<span class = "keyword">new</span> ChangeListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> stateChanged(ChangeEvent e) {
+        greenValue = jslGreen.getValue();
+        color = <span class = "keyword">new</span> Color(redValue, greenValue, blueValue);
+        jpSelectedColor.setBackground(color);
+      }
+    });
+
+    jslBlue.addChangeListener(<span class = "keyword">new</span> ChangeListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> stateChanged(ChangeEvent e) {
+        blueValue = jslBlue.getValue();
+        color = <span class = "keyword">new</span> Color(redValue, greenValue, blueValue);
+        jpSelectedColor.setBackground(color);
+      }
+    });
+  }
+
+  @Override
+  <span class = "keyword">public</span> Dimension getPreferredSize() {
+    <span class = "keyword">return</span> <span class = "keyword">new</span> java.awt.Dimension(<span class = "literal">200</span>, <span class = "literal">200</span>);
+  }
+
+  <span class = "comment">/** Return color */</span>
+  <span class = "keyword">public</span> Color getColor() {
+    <span class = "keyword">return</span> color;
+  }
+}
+</pre>
+</body>
+</html>

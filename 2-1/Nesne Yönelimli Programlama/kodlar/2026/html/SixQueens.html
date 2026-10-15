@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SixQueens.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "SixQueensWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> SixQueens <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">final</span> <span class = "keyword">int</span> SIZE = <span class = "literal">6</span>; <span class = "comment">// The size of the chess board</span>
+  <span class = "keyword">private</span> <span class = "keyword">int</span>[] queens = <span class = "keyword">new</span> <span class = "keyword">int</span>[SIZE]; <span class = "comment">// The queen positions </span>
+
+  <span class = "keyword">public</span> SixQueens() {
+    search(<span class = "literal">0</span>); <span class = "comment">// Search for a solution from row 0</span>
+    add(<span class = "keyword">new</span> ChessBoard(), BorderLayout.CENTER);
+  }
+
+  <span class = "comment">/** Check if a queen can be placed at row i and column j */</span>
+  <span class = "keyword">private</span> <span class = "keyword">boolean</span> isValid(<span class = "keyword">int</span> row, <span class = "keyword">int</span> column) {
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">1</span>; i &lt;= row; i++)
+      <span class = "keyword">if</span> (queens[row - i] == column <span class = "comment">// Check column</span>
+        || queens[row - i] == column - i <span class = "comment">// Check upleft diagonal</span>
+        || queens[row - i] == column + i) <span class = "comment">// Check upright diagonal</span>
+        <span class = "keyword">return</span> <span class = "keyword">false</span>; <span class = "comment">// There is a conflict</span>
+    <span class = "keyword">return</span> <span class = "keyword">true</span>; <span class = "comment">// No conflict</span>
+  }
+
+  <span class = "comment">/** Search for a solution starting from a specified row */</span>
+  <span class = "keyword">private</span> <span class = "keyword">boolean</span> search(<span class = "keyword">int</span> row) {
+    <span class = "keyword">if</span> (row &lt; SIZE) {
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> column = <span class = "literal">0</span>; column &lt; SIZE; column++) {
+        queens[row] = column; <span class = "comment">// Place a queen at (row, column)</span>
+        <span class = "keyword">if</span> (isValid(row, column) && search(row + <span class = "literal">1</span>)) 
+          <span class = "keyword">return</span> <span class = "keyword">true</span>; <span class = "comment">// Found, thus return true to exit the loop</span>
+      }
+    } 
+    <span class = "keyword">else</span> {
+      <span class = "keyword">return</span> <span class = "keyword">true</span>; <span class = "comment">// A solution found</span>
+    }
+
+    <span class = "keyword">return</span> <span class = "keyword">false</span>; <span class = "comment">// No solution</span>
+  }
+
+  <span class = "keyword">class</span> ChessBoard <span class = "keyword">extends</span> JPanel {
+    <span class = "keyword">private</span> Image queenImage = 
+      <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/queen.jpg"</span>).getImage();
+
+    ChessBoard() {
+      <span class = "keyword">this</span>.setBorder(BorderFactory.createLineBorder(Color.BLACK, <span class = "literal">2</span>));
+    }
+
+    @Override
+    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+      <span class = "keyword">super</span>.paintComponent(g);
+
+      <span class = "comment">// Paint the queens</span>
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; SIZE; i++) {
+        <span class = "keyword">int</span> j = queens[i]; <span class = "comment">// The position of the queen in row i</span>
+        g.drawImage(queenImage, j * getWidth() / SIZE, 
+          i * getHeight() / SIZE, getWidth() / SIZE, 
+          getHeight() / SIZE, <span class = "keyword">this</span>);
+      }
+
+      <span class = "comment">// Draw the horizontal and vertical lines</span>
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">1</span>; i &lt; SIZE; i++) {
+        g.drawLine(<span class = "literal">0</span>, i * getHeight() / SIZE, 
+          getWidth(), i * getHeight() / SIZE);
+        g.drawLine(i * getWidth() / SIZE, <span class = "literal">0</span>, 
+          i * getWidth() / SIZE, getHeight());
+      }
+    }
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"SixQueens"</span>);
+    SixQueens applet = <span class = "keyword">new</span> SixQueens();
+    frame.add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(<span class = "literal">400</span>, <span class = "literal">400</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestTreeSetWithComparator.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestTreeSetWithComparatorWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestTreeSetWithComparator {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a tree set for geometric objects using a comparator</span>
+    Set&lt;GeometricObject&gt; set =
+      <span class = "keyword">new</span> TreeSet&lt;&gt;(<span class = "keyword">new</span> GeometricObjectComparator());
+    set.add(<span class = "keyword">new</span> Rectangle(<span class = "literal">4</span>, <span class = "literal">5</span>));
+    set.add(<span class = "keyword">new</span> Circle(<span class = "literal">40</span>));
+    set.add(<span class = "keyword">new</span> Circle(<span class = "literal">40</span>));
+    set.add(<span class = "keyword">new</span> Rectangle(<span class = "literal">4</span>, <span class = "literal">1</span>));
+
+    <span class = "comment">// Display geometric objects in the tree set</span>
+    System.out.println(<span class = "literal">"A sorted set of geometric objects"</span>);
+    <span class = "keyword">for</span> (GeometricObject element: set)
+      System.out.println(<span class = "literal">"area = "</span> + element.getArea());
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestTreeSetWithComparator" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

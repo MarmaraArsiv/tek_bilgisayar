@@ -1,0 +1,217 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TextEditor.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TextEditorWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.io.*;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TextEditor <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">// Declare and create image icons</span>
+  <span class = "keyword">private</span> ImageIcon openImageIcon =
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/open.gif"</span>));
+  <span class = "keyword">private</span> ImageIcon saveImageIcon =
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/save.gif"</span>));
+
+  <span class = "comment">// Create menu items</span>
+  <span class = "keyword">private</span> JMenuItem jmiOpen = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"Open"</span>, openImageIcon);
+  <span class = "keyword">private</span> JMenuItem jmiSave = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"Save"</span>, saveImageIcon);
+  <span class = "keyword">private</span> JMenuItem jmiClear = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"Clear"</span>);
+  <span class = "keyword">private</span> JMenuItem jmiExit = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"Exit"</span>);
+  <span class = "keyword">private</span> JMenuItem jmiForeground = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"Foreground"</span>);
+  <span class = "keyword">private</span> JMenuItem jmiBackground = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"Background"</span>);
+
+  <span class = "comment">// Create buttons to be placed in a tool bar</span>
+  <span class = "keyword">private</span> JButton jbtOpen = <span class = "keyword">new</span> JButton(openImageIcon);
+  <span class = "keyword">private</span> JButton jbtSave = <span class = "keyword">new</span> JButton(saveImageIcon);
+  <span class = "keyword">private</span> JLabel jlblStatus = <span class = "keyword">new</span> JLabel();
+
+  <span class = "comment">// Create a JFileChooser with the current directory</span>
+  <span class = "keyword">private</span> JFileChooser jFileChooser1
+    = <span class = "keyword">new</span> JFileChooser(<span class = "keyword">new</span> File(<span class = "literal">"."</span>));
+
+  <span class = "comment">// Create a text area</span>
+  <span class = "keyword">private</span> JTextArea jta = <span class = "keyword">new</span> JTextArea();
+
+  <span class = "keyword">public</span> TextEditor() {
+    <span class = "comment">// Add menu items to the menu</span>
+    JMenu jMenu1 = <span class = "keyword">new</span> JMenu(<span class = "literal">"File"</span>);
+    jMenu1.add(jmiOpen);
+    jMenu1.add(jmiSave);
+    jMenu1.add(jmiClear);
+    jMenu1.addSeparator();
+    jMenu1.add(jmiExit);
+
+    <span class = "comment">// Add menu items to the menu</span>
+    JMenu jMenu2 = <span class = "keyword">new</span> JMenu(<span class = "literal">"Edit"</span>);
+    jMenu2.add(jmiForeground);
+    jMenu2.add(jmiBackground);
+
+    <span class = "comment">// Add menus to the menu bar</span>
+    JMenuBar jMenuBar1 = <span class = "keyword">new</span> JMenuBar();
+    jMenuBar1.add(jMenu1);
+    jMenuBar1.add(jMenu2);
+
+    <span class = "comment">// Set the menu bar</span>
+    setJMenuBar(jMenuBar1);
+
+    <span class = "comment">// Create tool bar</span>
+    JToolBar jToolBar1 = <span class = "keyword">new</span> JToolBar();
+    jToolBar1.add(jbtOpen);
+    jToolBar1.add(jbtSave);
+
+    jmiOpen.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        open();
+      }
+    });
+
+    jmiSave.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        save();
+      }
+    });
+
+    jmiClear.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        jta.setText(<span class = "keyword">null</span>);
+      }
+    });
+
+    jmiExit.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        System.exit(<span class = "literal">0</span>);
+      }
+    });
+
+    jmiForeground.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        Color selectedColor =
+          JColorChooser.showDialog(<span class = "keyword">null</span>, <span class = "literal">"Choose Foreground Color"</span>,
+            jta.getForeground());
+
+        <span class = "keyword">if</span> (selectedColor != <span class = "keyword">null</span>)
+          jta.setForeground(selectedColor);
+      }
+    });
+
+    jmiBackground.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        Color selectedColor =
+          JColorChooser.showDialog(<span class = "keyword">null</span>, <span class = "literal">"Choose Background Color"</span>,
+            jta.getForeground());
+
+        <span class = "keyword">if</span> (selectedColor != <span class = "keyword">null</span>)
+          jta.setBackground(selectedColor);
+      }
+    });
+
+    jbtOpen.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        open();
+      }
+    });
+
+    jbtSave.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        save();
+      }
+    });
+
+    add(jToolBar1, BorderLayout.NORTH);
+    add(jlblStatus, BorderLayout.SOUTH);
+    add(<span class = "keyword">new</span> JScrollPane(jta), BorderLayout.CENTER);
+  }
+
+  <span class = "comment">/** Open file */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> open() {
+    <span class = "keyword">if</span> (jFileChooser1.showOpenDialog(<span class = "keyword">this</span>) ==
+      JFileChooser.APPROVE_OPTION)
+      open(jFileChooser1.getSelectedFile());
+  }
+
+  <span class = "comment">/** Open file with the specified File instance */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> open(File file) {
+    <span class = "keyword">try</span> {
+      <span class = "comment">// Read from the specified file and store it in jta</span>
+      BufferedInputStream in = <span class = "keyword">new</span> BufferedInputStream(
+        <span class = "keyword">new</span> FileInputStream(file));
+      <span class = "keyword">byte</span>[] b = <span class = "keyword">new</span> <span class = "keyword">byte</span>[in.available()];
+      in.read(b, <span class = "literal">0</span>, b.length);
+      jta.append(<span class = "keyword">new</span> String(b, <span class = "literal">0</span>, b.length));
+      in.close();
+
+      <span class = "comment">// Display the status of the Open file operation in jlblStatus</span>
+      jlblStatus.setText(file.getName() + <span class = "literal">" Opened"</span>);
+    }
+    <span class = "keyword">catch</span> (IOException ex) {
+      jlblStatus.setText(<span class = "literal">"Error opening "</span> + file.getName());
+    }
+  }
+
+  <span class = "comment">/** Save file */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> save() {
+    <span class = "keyword">if</span> (jFileChooser1.showSaveDialog(<span class = "keyword">this</span>) ==
+      JFileChooser.APPROVE_OPTION) {
+        save(jFileChooser1.getSelectedFile());
+    }
+  }
+
+  <span class = "comment">/** Save file with specified File instance */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> save(File file) {
+    <span class = "keyword">try</span> {
+      <span class = "comment">// Write the text in jta to the specified file</span>
+      BufferedOutputStream out = <span class = "keyword">new</span> BufferedOutputStream(
+        <span class = "keyword">new</span> FileOutputStream(file));
+      <span class = "keyword">byte</span>[] b = (jta.getText()).getBytes();
+      out.write(b, <span class = "literal">0</span>, b.length);
+      out.close();
+
+      <span class = "comment">// Display the status of the save file operation in jlblStatus</span>
+      jlblStatus.setText(file.getName()  + <span class = "literal">" Saved "</span>);
+    }
+    <span class = "keyword">catch</span> (IOException ex) {
+      jlblStatus.setText(<span class = "literal">"Error saving "</span> + file.getName());
+    }
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TextEditor applet = <span class = "keyword">new</span> TextEditor();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"TextEditor"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

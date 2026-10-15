@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SignedAppletDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "SignedAppletDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.io.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> SignedAppletDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> SignedAppletDemo() {
+    JLabel label = <span class = "keyword">new</span> JLabel();
+    add(label);
+    <span class = "keyword">try</span> {
+      File file = <span class = "keyword">new</span> File(<span class = "literal">"."</span>);
+      label.setText(<span class = "literal">"The current directory is "</span> + file.getAbsolutePath());
+    } <span class = "keyword">catch</span> (Exception ex) {
+      ex.printStackTrace();
+      label.setText(<span class = "literal">"Security exception "</span>);
+    }
+  }
+}
+</pre>
+</body>
+</html>

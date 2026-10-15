@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Test5.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "Test5.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> Test5 <span class = "keyword">extends</span> JFrame {
+  6&nbsp;&nbsp;  <span class = "keyword">private</span> KeyboardPanel keyboardPanel = <span class = "keyword">new</span> KeyboardPanel();
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;  <span class = "comment">/** Initialize UI */</span>
+  9&nbsp;&nbsp;  <span class = "keyword">public</span> Test5() {
+ 10&nbsp;&nbsp;    <span class = "comment">// Add the keyboard panel to accept and display user input</span>
+ 11&nbsp;&nbsp;    add(keyboardPanel);
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;    <span class = "comment">// Set focus</span>
+ 14&nbsp;&nbsp;    keyboardPanel.setFocusable(<span class = "keyword">true</span>);
+ 15&nbsp;&nbsp;  }
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 18&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 19&nbsp;&nbsp;    Test5 frame = <span class = "keyword">new</span> Test5();
+ 20&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"Test5"</span>);
+ 21&nbsp;&nbsp;    frame.setSize(<span class = "literal">300</span>, <span class = "literal">300</span>);
+ 22&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame   </span>
+ 23&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 24&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 25&nbsp;&nbsp;  }
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;  <span class = "comment">// Inner class: KeyboardPanel for receiving key input</span>
+ 28&nbsp;&nbsp;  <span class = "keyword">static</span> <span class = "keyword">class</span> KeyboardPanel <span class = "keyword">extends</span> JPanel {
+ 29&nbsp;&nbsp;    <span class = "keyword">private</span> <span class = "keyword">int</span> x = <span class = "literal">100</span>;
+ 30&nbsp;&nbsp;    <span class = "keyword">private</span> <span class = "keyword">int</span> y = <span class = "literal">100</span>;
+ 31&nbsp;&nbsp;    <span class = "keyword">private</span> <span class = "keyword">char</span> keyChar = <span class = "literal">'A'</span>; <span class = "comment">// Default key</span>
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;    <span class = "keyword">public</span> KeyboardPanel() {
+ 34&nbsp;&nbsp;      addKeyListener(<span class = "keyword">new</span> KeyAdapter() {
+ 35&nbsp;&nbsp;        @Override
+ 36&nbsp;&nbsp;        <span class = "keyword">public</span> <span class = "keyword">void</span> keyPressed(KeyEvent e) {
+ 37&nbsp;&nbsp;          <span class = "keyword">switch</span> (e.getKeyCode()) {
+ 38&nbsp;&nbsp;            <span class = "keyword">case</span> KeyEvent.VK_DOWN: y += <span class = "literal">10</span>; <span class = "keyword">break</span>;
+ 39&nbsp;&nbsp;            <span class = "keyword">case</span> KeyEvent.VK_UP: y -= <span class = "literal">10</span>; <span class = "keyword">break</span>;
+ 40&nbsp;&nbsp;            <span class = "keyword">case</span> KeyEvent.VK_LEFT: x -= <span class = "literal">10</span>; <span class = "keyword">break</span>;
+ 41&nbsp;&nbsp;            <span class = "keyword">case</span> KeyEvent.VK_RIGHT: x += <span class = "literal">10</span>; <span class = "keyword">break</span>;
+ 42&nbsp;&nbsp;            default: keyChar = e.getKeyChar();
+ 43&nbsp;&nbsp;          }
+ 44&nbsp;&nbsp;
+ 45&nbsp;&nbsp;          repaint();
+ 46&nbsp;&nbsp;        }
+ 47&nbsp;&nbsp;        
+ 48&nbsp;&nbsp;        <span class = "keyword">public</span> <span class = "keyword">void</span> keyTyped(KeyEvent e) {
+ 49&nbsp;&nbsp;          System.out.println(e.getKeyCode());
+ 50&nbsp;&nbsp;          System.out.println(e.VK_UNDEFINED);
+ 51&nbsp;&nbsp;        }
+ 52&nbsp;&nbsp;      });
+ 53&nbsp;&nbsp;    }
+ 54&nbsp;&nbsp;
+ 55&nbsp;&nbsp;    @Override
+ 56&nbsp;&nbsp;    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+ 57&nbsp;&nbsp;      <span class = "keyword">super</span>.paintComponent(g);
+ 58&nbsp;&nbsp;
+ 59&nbsp;&nbsp;      g.setFont(<span class = "keyword">new</span> Font(<span class = "literal">"TimesRoman"</span>, Font.PLAIN, <span class = "literal">24</span>));
+ 60&nbsp;&nbsp;      g.drawString(String.valueOf(keyChar), x, y);
+ 61&nbsp;&nbsp;    }
+ 62&nbsp;&nbsp;  }
+ 63&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

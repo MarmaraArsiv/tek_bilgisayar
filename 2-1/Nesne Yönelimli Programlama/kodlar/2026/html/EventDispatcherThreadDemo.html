@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - EventDispatcherThreadDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "EventDispatcherThreadDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> EventDispatcherThreadDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> EventDispatcherThreadDemo() {
+    add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Hi, it runs from an event dispatcher thread"</span>));
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    SwingUtilities.invokeLater(<span class = "keyword">new</span> Runnable() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> run() {
+        JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"EventDispatcherThreadDemo"</span>);
+        frame.add(<span class = "keyword">new</span> EventDispatcherThreadDemo());
+        frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(<span class = "literal">200</span>, <span class = "literal">200</span>);
+        frame.setVisible(<span class = "keyword">true</span>);
+      }
+    });
+  }
+}
+</pre>
+</body>
+</html>

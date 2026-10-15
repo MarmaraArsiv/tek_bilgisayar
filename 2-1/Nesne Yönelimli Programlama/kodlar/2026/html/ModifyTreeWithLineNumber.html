@@ -1,0 +1,184 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ModifyTree.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ModifyTree.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.tree.*;
+  5&nbsp;&nbsp;
+  6&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ModifyTree <span class = "keyword">extends</span> JApplet {
+  7&nbsp;&nbsp;  <span class = "comment">// Create a combo box for choosing selection modes</span>
+  8&nbsp;&nbsp;  <span class = "keyword">private</span> JComboBox jcboSelectionMode = <span class = "keyword">new</span> JComboBox(<span class = "keyword">new</span> String[]{
+  9&nbsp;&nbsp;    <span class = "literal">"CONTIGUOUS_TREE_SELECTION"</span>, <span class = "literal">"DISCONTIGUOUS_TREE_SELECTION"</span>,
+ 10&nbsp;&nbsp;    <span class = "literal">"SINGLE_TREE_SELECTION"</span>});
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;  <span class = "comment">// Create a check box for specifying editable</span>
+ 13&nbsp;&nbsp;  <span class = "keyword">private</span> JCheckBox jchkEditable = <span class = "keyword">new</span> JCheckBox();
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;  <span class = "comment">// Create two buttons</span>
+ 16&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtAdd =
+ 17&nbsp;&nbsp;    <span class = "keyword">new</span> JButton(<span class = "literal">"Add a Child for Selected Node"</span>);
+ 18&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtRemove = <span class = "keyword">new</span> JButton(<span class = "literal">"Remove Selected Nodes"</span>);
+ 19&nbsp;&nbsp;
+ 20&nbsp;&nbsp;  <span class = "comment">// Declare two trees</span>
+ 21&nbsp;&nbsp;  <span class = "keyword">private</span> JTree jTree1, jTree2;
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;  <span class = "keyword">public</span> ModifyTree() {
+ 24&nbsp;&nbsp;    <span class = "comment">// Create the first tree</span>
+ 25&nbsp;&nbsp;    DefaultMutableTreeNode root, europe, northAmerica, us;
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;    europe = <span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Europe"</span>);
+ 28&nbsp;&nbsp;    europe.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"UK"</span>));
+ 29&nbsp;&nbsp;    europe.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Germany"</span>));
+ 30&nbsp;&nbsp;    europe.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"France"</span>));
+ 31&nbsp;&nbsp;    europe.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Norway"</span>));
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;    northAmerica = <span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"North America"</span>);
+ 34&nbsp;&nbsp;    us = <span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"US"</span>);
+ 35&nbsp;&nbsp;    us.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"California"</span>));
+ 36&nbsp;&nbsp;    us.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Texas"</span>));
+ 37&nbsp;&nbsp;    us.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"New York"</span>));
+ 38&nbsp;&nbsp;    us.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Florida"</span>));
+ 39&nbsp;&nbsp;    us.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Illinois"</span>));
+ 40&nbsp;&nbsp;    northAmerica.add(us);
+ 41&nbsp;&nbsp;    northAmerica.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Canada"</span>));
+ 42&nbsp;&nbsp;
+ 43&nbsp;&nbsp;    root = <span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"World"</span>);
+ 44&nbsp;&nbsp;    root.add(europe);
+ 45&nbsp;&nbsp;    root.add(northAmerica);
+ 46&nbsp;&nbsp;
+ 47&nbsp;&nbsp;    jcboSelectionMode.setSelectedIndex(<span class = "literal">1</span>);
+ 48&nbsp;&nbsp;
+ 49&nbsp;&nbsp;    JPanel p1 = <span class = "keyword">new</span> JPanel();
+ 50&nbsp;&nbsp;    p1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"selectionMode"</span>));
+ 51&nbsp;&nbsp;    p1.add(jcboSelectionMode);
+ 52&nbsp;&nbsp;    p1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"editable"</span>));
+ 53&nbsp;&nbsp;    p1.add(jchkEditable);
+ 54&nbsp;&nbsp;
+ 55&nbsp;&nbsp;    JPanel p2 = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> GridLayout(<span class = "literal">1</span>, <span class = "literal">2</span>));
+ 56&nbsp;&nbsp;    p2.add(<span class = "keyword">new</span> JScrollPane(jTree1 = <span class = "keyword">new</span> JTree(root)));
+ 57&nbsp;&nbsp;    p2.add(<span class = "keyword">new</span> JScrollPane(jTree2 =
+ 58&nbsp;&nbsp;      <span class = "keyword">new</span> JTree(<span class = "keyword">new</span> DefaultTreeModel(root)))); <span class = "comment">// Same root as jTree1</span>
+ 59&nbsp;&nbsp;
+ 60&nbsp;&nbsp;    JPanel p3 = <span class = "keyword">new</span> JPanel();
+ 61&nbsp;&nbsp;    p3.add(jbtAdd);
+ 62&nbsp;&nbsp;    p3.add(jbtRemove);
+ 63&nbsp;&nbsp;
+ 64&nbsp;&nbsp;    add(p1, BorderLayout.NORTH);
+ 65&nbsp;&nbsp;    add(p2, BorderLayout.CENTER);
+ 66&nbsp;&nbsp;    add(p3, BorderLayout.SOUTH);
+ 67&nbsp;&nbsp;
+ 68&nbsp;&nbsp;    <span class = "comment">// Register listeners</span>
+ 69&nbsp;&nbsp;    jcboSelectionMode.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 70&nbsp;&nbsp;      @Override
+ 71&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 72&nbsp;&nbsp;        <span class = "keyword">if</span> (jcboSelectionMode.getSelectedItem().
+ 73&nbsp;&nbsp;            equals(<span class = "literal">"CONTIGUOUS_TREE_SELECTION"</span>))
+ 74&nbsp;&nbsp;          jTree1.getSelectionModel().setSelectionMode(
+ 75&nbsp;&nbsp;            TreeSelectionModel.CONTIGUOUS_TREE_SELECTION);
+ 76&nbsp;&nbsp;        <span class = "keyword">else</span> <span class = "keyword">if</span> (jcboSelectionMode.getSelectedItem().
+ 77&nbsp;&nbsp;            equals(<span class = "literal">"DISCONTIGUOUS_TREE_SELECTION"</span>))
+ 78&nbsp;&nbsp;          jTree1.getSelectionModel().setSelectionMode(
+ 79&nbsp;&nbsp;            TreeSelectionModel.DISCONTIGUOUS_TREE_SELECTION);
+ 80&nbsp;&nbsp;        <span class = "keyword">else</span>
+ 81&nbsp;&nbsp;          jTree1.getSelectionModel().setSelectionMode(
+ 82&nbsp;&nbsp;            TreeSelectionModel.SINGLE_TREE_SELECTION);
+ 83&nbsp;&nbsp;      }
+ 84&nbsp;&nbsp;    });
+ 85&nbsp;&nbsp;
+ 86&nbsp;&nbsp;    jchkEditable.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 87&nbsp;&nbsp;      @Override
+ 88&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 89&nbsp;&nbsp;        jTree1.setEditable(jchkEditable.isSelected());
+ 90&nbsp;&nbsp;      }
+ 91&nbsp;&nbsp;    });
+ 92&nbsp;&nbsp;
+ 93&nbsp;&nbsp;    jbtAdd.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 94&nbsp;&nbsp;      @Override
+ 95&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 96&nbsp;&nbsp;        DefaultMutableTreeNode parent = (DefaultMutableTreeNode)
+ 97&nbsp;&nbsp;          jTree1.getLastSelectedPathComponent();
+ 98&nbsp;&nbsp;
+ 99&nbsp;&nbsp;        <span class = "keyword">if</span> (parent == <span class = "keyword">null</span>) {
+100&nbsp;&nbsp;          JOptionPane.showMessageDialog(<span class = "keyword">null</span>,
+101&nbsp;&nbsp;            <span class = "literal">"No node in the left tree is selected"</span>);
+102&nbsp;&nbsp;          <span class = "keyword">return</span>;
+103&nbsp;&nbsp;        }
+104&nbsp;&nbsp;
+105&nbsp;&nbsp;        <span class = "comment">// Enter a new node</span>
+106&nbsp;&nbsp;        String nodeName = JOptionPane.showInputDialog(
+107&nbsp;&nbsp;          <span class = "keyword">null</span>, <span class = "literal">"Enter a child node for "</span>+ parent, <span class = "literal">"Add a Child"</span>,
+108&nbsp;&nbsp;          JOptionPane.QUESTION_MESSAGE);
+109&nbsp;&nbsp;
+110&nbsp;&nbsp;        <span class = "comment">// Insert the new node as a child of treeNode</span>
+111&nbsp;&nbsp;        parent.add(<span class = "keyword">new</span> DefaultMutableTreeNode(nodeName));
+112&nbsp;&nbsp;
+113&nbsp;&nbsp;        <span class = "comment">// Reload the model since a new tree node is added</span>
+114&nbsp;&nbsp;        ((DefaultTreeModel)(jTree1.getModel())).reload();
+115&nbsp;&nbsp;        ((DefaultTreeModel)(jTree2.getModel())).reload();
+116&nbsp;&nbsp;      }
+117&nbsp;&nbsp;    });
+118&nbsp;&nbsp;
+119&nbsp;&nbsp;    jbtRemove.addActionListener(<span class = "keyword">new</span> ActionListener() {
+120&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+121&nbsp;&nbsp;        <span class = "comment">// Get all selected paths</span>
+122&nbsp;&nbsp;        TreePath[] paths = jTree1.getSelectionPaths();
+123&nbsp;&nbsp;
+124&nbsp;&nbsp;        <span class = "keyword">if</span> (paths == <span class = "keyword">null</span>) {
+125&nbsp;&nbsp;          JOptionPane.showMessageDialog(<span class = "keyword">null</span>,
+126&nbsp;&nbsp;            <span class = "literal">"No node in the left tree is selected"</span>);
+127&nbsp;&nbsp;          <span class = "keyword">return</span>;
+128&nbsp;&nbsp;        }
+129&nbsp;&nbsp;
+130&nbsp;&nbsp;        <span class = "comment">// Remove all selected nodes</span>
+131&nbsp;&nbsp;        <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; paths.length; i++) {
+132&nbsp;&nbsp;          DefaultMutableTreeNode node = (DefaultMutableTreeNode)
+133&nbsp;&nbsp;              (paths[i].getLastPathComponent());
+134&nbsp;&nbsp;
+135&nbsp;&nbsp;          <span class = "keyword">if</span> (node.isRoot()) {
+136&nbsp;&nbsp;            JOptionPane.showMessageDialog(<span class = "keyword">null</span>,
+137&nbsp;&nbsp;              <span class = "literal">"Cannot remove the root"</span>);
+138&nbsp;&nbsp;          }
+139&nbsp;&nbsp;          <span class = "keyword">else</span>
+140&nbsp;&nbsp;            node.removeFromParent();
+141&nbsp;&nbsp;        }
+142&nbsp;&nbsp;
+143&nbsp;&nbsp;        <span class = "comment">// Reload the model since a new tree node is added</span>
+144&nbsp;&nbsp;        ((DefaultTreeModel)(jTree1.getModel())).reload();
+145&nbsp;&nbsp;        ((DefaultTreeModel)(jTree2.getModel())).reload();
+146&nbsp;&nbsp;      }
+147&nbsp;&nbsp;    });
+148&nbsp;&nbsp;  }
+149&nbsp;&nbsp;
+150&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+151&nbsp;&nbsp;    ModifyTree applet = <span class = "keyword">new</span> ModifyTree();
+152&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+153&nbsp;&nbsp;    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+154&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+155&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"ModifyTree"</span>);
+156&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+157&nbsp;&nbsp;    applet.init();
+158&nbsp;&nbsp;    applet.start();
+159&nbsp;&nbsp;    frame.setSize(<span class = "literal">650</span>, <span class = "literal">320</span>);
+160&nbsp;&nbsp;    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+161&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+162&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+163&nbsp;&nbsp;  }
+164&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - Exercise36_4.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.border.*;
+<span class = "keyword">import</span> java.sql.*;
+<span class = "keyword">import</span> java.util.*;
+<span class = "keyword">import</span> javax.swing.table.DefaultTableModel;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> Exercise36_4 <span class = "keyword">extends</span> JApplet {
+    <span class = "comment">// Connection to the database</span>
+    <span class = "keyword">private</span> Connection connection;
+
+    <span class = "comment">// Statement to execute SQL commands</span>
+    <span class = "keyword">private</span> Statement statement;
+
+    <span class = "comment">// Text area to enter SQL commands</span>
+    <span class = "keyword">private</span> JTextArea jtasqlCommand = <span class = "keyword">new</span> JTextArea();
+
+    <span class = "comment">// Table to display results from SQL commands</span>
+    <span class = "keyword">private</span> DefaultTableModel model;
+    <span class = "keyword">private</span> JTable jtSQLResult = <span class = "keyword">new</span> JTable();
+
+    <span class = "keyword">private</span> JScrollPane jScrollPane2;
+
+    <span class = "comment">// JDBC info for a database connection</span>
+    JTextField jtfUsername = <span class = "keyword">new</span> JTextField();
+    JPasswordField jpfPassword = <span class = "keyword">new</span> JPasswordField();
+    JComboBox jcboURL = <span class = "keyword">new</span> JComboBox(<span class = "keyword">new</span> String[] {
+        <span class = "literal">"jdbc:mysql://tiger.armstrong.edu/javabook"</span>,
+        <span class = "literal">"jdbc:mysql://localhost/javabook"</span>,
+        <span class = "literal">"jdbc:odbc:exampleMDBDataSource"</span>,
+        <span class = "literal">"jdbc:oracle:thin:@tiger.armstrong.edu:1521:orcl"</span>});
+    JComboBox jcboDriver = <span class = "keyword">new</span> JComboBox(<span class = "keyword">new</span> String[] {
+        <span class = "literal">"com.mysql.jdbc.Driver"</span>, <span class = "literal">"sun.jdbc.odbc.JdbcOdbcDriver"</span>,
+        <span class = "literal">"oracle.jdbc.driver.OracleDriver"</span>});
+
+    JButton jbtExecuteSQL = <span class = "keyword">new</span> JButton(<span class = "literal">"Execute SQL Command"</span>);
+    JButton jbtClearSQLCommand = <span class = "keyword">new</span> JButton(<span class = "literal">"Clear"</span>);
+    JButton jbtConnectDB1 = <span class = "keyword">new</span> JButton(<span class = "literal">"Connect to Database"</span>);
+    JButton jbtClearSQLResult = <span class = "keyword">new</span> JButton(<span class = "literal">"Clear Result"</span>);
+
+    <span class = "comment">// Create titled borders</span>
+    Border titledBorder1 = <span class = "keyword">new</span> TitledBorder(<span class = "literal">"Enter a SQL Command"</span>);
+    Border titledBorder2 = <span class = "keyword">new</span> TitledBorder(<span class = "literal">"SQL Execution Result"</span>);
+    Border titledBorder3 = <span class = "keyword">new</span> TitledBorder(
+            <span class = "literal">"Enter Database Information"</span>);
+
+    JLabel jlblConnectionStatus = <span class = "keyword">new</span> JLabel(<span class = "literal">"No connection now"</span>);
+
+    <span class = "comment">/** Initialize the applet */</span>
+    <span class = "keyword">public</span> <span class = "keyword">void</span> init() {
+        JScrollPane jScrollPane1 = <span class = "keyword">new</span> JScrollPane(jtasqlCommand);
+        jScrollPane1.setBorder(titledBorder1);
+        jScrollPane2 = <span class = "keyword">new</span> JScrollPane(jtSQLResult);
+        jScrollPane2.setBorder(titledBorder2);
+
+        JPanel jPanel1 = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> FlowLayout(FlowLayout.RIGHT));
+        jPanel1.add(jbtClearSQLCommand);
+        jPanel1.add(jbtExecuteSQL);
+
+        JPanel jPanel2 = <span class = "keyword">new</span> JPanel();
+        jPanel2.setLayout(<span class = "keyword">new</span> BorderLayout());
+        jPanel2.add(jScrollPane1, BorderLayout.CENTER);
+        jPanel2.add(jPanel1, BorderLayout.SOUTH);
+        jPanel2.setPreferredSize(<span class = "keyword">new</span> Dimension(<span class = "literal">100</span>, <span class = "literal">100</span>));
+
+        JPanel jPanel3 = <span class = "keyword">new</span> JPanel();
+        jPanel3.setLayout(<span class = "keyword">new</span> BorderLayout());
+        jPanel3.add(jlblConnectionStatus, BorderLayout.CENTER);
+        jPanel3.add(jbtConnectDB1, BorderLayout.EAST);
+
+        JPanel jPanel4 = <span class = "keyword">new</span> JPanel();
+        jPanel4.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">4</span>, <span class = "literal">1</span>, <span class = "literal">10</span>, <span class = "literal">5</span>));
+        jPanel4.add(jcboDriver);
+        jPanel4.add(jcboURL);
+        jPanel4.add(jtfUsername);
+        jPanel4.add(jpfPassword);
+
+        JPanel jPanel5 = <span class = "keyword">new</span> JPanel();
+        jPanel5.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">4</span>, <span class = "literal">1</span>));
+        jPanel5.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"JDBC Driver"</span>));
+        jPanel5.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Database URL"</span>));
+        jPanel5.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Username"</span>));
+        jPanel5.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Password"</span>));
+
+        JPanel jPanel6 = <span class = "keyword">new</span> JPanel();
+        jPanel6.setLayout(<span class = "keyword">new</span> BorderLayout());
+        jPanel6.setBorder(titledBorder3);
+        jPanel6.add(jPanel4, BorderLayout.CENTER);
+        jPanel6.add(jPanel5, BorderLayout.WEST);
+
+        JPanel jPanel7 = <span class = "keyword">new</span> JPanel();
+        jPanel7.setLayout(<span class = "keyword">new</span> BorderLayout());
+        jPanel7.add(jPanel3, BorderLayout.SOUTH);
+        jPanel7.add(jPanel6, BorderLayout.CENTER);
+
+        JPanel jPanel8 = <span class = "keyword">new</span> JPanel();
+        jPanel8.setLayout(<span class = "keyword">new</span> BorderLayout());
+        jPanel8.add(jPanel2, BorderLayout.CENTER);
+        jPanel8.add(jPanel7, BorderLayout.WEST);
+
+        JPanel jPanel9 = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> FlowLayout(FlowLayout.LEFT));
+        jPanel9.add(jbtClearSQLResult);
+
+        jcboURL.setEditable(<span class = "keyword">true</span>);
+        jcboDriver.setEditable(<span class = "keyword">true</span>);
+
+        <span class = "keyword">this</span>.add(jPanel8, BorderLayout.NORTH);
+        <span class = "keyword">this</span>.add(jScrollPane2, BorderLayout.CENTER);
+        <span class = "keyword">this</span>.add(jPanel9, BorderLayout.SOUTH);
+
+        jbtExecuteSQL.addActionListener(<span class = "keyword">new</span> ActionListener() {
+            <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+                executeSQL();
+            }
+        });
+        jbtConnectDB1.addActionListener(<span class = "keyword">new</span> ActionListener() {
+            <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+                connectToDB();
+            }
+        });
+        jbtClearSQLCommand.addActionListener(<span class = "keyword">new</span> ActionListener() {
+            <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+                jtasqlCommand.setText(<span class = "keyword">null</span>);
+            }
+        });
+        jbtClearSQLResult.addActionListener(<span class = "keyword">new</span> ActionListener() {
+            <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+                model = <span class = "keyword">new</span> DefaultTableModel();
+                jtSQLResult.setModel(model);
+            }
+        });
+    }
+
+    <span class = "comment">/** Connect to DB */</span>
+    <span class = "keyword">private</span> <span class = "keyword">void</span> connectToDB() {
+        <span class = "comment">// Get database information from the user input</span>
+        String driver = (String)jcboDriver.getSelectedItem();
+        String url = (String)jcboURL.getSelectedItem();
+        String username = jtfUsername.getText().trim();
+        String password = <span class = "keyword">new</span> String(jpfPassword.getPassword());
+
+        <span class = "comment">// Connection to the database</span>
+        <span class = "keyword">try</span> {
+            Class.forName(driver);
+            connection = DriverManager.getConnection(
+                    url, username, password);
+            jlblConnectionStatus.setText(<span class = "literal">"Connected to "</span> + url);
+        } <span class = "keyword">catch</span> (java.lang.Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    <span class = "comment">/** Execute SQL commands */</span>
+    <span class = "keyword">private</span> <span class = "keyword">void</span> executeSQL() {
+        <span class = "keyword">if</span> (connection == <span class = "keyword">null</span>) {
+            JOptionPane.showMessageDialog(<span class = "keyword">this</span>, <span class = "literal">"Please connect to a database first"</span>,
+                    <span class = "literal">"Connection Required"</span>, JOptionPane.ERROR_MESSAGE);
+            <span class = "keyword">return</span>;
+        } <span class = "keyword">else</span> {
+            String sqlCommands = jtasqlCommand.getText().trim();
+            String[] commands = sqlCommands.replace(<span class = "literal">'\n'</span>, ' ').split(<span class = "literal">";"</span>);
+
+            <span class = "keyword">for</span> (String aCommand: commands) {
+                <span class = "keyword">if</span> (aCommand.trim().toUpperCase().startsWith(<span class = "literal">"SELECT"</span>)) {
+                    processSQLSelect(aCommand);
+                } <span class = "keyword">else</span> {
+                    processSQLNonSelect(aCommand);
+                }
+            }
+        }
+    }
+
+    <span class = "comment">/** Execute SQL SELECT commands */</span>
+    <span class = "keyword">private</span> <span class = "keyword">void</span> processSQLSelect(String sqlCommand) {
+        <span class = "keyword">try</span> {
+            model = <span class = "keyword">new</span> DefaultTableModel();
+            jtSQLResult.setModel(model);
+
+            <span class = "comment">// Get a new statement for the current connection</span>
+            statement = connection.createStatement();
+
+            <span class = "comment">// Execute a SELECT SQL command</span>
+            ResultSet resultSet = statement.executeQuery(sqlCommand);
+
+            <span class = "comment">// Find the number of columns in the result set</span>
+            <span class = "keyword">int</span> columnCount = resultSet.getMetaData().getColumnCount();
+
+            <span class = "comment">// Display column names</span>
+            <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">1</span>; i &lt;= columnCount; i++) {
+                model.addColumn(resultSet.getMetaData().getColumnName(i));
+            }
+
+            <span class = "keyword">while</span> (resultSet.next()) {
+
+                Vector rowData = <span class = "keyword">new</span> Vector();
+
+                <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">1</span>; i &lt;= columnCount; i++) {
+                    rowData.add(resultSet.getString(i));
+                }
+
+                model.addRow(rowData);
+            }
+
+        } <span class = "keyword">catch</span> (SQLException ex) {
+            JOptionPane.showMessageDialog(<span class = "keyword">this</span>, ex.toString(),
+                    <span class = "literal">"SQLExcpetion"</span>, JOptionPane.ERROR_MESSAGE);
+
+        }
+    }
+
+    <span class = "comment">/** Execute SQL DDL, and modification commands */</span>
+    <span class = "keyword">private</span> <span class = "keyword">void</span> processSQLNonSelect(String sqlCommand) {
+        <span class = "keyword">try</span> {
+            <span class = "comment">// Get a new statement for the current connection</span>
+            statement = connection.createStatement();
+
+            <span class = "comment">// Execute a non-SELECT SQL command</span>
+            statement.executeUpdate(sqlCommand);
+
+            JOptionPane.showMessageDialog(<span class = "keyword">this</span>, <span class = "literal">"SQL command executed"</span>,
+                    <span class = "literal">"Command Executed"</span>, JOptionPane.INFORMATION_MESSAGE);
+
+        } <span class = "keyword">catch</span> (SQLException ex) {
+            JOptionPane.showMessageDialog(<span class = "keyword">this</span>, ex.toString(),
+                    <span class = "literal">"SQLExcpetion"</span>, JOptionPane.ERROR_MESSAGE);
+
+        }
+    }
+
+    <span class = "comment">/** Main method */</span>
+    <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+        Exercise36_4 applet = <span class = "keyword">new</span> Exercise36_4();
+        JFrame frame = <span class = "keyword">new</span> JFrame();
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setTitle(<span class = "literal">"Interactive SQL Client"</span>);
+        frame.getContentPane().add(applet, BorderLayout.CENTER);
+        applet.init();
+        applet.start();
+        frame.setSize(<span class = "literal">700</span>, <span class = "literal">320</span>);
+        Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+        frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+                (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+        frame.setVisible(<span class = "keyword">true</span>);
+    }
+}
+</pre>
+</body>
+</html>

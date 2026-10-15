@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - UnweightedGraph.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "UnweightedGraph.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> UnweightedGraph&lt;V&gt; <span class = "keyword">extends</span> AbstractGraph&lt;V&gt; {
+  4&nbsp;&nbsp;  <span class = "comment">/** Construct an empty graph */</span>
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> UnweightedGraph() {
+  6&nbsp;&nbsp;  }
+  7&nbsp;&nbsp;    
+  8&nbsp;&nbsp;  <span class = "comment">/** Construct a graph from vertices and edges stored in arrays */</span>
+  9&nbsp;&nbsp;  <span class = "keyword">public</span> UnweightedGraph(V[] vertices, <span class = "keyword">int</span>[][] edges) {
+ 10&nbsp;&nbsp;    <span class = "keyword">super</span>(vertices, edges);
+ 11&nbsp;&nbsp;  }
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;  <span class = "comment">/** Construct a graph from vertices and edges stored in List */</span>
+ 14&nbsp;&nbsp;  <span class = "keyword">public</span> UnweightedGraph(List&lt;V&gt; vertices, List&lt;Edge&gt; edges) {
+ 15&nbsp;&nbsp;    <span class = "keyword">super</span>(vertices, edges);
+ 16&nbsp;&nbsp;  }
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;  <span class = "comment">/** Construct a graph for integer vertices 0, 1, 2 and edge list */</span>
+ 19&nbsp;&nbsp;  <span class = "keyword">public</span> UnweightedGraph(List&lt;Edge&gt; edges, <span class = "keyword">int</span> numberOfVertices) {
+ 20&nbsp;&nbsp;    <span class = "keyword">super</span>(edges, numberOfVertices);
+ 21&nbsp;&nbsp;  }
+ 22&nbsp;&nbsp;  
+ 23&nbsp;&nbsp;  <span class = "comment">/** Construct a graph from integer vertices 0, 1, and edge array */</span>
+ 24&nbsp;&nbsp;  <span class = "keyword">public</span> UnweightedGraph(<span class = "keyword">int</span>[][] edges, <span class = "keyword">int</span> numberOfVertices) {
+ 25&nbsp;&nbsp;    <span class = "keyword">super</span>(edges, numberOfVertices);
+ 26&nbsp;&nbsp;  }
+ 27&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "UnweightedGraph" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

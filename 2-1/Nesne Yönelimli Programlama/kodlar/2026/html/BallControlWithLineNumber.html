@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - BallControl.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "BallControl.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> BallControl <span class = "keyword">extends</span> JPanel {
+  6&nbsp;&nbsp;  <span class = "keyword">private</span> Ball ball = <span class = "keyword">new</span> Ball();
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtSuspend = <span class = "keyword">new</span> JButton(<span class = "literal">"Suspend"</span>);
+  8&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtResume = <span class = "keyword">new</span> JButton(<span class = "literal">"Resume"</span>);
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> JScrollBar jsbDelay = <span class = "keyword">new</span> JScrollBar();
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;  <span class = "keyword">public</span> BallControl() {
+ 12&nbsp;&nbsp;    <span class = "comment">// Group buttons in a panel</span>
+ 13&nbsp;&nbsp;    JPanel panel = <span class = "keyword">new</span> JPanel();
+ 14&nbsp;&nbsp;    panel.add(jbtSuspend);
+ 15&nbsp;&nbsp;    panel.add(jbtResume);
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    <span class = "comment">// Add ball and buttons to the panel</span>
+ 18&nbsp;&nbsp;    ball.setBorder(<span class = "keyword">new</span> javax.swing.border.LineBorder(Color.red));
+ 19&nbsp;&nbsp;    jsbDelay.setOrientation(JScrollBar.HORIZONTAL);
+ 20&nbsp;&nbsp;    ball.setDelay(jsbDelay.getMaximum());
+ 21&nbsp;&nbsp;    setLayout(<span class = "keyword">new</span> BorderLayout());
+ 22&nbsp;&nbsp;    add(jsbDelay, BorderLayout.NORTH);
+ 23&nbsp;&nbsp;    add(ball, BorderLayout.CENTER);
+ 24&nbsp;&nbsp;    add(panel, BorderLayout.SOUTH);
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;    <span class = "comment">// Register listeners</span>
+ 27&nbsp;&nbsp;    jbtSuspend.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 28&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 29&nbsp;&nbsp;        ball.suspend();
+ 30&nbsp;&nbsp;      }
+ 31&nbsp;&nbsp;    });
+ 32&nbsp;&nbsp;    jbtResume.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 33&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 34&nbsp;&nbsp;        ball.resume();
+ 35&nbsp;&nbsp;      }
+ 36&nbsp;&nbsp;    });
+ 37&nbsp;&nbsp;    jsbDelay.addAdjustmentListener(<span class = "keyword">new</span> AdjustmentListener() {
+ 38&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> adjustmentValueChanged(AdjustmentEvent e) {
+ 39&nbsp;&nbsp;        ball.setDelay(jsbDelay.getMaximum() - e.getValue());
+ 40&nbsp;&nbsp;      }
+ 41&nbsp;&nbsp;    });
+ 42&nbsp;&nbsp;  }
+ 43&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

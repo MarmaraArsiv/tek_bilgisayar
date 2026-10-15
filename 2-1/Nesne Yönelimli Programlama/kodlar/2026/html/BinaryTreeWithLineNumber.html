@@ -1,0 +1,289 @@
+<html>
+<head>
+<title>Intro to Java Programming, 9E - BinaryTree.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "BinaryTree.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> BinaryTree&lt;E <span class = "keyword">extends</span> Comparable&lt;E&gt;&gt;
+  2&nbsp;&nbsp;    <span class = "keyword">extends</span> AbstractTree&lt;E&gt; {
+  3&nbsp;&nbsp;  <span class = "keyword">protected</span> TreeNode&lt;E&gt; root;
+  4&nbsp;&nbsp;  <span class = "keyword">protected</span> <span class = "keyword">int</span> size = <span class = "literal">0</span>;
+  5&nbsp;&nbsp;
+  6&nbsp;&nbsp;  <span class = "comment">/** Create a default binary tree */</span>
+  7&nbsp;&nbsp;  <span class = "keyword">public</span> BinaryTree() {
+  8&nbsp;&nbsp;  }
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;  <span class = "comment">/** Create a binary tree from an array of objects */</span>
+ 11&nbsp;&nbsp;  <span class = "keyword">public</span> BinaryTree(E[] objects) {
+ 12&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; objects.length; i++)
+ 13&nbsp;&nbsp;      insert(objects[i]);
+ 14&nbsp;&nbsp;  }
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;  @Override <span class = "comment">/** Returns true if the element is in the tree */</span>
+ 17&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> search(E e) {
+ 18&nbsp;&nbsp;    TreeNode&lt;E&gt; current = root; <span class = "comment">// Start from the root</span>
+ 19&nbsp;&nbsp;
+ 20&nbsp;&nbsp;    <span class = "keyword">while</span> (current != <span class = "keyword">null</span>) {
+ 21&nbsp;&nbsp;      <span class = "keyword">if</span> (e.compareTo(current.element) &lt; <span class = "literal">0</span>) {
+ 22&nbsp;&nbsp;        current = current.left;
+ 23&nbsp;&nbsp;      }
+ 24&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (e.compareTo(current.element) &gt; <span class = "literal">0</span>) {
+ 25&nbsp;&nbsp;        current = current.right;
+ 26&nbsp;&nbsp;      }
+ 27&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "comment">// element matches current.element</span>
+ 28&nbsp;&nbsp;        <span class = "keyword">return</span> <span class = "keyword">true</span>; <span class = "comment">// Element is found</span>
+ 29&nbsp;&nbsp;    }
+ 30&nbsp;&nbsp;
+ 31&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "keyword">false</span>;
+ 32&nbsp;&nbsp;  }
+ 33&nbsp;&nbsp;
+ 34&nbsp;&nbsp;  @Override <span class = "comment">/** Insert element o into the binary tree
+ 35&nbsp;&nbsp;   * Return true if the element is inserted successfully */</span>
+ 36&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> insert(E e) {
+ 37&nbsp;&nbsp;    <span class = "keyword">if</span> (root == <span class = "keyword">null</span>)
+ 38&nbsp;&nbsp;      root = createNewNode(e); <span class = "comment">// Create a new root</span>
+ 39&nbsp;&nbsp;    <span class = "keyword">else</span> {
+ 40&nbsp;&nbsp;      <span class = "comment">// Locate the parent node</span>
+ 41&nbsp;&nbsp;      TreeNode&lt;E&gt; parent = <span class = "keyword">null</span>;
+ 42&nbsp;&nbsp;      TreeNode&lt;E&gt; current = root;
+ 43&nbsp;&nbsp;      <span class = "keyword">while</span> (current != <span class = "keyword">null</span>)
+ 44&nbsp;&nbsp;        <span class = "keyword">if</span> (e.compareTo(current.element) &lt; <span class = "literal">0</span>) {
+ 45&nbsp;&nbsp;          parent = current;
+ 46&nbsp;&nbsp;          current = current.left;
+ 47&nbsp;&nbsp;        }
+ 48&nbsp;&nbsp;        <span class = "keyword">else</span> <span class = "keyword">if</span> (e.compareTo(current.element) &gt; <span class = "literal">0</span>) {
+ 49&nbsp;&nbsp;          parent = current;
+ 50&nbsp;&nbsp;          current = current.right;
+ 51&nbsp;&nbsp;        }
+ 52&nbsp;&nbsp;        <span class = "keyword">else</span>
+ 53&nbsp;&nbsp;          <span class = "keyword">return</span> <span class = "keyword">false</span>; <span class = "comment">// Duplicate node not inserted</span>
+ 54&nbsp;&nbsp;
+ 55&nbsp;&nbsp;      <span class = "comment">// Create the new node and attach it to the parent node</span>
+ 56&nbsp;&nbsp;      <span class = "keyword">if</span> (e.compareTo(parent.element) &lt; <span class = "literal">0</span>)
+ 57&nbsp;&nbsp;        parent.left = createNewNode(e);
+ 58&nbsp;&nbsp;      <span class = "keyword">else</span>
+ 59&nbsp;&nbsp;        parent.right = createNewNode(e);
+ 60&nbsp;&nbsp;    }
+ 61&nbsp;&nbsp;
+ 62&nbsp;&nbsp;    size++;
+ 63&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "keyword">true</span>; <span class = "comment">// Element inserted</span>
+ 64&nbsp;&nbsp;  }
+ 65&nbsp;&nbsp;
+ 66&nbsp;&nbsp;  <span class = "keyword">protected</span> TreeNode&lt;E&gt; createNewNode(E e) {
+ 67&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "keyword">new</span> TreeNode&lt;E&gt;(e);
+ 68&nbsp;&nbsp;  }
+ 69&nbsp;&nbsp;
+ 70&nbsp;&nbsp;  @Override <span class = "comment">/** Inorder traversal from the root*/</span>
+ 71&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> inorder() {
+ 72&nbsp;&nbsp;    inorder(root);
+ 73&nbsp;&nbsp;  }
+ 74&nbsp;&nbsp;
+ 75&nbsp;&nbsp;  <span class = "comment">/** Inorder traversal from a subtree */</span>
+ 76&nbsp;&nbsp;  <span class = "keyword">protected</span> <span class = "keyword">void</span> inorder(TreeNode&lt;E&gt; root) {
+ 77&nbsp;&nbsp;    <span class = "keyword">if</span> (root == <span class = "keyword">null</span>) <span class = "keyword">return</span>;
+ 78&nbsp;&nbsp;    inorder(root.left);
+ 79&nbsp;&nbsp;    System.out.print(root.element + <span class = "literal">" "</span>);
+ 80&nbsp;&nbsp;    inorder(root.right);
+ 81&nbsp;&nbsp;  }
+ 82&nbsp;&nbsp;
+ 83&nbsp;&nbsp;  @Override <span class = "comment">/** Postorder traversal from the root */</span>
+ 84&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> postorder() {
+ 85&nbsp;&nbsp;    postorder(root);
+ 86&nbsp;&nbsp;  }
+ 87&nbsp;&nbsp;
+ 88&nbsp;&nbsp;  <span class = "comment">/** Postorder traversal from a subtree */</span>
+ 89&nbsp;&nbsp;  <span class = "keyword">protected</span> <span class = "keyword">void</span> postorder(TreeNode&lt;E&gt; root) {
+ 90&nbsp;&nbsp;    <span class = "keyword">if</span> (root == <span class = "keyword">null</span>) <span class = "keyword">return</span>;
+ 91&nbsp;&nbsp;    postorder(root.left);
+ 92&nbsp;&nbsp;    postorder(root.right);
+ 93&nbsp;&nbsp;    System.out.print(root.element + <span class = "literal">" "</span>);
+ 94&nbsp;&nbsp;  }
+ 95&nbsp;&nbsp;
+ 96&nbsp;&nbsp;  @Override <span class = "comment">/** Preorder traversal from the root */</span>
+ 97&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> preorder() {
+ 98&nbsp;&nbsp;    preorder(root);
+ 99&nbsp;&nbsp;  }
+100&nbsp;&nbsp;
+101&nbsp;&nbsp;  <span class = "comment">/** Preorder traversal from a subtree */</span>
+102&nbsp;&nbsp;  <span class = "keyword">protected</span> <span class = "keyword">void</span> preorder(TreeNode&lt;E&gt; root) {
+103&nbsp;&nbsp;    <span class = "keyword">if</span> (root == <span class = "keyword">null</span>) <span class = "keyword">return</span>;
+104&nbsp;&nbsp;    System.out.print(root.element + <span class = "literal">" "</span>);
+105&nbsp;&nbsp;    preorder(root.left);
+106&nbsp;&nbsp;    preorder(root.right);
+107&nbsp;&nbsp;  }
+108&nbsp;&nbsp;
+109&nbsp;&nbsp;  <span class = "comment">/** This inner class is static, because it does not access 
+110&nbsp;&nbsp;      any instance members defined in its outer class */</span>
+111&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">class</span> TreeNode&lt;E <span class = "keyword">extends</span> Comparable&lt;E&gt;&gt; {
+112&nbsp;&nbsp;    E element;
+113&nbsp;&nbsp;    TreeNode&lt;E&gt; left;
+114&nbsp;&nbsp;    TreeNode&lt;E&gt; right;
+115&nbsp;&nbsp;
+116&nbsp;&nbsp;    <span class = "keyword">public</span> TreeNode(E e) {
+117&nbsp;&nbsp;      element = e;
+118&nbsp;&nbsp;    }
+119&nbsp;&nbsp;  }
+120&nbsp;&nbsp;
+121&nbsp;&nbsp;  @Override <span class = "comment">/** Get the number of nodes in the tree */</span>
+122&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> getSize() {
+123&nbsp;&nbsp;    <span class = "keyword">return</span> size;
+124&nbsp;&nbsp;  }
+125&nbsp;&nbsp;
+126&nbsp;&nbsp;  <span class = "comment">/** Returns the root of the tree */</span>
+127&nbsp;&nbsp;  <span class = "keyword">public</span> TreeNode&lt;E&gt; getRoot() {
+128&nbsp;&nbsp;    <span class = "keyword">return</span> root;
+129&nbsp;&nbsp;  }
+130&nbsp;&nbsp;
+131&nbsp;&nbsp;  <span class = "comment">/** Returns a path from the root leading to the specified element */</span>
+132&nbsp;&nbsp;  <span class = "keyword">public</span> java.util.ArrayList&lt;TreeNode&lt;E&gt;&gt; path(E e) {
+133&nbsp;&nbsp;    java.util.ArrayList&lt;TreeNode&lt;E&gt;&gt; list =
+134&nbsp;&nbsp;      <span class = "keyword">new</span> java.util.ArrayList&lt;TreeNode&lt;E&gt;&gt;();
+135&nbsp;&nbsp;    TreeNode&lt;E&gt; current = root; <span class = "comment">// Start from the root</span>
+136&nbsp;&nbsp;
+137&nbsp;&nbsp;    <span class = "keyword">while</span> (current != <span class = "keyword">null</span>) {
+138&nbsp;&nbsp;      list.add(current); <span class = "comment">// Add the node to the list</span>
+139&nbsp;&nbsp;      <span class = "keyword">if</span> (e.compareTo(current.element) &lt; <span class = "literal">0</span>) {
+140&nbsp;&nbsp;        current = current.left;
+141&nbsp;&nbsp;      }
+142&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (e.compareTo(current.element) &gt; <span class = "literal">0</span>) {
+143&nbsp;&nbsp;        current = current.right;
+144&nbsp;&nbsp;      }
+145&nbsp;&nbsp;      <span class = "keyword">else</span>
+146&nbsp;&nbsp;        <span class = "keyword">break</span>;
+147&nbsp;&nbsp;    }
+148&nbsp;&nbsp;
+149&nbsp;&nbsp;    <span class = "keyword">return</span> list; <span class = "comment">// Return an array of nodes</span>
+150&nbsp;&nbsp;  }
+151&nbsp;&nbsp;
+152&nbsp;&nbsp;  @Override <span class = "comment">/** Delete an element from the binary tree.
+153&nbsp;&nbsp;   * Return true if the element is deleted successfully
+154&nbsp;&nbsp;   * Return false if the element is not in the tree */</span>
+155&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> delete(E e) {
+156&nbsp;&nbsp;    <span class = "comment">// Locate the node to be deleted and also locate its parent node</span>
+157&nbsp;&nbsp;    TreeNode&lt;E&gt; parent = <span class = "keyword">null</span>;
+158&nbsp;&nbsp;    TreeNode&lt;E&gt; current = root;
+159&nbsp;&nbsp;    <span class = "keyword">while</span> (current != <span class = "keyword">null</span>) {
+160&nbsp;&nbsp;      <span class = "keyword">if</span> (e.compareTo(current.element) &lt; <span class = "literal">0</span>) {
+161&nbsp;&nbsp;        parent = current;
+162&nbsp;&nbsp;        current = current.left;
+163&nbsp;&nbsp;      }
+164&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (e.compareTo(current.element) &gt; <span class = "literal">0</span>) {
+165&nbsp;&nbsp;        parent = current;
+166&nbsp;&nbsp;        current = current.right;
+167&nbsp;&nbsp;      }
+168&nbsp;&nbsp;      <span class = "keyword">else</span>
+169&nbsp;&nbsp;        <span class = "keyword">break</span>; <span class = "comment">// Element is in the tree pointed at by current</span>
+170&nbsp;&nbsp;    }
+171&nbsp;&nbsp;
+172&nbsp;&nbsp;    <span class = "keyword">if</span> (current == <span class = "keyword">null</span>)
+173&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "keyword">false</span>; <span class = "comment">// Element is not in the tree</span>
+174&nbsp;&nbsp;
+175&nbsp;&nbsp;    <span class = "comment">// Case 1: current has no left children</span>
+176&nbsp;&nbsp;    <span class = "keyword">if</span> (current.left == <span class = "keyword">null</span>) {
+177&nbsp;&nbsp;      <span class = "comment">// Connect the parent with the right child of the current node</span>
+178&nbsp;&nbsp;      <span class = "keyword">if</span> (parent == <span class = "keyword">null</span>) {
+179&nbsp;&nbsp;        root = current.right;
+180&nbsp;&nbsp;      }
+181&nbsp;&nbsp;      <span class = "keyword">else</span> {
+182&nbsp;&nbsp;        <span class = "keyword">if</span> (e.compareTo(parent.element) &lt; <span class = "literal">0</span>)
+183&nbsp;&nbsp;          parent.left = current.right;
+184&nbsp;&nbsp;        <span class = "keyword">else</span>
+185&nbsp;&nbsp;          parent.right = current.right;
+186&nbsp;&nbsp;      }
+187&nbsp;&nbsp;    }
+188&nbsp;&nbsp;    <span class = "keyword">else</span> {
+189&nbsp;&nbsp;      <span class = "comment">// Case 2: The current node has a left child</span>
+190&nbsp;&nbsp;      <span class = "comment">// Locate the rightmost node in the left subtree of</span>
+191&nbsp;&nbsp;      <span class = "comment">// the current node and also its parent</span>
+192&nbsp;&nbsp;      TreeNode&lt;E&gt; parentOfRightMost = current;
+193&nbsp;&nbsp;      TreeNode&lt;E&gt; rightMost = current.left;
+194&nbsp;&nbsp;
+195&nbsp;&nbsp;      <span class = "keyword">while</span> (rightMost.right != <span class = "keyword">null</span>) {
+196&nbsp;&nbsp;        parentOfRightMost = rightMost;
+197&nbsp;&nbsp;        rightMost = rightMost.right; <span class = "comment">// Keep going to the right</span>
+198&nbsp;&nbsp;      }
+199&nbsp;&nbsp;
+200&nbsp;&nbsp;      <span class = "comment">// Replace the element in current by the element in rightMost</span>
+201&nbsp;&nbsp;      current.element = rightMost.element;
+202&nbsp;&nbsp;
+203&nbsp;&nbsp;      <span class = "comment">// Eliminate rightmost node</span>
+204&nbsp;&nbsp;      <span class = "keyword">if</span> (parentOfRightMost.right == rightMost)
+205&nbsp;&nbsp;        parentOfRightMost.right = rightMost.left;
+206&nbsp;&nbsp;      <span class = "keyword">else</span>
+207&nbsp;&nbsp;        <span class = "comment">// Special case: parentOfRightMost == current</span>
+208&nbsp;&nbsp;        parentOfRightMost.left = rightMost.left;     
+209&nbsp;&nbsp;    }
+210&nbsp;&nbsp;
+211&nbsp;&nbsp;    size--;
+212&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "keyword">true</span>; <span class = "comment">// Element inserted</span>
+213&nbsp;&nbsp;  }
+214&nbsp;&nbsp;
+215&nbsp;&nbsp;  @Override <span class = "comment">/** Obtain an iterator. Use inorder. */</span>
+216&nbsp;&nbsp;  <span class = "keyword">public</span> java.util.Iterator&lt;E&gt; iterator() {
+217&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "keyword">new</span> InorderIterator();
+218&nbsp;&nbsp;  }
+219&nbsp;&nbsp;
+220&nbsp;&nbsp;  <span class = "comment">// Inner class InorderIterator</span>
+221&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">class</span> InorderIterator <span class = "keyword">implements</span> java.util.Iterator&lt;E&gt; {
+222&nbsp;&nbsp;    <span class = "comment">// Store the elements in a list</span>
+223&nbsp;&nbsp;    <span class = "keyword">private</span> java.util.ArrayList&lt;E&gt; list =
+224&nbsp;&nbsp;      <span class = "keyword">new</span> java.util.ArrayList&lt;E&gt;();
+225&nbsp;&nbsp;    <span class = "keyword">private</span> <span class = "keyword">int</span> current = <span class = "literal">0</span>; <span class = "comment">// Point to the current element in list</span>
+226&nbsp;&nbsp;
+227&nbsp;&nbsp;    <span class = "keyword">public</span> InorderIterator() {
+228&nbsp;&nbsp;      inorder(); <span class = "comment">// Traverse binary tree and store elements in list</span>
+229&nbsp;&nbsp;    }
+230&nbsp;&nbsp;
+231&nbsp;&nbsp;    <span class = "comment">/** Inorder traversal from the root*/</span>
+232&nbsp;&nbsp;    <span class = "keyword">private</span> <span class = "keyword">void</span> inorder() {
+233&nbsp;&nbsp;      inorder(root);
+234&nbsp;&nbsp;    }
+235&nbsp;&nbsp;
+236&nbsp;&nbsp;    <span class = "comment">/** Inorder traversal from a subtree */</span>
+237&nbsp;&nbsp;    <span class = "keyword">private</span> <span class = "keyword">void</span> inorder(TreeNode&lt;E&gt; root) {
+238&nbsp;&nbsp;      <span class = "keyword">if</span> (root == <span class = "keyword">null</span>)<span class = "keyword">return</span>;
+239&nbsp;&nbsp;      inorder(root.left);
+240&nbsp;&nbsp;      list.add(root.element);
+241&nbsp;&nbsp;      inorder(root.right);
+242&nbsp;&nbsp;    }
+243&nbsp;&nbsp;
+244&nbsp;&nbsp;    @Override <span class = "comment">/** More elements for traversing? */</span>
+245&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">boolean</span> hasNext() {
+246&nbsp;&nbsp;      <span class = "keyword">if</span> (current &lt; list.size())
+247&nbsp;&nbsp;        <span class = "keyword">return</span> <span class = "keyword">true</span>;
+248&nbsp;&nbsp;
+249&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "keyword">false</span>;
+250&nbsp;&nbsp;    }
+251&nbsp;&nbsp;
+252&nbsp;&nbsp;    @Override <span class = "comment">/** Get the current element and move to the next */</span>
+253&nbsp;&nbsp;    <span class = "keyword">public</span> E next() {
+254&nbsp;&nbsp;      <span class = "keyword">return</span> list.get(current++);
+255&nbsp;&nbsp;    }
+256&nbsp;&nbsp;
+257&nbsp;&nbsp;    @Override <span class = "comment">/** Remove the current element */</span>
+258&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> remove() {
+259&nbsp;&nbsp;      delete(list.get(current)); <span class = "comment">// Delete the current element</span>
+260&nbsp;&nbsp;      list.clear(); <span class = "comment">// Clear the list</span>
+261&nbsp;&nbsp;      inorder(); <span class = "comment">// Rebuild the list</span>
+262&nbsp;&nbsp;    }
+263&nbsp;&nbsp;  }
+264&nbsp;&nbsp;
+265&nbsp;&nbsp;  <span class = "comment">/** Remove all elements from the tree */</span>
+266&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> clear() {
+267&nbsp;&nbsp;    root = <span class = "keyword">null</span>;
+268&nbsp;&nbsp;    size = <span class = "literal">0</span>;
+269&nbsp;&nbsp;  }
+270&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

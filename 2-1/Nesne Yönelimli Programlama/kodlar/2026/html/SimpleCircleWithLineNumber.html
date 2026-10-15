@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SimpleCircle.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "SimpleCircle.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> SimpleCircle {
+  2&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+  3&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  4&nbsp;&nbsp;    <span class = "comment">// Create a circle with radius 1</span>
+  5&nbsp;&nbsp;    SimpleCircle circle1 = <span class = "keyword">new</span> SimpleCircle();
+  6&nbsp;&nbsp;    System.out.println(<span class = "literal">"The area of the circle of radius "</span>
+  7&nbsp;&nbsp;      + circle1.radius + <span class = "literal">" is "</span> + circle1.getArea());
+  8&nbsp;&nbsp;  
+  9&nbsp;&nbsp;    <span class = "comment">// Create a circle with radius 25</span>
+ 10&nbsp;&nbsp;    SimpleCircle circle2 = <span class = "keyword">new</span> SimpleCircle(<span class = "literal">25</span>);
+ 11&nbsp;&nbsp;    System.out.println(<span class = "literal">"The area of the circle of radius "</span>
+ 12&nbsp;&nbsp;      + circle2.radius + <span class = "literal">" is "</span> + circle2.getArea());
+ 13&nbsp;&nbsp;  
+ 14&nbsp;&nbsp;    <span class = "comment">// Create a circle with radius 125</span>
+ 15&nbsp;&nbsp;    SimpleCircle circle3 = <span class = "keyword">new</span> SimpleCircle(<span class = "literal">125</span>);
+ 16&nbsp;&nbsp;    System.out.println(<span class = "literal">"The area of the circle of radius "</span>
+ 17&nbsp;&nbsp;      + circle3.radius + <span class = "literal">" is "</span> + circle3.getArea());
+ 18&nbsp;&nbsp;  
+ 19&nbsp;&nbsp;    <span class = "comment">// Modify circle radius</span>
+ 20&nbsp;&nbsp;    circle2.radius = <span class = "literal">100</span>;
+ 21&nbsp;&nbsp;    System.out.println(<span class = "literal">"The area of the circle of radius "</span>
+ 22&nbsp;&nbsp;      + circle2.radius + <span class = "literal">" is "</span> + circle2.getArea());
+ 23&nbsp;&nbsp;  }
+ 24&nbsp;&nbsp;  
+ 25&nbsp;&nbsp;  <span class = "keyword">double</span> radius; 
+ 26&nbsp;&nbsp; 
+ 27&nbsp;&nbsp;  <span class = "comment">/** Construct a circle with radius 1 */</span>
+ 28&nbsp;&nbsp;  SimpleCircle() {
+ 29&nbsp;&nbsp;    radius = <span class = "literal">1</span>;
+ 30&nbsp;&nbsp;  }
+ 31&nbsp;&nbsp;  
+ 32&nbsp;&nbsp;  <span class = "comment">/** Construct a circle with a specified radius */</span>
+ 33&nbsp;&nbsp;  SimpleCircle(<span class = "keyword">double</span> newRadius) {
+ 34&nbsp;&nbsp;    radius = newRadius;
+ 35&nbsp;&nbsp;  }
+ 36&nbsp;&nbsp;  
+ 37&nbsp;&nbsp;  <span class = "comment">/** Return the area of this circle */</span>
+ 38&nbsp;&nbsp;  <span class = "keyword">double</span> getArea() {
+ 39&nbsp;&nbsp;    <span class = "keyword">return</span> radius * radius * Math.PI;
+ 40&nbsp;&nbsp;  }
+ 41&nbsp;&nbsp;  
+ 42&nbsp;&nbsp;  <span class = "comment">/** Return the perimeter of this circle */</span>
+ 43&nbsp;&nbsp;  <span class = "keyword">double</span> getPerimeter() {
+ 44&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">2</span> * radius * Math.PI;
+ 45&nbsp;&nbsp;  }
+ 46&nbsp;&nbsp;  
+ 47&nbsp;&nbsp;  <span class = "comment">/** Set a new radius for this circle */</span>
+ 48&nbsp;&nbsp;  <span class = "keyword">void</span> setRadius(<span class = "keyword">double</span> newRadius) {
+ 49&nbsp;&nbsp;    radius = newRadius;
+ 50&nbsp;&nbsp;  }
+ 51&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "SimpleCircle" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

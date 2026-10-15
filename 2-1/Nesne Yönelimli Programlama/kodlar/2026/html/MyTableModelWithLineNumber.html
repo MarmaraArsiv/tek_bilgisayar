@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - MyTableModel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "MyTableModel.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.table.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.util.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> MyTableModel <span class = "keyword">extends</span> DefaultTableModel {
+  6&nbsp;&nbsp;  <span class = "keyword">public</span> MyTableModel() {
+  7&nbsp;&nbsp;  }
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;  <span class = "comment">/** Construct a table model with specified data and columnNames */</span>
+ 10&nbsp;&nbsp;  <span class = "keyword">public</span> MyTableModel(Object[][] data, Object[] columnNames) {
+ 11&nbsp;&nbsp;    <span class = "keyword">super</span>(data, columnNames);
+ 12&nbsp;&nbsp;  }
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;  <span class = "comment">/** Override this method to return a class for the column */</span>
+ 15&nbsp;&nbsp;  <span class = "keyword">public</span> Class getColumnClass(<span class = "keyword">int</span> column) {
+ 16&nbsp;&nbsp;    <span class = "keyword">return</span> getValueAt(<span class = "literal">0</span>, column).getClass();
+ 17&nbsp;&nbsp;  }
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;  <span class = "comment">/** Override this method to return true if cell is editable */</span>
+ 20&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> isCellEditable(<span class = "keyword">int</span> row, <span class = "keyword">int</span> column) {
+ 21&nbsp;&nbsp;    Class columnClass = getColumnClass(column);
+ 22&nbsp;&nbsp;    <span class = "keyword">return</span> columnClass != ImageIcon.<span class = "keyword">class</span> &&
+ 23&nbsp;&nbsp;      columnClass != Date.<span class = "keyword">class</span>;
+ 24&nbsp;&nbsp;  }
+ 25&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

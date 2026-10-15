@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - GradeExam.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "GradeExam.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> GradeExam {
+  2&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+  3&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String args[]) {
+  4&nbsp;&nbsp;    <span class = "comment">// Students' answers to the questions</span>
+  5&nbsp;&nbsp;    <span class = "keyword">char</span>[][] answers = {
+  6&nbsp;&nbsp;      {<span class = "literal">'A'</span>, <span class = "literal">'B'</span>, <span class = "literal">'A'</span>, <span class = "literal">'C'</span>, <span class = "literal">'C'</span>, <span class = "literal">'D'</span>, <span class = "literal">'E'</span>, <span class = "literal">'E'</span>, <span class = "literal">'A'</span>, <span class = "literal">'D'</span>},
+  7&nbsp;&nbsp;      {<span class = "literal">'D'</span>, <span class = "literal">'B'</span>, <span class = "literal">'A'</span>, <span class = "literal">'B'</span>, <span class = "literal">'C'</span>, <span class = "literal">'A'</span>, <span class = "literal">'E'</span>, <span class = "literal">'E'</span>, <span class = "literal">'A'</span>, <span class = "literal">'D'</span>},
+  8&nbsp;&nbsp;      {<span class = "literal">'E'</span>, <span class = "literal">'D'</span>, <span class = "literal">'D'</span>, <span class = "literal">'A'</span>, <span class = "literal">'C'</span>, <span class = "literal">'B'</span>, <span class = "literal">'E'</span>, <span class = "literal">'E'</span>, <span class = "literal">'A'</span>, <span class = "literal">'D'</span>},
+  9&nbsp;&nbsp;      {<span class = "literal">'C'</span>, <span class = "literal">'B'</span>, <span class = "literal">'A'</span>, <span class = "literal">'E'</span>, <span class = "literal">'D'</span>, <span class = "literal">'C'</span>, <span class = "literal">'E'</span>, <span class = "literal">'E'</span>, <span class = "literal">'A'</span>, <span class = "literal">'D'</span>},
+ 10&nbsp;&nbsp;      {<span class = "literal">'A'</span>, <span class = "literal">'B'</span>, <span class = "literal">'D'</span>, <span class = "literal">'C'</span>, <span class = "literal">'C'</span>, <span class = "literal">'D'</span>, <span class = "literal">'E'</span>, <span class = "literal">'E'</span>, <span class = "literal">'A'</span>, <span class = "literal">'D'</span>},
+ 11&nbsp;&nbsp;      {<span class = "literal">'B'</span>, <span class = "literal">'B'</span>, <span class = "literal">'E'</span>, <span class = "literal">'C'</span>, <span class = "literal">'C'</span>, <span class = "literal">'D'</span>, <span class = "literal">'E'</span>, <span class = "literal">'E'</span>, <span class = "literal">'A'</span>, <span class = "literal">'D'</span>},
+ 12&nbsp;&nbsp;      {<span class = "literal">'B'</span>, <span class = "literal">'B'</span>, <span class = "literal">'A'</span>, <span class = "literal">'C'</span>, <span class = "literal">'C'</span>, <span class = "literal">'D'</span>, <span class = "literal">'E'</span>, <span class = "literal">'E'</span>, <span class = "literal">'A'</span>, <span class = "literal">'D'</span>},
+ 13&nbsp;&nbsp;      {<span class = "literal">'E'</span>, <span class = "literal">'B'</span>, <span class = "literal">'E'</span>, <span class = "literal">'C'</span>, <span class = "literal">'C'</span>, <span class = "literal">'D'</span>, <span class = "literal">'E'</span>, <span class = "literal">'E'</span>, <span class = "literal">'A'</span>, <span class = "literal">'D'</span>}};
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;    <span class = "comment">// Key to the questions</span>
+ 16&nbsp;&nbsp;    <span class = "keyword">char</span>[] keys = {<span class = "literal">'D'</span>, <span class = "literal">'B'</span>, <span class = "literal">'D'</span>, <span class = "literal">'C'</span>, <span class = "literal">'C'</span>, <span class = "literal">'D'</span>, <span class = "literal">'A'</span>, <span class = "literal">'E'</span>, <span class = "literal">'A'</span>, <span class = "literal">'D'</span>};
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;    <span class = "comment">// Grade all answers</span>
+ 19&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; answers.length; i++) {
+ 20&nbsp;&nbsp;      <span class = "comment">// Grade one student</span>
+ 21&nbsp;&nbsp;      <span class = "keyword">int</span> correctCount = <span class = "literal">0</span>;
+ 22&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> j = <span class = "literal">0</span>; j &lt; answers[i].length; j++) {
+ 23&nbsp;&nbsp;        <span class = "keyword">if</span> (answers[i][j] == keys[j])
+ 24&nbsp;&nbsp;          correctCount++;
+ 25&nbsp;&nbsp;      }
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;      System.out.println(<span class = "literal">"Student "</span> + i + <span class = "literal">"'s correct count is "</span> +
+ 28&nbsp;&nbsp;        correctCount);
+ 29&nbsp;&nbsp;    }
+ 30&nbsp;&nbsp;  }
+ 31&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "GradeExam" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

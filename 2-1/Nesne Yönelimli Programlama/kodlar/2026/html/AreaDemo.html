@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - AreaDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "AreaDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.geom.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> AreaDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> AreaDemo() {
+    add(<span class = "keyword">new</span> ShapePanel());
+  }
+
+  <span class = "keyword">class</span> ShapePanel <span class = "keyword">extends</span> JPanel {
+    @Override
+    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+      <span class = "keyword">super</span>.paintComponent(g);
+  
+      Graphics2D g2d = (Graphics2D)g; <span class = "comment">// Get Graphics2D</span>
+  
+      <span class = "comment">// Create two shapes</span>
+      Shape shape1 = <span class = "keyword">new</span> Ellipse2D.Double(<span class = "literal">0</span>, <span class = "literal">0</span>, <span class = "literal">50</span>, <span class = "literal">50</span>);
+      Shape shape2 = <span class = "keyword">new</span> Ellipse2D.Double(<span class = "literal">25</span>, <span class = "literal">0</span>, <span class = "literal">50</span>, <span class = "literal">50</span>);
+      g2d.translate(<span class = "literal">10</span>, <span class = "literal">10</span>); <span class = "comment">// Translate to a new origin     </span>
+      g2d.draw(shape1); <span class = "comment">// Draw the shape</span>
+      g2d.draw(shape2); <span class = "comment">// Draw the shape</span>
+      
+      Area area1 = <span class = "keyword">new</span> Area(shape1); <span class = "comment">// Create an area</span>
+      Area area2 = <span class = "keyword">new</span> Area(shape2);
+      area1.add(area2); <span class = "comment">// Add area2 to area1</span>
+      g2d.translate(<span class = "literal">100</span>, <span class = "literal">0</span>); <span class = "comment">// Translate to a new origin     </span>
+      g2d.draw(area1); <span class = "comment">// Draw the outline of the shape in the area</span>
+
+      g2d.translate(<span class = "literal">100</span>, <span class = "literal">0</span>); <span class = "comment">// Translate to a new origin     </span>
+      g2d.fill(area1); <span class = "comment">// Fill the shape in the area</span>
+
+      area1 = <span class = "keyword">new</span> Area(shape1);
+      area1.subtract(area2); <span class = "comment">// Subtract area2 from area1</span>
+      g2d.translate(<span class = "literal">100</span>, <span class = "literal">0</span>); <span class = "comment">// Translate to a new origin     </span>
+      g2d.fill(area1); <span class = "comment">// Fill the shape in the area</span>
+
+      area1 = <span class = "keyword">new</span> Area(shape1);
+      area1.intersect(area2); <span class = "comment">// Intersection of area2 with area1</span>
+      g2d.translate(<span class = "literal">100</span>, <span class = "literal">0</span>); <span class = "comment">// Translate to a new origin     </span>
+      g2d.fill(area1); <span class = "comment">// Fill the shape in the area</span>
+
+      area1 = <span class = "keyword">new</span> Area(shape1);
+      area1.exclusiveOr(area2); <span class = "comment">// Exclusive or of area2 with area1</span>
+      g2d.translate(<span class = "literal">100</span>, <span class = "literal">0</span>); <span class = "comment">// Translate to a new origin     </span>
+      g2d.fill(area1); <span class = "comment">// Fill the shape in the area</span>
+    }
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    AreaDemo applet = <span class = "keyword">new</span> AreaDemo();
+    applet.init();
+    applet.start();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setTitle(<span class = "literal">"Test"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    frame.setSize(<span class = "literal">450</span>, <span class = "literal">160</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

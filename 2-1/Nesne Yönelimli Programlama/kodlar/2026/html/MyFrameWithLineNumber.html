@@ -1,0 +1,31 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - MyFrame.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "MyFrame.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> MyFrame {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  5&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"MyFrame"</span>); <span class = "comment">// Create a frame</span>
+  6&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>, <span class = "literal">300</span>); <span class = "comment">// Set the frame size</span>
+  7&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// New since JDK 1.4</span>
+  8&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  9&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>); <span class = "comment">// Display the frame</span>
+ 10&nbsp;&nbsp;  }
+ 11&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

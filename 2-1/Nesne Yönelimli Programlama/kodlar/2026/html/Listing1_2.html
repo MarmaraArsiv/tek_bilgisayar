@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listing 1.2 Animation by Y. Daniel Liang</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="GetElementPosition.js"></script>
+    <style type = "text/css">
+      body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+      .keyword {color: #000080; font-weight: bold}
+      .comment {color: gray}
+      .literal {font-weight: bold; color: #3366FF}
+    </style>
+
+    <STYLE>
+      #highlight {
+        background-color:green;
+        opacity: 0.25;
+        position:absolute;
+        width:318px;
+        height: 10px;
+        padding: 3px;
+        margin-top: 0px;
+        top: 89px;
+        left: 72px;
+      }
+
+      #explanation {
+        color: green;
+        position:absolute;
+        width: 158px;
+        height: 40px;
+        padding: 3px;
+        margin-top:5px;
+        top: 75px;
+        left: 448px;
+        font-size: 90%;
+        font-family: Times New Roman;
+      }
+
+      #commandPrompt {
+        font-family: times;  border: 1px solid gray; text-align: left;  
+        position:absolute;         
+        width: 288.5px;
+        height: 90px;
+        top: 80px;
+        left: 600px;
+        font-size: 80%;
+      }
+
+      #commandPromptHeader {
+        background-color: navy; color: white; font-size: 80%;
+        border-bottom: 2px solid gray; border-right: 2px solid gray;
+      }
+
+      #commandPromptContent {
+        background-color: black;
+        color: white;
+        height: 76px;
+
+        font-family: courier; 
+        font-size: 80%;
+      }
+    </STYLE>
+
+    <script>
+      function HighLight() {
+        this.width = 318;
+        this.height = 10;
+        this.top = 89;
+        this.left = 72;
+      }
+
+      function Explanation() {
+        this.innerHTML = "The program starts the execution from the main method.";
+        this.left = 448;
+        this.width = 158;
+        this.height = 40;
+        this.top = 75;
+      }
+
+      function CommandPrompt() {
+        this.innerHTML = "The program starts the execution from the main method.";
+        this.left = 448;
+        this.width = 188;
+        this.height = 40;
+        this.top = 75;
+      }
+
+      animationSpeed = 500;
+      steps = 4;
+      lineOffSet = 15;
+      highLight = [];
+      highLight[0] = new HighLight();
+      highLight[0].top = 64;
+      highLight[0].left = 64;
+      highLight[0].width = 318;
+
+      highLight[1] = new HighLight();
+      highLight[1].top = 77;
+      highLight[1].left = 60 + 20;
+      highLight[1].width = 328;
+
+      highLight[2] = new HighLight();
+      highLight[2].top = 80 + 13;
+      highLight[2].left = 60 + 20;
+      highLight[2].width = 321;
+
+      highLight[3] = new HighLight();
+      highLight[3].top = 77 + 13 + 17;
+      highLight[3].left = 60 + 20;
+      highLight[3].width = 288;
+
+      highLight[4] = new HighLight();
+      highLight[4].top = 77 + 3 * lineOffSet;
+      highLight[4].left = 62;
+      highLight[4].width = 8;
+
+      explanation = [];
+      explanation[0] = new Explanation();
+      explanation[0].innerHTML = "The program starts the execution from the main method.";
+      explanation[0].top = 64;
+      explanation[0].left = 448;
+
+      explanation[1] = new Explanation();
+      explanation[1].innerHTML = "The statement displays Programming is fun! to the console.";
+      explanation[1].top = 77;
+      explanation[1].left = 448;
+
+      explanation[2] = new Explanation();
+      explanation[2].innerHTML = "The statement displays Fundamentals First to the console.";
+      explanation[2].top = 77 + lineOffSet;
+      explanation[2].left = 448;
+
+      explanation[3] = new Explanation();
+      explanation[3].innerHTML = "The statement displays Problem Driven to the console.";
+      explanation[3].top = 77 + 2 * lineOffSet;
+      explanation[3].left = 448;
+
+      explanation[4] = new Explanation();
+      explanation[4].innerHTML = "The main method exits. The program is finished.";
+      explanation[4].top = 77 + 2 * lineOffSet;
+      explanation[4].left = 448;
+
+      commandPrompt = [];
+      commandPrompt[0] = new CommandPrompt();
+      commandPrompt[0].innerHTML = "c:\\book>java WelcomeWithThreeMessages";
+      commandPrompt[0].top = 64;
+      commandPrompt[0].left = 600;
+
+      commandPrompt[1] = new CommandPrompt();
+      commandPrompt[1].innerHTML = "c:\\book>java WelcomeWithThreeMessages<br>Programming is fun!";
+      commandPrompt[1].top = 77;
+      commandPrompt[1].left = 620;
+
+      commandPrompt[2] = new CommandPrompt();
+      commandPrompt[2].innerHTML = "c:\\book>java WelcomeWithThreeMessages<br>Programming is fun!<br>Fundamentals First<br>";
+      commandPrompt[2].top = 75 + 2 * lineOffSet;
+      commandPrompt[2].left = 600;
+
+      commandPrompt[3] = new CommandPrompt();
+      commandPrompt[3].innerHTML = "c:\\book>java WelcomeWithThreeMessages<br>Programming is fun!<br>Fundamentals First<br>Problem Driven";
+      commandPrompt[3].top = 72 + 3 * lineOffSet;
+      commandPrompt[3].left = 600;
+
+      commandPrompt[4] = new CommandPrompt();
+      commandPrompt[4].innerHTML = "c:\\book>java WelcomeWithThreeMessages<br>Programming is fun!<br>Fundamentals First<br>Problem Driven<br><br>c:\\book";
+      commandPrompt[4].top = 72 + 3 * lineOffSet;
+      commandPrompt[4].left = 600;
+
+      currentLine = 0;
+
+      function init() {
+        document.getElementById('highlight').style.visibility = 'hidden';
+        document.getElementById('nextButton').style.visibility = 'hidden';
+        document.getElementById('prevButton').style.visibility = 'hidden';
+        document.getElementById('commandPrompt').style.visibility = 'hidden';
+      }
+    </script>
+  </head>
+
+  <body onload="init()" onresize="draw()">   
+    <div style="text-align: left; margin-top: 1em">
+      <span style="padding: 3px">
+        <button id = "nextButton" type="button" onclick="next()">></button>
+        <button id = "prevButton" type="button" onclick="prev()"><</button>
+        <button id ="startButton" type="button" onclick="start()">Start Animation</button>  
+        <span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+          Introduction to Java Programming, Tenth Edition,
+          <a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+
+      </span>    
+    </div>
+
+    <div id="highlight"></div>
+    <div id="explanation"></div>
+    <div id="commandPrompt">
+      <div id="commandPromptHeader">   Command Prompt</div>
+      <div id="commandPromptContent">c:\book>java WelcomeWithThreeMessages</div>
+    </div>
+
+    <div id = "program" style="font-family: courier; font-size: 12; margin: 0px auto; border: 1px solid red; text-align: left">
+      <pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> WelcomeWithThreeMessages { 
+  2&nbsp;&nbsp;  <span id="line0"><span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {</span> 
+  3&nbsp;&nbsp;    <span id="line1">System.out.println(<span class = "literal">"Programming is fun!"</span>);</span>
+  4&nbsp;&nbsp;    <span id="line2">System.out.println(<span class = "literal">"Fundamentals First"</span>);</span>
+  5&nbsp;&nbsp;    <span id="line3">System.out.println(<span class = "literal">"Problem Driven"</span>);</span>
+  6&nbsp;&nbsp;  <span id="line4">}</span>
+  7&nbsp;&nbsp;}
+      </pre>
+    </div>
+
+    <script type="text/javascript">
+      function step() {
+        if (currentLine == 0) {
+          pos = getElementPos(document.getElementById('line0'));
+          document.getElementById('prevButton').style.visibility = 'hidden';
+        }
+        if (currentLine == 1) {
+          pos = getElementPos(document.getElementById('line1'));
+          document.getElementById('prevButton').style.visibility = 'visible';
+        }
+        else if (currentLine == 2) {
+          pos = getElementPos(document.getElementById('line2'));
+        }
+        else if (currentLine == 3) {
+          pos = getElementPos(document.getElementById('line3'));
+        }
+        else if (currentLine == 4) {
+          pos = getElementPos(document.getElementById('line4'));
+        }
+
+        $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+        $("#explanation").animate({top: explanation[currentLine].top, left: explanation[currentLine].left,
+          width: explanation[currentLine].width}, animationSpeed);
+        $("#commandPrompt").animate({top: commandPrompt[currentLine].top, left: commandPrompt[currentLine].left}, animationSpeed);
+        document.getElementById('explanation').innerHTML = explanation[currentLine].innerHTML;
+        document.getElementById('commandPromptContent').innerHTML = commandPrompt[currentLine].innerHTML;
+        if (currentLine == steps) {
+          document.getElementById('nextButton').style.visibility = 'hidden';
+          document.getElementById('startButton').style.visibility = 'visible';
+          document.getElementById('startButton').innerHTML = 'Restart Animation';
+          document.getElementById('prevButton').style.visibility = 'hidden';
+          currentLine = 0;
+        }
+      }
+
+      $("#nextButton").click(function() {
+        currentLine = currentLine + 1;
+        step();
+      });
+
+      $("#prevButton").click(function() {
+        currentLine = currentLine - 1;
+        step();
+      });
+
+      $("#startButton").click(function() {
+        currentLine = 0;
+
+        var pos = getElementPos(document.getElementById('line0'));
+        $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, 'fast');
+        $("#explanation").animate({top: explanation[currentLine].top, left: explanation[currentLine].left,
+          width: explanation[currentLine].width}, 'fast');
+        $("#commandPrompt").animate({top: commandPrompt[currentLine].top, left: commandPrompt[currentLine].left}, 'fast');
+        document.getElementById('explanation').innerHTML = explanation[currentLine].innerHTML;
+        document.getElementById('commandPromptContent').innerHTML = commandPrompt[currentLine].innerHTML;
+
+        document.getElementById('startButton').style.visibility = 'hidden';
+        document.getElementById('nextButton').style.visibility = 'visible';
+        document.getElementById('commandPrompt').style.visibility = 'visible';
+
+        document.getElementById('highlight').style.visibility = 'visible';
+        document.getElementById('explanation').style.visibility = 'visible';
+      });
+    </script>
+  </body>
+</html>

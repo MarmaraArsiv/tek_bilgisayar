@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Intro to Java Programming, 9E - DisplayBinaryTree.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "DisplayBinaryTreeWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> DisplayBinaryTree <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> DisplayBinaryTree() {
+    add(<span class = "keyword">new</span> TreeControl(<span class = "keyword">new</span> BST&lt;Integer&gt;()));
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"DisplayBinaryTree"</span>);
+    JApplet applet = <span class = "keyword">new</span> DisplayBinaryTree();
+    frame.add(applet);
+    frame.setSize(<span class = "literal">500</span>, <span class = "literal">300</span>);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

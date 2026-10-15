@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Intro to Java Programming, 6E - FontDriver.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> java.awt.Dimension;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> javax.swing.JFrame;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">public</span> <span class = "keyword">class</span> FontDriver<span class = "literal"></span>
+<span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>	<span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[<span class = "literal"></span>]<span class = "literal"></span> args)<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>	<span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>	<span class = "literal"></span>	JFrame theFrame = <span class = "keyword">new</span> JFrame(<span class = "literal">"FontMetrics <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> E.<span class = "literal"></span> Henry Beitz"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>	<span class = "literal"></span>	theFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>	<span class = "literal"></span>	FontPanel fontpanel = <span class = "keyword">new</span> FontPanel(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>	<span class = "literal"></span>	fontpanel.setPreferredSize(<span class = "keyword">new</span> Dimension(<span class = "literal">880</span>,<span class = "literal"></span> <span class = "literal">340</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>	<span class = "literal"></span>	theFrame.getContentPane(<span class = "literal"></span>)<span class = "literal"></span>.add(fontpanel)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>	<span class = "literal"></span>	theFrame.setLocation(<span class = "literal">80</span>,<span class = "literal"></span> <span class = "literal">100</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>	<span class = "literal"></span>	theFrame.pack(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>	<span class = "literal"></span>	theFrame.setVisible(<span class = "keyword">true</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>	<span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+</pre>
+</body>
+</html>

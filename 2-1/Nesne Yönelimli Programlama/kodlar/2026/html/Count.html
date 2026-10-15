@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>JBuilder - Count.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="KEYWORDS" CONTENT="BorlandHtml">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">
+Count.java</FONT>
+</center><FONT SIZE=-2>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">
+Created with <a href="http://www.borland.com">JBuilder</a></FONT></FONT></TD></TR></TABLE></FONT>
+<PRE><FONT COLOR="#000080"><B>package</B></FONT><FONT COLOR="#000000"> chapter35;
+
+</FONT><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.sql.*;
+
+</FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> Count {
+  </FONT><FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#800080">count</FONT><FONT COLOR="#000000"> = </FONT><FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">;
+  </FONT><FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> Statement </FONT><FONT COLOR="#800080">statement</FONT><FONT COLOR="#000000"> = </FONT><FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">;
+
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> Count() {
+    initializeJdbc();
+  }
+
+  </FONT><FONT COLOR="#008000">/** Return count property */</FONT><FONT COLOR="#000000">
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> getCount() {
+    </FONT><FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+      ResultSet rset = </FONT><FONT COLOR="#800080">statement</FONT><FONT COLOR="#000000">.executeQuery
+        (</FONT><FONT COLOR="#0000ff">"select countValue from Count"</FONT><FONT COLOR="#000000">);
+      rset.next();
+      </FONT><FONT COLOR="#800080">count</FONT><FONT COLOR="#000000"> = rset.getInt(</FONT><FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">);
+    }
+    </FONT><FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (Exception ex) {
+      ex.printStackTrace();
+    }
+
+    </FONT><FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#800080">count</FONT><FONT COLOR="#000000">;
+  }
+
+  </FONT><FONT COLOR="#008000">/** Increase count */</FONT><FONT COLOR="#000000">
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> increaseCount() {
+    </FONT><FONT COLOR="#800080">count</FONT><FONT COLOR="#000000">++;
+    </FONT><FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+      </FONT><FONT COLOR="#800080">statement</FONT><FONT COLOR="#000000">.executeUpdate(
+        </FONT><FONT COLOR="#0000ff">"update Count set countValue = "</FONT><FONT COLOR="#000000"> + </FONT><FONT COLOR="#800080">count</FONT><FONT COLOR="#000000">);
+    }
+    </FONT><FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (Exception ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  </FONT><FONT COLOR="#008000">/** Initialize database connection */</FONT><FONT COLOR="#000000">
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> initializeJdbc() {
+    </FONT><FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+      <I>Class</I>.<I>forName</I>(</FONT><FONT COLOR="#0000ff">"sun.jdbc.odbc.JdbcOdbcDriver"</FONT><FONT COLOR="#000000">);
+
+      </FONT><FONT COLOR="#008000">// Connect to the sample database</FONT><FONT COLOR="#000000">
+      Connection connection = <I>DriverManager</I>.<I>getConnection</I>(
+        </FONT><FONT COLOR="#0000ff">"jdbc:odbc:exampleMDBDataSource"</FONT><FONT COLOR="#000000">);
+
+      </FONT><FONT COLOR="#800080">statement</FONT><FONT COLOR="#000000"> = connection.createStatement();
+    }
+    </FONT><FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (Exception ex) {
+      ex.printStackTrace();
+    }
+  }
+}
+
+
+</FONT>
+</PRE>
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">
+Count.java</FONT
+></CENTER><FONT SIZE=-2>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">Created with <a href="http://www.borland.com">JBuilder</a></FONT></FONT></TD></TR></TABLE></FONT></BODY></HTML>

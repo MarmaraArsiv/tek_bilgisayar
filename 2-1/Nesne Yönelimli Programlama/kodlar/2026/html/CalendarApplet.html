@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - CalendarApplet.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">// CalendarApplet.java: Display a locale-sensitive calendar
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.event.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.border.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.util.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> CalendarApplet <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JApplet
+  <FONT COLOR="#000080"><B>implements</B></FONT><FONT COLOR="#000000"> ItemListener, ActionListener {
+  <FONT COLOR="#008000">// Create a CalendarPanel for showing calendars
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> CalendarPanel calendarPanel = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> CalendarPanel();
+
+  <FONT COLOR="#008000">// Combo box for selecting available locales
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JComboBox jcboLocale = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JComboBox();
+
+  <FONT COLOR="#008000">// Declare locales to store available locales
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> Locale locales[] = Calendar.getAvailableLocales();
+
+  <FONT COLOR="#008000">// Buttons Prior and Next to displaying prior and next month
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JButton jbtPrior = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JButton(<FONT COLOR="#0000ff">"Prior"</FONT>);
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JButton jbtNext = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JButton(<FONT COLOR="#0000ff">"Next"</FONT>);
+
+  <FONT COLOR="#008000">/** Initialize the applet */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> init() {
+    <FONT COLOR="#008000">// Panel jpLocale to hold the combo box for selecting locales
+<FONT COLOR="#000000">    JPanel jpLocale = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    jpLocale.setBorder(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> TitledBorder(<FONT COLOR="#0000ff">"Choose a locale"</FONT>));
+    jpLocale.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> FlowLayout());
+    jpLocale.add(jcboLocale);
+
+    <FONT COLOR="#008000">// Initialize the combo box to add locale names
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i = <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">; i &lt; locales.length; i++)
+      jcboLocale.addItem(locales[i].getDisplayName());
+
+    <FONT COLOR="#008000">// Panel jpButtons to hold buttons
+<FONT COLOR="#000000">    JPanel jpButtons = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    jpButtons.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> FlowLayout());
+    jpButtons.add(jbtPrior);
+    jpButtons.add(jbtNext);
+
+    <FONT COLOR="#008000">// Panel jpCalendar to hold calendarPanel and buttons
+<FONT COLOR="#000000">    JPanel jpCalendar = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    jpCalendar.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BorderLayout());
+    jpCalendar.add(calendarPanel, BorderLayout.CENTER);
+    jpCalendar.add(jpButtons, BorderLayout.SOUTH);
+
+    <FONT COLOR="#008000">// Place jpCalendar and jpLocale to the applet
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.getContentPane().add(jpCalendar, BorderLayout.CENTER);
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.getContentPane().add(jpLocale, BorderLayout.SOUTH);
+
+    <FONT COLOR="#008000">// Register listeners
+<FONT COLOR="#000000">    jcboLocale.addItemListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+    jbtPrior.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+    jbtNext.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+
+    calendarPanel.changeLocale(
+      locales[jcboLocale.getSelectedIndex()]);
+  }
+
+  <FONT COLOR="#008000">/** Main method */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    <FONT COLOR="#008000">// Create a frame
+<FONT COLOR="#000000">    JFrame frame = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JFrame(<FONT COLOR="#0000ff">"CalendarApplet"</FONT>);
+
+    <FONT COLOR="#008000">// Create an instance of the applet
+<FONT COLOR="#000000">    CalendarApplet applet = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> CalendarApplet();
+
+    <FONT COLOR="#008000">// Add the applet instance to the frame
+<FONT COLOR="#000000">    frame.getContentPane().add(applet, BorderLayout.CENTER);
+
+    <FONT COLOR="#008000">// Invoke init() and start()
+<FONT COLOR="#000000">    applet.init();
+    applet.start();
+
+    <FONT COLOR="#008000">// Display the frame
+<FONT COLOR="#000000">    frame.pack();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+  }
+
+  <FONT COLOR="#008000">/** Handle locale selection */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> itemStateChanged(ItemEvent e) {
+    <FONT COLOR="#008000">// Set a new locale
+<FONT COLOR="#000000">    calendarPanel.changeLocale(
+      locales[jcboLocale.getSelectedIndex()]);
+  }
+
+  <FONT COLOR="#008000">/** Handle the Prior and Next buttons */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> actionPerformed(ActionEvent e) {
+    <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> currentMonth = calendarPanel.getMonth();
+
+    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (e.getSource() == jbtPrior) {
+      <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (currentMonth == <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">) {
+        calendarPanel.setMonth(<FONT COLOR="#0000ff">12</FONT><FONT COLOR="#000000">);
+        calendarPanel.setYear(calendarPanel.getYear() - <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">);
+      }
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000">
+        calendarPanel.setMonth(currentMonth - <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">);
+    }
+    <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (e.getSource() == jbtNext) {
+      <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (currentMonth == <FONT COLOR="#0000ff">12</FONT><FONT COLOR="#000000">) {
+        calendarPanel.setMonth(<FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">);
+        calendarPanel.setYear(calendarPanel.getYear() + <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">);
+      }
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000">
+        calendarPanel.setMonth(currentMonth + <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">);
+    }
+  }
+}
+</pre>

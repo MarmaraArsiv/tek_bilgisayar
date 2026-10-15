@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ActionInterfaceDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ActionInterfaceDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ActionInterfaceDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> JPanel buttonPanel = <span class = "keyword">new</span> JPanel();
+  <span class = "keyword">private</span> FlowLayout flowLayout = <span class = "keyword">new</span> FlowLayout();
+
+  <span class = "keyword">public</span> ActionInterfaceDemo() {
+    <span class = "comment">// Create image icons</span>
+    ImageIcon leftImageIcon = <span class = "keyword">new</span> ImageIcon(getClass().getResource(
+      <span class = "literal">"/image/leftAlignment.png"</span>));
+    ImageIcon centerImageIcon = <span class = "keyword">new</span> ImageIcon(getClass().getResource(
+      <span class = "literal">"/image/centerAlignment.png"</span>));
+    ImageIcon rightImageIcon = <span class = "keyword">new</span> ImageIcon(getClass().getResource(
+      <span class = "literal">"/image/rightAlignment.png"</span>));
+
+    <span class = "comment">// Create actions</span>
+    Action leftAction = <span class = "keyword">new</span> MyAction(<span class = "literal">"Left"</span>, leftImageIcon,
+      <span class = "literal">"Left alignment for the buttons in the panel"</span>,
+      <span class = "keyword">new</span> Integer(KeyEvent.VK_L),
+      KeyStroke.getKeyStroke(KeyEvent.VK_L, ActionEvent.CTRL_MASK));
+    Action centerAction = <span class = "keyword">new</span> MyAction(<span class = "literal">"Center"</span>, centerImageIcon,
+      <span class = "literal">"Center alignment for the buttons in the panel"</span>,
+      <span class = "keyword">new</span> Integer(KeyEvent.VK_C),
+      KeyStroke.getKeyStroke(KeyEvent.VK_C, ActionEvent.CTRL_MASK));
+    Action rightAction = <span class = "keyword">new</span> MyAction(<span class = "literal">"Right"</span>, rightImageIcon,
+      <span class = "literal">"Right alignment for the buttons in the panel"</span>,
+      <span class = "keyword">new</span> Integer(KeyEvent.VK_R),
+      KeyStroke.getKeyStroke(KeyEvent.VK_R, ActionEvent.CTRL_MASK));
+
+    <span class = "comment">// Create menus</span>
+    JMenuBar jMenuBar1 = <span class = "keyword">new</span> JMenuBar();
+    JMenu jmenuAlignment = <span class = "keyword">new</span> JMenu(<span class = "literal">"Alignment"</span>);
+    setJMenuBar(jMenuBar1);
+    jMenuBar1.add(jmenuAlignment);
+
+    <span class = "comment">// Add actions to the menu</span>
+    jmenuAlignment.add(leftAction);
+    jmenuAlignment.add(centerAction);
+    jmenuAlignment.add(rightAction);
+
+    <span class = "comment">// Add actions to the toolbar</span>
+    JToolBar jToolBar1 = <span class = "keyword">new</span> JToolBar(JToolBar.VERTICAL);
+    jToolBar1.setBorder(BorderFactory.createLineBorder(Color.red));
+    jToolBar1.add(leftAction);
+    jToolBar1.add(centerAction);
+    jToolBar1.add(rightAction);
+
+    <span class = "comment">// Add buttons to the button panel</span>
+    buttonPanel.setLayout(flowLayout);
+    JButton jbtLeft = <span class = "keyword">new</span> JButton(leftAction);
+    JButton jbtCenter = <span class = "keyword">new</span> JButton(centerAction);
+    JButton jbtRight = <span class = "keyword">new</span> JButton(rightAction);
+    buttonPanel.add(jbtLeft);
+    buttonPanel.add(jbtCenter);
+    buttonPanel.add(jbtRight);
+
+    <span class = "comment">// Add tool bar to the east and panel to the center</span>
+    add(jToolBar1, BorderLayout.EAST);
+    add(buttonPanel, BorderLayout.CENTER);
+  }
+
+  <span class = "keyword">private</span> <span class = "keyword">class</span> MyAction <span class = "keyword">extends</span> AbstractAction {
+    String name;
+
+    MyAction(String name, Icon icon) {
+      <span class = "keyword">super</span>(name, icon);
+      <span class = "keyword">this</span>.name = name;
+    }
+
+    MyAction(String name, Icon icon, String desc, Integer mnemonic,
+        KeyStroke accelerator) {
+      <span class = "keyword">super</span>(name, icon);
+      putValue(Action.SHORT_DESCRIPTION, desc);
+      putValue(Action.MNEMONIC_KEY, mnemonic);
+      putValue(Action.ACCELERATOR_KEY, accelerator);
+      <span class = "keyword">this</span>.name = name;
+    }
+
+    @Override
+    <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+      <span class = "keyword">if</span> (name.equals(<span class = "literal">"Left"</span>))
+        flowLayout.setAlignment(FlowLayout.LEFT);
+      <span class = "keyword">else</span> <span class = "keyword">if</span> (name.equals(<span class = "literal">"Center"</span>))
+        flowLayout.setAlignment(FlowLayout.CENTER);
+      <span class = "keyword">else</span> <span class = "keyword">if</span> (name.equals(<span class = "literal">"Right"</span>))
+        flowLayout.setAlignment(FlowLayout.RIGHT);
+
+      buttonPanel.revalidate();
+    }
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ActionInterfaceDemo applet = <span class = "keyword">new</span> ActionInterfaceDemo();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"ActionInterfaceDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SixFlags.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "SixFlagsWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> SixFlags <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">public</span> SixFlags() {
+    Image image1 = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/us.gif"</span>).getImage();
+    Image image2 = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/ca.gif"</span>).getImage();
+    Image image3 = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/india.gif"</span>).getImage();
+    Image image4 = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/uk.gif"</span>).getImage();
+    Image image5 = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/china.gif"</span>).getImage();
+    Image image6 = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/norway.gif"</span>).getImage();
+
+    setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">0</span>, <span class = "literal">5</span>, <span class = "literal">5</span>));
+    add(<span class = "keyword">new</span> ImageViewer(image1));
+    add(<span class = "keyword">new</span> ImageViewer(image2));
+    add(<span class = "keyword">new</span> ImageViewer(image3));
+    add(<span class = "keyword">new</span> ImageViewer(image4));
+    add(<span class = "keyword">new</span> ImageViewer(image5));
+    add(<span class = "keyword">new</span> ImageViewer(image6));
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    SixFlags frame = <span class = "keyword">new</span> SixFlags();
+    frame.setTitle(<span class = "literal">"SixFlags"</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(<span class = "literal">400</span>, <span class = "literal">320</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

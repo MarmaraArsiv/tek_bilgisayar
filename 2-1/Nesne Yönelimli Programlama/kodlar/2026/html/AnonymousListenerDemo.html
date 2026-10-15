@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - AnonymousListenerDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "AnonymousListenerDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.event.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> AnonymousListenerDemo <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">public</span> AnonymousListenerDemo() {
+    <span class = "comment">// Create four buttons</span>
+    JButton jbtNew = <span class = "keyword">new</span> JButton(<span class = "literal">"New"</span>);
+    JButton jbtOpen = <span class = "keyword">new</span> JButton(<span class = "literal">"Open"</span>);
+    JButton jbtSave = <span class = "keyword">new</span> JButton(<span class = "literal">"Save"</span>);
+    JButton jbtPrint = <span class = "keyword">new</span> JButton(<span class = "literal">"Print"</span>);
+
+    <span class = "comment">// Create a panel to hold buttons</span>
+    JPanel panel = <span class = "keyword">new</span> JPanel();
+    panel.add(jbtNew);
+    panel.add(jbtOpen);
+    panel.add(jbtSave);
+    panel.add(jbtPrint);
+    
+    add(panel);
+
+    <span class = "comment">// Create and register anonymous inner class listener</span>
+    jbtNew.addActionListener(<span class = "keyword">new</span> ActionListener() {
+        @Override 
+        <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+          System.out.println(<span class = "literal">"Process New"</span>);
+        }
+      }
+    );
+
+    jbtOpen.addActionListener(<span class = "keyword">new</span> ActionListener() {
+        @Override 
+        <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+          System.out.println(<span class = "literal">"Process Open"</span>);
+        }
+      }
+    );
+    
+    jbtSave.addActionListener(<span class = "keyword">new</span> ActionListener() {
+        @Override 
+        <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+          System.out.println(<span class = "literal">"Process Save"</span>);
+        }
+      }
+    );
+    
+    jbtPrint.addActionListener(<span class = "keyword">new</span> ActionListener() {
+        @Override 
+        <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+          System.out.println(<span class = "literal">"Process Print"</span>);
+        }
+      }
+    );    
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    JFrame frame = <span class = "keyword">new</span> AnonymousListenerDemo();
+    frame.setTitle(<span class = "literal">"AnonymousListenerDemo"</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.pack();
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

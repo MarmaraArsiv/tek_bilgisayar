@@ -1,0 +1,127 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowLayout.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ShowLayout.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ShowLayout <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  <span class = "comment">// Get the url for HTML files</span>
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> String flowLayoutDesc = <span class = "literal">"FlowLayout arranges components "</span> +
+  8&nbsp;&nbsp;    <span class = "literal">"according to their preferredSize in "</span> +
+  9&nbsp;&nbsp;    <span class = "literal">"a left-to-right flow, much like lines of text in a paragraph."</span>;
+ 10&nbsp;&nbsp;  <span class = "keyword">private</span> String gridLayoutDesc = <span class = "literal">"GridLayout arranges ..."</span>;
+ 11&nbsp;&nbsp;  <span class = "keyword">private</span> String boxLayoutDesc = <span class = "literal">"BoxLayout arranges ..."</span>;
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;  <span class = "keyword">private</span> JRadioButton jrbFlowLayout =
+ 14&nbsp;&nbsp;    <span class = "keyword">new</span> JRadioButton(<span class = "literal">"FlowLayout"</span>);
+ 15&nbsp;&nbsp;  <span class = "keyword">private</span> JRadioButton jrbGridLayout =
+ 16&nbsp;&nbsp;    <span class = "keyword">new</span> JRadioButton(<span class = "literal">"GridLayout"</span>, <span class = "keyword">true</span>);
+ 17&nbsp;&nbsp;  <span class = "keyword">private</span> JRadioButton jrbBoxLayout =
+ 18&nbsp;&nbsp;    <span class = "keyword">new</span> JRadioButton(<span class = "literal">"BoxLayout"</span>);
+ 19&nbsp;&nbsp;
+ 20&nbsp;&nbsp;  <span class = "keyword">private</span> JPanel jpComponents = <span class = "keyword">new</span> JPanel();
+ 21&nbsp;&nbsp;  <span class = "keyword">private</span> JTextArea jtfDescription = <span class = "keyword">new</span> JTextArea();
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;  <span class = "comment">// Create layout managers</span>
+ 24&nbsp;&nbsp;  <span class = "keyword">private</span> FlowLayout flowLayout = <span class = "keyword">new</span> FlowLayout();
+ 25&nbsp;&nbsp;  <span class = "keyword">private</span> GridLayout gridLayout = <span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">2</span>, <span class = "literal">3</span>, <span class = "literal">3</span>);
+ 26&nbsp;&nbsp;  <span class = "keyword">private</span> BoxLayout boxLayout =
+ 27&nbsp;&nbsp;    <span class = "keyword">new</span> BoxLayout(jpComponents, BoxLayout.X_AXIS);
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;  <span class = "keyword">public</span> ShowLayout() {
+ 30&nbsp;&nbsp;    <span class = "comment">// Create a box to hold radio buttons</span>
+ 31&nbsp;&nbsp;    Box jpChooseLayout = Box.createVerticalBox();
+ 32&nbsp;&nbsp;    jpChooseLayout.add(jrbFlowLayout);
+ 33&nbsp;&nbsp;    jpChooseLayout.add(jrbGridLayout);
+ 34&nbsp;&nbsp;    jpChooseLayout.add(jrbBoxLayout);
+ 35&nbsp;&nbsp;
+ 36&nbsp;&nbsp;    <span class = "comment">// Group radio buttons</span>
+ 37&nbsp;&nbsp;    ButtonGroup btg = <span class = "keyword">new</span> ButtonGroup();
+ 38&nbsp;&nbsp;    btg.add(jrbFlowLayout);
+ 39&nbsp;&nbsp;    btg.add(jrbGridLayout);
+ 40&nbsp;&nbsp;    btg.add(jrbBoxLayout);
+ 41&nbsp;&nbsp;
+ 42&nbsp;&nbsp;    <span class = "comment">// Wrap lines and words</span>
+ 43&nbsp;&nbsp;    jtfDescription.setLineWrap(<span class = "keyword">true</span>);
+ 44&nbsp;&nbsp;    jtfDescription.setWrapStyleWord(<span class = "keyword">true</span>);
+ 45&nbsp;&nbsp;
+ 46&nbsp;&nbsp;    <span class = "comment">// Add fours buttons to jpComponents</span>
+ 47&nbsp;&nbsp;    jpComponents.add(<span class = "keyword">new</span> JButton(<span class = "literal">"Button 1"</span>));
+ 48&nbsp;&nbsp;    jpComponents.add(<span class = "keyword">new</span> JButton(<span class = "literal">"Button 2"</span>));
+ 49&nbsp;&nbsp;    jpComponents.add(<span class = "keyword">new</span> JButton(<span class = "literal">"Button 3"</span>));
+ 50&nbsp;&nbsp;    jpComponents.add(<span class = "keyword">new</span> JButton(<span class = "literal">"Button 4"</span>));
+ 51&nbsp;&nbsp;
+ 52&nbsp;&nbsp;    <span class = "comment">// Create two split panes to hold jpChooseLayout, jpComponents,</span>
+ 53&nbsp;&nbsp;    <span class = "comment">// and jtfDescription</span>
+ 54&nbsp;&nbsp;    JSplitPane jSplitPane2 = <span class = "keyword">new</span> JSplitPane(
+ 55&nbsp;&nbsp;      JSplitPane.VERTICAL_SPLIT, jpComponents,
+ 56&nbsp;&nbsp;      <span class = "keyword">new</span> JScrollPane(jtfDescription));
+ 57&nbsp;&nbsp;    JSplitPane jSplitPane1 = <span class = "keyword">new</span> JSplitPane(
+ 58&nbsp;&nbsp;      JSplitPane.HORIZONTAL_SPLIT, jpChooseLayout, jSplitPane2);
+ 59&nbsp;&nbsp;
+ 60&nbsp;&nbsp;    <span class = "comment">// Set FlowLayout as default</span>
+ 61&nbsp;&nbsp;    jpComponents.setLayout(flowLayout);
+ 62&nbsp;&nbsp;    jpComponents.revalidate();
+ 63&nbsp;&nbsp;    jtfDescription.setText(flowLayoutDesc);
+ 64&nbsp;&nbsp;
+ 65&nbsp;&nbsp;    add(jSplitPane1, BorderLayout.CENTER);
+ 66&nbsp;&nbsp;
+ 67&nbsp;&nbsp;    <span class = "comment">// Register listeners</span>
+ 68&nbsp;&nbsp;    jrbFlowLayout.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 69&nbsp;&nbsp;      @Override
+ 70&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 71&nbsp;&nbsp;        jpComponents.setLayout(flowLayout);
+ 72&nbsp;&nbsp;        jtfDescription.setText(flowLayoutDesc);
+ 73&nbsp;&nbsp;        jpComponents.revalidate();
+ 74&nbsp;&nbsp;      }
+ 75&nbsp;&nbsp;    });
+ 76&nbsp;&nbsp;    jrbGridLayout.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 77&nbsp;&nbsp;      @Override
+ 78&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 79&nbsp;&nbsp;        jpComponents.setLayout(gridLayout);
+ 80&nbsp;&nbsp;        jtfDescription.setText(gridLayoutDesc);
+ 81&nbsp;&nbsp;        jpComponents.revalidate();
+ 82&nbsp;&nbsp;      }
+ 83&nbsp;&nbsp;    });
+ 84&nbsp;&nbsp;    jrbBoxLayout.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 85&nbsp;&nbsp;      @Override
+ 86&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 87&nbsp;&nbsp;        jpComponents.setLayout(boxLayout);
+ 88&nbsp;&nbsp;        jtfDescription.setText(boxLayoutDesc);
+ 89&nbsp;&nbsp;        jpComponents.revalidate();
+ 90&nbsp;&nbsp;      }
+ 91&nbsp;&nbsp;    });
+ 92&nbsp;&nbsp;  }
+ 93&nbsp;&nbsp;
+ 94&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 95&nbsp;&nbsp;    ShowLayout applet = <span class = "keyword">new</span> ShowLayout();
+ 96&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 97&nbsp;&nbsp;    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+ 98&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+ 99&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"ShowLayout"</span>);
+100&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+101&nbsp;&nbsp;    applet.init();
+102&nbsp;&nbsp;    applet.start();
+103&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+104&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+105&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+106&nbsp;&nbsp;  }
+107&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ComputeBMI.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ComputeBMIWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.Scanner;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ComputeBMI {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+    
+    <span class = "comment">// Prompt the user to enter weight in pounds</span>
+    System.out.print(<span class = "literal">"Enter weight in pounds: "</span>);
+    <span class = "keyword">double</span> weight = input.nextDouble();
+    
+    <span class = "comment">// Prompt the user to enter height in inches</span>
+    System.out.print(<span class = "literal">"Enter height in inches: "</span>);
+    <span class = "keyword">double</span> height = input.nextDouble();
+    
+    <span class = "keyword">final</span> <span class = "keyword">double</span> KILOGRAMS_PER_POUND = <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">45359237</span>; <span class = "comment">// Constant</span>
+    <span class = "keyword">final</span> <span class = "keyword">double</span> METERS_PER_INCH = <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">0254</span>; <span class = "comment">// Constant </span>
+    
+    <span class = "comment">// Compute BMI</span>
+    <span class = "keyword">double</span> weightInKilogram = weight * KILOGRAMS_PER_POUND; 
+    <span class = "keyword">double</span> heightInMeters = height * METERS_PER_INCH; 
+    <span class = "keyword">double</span> bmi = weightInKilogram / 
+      (heightInMeters * heightInMeters);
+
+    <span class = "comment">// Display result</span>
+    System.out.println(<span class = "literal">"Your BMI is "</span> + bmi);
+    <span class = "keyword">if</span> (bmi &lt; <span class = "literal">16</span>)
+      System.out.println(<span class = "literal">"You are seriously underweight"</span>);
+    <span class = "keyword">else</span> <span class = "keyword">if</span> (bmi &lt; <span class = "literal">18</span>)
+      System.out.println(<span class = "literal">"You are underweight"</span>);
+    <span class = "keyword">else</span> <span class = "keyword">if</span> (bmi &lt; <span class = "literal">24</span>)
+      System.out.println(<span class = "literal">"You are normal weight"</span>);
+    <span class = "keyword">else</span> <span class = "keyword">if</span> (bmi &lt; <span class = "literal">29</span>)
+      System.out.println(<span class = "literal">"You are overweight"</span>);
+    <span class = "keyword">else</span> <span class = "keyword">if</span> (bmi &lt; <span class = "literal">35</span>)
+      System.out.println(<span class = "literal">"You are seriously overweight"</span>);
+    <span class = "keyword">else</span>
+      System.out.println(<span class = "literal">"You are gravely overweight"</span>);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "ComputeBMI" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - CountOccurrenceOfWords.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "CountOccurrenceOfWordsWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> CountOccurrenceOfWords {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Set text in a string</span>
+    String text = <span class = "literal">"Good morning. Have a good class. Afternoon. Have a good time. "</span> +
+      <span class = "literal">"Have a good visit. Have fun!"</span>;
+
+    <span class = "comment">// Create a TreeMap to hold words as key and count as value</span>
+    Map&lt;String, Integer&gt; map = <span class = "keyword">new</span> TreeMap&lt;&gt;();
+
+    String[] words = text.split(<span class = "literal">"[ \n\t\r.,;:!?(){}]"</span>);
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; words.length; i++) {
+      String key = words[i].toLowerCase();
+      
+      <span class = "keyword">if</span> (key.length() &gt; <span class = "literal">0</span>) {
+        <span class = "keyword">if</span> (!map.containsKey(key)) {
+          map.put(key, <span class = "literal">1</span>);
+        }
+        <span class = "keyword">else</span> {
+          <span class = "keyword">int</span> value = map.get(key);
+          value++;
+          map.put(key, value);
+        }
+      }
+    }
+
+    <span class = "comment">// Get all entries into a set</span>
+    Set&lt;Map.Entry&lt;String, Integer&gt;&gt; entrySet = map.entrySet();
+
+    <span class = "comment">// Get key and value from each entry</span>
+    <span class = "keyword">for</span> (Map.Entry&lt;String, Integer&gt; entry: entrySet)
+      System.out.println(entry.getKey() + <span class = "literal">"\t"</span> + entry.getValue());
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "CountOccurrenceOfWords" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

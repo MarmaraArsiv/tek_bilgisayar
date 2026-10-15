@@ -1,0 +1,197 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - Exam3.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.event.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> Exam3 <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JApplet <FONT COLOR="#000080"><B>implements</B></FONT><FONT COLOR="#000000"> ActionListener {
+  <FONT COLOR="#008000">// Text fields for Number 1, Number 2, and Result
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JTextField jtfNum1, jtfNum2, jtfResult;
+
+  <FONT COLOR="#008000">// Buttons <FONT COLOR="#0000ff">"Add"</FONT>, <FONT COLOR="#0000ff">"Subtract"</FONT>, <FONT COLOR="#0000ff">"Multiply"</FONT> and <FONT COLOR="#0000ff">"Divide"</FONT>
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JButton jbtAdd, jbtSub, jbtMul, jbtDiv;
+
+  <FONT COLOR="#008000">// Menu items <FONT COLOR="#0000ff">"Add"</FONT>, <FONT COLOR="#0000ff">"Subtract"</FONT>, <FONT COLOR="#0000ff">"Multiply"</FONT>,<FONT COLOR="#0000ff">"Divide"</FONT> and <FONT COLOR="#0000ff">"Close"</FONT>
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JMenuItem jmiAdd, jmiSub, jmiMul, jmiDiv, jmiClose;
+
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JPopupMenu jPopupMenu1 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPopupMenu();
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> Exam3() {
+    <FONT COLOR="#008000">// Create menu bar
+<FONT COLOR="#000000">    JMenuBar jmb = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenuBar();
+
+    <FONT COLOR="#008000">// Set menu bar to the frame
+<FONT COLOR="#000000">    setJMenuBar(jmb);
+
+    <FONT COLOR="#008000">// Add menu <FONT COLOR="#0000ff">"Operation"</FONT> to menu bar
+<FONT COLOR="#000000">    JMenu operationMenu = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenu(<FONT COLOR="#0000ff">"Operation"</FONT>);
+    operationMenu.setMnemonic('O');
+    jmb.add(operationMenu);
+
+    <FONT COLOR="#008000">// Add menu <FONT COLOR="#0000ff">"Exit"</FONT> in menu bar
+<FONT COLOR="#000000">    JMenu exitMenu = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenu(<FONT COLOR="#0000ff">"Exit"</FONT>);
+    exitMenu.setMnemonic('E');
+    jmb.add(exitMenu);
+
+    <FONT COLOR="#008000">// Add menu items with mnemonics to menu <FONT COLOR="#0000ff">"Operation"</FONT>
+<FONT COLOR="#000000">    operationMenu.add(jmiAdd= <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenuItem(<FONT COLOR="#0000ff">"Add"</FONT>, 'A'));
+    operationMenu.add(jmiSub = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenuItem(<FONT COLOR="#0000ff">"Subtract"</FONT>, 'S'));
+    operationMenu.add(jmiMul = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenuItem(<FONT COLOR="#0000ff">"Multiply"</FONT>, 'M'));
+    operationMenu.add(jmiDiv = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenuItem(<FONT COLOR="#0000ff">"Divide"</FONT>, 'D'));
+    exitMenu.add(jmiClose = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenuItem(<FONT COLOR="#0000ff">"Close"</FONT>, 'C'));
+
+    <FONT COLOR="#008000">// Set keyboard accelerators
+<FONT COLOR="#000000">    jmiAdd.setAccelerator(
+      KeyStroke.getKeyStroke(KeyEvent.VK_A, ActionEvent.CTRL_MASK));
+    jmiSub.setAccelerator(
+      KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK));
+    jmiMul.setAccelerator(
+      KeyStroke.getKeyStroke(KeyEvent.VK_M, ActionEvent.CTRL_MASK));
+    jmiDiv.setAccelerator(
+      KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK));
+
+    <FONT COLOR="#008000">// Panel p1 to hold text fields and labels
+<FONT COLOR="#000000">    JPanel p1 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    p1.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> FlowLayout());
+    p1.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">"Number 1"</FONT>));
+    p1.add(jtfNum1 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextField(<FONT COLOR="#0000ff">3</FONT><FONT COLOR="#000000">));
+    p1.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">"Number 2"</FONT>));
+    p1.add(jtfNum2 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextField(<FONT COLOR="#0000ff">3</FONT><FONT COLOR="#000000">));
+    p1.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">"Result"</FONT>));
+    p1.add(jtfResult = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextField(<FONT COLOR="#0000ff">4</FONT><FONT COLOR="#000000">));
+    jtfResult.setEditable(<FONT COLOR="#000080"><B>false</B></FONT><FONT COLOR="#000000">);
+
+    <FONT COLOR="#008000">// Panel p2 to hold buttons
+<FONT COLOR="#000000">    JPanel p2 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    p2.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> FlowLayout());
+    p2.add(jbtAdd = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JButton(<FONT COLOR="#0000ff">"Add"</FONT>));
+    p2.add(jbtSub = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JButton(<FONT COLOR="#0000ff">"Subtract"</FONT>));
+    p2.add(jbtMul = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JButton(<FONT COLOR="#0000ff">"Multiply"</FONT>));
+    p2.add(jbtDiv = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JButton(<FONT COLOR="#0000ff">"Divide"</FONT>));
+
+    <FONT COLOR="#008000">// Add panels to the frame
+<FONT COLOR="#000000">    getContentPane().setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BorderLayout());
+    getContentPane().add(p1, BorderLayout.CENTER);
+    getContentPane().add(p2, BorderLayout.SOUTH);
+
+    <FONT COLOR="#008000">// Register listeners
+<FONT COLOR="#000000">    jbtAdd.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+    jbtSub.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+    jbtMul.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+    jbtDiv.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+    jmiAdd.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+    jmiSub.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+    jmiMul.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+    jmiDiv.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+    jmiClose.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+
+
+    <FONT COLOR="#008000">// Add menu <FONT COLOR="#0000ff">"Operation"</FONT> to menu bar
+<FONT COLOR="#000000">    JMenu operationMenu1 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenu(<FONT COLOR="#0000ff">"Operation"</FONT>);
+    operationMenu1.setMnemonic('O');
+    jmb.add(operationMenu1);
+
+    <FONT COLOR="#008000">// Add menu <FONT COLOR="#0000ff">"Exit"</FONT> in menu bar
+<FONT COLOR="#000000">    JMenu exitMenu1 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenu(<FONT COLOR="#0000ff">"Exit"</FONT>);
+    exitMenu.setMnemonic('E');
+    jmb.add(exitMenu1);
+
+    <FONT COLOR="#008000">// Add menu items with mnemonics to menu <FONT COLOR="#0000ff">"Operation"</FONT>
+<FONT COLOR="#000000">    operationMenu1.add( <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenuItem(<FONT COLOR="#0000ff">"Add"</FONT>, 'A'));
+    operationMenu1.add( <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenuItem(<FONT COLOR="#0000ff">"Subtract"</FONT>, 'S'));
+    operationMenu1.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenuItem(<FONT COLOR="#0000ff">"Multiply"</FONT>, 'M'));
+    operationMenu1.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenuItem(<FONT COLOR="#0000ff">"Divide"</FONT>, 'D'));
+    exitMenu1.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JMenuItem(<FONT COLOR="#0000ff">"Close"</FONT>, 'C'));
+    jPopupMenu1.add(operationMenu1);
+    jPopupMenu1.add(exitMenu1);
+
+
+    p1.addMouseListener(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> MouseAdapter() {
+      <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> mousePressed(MouseEvent e) { <FONT COLOR="#008000">// For Motif
+<FONT COLOR="#000000">        showPopup(e);
+      }
+
+      <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> mouseReleased(MouseEvent e) { <FONT COLOR="#008000">// For Windows
+<FONT COLOR="#000000">        showPopup(e);
+      }
+    });
+  }
+
+  <FONT COLOR="#008000">/** Handle ActionEvent from buttons and menu items */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> actionPerformed(ActionEvent e) {
+    String actionCommand = e.getActionCommand();
+
+    <FONT COLOR="#008000">// Handle button events
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (e.getSource() <FONT COLOR="#000080"><B>instanceof</B></FONT><FONT COLOR="#000000"> JButton) {
+      <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#0000ff">"Add"</FONT>.equals(actionCommand))
+        calculate('+');
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#0000ff">"Subtract"</FONT>.equals(actionCommand))
+        calculate('-');
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#0000ff">"Multiply"</FONT>.equals(actionCommand))
+        calculate('*');
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#0000ff">"Divide"</FONT>.equals(actionCommand))
+        calculate('/');
+    }
+    <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (e.getSource() <FONT COLOR="#000080"><B>instanceof</B></FONT><FONT COLOR="#000000"> JMenuItem) {
+      <FONT COLOR="#008000">// Handle menu item events
+<FONT COLOR="#000000">      <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#0000ff">"Add"</FONT>.equals(actionCommand))
+        calculate('+');
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#0000ff">"Subtract"</FONT>.equals(actionCommand))
+        calculate('-');
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#0000ff">"Multiply"</FONT>.equals(actionCommand))
+        calculate('*');
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#0000ff">"Divide"</FONT>.equals(actionCommand))
+        calculate('/');
+      <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#0000ff">"Close"</FONT>.equals(actionCommand))
+        System.exit(<FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">);
+    }
+  }
+
+  <FONT COLOR="#008000">/** Calculate and show the result in jtfResult */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> calculate(<FONT COLOR="#000080"><B>char</B></FONT><FONT COLOR="#000000"> operator) {
+    <FONT COLOR="#008000">// Obtain Number 1 and Number 2
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> num1 = (Integer.parseInt(jtfNum1.getText().trim()));
+    <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> num2 = (Integer.parseInt(jtfNum2.getText().trim()));
+    <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> result = <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">;
+
+    <FONT COLOR="#008000">// Perform selected operation
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>switch</B></FONT><FONT COLOR="#000000"> (operator) {
+      <FONT COLOR="#000080"><B>case</B></FONT><FONT COLOR="#000000"> '+': result = num1 + num2;
+                <FONT COLOR="#000080"><B>break</B></FONT><FONT COLOR="#000000">;
+      <FONT COLOR="#000080"><B>case</B></FONT><FONT COLOR="#000000"> '-': result = num1 - num2;
+                <FONT COLOR="#000080"><B>break</B></FONT><FONT COLOR="#000000">;
+      <FONT COLOR="#000080"><B>case</B></FONT><FONT COLOR="#000000"> '*': result = num1 * num2;
+                <FONT COLOR="#000080"><B>break</B></FONT><FONT COLOR="#000000">;
+      <FONT COLOR="#000080"><B>case</B></FONT><FONT COLOR="#000000"> '/': result = num1 / num2;
+    }
+
+    <FONT COLOR="#008000">// Set result in jtfResult
+<FONT COLOR="#000000">    jtfResult.setText(String.valueOf(result));
+  }
+
+  <FONT COLOR="#008000">/** Display popup menu when triggered */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> showPopup(java.awt.event.MouseEvent evt) {
+    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (evt.isPopupTrigger())
+      jPopupMenu1.show(evt.getComponent(), evt.getX(), evt.getY());
+  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    Exam3 applet = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Exam3();
+    JFrame frame = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JFrame();
+    <FONT COLOR="#008000">//EXIT_ON_CLOSE == 3
+<FONT COLOR="#000000">    frame.setDefaultCloseOperation(<FONT COLOR="#0000ff">3</FONT><FONT COLOR="#000000">);
+    frame.setTitle(<FONT COLOR="#0000ff">"Exam3"</FONT>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<FONT COLOR="#0000ff">400</FONT><FONT COLOR="#000000">,<FONT COLOR="#0000ff">320</FONT><FONT COLOR="#000000">);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <FONT COLOR="#0000ff">2</FONT><FONT COLOR="#000000">,
+      (d.height - frame.getSize().height) / <FONT COLOR="#0000ff">2</FONT><FONT COLOR="#000000">);
+    frame.setVisible(<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+  }
+}
+</pre>

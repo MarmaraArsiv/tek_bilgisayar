@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowFlowLayout.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ShowFlowLayout.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JLabel;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JTextField;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JFrame;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.FlowLayout;
+  5&nbsp;&nbsp;
+  6&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ShowFlowLayout <span class = "keyword">extends</span> JFrame {
+  7&nbsp;&nbsp;  <span class = "keyword">public</span> ShowFlowLayout() {
+  8&nbsp;&nbsp;    <span class = "comment">// Set FlowLayout, aligned left with horizontal gap 10</span>
+  9&nbsp;&nbsp;    <span class = "comment">// and vertical gap 20 between components</span>
+ 10&nbsp;&nbsp;    setLayout(<span class = "keyword">new</span> FlowLayout(FlowLayout.LEFT, <span class = "literal">10</span>, <span class = "literal">20</span>));
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;    <span class = "comment">// Add labels and text fields to the frame</span>
+ 13&nbsp;&nbsp;    add(<span class = "keyword">new</span> JLabel(<span class = "literal">"First Name"</span>));
+ 14&nbsp;&nbsp;    add(<span class = "keyword">new</span> JTextField(<span class = "literal">8</span>));
+ 15&nbsp;&nbsp;    add(<span class = "keyword">new</span> JLabel(<span class = "literal">"MI"</span>));
+ 16&nbsp;&nbsp;    add(<span class = "keyword">new</span> JTextField(<span class = "literal">1</span>));
+ 17&nbsp;&nbsp;    add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Last Name"</span>));
+ 18&nbsp;&nbsp;    add(<span class = "keyword">new</span> JTextField(<span class = "literal">8</span>));
+ 19&nbsp;&nbsp;  }
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 22&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 23&nbsp;&nbsp;    ShowFlowLayout frame = <span class = "keyword">new</span> ShowFlowLayout();
+ 24&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"ShowFlowLayout"</span>);
+ 25&nbsp;&nbsp;    frame.setSize(<span class = "literal">200</span>, <span class = "literal">200</span>);
+ 26&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+ 27&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 28&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 29&nbsp;&nbsp;  }
+ 30&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - MVCDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "MVCDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> MVCDemo <span class = "keyword">extends</span> JApplet  {
+  6&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtController = <span class = "keyword">new</span> JButton(<span class = "literal">"Show Controller"</span>);
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtView = <span class = "keyword">new</span> JButton(<span class = "literal">"Show View"</span>);
+  8&nbsp;&nbsp;  <span class = "keyword">private</span> CircleModel model = <span class = "keyword">new</span> CircleModel();
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;  <span class = "keyword">public</span> MVCDemo() {
+ 11&nbsp;&nbsp;    setLayout(<span class = "keyword">new</span> FlowLayout());
+ 12&nbsp;&nbsp;    add(jbtController);
+ 13&nbsp;&nbsp;    add(jbtView);
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;    jbtController.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 16&nbsp;&nbsp;      @Override
+ 17&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 18&nbsp;&nbsp;        JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"Controller"</span>);
+ 19&nbsp;&nbsp;        CircleController controller = <span class = "keyword">new</span> CircleController();
+ 20&nbsp;&nbsp;        controller.setModel(model);
+ 21&nbsp;&nbsp;        frame.add(controller);
+ 22&nbsp;&nbsp;        frame.setSize(<span class = "literal">200</span>, <span class = "literal">200</span>);
+ 23&nbsp;&nbsp;        frame.setLocation(<span class = "literal">200</span>, <span class = "literal">200</span>);
+ 24&nbsp;&nbsp;        frame.setVisible(<span class = "keyword">true</span>);
+ 25&nbsp;&nbsp;      }
+ 26&nbsp;&nbsp;    });
+ 27&nbsp;&nbsp;
+ 28&nbsp;&nbsp;    jbtView.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 29&nbsp;&nbsp;      @Override
+ 30&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 31&nbsp;&nbsp;        JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"View"</span>);
+ 32&nbsp;&nbsp;        CircleView view = <span class = "keyword">new</span> CircleView();
+ 33&nbsp;&nbsp;        view.setModel(model);
+ 34&nbsp;&nbsp;        frame.add(view);
+ 35&nbsp;&nbsp;        frame.setSize(<span class = "literal">500</span>, <span class = "literal">200</span>);
+ 36&nbsp;&nbsp;        frame.setLocation(<span class = "literal">200</span>, <span class = "literal">200</span>);
+ 37&nbsp;&nbsp;        frame.setVisible(<span class = "keyword">true</span>);
+ 38&nbsp;&nbsp;      }
+ 39&nbsp;&nbsp;    });
+ 40&nbsp;&nbsp;  }
+ 41&nbsp;&nbsp;
+ 42&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 43&nbsp;&nbsp;    MVCDemo applet = <span class = "keyword">new</span> MVCDemo();
+ 44&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 45&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 46&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"MVCDemo"</span>);
+ 47&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+ 48&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>, <span class = "literal">320</span>);
+ 49&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 50&nbsp;&nbsp;  }
+ 51&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

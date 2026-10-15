@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - RegistrationClientUsingObjectStream.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">// RegistrationClientUsingObjectStream.java: The applet client for
+<FONT COLOR="#000000"><FONT COLOR="#008000">// gathering the student information and passing it to the server
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.io.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.net.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.BorderLayout;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.event.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> RegistrationClientUsingObjectStream <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JApplet
+  <FONT COLOR="#000080"><B>implements</B></FONT><FONT COLOR="#000000"> ActionListener {
+  <FONT COLOR="#008000">// Button for registering a student in the file
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JButton jbtRegister = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JButton(<FONT COLOR="#0000ff">"Register"</FONT>);
+
+  <FONT COLOR="#008000">// Create student information panel
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> StudentPanel studentPanel = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> StudentPanel();
+
+  <FONT COLOR="#008000">// Indicate if it runs as application
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>boolean</B></FONT><FONT COLOR="#000000"> isStandAlone = <FONT COLOR="#000080"><B>false</B></FONT><FONT COLOR="#000000">;
+
+  <FONT COLOR="#008000">// Host name or ip
+<FONT COLOR="#000000">  String host = <FONT COLOR="#0000ff">"localhost"</FONT>;
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> init() {
+    <FONT COLOR="#008000">// Add the student panel and button to the applet
+<FONT COLOR="#000000">    getContentPane().add(studentPanel, BorderLayout.CENTER);
+    getContentPane().add(jbtRegister, BorderLayout.SOUTH);
+
+    <FONT COLOR="#008000">// Register listener
+<FONT COLOR="#000000">    jbtRegister.addActionListener(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+
+    <FONT COLOR="#008000">// Find the IP address of the Web server
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (!isStandAlone)
+      host = getCodeBase().getHost();
+  }
+
+  <FONT COLOR="#008000">/** Handle button action */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> actionPerformed(ActionEvent e) {
+    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (e.getSource() == jbtRegister) {
+      <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+        <FONT COLOR="#008000">// Establish connection with the server
+<FONT COLOR="#000000">        Socket socket = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Socket(host, <FONT COLOR="#0000ff">8000</FONT><FONT COLOR="#000000">);
+
+        <FONT COLOR="#008000">// Create an output stream to the server
+<FONT COLOR="#000000">        ObjectOutputStream toServer =
+          <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> ObjectOutputStream(socket.getOutputStream());
+
+        <FONT COLOR="#008000">// Get text field
+<FONT COLOR="#000000">        Student s = studentPanel.getStudent();
+
+        <FONT COLOR="#008000">// Get data from text fields and send it to the server
+<FONT COLOR="#000000">        toServer.writeObject(s);
+      }
+      <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (IOException ex) {
+        System.err.println(ex);
+      }
+    }
+  }
+
+  <FONT COLOR="#008000">/** Run the applet as an application */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    <FONT COLOR="#008000">// Create a frame
+<FONT COLOR="#000000">    JFrame frame = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JFrame(<FONT COLOR="#0000ff">"Register Student Client"</FONT>);
+
+    <FONT COLOR="#008000">// Create an instance of the applet
+<FONT COLOR="#000000">    RegistrationClientUsingObjectStream applet =
+      <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> RegistrationClientUsingObjectStream();
+    applet.isStandAlone = <FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">;
+
+    <FONT COLOR="#008000">// Get host
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (args.length == <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">) applet.host = args[<FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">];
+
+    <FONT COLOR="#008000">// Add the applet instance to the frame
+<FONT COLOR="#000000">    frame.getContentPane().add(applet, BorderLayout.CENTER);
+
+    <FONT COLOR="#008000">// Invoke init() and start()
+<FONT COLOR="#000000">    applet.init();
+    applet.start();
+
+    <FONT COLOR="#008000">// Display the frame
+<FONT COLOR="#000000">    frame.pack();
+    frame.setVisible(<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+  }
+}
+</pre>

@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Intro to Java Programming, 6E - TestTree.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> javax.swing.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> javax.swing.tree.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">import</span> java.awt.<span class = "literal"></span>*<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestTree <span class = "keyword">extends</span> JFrame <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> ImageIcon yourCustomLeafImageIcon =<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">new</span> ImageIcon(getClass(<span class = "literal"></span>)<span class = "literal"></span>.getResource(<span class = "literal">"image/caIcon.gif"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> ImageIcon yourCustomOpenImageIcon =<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">new</span> ImageIcon(getClass(<span class = "literal"></span>)<span class = "literal"></span>.getResource(<span class = "literal">"image/chinaIcon.gif"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> ImageIcon yourCustomClosedImageIcon =<span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">new</span> ImageIcon(getClass(<span class = "literal"></span>)<span class = "literal"></span>.getResource(<span class = "literal">"image/germanyIcon.gif"</span>)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[<span class = "literal"></span>]<span class = "literal"></span> args)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> TestTree frame = <span class = "keyword">new</span> TestTree(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> frame.setTitle(<span class = "literal">"A Sample Tree"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> frame.setSize(<span class = "literal">300</span>,<span class = "literal"></span> <span class = "literal">300</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> frame.setVisible(<span class = "keyword">true</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">public</span> TestTree(<span class = "literal"></span>)<span class = "literal"></span> <span class = "literal"></span>{<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> JTree jTree1 = <span class = "keyword">new</span> JTree(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "comment">//    DefaultTreeCellRenderer renderer =</span>
+<span class = "comment">//        (DefaultTreeCellRenderer) jTree1.getCellRenderer();</span>
+<span class = "comment">//    renderer.setLeafIcon(yourCustomLeafImageIcon);</span>
+<span class = "comment">//    renderer.setOpenIcon(yourCustomOpenImageIcon);</span>
+<span class = "comment">//    renderer.setClosedIcon(yourCustomClosedImageIcon);</span>
+<span class = "comment">//    renderer.setBackgroundSelectionColor(Color.red);</span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "comment">// Customize editor</span>
+<span class = "literal"></span>/<span class = "literal"></span>/JComboBox jcboColor = <span class = "keyword">new</span> JComboBox(<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>/<span class = "literal"></span>/jcboColor.addItem(<span class = "literal">"red"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>/<span class = "literal"></span>/jcboColor.addItem(<span class = "literal">"green"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>/<span class = "literal"></span>/jcboColor.addItem(<span class = "literal">"blue"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>/<span class = "literal"></span>/jcboColor.addItem(<span class = "literal">"yellow"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>/<span class = "literal"></span>/jcboColor.addItem(<span class = "literal">"orange"</span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>/<span class = "literal"></span>/<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>/<span class = "literal"></span>/jTree1.setCellEditor(<span class = "keyword">new</span> javax.swing.DefaultCellEditor(jcboColor)<span class = "literal"></span>)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "comment">//        jTree1.setEditable(true);</span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "comment">//        jTree1.setCellEditor</span>
+<span class = "comment">//          (new javax.swing.tree.DefaultTreeCellEditor(jTree1,</span>
+<span class = "comment">//            new javax.swing.tree.DefaultTreeCellRenderer(),</span>
+<span class = "comment">//                    new javax.swing.DefaultCellEditor(jcboColor)));</span>
+<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span> <span class = "keyword">this</span>.getContentPane(<span class = "literal"></span>)<span class = "literal"></span>.add(jTree1)<span class = "literal"></span>;<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span> <span class = "literal"></span> <span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+<span class = "literal"></span>}<span class = "literal"></span><span class = "literal"></span>
+</pre>
+</body>
+</html>

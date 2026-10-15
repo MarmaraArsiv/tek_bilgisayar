@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - ClockAppletWithAudio.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">// ClockAppletWithAudio.java: Display a running clock on the applet
+<FONT COLOR="#000000"><FONT COLOR="#008000">// with audio
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.applet.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.event.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> ClockAppletWithAudio <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JApplet
+  <FONT COLOR="#000080"><B>implements</B></FONT><FONT COLOR="#000000"> ActionListener {
+  <FONT COLOR="#008000">// Declare audio files
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>protected</B></FONT><FONT COLOR="#000000"> AudioClip[] hourAudio = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> AudioClip[<FONT COLOR="#0000ff">12</FONT><FONT COLOR="#000000">];
+  <FONT COLOR="#000080"><B>protected</B></FONT><FONT COLOR="#000000"> AudioClip minuteAudio;
+  <FONT COLOR="#000080"><B>protected</B></FONT><FONT COLOR="#000000"> AudioClip amAudio;
+  <FONT COLOR="#000080"><B>protected</B></FONT><FONT COLOR="#000000"> AudioClip pmAudio;
+
+  <FONT COLOR="#008000">// Create a clock
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> StillClock clock = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> StillClock();
+
+  <FONT COLOR="#008000">// Create a timer
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> Timer timer = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Timer(<FONT COLOR="#0000ff">1000</FONT><FONT COLOR="#000000">, <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">);
+
+  <FONT COLOR="#008000">// Create a label to display time
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JLabel jlblDigitTime = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">""</FONT>, JLabel.CENTER);
+
+  <FONT COLOR="#008000">/** Initialize the applet */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> init() {
+    Class metaObject = <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.getClass();
+
+    <FONT COLOR="#008000">// Create audio clips for pronouncing hours
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i = <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">; i &lt; <FONT COLOR="#0000ff">12</FONT><FONT COLOR="#000000">; i++)
+      hourAudio[i] = Applet.newAudioClip(
+        metaObject.getResource(<FONT COLOR="#0000ff">"timeaudio/hour"</FONT> + i + <FONT COLOR="#0000ff">".au"</FONT>));
+
+    <FONT COLOR="#008000">// Create audio clips for pronouncing am and pm
+<FONT COLOR="#000000">    amAudio =
+      Applet.newAudioClip(metaObject.getResource(<FONT COLOR="#0000ff">"timeaudio/am.au"</FONT>));
+    pmAudio =
+      Applet.newAudioClip(metaObject.getResource(<FONT COLOR="#0000ff">"timeaudio/pm.au"</FONT>));
+
+    <FONT COLOR="#008000">// Add clock and time label to the content pane of the applet
+<FONT COLOR="#000000">    getContentPane().add(clock, BorderLayout.CENTER);
+    getContentPane().add(jlblDigitTime, BorderLayout.SOUTH);
+  }
+
+  <FONT COLOR="#008000">/** Override the applet's start method */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> start() {
+    timer.start(); <FONT COLOR="#008000">// Resume clock
+<FONT COLOR="#000000">  }
+
+  <FONT COLOR="#008000">/** Override the applet's stop method */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> stop() {
+    timer.stop(); <FONT COLOR="#008000">// Suspend clock
+<FONT COLOR="#000000">  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> actionPerformed(ActionEvent e) {
+    clock.setCurrentTime();
+    clock.repaint();
+    jlblDigitTime.setText(clock.getHour() + <FONT COLOR="#0000ff">":"</FONT> + clock.getMinute()
+      + <FONT COLOR="#0000ff">":"</FONT> + clock.getSecond());
+    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (clock.getSecond() == <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">)
+      announceTime(clock.getMinute(), clock.getHour());
+  }
+
+  <FONT COLOR="#008000">/** Announce the current time at every minute */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> announceTime(<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> m, <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> h) {
+    <FONT COLOR="#008000">// Announce hour
+<FONT COLOR="#000000">    hourAudio[h % <FONT COLOR="#0000ff">12</FONT><FONT COLOR="#000000">].play();
+
+    <FONT COLOR="#008000">// Load the minute file
+<FONT COLOR="#000000">    minuteAudio = Applet.newAudioClip(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.getClass().getResource(
+      <FONT COLOR="#0000ff">"timeaudio/minute"</FONT> + m + <FONT COLOR="#0000ff">".au"</FONT>));
+
+    <FONT COLOR="#008000">// Time delay to allow hourAudio play to finish
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+      Thread.sleep(<FONT COLOR="#0000ff">1500</FONT><FONT COLOR="#000000">);
+    }
+    <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000">(InterruptedException ex) {
+    }
+
+    <FONT COLOR="#008000">// Announce minute
+<FONT COLOR="#000000">    minuteAudio.play();
+
+    <FONT COLOR="#008000">// Time delay to allow minuteAudio play to finish
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+      Thread.sleep(<FONT COLOR="#0000ff">1500</FONT><FONT COLOR="#000000">);
+    }
+    <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000">(InterruptedException ex) {
+    }
+
+    <FONT COLOR="#008000">// Announce am or pm
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (h &lt; <FONT COLOR="#0000ff">12</FONT><FONT COLOR="#000000">)
+      amAudio.play();
+    <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000">
+      pmAudio.play();
+  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    ClockAppletWithAudio applet = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> ClockAppletWithAudio();
+    applet.init();
+    applet.start();
+    JFrame frame = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JFrame();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setTitle(<FONT COLOR="#0000ff">"ClockAppletWithAudio"</FONT>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    frame.setSize(<FONT COLOR="#0000ff">400</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">320</FONT><FONT COLOR="#000000">);
+    frame.setVisible(<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+  }
+}
+
+</pre>

@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DisplayClock.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "DisplayClock.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javafx.application.Application;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javafx.geometry.Pos;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javafx.stage.Stage;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.Scene;
+  5&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.control.Label;
+  6&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.layout.BorderPane;
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> DisplayClock <span class = "keyword">extends</span> Application {
+  9&nbsp;&nbsp;  @Override <span class = "comment">// Override the start method in the Application class</span>
+ 10&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {
+ 11&nbsp;&nbsp;    <span class = "comment">// Create a clock and a label</span>
+ 12&nbsp;&nbsp;    ClockPane clock = <span class = "keyword">new</span> ClockPane();
+ 13&nbsp;&nbsp;    String timeString = clock.getHour() + <span class = "literal">":"</span> + clock.getMinute() 
+ 14&nbsp;&nbsp;      + <span class = "literal">":"</span> + clock.getSecond();
+ 15&nbsp;&nbsp;    Label lblCurrentTime = <span class = "keyword">new</span> Label(timeString);
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    <span class = "comment">// Place clock and label in border pane</span>
+ 18&nbsp;&nbsp;    BorderPane pane = <span class = "keyword">new</span> BorderPane();
+ 19&nbsp;&nbsp;    pane.setCenter(clock);
+ 20&nbsp;&nbsp;    pane.setBottom(lblCurrentTime);
+ 21&nbsp;&nbsp;    BorderPane.setAlignment(lblCurrentTime, Pos.TOP_CENTER);
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;    <span class = "comment">// Create a scene and place it in the stage</span>
+ 24&nbsp;&nbsp;    Scene scene = <span class = "keyword">new</span> Scene(pane, <span class = "literal">250</span>, <span class = "literal">250</span>);
+ 25&nbsp;&nbsp;    primaryStage.setTitle(<span class = "literal">"DisplayClock"</span>); <span class = "comment">// Set the stage title</span>
+ 26&nbsp;&nbsp;    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the stage</span>
+ 27&nbsp;&nbsp;    primaryStage.show(); <span class = "comment">// Display the stage</span>
+ 28&nbsp;&nbsp;//
+ 29&nbsp;&nbsp;<span class = "comment">//    primaryStage.resizableProperty().addListener(new ChangeListener&lt;Boolean&gt;() {</span>
+ 30&nbsp;&nbsp;<span class = "comment">//      @Override</span>
+ 31&nbsp;&nbsp;<span class = "comment">//      public void changed(ObservableValue&lt;? extends Boolean&gt; arg0,</span>
+ 32&nbsp;&nbsp;<span class = "comment">//          Boolean arg1, Boolean arg2) {</span>
+ 33&nbsp;&nbsp;<span class = "comment">//        System.out.println("Not supported yet.");</span>
+ 34&nbsp;&nbsp;<span class = "comment">//      }</span>
+ 35&nbsp;&nbsp;<span class = "comment">//    });</span>
+ 36&nbsp;&nbsp;<span class = "comment">//    </span>
+ 37&nbsp;&nbsp;<span class = "comment">//    primaryStage.widthProperty().addListener(new ChangeListener&lt;Number&gt;() {</span>
+ 38&nbsp;&nbsp;<span class = "comment">//      @Override</span>
+ 39&nbsp;&nbsp;<span class = "comment">//      public void changed(ObservableValue&lt;? extends Number&gt; arg0,</span>
+ 40&nbsp;&nbsp;<span class = "comment">//          Number arg1, Number arg2) {</span>
+ 41&nbsp;&nbsp;<span class = "comment">//        clock.setW(primaryStage.widthProperty().getValue());</span>
+ 42&nbsp;&nbsp;<span class = "comment">//      }</span>
+ 43&nbsp;&nbsp;<span class = "comment">//    });</span>
+ 44&nbsp;&nbsp;  }
+ 45&nbsp;&nbsp;
+ 46&nbsp;&nbsp;  <span class = "comment">/**
+ 47&nbsp;&nbsp;   * The main method is only needed for the IDE with limited
+ 48&nbsp;&nbsp;   * JavaFX support. Not needed for running from the command line.
+ 49&nbsp;&nbsp;   */</span>
+ 50&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 51&nbsp;&nbsp;    launch(args);
+ 52&nbsp;&nbsp;  }
+ 53&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "DisplayClock" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

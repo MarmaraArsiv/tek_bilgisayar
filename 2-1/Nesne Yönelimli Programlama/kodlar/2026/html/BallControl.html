@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - BallControl.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "BallControlWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> java.awt.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> BallControl <span class = "keyword">extends</span> JPanel {
+  <span class = "keyword">private</span> Ball ball = <span class = "keyword">new</span> Ball();
+  <span class = "keyword">private</span> JButton jbtSuspend = <span class = "keyword">new</span> JButton(<span class = "literal">"Suspend"</span>);
+  <span class = "keyword">private</span> JButton jbtResume = <span class = "keyword">new</span> JButton(<span class = "literal">"Resume"</span>);
+  <span class = "keyword">private</span> JScrollBar jsbDelay = <span class = "keyword">new</span> JScrollBar();
+
+  <span class = "keyword">public</span> BallControl() {
+    <span class = "comment">// Group buttons in a panel</span>
+    JPanel panel = <span class = "keyword">new</span> JPanel();
+    panel.add(jbtSuspend);
+    panel.add(jbtResume);
+
+    <span class = "comment">// Add ball and buttons to the panel</span>
+    ball.setBorder(<span class = "keyword">new</span> javax.swing.border.LineBorder(Color.red));
+    jsbDelay.setOrientation(JScrollBar.HORIZONTAL);
+    ball.setDelay(jsbDelay.getMaximum());
+    setLayout(<span class = "keyword">new</span> BorderLayout());
+    add(jsbDelay, BorderLayout.NORTH);
+    add(ball, BorderLayout.CENTER);
+    add(panel, BorderLayout.SOUTH);
+
+    <span class = "comment">// Register listeners</span>
+    jbtSuspend.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        ball.suspend();
+      }
+    });
+    jbtResume.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        ball.resume();
+      }
+    });
+    jsbDelay.addAdjustmentListener(<span class = "keyword">new</span> AdjustmentListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> adjustmentValueChanged(AdjustmentEvent e) {
+        ball.setDelay(jsbDelay.getMaximum() - e.getValue());
+      }
+    });
+  }
+}
+</pre>
+</body>
+</html>

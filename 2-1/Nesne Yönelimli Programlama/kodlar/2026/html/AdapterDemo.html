@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - AdapterDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "AdapterDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.JFrame;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> AdapterDemo <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    AdapterDemo frame = <span class = "keyword">new</span> AdapterDemo();
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setTitle(<span class = "literal">"AdapterDemo"</span>);
+    frame.setSize(<span class = "literal">220</span>, <span class = "literal">80</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+
+  <span class = "keyword">public</span> AdapterDemo() {
+    addWindowListener(<span class = "keyword">new</span> WindowAdapter() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> windowActivated(WindowEvent event) {
+        System.out.println(<span class = "literal">"Window activated"</span>);
+      }
+    });
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestTreeModel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestTreeModelWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestTreeModel {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    javax.swing.JTree jTree1 = <span class = "keyword">new</span> javax.swing.JTree();
+    javax.swing.tree.TreeModel model = jTree1.getModel();
+    traversal(model, model.getRoot());
+  }
+
+  <span class = "keyword">private</span> <span class = "keyword">static</span> <span class = "keyword">void</span> traversal
+      (javax.swing.tree.TreeModel model, Object root) {   
+    System.out.print(root + <span class = "literal">" "</span>);
+    <span class = "keyword">if</span> (model.isLeaf(root)) <span class = "keyword">return</span>;
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; model.getChildCount(root); i++) {
+      traversal(model, model.getChild(root, i));
+    }
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestCourseWithEnrollmentEvent.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestCourseWithEnrollmentEvent.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestCourseWithEnrollmentEvent {
+  2&nbsp;&nbsp;  CourseWithEnrollmentEvent course =
+  3&nbsp;&nbsp;    <span class = "keyword">new</span> CourseWithEnrollmentEvent(<span class = "literal">"Java Programming"</span>);
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> TestCourseWithEnrollmentEvent() {
+  6&nbsp;&nbsp;    course.setEnrollmentCap(<span class = "literal">2</span>);
+  7&nbsp;&nbsp;    EnrollmentListener listener = <span class = "keyword">new</span> NewListener();
+  8&nbsp;&nbsp;    course.addEnrollmentListener(listener);
+  9&nbsp;&nbsp;    course.addStudent(<span class = "literal">"John Smith"</span>);
+ 10&nbsp;&nbsp;    course.addStudent(<span class = "literal">"Jim Peterson"</span>);
+ 11&nbsp;&nbsp;    course.addStudent(<span class = "literal">"Tim Johnson"</span>);
+ 12&nbsp;&nbsp;  }
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 15&nbsp;&nbsp;    <span class = "keyword">new</span> TestCourseWithEnrollmentEvent();
+ 16&nbsp;&nbsp;  }
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">class</span> NewListener <span class = "keyword">implements</span> EnrollmentListener {
+ 19&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> enrollmentExceeded(EnrollmentEvent e) {
+ 20&nbsp;&nbsp;      System.out.println(e.getStudentToEnroll() + <span class = "literal">" attempted to "</span> 
+ 21&nbsp;&nbsp;        + <span class = "literal">"enroll. The enrollment cap is "</span> + e.getEnrollmentCap());
+ 22&nbsp;&nbsp;    }
+ 23&nbsp;&nbsp;  }
+ 24&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

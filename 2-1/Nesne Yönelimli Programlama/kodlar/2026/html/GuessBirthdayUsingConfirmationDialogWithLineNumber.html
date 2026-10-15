@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - GuessBirthdayUsingConfirmationDialog.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "GuessBirthdayUsingConfirmationDialog.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JOptionPane;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> GuessBirthdayUsingConfirmationDialog {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  5&nbsp;&nbsp;    String set1 =
+  6&nbsp;&nbsp;      <span class = "literal">" <span class = "literal">1</span>  <span class = "literal">3</span>  <span class = "literal">5</span>  7\n"</span> +
+  7&nbsp;&nbsp;      <span class = "literal">" <span class = "literal">9</span> <span class = "literal">11</span> <span class = "literal">13</span> 15\n"</span> +
+  8&nbsp;&nbsp;      <span class = "literal">"17 <span class = "literal">19</span> <span class = "literal">21</span> 23\n"</span> +
+  9&nbsp;&nbsp;      <span class = "literal">"25 <span class = "literal">27</span> <span class = "literal">29</span> 31"</span>;
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;    String set2 =
+ 12&nbsp;&nbsp;      <span class = "literal">" <span class = "literal">2</span>  <span class = "literal">3</span>  <span class = "literal">6</span>  7\n"</span> +
+ 13&nbsp;&nbsp;      <span class = "literal">"10 <span class = "literal">11</span> <span class = "literal">14</span> 15\n"</span> +
+ 14&nbsp;&nbsp;      <span class = "literal">"18 <span class = "literal">19</span> <span class = "literal">22</span> 23\n"</span> +
+ 15&nbsp;&nbsp;      <span class = "literal">"26 <span class = "literal">27</span> <span class = "literal">30</span> 31"</span>;
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    String set3 =
+ 18&nbsp;&nbsp;      <span class = "literal">" <span class = "literal">4</span>  <span class = "literal">5</span>  <span class = "literal">6</span>  7\n"</span> +
+ 19&nbsp;&nbsp;      <span class = "literal">"12 <span class = "literal">13</span> <span class = "literal">14</span> 15\n"</span> +
+ 20&nbsp;&nbsp;      <span class = "literal">"20 <span class = "literal">21</span> <span class = "literal">22</span> 23\n"</span> +
+ 21&nbsp;&nbsp;      <span class = "literal">"28 <span class = "literal">29</span> <span class = "literal">30</span> 31"</span>;
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;    String set4 =
+ 24&nbsp;&nbsp;      <span class = "literal">" <span class = "literal">8</span>  <span class = "literal">9</span> <span class = "literal">10</span> 11\n"</span> +
+ 25&nbsp;&nbsp;      <span class = "literal">"12 <span class = "literal">13</span> <span class = "literal">14</span> 15\n"</span> +
+ 26&nbsp;&nbsp;      <span class = "literal">"24 <span class = "literal">25</span> <span class = "literal">26</span> 27\n"</span> +
+ 27&nbsp;&nbsp;      <span class = "literal">"28 <span class = "literal">29</span> <span class = "literal">30</span> 31"</span>;
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;    String set5 =
+ 30&nbsp;&nbsp;      <span class = "literal">"16 <span class = "literal">17</span> <span class = "literal">18</span> 19\n"</span> +
+ 31&nbsp;&nbsp;      <span class = "literal">"20 <span class = "literal">21</span> <span class = "literal">22</span> 23\n"</span> +
+ 32&nbsp;&nbsp;      <span class = "literal">"24 <span class = "literal">25</span> <span class = "literal">26</span> 27\n"</span> +
+ 33&nbsp;&nbsp;      <span class = "literal">"28 <span class = "literal">29</span> <span class = "literal">30</span> 31"</span>;
+ 34&nbsp;&nbsp;
+ 35&nbsp;&nbsp;    <span class = "keyword">int</span> day = <span class = "literal">0</span>;
+ 36&nbsp;&nbsp;
+ 37&nbsp;&nbsp;    <span class = "comment">// Prompt the user to answer questions</span>
+ 38&nbsp;&nbsp;    <span class = "keyword">int</span> answer = JOptionPane.showConfirmDialog(<span class = "keyword">null</span>,
+ 39&nbsp;&nbsp;      <span class = "literal">"Is your birthday in these numbers?\n"</span> + set1);
+ 40&nbsp;&nbsp;
+ 41&nbsp;&nbsp;    <span class = "keyword">if</span> (answer == JOptionPane.YES_OPTION)
+ 42&nbsp;&nbsp;      day += <span class = "literal">1</span>;
+ 43&nbsp;&nbsp;
+ 44&nbsp;&nbsp;    answer = JOptionPane.showConfirmDialog(<span class = "keyword">null</span>,
+ 45&nbsp;&nbsp;      <span class = "literal">"Is your birthday in these numbers?\n"</span> + set2);
+ 46&nbsp;&nbsp;
+ 47&nbsp;&nbsp;    <span class = "keyword">if</span> (answer == JOptionPane.YES_OPTION)
+ 48&nbsp;&nbsp;      day += <span class = "literal">2</span>;
+ 49&nbsp;&nbsp;
+ 50&nbsp;&nbsp;    answer = JOptionPane.showConfirmDialog(<span class = "keyword">null</span>,
+ 51&nbsp;&nbsp;      <span class = "literal">"Is your birthday in these numbers?\n"</span> + set3);
+ 52&nbsp;&nbsp;
+ 53&nbsp;&nbsp;    <span class = "keyword">if</span> (answer == JOptionPane.YES_OPTION)
+ 54&nbsp;&nbsp;      day += <span class = "literal">4</span>;
+ 55&nbsp;&nbsp;
+ 56&nbsp;&nbsp;    answer = JOptionPane.showConfirmDialog(<span class = "keyword">null</span>,
+ 57&nbsp;&nbsp;      <span class = "literal">"Is your birthday in these numbers?\n"</span> + set4);
+ 58&nbsp;&nbsp;
+ 59&nbsp;&nbsp;    <span class = "keyword">if</span> (answer == JOptionPane.YES_OPTION)
+ 60&nbsp;&nbsp;      day += <span class = "literal">8</span>;
+ 61&nbsp;&nbsp;
+ 62&nbsp;&nbsp;    answer = JOptionPane.showConfirmDialog(<span class = "keyword">null</span>,
+ 63&nbsp;&nbsp;      <span class = "literal">"Is your birthday in these numbers?\n"</span> + set5);
+ 64&nbsp;&nbsp;
+ 65&nbsp;&nbsp;    <span class = "keyword">if</span> (answer == JOptionPane.YES_OPTION)
+ 66&nbsp;&nbsp;      day += <span class = "literal">16</span>;
+ 67&nbsp;&nbsp;
+ 68&nbsp;&nbsp;    JOptionPane.showMessageDialog(<span class = "keyword">null</span>, <span class = "literal">"Your birthday is "</span> +
+ 69&nbsp;&nbsp;      day + <span class = "literal">"!"</span>);
+ 70&nbsp;&nbsp;  }
+ 71&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

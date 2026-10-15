@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - FlagAnthem.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "FlagAnthem.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javafx.application.Application;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javafx.collections.FXCollections;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javafx.collections.ObservableList;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> javafx.stage.Stage;
+  5&nbsp;&nbsp;<span class = "keyword">import</span> javafx.geometry.Pos;
+  6&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.Scene;
+  7&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.control.Button;
+  8&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.control.ComboBox;
+  9&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.control.Label;
+ 10&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.image.Image;
+ 11&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.image.ImageView;
+ 12&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.layout.BorderPane;
+ 13&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.layout.HBox;
+ 14&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.media.Media;
+ 15&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.media.MediaPlayer;
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> FlagAnthem <span class = "keyword">extends</span> Application {
+ 18&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">final</span> <span class = "keyword">static</span> <span class = "keyword">int</span> NUMBER_OF_NATIONS = <span class = "literal">7</span>;
+ 19&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">final</span> <span class = "keyword">static</span> String URLBase =
+ 20&nbsp;&nbsp;    <span class = "literal">"http://cs.armstrong.edu/liang/common"</span>;
+ 21&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span> currentIndex = <span class = "literal">0</span>;
+ 22&nbsp;&nbsp;    
+ 23&nbsp;&nbsp;  @Override <span class = "comment">// Override the start method in the Application class</span>
+ 24&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {
+ 25&nbsp;&nbsp;    Image[] images = <span class = "keyword">new</span> Image[NUMBER_OF_NATIONS];
+ 26&nbsp;&nbsp;    MediaPlayer[] mp = <span class = "keyword">new</span> MediaPlayer[NUMBER_OF_NATIONS];
+ 27&nbsp;&nbsp;
+ 28&nbsp;&nbsp;    <span class = "comment">// Load images and audio</span>
+ 29&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; NUMBER_OF_NATIONS; i++) {
+ 30&nbsp;&nbsp;      images[i] = <span class = "keyword">new</span> Image(URLBase + <span class = "literal">"/image/flag"</span> + i + <span class = "literal">".gif"</span>);
+ 31&nbsp;&nbsp;      mp[i] = <span class = "keyword">new</span> MediaPlayer(<span class = "keyword">new</span> Media(
+ 32&nbsp;&nbsp;        URLBase + <span class = "literal">"/audio/anthem/anthem"</span> + i + <span class = "literal">".mp3"</span>));
+ 33&nbsp;&nbsp;    }
+ 34&nbsp;&nbsp;
+ 35&nbsp;&nbsp;    Button btPlayPause = <span class = "keyword">new</span> Button(<span class = "literal">"&gt;"</span>);
+ 36&nbsp;&nbsp;    btPlayPause.setOnAction(e -&gt; {
+ 37&nbsp;&nbsp;      <span class = "keyword">if</span> (btPlayPause.getText().equals(<span class = "literal">"&gt;"</span>)) {
+ 38&nbsp;&nbsp;        btPlayPause.setText(<span class = "literal">"||"</span>);
+ 39&nbsp;&nbsp;        mp[currentIndex].pause();
+ 40&nbsp;&nbsp;      } 
+ 41&nbsp;&nbsp;      <span class = "keyword">else</span> {
+ 42&nbsp;&nbsp;        btPlayPause.setText(<span class = "literal">"&gt;"</span>);
+ 43&nbsp;&nbsp;        mp[currentIndex].play();
+ 44&nbsp;&nbsp;      }
+ 45&nbsp;&nbsp;    });
+ 46&nbsp;&nbsp;
+ 47&nbsp;&nbsp;    ImageView imageView = <span class = "keyword">new</span> ImageView(images[currentIndex]);   
+ 48&nbsp;&nbsp;    ComboBox&lt;String&gt; cboNation = <span class = "keyword">new</span> ComboBox&lt;&gt;();
+ 49&nbsp;&nbsp;    ObservableList&lt;String&gt; items = FXCollections.observableArrayList
+ 50&nbsp;&nbsp;      (<span class = "literal">"Denmark"</span>, <span class = "literal">"Germany"</span>, <span class = "literal">"China"</span>, <span class = "literal">"India"</span>, <span class = "literal">"Norway"</span>, <span class = "literal">"UK"</span>, <span class = "literal">"US"</span>);
+ 51&nbsp;&nbsp;    cboNation.getItems().addAll(items);
+ 52&nbsp;&nbsp;    cboNation.setValue(items.get(<span class = "literal">0</span>));
+ 53&nbsp;&nbsp;    cboNation.setOnAction(e -&gt; {
+ 54&nbsp;&nbsp;      mp[currentIndex].stop();
+ 55&nbsp;&nbsp;      currentIndex = items.indexOf(cboNation.getValue());
+ 56&nbsp;&nbsp;      imageView.setImage(images[currentIndex]);
+ 57&nbsp;&nbsp;      mp[currentIndex].play();
+ 58&nbsp;&nbsp;    });
+ 59&nbsp;&nbsp;
+ 60&nbsp;&nbsp;    HBox hBox = <span class = "keyword">new</span> HBox(<span class = "literal">10</span>);
+ 61&nbsp;&nbsp;    hBox.getChildren().addAll(btPlayPause, 
+ 62&nbsp;&nbsp;      <span class = "keyword">new</span> Label(<span class = "literal">"Select a nation: "</span>), cboNation);
+ 63&nbsp;&nbsp;    hBox.setAlignment(Pos.CENTER);
+ 64&nbsp;&nbsp;
+ 65&nbsp;&nbsp;    <span class = "comment">// Create a pane to hold nodes </span>
+ 66&nbsp;&nbsp;    BorderPane pane = <span class = "keyword">new</span> BorderPane();
+ 67&nbsp;&nbsp;    pane.setCenter(imageView);
+ 68&nbsp;&nbsp;    pane.setBottom(hBox);
+ 69&nbsp;&nbsp;
+ 70&nbsp;&nbsp;    <span class = "comment">// Create a scene and place it in the stage</span>
+ 71&nbsp;&nbsp;    Scene scene = <span class = "keyword">new</span> Scene(pane, <span class = "literal">350</span>, <span class = "literal">270</span>);
+ 72&nbsp;&nbsp;    primaryStage.setTitle(<span class = "literal">"FlagAnthem"</span>); <span class = "comment">// Set the stage title</span>
+ 73&nbsp;&nbsp;    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the stage</span>
+ 74&nbsp;&nbsp;    primaryStage.show(); <span class = "comment">// Display the stage   </span>
+ 75&nbsp;&nbsp;  }
+ 76&nbsp;&nbsp;
+ 77&nbsp;&nbsp;  <span class = "comment">/**
+ 78&nbsp;&nbsp;   * The main method is only needed for the IDE with limited
+ 79&nbsp;&nbsp;   * JavaFX support. Not needed for running from the command line.
+ 80&nbsp;&nbsp;   */</span>
+ 81&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 82&nbsp;&nbsp;    launch(args);
+ 83&nbsp;&nbsp;  }
+ 84&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "FlagAnthem" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

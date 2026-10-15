@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestTableEditor.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestTableEditorWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.sql.RowSet;
+<span class = "keyword">import</span> com.sun.rowset.CachedRowSetImpl;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestTableEditor <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> JComboBox jcboDriver = <span class = "keyword">new</span> JComboBox(<span class = "keyword">new</span> String[] {
+    <span class = "literal">"sun.jdbc.odbc.JdbcOdbcDriver"</span>,
+    <span class = "literal">"com.mysql.jdbc.Driver"</span>,
+    <span class = "literal">"oracle.jdbc.driver.OracleDriver"</span>
+  });
+  <span class = "keyword">private</span> JComboBox jcboURL = <span class = "keyword">new</span> JComboBox(<span class = "keyword">new</span> String[] {
+    <span class = "literal">"jdbc:odbc:exampleMDBDataSource"</span>,
+    <span class = "literal">"jdbc:mysql://localhost/javabook"</span>,
+    <span class = "literal">"jdbc:oracle:thin:@tiger.armstrong.edu:1521:orcl"</span>
+  });
+
+  <span class = "keyword">private</span> JButton jbtConnect =
+    <span class = "keyword">new</span> JButton(<span class = "literal">"Connect to DB & Get Table"</span>);
+  <span class = "keyword">private</span> JTextField jtfUserName = <span class = "keyword">new</span> JTextField();
+  <span class = "keyword">private</span> JPasswordField jpfPassword = <span class = "keyword">new</span> JPasswordField();
+  <span class = "keyword">private</span> JTextField jtfTableName = <span class = "keyword">new</span> JTextField();
+  <span class = "keyword">private</span> TableEditor tableEditor1 = <span class = "keyword">new</span> TableEditor();
+  <span class = "keyword">private</span> JLabel jlblStatus = <span class = "keyword">new</span> JLabel();
+
+  <span class = "comment">/** Creates new form TestTableEditor */</span>
+  <span class = "keyword">public</span> TestTableEditor() {
+    JPanel jPanel1 = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> GridLayout(<span class = "literal">5</span>, <span class = "literal">0</span>));
+    jPanel1.add(jcboDriver);
+    jPanel1.add(jcboURL);
+    jPanel1.add(jtfUserName);
+    jPanel1.add(jpfPassword);
+    jPanel1.add(jtfTableName);
+
+    JPanel jPanel2 = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> GridLayout(<span class = "literal">5</span>, <span class = "literal">0</span>));
+    jPanel2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"JDBC Driver"</span>));
+    jPanel2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Database URL"</span>));
+    jPanel2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Username"</span>));
+    jPanel2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Password"</span>));
+    jPanel2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Table Name"</span>));
+
+    JPanel jPanel3 = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> BorderLayout());
+    jPanel3.add(jbtConnect, BorderLayout.SOUTH);
+    jPanel3.add(jPanel2, BorderLayout.WEST);
+    jPanel3.add(jPanel1, BorderLayout.CENTER);
+    tableEditor1.setPreferredSize(<span class = "keyword">new</span> Dimension(<span class = "literal">400</span>, <span class = "literal">200</span>));
+
+    jcboURL.setEditable(<span class = "keyword">true</span>);
+    jcboDriver.setEditable(<span class = "keyword">true</span>);
+
+    add(<span class = "keyword">new</span> JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+      jPanel3, tableEditor1), BorderLayout.CENTER);
+    add(jlblStatus, BorderLayout.SOUTH);
+
+    jbtConnect.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        <span class = "keyword">try</span> {
+          <span class = "comment">// Connect to the database and create a rowset</span>
+          Class.forName(((String)jcboDriver.getSelectedItem()).trim());
+          RowSet rowSet = <span class = "keyword">new</span> CachedRowSetImpl();
+          rowSet.setUrl(((String)jcboURL.getSelectedItem()).trim());
+          rowSet.setUsername(jtfUserName.getText().trim());
+          rowSet.setPassword(<span class = "keyword">new</span> String(jpfPassword.getPassword()));
+          rowSet.setCommand(<span class = "literal">"select * from "</span> +
+            jtfTableName.getText().trim());
+          rowSet.execute();
+          rowSet.beforeFirst();
+          tableEditor1.setRowSet(rowSet);
+        }
+        <span class = "keyword">catch</span> (Exception ex) {
+          jlblStatus.setText(ex.toString());
+        }
+      }
+    });
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TestTableEditor applet = <span class = "keyword">new</span> TestTableEditor();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"TestTableEditor"</span>);
+    frame.add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.pack();
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

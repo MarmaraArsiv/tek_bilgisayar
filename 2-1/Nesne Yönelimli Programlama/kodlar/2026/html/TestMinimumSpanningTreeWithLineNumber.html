@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestMinimumSpanningTree.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestMinimumSpanningTree.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestMinimumSpanningTree {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  3&nbsp;&nbsp;    String[] vertices = {<span class = "literal">"Seattle"</span>, <span class = "literal">"San Francisco"</span>, <span class = "literal">"Los Angeles"</span>,
+  4&nbsp;&nbsp;      <span class = "literal">"Denver"</span>, <span class = "literal">"Kansas City"</span>, <span class = "literal">"Chicago"</span>, <span class = "literal">"Boston"</span>, <span class = "literal">"New York"</span>,
+  5&nbsp;&nbsp;      <span class = "literal">"Atlanta"</span>, <span class = "literal">"Miami"</span>, <span class = "literal">"Dallas"</span>, <span class = "literal">"Houston"</span>};
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;    <span class = "keyword">int</span>[][] edges = {
+  8&nbsp;&nbsp;      {<span class = "literal">0</span>, <span class = "literal">1</span>, <span class = "literal">807</span>}, {<span class = "literal">0</span>, <span class = "literal">3</span>, <span class = "literal">1331</span>}, {<span class = "literal">0</span>, <span class = "literal">5</span>, <span class = "literal">2097</span>},
+  9&nbsp;&nbsp;      {<span class = "literal">1</span>, <span class = "literal">0</span>, <span class = "literal">807</span>}, {<span class = "literal">1</span>, <span class = "literal">2</span>, <span class = "literal">381</span>}, {<span class = "literal">1</span>, <span class = "literal">3</span>, <span class = "literal">1267</span>},
+ 10&nbsp;&nbsp;      {<span class = "literal">2</span>, <span class = "literal">1</span>, <span class = "literal">381</span>}, {<span class = "literal">2</span>, <span class = "literal">3</span>, <span class = "literal">1015</span>}, {<span class = "literal">2</span>, <span class = "literal">4</span>, <span class = "literal">1663</span>}, {<span class = "literal">2</span>, <span class = "literal">10</span>, <span class = "literal">1435</span>},
+ 11&nbsp;&nbsp;      {<span class = "literal">3</span>, <span class = "literal">0</span>, <span class = "literal">1331</span>}, {<span class = "literal">3</span>, <span class = "literal">1</span>, <span class = "literal">1267</span>}, {<span class = "literal">3</span>, <span class = "literal">2</span>, <span class = "literal">1015</span>}, {<span class = "literal">3</span>, <span class = "literal">4</span>, <span class = "literal">599</span>}, 
+ 12&nbsp;&nbsp;        {<span class = "literal">3</span>, <span class = "literal">5</span>, <span class = "literal">1003</span>},
+ 13&nbsp;&nbsp;      {<span class = "literal">4</span>, <span class = "literal">2</span>, <span class = "literal">1663</span>}, {<span class = "literal">4</span>, <span class = "literal">3</span>, <span class = "literal">599</span>}, {<span class = "literal">4</span>, <span class = "literal">5</span>, <span class = "literal">533</span>}, {<span class = "literal">4</span>, <span class = "literal">7</span>, <span class = "literal">1260</span>},
+ 14&nbsp;&nbsp;        {<span class = "literal">4</span>, <span class = "literal">8</span>, <span class = "literal">864</span>}, {<span class = "literal">4</span>, <span class = "literal">10</span>, <span class = "literal">496</span>},
+ 15&nbsp;&nbsp;      {<span class = "literal">5</span>, <span class = "literal">0</span>, <span class = "literal">2097</span>}, {<span class = "literal">5</span>, <span class = "literal">3</span>, <span class = "literal">1003</span>}, {<span class = "literal">5</span>, <span class = "literal">4</span>, <span class = "literal">533</span>}, 
+ 16&nbsp;&nbsp;        {<span class = "literal">5</span>, <span class = "literal">6</span>, <span class = "literal">983</span>}, {<span class = "literal">5</span>, <span class = "literal">7</span>, <span class = "literal">787</span>},
+ 17&nbsp;&nbsp;      {<span class = "literal">6</span>, <span class = "literal">5</span>, <span class = "literal">983</span>}, {<span class = "literal">6</span>, <span class = "literal">7</span>, <span class = "literal">214</span>},
+ 18&nbsp;&nbsp;      {<span class = "literal">7</span>, <span class = "literal">4</span>, <span class = "literal">1260</span>}, {<span class = "literal">7</span>, <span class = "literal">5</span>, <span class = "literal">787</span>}, {<span class = "literal">7</span>, <span class = "literal">6</span>, <span class = "literal">214</span>}, {<span class = "literal">7</span>, <span class = "literal">8</span>, <span class = "literal">888</span>},
+ 19&nbsp;&nbsp;      {<span class = "literal">8</span>, <span class = "literal">4</span>, <span class = "literal">864</span>}, {<span class = "literal">8</span>, <span class = "literal">7</span>, <span class = "literal">888</span>}, {<span class = "literal">8</span>, <span class = "literal">9</span>, <span class = "literal">661</span>}, 
+ 20&nbsp;&nbsp;        {<span class = "literal">8</span>, <span class = "literal">10</span>, <span class = "literal">781</span>}, {<span class = "literal">8</span>, <span class = "literal">11</span>, <span class = "literal">810</span>},
+ 21&nbsp;&nbsp;      {<span class = "literal">9</span>, <span class = "literal">8</span>, <span class = "literal">661</span>}, {<span class = "literal">9</span>, <span class = "literal">11</span>, <span class = "literal">1187</span>},
+ 22&nbsp;&nbsp;      {<span class = "literal">10</span>, <span class = "literal">2</span>, <span class = "literal">1435</span>}, {<span class = "literal">10</span>, <span class = "literal">4</span>, <span class = "literal">496</span>}, {<span class = "literal">10</span>, <span class = "literal">8</span>, <span class = "literal">781</span>}, {<span class = "literal">10</span>, <span class = "literal">11</span>, <span class = "literal">239</span>},
+ 23&nbsp;&nbsp;      {<span class = "literal">11</span>, <span class = "literal">8</span>, <span class = "literal">810</span>}, {<span class = "literal">11</span>, <span class = "literal">9</span>, <span class = "literal">1187</span>}, {<span class = "literal">11</span>, <span class = "literal">10</span>, <span class = "literal">239</span>}
+ 24&nbsp;&nbsp;    };
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;    WeightedGraph&lt;String&gt; graph1 = 
+ 27&nbsp;&nbsp;      <span class = "keyword">new</span> WeightedGraph&lt;&gt;(vertices, edges);
+ 28&nbsp;&nbsp;    WeightedGraph&lt;String&gt;.MST tree1 = graph1.getMinimumSpanningTree();
+ 29&nbsp;&nbsp;    System.out.println(<span class = "literal">"Total weight is "</span> + tree1.getTotalWeight());
+ 30&nbsp;&nbsp;    tree1.printTree();
+ 31&nbsp;&nbsp;
+ 32&nbsp;&nbsp;    edges = <span class = "keyword">new</span> <span class = "keyword">int</span>[][]{
+ 33&nbsp;&nbsp;      {<span class = "literal">0</span>, <span class = "literal">1</span>, <span class = "literal">2</span>}, {<span class = "literal">0</span>, <span class = "literal">3</span>, <span class = "literal">8</span>}, 
+ 34&nbsp;&nbsp;      {<span class = "literal">1</span>, <span class = "literal">0</span>, <span class = "literal">2</span>}, {<span class = "literal">1</span>, <span class = "literal">2</span>, <span class = "literal">7</span>}, {<span class = "literal">1</span>, <span class = "literal">3</span>, <span class = "literal">3</span>},
+ 35&nbsp;&nbsp;      {<span class = "literal">2</span>, <span class = "literal">1</span>, <span class = "literal">7</span>}, {<span class = "literal">2</span>, <span class = "literal">3</span>, <span class = "literal">4</span>}, {<span class = "literal">2</span>, <span class = "literal">4</span>, <span class = "literal">5</span>},
+ 36&nbsp;&nbsp;      {<span class = "literal">3</span>, <span class = "literal">0</span>, <span class = "literal">8</span>}, {<span class = "literal">3</span>, <span class = "literal">1</span>, <span class = "literal">3</span>}, {<span class = "literal">3</span>, <span class = "literal">2</span>, <span class = "literal">4</span>}, {<span class = "literal">3</span>, <span class = "literal">4</span>, <span class = "literal">6</span>},
+ 37&nbsp;&nbsp;      {<span class = "literal">4</span>, <span class = "literal">2</span>, <span class = "literal">5</span>}, {<span class = "literal">4</span>, <span class = "literal">3</span>, <span class = "literal">6</span>}
+ 38&nbsp;&nbsp;    };
+ 39&nbsp;&nbsp;
+ 40&nbsp;&nbsp;    WeightedGraph&lt;Integer&gt; graph2 = <span class = "keyword">new</span> WeightedGraph&lt;&gt;(edges, <span class = "literal">5</span>);
+ 41&nbsp;&nbsp;    WeightedGraph&lt;Integer&gt;.MST tree2 = 
+ 42&nbsp;&nbsp;      graph2.getMinimumSpanningTree(<span class = "literal">1</span>);
+ 43&nbsp;&nbsp;    System.out.println(<span class = "literal">"\nTotal weight is "</span> + tree2.getTotalWeight());
+ 44&nbsp;&nbsp;    tree2.printTree();
+ 45&nbsp;&nbsp;  }
+ 46&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestMinimumSpanningTree" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

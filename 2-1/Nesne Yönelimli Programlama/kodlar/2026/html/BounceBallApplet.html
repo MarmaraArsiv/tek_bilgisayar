@@ -1,0 +1,26 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - BounceBallApplet.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.event.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.applet.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> BounceBallApplet <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JApplet {
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> BounceBallApplet() {
+    getContentPane().add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BallControl());
+  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    BounceBallApplet applet = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BounceBallApplet();
+    JFrame frame = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JFrame();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setTitle(<FONT COLOR="#0000ff">"BounceBallApplet"</FONT>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    frame.setSize(<FONT COLOR="#0000ff">400</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">320</FONT><FONT COLOR="#000000">);
+    frame.setVisible(<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+  }
+}
+</pre>

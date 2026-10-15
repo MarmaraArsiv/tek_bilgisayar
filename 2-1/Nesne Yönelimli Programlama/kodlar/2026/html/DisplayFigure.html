@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DisplayFigure.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "DisplayFigureWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> DisplayFigure <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> JTabbedPane jtpFigures = <span class = "keyword">new</span> JTabbedPane();
+  <span class = "keyword">private</span> FigurePanel squarePanel = <span class = "keyword">new</span> FigurePanel();
+  <span class = "keyword">private</span> FigurePanel rectanglePanel = <span class = "keyword">new</span> FigurePanel();
+  <span class = "keyword">private</span> FigurePanel circlePanel = <span class = "keyword">new</span> FigurePanel();
+  <span class = "keyword">private</span> FigurePanel ovalPanel = <span class = "keyword">new</span> FigurePanel();
+
+  <span class = "keyword">public</span> DisplayFigure() {
+    squarePanel.setType(FigurePanel.LINE);
+    rectanglePanel.setType(FigurePanel.RECTANGLE);
+    circlePanel.setType(FigurePanel.ROUND_RECTANGLE);
+    ovalPanel.setType(FigurePanel.OVAL);
+
+    add(jtpFigures, BorderLayout.CENTER);
+    jtpFigures.add(squarePanel, <span class = "literal">"Line"</span>);
+    jtpFigures.add(rectanglePanel, <span class = "literal">"Rectangle"</span>);
+    jtpFigures.add(circlePanel, <span class = "literal">"Round Rectangle"</span>);
+    jtpFigures.add(ovalPanel, <span class = "literal">"Oval"</span>);
+
+    jtpFigures.setToolTipTextAt(<span class = "literal">0</span>, <span class = "literal">"Square"</span>);
+    jtpFigures.setToolTipTextAt(<span class = "literal">1</span>, <span class = "literal">"Rectangle"</span>);
+    jtpFigures.setToolTipTextAt(<span class = "literal">2</span>, <span class = "literal">"Circle"</span>);
+    jtpFigures.setToolTipTextAt(<span class = "literal">3</span>, <span class = "literal">"Oval"</span>);
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a frame</span>
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"DisplayFigure"</span>);
+
+    <span class = "comment">// Create an instance of the applet</span>
+    DisplayFigure applet = <span class = "keyword">new</span> DisplayFigure();
+    applet.init();
+
+    <span class = "comment">// Add the applet instance to the frame</span>
+    frame.add(applet, java.awt.BorderLayout.CENTER);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+
+    <span class = "comment">// Display the frame</span>
+    frame.setSize(<span class = "literal">400</span>, <span class = "literal">200</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

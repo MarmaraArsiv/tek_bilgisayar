@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - WindingRuleDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "WindingRuleDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.geom.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> WindingRuleDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> WindingRuleDemo() {
+    add(<span class = "keyword">new</span> ShapePanel());
+  }
+
+  <span class = "keyword">class</span> ShapePanel <span class = "keyword">extends</span> JPanel {
+    @Override
+    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+      <span class = "keyword">super</span>.paintComponent(g);
+  
+      Graphics2D g2d = (Graphics2D)g; <span class = "comment">// Create Graphics2D</span>
+  
+      g2d.translate(<span class = "literal">10</span>, <span class = "literal">10</span>); <span class = "comment">// Translate to a new origin     </span>
+      g2d.draw(createAPath()); <span class = "comment">// Create and draw a path</span>
+
+      g2d.translate(<span class = "literal">160</span>, <span class = "literal">0</span>); <span class = "comment">// Translate to a new origin</span>
+      Path2D path2 = createAPath(); <span class = "comment">// Create a path</span>
+      path2.setWindingRule(Path2D.WIND_EVEN_ODD); <span class = "comment">// Set a new rule</span>
+      g2d.fill(path2); <span class = "comment">// Create and fill a path</span>
+      
+      g2d.translate(<span class = "literal">160</span>, <span class = "literal">0</span>); <span class = "comment">// Translate to a new origin</span>
+      Path2D path3 = createAPath(); <span class = "comment">// Create a path</span>
+      path3.setWindingRule(Path2D.WIND_NON_ZERO); <span class = "comment">// Set a new rule</span>
+      g2d.fill(path3); <span class = "comment">// Create and fill a path</span>
+    }
+    
+    <span class = "keyword">private</span> Path2D createAPath() {
+      <span class = "comment">// Define the outer rectangle</span>
+      Path2D path = <span class = "keyword">new</span> Path2D.Double();
+      path.moveTo(<span class = "literal">0</span>, <span class = "literal">0</span>);
+      path.lineTo(<span class = "literal">0</span>, <span class = "literal">100</span>);
+      path.lineTo(<span class = "literal">100</span>, <span class = "literal">100</span>);
+      path.lineTo(<span class = "literal">100</span>, <span class = "literal">0</span>);
+      path.lineTo(<span class = "literal">0</span>, <span class = "literal">0</span>);
+
+      <span class = "comment">// Define the inner rectangle</span>
+      path.moveTo(<span class = "literal">30</span>, <span class = "literal">30</span>);
+      path.lineTo(<span class = "literal">30</span>, <span class = "literal">70</span>);
+      path.lineTo(<span class = "literal">70</span>, <span class = "literal">70</span>);
+      path.lineTo(<span class = "literal">70</span>, <span class = "literal">30</span>);
+      path.lineTo(<span class = "literal">30</span>, <span class = "literal">30</span>);
+      
+      <span class = "keyword">return</span> path;
+    }
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    WindingRuleDemo applet = <span class = "keyword">new</span> WindingRuleDemo();
+    applet.init();
+    applet.start();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setTitle(<span class = "literal">"WindingRuleDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    frame.setSize(<span class = "literal">450</span>, <span class = "literal">160</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

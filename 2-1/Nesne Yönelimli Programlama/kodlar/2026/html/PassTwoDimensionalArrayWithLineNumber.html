@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - PassTwoDimensionalArray.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "PassTwoDimensionalArray.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.Scanner;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> PassTwoDimensionalArray {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  5&nbsp;&nbsp;    <span class = "keyword">int</span>[][] m = getArray(); <span class = "comment">// Get an array</span>
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;    <span class = "comment">// Display sum of elements</span>
+  8&nbsp;&nbsp;    System.out.println(<span class = "literal">"\nSum of all elements is "</span> + sum(m));
+  9&nbsp;&nbsp;  }
+ 10&nbsp;&nbsp;  
+ 11&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">int</span>[][] getArray() {
+ 12&nbsp;&nbsp;    <span class = "comment">// Create a Scanner</span>
+ 13&nbsp;&nbsp;    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+ 14&nbsp;&nbsp;    
+ 15&nbsp;&nbsp;    <span class = "comment">// Enter array values</span>
+ 16&nbsp;&nbsp;    <span class = "keyword">int</span>[][] m = <span class = "keyword">new</span> <span class = "keyword">int</span>[<span class = "literal">3</span>][<span class = "literal">4</span>];
+ 17&nbsp;&nbsp;    System.out.println(<span class = "literal">"Enter "</span> + m.length + <span class = "literal">" rows and "</span>
+ 18&nbsp;&nbsp;      + m[<span class = "literal">0</span>].length + <span class = "literal">" columns: "</span>);
+ 19&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; m.length; i++)
+ 20&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> j = <span class = "literal">0</span>; j &lt; m[i].length; j++)
+ 21&nbsp;&nbsp;        m[i][j] = input.nextInt();
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;    <span class = "keyword">return</span> m;
+ 24&nbsp;&nbsp;  }
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">int</span> sum(<span class = "keyword">int</span>[][] m) {
+ 27&nbsp;&nbsp;    <span class = "keyword">int</span> total = <span class = "literal">0</span>;
+ 28&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> row = <span class = "literal">0</span>; row &lt; m.length; row++) {
+ 29&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> column = <span class = "literal">0</span>; column &lt; m[row].length; column++) {
+ 30&nbsp;&nbsp;        total += m[row][column];
+ 31&nbsp;&nbsp;      }
+ 32&nbsp;&nbsp;    }
+ 33&nbsp;&nbsp;
+ 34&nbsp;&nbsp;    <span class = "keyword">return</span> total;
+ 35&nbsp;&nbsp;  }
+ 36&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "PassTwoDimensionalArray" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

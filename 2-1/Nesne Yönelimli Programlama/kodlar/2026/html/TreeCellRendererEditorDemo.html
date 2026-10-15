@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TreeCellRendererEditorDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TreeCellRendererEditorDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.tree.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TreeCellRendererEditorDemo <span class = "keyword">extends</span> JApplet {
+  ImageIcon yourCustomLeafImageIcon =
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/caIcon.gif"</span>));
+  ImageIcon yourCustomOpenImageIcon =
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/flag16.gif"</span>));
+  ImageIcon yourCustomClosedImageIcon =
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/rbs.gif"</span>));
+
+  <span class = "keyword">public</span> TreeCellRendererEditorDemo() {
+    JTree jTree1 = <span class = "keyword">new</span> JTree();
+    getContentPane().add(<span class = "keyword">new</span> JScrollPane(jTree1),
+      BorderLayout.CENTER);
+
+    DefaultTreeCellRenderer renderer =
+      (DefaultTreeCellRenderer)jTree1.getCellRenderer();
+    renderer.setLeafIcon(yourCustomLeafImageIcon);
+    renderer.setOpenIcon(yourCustomOpenImageIcon);
+    renderer.setClosedIcon(yourCustomClosedImageIcon);
+    renderer.setBackgroundSelectionColor(Color.red);
+
+    <span class = "comment">// Customize editor</span>
+    JComboBox jcboColor = <span class = "keyword">new</span> JComboBox();
+    jcboColor.addItem(<span class = "literal">"red"</span>);
+    jcboColor.addItem(<span class = "literal">"green"</span>);
+    jcboColor.addItem(<span class = "literal">"blue"</span>);
+    jcboColor.addItem(<span class = "literal">"yellow"</span>);
+    jcboColor.addItem(<span class = "literal">"orange"</span>);
+
+    jTree1.setCellEditor(<span class = "keyword">new</span> DefaultCellEditor(jcboColor));
+    jTree1.setEditable(<span class = "keyword">true</span>);
+
+    jTree1.setCellEditor
+  (<span class = "keyword">new</span> javax.swing.tree.DefaultTreeCellEditor(jTree1,
+   <span class = "keyword">new</span> javax.swing.tree.DefaultTreeCellRenderer(),
+     <span class = "keyword">new</span> javax.swing.DefaultCellEditor(jcboColor)));
+
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TreeCellRendererEditorDemo applet = <span class = "keyword">new</span> TreeCellRendererEditorDemo();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"TreeCellRendererEditorDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>, <span class = "literal">320</span>);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+
+  //<span class = "keyword">static</span> initializer <span class = "keyword">for</span> setting look & feel
+  <span class = "keyword">static</span> {
+    <span class = "keyword">try</span> {
+      //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+      //UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+    }
+    <span class = "keyword">catch</span>(Exception e) {
+    }
+  }
+}
+</pre>
+</body>
+</html>

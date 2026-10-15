@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestTableSortFilter.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestTableSortFilterWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.table.*;
+<span class = "keyword">import</span> java.awt.BorderLayout;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestTableSortFilter <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">// Create table column names</span>
+  <span class = "keyword">private</span> String[] columnNames =
+    {<span class = "literal">"Country"</span>, <span class = "literal">"Capital"</span>, <span class = "literal">"Population in Millions"</span>, <span class = "literal">"Democracy"</span>};
+
+  <span class = "comment">// Create table data</span>
+  <span class = "keyword">private</span> Object[][] data = {
+    {<span class = "literal">"USA"</span>, <span class = "literal">"Washington DC"</span>, <span class = "literal">280</span>, <span class = "keyword">true</span>},
+    {<span class = "literal">"Canada"</span>, <span class = "literal">"Ottawa"</span>, <span class = "literal">32</span>, <span class = "keyword">true</span>},
+    {<span class = "literal">"United Kingdom"</span>, <span class = "literal">"London"</span>, <span class = "literal">60</span>, <span class = "keyword">true</span>},
+    {<span class = "literal">"Germany"</span>, <span class = "literal">"Berlin"</span>, <span class = "literal">83</span>, <span class = "keyword">true</span>},
+    {<span class = "literal">"France"</span>, <span class = "literal">"Paris"</span>, <span class = "literal">60</span>, <span class = "keyword">true</span>},
+    {<span class = "literal">"Norway"</span>, <span class = "literal">"Oslo"</span>, <span class = "literal">4</span><span class = "literal">.</span><span class = "literal">5</span>, <span class = "keyword">true</span>},
+    {<span class = "literal">"India"</span>, <span class = "literal">"New Delhi"</span>, <span class = "literal">1046</span>, <span class = "keyword">true</span>}
+  };
+
+  <span class = "comment">// Create a table</span>
+  <span class = "keyword">private</span> JTable jTable1 = <span class = "keyword">new</span> JTable(data, columnNames);
+
+  <span class = "comment">// Create a TableRowSorter</span>
+  <span class = "keyword">private</span> TableRowSorter&lt;TableModel&gt; sorter =
+      <span class = "keyword">new</span> TableRowSorter&lt;TableModel&gt;(jTable1.getModel());
+
+  <span class = "keyword">private</span> JTextField jtfFilter = <span class = "keyword">new</span> JTextField();
+  <span class = "keyword">private</span> JButton btFilter = <span class = "keyword">new</span> JButton(<span class = "literal">"Filter"</span>);
+
+  <span class = "keyword">public</span> TestTableSortFilter() {
+    <span class = "comment">// Enable auto sorter</span>
+    jTable1.setRowSorter(sorter);
+
+    JPanel panel = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> java.awt.BorderLayout());
+    panel.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Specify a word to match:"</span>),
+      BorderLayout.WEST);
+    panel.add(jtfFilter, BorderLayout.CENTER);
+    panel.add(btFilter, BorderLayout.EAST);
+
+    add(panel, BorderLayout.SOUTH);
+    add(<span class = "keyword">new</span> JScrollPane(jTable1), BorderLayout.CENTER);
+
+    btFilter.addActionListener(<span class = "keyword">new</span> java.awt.event.ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(java.awt.event.ActionEvent e) {
+        String text = jtfFilter.getText();
+        <span class = "keyword">if</span> (text.trim().length() == <span class = "literal">0</span>)
+          sorter.setRowFilter(<span class = "keyword">null</span>);
+        <span class = "keyword">else</span>
+          sorter.setRowFilter(RowFilter.regexFilter(text));
+      }
+    });
+  }
+
+  //Main method
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TestTableSortFilter applet = <span class = "keyword">new</span> TestTableSortFilter();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"TestTableSortFilterSortFilter"</span>);
+    frame.getContentPane().add(applet, java.awt.BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

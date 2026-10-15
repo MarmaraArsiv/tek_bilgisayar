@@ -1,0 +1,124 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - ImageAudioAnimation.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.applet.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ImageAudioAnimation <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> <span class = "keyword">final</span> <span class = "keyword">static</span> <span class = "keyword">int</span> NUMBER_OF_NATIONS = <span class = "literal">7</span>;
+  <span class = "keyword">private</span> <span class = "keyword">int</span> current = <span class = "literal">0</span>;
+  <span class = "keyword">private</span> ImageIcon[] icons = <span class = "keyword">new</span> ImageIcon[NUMBER_OF_NATIONS];
+  <span class = "keyword">private</span> AudioClip[] audioClips = <span class = "keyword">new</span> AudioClip[NUMBER_OF_NATIONS];
+  <span class = "keyword">private</span> AudioClip currentAudioClip;
+
+  <span class = "keyword">private</span> <span class = "keyword">int</span>[] delays =
+    {<span class = "literal">48000</span>, <span class = "literal">54000</span>, <span class = "literal">59000</span>, <span class = "literal">54000</span>, <span class = "literal">59000</span>, <span class = "literal">31000</span>, <span class = "literal">68000</span>};
+  <span class = "keyword">private</span> Timer timer = <span class = "keyword">new</span> Timer(delays[<span class = "literal">0</span>], <span class = "keyword">new</span> TimerListener());
+
+  <span class = "keyword">private</span> JLabel jlblImageLabel = <span class = "keyword">new</span> JLabel();
+  <span class = "keyword">private</span> JButton jbtResume = <span class = "keyword">new</span> JButton(<span class = "literal">"Resume"</span>);
+  <span class = "keyword">private</span> JButton jbtSuspend = <span class = "keyword">new</span> JButton(<span class = "literal">"Suspend"</span>);
+  <span class = "keyword">private</span> JComboBox jcboNations = <span class = "keyword">new</span> JComboBox(<span class = "keyword">new</span> Object[]
+    {<span class = "literal">"Denmark"</span>, <span class = "literal">"Germany"</span>, <span class = "literal">"China"</span>, <span class = "literal">"India"</span>, <span class = "literal">"Norway"</span>, <span class = "literal">"UK"</span>, <span class = "literal">"US"</span>});
+
+  <span class = "keyword">public</span> ImageAudioAnimation() {
+    <span class = "comment">// Load image icons and audio clips</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; NUMBER_OF_NATIONS; i++) {
+      icons[i] = <span class = "keyword">new</span> ImageIcon(getClass().getResource(
+        <span class = "literal">"/image/flag"</span> + i + <span class = "literal">".gif"</span>));
+      audioClips[i] = Applet.newAudioClip(
+        getClass().getResource(<span class = "literal">"/audio/anthem"</span> + i + <span class = "literal">".mid"</span>));
+    }
+
+    JPanel panel = <span class = "keyword">new</span> JPanel();
+    panel.add(jbtResume);
+    panel.add(jbtSuspend);
+    panel.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Select"</span>));
+    panel.add(jcboNations);
+    add(jlblImageLabel, BorderLayout.CENTER);
+    add(panel, BorderLayout.SOUTH);
+
+    jbtResume.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        start();
+      }
+    });
+    jbtSuspend.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        stop();
+      }
+    });
+    jcboNations.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        stop();
+        current = jcboNations.getSelectedIndex();
+        presentNation(current);
+        timer.start();
+      }
+    });
+
+    timer.start();
+    jlblImageLabel.setIcon(icons[<span class = "literal">0</span>]);
+    jlblImageLabel.setHorizontalAlignment(JLabel.CENTER);
+    currentAudioClip = audioClips[<span class = "literal">0</span>];
+    currentAudioClip.play();
+  }
+
+  <span class = "keyword">private</span> <span class = "keyword">class</span> TimerListener <span class = "keyword">implements</span> ActionListener {
+    <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+      current = (current + <span class = "literal">1</span>) % NUMBER_OF_NATIONS;
+      presentNation(current);
+    }
+  }
+
+  <span class = "keyword">private</span> <span class = "keyword">void</span> presentNation(<span class = "keyword">int</span> index) {
+    jlblImageLabel.setIcon(icons[index]);
+    jcboNations.setSelectedIndex(index);
+    currentAudioClip = audioClips[index];
+    currentAudioClip.play();
+    timer.setDelay(delays[index]);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> start() {
+    timer.start();
+    currentAudioClip.play();
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> stop() {
+    timer.stop();
+    currentAudioClip.stop();
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a frame</span>
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"ImageAudioAnimation"</span>);
+
+    <span class = "comment">// Create an instance of the applet</span>
+    ImageAudioAnimation applet = <span class = "keyword">new</span> ImageAudioAnimation();
+    applet.init();
+
+    <span class = "comment">// Add the applet instance to the frame</span>
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    <span class = "comment">// Display the frame</span>
+    frame.setSize(<span class = "literal">400</span>, <span class = "literal">300</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

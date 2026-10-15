@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestActionEvent.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestActionEventWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestActionEvent <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">private</span> JButton jbtOK = <span class = "keyword">new</span> JButton(<span class = "literal">"OK"</span>);
+  <span class = "keyword">private</span> JButton jbtCancel = <span class = "keyword">new</span> JButton(<span class = "literal">"Cancel"</span>);
+
+  <span class = "keyword">public</span> TestActionEvent() {
+    setLayout(<span class = "keyword">new</span> FlowLayout());
+
+    add(jbtOK);
+    add(jbtCancel);
+
+    jbtOK.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        System.out.println(<span class = "literal">"The "</span> + e.getActionCommand() + <span class = "literal">" button "</span>
+          + <span class = "literal">"is clicked at\n  "</span> + <span class = "keyword">new</span> java.util.Date(e.getWhen()));
+      }
+    });
+
+    jbtCancel.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        System.out.println(<span class = "literal">"The "</span> + e.getActionCommand() + <span class = "literal">" button "</span>
+          + <span class = "literal">"is clicked at\n  "</span> + <span class = "keyword">new</span> java.util.Date(e.getWhen()));
+      }
+    });
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TestActionEvent frame = <span class = "keyword">new</span> TestActionEvent();
+    frame.setTitle(<span class = "literal">"TestActionEvent"</span>);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(<span class = "literal">220</span>, <span class = "literal">80</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

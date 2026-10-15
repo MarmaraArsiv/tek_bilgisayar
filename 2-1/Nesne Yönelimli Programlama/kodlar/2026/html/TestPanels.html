@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestPanels.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestPanelsWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestPanels <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">public</span> TestPanels() {
+    <span class = "comment">// Create panel p1 for the buttons and set GridLayout</span>
+    JPanel p1 = <span class = "keyword">new</span> JPanel();
+    p1.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">4</span>, <span class = "literal">3</span>));
+
+    <span class = "comment">// Add buttons to the panel</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">1</span>; i &lt;= <span class = "literal">9</span>; i++) {
+      p1.add(<span class = "keyword">new</span> JButton(<span class = "literal">""</span> + i));
+    }
+
+    p1.add(<span class = "keyword">new</span> JButton(<span class = "literal">""</span> + <span class = "literal">0</span>));
+    p1.add(<span class = "keyword">new</span> JButton(<span class = "literal">"Start"</span>));
+    p1.add(<span class = "keyword">new</span> JButton(<span class = "literal">"Stop"</span>));
+
+    <span class = "comment">// Create panel p2 to hold a text field and p1</span>
+    JPanel p2 = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> BorderLayout());
+    p2.add(<span class = "keyword">new</span> JTextField(<span class = "literal">"Time to be displayed here"</span>),
+      BorderLayout.NORTH);
+    p2.add(p1, BorderLayout.CENTER);
+
+    <span class = "comment">// add contents into the frame</span>
+    add(p2, BorderLayout.EAST);
+    add(<span class = "keyword">new</span> JButton(<span class = "literal">"Food to be placed here"</span>),
+      BorderLayout.CENTER);
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TestPanels frame = <span class = "keyword">new</span> TestPanels();
+    frame.setTitle(<span class = "literal">"The Front View of a Microwave Oven"</span>);
+    frame.setSize(<span class = "literal">400</span>, <span class = "literal">250</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

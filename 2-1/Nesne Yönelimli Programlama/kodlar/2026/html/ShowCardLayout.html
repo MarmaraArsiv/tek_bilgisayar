@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowCardLayout.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ShowCardLayoutWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ShowCardLayout <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> CardLayout cardLayout = <span class = "keyword">new</span> CardLayout(<span class = "literal">20</span>, <span class = "literal">10</span>);
+  <span class = "keyword">private</span> JPanel cardPanel = <span class = "keyword">new</span> JPanel(cardLayout);
+  <span class = "keyword">private</span> JButton jbtFirst, jbtNext, jbtPrevious, jbtLast;
+  <span class = "keyword">private</span> JComboBox jcboImage;
+  <span class = "keyword">private</span> <span class = "keyword">final</span> <span class = "keyword">int</span> NUM_OF_FLAGS = <span class = "literal">6</span>;
+
+  <span class = "keyword">public</span> ShowCardLayout() {
+    cardPanel.setBorder(
+      <span class = "keyword">new</span> javax.swing.border.LineBorder(Color.red));
+
+    <span class = "comment">// Add 9 labels for displaying images into cardPanel</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">1</span>; i &lt;= NUM_OF_FLAGS; i++) {
+      JLabel label =
+        <span class = "keyword">new</span> JLabel(<span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/flag"</span> + i + <span class = "literal">".gif"</span>));
+      cardPanel.add(label, String.valueOf(i));
+    }
+
+    <span class = "comment">// Panel p to hold buttons and a combo box</span>
+    JPanel p = <span class = "keyword">new</span> JPanel();
+    p.add(jbtFirst = <span class = "keyword">new</span> JButton(<span class = "literal">"First"</span>));
+    p.add(jbtNext = <span class = "keyword">new</span> JButton(<span class = "literal">"Next"</span>));
+    p.add(jbtPrevious= <span class = "keyword">new</span> JButton(<span class = "literal">"Previous"</span>));
+    p.add(jbtLast = <span class = "keyword">new</span> JButton(<span class = "literal">"Last"</span>));
+    p.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Image"</span>));
+    p.add(jcboImage = <span class = "keyword">new</span> JComboBox());
+
+    <span class = "comment">// Initialize combo box items</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">1</span>; i &lt;= NUM_OF_FLAGS; i++)
+      jcboImage.addItem(String.valueOf(i));
+
+    <span class = "comment">// Place panels in the frame</span>
+    add(cardPanel, BorderLayout.CENTER);
+    add(p, BorderLayout.SOUTH);
+
+    <span class = "comment">// Register listeners with the source objects</span>
+    jbtFirst.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "comment">// Show the first component in cardPanel</span>
+        cardLayout.first(cardPanel);
+      }
+    });
+    jbtNext.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "comment">// Show the first component in cardPanel</span>
+        cardLayout.next(cardPanel);
+      }
+    });
+    jbtPrevious.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "comment">// Show the first component in cardPanel</span>
+        cardLayout.previous(cardPanel);
+      }
+    });
+    jbtLast.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "comment">// Show the first component in cardPanel</span>
+        cardLayout.last(cardPanel);
+      }
+    });
+    jcboImage.addItemListener(<span class = "keyword">new</span> ItemListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> itemStateChanged(ItemEvent e) {
+        <span class = "comment">// Show the component at specified index</span>
+        cardLayout.show(cardPanel, (String)e.getItem());
+      }
+    });
+  }
+
+  //Main method
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ShowCardLayout applet = <span class = "keyword">new</span> ShowCardLayout();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"ShowCardLayout"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

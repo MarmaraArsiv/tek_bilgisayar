@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - AnonymousHandlerDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "AnonymousHandlerDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javafx.application.Application;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javafx.event.ActionEvent;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javafx.event.EventHandler;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> javafx.geometry.Pos;
+  5&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.Scene;
+  6&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.control.Button;
+  7&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.layout.HBox;
+  8&nbsp;&nbsp;<span class = "keyword">import</span> javafx.stage.Stage;
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> AnonymousHandlerDemo <span class = "keyword">extends</span> Application {
+ 11&nbsp;&nbsp;  @Override <span class = "comment">// Override the start method in the Application class</span>
+ 12&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {
+ 13&nbsp;&nbsp;    <span class = "comment">// Hold two buttons in an HBox</span>
+ 14&nbsp;&nbsp;    HBox hBox = <span class = "keyword">new</span> HBox();
+ 15&nbsp;&nbsp;    hBox.setSpacing(<span class = "literal">10</span>);
+ 16&nbsp;&nbsp;    hBox.setAlignment(Pos.CENTER);
+ 17&nbsp;&nbsp;    Button btNew = <span class = "keyword">new</span> Button(<span class = "literal">"New"</span>);
+ 18&nbsp;&nbsp;    Button btOpen = <span class = "keyword">new</span> Button(<span class = "literal">"Open"</span>);
+ 19&nbsp;&nbsp;    Button btSave = <span class = "keyword">new</span> Button(<span class = "literal">"Save"</span>);
+ 20&nbsp;&nbsp;    Button btPrint = <span class = "keyword">new</span> Button(<span class = "literal">"Print"</span>);
+ 21&nbsp;&nbsp;    hBox.getChildren().addAll(btNew, btOpen, btSave, btPrint);
+ 22&nbsp;&nbsp;    
+ 23&nbsp;&nbsp;    <span class = "comment">// Create and register the handler</span>
+ 24&nbsp;&nbsp;    btNew.setOnAction(<span class = "keyword">new</span> EventHandler&lt;ActionEvent&gt;() {
+ 25&nbsp;&nbsp;      @Override <span class = "comment">// Override the handle method</span>
+ 26&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> handle(ActionEvent e) {
+ 27&nbsp;&nbsp;        System.out.println(<span class = "literal">"Process New"</span>);
+ 28&nbsp;&nbsp;      }
+ 29&nbsp;&nbsp;    });
+ 30&nbsp;&nbsp;
+ 31&nbsp;&nbsp;    btOpen.setOnAction(<span class = "keyword">new</span> EventHandler&lt;ActionEvent&gt;() {
+ 32&nbsp;&nbsp;      @Override <span class = "comment">// Override the handle method</span>
+ 33&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> handle(ActionEvent e) {
+ 34&nbsp;&nbsp;        System.out.println(<span class = "literal">"Process Open"</span>);
+ 35&nbsp;&nbsp;      }
+ 36&nbsp;&nbsp;    });
+ 37&nbsp;&nbsp;    
+ 38&nbsp;&nbsp;    btSave.setOnAction(<span class = "keyword">new</span> EventHandler&lt;ActionEvent&gt;() {
+ 39&nbsp;&nbsp;      @Override <span class = "comment">// Override the handle method</span>
+ 40&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> handle(ActionEvent e) {
+ 41&nbsp;&nbsp;        System.out.println(<span class = "literal">"Process Save"</span>);
+ 42&nbsp;&nbsp;      }
+ 43&nbsp;&nbsp;    });
+ 44&nbsp;&nbsp;    
+ 45&nbsp;&nbsp;    btPrint.setOnAction(<span class = "keyword">new</span> EventHandler&lt;ActionEvent&gt;() {
+ 46&nbsp;&nbsp;      @Override <span class = "comment">// Override the handle method</span>
+ 47&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> handle(ActionEvent e) {
+ 48&nbsp;&nbsp;        System.out.println(<span class = "literal">"Process Print"</span>);
+ 49&nbsp;&nbsp;      }
+ 50&nbsp;&nbsp;    });
+ 51&nbsp;&nbsp;
+ 52&nbsp;&nbsp;    <span class = "comment">// Create a scene and place it in the stage</span>
+ 53&nbsp;&nbsp;    Scene scene = <span class = "keyword">new</span> Scene(hBox, <span class = "literal">300</span>, <span class = "literal">50</span>);
+ 54&nbsp;&nbsp;    primaryStage.setTitle(<span class = "literal">"AnonymousHandlerDemo"</span>); <span class = "comment">// Set title</span>
+ 55&nbsp;&nbsp;    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the stage</span>
+ 56&nbsp;&nbsp;    primaryStage.show(); <span class = "comment">// Display the stage</span>
+ 57&nbsp;&nbsp;  }
+ 58&nbsp;&nbsp;  
+ 59&nbsp;&nbsp;  <span class = "comment">/**
+ 60&nbsp;&nbsp;   * The main method is only needed for the IDE with limited
+ 61&nbsp;&nbsp;   * JavaFX support. Not needed for running from the command line.
+ 62&nbsp;&nbsp;   */</span>
+ 63&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 64&nbsp;&nbsp;    launch(args);
+ 65&nbsp;&nbsp;  }
+ 66&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "AnonymousHandlerDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

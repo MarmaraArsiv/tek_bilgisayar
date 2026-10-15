@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DrawArcs.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "DrawArcs.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JFrame;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JPanel;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.Graphics;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> DrawArcs <span class = "keyword">extends</span> JFrame {
+  6&nbsp;&nbsp;  <span class = "keyword">public</span> DrawArcs() {
+  7&nbsp;&nbsp;    setTitle(<span class = "literal">"DrawArcs"</span>);
+  8&nbsp;&nbsp;    add(<span class = "keyword">new</span> ArcsPanel());
+  9&nbsp;&nbsp;  }
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 12&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 13&nbsp;&nbsp;    DrawArcs frame = <span class = "keyword">new</span> DrawArcs();
+ 14&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+ 15&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 16&nbsp;&nbsp;    frame.setSize(<span class = "literal">250</span>, <span class = "literal">300</span>);
+ 17&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 18&nbsp;&nbsp;  }
+ 19&nbsp;&nbsp;}
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;<span class = "comment">// The class for drawing arcs on a panel</span>
+ 22&nbsp;&nbsp;<span class = "keyword">class</span> ArcsPanel <span class = "keyword">extends</span> JPanel {
+ 23&nbsp;&nbsp;  @Override
+ 24&nbsp;&nbsp;  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+ 25&nbsp;&nbsp;    <span class = "keyword">super</span>.paintComponent(g);
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;    <span class = "keyword">int</span> xCenter = getWidth() / <span class = "literal">2</span>;
+ 28&nbsp;&nbsp;    <span class = "keyword">int</span> yCenter = getHeight() / <span class = "literal">2</span>;
+ 29&nbsp;&nbsp;    <span class = "keyword">int</span> radius = (<span class = "keyword">int</span>)(Math.min(getWidth(), getHeight()) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">4</span>);
+ 30&nbsp;&nbsp;
+ 31&nbsp;&nbsp;    <span class = "keyword">int</span> x = xCenter - radius;
+ 32&nbsp;&nbsp;    <span class = "keyword">int</span> y = yCenter - radius;
+ 33&nbsp;&nbsp;
+ 34&nbsp;&nbsp;    g.fillArc(x, y, <span class = "literal">2</span> * radius, <span class = "literal">2</span> * radius, <span class = "literal">0</span>, <span class = "literal">30</span>);
+ 35&nbsp;&nbsp;    g.fillArc(x, y, <span class = "literal">2</span> * radius, <span class = "literal">2</span> * radius, <span class = "literal">90</span>, <span class = "literal">30</span>);
+ 36&nbsp;&nbsp;    g.fillArc(x, y, <span class = "literal">2</span> * radius, <span class = "literal">2</span> * radius, <span class = "literal">180</span>, <span class = "literal">30</span>);
+ 37&nbsp;&nbsp;    g.fillArc(x, y, <span class = "literal">2</span> * radius, <span class = "literal">2</span> * radius, <span class = "literal">270</span>, <span class = "literal">30</span>);
+ 38&nbsp;&nbsp;  }
+ 39&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

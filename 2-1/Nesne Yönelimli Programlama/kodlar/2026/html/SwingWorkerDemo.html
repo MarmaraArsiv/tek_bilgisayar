@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SwingWorkerDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "SwingWorkerDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> SwingWorkerDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> JButton jbtComputeWithSwingWorker = <span class = "keyword">new</span> JButton(<span class = "literal">"Compute"</span>);
+  <span class = "keyword">private</span> JTextField jtfLimit1 = <span class = "keyword">new</span> JTextField(<span class = "literal">8</span>);
+  <span class = "keyword">private</span> JTextField jtfResult1 = <span class = "keyword">new</span> JTextField(<span class = "literal">6</span>);
+	<span class = "keyword">private</span> JButton jbtCompute = <span class = "keyword">new</span> JButton(<span class = "literal">"Compute"</span>);
+	<span class = "keyword">private</span> JTextField jtfLimit2 = <span class = "keyword">new</span> JTextField(<span class = "literal">8</span>);
+	<span class = "keyword">private</span> JTextField jtfResult2 = <span class = "keyword">new</span> JTextField(<span class = "literal">6</span>);
+	
+	<span class = "keyword">public</span> SwingWorkerDemo() {
+    JPanel panel1 = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">1</span>));
+    panel1.setBorder(BorderFactory.createTitledBorder(
+      <span class = "literal">"Using SwingWorker"</span>));
+    JPanel panel11 = <span class = "keyword">new</span> JPanel();
+    panel11.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"The number of prime numbers &lt;= "</span>));
+    panel11.add(jtfLimit1);
+    panel11.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"is"</span>));
+    panel11.add(jtfResult1);
+    JPanel panel12 = <span class = "keyword">new</span> JPanel();
+    panel12.add(jbtComputeWithSwingWorker);
+    panel1.add(panel11);
+    panel1.add(panel12);
+		
+    JPanel panel2 = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">1</span>));
+    panel2.setBorder(BorderFactory.createTitledBorder(
+      <span class = "literal">"Without Using SwingWorker"</span>));
+    JPanel panel21 = <span class = "keyword">new</span> JPanel();
+    panel21.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"The number of prime numbers &lt;= "</span>));
+    panel21.add(jtfLimit2);
+    panel21.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"is"</span>));
+    panel21.add(jtfResult2);
+    JPanel panel22 = <span class = "keyword">new</span> JPanel();
+    panel22.add(jbtCompute);
+    panel2.add(panel21);
+    panel2.add(panel22);
+		
+		setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">1</span>, <span class = "literal">2</span>));
+		add(panel1);
+		add(panel2);
+		
+		jbtComputeWithSwingWorker.addActionListener(<span class = "keyword">new</span> ActionListener() {
+		  @Override
+			<span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {			
+				<span class = "keyword">new</span> ComputePrime(Integer.parseInt(jtfLimit1.getText()), 
+					jtfResult1).execute(); <span class = "comment">// Execute SwingWorker</span>
+			}
+		});
+		
+		jbtCompute.addActionListener(<span class = "keyword">new</span> ActionListener() {
+		  @Override
+			<span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {			
+				<span class = "keyword">int</span> count = ComputePrime.getNumberOfPrimes(
+					Integer.parseInt(jtfLimit2.getText()));
+				jtfResult2.setText(count + <span class = "literal">""</span>);
+			}
+		});	
+	}
+	
+	<span class = "comment">/** Task class for SwingWorker */</span>
+	<span class = "keyword">static</span> <span class = "keyword">class</span> ComputePrime <span class = "keyword">extends</span> SwingWorker&lt;Integer, Object&gt; {
+		<span class = "keyword">private</span> <span class = "keyword">int</span> limit; 
+		<span class = "keyword">private</span> JTextField result; <span class = "comment">// Text field in the UI</span>
+		
+		<span class = "comment">/** Construct a runnable Task */</span>
+		<span class = "keyword">public</span> ComputePrime(<span class = "keyword">int</span> limit, JTextField result) {
+			<span class = "keyword">this</span>.limit = limit;
+			<span class = "keyword">this</span>.result = result;
+		}
+		
+		<span class = "comment">/** Code run on a background thread */</span>
+		<span class = "keyword">protected</span> Integer doInBackground() {
+			<span class = "keyword">return</span> getNumberOfPrimes(limit);
+		}
+		
+		<span class = "comment">/** Code executed after the background thread finishes */</span>
+		<span class = "keyword">protected</span> <span class = "keyword">void</span> done() {
+			<span class = "keyword">try</span> {
+			  result.setText(get().toString()); <span class = "comment">// Display in text field</span>
+			}
+			<span class = "keyword">catch</span> (Exception ex) {
+			  result.setText(ex.getMessage()); 
+			}
+		}	
+
+		<span class = "comment">/** Return the number of primes &lt;= limit */</span>
+		<span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">int</span> getNumberOfPrimes(<span class = "keyword">int</span> limit) {		
+	    <span class = "keyword">int</span> count = <span class = "literal">0</span>; <span class = "comment">// Count the number of prime numbers</span>
+	    <span class = "keyword">int</span> number = <span class = "literal">2</span>; <span class = "comment">// A number to be tested for primeness</span>
+
+	    <span class = "comment">// Repeatedly find prime numbers</span>
+	    <span class = "keyword">while</span> (number &lt;= limit) {
+	      <span class = "comment">// Print the prime number and increase the count</span>
+	      <span class = "keyword">if</span> (isPrime(number)) {
+	        count++; <span class = "comment">// Increase the count</span>
+	      }
+
+	      <span class = "comment">// Check if the next number is prime</span>
+	      number++;
+	    }
+	    
+	    <span class = "keyword">return</span> count;
+	  }
+
+	  <span class = "comment">/** Check whether number is prime */</span>
+	  <span class = "keyword">private</span> <span class = "keyword">static</span> <span class = "keyword">boolean</span> isPrime(<span class = "keyword">int</span> number) {
+	    <span class = "keyword">for</span> (<span class = "keyword">int</span> divisor = <span class = "literal">2</span>; divisor &lt;= number / <span class = "literal">2</span>; divisor++) {
+	      <span class = "keyword">if</span> (number % divisor == <span class = "literal">0</span>) { <span class = "comment">// If true, number is not prime</span>
+	        <span class = "keyword">return</span> <span class = "keyword">false</span>; <span class = "comment">// number is not a prime</span>
+	      }
+	    }
+
+	    <span class = "keyword">return</span> <span class = "keyword">true</span>; <span class = "comment">// number is prime</span>
+	  }
+	}
+	
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    SwingWorkerDemo applet = <span class = "keyword">new</span> SwingWorkerDemo();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    frame.setTitle(<span class = "literal">"SwingWorkerDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.pack();
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - AppletClient.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "AppletClientWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.io.*;
+<span class = "keyword">import</span> java.net.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> AppletClient <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">// Label for displaying the visit count</span>
+  <span class = "keyword">private</span> JLabel jlblCount = <span class = "keyword">new</span> JLabel();
+
+  <span class = "comment">// Indicate if it runs as application</span>
+  <span class = "keyword">private</span> <span class = "keyword">boolean</span> isStandAlone = <span class = "keyword">false</span>;
+
+  <span class = "comment">// Host name or ip</span>
+  <span class = "keyword">private</span> String host = <span class = "literal">"localhost"</span>;
+
+  <span class = "comment">/** Initialize the applet */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> init() {
+    add(jlblCount);
+
+    <span class = "keyword">try</span> {
+      <span class = "comment">// Create a socket to connect to the server</span>
+      Socket socket;
+      <span class = "keyword">if</span> (isStandAlone)
+        socket = <span class = "keyword">new</span> Socket(host, <span class = "literal">8000</span>);
+      <span class = "keyword">else</span>
+        socket = <span class = "keyword">new</span> Socket(getCodeBase().getHost(), <span class = "literal">8000</span>);
+
+      <span class = "comment">// Create an input stream to receive data from the server</span>
+      DataInputStream inputFromServer =
+        <span class = "keyword">new</span> DataInputStream(socket.getInputStream());
+
+      <span class = "comment">// Receive the count from the server and display it on label</span>
+      <span class = "keyword">int</span> count = inputFromServer.readInt();
+      jlblCount.setText(<span class = "literal">"You are visitor number "</span> + count);
+
+      <span class = "comment">// Close the stream</span>
+      inputFromServer.close();
+    }
+    <span class = "keyword">catch</span> (IOException ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  <span class = "comment">/** Run the applet as an application */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a frame</span>
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"Applet Client"</span>);
+
+    <span class = "comment">// Create an instance of the applet</span>
+    AppletClient applet = <span class = "keyword">new</span> AppletClient();
+    applet.isStandAlone = <span class = "keyword">true</span>;
+
+    <span class = "comment">// Get host</span>
+    <span class = "keyword">if</span> (args.length == <span class = "literal">1</span>) applet.host = args[<span class = "literal">0</span>];
+
+    <span class = "comment">// Add the applet instance to the frame</span>
+    frame.add(applet, java.awt.BorderLayout.CENTER);
+
+    <span class = "comment">// Invoke init() and start()</span>
+    applet.init();
+    applet.start();
+
+    <span class = "comment">// Display the frame</span>
+    frame.pack();
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

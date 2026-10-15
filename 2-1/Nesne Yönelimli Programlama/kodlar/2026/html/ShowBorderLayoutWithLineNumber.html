@@ -1,0 +1,47 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowBorderLayout.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ShowBorderLayout.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JButton;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JFrame;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.BorderLayout;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ShowBorderLayout <span class = "keyword">extends</span> JFrame {
+  6&nbsp;&nbsp;  <span class = "keyword">public</span> ShowBorderLayout() {
+  7&nbsp;&nbsp;    <span class = "comment">// Set BorderLayout with horizontal gap 5 and vertical gap 10</span>
+  8&nbsp;&nbsp;    setLayout(<span class = "keyword">new</span> BorderLayout(<span class = "literal">5</span>, <span class = "literal">10</span>));
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;    <span class = "comment">// Add buttons to the frame</span>
+ 11&nbsp;&nbsp;    add(<span class = "keyword">new</span> JButton(<span class = "literal">"East"</span>), BorderLayout.EAST);
+ 12&nbsp;&nbsp;    add(<span class = "keyword">new</span> JButton(<span class = "literal">"South"</span>), BorderLayout.SOUTH);
+ 13&nbsp;&nbsp;    add(<span class = "keyword">new</span> JButton(<span class = "literal">"West"</span>), BorderLayout.WEST);
+ 14&nbsp;&nbsp;    add(<span class = "keyword">new</span> JButton(<span class = "literal">"North"</span>), BorderLayout.NORTH);
+ 15&nbsp;&nbsp;    add(<span class = "keyword">new</span> JButton(<span class = "literal">"Center"</span>), BorderLayout.CENTER);
+ 16&nbsp;&nbsp;  }
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 19&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 20&nbsp;&nbsp;    ShowBorderLayout frame = <span class = "keyword">new</span> ShowBorderLayout();
+ 21&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"ShowBorderLayout"</span>);
+ 22&nbsp;&nbsp;    frame.setSize(<span class = "literal">300</span>, <span class = "literal">200</span>);
+ 23&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+ 24&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 25&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 26&nbsp;&nbsp;  }
+ 27&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

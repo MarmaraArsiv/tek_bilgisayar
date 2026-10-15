@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Exercise33_03.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "Exercise33_03WithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">package</span> jsfexercise;
+
+<span class = "keyword">import</span> javax.enterprise.context.RequestScoped;
+<span class = "keyword">import</span> javax.inject.Named;
+
+@Named
+@RequestScoped
+<span class = "keyword">public</span> <span class = "keyword">class</span> Exercise33_03 {
+  <span class = "keyword">private</span> <span class = "keyword">double</span> taxableIncome;
+  <span class = "keyword">private</span> <span class = "keyword">int</span> filingStatus;
+  
+  <span class = "comment">/** Creates a new instance of Exercise44_3 */</span>
+  <span class = "keyword">public</span> Exercise33_03() {
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">double</span> getTaxableIncome() {
+    <span class = "keyword">return</span> taxableIncome;
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setTaxableIncome(<span class = "keyword">double</span> taxableIncome) {
+    <span class = "keyword">this</span>.taxableIncome = taxableIncome;
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getFilingStatus() {
+    <span class = "keyword">return</span> filingStatus;
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setFilingStatus(<span class = "keyword">int</span> filingStatus) {
+    <span class = "keyword">this</span>.filingStatus = filingStatus;
+  }
+      
+  <span class = "keyword">public</span> String getResponse() {
+    <span class = "keyword">if</span> (taxableIncome == <span class = "literal">0</span>)
+      <span class = "keyword">return</span> <span class = "literal">""</span>;
+    
+    String s = <span class = "literal">"Taxable Income: "</span> + taxableIncome + <span class = "literal">"&lt;br&gt;"</span> + 
+      <span class = "literal">"Filing Status: "</span> + filingStatus + <span class = "literal">"&lt;br&gt;"</span> +
+      <span class = "literal">"&lt;font color=\"#FF0000\"&gt;"</span> +
+      <span class = "literal">"Tax: "</span> + ComputeTax.computeTax(filingStatus, taxableIncome) +
+      <span class = "literal">"&lt;/font&gt;"</span>;
+    
+    <span class = "keyword">return</span> s;
+  }
+}
+</pre>
+</body>
+</html>

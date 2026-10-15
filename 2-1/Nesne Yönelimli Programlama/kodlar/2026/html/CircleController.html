@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - CircleController.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "CircleControllerWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> CircleController <span class = "keyword">extends</span> JPanel {
+  <span class = "keyword">private</span> CircleModel model;
+  <span class = "keyword">private</span> JTextField jtfRadius = <span class = "keyword">new</span> JTextField();
+  <span class = "keyword">private</span> JComboBox jcboFilled = <span class = "keyword">new</span> JComboBox(<span class = "keyword">new</span> Boolean[]{
+    <span class = "keyword">new</span> Boolean(<span class = "keyword">false</span>), <span class = "keyword">new</span> Boolean(<span class = "keyword">true</span>)});
+
+  <span class = "comment">/** Creates new form CircleController */</span>
+  <span class = "keyword">public</span> CircleController() {
+    <span class = "comment">// Panel to group labels</span>
+    JPanel panel1 = <span class = "keyword">new</span> JPanel();
+    panel1.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">1</span>));
+    panel1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Radius"</span>));
+    panel1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Filled"</span>));
+
+    <span class = "comment">// Panel to group text field, combo box, and another panel</span>
+    JPanel panel2 = <span class = "keyword">new</span> JPanel();
+    panel2.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">1</span>));
+    panel2.add(jtfRadius);
+    panel2.add(jcboFilled);
+
+    setLayout(<span class = "keyword">new</span> BorderLayout());
+    add(panel1, BorderLayout.WEST);
+    add(panel2, BorderLayout.CENTER);
+
+    <span class = "comment">// Register listeners</span>
+    jtfRadius.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "keyword">if</span> (model != <span class = "keyword">null</span>) <span class = "comment">// Set radius in the model </span>
+          model.setRadius(Double.parseDouble(jtfRadius.getText()));
+      }
+    });
+    jcboFilled.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "keyword">if</span> (model != <span class = "keyword">null</span>) <span class = "comment">// Set filled property value in the model</span>
+          model.setFilled(((Boolean)jcboFilled.getSelectedItem()).
+            booleanValue());
+      }
+    });
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setModel(CircleModel newModel) {
+    model = newModel;
+  }
+
+  <span class = "keyword">public</span> CircleModel getModel() {
+    <span class = "keyword">return</span> model;
+  }
+}
+</pre>
+</body>
+</html>

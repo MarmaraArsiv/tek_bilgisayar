@@ -1,0 +1,208 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - AddressRegistration.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "AddressRegistration.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">package</span> jsf2demo;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.inject.Named;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> javax.enterprise.context.SessionScoped;
+  5&nbsp;&nbsp;<span class = "keyword">import</span> java.sql.*;
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;@Named
+  8&nbsp;&nbsp;@SessionScoped
+  9&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> AddressRegistration <span class = "keyword">implements</span> java.io.Serializable {
+ 10&nbsp;&nbsp;  <span class = "keyword">private</span> String lastName;
+ 11&nbsp;&nbsp;  <span class = "keyword">private</span> String firstName;
+ 12&nbsp;&nbsp;  <span class = "keyword">private</span> String mi;
+ 13&nbsp;&nbsp;  <span class = "keyword">private</span> String telephone;
+ 14&nbsp;&nbsp;  <span class = "keyword">private</span> String email;
+ 15&nbsp;&nbsp;  <span class = "keyword">private</span> String street;
+ 16&nbsp;&nbsp;  <span class = "keyword">private</span> String city;
+ 17&nbsp;&nbsp;  <span class = "keyword">private</span> String state;
+ 18&nbsp;&nbsp;  <span class = "keyword">private</span> String zip;
+ 19&nbsp;&nbsp;  <span class = "keyword">private</span> String status = <span class = "literal">"Nothing stored"</span>;
+ 20&nbsp;&nbsp;  <span class = "comment">// Use a prepared statement to store a student into the database</span>
+ 21&nbsp;&nbsp;  <span class = "keyword">private</span> PreparedStatement pstmt;
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;  <span class = "keyword">public</span> AddressRegistration() {
+ 24&nbsp;&nbsp;    initializeJdbc();
+ 25&nbsp;&nbsp;  }
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;  <span class = "keyword">public</span> String getLastName() {
+ 28&nbsp;&nbsp;    <span class = "keyword">return</span> lastName;
+ 29&nbsp;&nbsp;  }
+ 30&nbsp;&nbsp;
+ 31&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setLastName(String lastName) {
+ 32&nbsp;&nbsp;    <span class = "keyword">this</span>.lastName = lastName;
+ 33&nbsp;&nbsp;  }
+ 34&nbsp;&nbsp;
+ 35&nbsp;&nbsp;  <span class = "keyword">public</span> String getFirstName() {
+ 36&nbsp;&nbsp;    <span class = "keyword">return</span> firstName;
+ 37&nbsp;&nbsp;  }
+ 38&nbsp;&nbsp;
+ 39&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setFirstName(String firstName) {
+ 40&nbsp;&nbsp;    <span class = "keyword">this</span>.firstName = firstName;
+ 41&nbsp;&nbsp;  }
+ 42&nbsp;&nbsp;
+ 43&nbsp;&nbsp;  <span class = "keyword">public</span> String getMi() {
+ 44&nbsp;&nbsp;    <span class = "keyword">return</span> mi;
+ 45&nbsp;&nbsp;  }
+ 46&nbsp;&nbsp;
+ 47&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setMi(String mi) {
+ 48&nbsp;&nbsp;    <span class = "keyword">this</span>.mi = mi;
+ 49&nbsp;&nbsp;  }
+ 50&nbsp;&nbsp;
+ 51&nbsp;&nbsp;  <span class = "keyword">public</span> String getTelephone() {
+ 52&nbsp;&nbsp;    <span class = "keyword">return</span> telephone;
+ 53&nbsp;&nbsp;  }
+ 54&nbsp;&nbsp;
+ 55&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setTelephone(String telephone) {
+ 56&nbsp;&nbsp;    <span class = "keyword">this</span>.telephone = telephone;
+ 57&nbsp;&nbsp;  }
+ 58&nbsp;&nbsp;
+ 59&nbsp;&nbsp;  <span class = "keyword">public</span> String getEmail() {
+ 60&nbsp;&nbsp;    <span class = "keyword">return</span> email;
+ 61&nbsp;&nbsp;  }
+ 62&nbsp;&nbsp;
+ 63&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setEmail(String email) {
+ 64&nbsp;&nbsp;    <span class = "keyword">this</span>.email = email;
+ 65&nbsp;&nbsp;  }
+ 66&nbsp;&nbsp;
+ 67&nbsp;&nbsp;  <span class = "keyword">public</span> String getStreet() {
+ 68&nbsp;&nbsp;    <span class = "keyword">return</span> street;
+ 69&nbsp;&nbsp;  }
+ 70&nbsp;&nbsp;
+ 71&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setStreet(String street) {
+ 72&nbsp;&nbsp;    <span class = "keyword">this</span>.street = street;
+ 73&nbsp;&nbsp;  }
+ 74&nbsp;&nbsp;
+ 75&nbsp;&nbsp;  <span class = "keyword">public</span> String getCity() {
+ 76&nbsp;&nbsp;    <span class = "keyword">return</span> city;
+ 77&nbsp;&nbsp;  }
+ 78&nbsp;&nbsp;
+ 79&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setCity(String city) {
+ 80&nbsp;&nbsp;    <span class = "keyword">this</span>.city = city;
+ 81&nbsp;&nbsp;  }
+ 82&nbsp;&nbsp;
+ 83&nbsp;&nbsp;  <span class = "keyword">public</span> String getState() {
+ 84&nbsp;&nbsp;    <span class = "keyword">return</span> state;
+ 85&nbsp;&nbsp;  }
+ 86&nbsp;&nbsp;
+ 87&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setState(String state) {
+ 88&nbsp;&nbsp;    <span class = "keyword">this</span>.state = state;
+ 89&nbsp;&nbsp;  }
+ 90&nbsp;&nbsp;
+ 91&nbsp;&nbsp;  <span class = "keyword">public</span> String getZip() {
+ 92&nbsp;&nbsp;    <span class = "keyword">return</span> zip;
+ 93&nbsp;&nbsp;  }
+ 94&nbsp;&nbsp;
+ 95&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setZip(String zip) {
+ 96&nbsp;&nbsp;    <span class = "keyword">this</span>.zip = zip;
+ 97&nbsp;&nbsp;  }
+ 98&nbsp;&nbsp;
+ 99&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">boolean</span> isRquiredFieldsFilled() {
+100&nbsp;&nbsp;    <span class = "keyword">return</span> !(lastName == <span class = "keyword">null</span> || firstName == <span class = "keyword">null</span>
+101&nbsp;&nbsp;            || lastName.trim().length() == <span class = "literal">0</span>
+102&nbsp;&nbsp;            || firstName.trim().length() == <span class = "literal">0</span>);
+103&nbsp;&nbsp;  }
+104&nbsp;&nbsp;
+105&nbsp;&nbsp;  <span class = "keyword">public</span> String processSubmit() {
+106&nbsp;&nbsp;    <span class = "keyword">if</span> (isRquiredFieldsFilled()) {
+107&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "literal">"ConfirmAddress"</span>;
+108&nbsp;&nbsp;    } <span class = "keyword">else</span> {
+109&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "literal">""</span>;
+110&nbsp;&nbsp;    }
+111&nbsp;&nbsp;  }
+112&nbsp;&nbsp;
+113&nbsp;&nbsp;  <span class = "keyword">public</span> String getRequiredFields() {
+114&nbsp;&nbsp;    <span class = "keyword">if</span> (isRquiredFieldsFilled()) {
+115&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "literal">""</span>;
+116&nbsp;&nbsp;    } <span class = "keyword">else</span> {
+117&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "literal">"Last Name and First Name are required"</span>;
+118&nbsp;&nbsp;    }
+119&nbsp;&nbsp;  }
+120&nbsp;&nbsp;
+121&nbsp;&nbsp;  <span class = "keyword">public</span> String getInput() {
+122&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"&lt;p style=\"color:red\"&gt;You entered &lt;br /&gt;"</span>
+123&nbsp;&nbsp;            + <span class = "literal">"Last Name: "</span> + lastName + <span class = "literal">"&lt;br /&gt;"</span>
+124&nbsp;&nbsp;            + <span class = "literal">"First Name: "</span> + firstName + <span class = "literal">"&lt;br /&gt;"</span>
+125&nbsp;&nbsp;            + <span class = "literal">"MI: "</span> + mi + <span class = "literal">"&lt;br /&gt;"</span>
+126&nbsp;&nbsp;            + <span class = "literal">"Telephone: "</span> + telephone + <span class = "literal">"&lt;br /&gt;"</span>
+127&nbsp;&nbsp;            + <span class = "literal">"Email: "</span> + email + <span class = "literal">"&lt;br /&gt;"</span>
+128&nbsp;&nbsp;            + <span class = "literal">"Street: "</span> + street + <span class = "literal">"&lt;br /&gt;"</span>
+129&nbsp;&nbsp;            + <span class = "literal">"City: "</span> + city + <span class = "literal">"&lt;br /&gt;"</span>
+130&nbsp;&nbsp;            + <span class = "literal">"Street: "</span> + street + <span class = "literal">"&lt;br /&gt;"</span>
+131&nbsp;&nbsp;            + <span class = "literal">"City: "</span> + city + <span class = "literal">"&lt;br /&gt;"</span>
+132&nbsp;&nbsp;            + <span class = "literal">"State: "</span> + state + <span class = "literal">"&lt;br /&gt;"</span>
+133&nbsp;&nbsp;            + <span class = "literal">"Zip: "</span> + zip + <span class = "literal">"&lt;/p&gt;"</span>;
+134&nbsp;&nbsp;  }
+135&nbsp;&nbsp;
+136&nbsp;&nbsp;  <span class = "comment">/** Initialize database connection */</span>
+137&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">void</span> initializeJdbc() {
+138&nbsp;&nbsp;    <span class = "keyword">try</span> {
+139&nbsp;&nbsp;      <span class = "comment">// Explicitly load a MySQL driver</span>
+140&nbsp;&nbsp;      Class.forName(<span class = "literal">"com.mysql.jdbc.Driver"</span>);
+141&nbsp;&nbsp;      System.out.println(<span class = "literal">"Driver loaded"</span>);
+142&nbsp;&nbsp;      
+143&nbsp;&nbsp;      <span class = "comment">// Establish a connection</span>
+144&nbsp;&nbsp;      Connection conn = DriverManager.getConnection(
+145&nbsp;&nbsp;              <span class = "literal">"jdbc:mysql://localhost/javabook"</span>, <span class = "literal">"scott"</span>, <span class = "literal">"tiger"</span>);
+146&nbsp;&nbsp;
+147&nbsp;&nbsp;      <span class = "comment">// Create a Statement</span>
+148&nbsp;&nbsp;      pstmt = conn.prepareStatement(<span class = "literal">"insert into Address (lastName,"</span>
+149&nbsp;&nbsp;              + <span class = "literal">" firstName, mi, telephone, email, street, city, "</span>
+150&nbsp;&nbsp;              + <span class = "literal">"state, zip) values (?, ?, ?, ?, ?, ?, ?, ?, ?)"</span>);
+151&nbsp;&nbsp;    } <span class = "keyword">catch</span> (Exception ex) {
+152&nbsp;&nbsp;      System.out.println(ex);
+153&nbsp;&nbsp;    }
+154&nbsp;&nbsp;  }
+155&nbsp;&nbsp;
+156&nbsp;&nbsp;  <span class = "comment">/** Store an address to the database */</span>
+157&nbsp;&nbsp;  <span class = "keyword">public</span> String storeStudent() {
+158&nbsp;&nbsp;    <span class = "keyword">try</span> {
+159&nbsp;&nbsp;      pstmt.setString(<span class = "literal">1</span>, lastName);
+160&nbsp;&nbsp;      pstmt.setString(<span class = "literal">2</span>, firstName);
+161&nbsp;&nbsp;      pstmt.setString(<span class = "literal">3</span>, mi);
+162&nbsp;&nbsp;      pstmt.setString(<span class = "literal">4</span>, telephone);
+163&nbsp;&nbsp;      pstmt.setString(<span class = "literal">5</span>, email);
+164&nbsp;&nbsp;      pstmt.setString(<span class = "literal">6</span>, street);
+165&nbsp;&nbsp;      pstmt.setString(<span class = "literal">7</span>, city);
+166&nbsp;&nbsp;      pstmt.setString(<span class = "literal">8</span>, state);
+167&nbsp;&nbsp;      pstmt.setString(<span class = "literal">9</span>, zip);
+168&nbsp;&nbsp;      pstmt.executeUpdate();
+169&nbsp;&nbsp;      status = firstName + <span class = "literal">" "</span> + lastName
+170&nbsp;&nbsp;              + <span class = "literal">" is now registered in the database."</span>;
+171&nbsp;&nbsp;    } <span class = "keyword">catch</span> (Exception ex) {
+172&nbsp;&nbsp;      status = ex.getMessage();
+173&nbsp;&nbsp;    }
+174&nbsp;&nbsp;    
+175&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"AddressStoredStatus"</span>;
+176&nbsp;&nbsp;  }
+177&nbsp;&nbsp;
+178&nbsp;&nbsp;  <span class = "keyword">public</span> String getStatus() {
+179&nbsp;&nbsp;    <span class = "keyword">return</span> status;
+180&nbsp;&nbsp;  }
+181&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "AddressRegistration" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

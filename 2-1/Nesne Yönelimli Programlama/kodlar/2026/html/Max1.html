@@ -1,0 +1,25 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - Max1.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> Max1 {
+  <span class = "comment">/** Return the maximum between two objects */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> &lt;E <span class = "keyword">extends</span> Comparable&lt;E&gt;&gt; E max(E o1, E o2) {
+    <span class = "keyword">if</span> (o1.compareTo(o2) &gt; <span class = "literal">0</span>)
+      <span class = "keyword">return</span> o1;
+    <span class = "keyword">else</span>
+      <span class = "keyword">return</span> o2;
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TreeNodeDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TreeNodeDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.tree.*;
+<span class = "keyword">import</span> java.util.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TreeNodeDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> TreeNodeDemo() {
+    <span class = "comment">// Create the first tree</span>
+    DefaultMutableTreeNode root, europe, northAmerica, us;
+
+    europe = <span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Europe"</span>);
+    europe.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"UK"</span>));
+    europe.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Germany"</span>));
+    europe.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"France"</span>));
+    europe.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Norway"</span>));
+
+    northAmerica = <span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"North America"</span>);
+    us = <span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"US"</span>);
+    us.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"California"</span>));
+    us.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Texas"</span>));
+    us.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"New York"</span>));
+    us.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Florida"</span>));
+    us.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Illinois"</span>));
+    northAmerica.add(us);
+    northAmerica.add(<span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"Canada"</span>));
+
+    root = <span class = "keyword">new</span> DefaultMutableTreeNode(<span class = "literal">"World"</span>);
+    root.add(europe);
+    root.add(northAmerica);
+
+    JPanel panel = <span class = "keyword">new</span> JPanel();
+    panel.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">1</span>, <span class = "literal">2</span>));
+    panel.add(<span class = "keyword">new</span> JScrollPane(<span class = "keyword">new</span> JTree(root)));
+    panel.add(<span class = "keyword">new</span> JScrollPane(<span class = "keyword">new</span> JTree(<span class = "keyword">new</span> DefaultTreeModel(root))));
+
+    JTextArea jtaMessage = <span class = "keyword">new</span> JTextArea();
+    jtaMessage.setWrapStyleWord(<span class = "keyword">true</span>);
+    jtaMessage.setLineWrap(<span class = "keyword">true</span>);
+    add(<span class = "keyword">new</span> JSplitPane(JSplitPane.VERTICAL_SPLIT,
+      panel, <span class = "keyword">new</span> JScrollPane(jtaMessage)), BorderLayout.CENTER);
+
+    <span class = "comment">// Get tree information</span>
+    jtaMessage.append(<span class = "literal">"Depth of the node US is "</span> + us.getDepth());
+    jtaMessage.append(<span class = "literal">"\nLevel of the node US is "</span> + us.getLevel());
+    jtaMessage.append(<span class = "literal">"\nFirst child of the root is "</span> +
+      root.getFirstChild());
+    jtaMessage.append(<span class = "literal">"\nFirst leaf of the root is "</span> +
+      root.getFirstLeaf());
+    jtaMessage.append(<span class = "literal">"\nNumber of the children of the root is "</span> +
+      root.getChildCount());
+    jtaMessage.append(<span class = "literal">"\nNumber of leaves in the tree is "</span> +
+      root.getLeafCount());
+    String breadthFirstSearchResult = <span class = "literal">""</span>;
+
+    <span class = "comment">// Breadth-first traversal</span>
+    Enumeration bf = root.breadthFirstEnumeration();
+    <span class = "keyword">while</span> (bf.hasMoreElements())
+      breadthFirstSearchResult += bf.nextElement().toString() + <span class = "literal">" "</span>;
+    jtaMessage.append(<span class = "literal">"\nBreath-first traversal from the root is "</span>
+      + breadthFirstSearchResult);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TreeNodeDemo applet = <span class = "keyword">new</span> TreeNodeDemo();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"TreeNodeDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - StudentPanel.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">// StudentPanel.java: Panel for displaying student information
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.border.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> StudentPanel <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JPanel {
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JTextField jtfName = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextField(<FONT COLOR="#0000ff">32</FONT><FONT COLOR="#000000">);
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JTextField jtfStreet = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextField(<FONT COLOR="#0000ff">32</FONT><FONT COLOR="#000000">);
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JTextField jtfCity = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextField(<FONT COLOR="#0000ff">20</FONT><FONT COLOR="#000000">);
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JTextField jtfState = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextField(<FONT COLOR="#0000ff">2</FONT><FONT COLOR="#000000">);
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> JTextField jtfZip = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextField(<FONT COLOR="#0000ff">5</FONT><FONT COLOR="#000000">);
+
+  <FONT COLOR="#008000">/** Construct a student panel */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> StudentPanel() {
+    <FONT COLOR="#008000">// Set the panel with line border
+<FONT COLOR="#000000">    setBorder(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BevelBorder(BevelBorder.RAISED));
+
+    <FONT COLOR="#008000">// Panel p1 for holding labels Name, Street, and City
+<FONT COLOR="#000000">    JPanel p1 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    p1.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> GridLayout(<FONT COLOR="#0000ff">3</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">));
+    p1.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">"Name"</FONT>));
+    p1.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">"Street"</FONT>));
+    p1.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">"City"</FONT>));
+
+    <FONT COLOR="#008000">// Panel jpState for holding state
+<FONT COLOR="#000000">    JPanel jpState = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    jpState.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BorderLayout());
+    jpState.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">"State"</FONT>), BorderLayout.WEST);
+    jpState.add(jtfState, BorderLayout.CENTER);
+
+    <FONT COLOR="#008000">// Panel jpZip for holding zip
+<FONT COLOR="#000000">    JPanel jpZip = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    jpZip.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BorderLayout());
+    jpZip.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JLabel(<FONT COLOR="#0000ff">"Zip"</FONT>), BorderLayout.WEST);
+    jpZip.add(jtfZip, BorderLayout.CENTER);
+
+    <FONT COLOR="#008000">// Panel p2 for holding jpState and jpZip
+<FONT COLOR="#000000">    JPanel p2 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    p2.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BorderLayout());
+    p2.add(jpState, BorderLayout.WEST);
+    p2.add(jpZip, BorderLayout.CENTER);
+
+    <FONT COLOR="#008000">// Panel p3 for holding jtfCity and p2
+<FONT COLOR="#000000">    JPanel p3 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    p3.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BorderLayout());
+    p3.add(jtfCity, BorderLayout.CENTER);
+    p3.add(p2, BorderLayout.EAST);
+
+    <FONT COLOR="#008000">// Panel p4 for holding jtfName, jtfStreet, and p3
+<FONT COLOR="#000000">    JPanel p4 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JPanel();
+    p4.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> GridLayout(<FONT COLOR="#0000ff">3</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">));
+    p4.add(jtfName);
+    p4.add(jtfStreet);
+    p4.add(p3);
+
+    <FONT COLOR="#008000">// Place p1 and p4 into StudentPanel
+<FONT COLOR="#000000">    setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BorderLayout());
+    add(p1, BorderLayout.WEST);
+    add(p4, BorderLayout.CENTER);
+  }
+
+  <FONT COLOR="#008000">/** Get student information from the text fields */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> Student getStudent() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Student(jtfName.getText().trim(),
+                       jtfStreet.getText().trim(),
+                       jtfCity.getText().trim(),
+                       jtfState.getText().trim(),
+                       jtfZip.getText().trim());
+  }
+
+  <FONT COLOR="#008000">/** Set student information on the text fields */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> setStudent(Student s) {
+    jtfName.setText(s.getName());
+    jtfStreet.setText(s.getStreet());
+    jtfCity.setText(s.getCity());
+    jtfState.setText(s.getState());
+    jtfZip.setText(s.getZip());
+  }
+}
+</pre>

@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowGridLayout.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ShowGridLayoutWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.JLabel;
+<span class = "keyword">import</span> javax.swing.JTextField;
+<span class = "keyword">import</span> javax.swing.JFrame;
+<span class = "keyword">import</span> java.awt.GridLayout;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ShowGridLayout <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">public</span> ShowGridLayout() {
+    <span class = "comment">// Set GridLayout, 3 rows, 2 columns, and gaps 5 between</span>
+    <span class = "comment">// components horizontally and vertically</span>
+    setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">3</span>, <span class = "literal">2</span>, <span class = "literal">5</span>, <span class = "literal">5</span>));
+
+    <span class = "comment">// Add labels and text fields to the frame</span>
+    add(<span class = "keyword">new</span> JLabel(<span class = "literal">"First Name"</span>));
+    add(<span class = "keyword">new</span> JTextField(<span class = "literal">8</span>));
+    add(<span class = "keyword">new</span> JLabel(<span class = "literal">"MI"</span>));
+    add(<span class = "keyword">new</span> JTextField(<span class = "literal">1</span>));
+    add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Last Name"</span>));
+    add(<span class = "keyword">new</span> JTextField(<span class = "literal">8</span>));
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ShowGridLayout frame = <span class = "keyword">new</span> ShowGridLayout();
+    frame.setTitle(<span class = "literal">"ShowGridLayout"</span>);
+    frame.setSize(<span class = "literal">200</span>, <span class = "literal">125</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

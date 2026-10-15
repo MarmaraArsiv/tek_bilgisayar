@@ -1,0 +1,120 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TimelineEvents.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TimelineEventsWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> javafx.application.Application;
+<span class = "keyword">import</span> javafx.stage.Stage;
+<span class = "keyword">import</span> javafx.animation.AnimationTimer;
+<span class = "keyword">import</span> javafx.animation.KeyFrame;
+<span class = "keyword">import</span> javafx.animation.KeyValue;
+<span class = "keyword">import</span> javafx.animation.Timeline;
+<span class = "keyword">import</span> javafx.event.ActionEvent;
+<span class = "keyword">import</span> javafx.event.EventHandler;
+<span class = "keyword">import</span> javafx.scene.Group;
+<span class = "keyword">import</span> javafx.scene.Scene;
+<span class = "keyword">import</span> javafx.scene.effect.Lighting;
+<span class = "keyword">import</span> javafx.scene.layout.StackPane;
+<span class = "keyword">import</span> javafx.scene.paint.Color;
+<span class = "keyword">import</span> javafx.scene.shape.Circle;
+<span class = "keyword">import</span> javafx.scene.text.Text;
+<span class = "keyword">import</span> javafx.util.Duration;
+ 
+<span class = "keyword">public</span> <span class = "keyword">class</span> TimelineEvents <span class = "keyword">extends</span> Application {
+    
+    //main timeline
+    <span class = "keyword">private</span> Timeline timeline;
+    <span class = "keyword">private</span> AnimationTimer timer;
+ 
+    //variable <span class = "keyword">for</span> storing actual frame
+    <span class = "keyword">private</span> Integer i=0;
+ 
+    @Override <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage stage) {
+        Group p = <span class = "keyword">new</span> Group();
+        Scene scene = <span class = "keyword">new</span> Scene(p);
+        stage.setScene(scene);
+        stage.setWidth(<span class = "literal">500</span>);
+        stage.setHeight(<span class = "literal">500</span>);
+        p.setTranslateX(<span class = "literal">80</span>);
+        p.setTranslateY(<span class = "literal">80</span>);
+ 
+        //create a circle with effect
+        <span class = "keyword">final</span> Circle circle = <span class = "keyword">new</span> Circle(<span class = "literal">20</span>,  Color.rgb(<span class = "literal">156</span>,<span class = "literal">216</span>,<span class = "literal">255</span>));
+        circle.setEffect(<span class = "keyword">new</span> Lighting());
+        //create a text inside a circle
+        <span class = "keyword">final</span> Text text = <span class = "keyword">new</span> Text (i.toString());
+        text.setStroke(Color.BLACK);
+        //create a layout <span class = "keyword">for</span> circle with text inside
+        <span class = "keyword">final</span> StackPane stack = <span class = "keyword">new</span> StackPane();
+        stack.getChildren().addAll(circle, text);
+        stack.setLayoutX(<span class = "literal">30</span>);
+        stack.setLayoutY(<span class = "literal">30</span>);
+ 
+        p.getChildren().add(stack);
+        stage.show();
+ 
+        //create a timeline <span class = "keyword">for</span> moving the circle
+        timeline = <span class = "keyword">new</span> Timeline();
+        timeline.setCycleCount(Timeline.INDEFINITE);
+        timeline.setAutoReverse(<span class = "keyword">true</span>);
+ 
+//You can add a specific action when each frame is started.
+        timer = <span class = "keyword">new</span> AnimationTimer() {
+            @Override
+            <span class = "keyword">public</span> <span class = "keyword">void</span> handle(<span class = "keyword">long</span> l) {
+                text.setText(i.toString());
+                i++;
+            }
+ 
+        };
+ 
+        //create a keyValue with factory: scaling the circle 2times
+        KeyValue keyValueX = <span class = "keyword">new</span> KeyValue(stack.scaleXProperty(), <span class = "literal">2</span>);
+        KeyValue keyValueY = <span class = "keyword">new</span> KeyValue(stack.scaleYProperty(), <span class = "literal">2</span>);
+ 
+        //create a keyFrame, the keyValue is reached at time 2s
+        Duration duration = Duration.millis(<span class = "literal">2000</span>);
+        //one can add a specific action when the keyframe is reached
+        EventHandler onFinished = <span class = "keyword">new</span> EventHandler&lt;ActionEvent&gt;() {
+            <span class = "keyword">public</span> <span class = "keyword">void</span> handle(ActionEvent t) {
+                 stack.setTranslateX(java.lang.Math.random()*<span class = "literal">200</span><span class = "literal">-</span><span class = "literal">100</span>);
+                 //reset counter
+                 i = <span class = "literal">0</span>;
+            }
+        };
+ 
+  KeyFrame keyFrame = <span class = "keyword">new</span> KeyFrame(duration, onFinished , keyValueX, keyValueY);
+ 
+        //add the keyframe to the timeline
+        timeline.getKeyFrames().add(keyFrame);
+ 
+        timeline.play();
+        timer.start();
+    }
+        
+        
+    <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+        Application.launch(args);
+    }
+  } 
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TimelineEvents" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

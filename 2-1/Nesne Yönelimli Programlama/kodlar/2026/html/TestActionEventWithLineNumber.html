@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestActionEvent.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestActionEvent.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestActionEvent <span class = "keyword">extends</span> JFrame {
+  6&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtOK = <span class = "keyword">new</span> JButton(<span class = "literal">"OK"</span>);
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtCancel = <span class = "keyword">new</span> JButton(<span class = "literal">"Cancel"</span>);
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;  <span class = "keyword">public</span> TestActionEvent() {
+ 10&nbsp;&nbsp;    setLayout(<span class = "keyword">new</span> FlowLayout());
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;    add(jbtOK);
+ 13&nbsp;&nbsp;    add(jbtCancel);
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;    jbtOK.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 16&nbsp;&nbsp;      @Override
+ 17&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 18&nbsp;&nbsp;        System.out.println(<span class = "literal">"The "</span> + e.getActionCommand() + <span class = "literal">" button "</span>
+ 19&nbsp;&nbsp;          + <span class = "literal">"is clicked at\n  "</span> + <span class = "keyword">new</span> java.util.Date(e.getWhen()));
+ 20&nbsp;&nbsp;      }
+ 21&nbsp;&nbsp;    });
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;    jbtCancel.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 24&nbsp;&nbsp;      @Override
+ 25&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 26&nbsp;&nbsp;        System.out.println(<span class = "literal">"The "</span> + e.getActionCommand() + <span class = "literal">" button "</span>
+ 27&nbsp;&nbsp;          + <span class = "literal">"is clicked at\n  "</span> + <span class = "keyword">new</span> java.util.Date(e.getWhen()));
+ 28&nbsp;&nbsp;      }
+ 29&nbsp;&nbsp;    });
+ 30&nbsp;&nbsp;  }
+ 31&nbsp;&nbsp;
+ 32&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 33&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 34&nbsp;&nbsp;    TestActionEvent frame = <span class = "keyword">new</span> TestActionEvent();
+ 35&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"TestActionEvent"</span>);
+ 36&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 37&nbsp;&nbsp;    frame.setSize(<span class = "literal">220</span>, <span class = "literal">80</span>);
+ 38&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 39&nbsp;&nbsp;  }
+ 40&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

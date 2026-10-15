@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>Intro to Java Programming, 9E - CircleWithStaticDataFields.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "CircleWithStaticDataFieldsWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> CircleWithStaticDataFields {
+  <span class = "comment">/** The radius of the circle */</span>
+  <span class = "keyword">double</span> radius;
+
+  <span class = "comment">/** The number of the objects created */</span>
+  <span class = "keyword">static</span> <span class = "keyword">int</span> numberOfObjects = <span class = "literal">0</span>;
+
+  <span class = "comment">/** Construct a circle with radius 1 */</span>
+  CircleWithStaticDataFields() {
+    radius = <span class = "literal">1</span>.<span class = "literal">0</span>;
+    numberOfObjects++;
+  }
+
+  <span class = "comment">/** Construct a circle with a specified radius */</span>
+  CircleWithStaticDataFields(<span class = "keyword">double</span> newRadius) {
+    radius = newRadius;
+    numberOfObjects++;
+  }
+
+  <span class = "comment">/** Return numberOfObjects */</span>
+  <span class = "keyword">static</span> <span class = "keyword">int</span> getNumberOfObjects() {
+    <span class = "keyword">return</span> numberOfObjects;
+  }
+
+  <span class = "comment">/** Return the area of this circle */</span>
+  <span class = "keyword">double</span> getArea() {
+    <span class = "keyword">return</span> radius * radius * Math.PI;
+  }
+}
+</pre>
+</body>
+</html>

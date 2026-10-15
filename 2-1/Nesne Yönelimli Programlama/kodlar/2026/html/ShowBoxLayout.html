@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowBoxLayout.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ShowBoxLayoutWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ShowBoxLayout <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">// Create two box containers</span>
+  <span class = "keyword">private</span> Box box1 = Box.createHorizontalBox();
+  <span class = "keyword">private</span> Box box2 = Box.createVerticalBox();
+
+  <span class = "comment">// Create a label to display flags</span>
+  <span class = "keyword">private</span> JLabel jlblFlag = <span class = "keyword">new</span> JLabel();
+
+  <span class = "comment">// Create image icons for flags</span>
+  <span class = "keyword">private</span> ImageIcon imageIconUS =
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/us.gif"</span>));
+  <span class = "keyword">private</span> ImageIcon imageIconCanada =
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/ca.gif"</span>));
+  <span class = "keyword">private</span> ImageIcon imageIconNorway =
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/norway.gif"</span>));
+  <span class = "keyword">private</span> ImageIcon imageIconGermany =
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/germany.gif"</span>));
+  <span class = "keyword">private</span> ImageIcon imageIconPrint =
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/print.gif"</span>));
+  <span class = "keyword">private</span> ImageIcon imageIconSave =
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/save.gif"</span>));
+
+  <span class = "comment">// Create buttons to select images</span>
+  <span class = "keyword">private</span> JButton jbtUS = <span class = "keyword">new</span> JButton(<span class = "literal">"US"</span>);
+  <span class = "keyword">private</span> JButton jbtCanada = <span class = "keyword">new</span> JButton(<span class = "literal">"Canada"</span>);
+  <span class = "keyword">private</span> JButton jbtNorway = <span class = "keyword">new</span> JButton(<span class = "literal">"Norway"</span>);
+  <span class = "keyword">private</span> JButton jbtGermany = <span class = "keyword">new</span> JButton(<span class = "literal">"Germany"</span>);
+
+  <span class = "keyword">public</span> ShowBoxLayout() {
+    box1.add(<span class = "keyword">new</span> JButton(imageIconPrint));
+    box1.add(Box.createHorizontalStrut(<span class = "literal">20</span>));
+    box1.add(<span class = "keyword">new</span> JButton(imageIconSave));
+
+    box2.add(jbtUS);
+    box2.add(Box.createVerticalStrut(<span class = "literal">8</span>));
+    box2.add(jbtCanada);
+    box2.add(Box.createGlue());
+    box2.add(jbtNorway);
+    box2.add(Box.createRigidArea(<span class = "keyword">new</span> Dimension(<span class = "literal">10</span>, <span class = "literal">8</span>)));
+    box2.add(jbtGermany);
+
+    box1.setBorder(<span class = "keyword">new</span> javax.swing.border.LineBorder(Color.red));
+    box2.setBorder(<span class = "keyword">new</span> javax.swing.border.LineBorder(Color.black));
+
+    add(box1, BorderLayout.NORTH);
+    add(box2, BorderLayout.EAST);
+    add(jlblFlag, BorderLayout.CENTER);
+
+    <span class = "comment">// Register listeners</span>
+    jbtUS.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jlblFlag.setIcon(imageIconUS);
+      }
+    });
+    jbtCanada.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jlblFlag.setIcon(imageIconCanada);
+      }
+    });
+    jbtNorway.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jlblFlag.setIcon(imageIconNorway);
+      }
+    });
+    jbtGermany.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jlblFlag.setIcon(imageIconGermany);
+      }
+    });
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ShowBoxLayout applet = <span class = "keyword">new</span> ShowBoxLayout();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"ShowBoxLayout"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

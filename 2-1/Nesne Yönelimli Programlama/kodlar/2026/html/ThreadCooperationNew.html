@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 6E - ThreadCooperationNew.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.util.concurrent.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.util.concurrent.locks.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> ThreadCooperationNew {
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> Account account = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Account();
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    <FONT COLOR="#008000">// Create a thread pool with two threads
+<FONT COLOR="#000000">    ExecutorService executor = Executors.newFixedThreadPool(<FONT COLOR="#0000ff">2</FONT><FONT COLOR="#000000">);
+    executor.execute(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> DepositTask());
+    executor.execute(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> WithdrawTask());
+    executor.shutdown();
+
+    System.out.println(<FONT COLOR="#0000ff">"Thread 1\t\tThread 2\t\tBalance"</FONT>);
+  }
+
+  <FONT COLOR="#008000">// A task for adding an amount to the account
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> DepositTask <FONT COLOR="#000080"><B>implements</B></FONT><FONT COLOR="#000000"> Runnable {
+    <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> run() {
+      <FONT COLOR="#000080"><B>while</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">) {
+        account.deposit((<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000">)(Math.random() * <FONT COLOR="#0000ff">10</FONT><FONT COLOR="#000000">) + <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">);
+        <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> { <FONT COLOR="#008000">// Purposely delay it to let the withdraw method proceed
+<FONT COLOR="#000000">          Thread.sleep(<FONT COLOR="#0000ff">1000</FONT><FONT COLOR="#000000">);
+        }
+        <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (InterruptedException ex) {
+          ex.printStackTrace();
+        }
+      }
+    }
+  }
+
+  <FONT COLOR="#008000">// A task for subtracting an amount from the account
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> WithdrawTask <FONT COLOR="#000080"><B>implements</B></FONT><FONT COLOR="#000000"> Runnable {
+    <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> run() {
+      <FONT COLOR="#000080"><B>while</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">) {
+        account.withdraw((<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000">)(Math.random() * <FONT COLOR="#0000ff">10</FONT><FONT COLOR="#000000">) + <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">);
+      }
+    }
+  }
+
+  <FONT COLOR="#008000">// An inner class for account
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> Account {
+    <FONT COLOR="#008000">// Create a new lock
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> Lock lock = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> ReentrantLock();
+
+    <FONT COLOR="#008000">// Create a condition
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> Condition newDeposit = lock.newCondition();
+
+    <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> balance = <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">;
+
+    <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> getBalance() {
+      <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> balance;
+    }
+
+    <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> withdraw(<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> amount) {
+      lock.lock(); <FONT COLOR="#008000">// Acquire the lock
+<FONT COLOR="#000000">      <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+        <FONT COLOR="#000080"><B>while</B></FONT><FONT COLOR="#000000"> (balance &lt; amount)
+          newDeposit.await();
+
+      balance -= amount;
+      System.out.println(<FONT COLOR="#0000ff">"\t\t\tWithdraw "</FONT> + amount +
+        <FONT COLOR="#0000ff">"\t\t"</FONT> + getBalance());
+      }
+      <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (InterruptedException ex) {
+        ex.printStackTrace();
+      }
+      <FONT COLOR="#000080"><B>finally</B></FONT><FONT COLOR="#000000"> {
+        lock.unlock(); <FONT COLOR="#008000">// Release the lock
+<FONT COLOR="#000000">      }
+    }
+
+    <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> deposit(<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> amount) {
+      lock.lock(); <FONT COLOR="#008000">// Acquire the lock
+<FONT COLOR="#000000">      <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+        balance += amount;
+        System.out.println(<FONT COLOR="#0000ff">"Deposit "</FONT> + amount +
+          <FONT COLOR="#0000ff">"\t\t\t\t\t"</FONT> + getBalance());
+
+        <FONT COLOR="#008000">// Signal thread waiting on the condition
+<FONT COLOR="#000000">        newDeposit.signalAll();
+      }
+      <FONT COLOR="#000080"><B>finally</B></FONT><FONT COLOR="#000000"> {
+        lock.unlock(); <FONT COLOR="#008000">// Release the lock
+<FONT COLOR="#000000">      }
+    }
+  }
+}
+</pre>
