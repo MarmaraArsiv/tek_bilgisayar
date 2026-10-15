@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - RowSetTableModel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "RowSetTableModelWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.sql.*;
+<span class = "keyword">import</span> javax.sql.*;
+<span class = "keyword">import</span> javax.swing.table.AbstractTableModel;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> RowSetTableModel <span class = "keyword">extends</span> AbstractTableModel
+    <span class = "keyword">implements</span> RowSetListener {
+  <span class = "comment">// RowSet for the result set</span>
+  <span class = "keyword">private</span> RowSet rowSet;
+
+  <span class = "comment">/** Return the rowset */</span>
+  <span class = "keyword">public</span> RowSet getRowSet() {
+    <span class = "keyword">return</span> rowSet;
+  }
+
+  <span class = "comment">/** Set a new rowset */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setRowSet(RowSet rowSet) {
+    <span class = "keyword">if</span> (rowSet != <span class = "keyword">null</span>) {
+      <span class = "keyword">this</span>.rowSet = rowSet;
+      rowSet.addRowSetListener(<span class = "keyword">this</span>);
+      fireTableStructureChanged();
+    }
+  }
+
+  <span class = "comment">/** Return the number of rows in the row set */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getRowCount() {
+    <span class = "keyword">try</span> {
+      rowSet.last();
+      <span class = "keyword">return</span> rowSet.getRow(); <span class = "comment">// Get the current row number</span>
+    }
+    <span class = "keyword">catch</span> (Exception ex) {
+      ex.printStackTrace();
+    }
+
+    <span class = "keyword">return</span> <span class = "literal">0</span>;
+  }
+
+  <span class = "comment">/** Return the number of columns in the row set */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getColumnCount() {
+    <span class = "keyword">try</span> {
+      <span class = "keyword">if</span> (rowSet != <span class = "keyword">null</span>) {
+        <span class = "keyword">return</span> rowSet.getMetaData().getColumnCount();
+      }
+    }
+    <span class = "keyword">catch</span> (SQLException ex) {
+      ex.printStackTrace();
+    }
+
+    <span class = "keyword">return</span> <span class = "literal">0</span>;
+  }
+
+  <span class = "comment">/** Return value at the specified row and column */</span>
+  <span class = "keyword">public</span> Object getValueAt(<span class = "keyword">int</span> row, <span class = "keyword">int</span> column) {
+    <span class = "keyword">try</span> {
+      rowSet.absolute(row + <span class = "literal">1</span>);
+      <span class = "keyword">return</span> rowSet.getObject(column + <span class = "literal">1</span>);
+    }
+    <span class = "keyword">catch</span> (SQLException sqlex) {
+      sqlex.printStackTrace();
+    }
+
+    <span class = "keyword">return</span> <span class = "keyword">null</span>;
+  }
+
+  <span class = "comment">/** Return the column name at a specified column */</span>
+  <span class = "keyword">public</span> String getColumnName(<span class = "keyword">int</span> column) {
+    <span class = "keyword">try</span> {
+      <span class = "keyword">return</span> rowSet.getMetaData().getColumnLabel(column + <span class = "literal">1</span>);
+    }
+    <span class = "keyword">catch</span> (SQLException ex) {
+      ex.printStackTrace();
+    }
+
+    <span class = "keyword">return</span> <span class = "literal">""</span>;
+  }
+
+  <span class = "comment">/** Implement rowSetChanged */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> rowSetChanged(RowSetEvent e) {
+    System.out.println(<span class = "literal">"RowSet changed"</span>);
+    fireTableStructureChanged();
+  }
+
+  <span class = "comment">/** Implement rowChanged */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> rowChanged(RowSetEvent e) {
+    System.out.println(<span class = "literal">"Row changed"</span>);
+    fireTableDataChanged();
+  }
+
+  <span class = "comment">/** Implement cursorMoved */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> cursorMoved(RowSetEvent e) {
+    System.out.println(<span class = "literal">"Cursor moved"</span>);
+  }
+}
+</pre>
+</body>
+</html>

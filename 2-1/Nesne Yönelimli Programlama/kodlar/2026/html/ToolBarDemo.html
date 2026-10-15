@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ToolBarDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ToolBarDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ToolBarDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> JButton jbtNew = <span class = "keyword">new</span> JButton(
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/new.gif"</span>)));
+  <span class = "keyword">private</span> JButton jbtOpen = <span class = "keyword">new</span> JButton(
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/open.gif"</span>)));
+  <span class = "keyword">private</span> JButton jbPrint = <span class = "keyword">new</span> JButton(
+    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/print.gif"</span>)));
+
+  <span class = "keyword">public</span> ToolBarDemo() {
+    JToolBar jToolBar1 = <span class = "keyword">new</span> JToolBar(<span class = "literal">"My Tool Bar"</span>);
+    jToolBar1.setFloatable(<span class = "keyword">true</span>);
+    jToolBar1.add(jbtNew);
+    jToolBar1.add(jbtOpen);
+    jToolBar1.add(jbPrint);
+
+    jbtNew.setToolTipText(<span class = "literal">"New"</span>);
+    jbtOpen.setToolTipText(<span class = "literal">"Open"</span>);
+    jbPrint.setToolTipText(<span class = "literal">"Print"</span>);
+
+    jbtNew.setBorderPainted(<span class = "keyword">false</span>);
+    jbtOpen.setBorderPainted(<span class = "keyword">false</span>);
+    jbPrint.setBorderPainted(<span class = "keyword">false</span>);
+
+    add(jToolBar1, BorderLayout.NORTH);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ToolBarDemo applet = <span class = "keyword">new</span> ToolBarDemo();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"ToolBarDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

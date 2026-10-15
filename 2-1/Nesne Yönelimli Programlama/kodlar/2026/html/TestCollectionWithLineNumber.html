@@ -1,0 +1,72 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestCollection.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestCollection.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestCollection {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  5&nbsp;&nbsp;    ArrayList&lt;String&gt; collection1 = <span class = "keyword">new</span> ArrayList&lt;&gt;();
+  6&nbsp;&nbsp;    collection1.add(<span class = "literal">"New York"</span>); 
+  7&nbsp;&nbsp;    collection1.add(<span class = "literal">"Atlanta"</span>); 
+  8&nbsp;&nbsp;    collection1.add(<span class = "literal">"Dallas"</span>); 
+  9&nbsp;&nbsp;    collection1.add(<span class = "literal">"Madison"</span>); 
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;    System.out.println(<span class = "literal">"A list of cities in collection1:"</span>);
+ 12&nbsp;&nbsp;    System.out.println(collection1);
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;    System.out.println(<span class = "literal">"\nIs Dallas in collection1? "</span>
+ 15&nbsp;&nbsp;      + collection1.contains(<span class = "literal">"Dallas"</span>));
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    collection1.remove(<span class = "literal">"Dallas"</span>);
+ 18&nbsp;&nbsp;    System.out.println(<span class = "literal">"\n"</span> + collection1.size() + 
+ 19&nbsp;&nbsp;       <span class = "literal">" cities are in collection1 now"</span>);
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;    Collection&lt;String&gt; collection2 = <span class = "keyword">new</span> ArrayList&lt;&gt;();
+ 22&nbsp;&nbsp;    collection2.add(<span class = "literal">"Seattle"</span>); 
+ 23&nbsp;&nbsp;    collection2.add(<span class = "literal">"Portland"</span>); 
+ 24&nbsp;&nbsp;    collection2.add(<span class = "literal">"Los Angles"</span>); 
+ 25&nbsp;&nbsp;    collection2.add(<span class = "literal">"Atlanta"</span>); 
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;    System.out.println(<span class = "literal">"\nA list of cities in collection2:"</span>);
+ 28&nbsp;&nbsp;    System.out.println(collection2);
+ 29&nbsp;&nbsp;
+ 30&nbsp;&nbsp;    ArrayList&lt;String&gt; c1 = (ArrayList&lt;String&gt;)(collection1.clone());
+ 31&nbsp;&nbsp;    c1.addAll(collection2);
+ 32&nbsp;&nbsp;    System.out.println(<span class = "literal">"\nCities in collection1 or collection2: "</span>);
+ 33&nbsp;&nbsp;    System.out.println(c1);
+ 34&nbsp;&nbsp;
+ 35&nbsp;&nbsp;    c1 = (ArrayList&lt;String&gt;)(collection1.clone());
+ 36&nbsp;&nbsp;    c1.retainAll(collection2);
+ 37&nbsp;&nbsp;    System.out.print(<span class = "literal">"\nCities in collection1 and collection2: "</span>);
+ 38&nbsp;&nbsp;    System.out.println(c1);
+ 39&nbsp;&nbsp;
+ 40&nbsp;&nbsp;    c1 = (ArrayList&lt;String&gt;)(collection1.clone());
+ 41&nbsp;&nbsp;    c1.removeAll(collection2);
+ 42&nbsp;&nbsp;    System.out.print(<span class = "literal">"\nCities in collection1, but not in 2: "</span>);
+ 43&nbsp;&nbsp;    System.out.println(c1);
+ 44&nbsp;&nbsp;  }
+ 45&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestCollection" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

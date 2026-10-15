@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - CircleView.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "CircleViewWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> CircleView <span class = "keyword">extends</span> javax.swing.JPanel {
+  <span class = "keyword">private</span> CircleModel model;
+
+  <span class = "comment">/** Set a model */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setModel(CircleModel newModel) {
+    model = newModel;
+
+    <span class = "keyword">if</span> (model != <span class = "keyword">null</span>)
+      <span class = "comment">// Register the view as listener for the model</span>
+      model.addActionListener(<span class = "keyword">new</span> ActionListener() {
+        @Override
+        <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+          repaint();
+        }
+      });
+  }
+
+  <span class = "keyword">public</span> CircleModel getModel() {
+    <span class = "keyword">return</span> model;
+  }
+
+  @Override
+  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+    <span class = "keyword">if</span> (model != <span class = "keyword">null</span>) {
+      <span class = "keyword">super</span>.paintComponent(g);
+      g.setColor(model.getColor());
+
+      <span class = "keyword">int</span> xCenter = getWidth() / <span class = "literal">2</span>;
+      <span class = "keyword">int</span> yCenter = getHeight() / <span class = "literal">2</span>;
+      <span class = "keyword">int</span> radius = (<span class = "keyword">int</span>)model.getRadius();
+
+      <span class = "keyword">if</span> (model.isFilled()) {
+        g.fillOval(xCenter - radius, yCenter - radius,
+          <span class = "literal">2</span> * radius, <span class = "literal">2</span> * radius);
+      }
+      <span class = "keyword">else</span> {
+        g.drawOval(xCenter - radius, yCenter - radius,
+          <span class = "literal">2</span> * radius, <span class = "literal">2</span> * radius);
+      }
+    }
+  }
+}
+</pre>
+</body>
+</html>

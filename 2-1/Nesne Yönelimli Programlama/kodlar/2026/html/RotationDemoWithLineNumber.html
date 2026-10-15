@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - RotationDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "RotationDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.geom.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> RotationDemo <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  <span class = "keyword">public</span> RotationDemo() {
+  7&nbsp;&nbsp;    add(<span class = "keyword">new</span> ShapePanel());
+  8&nbsp;&nbsp;  }
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;  <span class = "keyword">class</span> ShapePanel <span class = "keyword">extends</span> JPanel {
+ 11&nbsp;&nbsp;    @Override
+ 12&nbsp;&nbsp;    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+ 13&nbsp;&nbsp;      <span class = "keyword">super</span>.paintComponent(g);
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;      Graphics2D g2d = (Graphics2D)g;
+ 16&nbsp;&nbsp;      Rectangle2D rectangle = <span class = "keyword">new</span> Rectangle2D.Double(<span class = "literal">20</span>, <span class = "literal">20</span>, <span class = "literal">50</span>, <span class = "literal">60</span>);
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;      g2d.translate(<span class = "literal">150</span>, <span class = "literal">120</span>); <span class = "comment">// Move origin to the center</span>
+ 19&nbsp;&nbsp;      g2d.fill(<span class = "keyword">new</span> Ellipse2D.Double(<span class = "literal">-</span><span class = "literal">5</span>, <span class = "literal">-</span><span class = "literal">5</span>, <span class = "literal">10</span>, <span class = "literal">10</span>));
+ 20&nbsp;&nbsp;      java.util.Random random = <span class = "keyword">new</span> java.util.Random();
+ 21&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">10</span>; i++) {
+ 22&nbsp;&nbsp;        g2d.setColor(<span class = "keyword">new</span> Color(random.nextInt(<span class = "literal">256</span>), 
+ 23&nbsp;&nbsp;          random.nextInt(<span class = "literal">256</span>), random.nextInt(<span class = "literal">256</span>)));
+ 24&nbsp;&nbsp;        g2d.draw(rectangle);
+ 25&nbsp;&nbsp;        g2d.rotate(Math.PI / <span class = "literal">5</span>);
+ 26&nbsp;&nbsp;      }
+ 27&nbsp;&nbsp;    }
+ 28&nbsp;&nbsp;  }
+ 29&nbsp;&nbsp;  
+ 30&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 31&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 32&nbsp;&nbsp;    JApplet applet = <span class = "keyword">new</span> RotationDemo();
+ 33&nbsp;&nbsp;    applet.init();
+ 34&nbsp;&nbsp;    applet.start();
+ 35&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 36&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 37&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"RotationDemo"</span>);
+ 38&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+ 39&nbsp;&nbsp;    frame.setSize(<span class = "literal">300</span>, <span class = "literal">300</span>);
+ 40&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 41&nbsp;&nbsp;  }
+ 42&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ProgressBarDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ProgressBarDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> java.beans.*;
+  5&nbsp;&nbsp;
+  6&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ProgressBarDemo <span class = "keyword">extends</span> JApplet {
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> JProgressBar jpb = <span class = "keyword">new</span> JProgressBar();
+  8&nbsp;&nbsp;  <span class = "keyword">private</span> JTextArea jtaResult = <span class = "keyword">new</span> JTextArea();
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> JTextField jtfPrimeCount = <span class = "keyword">new</span> JTextField(<span class = "literal">8</span>);
+ 10&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtDisplayPrime = <span class = "keyword">new</span> JButton(<span class = "literal">"Display Prime"</span>);
+ 11&nbsp;&nbsp;  
+ 12&nbsp;&nbsp;  <span class = "keyword">public</span> ProgressBarDemo() {   
+ 13&nbsp;&nbsp;    jpb.setStringPainted(<span class = "keyword">true</span>); <span class = "comment">// Paint the percent in a string</span>
+ 14&nbsp;&nbsp;    jpb.setValue(<span class = "literal">0</span>);
+ 15&nbsp;&nbsp;    jpb.setMaximum(<span class = "literal">100</span>);
+ 16&nbsp;&nbsp;    
+ 17&nbsp;&nbsp;    jtaResult.setWrapStyleWord(<span class = "keyword">true</span>);
+ 18&nbsp;&nbsp;    jtaResult.setLineWrap(<span class = "keyword">true</span>);
+ 19&nbsp;&nbsp;    
+ 20&nbsp;&nbsp;    JPanel panel = <span class = "keyword">new</span> JPanel();
+ 21&nbsp;&nbsp;    panel.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Enter the prime number count"</span>));
+ 22&nbsp;&nbsp;    panel.add(jtfPrimeCount);
+ 23&nbsp;&nbsp;    panel.add(jbtDisplayPrime);
+ 24&nbsp;&nbsp;    
+ 25&nbsp;&nbsp;    add(jpb, BorderLayout.NORTH);
+ 26&nbsp;&nbsp;    add(<span class = "keyword">new</span> JScrollPane(jtaResult), BorderLayout.CENTER);
+ 27&nbsp;&nbsp;    add(panel, BorderLayout.SOUTH);
+ 28&nbsp;&nbsp;    
+ 29&nbsp;&nbsp;    jbtDisplayPrime.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 30&nbsp;&nbsp;      @Override
+ 31&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {      
+ 32&nbsp;&nbsp;        ComputePrime task = <span class = "keyword">new</span> ComputePrime(
+ 33&nbsp;&nbsp;          Integer.parseInt(jtfPrimeCount.getText()), jtaResult);
+ 34&nbsp;&nbsp;                
+ 35&nbsp;&nbsp;        task.addPropertyChangeListener(<span class = "keyword">new</span> PropertyChangeListener() {
+ 36&nbsp;&nbsp;          <span class = "keyword">public</span> <span class = "keyword">void</span> propertyChange(PropertyChangeEvent e) {
+ 37&nbsp;&nbsp;            <span class = "keyword">if</span> (<span class = "literal">"progress"</span>.equals(e.getPropertyName())) {
+ 38&nbsp;&nbsp;              jpb.setValue((Integer)e.getNewValue());
+ 39&nbsp;&nbsp;            }
+ 40&nbsp;&nbsp;          }
+ 41&nbsp;&nbsp;        });
+ 42&nbsp;&nbsp;        
+ 43&nbsp;&nbsp;        task.execute(); <span class = "comment">// Execute SwingWorker</span>
+ 44&nbsp;&nbsp;      }
+ 45&nbsp;&nbsp;    });
+ 46&nbsp;&nbsp;  }
+ 47&nbsp;&nbsp;  
+ 48&nbsp;&nbsp;  <span class = "comment">/** Task class for SwingWorker */</span>
+ 49&nbsp;&nbsp;  <span class = "keyword">static</span> <span class = "keyword">class</span> ComputePrime <span class = "keyword">extends</span> SwingWorker&lt;Integer, Integer&gt; {
+ 50&nbsp;&nbsp;    <span class = "keyword">private</span> <span class = "keyword">int</span> count; 
+ 51&nbsp;&nbsp;    <span class = "keyword">private</span> JTextArea result; <span class = "comment">// Textarea in the UI</span>
+ 52&nbsp;&nbsp;    
+ 53&nbsp;&nbsp;    <span class = "comment">/** Construct a runnable Task */</span>
+ 54&nbsp;&nbsp;    <span class = "keyword">public</span> ComputePrime(<span class = "keyword">int</span> count, JTextArea result) {
+ 55&nbsp;&nbsp;      <span class = "keyword">this</span>.count = count;
+ 56&nbsp;&nbsp;      <span class = "keyword">this</span>.result = result;
+ 57&nbsp;&nbsp;    }
+ 58&nbsp;&nbsp;    
+ 59&nbsp;&nbsp;    <span class = "comment">/** Code run on a background thread */</span>
+ 60&nbsp;&nbsp;    <span class = "keyword">protected</span> Integer doInBackground() {
+ 61&nbsp;&nbsp;      publishPrimeNumbers(count);
+ 62&nbsp;&nbsp;      
+ 63&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "literal">0</span>; <span class = "comment">// doInBachground must return a value</span>
+ 64&nbsp;&nbsp;    }
+ 65&nbsp;&nbsp;
+ 66&nbsp;&nbsp;    <span class = "comment">/** Override process to display published prime values */</span>
+ 67&nbsp;&nbsp;    <span class = "keyword">protected</span> <span class = "keyword">void</span> process(java.util.List&lt;Integer&gt; list) {
+ 68&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; list.size(); i++) 
+ 69&nbsp;&nbsp;        result.append(list.get(i) + <span class = "literal">" "</span>);
+ 70&nbsp;&nbsp;    }
+ 71&nbsp;&nbsp;    
+ 72&nbsp;&nbsp;    <span class = "comment">/** Publish the first n primes number */</span>
+ 73&nbsp;&nbsp;    <span class = "keyword">private</span> <span class = "keyword">void</span> publishPrimeNumbers(<span class = "keyword">int</span> n) {    
+ 74&nbsp;&nbsp;      <span class = "keyword">int</span> count = <span class = "literal">0</span>; <span class = "comment">// Count the number of prime numbers</span>
+ 75&nbsp;&nbsp;      <span class = "keyword">int</span> number = <span class = "literal">2</span>; <span class = "comment">// A number to be tested for primeness</span>
+ 76&nbsp;&nbsp;
+ 77&nbsp;&nbsp;      <span class = "comment">// Repeatedly find prime numbers</span>
+ 78&nbsp;&nbsp;      <span class = "keyword">while</span> (count &lt;= n) {
+ 79&nbsp;&nbsp;        <span class = "comment">// Print the prime number and increase the count</span>
+ 80&nbsp;&nbsp;        <span class = "keyword">if</span> (isPrime(number)) {
+ 81&nbsp;&nbsp;          count++; <span class = "comment">// Increase the count</span>
+ 82&nbsp;&nbsp;          setProgress(<span class = "literal">100</span> * count / n); <span class = "comment">// Update progress</span>
+ 83&nbsp;&nbsp;          publish(number); <span class = "comment">// Publish the prime number</span>
+ 84&nbsp;&nbsp;        }
+ 85&nbsp;&nbsp;
+ 86&nbsp;&nbsp;        <span class = "comment">// Check if the next number is prime</span>
+ 87&nbsp;&nbsp;        number++;
+ 88&nbsp;&nbsp;      }
+ 89&nbsp;&nbsp;    }
+ 90&nbsp;&nbsp;
+ 91&nbsp;&nbsp;    <span class = "comment">/** Check whether number is prime */</span>
+ 92&nbsp;&nbsp;    <span class = "keyword">private</span> <span class = "keyword">static</span> <span class = "keyword">boolean</span> isPrime(<span class = "keyword">int</span> number) {
+ 93&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> divisor = <span class = "literal">2</span>; divisor &lt;= number / <span class = "literal">2</span>; divisor++) {
+ 94&nbsp;&nbsp;        <span class = "keyword">if</span> (number % divisor == <span class = "literal">0</span>) { <span class = "comment">// If true, number is not prime</span>
+ 95&nbsp;&nbsp;          <span class = "keyword">return</span> <span class = "keyword">false</span>; <span class = "comment">// number is not a prime</span>
+ 96&nbsp;&nbsp;        }
+ 97&nbsp;&nbsp;      }
+ 98&nbsp;&nbsp;
+ 99&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "keyword">true</span>; <span class = "comment">// number is prime</span>
+100&nbsp;&nbsp;    }
+101&nbsp;&nbsp;  }
+102&nbsp;&nbsp;  
+103&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+104&nbsp;&nbsp;    ProgressBarDemo applet = <span class = "keyword">new</span> ProgressBarDemo();
+105&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+106&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"ProgressBarDemo"</span>);
+107&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+108&nbsp;&nbsp;    applet.init();
+109&nbsp;&nbsp;    applet.start();
+110&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>, <span class = "literal">200</span>);
+111&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+112&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+113&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+114&nbsp;&nbsp;  }
+115&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

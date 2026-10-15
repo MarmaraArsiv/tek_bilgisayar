@@ -1,0 +1,73 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestMyLinkedList.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestMyLinkedList.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestMyLinkedList {
+  2&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+  3&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  4&nbsp;&nbsp;    <span class = "comment">// Create a list for strings</span>
+  5&nbsp;&nbsp;    MyLinkedList&lt;String&gt; list = <span class = "keyword">new</span> MyLinkedList&lt;String&gt;();
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;    <span class = "comment">// Add elements to the list</span>
+  8&nbsp;&nbsp;    list.add(<span class = "literal">"America"</span>); <span class = "comment">// Add it to the list</span>
+  9&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">1</span>) "</span> + list);
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;    list.add(<span class = "literal">0</span>, <span class = "literal">"Canada"</span>); <span class = "comment">// Add it to the beginning of the list</span>
+ 12&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">2</span>) "</span> + list);
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;    list.add(<span class = "literal">"Russia"</span>); <span class = "comment">// Add it to the end of the list</span>
+ 15&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">3</span>) "</span> + list);
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    list.addLast(<span class = "literal">"France"</span>); <span class = "comment">// Add it to the end of the list</span>
+ 18&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">4</span>) "</span> + list);
+ 19&nbsp;&nbsp;
+ 20&nbsp;&nbsp;    list.add(<span class = "literal">2</span>, <span class = "literal">"Germany"</span>); <span class = "comment">// Add it to the list at index 2</span>
+ 21&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">5</span>) "</span> + list);
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;    list.add(<span class = "literal">5</span>, <span class = "literal">"Norway"</span>); <span class = "comment">// Add it to the list at index 5</span>
+ 24&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">6</span>) "</span> + list);
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;    list.add(<span class = "literal">0</span>, <span class = "literal">"Poland"</span>); <span class = "comment">// Same as list.addFirst("Poland")</span>
+ 27&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">7</span>) "</span> + list);
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;    <span class = "comment">// Remove elements from the list</span>
+ 30&nbsp;&nbsp;    list.remove(<span class = "literal">0</span>); <span class = "comment">// Same as list.remove("Australia") in this case</span>
+ 31&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">8</span>) "</span> + list);
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;    list.remove(<span class = "literal">2</span>); <span class = "comment">// Remove the element at index 2</span>
+ 34&nbsp;&nbsp;    System.out.println(<span class = "literal">"(<span class = "literal">9</span>) "</span> + list);
+ 35&nbsp;&nbsp;
+ 36&nbsp;&nbsp;    list.remove(list.size() - <span class = "literal">1</span>); <span class = "comment">// Remove the last element</span>
+ 37&nbsp;&nbsp;    System.out.print(<span class = "literal">"(<span class = "literal">10</span>) "</span> + list + <span class = "literal">"\n(<span class = "literal">11</span>) "</span>);
+ 38&nbsp;&nbsp;    
+ 39&nbsp;&nbsp;    <span class = "keyword">for</span> (String s: list)
+ 40&nbsp;&nbsp;      System.out.print(s.toUpperCase() + <span class = "literal">" "</span>);
+ 41&nbsp;&nbsp;    
+ 42&nbsp;&nbsp;    list.clear();
+ 43&nbsp;&nbsp;    System.out.println(<span class = "literal">"\nAfter clearing the list, the list size is "</span> 
+ 44&nbsp;&nbsp;      + list.size());
+ 45&nbsp;&nbsp;  }
+ 46&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestMyLinkedList" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

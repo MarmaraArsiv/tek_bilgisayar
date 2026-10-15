@@ -1,0 +1,23 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - NegativeAmountException.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">// NegativeAmountException.java: Negative amount exception
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> NegativeAmountException <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> Exception {
+  <FONT COLOR="#008000">/** Account information to be passed to the handlers */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> Account account;
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> amount;
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> String transactionType;
+
+  <FONT COLOR="#008000">/** Construct an negative amount exception */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> NegativeAmountException(Account account,
+                                 <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> amount,
+                                 String transactionType) {
+    <FONT COLOR="#000080"><B>super</B></FONT><FONT COLOR="#000000">(<FONT COLOR="#0000ff">"Negative amount"</FONT>);
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.account = account;
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.amount = amount;
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.transactionType = transactionType;
+  }
+}
+</pre>

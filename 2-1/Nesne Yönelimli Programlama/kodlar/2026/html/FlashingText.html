@@ -1,0 +1,59 @@
+<html>
+<head>
+<title>Intro to Java Programming, 9E, Y. Daniel Liang - FlashingText.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "FlashingTextWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> FlashingText <span class = "keyword">extends</span> JApplet <span class = "keyword">implements</span> Runnable {
+  <span class = "keyword">private</span> JLabel jlblText = <span class = "keyword">new</span> JLabel(<span class = "literal">"Welcome"</span>, JLabel.CENTER);
+
+  <span class = "keyword">public</span> FlashingText() {
+    add(jlblText);
+    <span class = "keyword">new</span> Thread(<span class = "keyword">this</span>).start();
+  }
+
+  @Override <span class = "comment">/** Set the text on/off every 200 milliseconds */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> run() {
+    <span class = "keyword">try</span> {
+      <span class = "keyword">while</span> (<span class = "keyword">true</span>) {
+        <span class = "keyword">if</span> (jlblText.getText() == <span class = "keyword">null</span>)
+          jlblText.setText(<span class = "literal">"Welcome"</span>);
+        <span class = "keyword">else</span>
+          jlblText.setText(<span class = "keyword">null</span>);
+
+        Thread.sleep(<span class = "literal">200</span>);
+      }
+    }
+    <span class = "keyword">catch</span> (InterruptedException ex) {
+    }
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    SwingUtilities.invokeLater(<span class = "keyword">new</span> Runnable() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> run() {
+        JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"FlashingText"</span>);
+        frame.add(<span class = "keyword">new</span> FlashingText());
+        frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(<span class = "literal">200</span>, <span class = "literal">200</span>);
+        frame.setVisible(<span class = "keyword">true</span>);
+      }
+    });
+  }
+}
+</pre>
+</body>
+</html>

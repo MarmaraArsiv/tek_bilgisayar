@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - PrintPyramid.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "PrintPyramid.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.Scanner; 
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> PrintPyramid {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  5&nbsp;&nbsp;    <span class = "comment">// Create a Scanner</span>
+  6&nbsp;&nbsp;    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;    <span class = "comment">// Prompt the user to enter the number of lines</span>
+  9&nbsp;&nbsp;    System.out.print(<span class = "literal">"Enter the number of lines: "</span>);
+ 10&nbsp;&nbsp;    <span class = "keyword">int</span> numberOfLines = input.nextInt();
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;    <span class = "keyword">if</span> (numberOfLines &lt; <span class = "literal">1</span> || numberOfLines &gt; <span class = "literal">15</span>) {
+ 13&nbsp;&nbsp;      System.out.println(<span class = "literal">"You must enter a number from <span class = "literal">1</span> to 15"</span>);
+ 14&nbsp;&nbsp;      System.exit(<span class = "literal">0</span>);
+ 15&nbsp;&nbsp;    }
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    <span class = "comment">// Print lines</span>
+ 18&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> row = <span class = "literal">1</span>; row &lt;= numberOfLines; row++) {
+ 19&nbsp;&nbsp;      <span class = "comment">// Print NUMBER_OF_LINES – row) leading spaces</span>
+ 20&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> column = <span class = "literal">1</span>; column &lt;= numberOfLines - row; column++)
+ 21&nbsp;&nbsp;        System.out.print(<span class = "literal">"   "</span>);
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;      <span class = "comment">// Print leading numbers row, row – 1, ..., 1</span>
+ 24&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> num = row; num &gt;= <span class = "literal">1</span>; num--)
+ 25&nbsp;&nbsp;        System.out.print((num &gt;= <span class = "literal">10</span>) ? <span class = "literal">" "</span> + num : <span class = "literal">"  "</span> + num);
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;      <span class = "comment">// Print ending numbers 2, 3, ..., row – 1, row</span>
+ 28&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> num = <span class = "literal">2</span>; num &lt;= row; num++)
+ 29&nbsp;&nbsp;        System.out.print((num &gt;= <span class = "literal">10</span>) ? <span class = "literal">" "</span> + num : <span class = "literal">"  "</span> + num);
+ 30&nbsp;&nbsp;
+ 31&nbsp;&nbsp;      <span class = "comment">// Start a new line</span>
+ 32&nbsp;&nbsp;      System.out.println();
+ 33&nbsp;&nbsp;    }
+ 34&nbsp;&nbsp;  }
+ 35&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "PrintPyramid" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

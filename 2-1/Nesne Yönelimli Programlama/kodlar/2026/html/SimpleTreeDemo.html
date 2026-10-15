@@ -1,0 +1,130 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SimpleTreeDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "SimpleTreeDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.event.*;
+<span class = "keyword">import</span> java.util.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> SimpleTreeDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">// Create a default tree</span>
+  <span class = "keyword">private</span> JTree jTree1 = <span class = "keyword">new</span> JTree();
+
+  <span class = "comment">// Create a tree with an array of Objects.</span>
+  <span class = "keyword">private</span> JTree jTree2 = <span class = "keyword">new</span> JTree(<span class = "keyword">new</span> String[]
+    {<span class = "literal">"dog"</span>, <span class = "literal">"cow"</span>, <span class = "literal">"cat"</span>, <span class = "literal">"pig"</span>, <span class = "literal">"rabbit"</span>});
+
+  <span class = "comment">// Create a tree with a Hashtable</span>
+  <span class = "keyword">private</span> Vector&lt;Object&gt; vector = <span class = "keyword">new</span> Vector&lt;Object&gt;(Arrays.asList(
+    <span class = "keyword">new</span> Object[]{<span class = "literal">"red"</span>, <span class = "literal">"green"</span>, <span class = "literal">"black"</span>, <span class = "literal">"white"</span>, <span class = "literal">"purple"</span>}));
+  <span class = "keyword">private</span> JTree jTree3 = <span class = "keyword">new</span> JTree(vector);
+
+  <span class = "keyword">private</span> Hashtable&lt;Integer, String&gt; hashtable =
+    <span class = "keyword">new</span> Hashtable&lt;Integer, String&gt;();
+  <span class = "keyword">private</span> JTree jTree4;
+
+  <span class = "comment">// Create a combo box for selecting rootVisible</span>
+  <span class = "keyword">private</span> JComboBox jcboRootVisible = <span class = "keyword">new</span> JComboBox(
+    <span class = "keyword">new</span> String[]{<span class = "literal">"false"</span>, <span class = "literal">"true"</span>});
+
+  <span class = "comment">// Create a combo box for selecting showRootHandles</span>
+  <span class = "keyword">private</span> JComboBox jcboShowsRootHandles = <span class = "keyword">new</span> JComboBox(
+    <span class = "keyword">new</span> String[] {<span class = "literal">"false"</span>, <span class = "literal">"true"</span>});
+
+  <span class = "comment">// Create a spinner for selecting row height</span>
+  <span class = "keyword">private</span> JSpinner jSpinnerRowHeight = <span class = "keyword">new</span> JSpinner(
+      <span class = "keyword">new</span> SpinnerNumberModel(<span class = "literal">16</span>, <span class = "literal">1</span>, <span class = "literal">50</span>, <span class = "literal">1</span>));
+
+  <span class = "keyword">public</span> SimpleTreeDemo() {
+    jTree1.setRootVisible(<span class = "keyword">false</span>);
+
+    hashtable.put(<span class = "literal">1</span>, <span class = "literal">"red"</span>);
+    hashtable.put(<span class = "literal">2</span>, <span class = "literal">"green"</span>);
+    hashtable.put(<span class = "literal">3</span>, <span class = "literal">"blue"</span>);
+    hashtable.put(<span class = "literal">4</span>, <span class = "literal">"yellow"</span>);
+    jTree4 = <span class = "keyword">new</span> JTree(hashtable);
+
+    JPanel panel1 = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> GridLayout(<span class = "literal">1</span>, <span class = "literal">4</span>));
+    panel1.add(<span class = "keyword">new</span> JScrollPane(jTree1));
+    panel1.add(<span class = "keyword">new</span> JScrollPane(jTree2));
+    panel1.add(<span class = "keyword">new</span> JScrollPane(jTree3));
+    panel1.add(<span class = "keyword">new</span> JScrollPane(jTree4));
+
+    JPanel panel2 = <span class = "keyword">new</span> JPanel();
+    panel2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"rootVisible"</span>));
+    panel2.add(jcboRootVisible);
+    panel2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"rowHeight"</span>));
+    panel2.add(jSpinnerRowHeight);
+    panel2.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"showsRootHandles"</span>));
+    panel2.add(jcboShowsRootHandles);
+
+    add(panel1, BorderLayout.CENTER);
+    add(panel2, BorderLayout.SOUTH);
+
+    <span class = "comment">// Register listeners</span>
+    jcboRootVisible.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "keyword">boolean</span> rootVisible =
+          jcboRootVisible.getSelectedItem().equals(<span class = "literal">"true"</span>);
+        jTree1.setRootVisible(rootVisible);
+        jTree2.setRootVisible(rootVisible);
+        jTree3.setRootVisible(rootVisible);
+        jTree4.setRootVisible(rootVisible);
+      }
+    });
+
+    jcboShowsRootHandles.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "keyword">boolean</span> showsRootHandles =
+          jcboShowsRootHandles.getSelectedItem().equals(<span class = "literal">"true"</span>);
+        jTree1.setShowsRootHandles(showsRootHandles);
+        jTree2.setShowsRootHandles(showsRootHandles);
+        jTree3.setShowsRootHandles(showsRootHandles);
+        jTree4.setShowsRootHandles(showsRootHandles);
+      }
+    });
+
+    jSpinnerRowHeight.addChangeListener(<span class = "keyword">new</span> ChangeListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> stateChanged(ChangeEvent e) {
+        <span class = "keyword">int</span> height =
+          ((Integer)(jSpinnerRowHeight.getValue())).intValue();
+        jTree1.setRowHeight(height);
+        jTree2.setRowHeight(height);
+        jTree3.setRowHeight(height);
+        jTree4.setRowHeight(height);
+      }
+    });
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    SimpleTreeDemo applet = <span class = "keyword">new</span> SimpleTreeDemo();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"SimpleTreeDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Path2DDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "Path2DDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.geom.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> Path2DDemo <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  <span class = "keyword">public</span> Path2DDemo() {
+  7&nbsp;&nbsp;    add(<span class = "keyword">new</span> ShapePanel());
+  8&nbsp;&nbsp;  }
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;  <span class = "keyword">class</span> ShapePanel <span class = "keyword">extends</span> JPanel {
+ 11&nbsp;&nbsp;    @Override
+ 12&nbsp;&nbsp;    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+ 13&nbsp;&nbsp;      <span class = "keyword">super</span>.paintComponent(g);
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;      Graphics2D g2d = (Graphics2D)g;
+ 16&nbsp;&nbsp;      Path2D path = <span class = "keyword">new</span> Path2D.Double();
+ 17&nbsp;&nbsp;      path.moveTo(<span class = "literal">100</span>, <span class = "literal">100</span>);
+ 18&nbsp;&nbsp;      path.curveTo(<span class = "literal">150</span>, <span class = "literal">50</span>, <span class = "literal">250</span>, <span class = "literal">150</span>, <span class = "literal">300</span>, <span class = "literal">100</span>);
+ 19&nbsp;&nbsp;      path.moveTo(<span class = "literal">100</span>, <span class = "literal">100</span>);
+ 20&nbsp;&nbsp;      path.curveTo(<span class = "literal">150</span>, <span class = "literal">150</span>, <span class = "literal">250</span>, <span class = "literal">50</span>, <span class = "literal">300</span>, <span class = "literal">100</span>);
+ 21&nbsp;&nbsp;      path.lineTo(<span class = "literal">200</span>, <span class = "literal">20</span>);
+ 22&nbsp;&nbsp;      path.closePath();
+ 23&nbsp;&nbsp;      
+ 24&nbsp;&nbsp;      g2d.draw(path);
+ 25&nbsp;&nbsp;    }
+ 26&nbsp;&nbsp;  }
+ 27&nbsp;&nbsp;  
+ 28&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 29&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 30&nbsp;&nbsp;    JApplet applet = <span class = "keyword">new</span> Path2DDemo();
+ 31&nbsp;&nbsp;    applet.init();
+ 32&nbsp;&nbsp;    applet.start();
+ 33&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 34&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 35&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"Path2DDemo"</span>);
+ 36&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+ 37&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>, <span class = "literal">150</span>);
+ 38&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 39&nbsp;&nbsp;  }
+ 40&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

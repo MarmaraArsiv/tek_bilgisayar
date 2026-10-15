@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - TestCircle1.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestCircle1 {
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a circle with radius 5.0</span>
+    Circle1 myCircle = <span class = "keyword">new</span> Circle1(<span class = "literal">5</span>.<span class = "literal">0</span>);
+    System.out.println(<span class = "literal">"The area of the circle of radius "</span>
+      + myCircle.radius + <span class = "literal">" is "</span> + myCircle.getArea());
+
+    <span class = "comment">// Create a circle with radius 1</span>
+    Circle1 yourCircle = <span class = "keyword">new</span> Circle1();
+    System.out.println(<span class = "literal">"The area of the circle of radius "</span>
+      + yourCircle.radius + <span class = "literal">" is "</span> + yourCircle.getArea());
+
+    <span class = "comment">// Modify circle radius</span>
+    yourCircle.radius = <span class = "literal">100</span>;
+    System.out.println(<span class = "literal">"The area of the circle of radius "</span>
+      + yourCircle.radius + <span class = "literal">" is "</span> + yourCircle.getArea());
+  }
+}
+
+<span class = "comment">// Define the circle class with two constructors</span>
+<span class = "keyword">class</span> Circle1 {
+  <span class = "keyword">double</span> radius;
+
+  <span class = "comment">/** Construct a circle with radius 1 */</span>
+  Circle1() {
+    radius = <span class = "literal">1</span>.<span class = "literal">0</span>;
+  }
+
+  <span class = "comment">/** Construct a circle with a specified radius */</span>
+  Circle1(<span class = "keyword">double</span> newRadius) {
+    radius = newRadius;
+  }
+
+  <span class = "comment">/** Return the area of this circle */</span>
+  <span class = "keyword">double</span> getArea() {
+    <span class = "keyword">return</span> radius * radius * Math.PI;
+  }
+}
+</pre>
+</body>
+</html>

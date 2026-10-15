@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Intro to Java Programming, 7E - AnalzeNumbers.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> AnalzeNumbers {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "keyword">double</span>[] scores = <span class = "keyword">new</span> <span class = "keyword">double</span>[<span class = "literal">5</span>];
+    <span class = "keyword">double</span> sum = <span class = "literal">0</span>;
+
+    java.util.Scanner input = <span class = "keyword">new</span> java.util.Scanner(System.in);
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; scores.length; i++) {
+      System.out.print(<span class = "literal">"Enter a new score: "</span>);
+      scores[i] = input.nextDouble();
+      sum += scores[i];
+    }
+    
+    <span class = "keyword">double</span> average = sum / scores.length;
+
+    <span class = "keyword">int</span> count = <span class = "literal">0</span>; <span class = "comment">// The number of elements above average</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; scores.length; i++) 
+      <span class = "keyword">if</span> (scores[i] &gt; average)
+        count++;
+
+    System.out.println(<span class = "literal">"Average is "</span> + average);
+    System.out.println(<span class = "literal">"Number of elements above the average "</span>
+      + count);
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestCenterMessage.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestCenterMessage.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestCenterMessage <span class = "keyword">extends</span> JFrame {
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> TestCenterMessage() {
+  6&nbsp;&nbsp;    CenterMessage messagePanel = <span class = "keyword">new</span> CenterMessage();
+  7&nbsp;&nbsp;    add(messagePanel);
+  8&nbsp;&nbsp;    messagePanel.setBackground(Color.WHITE);
+  9&nbsp;&nbsp;    messagePanel.setFont(<span class = "keyword">new</span> Font(<span class = "literal">"Californian FB"</span>, Font.BOLD, <span class = "literal">30</span>));
+ 10&nbsp;&nbsp;  }
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 13&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 14&nbsp;&nbsp;    TestCenterMessage frame = <span class = "keyword">new</span> TestCenterMessage();
+ 15&nbsp;&nbsp;    frame.setSize(<span class = "literal">300</span>, <span class = "literal">150</span>);
+ 16&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"CenterMessage"</span>);
+ 17&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame   </span>
+ 18&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 19&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 20&nbsp;&nbsp;  }
+ 21&nbsp;&nbsp;}
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;<span class = "keyword">class</span> CenterMessage <span class = "keyword">extends</span> JPanel {
+ 24&nbsp;&nbsp;  @Override <span class = "comment">/** Paint the message */</span>
+ 25&nbsp;&nbsp;  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+ 26&nbsp;&nbsp;    <span class = "keyword">super</span>.paintComponent(g);
+ 27&nbsp;&nbsp;
+ 28&nbsp;&nbsp;    <span class = "comment">// Get font metrics for the current font</span>
+ 29&nbsp;&nbsp;    FontMetrics fm = g.getFontMetrics();
+ 30&nbsp;&nbsp;
+ 31&nbsp;&nbsp;    <span class = "comment">// Find the center location to display</span>
+ 32&nbsp;&nbsp;    <span class = "keyword">int</span> stringWidth = fm.stringWidth(<span class = "literal">"Welcome to Java"</span>);
+ 33&nbsp;&nbsp;    <span class = "keyword">int</span> stringAscent = fm.getAscent();
+ 34&nbsp;&nbsp;
+ 35&nbsp;&nbsp;    <span class = "comment">// Get the position of the leftmost character in the baseline</span>
+ 36&nbsp;&nbsp;    <span class = "keyword">int</span> xCoordinate = getWidth() / <span class = "literal">2</span> - stringWidth / <span class = "literal">2</span>;
+ 37&nbsp;&nbsp;    <span class = "keyword">int</span> yCoordinate = getHeight() / <span class = "literal">2</span> + stringAscent / <span class = "literal">2</span>;
+ 38&nbsp;&nbsp;
+ 39&nbsp;&nbsp;    g.drawString(<span class = "literal">"Welcome to Java"</span>, xCoordinate, yCoordinate);
+ 40&nbsp;&nbsp;  }
+ 41&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

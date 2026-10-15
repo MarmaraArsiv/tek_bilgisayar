@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - KnightTourApp.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "KnightTourAppWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.List;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> KnightTourApp <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> KnightTourModel model = <span class = "keyword">new</span> KnightTourModel();
+  <span class = "keyword">private</span> PaintKnightTour paintKnightTour = <span class = "keyword">new</span> PaintKnightTour();
+  <span class = "keyword">private</span> JTextField jtfRow = <span class = "keyword">new</span> JTextField(<span class = "literal">2</span>);
+  <span class = "keyword">private</span> JTextField jtfColumn = <span class = "keyword">new</span> JTextField(<span class = "literal">2</span>);
+  <span class = "keyword">private</span> JButton jbtSearch = <span class = "keyword">new</span> JButton(<span class = "literal">"Search"</span>);
+  
+  <span class = "keyword">public</span> KnightTourApp() {    
+    JPanel panel = <span class = "keyword">new</span> JPanel();
+    panel.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Specify a starting position, row: "</span>));
+    panel.add(jtfRow);
+    panel.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"column: "</span>));
+    panel.add(jtfColumn);
+    panel.add(jbtSearch);
+    add(paintKnightTour, BorderLayout.CENTER);
+    add(panel, BorderLayout.SOUTH);
+    
+    jbtSearch.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {      
+        <span class = "keyword">int</span> position = Integer.parseInt(jtfRow.getText()) * <span class = "literal">8</span> +
+          Integer.parseInt(jtfColumn.getText());
+        paintKnightTour.displayPath(
+          model.getHamiltonianPath(position));  
+      }
+    });
+  }
+
+  <span class = "comment">/** A panel to paint the chessboard and the knight tour */</span>
+  <span class = "keyword">private</span> <span class = "keyword">static</span> <span class = "keyword">class</span> PaintKnightTour <span class = "keyword">extends</span> JPanel {
+    <span class = "keyword">private</span> List&lt;Integer&gt; path; <span class = "comment">// A Knight tour path</span>
+
+    <span class = "keyword">public</span> PaintKnightTour() {
+      setBorder(BorderFactory.createLineBorder(Color.black, <span class = "literal">1</span>));
+    }
+    
+    <span class = "keyword">public</span> <span class = "keyword">void</span> displayPath(List&lt;Integer&gt; path) {
+      <span class = "keyword">this</span>.path = path;
+      repaint();
+    }
+    
+    @Override
+    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+      <span class = "keyword">super</span>.paintComponent(g);
+      
+      <span class = "comment">// Display horizontal lines</span>
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">8</span>; i++) 
+        g.drawLine(<span class = "literal">0</span>, i * getHeight() / <span class = "literal">8</span>, 
+          getWidth(), i * getHeight() / <span class = "literal">8</span>);
+      
+      <span class = "comment">// Display vertical lines</span>
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">8</span>; i++) 
+        g.drawLine(i * getWidth() / <span class = "literal">8</span>, <span class = "literal">0</span>, 
+          (<span class = "keyword">int</span>)i * getWidth() / <span class = "literal">8</span>, getHeight());
+
+      <span class = "keyword">if</span> (path == <span class = "keyword">null</span>) <span class = "keyword">return</span>; <span class = "comment">// No path to be displayed yet</span>
+
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; path.size() - <span class = "literal">1</span>; i++) {
+        <span class = "keyword">int</span> u = path.get(i);
+        <span class = "keyword">int</span> v = path.get(i + <span class = "literal">1</span>);
+        
+        <span class = "comment">// Knight moves from u and v. Draw a line to connect u and v</span>
+        g.drawLine((u % <span class = "literal">8</span>) * getWidth() / <span class = "literal">8</span> + getWidth() / <span class = "literal">16</span>,
+          (u / <span class = "literal">8</span>) * getHeight() / <span class = "literal">8</span> + getHeight() / <span class = "literal">16</span>,
+          (v % <span class = "literal">8</span>) * getWidth() / <span class = "literal">8</span> + getWidth() / <span class = "literal">16</span>,
+          (v / <span class = "literal">8</span>) * getHeight() / <span class = "literal">8</span> + getHeight() / <span class = "literal">16</span>);
+      }
+    }
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {   
+    <span class = "comment">// Create a frame</span>
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"Knight's Tour"</span>);
+
+    <span class = "comment">// Create an instance of the applet</span>
+    KnightTourApp applet = <span class = "keyword">new</span> KnightTourApp();
+
+    <span class = "comment">// Add the applet instance to the frame</span>
+    frame.add(applet, BorderLayout.CENTER);
+
+    <span class = "comment">// Display the frame</span>
+    frame.setSize(<span class = "literal">400</span>, <span class = "literal">400</span>);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setVisible(<span class = "keyword">true</span>);    
+  }
+}
+</pre>
+</body>
+</html>

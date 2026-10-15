@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowBorderPane.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ShowBorderPaneWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> javafx.application.Application;
+<span class = "keyword">import</span> javafx.geometry.Insets;
+<span class = "keyword">import</span> javafx.scene.Scene;
+<span class = "keyword">import</span> javafx.scene.control.Label;
+<span class = "keyword">import</span> javafx.scene.layout.BorderPane;
+<span class = "keyword">import</span> javafx.scene.layout.StackPane;
+<span class = "keyword">import</span> javafx.stage.Stage;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ShowBorderPane <span class = "keyword">extends</span> Application {
+  @Override <span class = "comment">// Override the start method in the Application class</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {
+    <span class = "comment">// Create a border pane </span>
+    BorderPane pane = <span class = "keyword">new</span> BorderPane();
+
+    <span class = "comment">// Place nodes in the pane</span>
+    pane.setTop(<span class = "keyword">new</span> CustomPane(<span class = "literal">"Top"</span>)); 
+    pane.setRight(<span class = "keyword">new</span> CustomPane(<span class = "literal">"Right"</span>));
+    pane.setBottom(<span class = "keyword">new</span> CustomPane(<span class = "literal">"Bottom"</span>));
+    pane.setLeft(<span class = "keyword">new</span> CustomPane(<span class = "literal">"Left"</span>));
+    pane.setCenter(<span class = "keyword">new</span> CustomPane(<span class = "literal">"Center"</span>)); 
+    
+    <span class = "comment">// Create a scene and place it in the stage</span>
+    Scene scene = <span class = "keyword">new</span> Scene(pane);
+    primaryStage.setTitle(<span class = "literal">"ShowBorderPane"</span>); <span class = "comment">// Set the stage title</span>
+    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the stage</span>
+    primaryStage.show(); <span class = "comment">// Display the stage</span>
+  }
+} 
+
+<span class = "comment">// Define a custom pane to hold a label in the center of the pane</span>
+<span class = "keyword">class</span> CustomPane <span class = "keyword">extends</span> StackPane {
+  <span class = "keyword">public</span> CustomPane(String title) {
+    getChildren().add(<span class = "keyword">new</span> Label(title));
+    setStyle(<span class = "literal">"-fx-border-color: red"</span>);
+    setPadding(<span class = "keyword">new</span> Insets(<span class = "literal">11</span><span class = "literal">.</span><span class = "literal">5</span>, <span class = "literal">12</span><span class = "literal">.</span><span class = "literal">5</span>, <span class = "literal">13</span><span class = "literal">.</span><span class = "literal">5</span>, <span class = "literal">14</span><span class = "literal">.</span><span class = "literal">5</span>));
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "ShowBorderPane" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

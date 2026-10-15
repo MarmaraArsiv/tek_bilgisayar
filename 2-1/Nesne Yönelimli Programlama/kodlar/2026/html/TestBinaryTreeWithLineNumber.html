@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Intro to Java Programming, 9E, Y. Daniel Liang - TestBinaryTree.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestBinaryTree.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestBinaryTree {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  3&nbsp;&nbsp;    <span class = "comment">// Create a BST</span>
+  4&nbsp;&nbsp;    BST&lt;String&gt; tree = <span class = "keyword">new</span> BST&lt;String&gt;();
+  5&nbsp;&nbsp;    tree.insert(<span class = "literal">"George"</span>);
+  6&nbsp;&nbsp;    tree.insert(<span class = "literal">"Michael"</span>);
+  7&nbsp;&nbsp;    tree.insert(<span class = "literal">"Tom"</span>);
+  8&nbsp;&nbsp;    tree.insert(<span class = "literal">"Adam"</span>);
+  9&nbsp;&nbsp;    tree.insert(<span class = "literal">"Jones"</span>);
+ 10&nbsp;&nbsp;    tree.insert(<span class = "literal">"Peter"</span>);
+ 11&nbsp;&nbsp;    tree.insert(<span class = "literal">"Daniel"</span>);
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;    <span class = "comment">// Traverse tree</span>
+ 14&nbsp;&nbsp;    System.out.print(<span class = "literal">"Inorder (sorted): "</span>);
+ 15&nbsp;&nbsp;    tree.inorder();
+ 16&nbsp;&nbsp;    System.out.print(<span class = "literal">"\nPostorder: "</span>);
+ 17&nbsp;&nbsp;    tree.postorder();
+ 18&nbsp;&nbsp;    System.out.print(<span class = "literal">"\nPreorder: "</span>);
+ 19&nbsp;&nbsp;    tree.preorder();
+ 20&nbsp;&nbsp;    System.out.print(<span class = "literal">"\nThe number of nodes is "</span> + tree.getSize());
+ 21&nbsp;&nbsp;
+ 22&nbsp;&nbsp;    <span class = "comment">// Search for an element</span>
+ 23&nbsp;&nbsp;    System.out.print(<span class = "literal">"\nIs Peter in the tree? "</span> + 
+ 24&nbsp;&nbsp;      tree.search(<span class = "literal">"Peter"</span>));
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;    <span class = "comment">// Get a path from the root to Peter</span>
+ 27&nbsp;&nbsp;    System.out.print(<span class = "literal">"\nA path from the root to Peter is: "</span>);
+ 28&nbsp;&nbsp;    java.util.ArrayList&lt;BST.TreeNode&lt;String&gt;&gt;  path 
+ 29&nbsp;&nbsp;      = tree.path(<span class = "literal">"Peter"</span>);
+ 30&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; path != <span class = "keyword">null</span> && i &lt; path.size(); i++)
+ 31&nbsp;&nbsp;      System.out.print(path.get(i).element + <span class = "literal">" "</span>);
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;    Integer[] numbers = {<span class = "literal">2</span>, <span class = "literal">4</span>, <span class = "literal">3</span>, <span class = "literal">1</span>, <span class = "literal">8</span>, <span class = "literal">5</span>, <span class = "literal">6</span>, <span class = "literal">7</span>};
+ 34&nbsp;&nbsp;    BST&lt;Integer&gt; intTree = <span class = "keyword">new</span> BST&lt;Integer&gt;(numbers);
+ 35&nbsp;&nbsp;    System.out.print(<span class = "literal">"\nInorder (sorted): "</span>);
+ 36&nbsp;&nbsp;    intTree.inorder();
+ 37&nbsp;&nbsp;  }
+ 38&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

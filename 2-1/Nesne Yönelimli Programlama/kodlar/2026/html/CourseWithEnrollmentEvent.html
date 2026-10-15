@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - CourseWithEnrollmentEvent.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "CourseWithEnrollmentEventWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> CourseWithEnrollmentEvent {
+  <span class = "keyword">private</span> String courseName = <span class = "literal">"default name"</span>;
+  <span class = "keyword">private</span> ArrayList&lt;String&gt; students = <span class = "keyword">new</span> ArrayList&lt;String&gt;();
+  <span class = "keyword">private</span> <span class = "keyword">int</span> enrollmentCap = <span class = "literal">10</span>;
+  <span class = "keyword">private</span> ArrayList&lt;EnrollmentListener&gt; enrollmentListenerList;
+
+  <span class = "keyword">public</span> CourseWithEnrollmentEvent() {
+  }
+
+  <span class = "keyword">public</span> CourseWithEnrollmentEvent(String courseName) {
+    <span class = "keyword">this</span>.courseName = courseName;
+  }
+
+  <span class = "keyword">public</span> String getCourseName() {
+    <span class = "keyword">return</span> courseName;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> addStudent(String student) {
+    <span class = "keyword">if</span> (students.size() == enrollmentCap) <span class = "comment">// Fire EnrollmentEvent</span>
+      processEvent(<span class = "keyword">new</span> EnrollmentEvent(<span class = "keyword">this</span>,
+        student, enrollmentCap));
+    <span class = "keyword">else</span>
+      students.add(student);
+  }
+
+  <span class = "keyword">public</span> ArrayList&lt;String&gt; getStudents() {
+    <span class = "keyword">return</span> students;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getNumberOfStudents() {
+    <span class = "keyword">return</span> students.size();
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getEnrollmentCap() {
+    <span class = "keyword">return</span> enrollmentCap;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setEnrollmentCap(<span class = "keyword">int</span> enrollmentCap) {
+    <span class = "keyword">this</span>.enrollmentCap = enrollmentCap;
+  }
+
+  <span class = "comment">/** Register an action event listener */</span>
+  <span class = "keyword">public</span> <span class = "keyword">synchronized</span> <span class = "keyword">void</span> addEnrollmentListener
+      (EnrollmentListener listener) {
+    <span class = "keyword">if</span> (enrollmentListenerList == <span class = "keyword">null</span>) {
+      enrollmentListenerList = <span class = "keyword">new</span> ArrayList&lt;EnrollmentListener&gt;(<span class = "literal">2</span>);
+    }
+
+    <span class = "keyword">if</span> (!enrollmentListenerList.contains(listener)) {
+      enrollmentListenerList.add(listener);
+    }
+  }
+
+  <span class = "comment">/** Remove an action event listener */</span>
+  <span class = "keyword">public</span> <span class = "keyword">synchronized</span> <span class = "keyword">void</span> removeEnrollmentListener
+      (EnrollmentListener listener) {
+    <span class = "keyword">if</span> (enrollmentListenerList != 
+        <span class = "keyword">null</span> && enrollmentListenerList.contains(listener)) {
+      enrollmentListenerList.remove(listener);
+    }
+  }
+
+  <span class = "comment">/** Fire EnrollmentEvent */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> processEvent(EnrollmentEvent e) {
+    ArrayList&lt;EnrollmentListener&gt; list;
+
+    <span class = "keyword">synchronized</span> (<span class = "keyword">this</span>) {
+      <span class = "keyword">if</span> (enrollmentListenerList == <span class = "keyword">null</span>) <span class = "keyword">return</span>;
+      list = (ArrayList&lt;EnrollmentListener&gt;)
+        enrollmentListenerList.clone();
+    }
+
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; list.size(); i++) {
+      EnrollmentListener listener = (EnrollmentListener)list.get(i);
+      listener.enrollmentExceeded(e);
+    }
+  }
+}
+</pre>
+</body>
+</html>

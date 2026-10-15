@@ -1,0 +1,74 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - MoveMessageDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "MoveMessageDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> MoveMessageDemo <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">public</span> MoveMessageDemo() {
+    <span class = "comment">// Create a MovableMessagePanel instance for moving a message</span>
+    MovableMessagePanel p = <span class = "keyword">new</span> MovableMessagePanel
+      (<span class = "literal">"Welcome to Java"</span>);
+
+    <span class = "comment">// Place the message panel in the frame</span>
+    add(p);
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    MoveMessageDemo frame = <span class = "keyword">new</span> MoveMessageDemo();
+    frame.setTitle(<span class = "literal">"MoveMessageDemo"</span>);
+    frame.setSize(<span class = "literal">200</span>, <span class = "literal">100</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+
+  <span class = "comment">// Inner class: MovableMessagePanel draws a message</span>
+  <span class = "keyword">static</span> <span class = "keyword">class</span> MovableMessagePanel <span class = "keyword">extends</span> JPanel {
+    <span class = "keyword">private</span> String message = <span class = "literal">"Welcome to Java"</span>;
+    <span class = "keyword">private</span> <span class = "keyword">int</span> x = <span class = "literal">20</span>;
+    <span class = "keyword">private</span> <span class = "keyword">int</span> y = <span class = "literal">20</span>;
+
+    <span class = "comment">/** Construct a panel to draw string s */</span>
+    <span class = "keyword">public</span> MovableMessagePanel(String s) {
+      message = s;
+      addMouseMotionListener(<span class = "keyword">new</span> MouseMotionListener() {
+        @Override <span class = "comment">/** Handle mouse-dragged event */</span>
+        <span class = "keyword">public</span> <span class = "keyword">void</span> mouseDragged(MouseEvent e) {
+          <span class = "comment">// Get the new location and repaint the screen</span>
+          x = e.getX();
+          y = e.getY();
+          repaint();
+        }
+
+        @Override <span class = "comment">/** Handle mouse-moved event */</span>
+        <span class = "keyword">public</span> <span class = "keyword">void</span> mouseMoved(MouseEvent e) {
+        }
+      });
+    }
+
+    @Override
+    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+      <span class = "keyword">super</span>.paintComponent(g);
+      g.drawString(message, x, y);
+    }
+  }
+}
+</pre>
+</body>
+</html>

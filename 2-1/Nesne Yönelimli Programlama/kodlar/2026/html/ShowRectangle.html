@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowRectangle.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ShowRectangleWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.Collections;
+
+<span class = "keyword">import</span> javafx.application.Application;
+<span class = "keyword">import</span> javafx.scene.Scene;
+<span class = "keyword">import</span> javafx.scene.layout.Pane;
+<span class = "keyword">import</span> javafx.scene.paint.Color;
+<span class = "keyword">import</span> javafx.stage.Stage;
+<span class = "keyword">import</span> javafx.scene.text.Text;
+<span class = "keyword">import</span> javafx.scene.shape.Rectangle;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ShowRectangle <span class = "keyword">extends</span> Application {
+  @Override <span class = "comment">// Override the start method in the Application class</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {   
+    <span class = "comment">// Create a pane</span>
+    Pane pane = <span class = "keyword">new</span> Pane();
+    
+    <span class = "comment">// Create rectangles and add to pane</span>
+    Rectangle r1 = <span class = "keyword">new</span> Rectangle(<span class = "literal">25</span>, <span class = "literal">10</span>, <span class = "literal">60</span>, <span class = "literal">30</span>);
+    r1.setStroke(Color.BLACK);
+    r1.setFill(Color.WHITE);
+    pane.getChildren().add(<span class = "keyword">new</span> Text(<span class = "literal">10</span>, <span class = "literal">27</span>, <span class = "literal">"r1"</span>));
+    pane.getChildren().add(r1);
+    
+    Rectangle r2 = <span class = "keyword">new</span> Rectangle(<span class = "literal">25</span>, <span class = "literal">50</span>, <span class = "literal">60</span>, <span class = "literal">30</span>);
+    pane.getChildren().add(<span class = "keyword">new</span> Text(<span class = "literal">10</span>, <span class = "literal">67</span>, <span class = "literal">"r2"</span>));
+    pane.getChildren().add(r2);
+    
+    Rectangle r3 = <span class = "keyword">new</span> Rectangle(<span class = "literal">25</span>, <span class = "literal">90</span>, <span class = "literal">60</span>, <span class = "literal">30</span>);
+    r3.setArcWidth(<span class = "literal">15</span>);
+    r3.setArcHeight(<span class = "literal">25</span>);    
+    pane.getChildren().add(<span class = "keyword">new</span> Text(<span class = "literal">10</span>, <span class = "literal">107</span>, <span class = "literal">"r3"</span>));
+    pane.getChildren().add(r3);
+    
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">4</span>; i++) {
+      Rectangle r = <span class = "keyword">new</span> Rectangle(<span class = "literal">100</span>, <span class = "literal">50</span>, <span class = "literal">100</span>, <span class = "literal">30</span>);
+      r.setRotate(i * <span class = "literal">360</span> / <span class = "literal">8</span>);
+      r.setStroke(Color.color(Math.random(), Math.random(), 
+          Math.random()));
+      r.setFill(Color.WHITE);
+      pane.getChildren().add(r);
+    }
+    
+    <span class = "comment">// Create a scene and place it in the stage</span>
+    Scene scene = <span class = "keyword">new</span> Scene(pane, <span class = "literal">250</span>, <span class = "literal">150</span>);
+    primaryStage.setTitle(<span class = "literal">"ShowRectangle"</span>); <span class = "comment">// Set the stage title</span>
+    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the stage</span>
+    primaryStage.show(); <span class = "comment">// Display the stage</span>
+  }
+  
+  <span class = "comment">/**
+   * The main method is only needed for the IDE with limited
+   * JavaFX support. Not needed for running from the command line.
+   */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    launch(args);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "ShowRectangle" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

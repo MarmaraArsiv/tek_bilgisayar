@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DisplayImageWithURL.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "DisplayImageWithURL.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> DisplayImageWithURL <span class = "keyword">extends</span> JApplet {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> DisplayImageWithURL() {
+  5&nbsp;&nbsp;    java.net.URL url = <span class = "keyword">this</span>.getClass().getResource(<span class = "literal">"image/us.gif"</span>);
+  6&nbsp;&nbsp;    add(<span class = "keyword">new</span> JLabel(<span class = "keyword">new</span> ImageIcon(url)));
+  7&nbsp;&nbsp;  }
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 10&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 11&nbsp;&nbsp;    <span class = "comment">// Create a frame</span>
+ 12&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"DisplayImageWithURL"</span>);
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;    <span class = "comment">// Create an instance of the applet</span>
+ 15&nbsp;&nbsp;    DisplayImageWithURL applet = <span class = "keyword">new</span> DisplayImageWithURL();
+ 16&nbsp;&nbsp;    applet.init();
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;    <span class = "comment">// Add the applet instance to the frame</span>
+ 19&nbsp;&nbsp;    frame.getContentPane().add(applet, java.awt.BorderLayout.CENTER);
+ 20&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 21&nbsp;&nbsp;
+ 22&nbsp;&nbsp;    <span class = "comment">// Display the frame</span>
+ 23&nbsp;&nbsp;    frame.setSize(<span class = "literal">200</span>, <span class = "literal">150</span>);
+ 24&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 25&nbsp;&nbsp;  }
+ 26&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<html>
+<head>
+<title>Intro to Java Programming, 9E - PythonToHTMLWithLineNumber.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<form action = "PythonToHTMLWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "comment">/**
+  2&nbsp;&nbsp; * Usage: Copy this class to the folder, run it with java PythonToHTML * to generate
+  3&nbsp;&nbsp; *   HTM file for all the .py file in this folder. The generated .htm files are
+  4&nbsp;&nbsp; *   stored in the same folder
+  5&nbsp;&nbsp; */</span>
+  6&nbsp;&nbsp;<span class = "keyword">import</span> java.util.*;
+  7&nbsp;&nbsp;<span class = "keyword">import</span> java.io.*;
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> PythonToHTMLWithLineNumber {
+ 10&nbsp;&nbsp;  <span class = "keyword">static</span> Scanner input;
+ 11&nbsp;&nbsp;  <span class = "keyword">static</span> Formatter output;
+ 12&nbsp;&nbsp;  <span class = "keyword">static</span> <span class = "keyword">boolean</span> stringToken = <span class = "keyword">false</span>;
+ 13&nbsp;&nbsp;  <span class = "keyword">static</span> String inputFileName;
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;  <span class = "comment">// Array of all Java keywords + true + false + null</span>
+ 16&nbsp;&nbsp;  <span class = "keyword">static</span> String[] keywordString = {
+ 17&nbsp;&nbsp;      <span class = "literal">"and"</span>, <span class = "literal">"del"</span>, <span class = "literal">"from"</span>, <span class = "literal">"not"</span>, <span class = "literal">"while"</span>,  <span class = "literal">"nonlocal"</span>,
+ 18&nbsp;&nbsp;      <span class = "literal">"as"</span>,        <span class = "literal">"elif"</span>,      <span class = "literal">"global"</span>,    <span class = "literal">"or"</span>,        <span class = "literal">"with"</span>,     
+ 19&nbsp;&nbsp;      <span class = "literal">"assert"</span>,    <span class = "literal">"else"</span>,      <span class = "literal">"if"</span>,        <span class = "literal">"pass"</span>,      <span class = "literal">"yield"</span>,    
+ 20&nbsp;&nbsp;      <span class = "literal">"break"</span>,     <span class = "literal">"except"</span>,    <span class = "literal">"import"</span>,                  
+ 21&nbsp;&nbsp;      <span class = "literal">"class"</span>,        <span class = "literal">"from"</span>,      <span class = "literal">"in"</span>,        <span class = "literal">"raise"</span>,              
+ 22&nbsp;&nbsp;      <span class = "literal">"continue"</span>,  <span class = "literal">"finally"</span>,   <span class = "literal">"is"</span>,        <span class = "literal">"return"</span>,             
+ 23&nbsp;&nbsp;      <span class = "literal">"def"</span>,       <span class = "literal">"for"</span>,       <span class = "literal">"lambda"</span>,    <span class = "literal">"try"</span>,
+ 24&nbsp;&nbsp;      <span class = "literal">"True"</span>, <span class = "literal">"False"</span>, <span class = "literal">"None"</span>};
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;  <span class = "keyword">static</span> Set keywordSet = <span class = "keyword">new</span> HashSet(Arrays.asList(keywordString));
+ 27&nbsp;&nbsp;
+ 28&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 29&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 30&nbsp;&nbsp;    <span class = "keyword">try</span> {
+ 31&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; args.length; i++) {
+ 32&nbsp;&nbsp;        <span class = "keyword">if</span> (args[i].endsWith(<span class = "literal">".py"</span>) &&
+ 33&nbsp;&nbsp;            ! (args[i].equals(<span class = "literal">"PythonToHTML9E.py"</span>))) {
+ 34&nbsp;&nbsp;          input = <span class = "keyword">new</span> Scanner(<span class = "keyword">new</span> File(args[i]));
+ 35&nbsp;&nbsp;
+ 36&nbsp;&nbsp;          inputFileName = args[i];
+ 37&nbsp;&nbsp;          <span class = "comment">// -4 for .doc original files and -5 for .py original files</span>
+ 38&nbsp;&nbsp;          String outputFileName = <span class = "literal">"c:\\idrive\\web\\python\\IR\\slide\\html\\"</span> +
+ 39&nbsp;&nbsp;              args[i].substring(<span class = "literal">0</span>, args[i].length() - <span class = "literal">3</span>) + <span class = "literal">"WithLineNumber.html"</span>;
+ 40&nbsp;&nbsp;
+ 41&nbsp;&nbsp;          System.out.println(<span class = "literal">"File "</span> + args[i] + <span class = "literal">"'s HTML version is "</span>);
+ 42&nbsp;&nbsp;          System.out.println(<span class = "literal">" stored to "</span> + outputFileName);
+ 43&nbsp;&nbsp;
+ 44&nbsp;&nbsp;          output = <span class = "keyword">new</span> Formatter(<span class = "keyword">new</span> File(outputFileName));
+ 45&nbsp;&nbsp;
+ 46&nbsp;&nbsp;          JavaToHTML();
+ 47&nbsp;&nbsp;        }
+ 48&nbsp;&nbsp;      }
+ 49&nbsp;&nbsp;    }
+ 50&nbsp;&nbsp;    <span class = "keyword">catch</span> (Exception ex) {
+ 51&nbsp;&nbsp;    }
+ 52&nbsp;&nbsp;  }
+ 53&nbsp;&nbsp;
+ 54&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> JavaToHTML() {
+ 55&nbsp;&nbsp;    <span class = "keyword">try</span> {
+ 56&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">"&lt;html&gt;"</span>);
+ 57&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">"&lt;head&gt;"</span>);
+ 58&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>,
+ 59&nbsp;&nbsp;                    <span class = "literal">"&lt;title&gt;Introduction to Programming with Python <span class = "literal">3</span> - "</span> + inputFileName +
+ 60&nbsp;&nbsp;                    <span class = "literal">"&lt;/title&gt;"</span>);
+ 61&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>,
+ 62&nbsp;&nbsp;                    <span class = "literal">"&lt;meta http-equiv=\"Content-Type\" content=\"text/html; charset=windows-1252\"&gt;"</span>);
+ 63&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">"&lt;style type = \"text/css\"&gt;"</span>);
+ 64&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>,
+ 65&nbsp;&nbsp;                    <span class = "literal">"body {font-family: \"Courier New\", sans-serif; font-size: <span class = "literal">100</span>%; color: black}"</span>);
+ 66&nbsp;&nbsp;
+ 67&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">".keyword {color: #000080; font-weight: bold}"</span>);
+ 68&nbsp;&nbsp; output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">".comment {color: gray}"</span>);
+ 69&nbsp;&nbsp; output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">".literal {color: #0000ff}"</span>);
+ 70&nbsp;&nbsp;
+ 71&nbsp;&nbsp;<span class = "comment">// Match the color in the text</span>
+ 72&nbsp;&nbsp;<span class = "comment">// output.format("%s\r\n", ".keyword {color: black; font-weight: bold}");</span>
+ 73&nbsp;&nbsp;<span class = "comment">//      output.format("%s\r\n", ".comment {color: #77797C}");</span>
+ 74&nbsp;&nbsp;<span class = "comment">//      output.format("%s\r\n", ".literal {color: #007346; font-weight: bold}");</span>
+ 75&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">"&lt;/style&gt;"</span>);
+ 76&nbsp;&nbsp;
+ 77&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">"&lt;/head&gt;"</span>);
+ 78&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">"&lt;body&gt;"</span>);
+ 79&nbsp;&nbsp;      
+ 80&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">"&lt;form action = \""</span> + 
+ 81&nbsp;&nbsp;          inputFileName.substring(<span class = "literal">0</span>, inputFileName.length() - <span class = "literal">3</span>) + <span class = "literal">".html"</span> + <span class = "literal">"\"</span> method = \"get\"&gt;<span class = "literal">");
+ 82&nbsp;&nbsp;      output.format("</span>%s\r\n"</span>, <span class = "literal">"&lt;input type = \"submit\" value = \"Show Code Without Line Numbers\" /&gt;"</span>);
+ 83&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">"&lt;/form&gt;"</span>);
+ 84&nbsp;&nbsp;      
+ 85&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">"&lt;pre&gt;"</span>);
+ 86&nbsp;&nbsp;
+ 87&nbsp;&nbsp;      String pySourceText = <span class = "literal">""</span>;
+ 88&nbsp;&nbsp;      String temp;
+ 89&nbsp;&nbsp;
+ 90&nbsp;&nbsp;      <span class = "comment">// Read all lines</span>
+ 91&nbsp;&nbsp;      <span class = "keyword">int</span> lineNumber = <span class = "literal">1</span>;
+ 92&nbsp;&nbsp;      <span class = "keyword">while</span> (input.hasNext()) {
+ 93&nbsp;&nbsp;        temp = input.nextLine();
+ 94&nbsp;&nbsp;        pySourceText += String.format(<span class = "literal">"%2d"</span>, lineNumber++) + <span class = "literal">"&nbsp;&nbsp;"</span> + temp + <span class = "literal">"\r\n"</span>;
+ 95&nbsp;&nbsp;      }
+ 96&nbsp;&nbsp;
+ 97&nbsp;&nbsp;      pySourceText = pySourceText.replaceAll(<span class = "literal">"&gt;"</span>, <span class = "literal">"&gt;"</span>);
+ 98&nbsp;&nbsp;      pySourceText = pySourceText.replaceAll(<span class = "literal">"&lt;"</span>, <span class = "literal">"&lt;"</span>);
+ 99&nbsp;&nbsp;      translateToHTML(pySourceText);
+100&nbsp;&nbsp;
+101&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">"&lt;/pre&gt;"</span>);
+102&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">"&lt;/body&gt;"</span>);
+103&nbsp;&nbsp;      output.format(<span class = "literal">"%s\r\n"</span>, <span class = "literal">"&lt;/html&gt;"</span>);
+104&nbsp;&nbsp;    }
+105&nbsp;&nbsp;    <span class = "keyword">catch</span> (Exception ex) {
+106&nbsp;&nbsp;      System.out.println(ex);
+107&nbsp;&nbsp;    }
+108&nbsp;&nbsp;    <span class = "keyword">finally</span> {
+109&nbsp;&nbsp;      <span class = "keyword">try</span> {
+110&nbsp;&nbsp;        input.close();
+111&nbsp;&nbsp;        output.close();
+112&nbsp;&nbsp;      }
+113&nbsp;&nbsp;      <span class = "keyword">catch</span> (Exception ex) {
+114&nbsp;&nbsp;      }
+115&nbsp;&nbsp;    }
+116&nbsp;&nbsp;  }
+117&nbsp;&nbsp;
+118&nbsp;&nbsp;  <span class = "comment">/** Translate Python source code to HTML */</span>
+119&nbsp;&nbsp;  <span class = "keyword">static</span> <span class = "keyword">void</span> translateToHTML(String text) <span class = "keyword">throws</span> Exception {
+120&nbsp;&nbsp;    text = text.replaceAll(<span class = "literal">"# "</span>, <span class = "literal">"LINECOMMENT"</span>);
+121&nbsp;&nbsp;    text = text.replaceAll(<span class = "literal">"/\\*"</span>, <span class = "literal">"BLOCKCOMMENT"</span>);
+122&nbsp;&nbsp;
+123&nbsp;&nbsp;    String token;
+124&nbsp;&nbsp;
+125&nbsp;&nbsp;    <span class = "keyword">while</span> (text != <span class = "keyword">null</span> && text.length() &gt; <span class = "literal">0</span>) {
+126&nbsp;&nbsp;      <span class = "comment">// * and / are in conflict with BLOCKCOMMENT and //</span>
+127&nbsp;&nbsp;       String[] parts = text.split(<span class = "literal">"[%\\+\\-\\*/\r\n\t \\[\\].;(){},:]"</span>, <span class = "literal">2</span>);
+128&nbsp;&nbsp;
+129&nbsp;&nbsp;      token = parts[<span class = "literal">0</span>];
+130&nbsp;&nbsp;
+131&nbsp;&nbsp;      <span class = "keyword">if</span> (token.length() &gt; <span class = "literal">1</span> && token.startsWith(<span class = "literal">"LINECOMMENT"</span>)) {
+132&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;span class = \"comment\"&gt;"</span>);
+133&nbsp;&nbsp;        parts = text.split(<span class = "literal">"\r\n"</span>, <span class = "literal">2</span>);
+134&nbsp;&nbsp;        text = parts[<span class = "literal">1</span>];
+135&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, parts[<span class = "literal">0</span>].replaceAll(<span class = "literal">"LINECOMMENT"</span>, <span class = "literal">"# "</span>));
+136&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;/span&gt;\r\n"</span>);
+137&nbsp;&nbsp;        <span class = "keyword">continue</span>;
+138&nbsp;&nbsp;      }
+139&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (token.length() &gt; <span class = "literal">1</span> && token.startsWith(<span class = "literal">"BLOCKCOMMENT"</span>)) {
+140&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;span class = \"comment\"&gt;"</span>);
+141&nbsp;&nbsp;        parts = text.split(<span class = "literal">"\\*/"</span>, <span class = "literal">2</span>);
+142&nbsp;&nbsp;        text = parts[<span class = "literal">1</span>];
+143&nbsp;&nbsp;
+144&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, parts[<span class = "literal">0</span>].replaceAll(<span class = "literal">"BLOCKCOMMENT"</span>, <span class = "literal">"BLOCKCOMMENT"</span>) + <span class = "literal">"*/"</span>);
+145&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;/span&gt;"</span>);
+146&nbsp;&nbsp;        <span class = "keyword">continue</span>;
+147&nbsp;&nbsp;      }
+148&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (token.length() &gt; <span class = "literal">1</span> && token.matches(<span class = "literal">"'\\w'*"</span>)) {
+149&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;span class = \"literal\"&gt;"</span>);
+150&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, token);
+151&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;/span&gt;"</span>);
+152&nbsp;&nbsp;      }
+153&nbsp;&nbsp;
+154&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (token.startsWith(<span class = "literal">"\""</span>) && token.endsWith(<span class = "literal">"\""</span>) &&
+155&nbsp;&nbsp;               (token.length() &gt; <span class = "literal">1</span>)) {
+156&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;span class = \"literal\"&gt;"</span> + token
+157&nbsp;&nbsp;                      + <span class = "literal">"&lt;/span&gt;"</span>);
+158&nbsp;&nbsp;      }
+159&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (token.startsWith(<span class = "literal">"'"</span>) && token.endsWith(<span class = "literal">"'"</span>) &&
+160&nbsp;&nbsp;               (token.length() &gt; <span class = "literal">1</span>)) {
+161&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;span class = \"literal\"&gt;"</span> + token
+162&nbsp;&nbsp;                      + <span class = "literal">"&lt;/span&gt;"</span>);
+163&nbsp;&nbsp;      }
+164&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (token.equals(<span class = "literal">"' '"</span>)) {
+165&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;span class = \"literal\"&gt;"</span> + token
+166&nbsp;&nbsp;                      + <span class = "literal">"&lt;/span&gt;"</span>);
+167&nbsp;&nbsp;      } 
+168&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (token.startsWith(<span class = "literal">"\""</span>) && token.endsWith(<span class = "literal">"\""</span>) &&
+169&nbsp;&nbsp;               (token.length() == <span class = "literal">1</span>)) {
+170&nbsp;&nbsp;        <span class = "keyword">if</span> (stringToken) {
+171&nbsp;&nbsp;          output.format(<span class = "literal">"%s"</span>, token + <span class = "literal">"&lt;/span&gt;"</span>);
+172&nbsp;&nbsp;          stringToken = <span class = "keyword">false</span>;
+173&nbsp;&nbsp;        }
+174&nbsp;&nbsp;        <span class = "keyword">else</span> {
+175&nbsp;&nbsp;          output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;span class = \"literal\"&gt;"</span> + token);
+176&nbsp;&nbsp;          stringToken = <span class = "keyword">true</span>;
+177&nbsp;&nbsp;        }
+178&nbsp;&nbsp;      }
+179&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (token.startsWith(<span class = "literal">"\""</span>)) {
+180&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;span class = \"literal\"&gt;"</span> + token);
+181&nbsp;&nbsp;        stringToken = <span class = "keyword">true</span>;
+182&nbsp;&nbsp;      }
+183&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (token.endsWith(<span class = "literal">"\""</span>) && (!token.endsWith(<span class = "literal">"\\\""</span>))) {
+184&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, token);
+185&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;/span&gt;"</span>);
+186&nbsp;&nbsp;        stringToken = <span class = "keyword">false</span>;
+187&nbsp;&nbsp;      }
+188&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (token.matches(<span class = "literal">"\\d+"</span>)) { <span class = "comment">// Check if numeric</span>
+189&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;span class = \"literal\"&gt;"</span> + token +
+190&nbsp;&nbsp;                      <span class = "literal">"&lt;/span&gt;"</span>);
+191&nbsp;&nbsp;      }
+192&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (!stringToken && keywordSet.contains(token)) {
+193&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;span class = \"keyword\"&gt;"</span> + token +
+194&nbsp;&nbsp;                      <span class = "literal">"&lt;/span&gt;"</span>);
+195&nbsp;&nbsp;      }
+196&nbsp;&nbsp;      <span class = "keyword">else</span> {
+197&nbsp;&nbsp;        output.format(<span class = "literal">"%s"</span>, token);
+198&nbsp;&nbsp;      }
+199&nbsp;&nbsp;
+200&nbsp;&nbsp;      <span class = "keyword">if</span> (token.length() &lt; text.length()) {
+201&nbsp;&nbsp;        <span class = "keyword">if</span> (text.charAt(token.length()) == '&lt;')
+202&nbsp;&nbsp;           output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&lt;"</span>);
+203&nbsp;&nbsp;        <span class = "keyword">else</span> <span class = "keyword">if</span> (text.charAt(token.length()) == '&gt;')
+204&nbsp;&nbsp;          output.format(<span class = "literal">"%s"</span>, <span class = "literal">"&gt;"</span>);
+205&nbsp;&nbsp;        <span class = "keyword">else</span>
+206&nbsp;&nbsp;          output.format(<span class = "literal">"%s"</span>, text.charAt(token.length()));
+207&nbsp;&nbsp;      }
+208&nbsp;&nbsp;
+209&nbsp;&nbsp;      <span class = "keyword">if</span> (parts.length == <span class = "literal">2</span>) {
+210&nbsp;&nbsp;        text = parts[<span class = "literal">1</span>];
+211&nbsp;&nbsp;      }
+212&nbsp;&nbsp;    }
+213&nbsp;&nbsp;  }
+214&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

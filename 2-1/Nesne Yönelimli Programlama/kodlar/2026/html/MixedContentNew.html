@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - MixedContentNew.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.servlet.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.servlet.http.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.io.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.util.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> Acme.JPM.Encoders.GifEncoder;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> MixedContentNew <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> HttpServlet {
+  <FONT COLOR="#008000">/** Process the HTTP Get request */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> doGet(HttpServletRequest request, HttpServletResponse
+    response) <FONT COLOR="#000080"><B>throws</B></FONT><FONT COLOR="#000000"> ServletException, IOException {
+    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (request.getParameter(<FONT COLOR="#0000ff">"img"</FONT>) != <FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">) {
+      response.setContentType(<FONT COLOR="#0000ff">"image/gif"</FONT>);
+      OutputStream out = response.getOutputStream();
+
+      <FONT COLOR="#008000">// Obtain an image icon
+<FONT COLOR="#000000">      ImageIcon imageIcon = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> ImageIcon(<FONT COLOR="#0000ff">"c:\\book\\image\\"</FONT> +
+        request.getParameter(<FONT COLOR="#0000ff">"country"</FONT>) + <FONT COLOR="#0000ff">".gif"</FONT>);
+
+      <FONT COLOR="#008000">// Obtain image from image icon
+<FONT COLOR="#000000">      Image image = imageIcon.getImage(); <FONT COLOR="#008000">// Get the image
+<FONT COLOR="#000000">
+      <FONT COLOR="#008000">// Encode the image and send to the output stream
+<FONT COLOR="#000000">      <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> GifEncoder(image, out, <FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">).encode();
+
+      out.close(); <FONT COLOR="#008000">// Close stream
+<FONT COLOR="#000000">    }
+    <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000"> {
+      response.setContentType(<FONT COLOR="#0000ff">"text/html"</FONT>);
+      PrintWriter out = response.getWriter();
+
+      String country = request.getParameter(<FONT COLOR="#0000ff">"country"</FONT>);
+
+      out.println(<FONT COLOR="#0000ff">"&lt;img src = \""</FONT> + request.getRequestURI() +
+        <FONT COLOR="#0000ff">"?country="</FONT> + country + <FONT COLOR="#0000ff">"&img=1\"</FONT> align=left&gt;"</FONT>);
+
+      <FONT COLOR="#008000">// Read description from a file and send it to the browser
+<FONT COLOR="#000000">      BufferedReader in = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BufferedReader(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> FileReader(
+        <FONT COLOR="#0000ff">"c:\\book\\"</FONT> + country + <FONT COLOR="#0000ff">".txt"</FONT>));
+
+      <FONT COLOR="#008000">// Text line from the text file for flag description
+<FONT COLOR="#000000">      String line;
+
+      <FONT COLOR="#008000">// Read a line from the text file and send it to the browser
+<FONT COLOR="#000000">      <FONT COLOR="#000080"><B>while</B></FONT><FONT COLOR="#000000"> ((line = in.readLine()) != <FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">) {
+        out.println(line);
+      }
+
+      out.close();
+    }
+  }
+}
+</pre>

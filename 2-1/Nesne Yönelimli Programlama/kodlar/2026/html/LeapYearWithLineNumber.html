@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - LeapYear.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "LeapYear.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.Scanner; 
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> LeapYear {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String args[]) {
+  5&nbsp;&nbsp;    <span class = "comment">// Create a Scanner</span>
+  6&nbsp;&nbsp;    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+  7&nbsp;&nbsp;    System.out.print(<span class = "literal">"Enter a year: "</span>);
+  8&nbsp;&nbsp;    <span class = "keyword">int</span> year = input.nextInt();
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;    <span class = "comment">// Check if the year is a leap year </span>
+ 11&nbsp;&nbsp;    <span class = "keyword">boolean</span> isLeapYear = 
+ 12&nbsp;&nbsp;      (year % <span class = "literal">4</span> == <span class = "literal">0</span> && year % <span class = "literal">100</span> != <span class = "literal">0</span>) || (year % <span class = "literal">400</span> == <span class = "literal">0</span>);
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;    <span class = "comment">// Display the result in a message dialog box</span>
+ 15&nbsp;&nbsp;    System.out.println(year + <span class = "literal">" is a leap year? "</span> + isLeapYear);   
+ 16&nbsp;&nbsp;  } 
+ 17&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "LeapYear" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

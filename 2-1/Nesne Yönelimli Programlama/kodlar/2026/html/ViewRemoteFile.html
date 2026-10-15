@@ -1,0 +1,111 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ViewRemoteFile.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ViewRemoteFileWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> java.io.*;
+<span class = "keyword">import</span> java.net.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ViewRemoteFile <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">// Button to view the file</span>
+  <span class = "keyword">private</span> JButton jbtView = <span class = "keyword">new</span> JButton(<span class = "literal">"View"</span>);
+
+  <span class = "comment">// Text field to receive file name</span>
+  <span class = "keyword">private</span> JTextField jtfURL = <span class = "keyword">new</span> JTextField(<span class = "literal">12</span>);
+
+  <span class = "comment">// Text area to store file</span>
+  <span class = "keyword">private</span> JTextArea jtaFile = <span class = "keyword">new</span> JTextArea();
+
+  <span class = "comment">// Label to display status</span>
+  <span class = "keyword">private</span> JLabel jlblStatus = <span class = "keyword">new</span> JLabel();
+
+  <span class = "comment">/** Initialize the applet */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> init() {
+    <span class = "comment">// Create a panel to hold a label, a text field, and a button</span>
+    JPanel p1 = <span class = "keyword">new</span> JPanel();
+    p1.setLayout(<span class = "keyword">new</span> BorderLayout());
+    p1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Filename"</span>), BorderLayout.WEST);
+    p1.add(jtfURL, BorderLayout.CENTER);
+    p1.add(jbtView, BorderLayout.EAST);
+
+    <span class = "comment">// Place text area and panel p to the applet</span>
+    setLayout(<span class = "keyword">new</span> BorderLayout());
+    add(<span class = "keyword">new</span> JScrollPane(jtaFile), BorderLayout.CENTER);
+    add(p1, BorderLayout.NORTH);
+    add(jlblStatus, BorderLayout.SOUTH);
+
+    <span class = "comment">// Register listener to handle the "View" button</span>
+    jbtView.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        showFile();
+      }
+    });
+  }
+
+  <span class = "keyword">private</span> <span class = "keyword">void</span> showFile() {
+	java.util.Scanner input = <span class = "keyword">null</span>; <span class = "comment">// Use Scanner for getting text input</span>
+    URL url = <span class = "keyword">null</span>;
+
+    <span class = "keyword">try</span> {
+      <span class = "comment">// Obtain URL from the text field</span>
+      url = <span class = "keyword">new</span> URL(jtfURL.getText().trim());
+
+      <span class = "comment">// Create a Scanner for input stream</span>
+      input = <span class = "keyword">new</span> java.util.Scanner(url.openStream());
+
+      <span class = "comment">// Read a line and append the line to the text area</span>
+      <span class = "keyword">while</span> (input.hasNext()) {
+        jtaFile.append(input.nextLine() + <span class = "literal">"\n"</span>);
+      }
+
+      jlblStatus.setText(<span class = "literal">"File loaded successfully"</span>);
+    }
+    <span class = "keyword">catch</span> (MalformedURLException ex) {
+	  jlblStatus.setText(<span class = "literal">"URL "</span> + url + <span class = "literal">" not found."</span>);
+    }
+    <span class = "keyword">catch</span> (IOException e) {
+      jlblStatus.setText(e.getMessage());
+    }
+    <span class = "keyword">finally</span> {
+      <span class = "keyword">if</span> (input != <span class = "keyword">null</span>) input.close();
+    }
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a frame</span>
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"View File From a Web Server"</span>);
+
+    <span class = "comment">// Create an instance of ViewRemoteFile</span>
+    ViewRemoteFile applet = <span class = "keyword">new</span> ViewRemoteFile();
+
+    <span class = "comment">// Add the applet instance to the frame</span>
+    frame.add(applet, BorderLayout.CENTER);
+
+    <span class = "comment">// Invoke init() and start()</span>
+    applet.init();
+    applet.start();
+
+    <span class = "comment">// Display the frame</span>
+    frame.setSize(<span class = "literal">300</span>, <span class = "literal">300</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

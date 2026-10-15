@@ -1,0 +1,46 @@
+<HTML>
+<HEAD>
+<TITLE>JBuilder - FactorialBean.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="KEYWORDS" CONTENT="BorlandHtml">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">
+FactorialBean.java</FONT>
+</center><FONT SIZE=-2>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">
+Created with <a href="http://www.borland.com">JBuilder</a></FONT></FONT></TD></TR></TABLE></FONT>
+<PRE><FONT COLOR="#000080"><B>package</B></FONT><FONT COLOR="#000000"> chapter35;
+
+</FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> FactorialBean {
+  </FONT><FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#800080">number</FONT><FONT COLOR="#000000">;
+
+  </FONT><FONT COLOR="#008000">/** Return number property */</FONT><FONT COLOR="#000000">
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> getNumber() {
+    </FONT><FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#800080">number</FONT><FONT COLOR="#000000">;
+  }
+
+  </FONT><FONT COLOR="#008000">/** Set number property */</FONT><FONT COLOR="#000000">
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> setNumber(</FONT><FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> newValue) {
+    </FONT><FONT COLOR="#800080">number</FONT><FONT COLOR="#000000"> = newValue;
+  }
+
+  </FONT><FONT COLOR="#008000">/** Obtain factorial */</FONT><FONT COLOR="#000000">
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>long</B></FONT><FONT COLOR="#000000"> getFactorial() {
+    </FONT><FONT COLOR="#000080"><B>long</B></FONT><FONT COLOR="#000000"> factorial = </FONT><FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">;
+    </FONT><FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (</FONT><FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i = </FONT><FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">; i &LT;= </FONT><FONT COLOR="#800080">number</FONT><FONT COLOR="#000000">; i++)
+      factorial *= i;
+    </FONT><FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> factorial;
+  }
+}
+
+</FONT>
+</PRE>
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">
+FactorialBean.java</FONT
+></CENTER><FONT SIZE=-2>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">Created with <a href="http://www.borland.com">JBuilder</a></FONT></FONT></TD></TR></TABLE></FONT></BODY></HTML>

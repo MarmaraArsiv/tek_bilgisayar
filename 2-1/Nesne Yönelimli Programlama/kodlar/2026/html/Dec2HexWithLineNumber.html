@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Dec2Hex.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "Dec2Hex.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.Scanner;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> Dec2Hex {
+  4&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  6&nbsp;&nbsp;    <span class = "comment">// Create a Scanner</span>
+  7&nbsp;&nbsp;    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;    <span class = "comment">// Prompt the user to enter a decimal integer</span>
+ 10&nbsp;&nbsp;    System.out.print(<span class = "literal">"Enter a decimal number: "</span>);
+ 11&nbsp;&nbsp;    <span class = "keyword">int</span> decimal = input.nextInt();
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;    <span class = "comment">// Convert decimal to hex</span>
+ 14&nbsp;&nbsp;    String hex = <span class = "literal">""</span>;
+ 15&nbsp;&nbsp;    
+ 16&nbsp;&nbsp;    <span class = "keyword">while</span> (decimal != <span class = "literal">0</span>) {
+ 17&nbsp;&nbsp;      <span class = "keyword">int</span> hexValue = decimal % <span class = "literal">16</span>; 
+ 18&nbsp;&nbsp;      
+ 19&nbsp;&nbsp;      <span class = "comment">// Convert a decimal value to a hex digit </span>
+ 20&nbsp;&nbsp;      <span class = "keyword">char</span> hexDigit = (hexValue &lt;= <span class = "literal">9</span> && hexValue &gt;= <span class = "literal">0</span>) ?
+ 21&nbsp;&nbsp;        (<span class = "keyword">char</span>)(hexValue + <span class = "literal">'0'</span>) : (<span class = "keyword">char</span>)(hexValue - <span class = "literal">10</span> + <span class = "literal">'A'</span>);
+ 22&nbsp;&nbsp;      
+ 23&nbsp;&nbsp;      hex = hexDigit + hex;
+ 24&nbsp;&nbsp;      decimal = decimal / <span class = "literal">16</span>;
+ 25&nbsp;&nbsp;    }
+ 26&nbsp;&nbsp;    
+ 27&nbsp;&nbsp;    System.out.println(<span class = "literal">"The hex number is "</span> + hex);
+ 28&nbsp;&nbsp;  }
+ 29&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "Dec2Hex" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

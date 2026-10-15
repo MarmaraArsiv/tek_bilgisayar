@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - GreatestCommonDivisor.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "GreatestCommonDivisor.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.Scanner; 
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> GreatestCommonDivisor {
+  4&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  6&nbsp;&nbsp;    <span class = "comment">// Create a Scanner</span>
+  7&nbsp;&nbsp;    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;    <span class = "comment">// Prompt the user to enter two integers</span>
+ 10&nbsp;&nbsp;    System.out.print(<span class = "literal">"Enter first integer: "</span>);
+ 11&nbsp;&nbsp;    <span class = "keyword">int</span> n1 = input.nextInt();
+ 12&nbsp;&nbsp;    System.out.print(<span class = "literal">"Enter second integer: "</span>);
+ 13&nbsp;&nbsp;    <span class = "keyword">int</span> n2 = input.nextInt();
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;    <span class = "keyword">int</span> gcd = <span class = "literal">1</span>;
+ 16&nbsp;&nbsp;    <span class = "keyword">int</span> k = <span class = "literal">2</span>;
+ 17&nbsp;&nbsp;    <span class = "keyword">while</span> (k &lt;= n1 && k &lt;= n2) {
+ 18&nbsp;&nbsp;      <span class = "keyword">if</span> (n1 % k == <span class = "literal">0</span> && n2 % k == <span class = "literal">0</span>)
+ 19&nbsp;&nbsp;        gcd = k;
+ 20&nbsp;&nbsp;      k++;
+ 21&nbsp;&nbsp;    }
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;    System.out.println(<span class = "literal">"The greatest common divisor for "</span> + n1 +
+ 24&nbsp;&nbsp;      <span class = "literal">" and "</span> + n2 + <span class = "literal">" is "</span> + gcd);
+ 25&nbsp;&nbsp;  }
+ 26&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "GreatestCommonDivisor" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

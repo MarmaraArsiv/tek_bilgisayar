@@ -1,0 +1,149 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - GUIEventDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "GUIEventDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.border.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> GUIEventDemo <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">private</span> JLabel jlblMessage = <span class = "keyword">new</span> JLabel(<span class = "literal">"Hello"</span>, JLabel.CENTER);
+
+  <span class = "comment">// Create check boxes to set the font for the message</span>
+  <span class = "keyword">private</span> JCheckBox jchkBold = <span class = "keyword">new</span> JCheckBox(<span class = "literal">"Bold"</span>);
+  <span class = "keyword">private</span> JCheckBox jchkItalic = <span class = "keyword">new</span> JCheckBox(<span class = "literal">"Italic"</span>);
+  
+  <span class = "comment">// Create three radio buttons to set message colors</span>
+  <span class = "keyword">private</span> JRadioButton jrbRed = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"Red"</span>);
+  <span class = "keyword">private</span> JRadioButton jrbGreen = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"Green"</span>);
+  <span class = "keyword">private</span> JRadioButton jrbBlue = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"Blue"</span>);
+  
+  <span class = "comment">// Create a text field for setting a new message</span>
+  <span class = "keyword">private</span> JTextField jtfMessage = <span class = "keyword">new</span> JTextField(<span class = "literal">10</span>);
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    GUIEventDemo frame = <span class = "keyword">new</span> GUIEventDemo();
+    frame.pack();
+    frame.setTitle(<span class = "literal">"GUIEventDemo"</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+
+  <span class = "keyword">public</span> GUIEventDemo() { 	
+    jlblMessage.setBorder(<span class = "keyword">new</span> LineBorder(Color.BLACK, <span class = "literal">2</span>));
+    add(jlblMessage, BorderLayout.CENTER);
+       
+    <span class = "comment">// Create a new panel to hold check boxes</span>
+    JPanel jpCheckBoxes = <span class = "keyword">new</span> JPanel();
+    jpCheckBoxes.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">1</span>));
+    jpCheckBoxes.add(jchkBold);
+    jpCheckBoxes.add(jchkItalic);    
+    add(jpCheckBoxes, BorderLayout.EAST);
+  	
+    <span class = "comment">// Create a new panel to hold check boxes</span>
+    JPanel jpRadioButtons = <span class = "keyword">new</span> JPanel();
+    jpRadioButtons.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">3</span>, <span class = "literal">1</span>));
+    jpRadioButtons.add(jrbRed);
+    jpRadioButtons.add(jrbGreen);
+    jpRadioButtons.add(jrbBlue);
+    add(jpRadioButtons, BorderLayout.WEST);
+
+    <span class = "comment">// Create a radio-button group to group three buttons</span>
+    ButtonGroup group = <span class = "keyword">new</span> ButtonGroup();
+    group.add(jrbRed);
+    group.add(jrbGreen);
+    group.add(jrbBlue);
+
+    <span class = "comment">// Set initial message color to blue</span>
+    jrbBlue.setSelected(<span class = "keyword">true</span>);
+    jlblMessage.setForeground(Color.blue);
+  	
+    <span class = "comment">// Create a new panel to hold label and text field</span>
+    JPanel jpTextField = <span class = "keyword">new</span> JPanel();
+    jpTextField.setLayout(<span class = "keyword">new</span> BorderLayout(<span class = "literal">5</span>, <span class = "literal">0</span>));
+    jpTextField.add(
+      <span class = "keyword">new</span> JLabel(<span class = "literal">"Enter a new message"</span>), BorderLayout.WEST);
+    jpTextField.add(jtfMessage, BorderLayout.CENTER);
+    jtfMessage.setHorizontalAlignment(JTextField.RIGHT);
+    add(jpTextField, BorderLayout.NORTH);
+  
+    <span class = "comment">// Set mnemonic keys for check boxes and radio buttons</span>
+    jchkBold.setMnemonic(<span class = "literal">'B'</span>);
+    jchkItalic.setMnemonic(<span class = "literal">'I'</span>);
+    jrbRed.setMnemonic(<span class = "literal">'E'</span>);
+    jrbGreen.setMnemonic(<span class = "literal">'G'</span>);
+    jrbBlue.setMnemonic(<span class = "literal">'U'</span>);
+    
+    <span class = "comment">// Register listeners with check boxes</span>
+    jchkBold.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        setNewFont();
+      }
+    });
+    jchkItalic.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        setNewFont();
+      }
+    });
+    
+    <span class = "comment">// Register listeners for radio buttons</span>
+    jrbRed.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+      	jlblMessage.setForeground(Color.red);
+      }
+    });
+    jrbGreen.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+      	jlblMessage.setForeground(Color.green);
+      }
+    });
+    jrbBlue.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jlblMessage.setForeground(Color.blue);
+      }
+    });
+    
+    <span class = "comment">// Register listener for text field</span>
+    jtfMessage.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jlblMessage.setText(jtfMessage.getText());
+        jtfMessage.requestFocusInWindow();
+      }
+    });
+  }
+  
+  <span class = "keyword">private</span> <span class = "keyword">void</span> setNewFont() {
+    <span class = "comment">// Determine a font style</span>
+    <span class = "keyword">int</span> fontStyle = Font.PLAIN;
+    fontStyle += (jchkBold.isSelected() ? Font.BOLD : Font.PLAIN);
+    fontStyle += (jchkItalic.isSelected() ? Font.ITALIC : Font.PLAIN);
+
+    <span class = "comment">// Set font for the message</span>
+    Font font = jlblMessage.getFont();
+    jlblMessage.setFont(
+      <span class = "keyword">new</span> Font(font.getName(), fontStyle, font.getSize()));
+  }
+}
+</pre>
+</body>
+</html>

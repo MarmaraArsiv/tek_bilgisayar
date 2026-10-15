@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - KeyEventDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "KeyEventDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> javafx.application.Application;
+<span class = "keyword">import</span> javafx.scene.Scene;
+<span class = "keyword">import</span> javafx.scene.layout.Pane;
+<span class = "keyword">import</span> javafx.scene.text.Text;
+<span class = "keyword">import</span> javafx.stage.Stage;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> KeyEventDemo <span class = "keyword">extends</span> Application {
+  @Override <span class = "comment">// Override the start method in the Application class</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {
+    <span class = "comment">// Create a pane and set its properties</span>
+    Pane pane = <span class = "keyword">new</span> Pane();
+    Text text = <span class = "keyword">new</span> Text(<span class = "literal">20</span>, <span class = "literal">20</span>, <span class = "literal">"A"</span>);
+
+    pane.getChildren().add(text);
+    text.setOnKeyPressed(e -&gt; {          
+      <span class = "keyword">switch</span> (e.getCode()) {
+        <span class = "keyword">case</span> DOWN: text.setY(text.getY() + <span class = "literal">10</span>); <span class = "keyword">break</span>;
+        <span class = "keyword">case</span> UP:  text.setY(text.getY() - <span class = "literal">10</span>); <span class = "keyword">break</span>;
+        <span class = "keyword">case</span> LEFT: text.setX(text.getX() - <span class = "literal">10</span>); <span class = "keyword">break</span>;
+        <span class = "keyword">case</span> RIGHT: text.setX(text.getX() + <span class = "literal">10</span>); <span class = "keyword">break</span>;
+        default: 
+          <span class = "keyword">if</span> (Character.isLetterOrDigit(e.getText().charAt(<span class = "literal">0</span>)))
+            text.setText(e.getText());
+      }
+    });
+    
+    <span class = "comment">// Create a scene and place the pane in the stage</span>
+    Scene scene = <span class = "keyword">new</span> Scene(pane);
+    primaryStage.setTitle(<span class = "literal">"KeyEventDemo"</span>); <span class = "comment">// Set the stage title</span>
+    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the stage</span>
+    primaryStage.show(); <span class = "comment">// Display the stage</span>
+    
+    text.requestFocus(); <span class = "comment">// text is focused to receive key input</span>
+  }
+
+  <span class = "comment">/**
+   * The main method is only needed for the IDE with limited
+   * JavaFX support. Not needed for running from the command line.
+   */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    launch(args);
+  }
+} 
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "KeyEventDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

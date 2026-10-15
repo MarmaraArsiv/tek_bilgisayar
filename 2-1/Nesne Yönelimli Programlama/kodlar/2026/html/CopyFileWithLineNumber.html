@@ -1,0 +1,126 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - CopyFile.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "CopyFile.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.border.*;
+  5&nbsp;&nbsp;<span class = "keyword">import</span> java.io.*;
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> CopyFile <span class = "keyword">extends</span> JFrame {
+  8&nbsp;&nbsp;  <span class = "keyword">private</span> JProgressBar jpb = <span class = "keyword">new</span> JProgressBar();
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtCopy = <span class = "keyword">new</span> JButton(<span class = "literal">"Copy"</span>);
+ 10&nbsp;&nbsp;  <span class = "keyword">private</span> JTextField jtfFrom = <span class = "keyword">new</span> JTextField();
+ 11&nbsp;&nbsp;  <span class = "keyword">private</span> JTextField jtfTo = <span class = "keyword">new</span> JTextField();
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;  <span class = "keyword">public</span> CopyFile() {
+ 14&nbsp;&nbsp;    JPanel jPanel2 = <span class = "keyword">new</span> JPanel();
+ 15&nbsp;&nbsp;    jPanel2.setLayout(<span class = "keyword">new</span> BorderLayout());
+ 16&nbsp;&nbsp;    jPanel2.setBorder(<span class = "keyword">new</span> TitledBorder(<span class = "literal">"From"</span>));
+ 17&nbsp;&nbsp;    jPanel2.add(jtfFrom, BorderLayout.CENTER);
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;    JPanel jPanel3 = <span class = "keyword">new</span> JPanel();
+ 20&nbsp;&nbsp;    jPanel3.setLayout(<span class = "keyword">new</span> BorderLayout());
+ 21&nbsp;&nbsp;    jPanel3.setBorder(<span class = "keyword">new</span> TitledBorder(<span class = "literal">"To"</span>));
+ 22&nbsp;&nbsp;    jPanel3.add(jtfTo, BorderLayout.CENTER);
+ 23&nbsp;&nbsp;
+ 24&nbsp;&nbsp;    JPanel jPanel1 = <span class = "keyword">new</span> JPanel();
+ 25&nbsp;&nbsp;    jPanel1.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">1</span>));
+ 26&nbsp;&nbsp;    jPanel1.add(jPanel2);
+ 27&nbsp;&nbsp;    jPanel1.add(jPanel3);
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;    JPanel jPanel4 = <span class = "keyword">new</span> JPanel();
+ 30&nbsp;&nbsp;    jPanel4.add(jbtCopy);
+ 31&nbsp;&nbsp;
+ 32&nbsp;&nbsp;    <span class = "keyword">this</span>.add(jpb, BorderLayout.NORTH);
+ 33&nbsp;&nbsp;    <span class = "keyword">this</span>.add(jPanel1, BorderLayout.CENTER);
+ 34&nbsp;&nbsp;    <span class = "keyword">this</span>.add(jPanel4, BorderLayout.SOUTH);
+ 35&nbsp;&nbsp;
+ 36&nbsp;&nbsp;    jpb.setStringPainted(<span class = "keyword">true</span>); <span class = "comment">// Paint the percent in a string</span>
+ 37&nbsp;&nbsp;
+ 38&nbsp;&nbsp;    jbtCopy.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 39&nbsp;&nbsp;      @Override
+ 40&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 41&nbsp;&nbsp;        <span class = "comment">// Create a thread for copying files</span>
+ 42&nbsp;&nbsp;        <span class = "keyword">new</span> Thread(<span class = "keyword">new</span> CopyFileTask()).start();
+ 43&nbsp;&nbsp;      }
+ 44&nbsp;&nbsp;    });
+ 45&nbsp;&nbsp;  }
+ 46&nbsp;&nbsp;
+ 47&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 48&nbsp;&nbsp;    CopyFile frame = <span class = "keyword">new</span> CopyFile();
+ 49&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 50&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"CopyFile"</span>);
+ 51&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>, <span class = "literal">180</span>);
+ 52&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 53&nbsp;&nbsp;  }
+ 54&nbsp;&nbsp;
+ 55&nbsp;&nbsp;  <span class = "comment">// Copy file and update progress bar in a separate thread</span>
+ 56&nbsp;&nbsp;  <span class = "keyword">class</span> CopyFileTask <span class = "keyword">implements</span> Runnable {
+ 57&nbsp;&nbsp;    <span class = "keyword">private</span> <span class = "keyword">int</span> currentValue;
+ 58&nbsp;&nbsp;
+ 59&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> run() {
+ 60&nbsp;&nbsp;      BufferedInputStream in = <span class = "keyword">null</span>;
+ 61&nbsp;&nbsp;      BufferedOutputStream out = <span class = "keyword">null</span>;
+ 62&nbsp;&nbsp;      <span class = "keyword">try</span> {
+ 63&nbsp;&nbsp;        <span class = "comment">// Create file input stream</span>
+ 64&nbsp;&nbsp;        File inFile = <span class = "keyword">new</span> File(jtfFrom.getText().trim());
+ 65&nbsp;&nbsp;        in = <span class = "keyword">new</span> BufferedInputStream(<span class = "keyword">new</span> FileInputStream(inFile));
+ 66&nbsp;&nbsp;
+ 67&nbsp;&nbsp;        <span class = "comment">// Create file output stream</span>
+ 68&nbsp;&nbsp;        File outFile = <span class = "keyword">new</span> File(jtfTo.getText());
+ 69&nbsp;&nbsp;        out = <span class = "keyword">new</span> BufferedOutputStream(<span class = "keyword">new</span> FileOutputStream(outFile));
+ 70&nbsp;&nbsp;
+ 71&nbsp;&nbsp;        <span class = "comment">// Get total bytes in the file</span>
+ 72&nbsp;&nbsp;        <span class = "keyword">long</span> totalBytes = in.available();
+ 73&nbsp;&nbsp;
+ 74&nbsp;&nbsp;        <span class = "comment">// Start progress meter bar</span>
+ 75&nbsp;&nbsp;        jpb.setValue(<span class = "literal">0</span>);
+ 76&nbsp;&nbsp;        jpb.setMaximum(<span class = "literal">100</span>);
+ 77&nbsp;&nbsp;
+ 78&nbsp;&nbsp;        <span class = "keyword">int</span> r;
+ 79&nbsp;&nbsp;        <span class = "keyword">long</span> bytesRead = <span class = "literal">0</span>;
+ 80&nbsp;&nbsp;        <span class = "comment">// You may increase buffer size to improve IO speed</span>
+ 81&nbsp;&nbsp;        <span class = "keyword">byte</span>[] b = <span class = "keyword">new</span> <span class = "keyword">byte</span>[<span class = "literal">10</span>];
+ 82&nbsp;&nbsp;        <span class = "keyword">while</span> ((r = in.read(b, <span class = "literal">0</span>, b.length)) != <span class = "literal">-</span><span class = "literal">1</span>) {
+ 83&nbsp;&nbsp;          out.write(b, <span class = "literal">0</span>, r);
+ 84&nbsp;&nbsp;          bytesRead += r;
+ 85&nbsp;&nbsp;          currentValue = (<span class = "keyword">int</span>)(bytesRead * <span class = "literal">100</span> / totalBytes);
+ 86&nbsp;&nbsp;
+ 87&nbsp;&nbsp;          <span class = "comment">// Update the progress bar</span>
+ 88&nbsp;&nbsp;          jpb.setValue(currentValue);
+ 89&nbsp;&nbsp;        }
+ 90&nbsp;&nbsp;      }
+ 91&nbsp;&nbsp;      <span class = "keyword">catch</span> (FileNotFoundException ex) {
+ 92&nbsp;&nbsp;        ex.printStackTrace();
+ 93&nbsp;&nbsp;      }
+ 94&nbsp;&nbsp;      <span class = "keyword">catch</span> (IOException ex) {
+ 95&nbsp;&nbsp;        ex.printStackTrace();
+ 96&nbsp;&nbsp;      }
+ 97&nbsp;&nbsp;      <span class = "keyword">finally</span> {
+ 98&nbsp;&nbsp;        <span class = "keyword">try</span> {
+ 99&nbsp;&nbsp;          <span class = "keyword">if</span> (in != <span class = "keyword">null</span>) in.close();
+100&nbsp;&nbsp;          <span class = "keyword">if</span> (out != <span class = "keyword">null</span>) out.close();
+101&nbsp;&nbsp;        }
+102&nbsp;&nbsp;        <span class = "keyword">catch</span> (Exception ex) {}
+103&nbsp;&nbsp;      }
+104&nbsp;&nbsp;    }
+105&nbsp;&nbsp;  }
+106&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

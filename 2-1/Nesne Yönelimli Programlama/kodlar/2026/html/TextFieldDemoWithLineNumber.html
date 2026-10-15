@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TextFieldDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TextFieldDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> <span class = "keyword">static</span> javafx.application.Application.launch;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javafx.geometry.Insets;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javafx.geometry.Pos;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.control.Label;
+  5&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.control.TextField;
+  6&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.layout.BorderPane;
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TextFieldDemo <span class = "keyword">extends</span> RadioButtonDemo {
+  9&nbsp;&nbsp;  @Override <span class = "comment">// Override the getPane() method in the super class</span>
+ 10&nbsp;&nbsp;  <span class = "keyword">protected</span> BorderPane getPane() {
+ 11&nbsp;&nbsp;    BorderPane pane = <span class = "keyword">super</span>.getPane();
+ 12&nbsp;&nbsp;    
+ 13&nbsp;&nbsp;    BorderPane paneForTextField = <span class = "keyword">new</span> BorderPane();
+ 14&nbsp;&nbsp;    paneForTextField.setPadding(<span class = "keyword">new</span> Insets(<span class = "literal">5</span>, <span class = "literal">5</span>, <span class = "literal">5</span>, <span class = "literal">5</span>)); 
+ 15&nbsp;&nbsp;    paneForTextField.setStyle(<span class = "literal">"-fx-border-color: green"</span>);
+ 16&nbsp;&nbsp;    paneForTextField.setLeft(<span class = "keyword">new</span> Label(<span class = "literal">"Enter a new message: "</span>));
+ 17&nbsp;&nbsp;    
+ 18&nbsp;&nbsp;    TextField tf = <span class = "keyword">new</span> TextField();
+ 19&nbsp;&nbsp;    tf.setAlignment(Pos.BOTTOM_RIGHT);
+ 20&nbsp;&nbsp;    paneForTextField.setCenter(tf);
+ 21&nbsp;&nbsp;    pane.setTop(paneForTextField);
+ 22&nbsp;&nbsp;    
+ 23&nbsp;&nbsp;    tf.setOnAction(e -&gt; text.setText(tf.getText()));
+ 24&nbsp;&nbsp;    
+ 25&nbsp;&nbsp;    <span class = "keyword">return</span> pane;
+ 26&nbsp;&nbsp;  }
+ 27&nbsp;&nbsp;
+ 28&nbsp;&nbsp;  <span class = "comment">/**
+ 29&nbsp;&nbsp;   * The main method is only needed for the IDE with limited
+ 30&nbsp;&nbsp;   * JavaFX support. Not needed for running from the command line.
+ 31&nbsp;&nbsp;   */</span>
+ 32&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 33&nbsp;&nbsp;    launch(args);
+ 34&nbsp;&nbsp;  }
+ 35&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TextFieldDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

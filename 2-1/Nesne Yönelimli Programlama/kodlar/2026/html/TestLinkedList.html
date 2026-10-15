@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - TestLinkedList.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestLinkedList {
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a list for strings</span>
+    MyLinkedList&lt;String&gt; list = <span class = "keyword">new</span> MyLinkedList&lt;String&gt;();
+
+    <span class = "comment">// Add elements to the list</span>
+    list.add(<span class = "literal">"America"</span>); <span class = "comment">// Add it to the list</span>
+    System.out.println(<span class = "literal">"(<span class = "literal">1</span>) "</span> + list);
+
+    list.add(<span class = "literal">0</span>, <span class = "literal">"Canada"</span>); <span class = "comment">// Add it to the beginning of the list</span>
+    System.out.println(<span class = "literal">"(<span class = "literal">2</span>) "</span> + list);
+
+    list.add(<span class = "literal">"Russia"</span>); <span class = "comment">// Add it to the end of the list</span>
+    System.out.println(<span class = "literal">"(<span class = "literal">3</span>) "</span> + list);
+
+    list.addLast(<span class = "literal">"France"</span>); <span class = "comment">// Add it to the end of the list</span>
+    System.out.println(<span class = "literal">"(<span class = "literal">4</span>) "</span> + list);
+
+    list.add(<span class = "literal">2</span>, <span class = "literal">"Germany"</span>); <span class = "comment">// Add it to the list at index 2</span>
+    System.out.println(<span class = "literal">"(<span class = "literal">5</span>) "</span> + list);
+
+    list.add(<span class = "literal">5</span>, <span class = "literal">"Norway"</span>); <span class = "comment">// Add it to the list at index 5</span>
+    System.out.println(<span class = "literal">"(<span class = "literal">6</span>) "</span> + list);
+
+    list.add(<span class = "literal">0</span>, <span class = "literal">"Poland"</span>); <span class = "comment">// Same as list.addFirst("Poland")</span>
+    System.out.println(<span class = "literal">"(<span class = "literal">7</span>) "</span> + list);
+
+    <span class = "comment">// Remove elements from the list</span>
+    list.remove(<span class = "literal">0</span>); <span class = "comment">// Same as list.remove("Australia") in this case</span>
+    System.out.println(<span class = "literal">"(<span class = "literal">8</span>) "</span> + list);
+
+    list.remove(<span class = "literal">2</span>); <span class = "comment">// Remove the element at index 2</span>
+    System.out.println(<span class = "literal">"(<span class = "literal">9</span>) "</span> + list);
+
+    list.remove(list.size() - <span class = "literal">1</span>); <span class = "comment">// Remove the last element</span>
+    System.out.println(<span class = "literal">"(<span class = "literal">10</span>) "</span> + list);
+  }
+}
+</pre>
+</body>
+</html>

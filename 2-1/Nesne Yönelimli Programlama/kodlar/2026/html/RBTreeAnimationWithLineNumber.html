@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - RBTreeAnimation.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "RBTreeAnimation.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JApplet;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JFrame;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> RBTreeAnimation <span class = "keyword">extends</span> JApplet {
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> RBTreeAnimation() {
+  6&nbsp;&nbsp;    RBTree&lt;Integer&gt; tree = <span class = "keyword">new</span> RBTree&lt;Integer&gt;();    
+  7&nbsp;&nbsp;    add(<span class = "keyword">new</span> RBTreeView(tree));
+  8&nbsp;&nbsp;  }
+  9&nbsp;&nbsp;  
+ 10&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 11&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"RBTreeAnimation"</span>);
+ 12&nbsp;&nbsp;    JApplet applet = <span class = "keyword">new</span> RBTreeAnimation();
+ 13&nbsp;&nbsp;    frame.add(applet);
+ 14&nbsp;&nbsp;    frame.setSize(<span class = "literal">500</span>, <span class = "literal">300</span>);
+ 15&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 16&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+ 17&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 18&nbsp;&nbsp;  }
+ 19&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

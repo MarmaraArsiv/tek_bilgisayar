@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Graph.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "Graph.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">interface</span> Graph&lt;V&gt; {
+  2&nbsp;&nbsp;  <span class = "comment">/** Return the number of vertices in the graph */</span>
+  3&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> getSize();
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;  <span class = "comment">/** Return the vertices in the graph */</span>
+  6&nbsp;&nbsp;  <span class = "keyword">public</span> java.util.List&lt;V&gt; getVertices();
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;  <span class = "comment">/** Return the object for the specified vertex index */</span>
+  9&nbsp;&nbsp;  <span class = "keyword">public</span> V getVertex(<span class = "keyword">int</span> index);
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;  <span class = "comment">/** Return the index for the specified vertex object */</span>
+ 12&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> getIndex(V v);
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;  <span class = "comment">/** Return the neighbors of vertex with the specified index */</span>
+ 15&nbsp;&nbsp;  <span class = "keyword">public</span> java.util.List&lt;Integer&gt; getNeighbors(<span class = "keyword">int</span> index);
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;  <span class = "comment">/** Return the degree for a specified vertex */</span>
+ 18&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> getDegree(<span class = "keyword">int</span> v);
+ 19&nbsp;&nbsp;
+ 20&nbsp;&nbsp;  <span class = "comment">/** Print the edges */</span>
+ 21&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> printEdges();
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;  <span class = "comment">/** Clear the graph */</span>
+ 24&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> clear();
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;  <span class = "comment">/** Add a vertex to the graph */</span>  
+ 27&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> addVertex(V vertex);
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;  <span class = "comment">/** Add an edge to the graph */</span>  
+ 30&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> addEdge(<span class = "keyword">int</span> u, <span class = "keyword">int</span> v);
+ 31&nbsp;&nbsp;
+ 32&nbsp;&nbsp;  <span class = "comment">/** Obtain a depth-first search tree */</span>
+ 33&nbsp;&nbsp;  <span class = "keyword">public</span> AbstractGraph&lt;V&gt;.Tree dfs(<span class = "keyword">int</span> v);
+ 34&nbsp;&nbsp;
+ 35&nbsp;&nbsp;  <span class = "comment">/** Obtain a breadth-first search tree */</span>
+ 36&nbsp;&nbsp;  <span class = "keyword">public</span> AbstractGraph&lt;V&gt;.Tree bfs(<span class = "keyword">int</span> v);
+ 37&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "Graph" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

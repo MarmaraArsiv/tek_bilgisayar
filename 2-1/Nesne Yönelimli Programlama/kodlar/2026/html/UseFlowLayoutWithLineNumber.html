@@ -1,0 +1,42 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - UseFlowLayout.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "UseFlowLayout.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> UseFlowLayout {
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  6&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;    <span class = "comment">// Set FlowLayout for the frame</span>
+  9&nbsp;&nbsp;    FlowLayout layout = <span class = "keyword">new</span> FlowLayout();
+ 10&nbsp;&nbsp;    frame.setLayout(layout);
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;    <span class = "comment">// Add a button to frame</span>
+ 13&nbsp;&nbsp;    JButton jbtOK = <span class = "keyword">new</span> JButton(<span class = "literal">"OK"</span>);
+ 14&nbsp;&nbsp;    frame.add(jbtOK);
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"Window 1"</span>);
+ 17&nbsp;&nbsp;    frame.setSize(<span class = "literal">200</span>, <span class = "literal">150</span>);
+ 18&nbsp;&nbsp;    frame.setLocation(<span class = "literal">200</span>, <span class = "literal">100</span>);
+ 19&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 20&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 21&nbsp;&nbsp;  }
+ 22&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

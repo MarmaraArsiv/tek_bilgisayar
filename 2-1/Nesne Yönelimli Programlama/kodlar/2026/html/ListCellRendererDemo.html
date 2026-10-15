@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ListCellRendererDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ListCellRendererDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.event.*;
+<span class = "keyword">import</span> java.awt.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ListCellRendererDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> <span class = "keyword">final</span> <span class = "keyword">static</span> <span class = "keyword">int</span> NUMBER_OF_NATIONS = <span class = "literal">7</span>;
+  <span class = "keyword">private</span> String[] nations = <span class = "keyword">new</span> String[]
+    {<span class = "literal">"Denmark"</span>, <span class = "literal">"Germany"</span>, <span class = "literal">"China"</span>, <span class = "literal">"India"</span>, <span class = "literal">"Norway"</span>, <span class = "literal">"UK"</span>, <span class = "literal">"US"</span>};
+  <span class = "keyword">private</span> ImageIcon[] icons = <span class = "keyword">new</span> ImageIcon[NUMBER_OF_NATIONS];
+  <span class = "keyword">private</span> ImageIcon[] bigIcons = <span class = "keyword">new</span> ImageIcon[NUMBER_OF_NATIONS];
+
+  <span class = "comment">// Create a list model</span>
+  <span class = "keyword">private</span> DefaultListModel listModel = <span class = "keyword">new</span> DefaultListModel();
+
+  <span class = "comment">// Create a list using the list model</span>
+  <span class = "keyword">private</span> JList jlstNations = <span class = "keyword">new</span> JList(listModel);
+
+  <span class = "comment">// Create a list cell renderer</span>
+  <span class = "keyword">private</span> ListCellRenderer renderer = <span class = "keyword">new</span> MyListCellRenderer();
+
+  <span class = "comment">// Create a split pane</span>
+  <span class = "keyword">private</span> JSplitPane jSplitPane1 = <span class = "keyword">new</span> JSplitPane();
+
+  <span class = "comment">// Create a label for displaying iamge</span>
+  <span class = "keyword">private</span> JLabel jlblImage = <span class = "keyword">new</span> JLabel(<span class = "literal">""</span>, JLabel.CENTER);
+
+  <span class = "comment">/** Construct ListCellRenderer */</span>
+  <span class = "keyword">public</span> ListCellRendererDemo() {
+    <span class = "comment">// Load small and large image icons</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; NUMBER_OF_NATIONS; i++) {
+      icons[i] = <span class = "keyword">new</span> ImageIcon(getClass().getResource(
+        <span class = "literal">"/image/flagIcon"</span> + i + <span class = "literal">".gif"</span>));
+      listModel.addElement(<span class = "keyword">new</span> Object[]{icons[i], nations[i]});
+
+      bigIcons[i] = <span class = "keyword">new</span> ImageIcon(getClass().getResource(
+        <span class = "literal">"/image/flag"</span> + i + <span class = "literal">".gif"</span>));
+    }
+
+    <span class = "comment">// Set list cell renderer</span>
+    jlstNations.setCellRenderer(renderer);
+    jlstNations.setPreferredSize(<span class = "keyword">new</span> Dimension(<span class = "literal">200</span>, <span class = "literal">200</span>));
+    jSplitPane1.setLeftComponent(<span class = "keyword">new</span> JScrollPane(jlstNations));
+    jSplitPane1.setRightComponent(jlblImage);
+    jlstNations.setSelectedIndex(<span class = "literal">0</span>);
+    jlblImage.setIcon(bigIcons[<span class = "literal">0</span>]);
+    add(jSplitPane1, BorderLayout.CENTER);
+
+    <span class = "comment">// Register listener</span>
+    jlstNations.addListSelectionListener(<span class = "keyword">new</span> ListSelectionListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> valueChanged(ListSelectionEvent e) {
+        jlblImage.setIcon(bigIcons[jlstNations.getSelectedIndex()]);
+      }
+    });
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ListCellRendererDemo applet = <span class = "keyword">new</span> ListCellRendererDemo();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"ListCellRendererDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>, <span class = "literal">320</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

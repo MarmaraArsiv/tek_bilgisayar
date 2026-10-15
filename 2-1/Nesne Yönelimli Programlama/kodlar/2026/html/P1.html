@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - P1.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "P1WithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.Scanner;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> P1 {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    System.out.print(<span class = "literal">"Enter two numbers: "</span>);
+    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+    
+    <span class = "keyword">double</span> number1 = input.nextDouble();
+    <span class = "keyword">double</span> number2 = input.nextDouble();
+    
+    System.out.println(number1 + number2);
+    System.out.println(number1 - number2);
+    System.out.println(number1 * number2);
+    System.out.println(number1 / number2);
+    
+  }
+}
+</pre>
+</body>
+</html>

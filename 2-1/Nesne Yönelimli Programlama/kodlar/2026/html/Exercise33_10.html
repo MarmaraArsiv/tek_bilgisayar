@@ -1,0 +1,57 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Exercise33_10.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "Exercise33_10WithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">package</span> jsfexercise;
+
+<span class = "keyword">import</span> java.util.ArrayList;
+<span class = "keyword">import</span> java.util.Collections;
+<span class = "keyword">import</span> javax.faces.bean.ManagedBean;
+<span class = "keyword">import</span> javax.faces.bean.RequestScoped;
+
+@ManagedBean
+@RequestScoped
+<span class = "keyword">public</span> <span class = "keyword">class</span> Exercise33_10 {
+  <span class = "keyword">private</span> ArrayList&lt;Integer&gt; deck = <span class = "keyword">new</span> ArrayList&lt;Integer&gt;();
+  
+  <span class = "keyword">public</span> Exercise33_10() {
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">52</span>; i++) 
+      deck.add(i);
+    Collections.shuffle(deck);
+  } 
+  
+  <span class = "keyword">public</span> String getImageName1() {
+    <span class = "keyword">return</span> (deck.get(<span class = "literal">0</span>) + <span class = "literal">1</span>) + <span class = "literal">".png"</span>;
+  }
+  
+  <span class = "keyword">public</span> String getImageName2() {
+    <span class = "keyword">return</span> (deck.get(<span class = "literal">1</span>) + <span class = "literal">1</span>) + <span class = "literal">".png"</span>;
+  }
+
+  <span class = "keyword">public</span> String getImageName3() {
+    <span class = "keyword">return</span> (deck.get(<span class = "literal">2</span>) + <span class = "literal">1</span>) + <span class = "literal">".png"</span>;
+  }
+
+  <span class = "keyword">public</span> String getImageName4() {
+    <span class = "keyword">return</span> (deck.get(<span class = "literal">3</span>) + <span class = "literal">1</span>) + <span class = "literal">".png"</span>;
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">void</span> refresh() {
+    Collections.shuffle(deck); 
+  }
+}
+</pre>
+</body>
+</html>

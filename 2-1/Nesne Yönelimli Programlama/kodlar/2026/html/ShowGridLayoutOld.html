@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - ShowGridLayoutOld.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.JButton;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.JFrame;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.GridLayout;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.Container;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> ShowGridLayoutOld <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JFrame {
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> ShowGridLayoutOld() {
+    <FONT COLOR="#008000">// Get the content pane of the frame
+<FONT COLOR="#000000">    Container container = getContentPane();
+
+    <FONT COLOR="#008000">// Set GridLayout, 4 rows, 3 columns, and gaps 5 between
+<FONT COLOR="#000000">    <FONT COLOR="#008000">// components horizontally and vertically
+<FONT COLOR="#000000">    container.setLayout(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> GridLayout(<FONT COLOR="#0000ff">4</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">3</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">5</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">5</FONT><FONT COLOR="#000000">));
+
+    <FONT COLOR="#008000">// Add buttons to the frame
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i = <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">; i &lt;= <FONT COLOR="#0000ff">10</FONT><FONT COLOR="#000000">; i++)
+      container.add(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JButton(<FONT COLOR="#0000ff">"Component "</FONT> + i));
+  }
+
+  <FONT COLOR="#008000">/** Main method */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    ShowGridLayoutOld frame = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> ShowGridLayoutOld();
+    frame.setTitle(<FONT COLOR="#0000ff">"ShowGridLayout"</FONT>);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(<FONT COLOR="#0000ff">200</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">200</FONT><FONT COLOR="#000000">);
+    frame.setVisible(<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+  }
+}
+</pre>

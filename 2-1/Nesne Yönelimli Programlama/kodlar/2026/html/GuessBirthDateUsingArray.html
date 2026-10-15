@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Intro to Java Programming, 7E - GuessBirthDateUsingArray.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> java.util.Scanner;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> GuessBirthDateUsingArray {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "keyword">int</span> date = <span class = "literal">0</span>; <span class = "comment">// Date to be determined</span>
+    <span class = "keyword">int</span> answer;
+
+    <span class = "keyword">int</span>[][][] dates = {
+      {{ <span class = "literal">1</span>,  <span class = "literal">3</span>,  <span class = "literal">5</span>,  <span class = "literal">7</span>},
+       { <span class = "literal">9</span>, <span class = "literal">11</span>, <span class = "literal">13</span>, <span class = "literal">15</span>},
+       {<span class = "literal">17</span>, <span class = "literal">19</span>, <span class = "literal">21</span>, <span class = "literal">23</span>},
+       {<span class = "literal">25</span>, <span class = "literal">27</span>, <span class = "literal">29</span>, <span class = "literal">31</span>}},
+      {{ <span class = "literal">2</span>,  <span class = "literal">3</span>,  <span class = "literal">6</span>,  <span class = "literal">7</span>},
+       {<span class = "literal">10</span>, <span class = "literal">11</span>, <span class = "literal">14</span>, <span class = "literal">15</span>},
+       {<span class = "literal">18</span>, <span class = "literal">19</span>, <span class = "literal">22</span>, <span class = "literal">23</span>},
+       {<span class = "literal">26</span>, <span class = "literal">27</span>, <span class = "literal">30</span>, <span class = "literal">31</span>}},
+      {{ <span class = "literal">4</span>,  <span class = "literal">5</span>,  <span class = "literal">6</span>,  <span class = "literal">7</span>},
+       {<span class = "literal">12</span>, <span class = "literal">13</span>, <span class = "literal">14</span>, <span class = "literal">15</span>},
+       {<span class = "literal">20</span>, <span class = "literal">21</span>, <span class = "literal">22</span>, <span class = "literal">23</span>},
+       {<span class = "literal">28</span>, <span class = "literal">29</span>, <span class = "literal">30</span>, <span class = "literal">31</span>}},
+      {{ <span class = "literal">8</span>,  <span class = "literal">9</span>, <span class = "literal">10</span>, <span class = "literal">11</span>},
+       {<span class = "literal">12</span>, <span class = "literal">13</span>, <span class = "literal">14</span>, <span class = "literal">15</span>},
+       {<span class = "literal">24</span>, <span class = "literal">25</span>, <span class = "literal">26</span>, <span class = "literal">27</span>},
+       {<span class = "literal">28</span>, <span class = "literal">29</span>, <span class = "literal">30</span>, <span class = "literal">31</span>}},
+      {{<span class = "literal">16</span>, <span class = "literal">17</span>, <span class = "literal">18</span>, <span class = "literal">19</span>},
+       {<span class = "literal">20</span>, <span class = "literal">21</span>, <span class = "literal">22</span>, <span class = "literal">23</span>},
+       {<span class = "literal">24</span>, <span class = "literal">25</span>, <span class = "literal">26</span>, <span class = "literal">27</span>},
+       {<span class = "literal">28</span>, <span class = "literal">29</span>, <span class = "literal">30</span>, <span class = "literal">31</span>}}};
+    
+    <span class = "comment">// Create a Scanner</span>
+    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">5</span>; i++) {
+      System.out.println(<span class = "literal">"Is your birth date in Set"</span> + (i + <span class = "literal">1</span>) + <span class = "literal">"?"</span>);       
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> j = <span class = "literal">0</span>; j &lt; <span class = "literal">4</span>; j++) {
+        <span class = "keyword">for</span> (<span class = "keyword">int</span> k = <span class = "literal">0</span>; k &lt; <span class = "literal">4</span>; k++)
+          System.out.printf(<span class = "literal">"%4d"</span>, dates[i][j][k]);
+        System.out.println();
+      }
+
+      System.out.print(<span class = "literal">"\nEnter <span class = "literal">0</span> for No and <span class = "literal">1</span> for Yes: "</span>);
+      answer = input.nextInt();
+
+      <span class = "keyword">if</span> (answer == <span class = "literal">1</span>)
+        date += dates[i][<span class = "literal">0</span>][<span class = "literal">0</span>];
+    }
+
+    System.out.println(<span class = "literal">"Your birth date is "</span> + date);
+  }
+}
+</pre>
+</body>
+</html>

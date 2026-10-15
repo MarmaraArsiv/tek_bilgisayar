@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - RadioButtonDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "RadioButtonDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> <span class = "keyword">static</span> javafx.application.Application.launch;
+<span class = "keyword">import</span> javafx.geometry.Insets;
+<span class = "keyword">import</span> javafx.scene.control.RadioButton;
+<span class = "keyword">import</span> javafx.scene.control.ToggleGroup;
+<span class = "keyword">import</span> javafx.scene.layout.BorderPane;
+<span class = "keyword">import</span> javafx.scene.layout.VBox;
+<span class = "keyword">import</span> javafx.scene.paint.Color;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> RadioButtonDemo <span class = "keyword">extends</span> CheckBoxDemo {
+  @Override <span class = "comment">// Override the getPane() method in the super class</span>
+  <span class = "keyword">protected</span> BorderPane getPane() {
+    BorderPane pane = <span class = "keyword">super</span>.getPane();
+    
+    VBox paneForRadioButtons = <span class = "keyword">new</span> VBox(<span class = "literal">20</span>);
+    paneForRadioButtons.setPadding(<span class = "keyword">new</span> Insets(<span class = "literal">5</span>, <span class = "literal">5</span>, <span class = "literal">5</span>, <span class = "literal">5</span>)); 
+    paneForRadioButtons.setStyle(<span class = "literal">"-fx-border-color: green"</span>);
+    paneForRadioButtons.setStyle
+      (<span class = "literal">"-fx-border-width: 2px; -fx-border-color: green"</span>);
+    RadioButton rbRed = <span class = "keyword">new</span> RadioButton(<span class = "literal">"Red"</span>);
+    RadioButton rbGreen = <span class = "keyword">new</span> RadioButton(<span class = "literal">"Green"</span>);
+    RadioButton rbBlue = <span class = "keyword">new</span> RadioButton(<span class = "literal">"Blue"</span>);
+    paneForRadioButtons.getChildren().addAll(rbRed, rbGreen, rbBlue);
+    pane.setLeft(paneForRadioButtons);
+
+    ToggleGroup group = <span class = "keyword">new</span> ToggleGroup();
+    rbRed.setToggleGroup(group);
+    rbGreen.setToggleGroup(group);
+    rbBlue.setToggleGroup(group);
+    
+    rbRed.setOnAction(e -&gt; {
+      <span class = "keyword">if</span> (rbRed.isSelected()) {
+        text.setFill(Color.RED);
+      }
+    });
+    
+    rbGreen.setOnAction(e -&gt; {
+      <span class = "keyword">if</span> (rbGreen.isSelected()) {
+        text.setFill(Color.GREEN);
+      }
+    });
+
+    rbBlue.setOnAction(e -&gt; {
+      <span class = "keyword">if</span> (rbBlue.isSelected()) {
+        text.setFill(Color.BLUE);
+      }
+    });
+    
+    <span class = "keyword">return</span> pane;
+  }
+
+  <span class = "comment">/**
+   * The main method is only needed for the IDE with limited
+   * JavaFX support. Not needed for running from the command line.
+   */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    launch(args);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "RadioButtonDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

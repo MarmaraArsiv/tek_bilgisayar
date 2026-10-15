@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - TestPassingObject.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">// TestPassingObject.java: Demonstrate passing objects to methods
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> TestPassingObject {
+  <FONT COLOR="#008000">/** Main method */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    <FONT COLOR="#008000">// Create a Circle object with radius 1
+<FONT COLOR="#000000">    Circle myCircle = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Circle();
+
+    <FONT COLOR="#008000">// Print areas for radius 1, 2, 3, 4, and 5.
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> n = <FONT COLOR="#0000ff">5</FONT><FONT COLOR="#000000">;
+    printAreas(myCircle, n);
+
+    <FONT COLOR="#008000">// See myCircle.radius and times
+<FONT COLOR="#000000">    System.out.println(<FONT COLOR="#0000ff">"\n"</FONT> + <FONT COLOR="#0000ff">"Radius is "</FONT> + myCircle.getRadius());
+    System.out.println(<FONT COLOR="#0000ff">"n is "</FONT> + n);
+  }
+
+  <FONT COLOR="#008000">/** Print a table of areas for radius */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> printAreas(Circle c, <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> times) {
+    System.out.println(<FONT COLOR="#0000ff">"Radius \t\tArea"</FONT>);
+    <FONT COLOR="#000080"><B>while</B></FONT><FONT COLOR="#000000"> (times &gt;= <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">) {
+      System.out.println(c.getRadius() + <FONT COLOR="#0000ff">"\t\t"</FONT> + c.findArea());
+      c.setRadius(c.getRadius() + <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">);
+      times--;
+    }
+  }
+}
+</pre>

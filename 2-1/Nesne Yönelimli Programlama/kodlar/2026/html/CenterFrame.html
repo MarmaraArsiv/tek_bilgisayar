@@ -1,0 +1,22 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 6E - CenterFrame.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> CenterFrame {
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    JFrame frame = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JFrame(<FONT COLOR="#0000ff">"CenterFrame"</FONT>);
+    frame.setSize(<FONT COLOR="#0000ff">400</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">300</FONT><FONT COLOR="#000000">);
+
+    <FONT COLOR="#008000">// New since JDK 1.4 to center the frame
+<FONT COLOR="#000000">    frame.setLocationRelativeTo(<FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">);
+
+    <FONT COLOR="#008000">// New since JDK 1.3 to exit the program upon closing
+<FONT COLOR="#000000">    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    frame.setVisible(<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+  }
+}
+</pre>

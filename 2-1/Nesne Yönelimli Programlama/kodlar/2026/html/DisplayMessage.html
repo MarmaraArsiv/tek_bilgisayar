@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DisplayMessage.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "DisplayMessageWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> DisplayMessage <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">/** Initialize the applet */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> init() {
+    <span class = "comment">// Get parameter values from the HTML file</span>
+    String message = getParameter(<span class = "literal">"MESSAGE"</span>);
+    <span class = "keyword">int</span> x = Integer.parseInt(getParameter(<span class = "literal">"X"</span>));
+    <span class = "keyword">int</span> y = Integer.parseInt(getParameter(<span class = "literal">"Y"</span>));
+
+    <span class = "comment">// Create a message panel</span>
+    MessagePanel messagePanel = <span class = "keyword">new</span> MessagePanel(message);
+    messagePanel.setXCoordinate(x);
+    messagePanel.setYCoordinate(y);
+
+    <span class = "comment">// Add the message panel to the applet</span>
+    add(messagePanel);
+  }
+}
+</pre>
+</body>
+</html>

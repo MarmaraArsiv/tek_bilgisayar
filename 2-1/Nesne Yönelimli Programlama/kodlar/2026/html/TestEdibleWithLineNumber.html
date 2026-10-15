@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestEdible.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestEdible.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestEdible {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  3&nbsp;&nbsp;    Object[] objects = {<span class = "keyword">new</span> Tiger(), <span class = "keyword">new</span> Chicken(), <span class = "keyword">new</span> Apple()};
+  4&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; objects.length; i++) {
+  5&nbsp;&nbsp;      <span class = "keyword">if</span> (objects[i] <span class = "keyword">instanceof</span> Edible)
+  6&nbsp;&nbsp;        System.out.println(((Edible)objects[i]).howToEat());
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;      <span class = "keyword">if</span> (objects[i] <span class = "keyword">instanceof</span> Animal) {
+  9&nbsp;&nbsp;        System.out.println(((Animal)objects[i]).sound());
+ 10&nbsp;&nbsp;      }
+ 11&nbsp;&nbsp;    }
+ 12&nbsp;&nbsp;  }
+ 13&nbsp;&nbsp;}
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;<span class = "keyword">abstract</span> <span class = "keyword">class</span> Animal {
+ 16&nbsp;&nbsp;  <span class = "comment">/** Return animal sound */</span>
+ 17&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">abstract</span> String sound();
+ 18&nbsp;&nbsp;}
+ 19&nbsp;&nbsp;
+ 20&nbsp;&nbsp;<span class = "keyword">class</span> Chicken <span class = "keyword">extends</span> Animal <span class = "keyword">implements</span> Edible {
+ 21&nbsp;&nbsp;  @Override
+ 22&nbsp;&nbsp;  <span class = "keyword">public</span> String howToEat() {
+ 23&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"Chicken: Fry it"</span>;
+ 24&nbsp;&nbsp;  }
+ 25&nbsp;&nbsp;    
+ 26&nbsp;&nbsp;  @Override
+ 27&nbsp;&nbsp;  <span class = "keyword">public</span> String sound() {
+ 28&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"Chicken: cock-a-doodle-doo"</span>;
+ 29&nbsp;&nbsp;  }
+ 30&nbsp;&nbsp;}
+ 31&nbsp;&nbsp;
+ 32&nbsp;&nbsp;<span class = "keyword">class</span> Tiger <span class = "keyword">extends</span> Animal {
+ 33&nbsp;&nbsp;  @Override
+ 34&nbsp;&nbsp;  <span class = "keyword">public</span> String sound() {
+ 35&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"Tiger: RROOAARR"</span>;
+ 36&nbsp;&nbsp;  }
+ 37&nbsp;&nbsp;}
+ 38&nbsp;&nbsp;
+ 39&nbsp;&nbsp;<span class = "keyword">abstract</span> <span class = "keyword">class</span> Fruit <span class = "keyword">implements</span> Edible {
+ 40&nbsp;&nbsp;  <span class = "comment">// Data fields, constructors, and methods omitted here</span>
+ 41&nbsp;&nbsp;}
+ 42&nbsp;&nbsp;
+ 43&nbsp;&nbsp;<span class = "keyword">class</span> Apple <span class = "keyword">extends</span> Fruit {
+ 44&nbsp;&nbsp;  @Override
+ 45&nbsp;&nbsp;  <span class = "keyword">public</span> String howToEat() {
+ 46&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"Apple: Make apple cider"</span>;
+ 47&nbsp;&nbsp;  }
+ 48&nbsp;&nbsp;}
+ 49&nbsp;&nbsp;
+ 50&nbsp;&nbsp;<span class = "keyword">class</span> Orange <span class = "keyword">extends</span> Fruit {
+ 51&nbsp;&nbsp;  @Override
+ 52&nbsp;&nbsp;  <span class = "keyword">public</span> String howToEat() {
+ 53&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"Orange: Make orange juice"</span>;
+ 54&nbsp;&nbsp;  }
+ 55&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestEdible" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

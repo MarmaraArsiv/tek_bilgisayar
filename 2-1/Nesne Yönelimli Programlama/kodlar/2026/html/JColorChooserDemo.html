@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - JColorChooserDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "JColorChooserDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.Toolkit;
+<span class = "keyword">import</span> java.awt.BorderLayout;
+<span class = "keyword">import</span> javax.swing.JFrame;
+<span class = "keyword">import</span> java.awt.Dimension;
+
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.Color;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> JColorChooserDemo <span class = "keyword">extends</span> javax.swing.JApplet {
+  <span class = "keyword">public</span> <span class = "keyword">void</span> init() {
+    Color color = JColorChooser.showDialog(<span class = "keyword">this</span>, <span class = "literal">"Choose a color"</span>,
+      Color.YELLOW);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    JColorChooserDemo applet = <span class = "keyword">new</span> JColorChooserDemo();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"TestColorDialog"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

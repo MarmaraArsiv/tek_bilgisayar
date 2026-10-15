@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestFigurePanel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestFigurePanel.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestFigurePanel <span class = "keyword">extends</span> JFrame {
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> TestFigurePanel() {
+  6&nbsp;&nbsp;    setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">3</span>, <span class = "literal">5</span>, <span class = "literal">5</span>));
+  7&nbsp;&nbsp;    add(<span class = "keyword">new</span> FigurePanel(FigurePanel.LINE));
+  8&nbsp;&nbsp;    add(<span class = "keyword">new</span> FigurePanel(FigurePanel.RECTANGLE));
+  9&nbsp;&nbsp;    add(<span class = "keyword">new</span> FigurePanel(FigurePanel.ROUND_RECTANGLE));
+ 10&nbsp;&nbsp;    add(<span class = "keyword">new</span> FigurePanel(FigurePanel.OVAL));
+ 11&nbsp;&nbsp;    add(<span class = "keyword">new</span> FigurePanel(FigurePanel.RECTANGLE, <span class = "keyword">true</span>));
+ 12&nbsp;&nbsp;    add(<span class = "keyword">new</span> FigurePanel(FigurePanel.ROUND_RECTANGLE, <span class = "keyword">true</span>));
+ 13&nbsp;&nbsp;  }
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 16&nbsp;&nbsp;    TestFigurePanel frame = <span class = "keyword">new</span> TestFigurePanel();
+ 17&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>, <span class = "literal">200</span>);
+ 18&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"TestFigurePanel"</span>);
+ 19&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+ 20&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 21&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 22&nbsp;&nbsp;  }
+ 23&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

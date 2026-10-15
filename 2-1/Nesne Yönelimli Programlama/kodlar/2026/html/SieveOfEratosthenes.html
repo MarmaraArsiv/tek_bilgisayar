@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SieveOfEratosthenes.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "SieveOfEratosthenesWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.Scanner;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> SieveOfEratosthenes {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+    System.out.print(<span class = "literal">"Find all prime numbers &lt;= n, enter n: "</span>);
+    <span class = "keyword">int</span> n = input.nextInt();
+    
+    <span class = "keyword">boolean</span>[] primes = <span class = "keyword">new</span> <span class = "keyword">boolean</span>[n + <span class = "literal">1</span>]; <span class = "comment">// Prime number sieve</span>
+    
+    <span class = "comment">// Initialize primes[i] to true</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; primes.length; i++) {
+      primes[i] = <span class = "keyword">true</span>; 
+    }
+    
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> k = <span class = "literal">2</span>; k &lt;= n / k; k++) {
+      <span class = "keyword">if</span> (primes[k]) {
+        <span class = "keyword">for</span> (<span class = "keyword">int</span> i = k; i &lt;= n / k; i++) {
+          primes[k * i] = <span class = "keyword">false</span>; <span class = "comment">// k * i is not prime</span>
+        }
+      }
+    }
+    
+    <span class = "keyword">final</span> <span class = "keyword">int</span> NUMBER_PER_LINE = <span class = "literal">10</span>; <span class = "comment">// Display 10 per line</span>
+    <span class = "keyword">int</span> count = <span class = "literal">0</span>; <span class = "comment">// Count the number of prime numbers found so far</span>
+    <span class = "comment">// Print prime numbers</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">2</span>; i &lt; primes.length; i++) {
+      <span class = "keyword">if</span> (primes[i]) {
+        count++;
+        <span class = "keyword">if</span> (count % <span class = "literal">10</span> == <span class = "literal">0</span>) 
+          System.out.printf(<span class = "literal">"%7d\n"</span>, i);
+        <span class = "keyword">else</span>
+          System.out.printf(<span class = "literal">"%7d"</span>, i);          
+      }
+    }
+    
+    System.out.println(<span class = "literal">"\n"</span> + count + 
+      <span class = "literal">" prime(s) less than or equal to "</span> + n);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "SieveOfEratosthenes" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

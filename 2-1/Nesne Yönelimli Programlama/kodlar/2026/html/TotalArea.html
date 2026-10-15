@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TotalArea.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TotalAreaWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TotalArea {
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Declare circleArray</span>
+    CircleWithPrivateDataFields[] circleArray;
+
+    <span class = "comment">// Create circleArray</span>
+    circleArray = createCircleArray();
+
+    <span class = "comment">// Print circleArray and total areas of the circles</span>
+    printCircleArray(circleArray);
+  }
+
+  <span class = "comment">/** Create an array of Circle objects */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> CircleWithPrivateDataFields[] createCircleArray() {
+    CircleWithPrivateDataFields[] circleArray = 
+      <span class = "keyword">new</span> CircleWithPrivateDataFields[<span class = "literal">5</span>];
+
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; circleArray.length; i++) {
+      circleArray[i] = 
+        <span class = "keyword">new</span> CircleWithPrivateDataFields(Math.random() * <span class = "literal">100</span>);
+    }
+
+    <span class = "comment">// Return Circle array</span>
+    <span class = "keyword">return</span> circleArray;
+  }
+
+  <span class = "comment">/** Print an array of circles and their total area */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> printCircleArray(
+      CircleWithPrivateDataFields[] circleArray) {
+    System.out.printf(<span class = "literal">"%<span class = "literal">-</span>30s%<span class = "literal">-</span>15s\n"</span>, <span class = "literal">"Radius"</span>, <span class = "literal">"Area"</span>);
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; circleArray.length; i++) {
+      System.out.printf(<span class = "literal">"%<span class = "literal">-</span><span class = "literal">30f</span>%<span class = "literal">-</span>15f\n"</span>, circleArray[i].getRadius(),
+        circleArray[i].getArea());
+    }
+
+    System.out.println(<span class = "literal">"-----------------------------------------"</span>);
+
+    <span class = "comment">// Compute and display the result</span>
+    System.out.printf(<span class = "literal">"%<span class = "literal">-</span>30s%<span class = "literal">-</span>15f\n"</span>, <span class = "literal">"The total areas of circles is"</span>,
+      sum(circleArray));
+  }
+
+  <span class = "comment">/** Add circle areas */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">double</span> sum(
+      CircleWithPrivateDataFields[] circleArray) {
+    <span class = "comment">// Initialize sum</span>
+    <span class = "keyword">double</span> sum = <span class = "literal">0</span>;
+
+    <span class = "comment">// Add areas to sum</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; circleArray.length; i++)
+      sum += circleArray[i].getArea();
+
+    <span class = "keyword">return</span> sum;
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TotalArea" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

@@ -1,0 +1,90 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestTableSortFilter.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestTableSortFilter.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.table.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.BorderLayout;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestTableSortFilter <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  <span class = "comment">// Create table column names</span>
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> String[] columnNames =
+  8&nbsp;&nbsp;    {<span class = "literal">"Country"</span>, <span class = "literal">"Capital"</span>, <span class = "literal">"Population in Millions"</span>, <span class = "literal">"Democracy"</span>};
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;  <span class = "comment">// Create table data</span>
+ 11&nbsp;&nbsp;  <span class = "keyword">private</span> Object[][] data = {
+ 12&nbsp;&nbsp;    {<span class = "literal">"USA"</span>, <span class = "literal">"Washington DC"</span>, <span class = "literal">280</span>, <span class = "keyword">true</span>},
+ 13&nbsp;&nbsp;    {<span class = "literal">"Canada"</span>, <span class = "literal">"Ottawa"</span>, <span class = "literal">32</span>, <span class = "keyword">true</span>},
+ 14&nbsp;&nbsp;    {<span class = "literal">"United Kingdom"</span>, <span class = "literal">"London"</span>, <span class = "literal">60</span>, <span class = "keyword">true</span>},
+ 15&nbsp;&nbsp;    {<span class = "literal">"Germany"</span>, <span class = "literal">"Berlin"</span>, <span class = "literal">83</span>, <span class = "keyword">true</span>},
+ 16&nbsp;&nbsp;    {<span class = "literal">"France"</span>, <span class = "literal">"Paris"</span>, <span class = "literal">60</span>, <span class = "keyword">true</span>},
+ 17&nbsp;&nbsp;    {<span class = "literal">"Norway"</span>, <span class = "literal">"Oslo"</span>, <span class = "literal">4</span><span class = "literal">.</span><span class = "literal">5</span>, <span class = "keyword">true</span>},
+ 18&nbsp;&nbsp;    {<span class = "literal">"India"</span>, <span class = "literal">"New Delhi"</span>, <span class = "literal">1046</span>, <span class = "keyword">true</span>}
+ 19&nbsp;&nbsp;  };
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;  <span class = "comment">// Create a table</span>
+ 22&nbsp;&nbsp;  <span class = "keyword">private</span> JTable jTable1 = <span class = "keyword">new</span> JTable(data, columnNames);
+ 23&nbsp;&nbsp;
+ 24&nbsp;&nbsp;  <span class = "comment">// Create a TableRowSorter</span>
+ 25&nbsp;&nbsp;  <span class = "keyword">private</span> TableRowSorter&lt;TableModel&gt; sorter =
+ 26&nbsp;&nbsp;      <span class = "keyword">new</span> TableRowSorter&lt;TableModel&gt;(jTable1.getModel());
+ 27&nbsp;&nbsp;
+ 28&nbsp;&nbsp;  <span class = "keyword">private</span> JTextField jtfFilter = <span class = "keyword">new</span> JTextField();
+ 29&nbsp;&nbsp;  <span class = "keyword">private</span> JButton btFilter = <span class = "keyword">new</span> JButton(<span class = "literal">"Filter"</span>);
+ 30&nbsp;&nbsp;
+ 31&nbsp;&nbsp;  <span class = "keyword">public</span> TestTableSortFilter() {
+ 32&nbsp;&nbsp;    <span class = "comment">// Enable auto sorter</span>
+ 33&nbsp;&nbsp;    jTable1.setRowSorter(sorter);
+ 34&nbsp;&nbsp;
+ 35&nbsp;&nbsp;    JPanel panel = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> java.awt.BorderLayout());
+ 36&nbsp;&nbsp;    panel.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Specify a word to match:"</span>),
+ 37&nbsp;&nbsp;      BorderLayout.WEST);
+ 38&nbsp;&nbsp;    panel.add(jtfFilter, BorderLayout.CENTER);
+ 39&nbsp;&nbsp;    panel.add(btFilter, BorderLayout.EAST);
+ 40&nbsp;&nbsp;
+ 41&nbsp;&nbsp;    add(panel, BorderLayout.SOUTH);
+ 42&nbsp;&nbsp;    add(<span class = "keyword">new</span> JScrollPane(jTable1), BorderLayout.CENTER);
+ 43&nbsp;&nbsp;
+ 44&nbsp;&nbsp;    btFilter.addActionListener(<span class = "keyword">new</span> java.awt.event.ActionListener() {
+ 45&nbsp;&nbsp;      @Override
+ 46&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(java.awt.event.ActionEvent e) {
+ 47&nbsp;&nbsp;        String text = jtfFilter.getText();
+ 48&nbsp;&nbsp;        <span class = "keyword">if</span> (text.trim().length() == <span class = "literal">0</span>)
+ 49&nbsp;&nbsp;          sorter.setRowFilter(<span class = "keyword">null</span>);
+ 50&nbsp;&nbsp;        <span class = "keyword">else</span>
+ 51&nbsp;&nbsp;          sorter.setRowFilter(RowFilter.regexFilter(text));
+ 52&nbsp;&nbsp;      }
+ 53&nbsp;&nbsp;    });
+ 54&nbsp;&nbsp;  }
+ 55&nbsp;&nbsp;
+ 56&nbsp;&nbsp;  //Main method
+ 57&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 58&nbsp;&nbsp;    TestTableSortFilter applet = <span class = "keyword">new</span> TestTableSortFilter();
+ 59&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 60&nbsp;&nbsp;    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+ 61&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+ 62&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"TestTableSortFilterSortFilter"</span>);
+ 63&nbsp;&nbsp;    frame.getContentPane().add(applet, java.awt.BorderLayout.CENTER);
+ 64&nbsp;&nbsp;    applet.init();
+ 65&nbsp;&nbsp;    applet.start();
+ 66&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+ 67&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+ 68&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 69&nbsp;&nbsp;  }
+ 70&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

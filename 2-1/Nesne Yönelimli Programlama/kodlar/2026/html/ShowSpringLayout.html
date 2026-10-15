@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowSpringLayout.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ShowSpringLayoutWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ShowSpringLayout <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> ShowSpringLayout() {
+    SpringLayout springLayout = <span class = "keyword">new</span> SpringLayout();
+    JPanel p1 = <span class = "keyword">new</span> JPanel(springLayout);
+    JButton jbt1 = <span class = "keyword">new</span> JButton(<span class = "literal">"Button 1"</span>);
+    p1.add(jbt1);
+
+    Spring spring = Spring.constant(<span class = "literal">0</span>, <span class = "literal">1000</span>, <span class = "literal">2000</span>);
+    springLayout.putConstraint(SpringLayout.WEST, jbt1, spring,
+                               SpringLayout.WEST, p1);
+                             springLayout.putConstraint(SpringLayout.EAST, p1,
+                               Spring.sum(spring, spring), SpringLayout.EAST, jbt1);
+    springLayout.putConstraint(SpringLayout.NORTH, jbt1, spring,
+                               SpringLayout.NORTH, p1);
+    springLayout.putConstraint(SpringLayout.SOUTH, p1, spring,
+                               SpringLayout.SOUTH, jbt1);
+
+    add(p1, BorderLayout.CENTER);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ShowSpringLayout applet = <span class = "keyword">new</span> ShowSpringLayout();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"ShowSpringLayout"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

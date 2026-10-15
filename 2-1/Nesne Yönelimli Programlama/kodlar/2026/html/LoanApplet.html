@@ -1,0 +1,99 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - LoanApplet.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "LoanAppletWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.border.TitledBorder;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> LoanApplet <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">// Declare and create text fields for interest rate</span>
+  <span class = "comment">// year, loan amount, monthly payment, and total payment</span>
+  <span class = "keyword">private</span> JTextField jtfAnnualInterestRate = <span class = "keyword">new</span> JTextField();
+  <span class = "keyword">private</span> JTextField jtfNumberOfYears = <span class = "keyword">new</span> JTextField();
+  <span class = "keyword">private</span> JTextField jtfLoanAmount = <span class = "keyword">new</span> JTextField();
+  <span class = "keyword">private</span> JTextField jtfMonthlyPayment = <span class = "keyword">new</span> JTextField();
+  <span class = "keyword">private</span> JTextField jtfTotalPayment = <span class = "keyword">new</span> JTextField();
+
+  <span class = "comment">// Declare and create a Compute Payment button</span>
+  <span class = "keyword">private</span> JButton jbtComputeLoan = <span class = "keyword">new</span> JButton(<span class = "literal">"Compute Payment"</span>);
+
+  <span class = "comment">/** Initialize user interface */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> init() {
+    <span class = "comment">// Set properties on the text fields</span>
+    jtfMonthlyPayment.setEditable(<span class = "keyword">false</span>);
+    jtfTotalPayment.setEditable(<span class = "keyword">false</span>);
+
+    <span class = "comment">// Right align text fields</span>
+    jtfAnnualInterestRate.setHorizontalAlignment(JTextField.RIGHT);
+    jtfNumberOfYears.setHorizontalAlignment(JTextField.RIGHT);
+    jtfLoanAmount.setHorizontalAlignment(JTextField.RIGHT);
+    jtfMonthlyPayment.setHorizontalAlignment(JTextField.RIGHT);
+    jtfTotalPayment.setHorizontalAlignment(JTextField.RIGHT);
+
+    <span class = "comment">// Panel p1 to hold labels and text fields</span>
+    JPanel p1 = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> GridLayout(<span class = "literal">5</span>, <span class = "literal">2</span>));
+    p1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Annual Interest Rate"</span>));
+    p1.add(jtfAnnualInterestRate);
+    p1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Number of Years"</span>));
+    p1.add(jtfNumberOfYears);
+    p1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Loan Amount"</span>));
+    p1.add(jtfLoanAmount);
+    p1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Monthly Payment"</span>));
+    p1.add(jtfMonthlyPayment);
+    p1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Total Payment"</span>));
+    p1.add(jtfTotalPayment);
+    p1.setBorder(<span class = "keyword">new</span>
+      TitledBorder(<span class = "literal">"Enter interest rate, year and loan amount"</span>));
+
+    <span class = "comment">// Panel p2 to hold the button</span>
+    JPanel p2 = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> FlowLayout(FlowLayout.RIGHT));
+    p2.add(jbtComputeLoan);
+
+    <span class = "comment">// Add the components to the applet</span>
+    add(p1, BorderLayout.CENTER);
+    add(p2, BorderLayout.SOUTH);
+
+    <span class = "comment">// Register listener</span>
+    jbtComputeLoan.addActionListener(<span class = "keyword">new</span> ButtonListener());
+  }
+
+  <span class = "comment">/** Handle the Compute Payment button */</span>
+  <span class = "keyword">private</span> <span class = "keyword">class</span> ButtonListener <span class = "keyword">implements</span> ActionListener {
+    @Override
+    <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+      <span class = "comment">// Get values from text fields</span>
+      <span class = "keyword">double</span> interest =
+        Double.parseDouble(jtfAnnualInterestRate.getText());
+      <span class = "keyword">int</span> year =
+        Integer.parseInt(jtfNumberOfYears.getText());
+      <span class = "keyword">double</span> loanAmount =
+        Double.parseDouble(jtfLoanAmount.getText());
+
+      <span class = "comment">// Create a loan object</span>
+      Loan loan = <span class = "keyword">new</span> Loan(interest, year, loanAmount);
+
+      <span class = "comment">// Display monthly payment and total payment</span>
+      jtfMonthlyPayment.setText(String.format(<span class = "literal">"%<span class = "literal">.</span>2f"</span>,
+        loan.getMonthlyPayment()));
+      jtfTotalPayment.setText(String.format(<span class = "literal">"%<span class = "literal">.</span>2f"</span>,
+        loan.getTotalPayment()));
+    }
+  }
+}
+</pre>
+</body>
+</html>

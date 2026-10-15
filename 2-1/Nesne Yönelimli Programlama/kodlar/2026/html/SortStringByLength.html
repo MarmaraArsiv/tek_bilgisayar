@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SortStringByLength.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "SortStringByLengthWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> SortStringByLength {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    String[] cities = {<span class = "literal">"Atlanta"</span>, <span class = "literal">"Savannah"</span>, <span class = "literal">"New York"</span>, <span class = "literal">"Dallas"</span>};
+    java.util.Arrays.sort(cities, 
+        (s1, s2) -&gt; {<span class = "keyword">return</span> s1.length() - s2.length();});
+
+    <span class = "keyword">for</span> (String s : cities) {
+      System.out.print(s + <span class = "literal">" "</span>);
+    }
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">class</span> MyComparator <span class = "keyword">implements</span>
+      java.util.Comparator&lt;String&gt; {
+    @Override
+    <span class = "keyword">public</span> <span class = "keyword">int</span> compare(String s1, String s2) {
+      <span class = "keyword">return</span> s1.length() - s2.length();
+    }
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "SortStringByLength" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - TestCircleWithStaticVariable.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">// TestCircleWithStaticVariable.java: instance and static variables
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> TestCircleWithStaticVariable {
+  <FONT COLOR="#008000">/** Main method */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    <FONT COLOR="#008000">// Create circle1
+<FONT COLOR="#000000">    CircleWithStaticVariable circle1 =
+      <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> CircleWithStaticVariable();
+
+    <FONT COLOR="#008000">// Display circle1 BEFORE circle2 is created
+<FONT COLOR="#000000">    System.out.println(<FONT COLOR="#0000ff">"Before creating circle2"</FONT>);
+    System.out.print(<FONT COLOR="#0000ff">"circle1 is : "</FONT>);
+    printCircle(circle1);
+
+    <FONT COLOR="#008000">// Create circle2
+<FONT COLOR="#000000">    CircleWithStaticVariable circle2 =
+      <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> CircleWithStaticVariable(<FONT COLOR="#0000ff">5</FONT><FONT COLOR="#000000">);
+
+    <FONT COLOR="#008000">// Change the radius in circle1
+<FONT COLOR="#000000">    circle1.setRadius(<FONT COLOR="#0000ff">9</FONT><FONT COLOR="#000000">);
+
+    <FONT COLOR="#008000">// Display circle1 and circle2 AFTER circle2 was created
+<FONT COLOR="#000000">    System.out.println(<FONT COLOR="#0000ff">"\nAfter creating circle2 and modifying "</FONT> +
+      <FONT COLOR="#0000ff">"circle1's radius to 9"</FONT>);
+    System.out.print(<FONT COLOR="#0000ff">"circle1 is : "</FONT>);
+    printCircle(circle1);
+    System.out.print(<FONT COLOR="#0000ff">"circle2 is : "</FONT>);
+    printCircle(circle2);
+  }
+
+  <FONT COLOR="#008000">/** Print circle information */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> printCircle(CircleWithStaticVariable c) {
+    System.out.println(<FONT COLOR="#0000ff">"radius ("</FONT> + c.getRadius() +
+      <FONT COLOR="#0000ff">") and number of Circle objects ("</FONT> +
+      c.getNumberOfObjects() + <FONT COLOR="#0000ff">")"</FONT>);
+  }
+}
+
+<FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> CircleWithStaticVariable {
+  <FONT COLOR="#008000">/** The radius of the circle */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> radius;
+
+  <FONT COLOR="#008000">/** The number of the objects created */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> numberOfObjects = <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">;
+
+  <FONT COLOR="#008000">/** Default constructor */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> CircleWithStaticVariable() {
+    radius = <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">.<FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">;
+    numberOfObjects++;
+  }
+
+  <FONT COLOR="#008000">/** Construct a circle with a specified radius */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> CircleWithStaticVariable(<FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> newRadius) {
+    radius = newRadius;
+    numberOfObjects++;
+  }
+
+  <FONT COLOR="#008000">/** Return radius */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> getRadius() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> radius;
+  }
+
+  <FONT COLOR="#008000">/** Set a new radius */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> setRadius(<FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> newRadius) {
+    radius = newRadius;
+  }
+
+  <FONT COLOR="#008000">/** Return numberOfObjects */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> getNumberOfObjects() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> numberOfObjects;
+  }
+
+  <FONT COLOR="#008000">/** Return the area of this circle */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> findArea() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> radius * radius * Math.PI;
+  }
+}
+</pre>

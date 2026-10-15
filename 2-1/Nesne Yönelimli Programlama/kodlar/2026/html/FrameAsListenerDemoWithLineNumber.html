@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - FrameAsListenerDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "FrameAsListenerDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> FrameAsListenerDemo <span class = "keyword">extends</span> JFrame 
+  5&nbsp;&nbsp;    <span class = "keyword">implements</span> ActionListener {
+  6&nbsp;&nbsp;  <span class = "comment">// Create four buttons</span>
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtNew = <span class = "keyword">new</span> JButton(<span class = "literal">"New"</span>);
+  8&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtOpen = <span class = "keyword">new</span> JButton(<span class = "literal">"Open"</span>);
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtSave = <span class = "keyword">new</span> JButton(<span class = "literal">"Save"</span>);
+ 10&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtPrint = <span class = "keyword">new</span> JButton(<span class = "literal">"Print"</span>);
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;  <span class = "keyword">public</span> FrameAsListenerDemo() {
+ 13&nbsp;&nbsp;    <span class = "comment">// Create a panel to hold buttons</span>
+ 14&nbsp;&nbsp;    JPanel panel = <span class = "keyword">new</span> JPanel();
+ 15&nbsp;&nbsp;    panel.add(jbtNew);
+ 16&nbsp;&nbsp;    panel.add(jbtOpen);
+ 17&nbsp;&nbsp;    panel.add(jbtSave);
+ 18&nbsp;&nbsp;    panel.add(jbtPrint);
+ 19&nbsp;&nbsp;    
+ 20&nbsp;&nbsp;    add(panel);
+ 21&nbsp;&nbsp;
+ 22&nbsp;&nbsp;    <span class = "comment">// Register listener with buttons </span>
+ 23&nbsp;&nbsp;    jbtNew.addActionListener(<span class = "keyword">this</span>);
+ 24&nbsp;&nbsp;    jbtOpen.addActionListener(<span class = "keyword">this</span>);
+ 25&nbsp;&nbsp;    jbtSave.addActionListener(<span class = "keyword">this</span>);
+ 26&nbsp;&nbsp;    jbtPrint.addActionListener(<span class = "keyword">this</span>);
+ 27&nbsp;&nbsp;  }
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;  @Override <span class = "comment">/** Implement actionPerformed */</span>
+ 30&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 31&nbsp;&nbsp;    <span class = "keyword">if</span> (e.getSource() == jbtNew)
+ 32&nbsp;&nbsp;      System.out.println(<span class = "literal">"Process New"</span>);
+ 33&nbsp;&nbsp;    <span class = "keyword">else</span> <span class = "keyword">if</span> (e.getSource() == jbtOpen)
+ 34&nbsp;&nbsp;      System.out.println(<span class = "literal">"Process Open"</span>);
+ 35&nbsp;&nbsp;    <span class = "keyword">else</span> <span class = "keyword">if</span> (e.getSource() == jbtSave)
+ 36&nbsp;&nbsp;      System.out.println(<span class = "literal">"Process Save"</span>);
+ 37&nbsp;&nbsp;    <span class = "keyword">else</span> <span class = "keyword">if</span> (e.getSource() == jbtPrint)
+ 38&nbsp;&nbsp;      System.out.println(<span class = "literal">"Process Print"</span>);
+ 39&nbsp;&nbsp;  }
+ 40&nbsp;&nbsp;
+ 41&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 42&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 43&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> FrameAsListenerDemo();
+ 44&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"FrameAsListenerDemo"</span>);
+ 45&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+ 46&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 47&nbsp;&nbsp;    frame.pack();
+ 48&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 49&nbsp;&nbsp;  }
+ 50&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - UseBMIClass.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "UseBMIClassWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> UseBMIClass {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    BMI bmi1 = <span class = "keyword">new</span> BMI(<span class = "literal">"John Doe"</span>, <span class = "literal">18</span>, <span class = "literal">145</span>, <span class = "literal">70</span>);
+    System.out.println(<span class = "literal">"The BMI for "</span> + bmi1.getName() + <span class = "literal">" is "</span>
+      + bmi1.getBMI() + <span class = "literal">" "</span> + bmi1.getStatus());
+    
+    BMI bmi2 = <span class = "keyword">new</span> BMI(<span class = "literal">"Peter King"</span>, <span class = "literal">215</span>, <span class = "literal">70</span>);
+    System.out.println(<span class = "literal">"The BMI for "</span> + bmi2.getName() + <span class = "literal">" is "</span>
+      + bmi2.getBMI() + <span class = "literal">" "</span> + bmi2.getStatus());
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "UseBMIClass" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

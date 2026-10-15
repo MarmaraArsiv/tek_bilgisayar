@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ScalingDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ScalingDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.geom.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ScalingDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> ScalingDemo() {
+    add(<span class = "keyword">new</span> ShapePanel());
+  }
+
+  <span class = "keyword">class</span> ShapePanel <span class = "keyword">extends</span> JPanel {
+    @Override
+    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+      <span class = "keyword">super</span>.paintComponent(g);
+
+      Graphics2D g2d = (Graphics2D)g;
+      Rectangle2D rectangle = <span class = "keyword">new</span> Rectangle2D.Double(<span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">10</span>);
+      
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">4</span>; i++) {
+        g2d.draw(rectangle);
+        g2d.scale(<span class = "literal">2</span>, <span class = "literal">2</span>);
+      }
+    }
+  }
+  
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    JApplet applet = <span class = "keyword">new</span> ScalingDemo();
+    applet.init();
+    applet.start();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setTitle(<span class = "literal">"ScalingDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    frame.setSize(<span class = "literal">300</span>, <span class = "literal">300</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

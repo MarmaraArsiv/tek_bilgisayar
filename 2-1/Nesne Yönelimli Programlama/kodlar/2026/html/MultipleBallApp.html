@@ -1,0 +1,169 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - MultipleBallApp.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "MultipleBallAppWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.Timer;
+<span class = "keyword">import</span> java.util.ArrayList;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.event.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> MultipleBallApp <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> MultipleBallApp() {
+    add(<span class = "keyword">new</span> BallControl());
+  }
+
+  <span class = "keyword">class</span> BallControl <span class = "keyword">extends</span> JPanel {
+    <span class = "keyword">private</span> BallPanel ballPanel = <span class = "keyword">new</span> BallPanel();
+    <span class = "keyword">private</span> JButton jbtSuspend = <span class = "keyword">new</span> JButton(<span class = "literal">"Suspend"</span>);
+    <span class = "keyword">private</span> JButton jbtResume = <span class = "keyword">new</span> JButton(<span class = "literal">"Resume"</span>);
+    <span class = "keyword">private</span> JButton jbtAdd = <span class = "keyword">new</span> JButton(<span class = "literal">"<span class = "literal">+</span>1"</span>);
+    <span class = "keyword">private</span> JButton jbtSubtract = <span class = "keyword">new</span> JButton(<span class = "literal">"<span class = "literal">-</span>1"</span>);
+    <span class = "keyword">private</span> JScrollBar jsbDelay = <span class = "keyword">new</span> JScrollBar();
+
+    <span class = "keyword">public</span> BallControl() {
+      <span class = "comment">// Group buttons in a panel</span>
+      JPanel panel = <span class = "keyword">new</span> JPanel();
+      panel.add(jbtSuspend);
+      panel.add(jbtResume);
+      panel.add(jbtAdd);
+      panel.add(jbtSubtract);
+
+      <span class = "comment">// Add ball and buttons to the panel</span>
+      ballPanel.setBorder(
+        <span class = "keyword">new</span> javax.swing.border.LineBorder(Color.red));
+      jsbDelay.setOrientation(JScrollBar.HORIZONTAL);
+      ballPanel.setDelay(jsbDelay.getMaximum());
+      setLayout(<span class = "keyword">new</span> BorderLayout());
+      add(jsbDelay, BorderLayout.NORTH);
+      add(ballPanel, BorderLayout.CENTER);
+      add(panel, BorderLayout.SOUTH);
+
+      <span class = "comment">// Register listeners</span>
+      jbtSuspend.addActionListener(<span class = "keyword">new</span> Listener());
+      jbtResume.addActionListener(<span class = "keyword">new</span> Listener());
+      jbtAdd.addActionListener(<span class = "keyword">new</span> Listener());
+      jbtSubtract.addActionListener(<span class = "keyword">new</span> Listener());
+      jsbDelay.addAdjustmentListener(<span class = "keyword">new</span> AdjustmentListener() {
+        @Override
+        <span class = "keyword">public</span> <span class = "keyword">void</span> adjustmentValueChanged(AdjustmentEvent e) {
+          ballPanel.setDelay(jsbDelay.getMaximum() - e.getValue());
+        }
+      });
+    }
+
+    <span class = "keyword">class</span> Listener <span class = "keyword">implements</span> ActionListener {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "keyword">if</span> (e.getSource() == jbtSuspend) 
+          ballPanel.suspend();
+        <span class = "keyword">else</span> <span class = "keyword">if</span> (e.getSource() == jbtResume) 
+          ballPanel.resume();
+        <span class = "keyword">else</span> <span class = "keyword">if</span> (e.getSource() == jbtAdd) 
+          ballPanel.add();
+        <span class = "keyword">else</span> <span class = "keyword">if</span> (e.getSource() == jbtSubtract) 
+          ballPanel.subtract();
+      }
+    }
+  }
+
+  <span class = "keyword">class</span> BallPanel <span class = "keyword">extends</span> JPanel {
+    <span class = "keyword">private</span> <span class = "keyword">int</span> delay = <span class = "literal">10</span>;
+    <span class = "keyword">private</span> ArrayList&lt;Ball&gt; list = <span class = "keyword">new</span> ArrayList&lt;Ball&gt;();
+
+    <span class = "comment">// Create a timer with the initial dalay</span>
+    <span class = "keyword">protected</span> Timer timer = <span class = "keyword">new</span> Timer(delay, <span class = "keyword">new</span> ActionListener() {
+      @Override <span class = "comment">/** Handle the action event */</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        repaint();
+      }
+    });
+
+    <span class = "keyword">public</span> BallPanel() {
+      timer.start();
+    }
+
+    <span class = "keyword">public</span> <span class = "keyword">void</span> add() {
+      list.add(<span class = "keyword">new</span> Ball());
+    }
+
+    <span class = "keyword">public</span> <span class = "keyword">void</span> subtract() {
+      <span class = "keyword">if</span> (list.size() &gt; <span class = "literal">0</span>)
+        list.remove(list.size() - <span class = "literal">1</span>); <span class = "comment">// Remove the last ball</span>
+    }
+
+    @Override
+    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+      <span class = "keyword">super</span>.paintComponent(g);
+
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; list.size(); i++) {
+        Ball ball = (Ball)list.get(i); <span class = "comment">// Get a ball</span>
+        g.setColor(ball.color); <span class = "comment">// Set ball color</span>
+
+        <span class = "comment">// Check boundaries</span>
+        <span class = "keyword">if</span> (ball.x &lt; <span class = "literal">0</span> || ball.x &gt; getWidth()) 
+          ball.dx = -ball.dx;
+
+        <span class = "keyword">if</span> (ball.y &lt; <span class = "literal">0</span> || ball.y &gt; getHeight()) 
+          ball.dy = -ball.dy;
+
+        <span class = "comment">// Adjust ball position</span>
+        ball.x += ball.dx;
+        ball.y += ball.dy;
+        g.fillOval(ball.x - ball.radius, ball.y - ball.radius, 
+          ball.radius * <span class = "literal">2</span>, ball.radius * <span class = "literal">2</span>);
+      }
+    }
+
+    <span class = "keyword">public</span> <span class = "keyword">void</span> suspend() {
+      timer.stop(); 
+    }
+
+    <span class = "keyword">public</span> <span class = "keyword">void</span> resume() {
+      timer.start(); 
+    }
+
+    <span class = "keyword">public</span> <span class = "keyword">void</span> setDelay(<span class = "keyword">int</span> delay) {
+      <span class = "keyword">this</span>.delay = delay;
+      timer.setDelay(delay);
+    }
+  }
+
+  <span class = "keyword">class</span> Ball {
+    <span class = "keyword">int</span> x = <span class = "literal">0</span>;
+    <span class = "keyword">int</span> y = <span class = "literal">0</span>; <span class = "comment">// Current ball position</span>
+    <span class = "keyword">int</span> dx = <span class = "literal">2</span>; <span class = "comment">// Increment on ball's x-coordinate</span>
+    <span class = "keyword">int</span> dy = <span class = "literal">2</span>; <span class = "comment">// Increment on ball's y-coordinate</span>
+    <span class = "keyword">int</span> radius = <span class = "literal">5</span>; <span class = "comment">// Ball radius</span>
+    Color color = <span class = "keyword">new</span> Color((<span class = "keyword">int</span>)(Math.random() * <span class = "literal">256</span>),
+        (<span class = "keyword">int</span>)(Math.random() * <span class = "literal">256</span>), (<span class = "keyword">int</span>)(Math.random() * <span class = "literal">256</span>));
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    JApplet applet = <span class = "keyword">new</span> MultipleBallApp();
+    frame.add(applet);
+    frame.setTitle(<span class = "literal">"MultipleBallApp"</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(<span class = "literal">400</span>, <span class = "literal">200</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

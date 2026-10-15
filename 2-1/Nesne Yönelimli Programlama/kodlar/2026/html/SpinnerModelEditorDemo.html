@@ -1,0 +1,147 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SpinnerModelEditorDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "SpinnerModelEditorDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.event.*;
+<span class = "keyword">import</span> java.util.*;
+<span class = "keyword">import</span> java.text.*;
+<span class = "keyword">import</span> java.awt.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> SpinnerModelEditorDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">// Create four spinners for date, day, month, and year</span>
+  <span class = "keyword">private</span> JSpinner jspDate =
+    <span class = "keyword">new</span> JSpinner(<span class = "keyword">new</span> SpinnerDateModel());
+  <span class = "keyword">private</span> JSpinner jspDay =
+    <span class = "keyword">new</span> JSpinner(<span class = "keyword">new</span> SpinnerNumberModel(<span class = "literal">1</span>, <span class = "literal">1</span>, <span class = "literal">31</span>, <span class = "literal">1</span>));
+  <span class = "keyword">private</span> String[] monthNames = <span class = "keyword">new</span> DateFormatSymbols().getMonths();
+  <span class = "keyword">private</span> JSpinner jspMonth = <span class = "keyword">new</span> JSpinner
+    (<span class = "keyword">new</span> SpinnerListModel(Arrays.asList(monthNames).subList(<span class = "literal">0</span>, <span class = "literal">12</span>)));
+  <span class = "keyword">private</span> JSpinner spinnerYear =
+    <span class = "keyword">new</span> JSpinner(<span class = "keyword">new</span> SpinnerNumberModel(<span class = "literal">2004</span>, <span class = "literal">1</span>, <span class = "literal">3000</span>, <span class = "literal">1</span>));
+
+  <span class = "keyword">public</span> SpinnerModelEditorDemo() {
+    <span class = "comment">// Group labels</span>
+    JPanel panel1 = <span class = "keyword">new</span> JPanel();
+    panel1.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">4</span>, <span class = "literal">1</span>));
+    panel1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Date"</span>));
+    panel1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Day"</span>));
+    panel1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Month"</span>));
+    panel1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Year"</span>));
+
+    <span class = "comment">// Group spinners</span>
+    JPanel panel2 = <span class = "keyword">new</span> JPanel();
+    panel2.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">4</span>, <span class = "literal">1</span>));
+    panel2.add(jspDate);
+    panel2.add(jspDay);
+    panel2.add(jspMonth);
+    panel2.add(spinnerYear);
+
+    <span class = "comment">// Add spinner and label to the UI</span>
+    add(panel1, BorderLayout.WEST);
+    add(panel2, BorderLayout.CENTER);
+
+    <span class = "comment">// Set editor for date</span>
+    JSpinner.DateEditor dateEditor =
+      <span class = "keyword">new</span> JSpinner.DateEditor(jspDate, <span class = "literal">"MMM dd, yyyy"</span>);
+    jspDate.setEditor(dateEditor);
+
+    <span class = "comment">// Set editor for year</span>
+    JSpinner.NumberEditor yearEditor =
+      <span class = "keyword">new</span> JSpinner.NumberEditor(spinnerYear, <span class = "literal">"####"</span>);
+    spinnerYear.setEditor(yearEditor);
+
+    <span class = "comment">// Update date to synchronize with the day, month, and year</span>
+    updateDate();
+
+    <span class = "comment">// Register and create a listener for jspDay</span>
+    jspDay.addChangeListener(<span class = "keyword">new</span> ChangeListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> stateChanged(javax.swing.event.ChangeEvent e) {
+        updateDate();
+      }
+    });
+
+    <span class = "comment">// Register and create a listener for jspMonth</span>
+    jspMonth.addChangeListener(<span class = "keyword">new</span> ChangeListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> stateChanged(javax.swing.event.ChangeEvent e) {
+        updateDate();
+      }
+    });
+
+    <span class = "comment">// Register and create a listener for spinnerYear</span>
+    spinnerYear.addChangeListener(<span class = "keyword">new</span> ChangeListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> stateChanged(javax.swing.event.ChangeEvent e) {
+        updateDate();
+      }
+    });
+  }
+
+  <span class = "comment">/** Update date spinner to synchronize with the other spinners */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> updateDate() {
+    <span class = "comment">// Get current month and year in int</span>
+    <span class = "keyword">int</span> month = ((SpinnerListModel)jspMonth.getModel()).
+        getList().indexOf(jspMonth.getValue());
+    <span class = "keyword">int</span> year = ((Integer)spinnerYear.getValue()).intValue();
+
+    <span class = "comment">// Set a new maximum number of days for the new month and year</span>
+    SpinnerNumberModel numberModel =
+      (SpinnerNumberModel)jspDay.getModel();
+    numberModel.setMaximum(<span class = "keyword">new</span> Integer(maxDaysInMonth(year, month)));
+
+    <span class = "comment">// Set a new current day if it exceeds the maximum</span>
+    <span class = "keyword">if</span> (((Integer)(numberModel.getValue())).intValue() &gt;
+        maxDaysInMonth(year, month))
+      numberModel.setValue(<span class = "keyword">new</span> Integer(maxDaysInMonth(year, month)));
+
+    <span class = "comment">// Get the current day</span>
+    <span class = "keyword">int</span> day = ((Integer)jspDay.getValue()).intValue();
+
+    <span class = "comment">// Set a new date in the date spinner</span>
+    jspDate.setValue(
+      <span class = "keyword">new</span> GregorianCalendar(year, month, day).getTime());
+  }
+
+  <span class = "comment">/** Return the maximum number of days in a month. For example,
+    Feb 2004 has 29 days. */</span>
+  <span class = "keyword">private</span> <span class = "keyword">int</span> maxDaysInMonth(<span class = "keyword">int</span> year, <span class = "keyword">int</span> month) {
+    Calendar calendar = <span class = "keyword">new</span> GregorianCalendar(year, month, <span class = "literal">1</span>);
+    <span class = "keyword">return</span> calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    javax.swing.JFrame frame = <span class = "keyword">new</span> javax.swing.JFrame(
+        <span class = "literal">"SpinnerModelEditorDemo"</span>);
+
+    SpinnerModelEditorDemo applet = <span class = "keyword">new</span> SpinnerModelEditorDemo();
+
+    <span class = "comment">// Add the applet instance to the frame</span>
+    frame.getContentPane().add(applet, java.awt.BorderLayout.CENTER);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    <span class = "comment">// Invoke init and start</span>
+    applet.init();
+    applet.start();
+
+    <span class = "comment">// Display the frame</span>
+    frame.pack();
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

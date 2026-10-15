@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestArrayAndLinkedList.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestArrayAndLinkedList.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestArrayAndLinkedList {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  5&nbsp;&nbsp;    List&lt;Integer&gt; arrayList = <span class = "keyword">new</span> ArrayList&lt;&gt;();
+  6&nbsp;&nbsp;    arrayList.add(<span class = "literal">1</span>); <span class = "comment">// 1 is autoboxed to new Integer(1)</span>
+  7&nbsp;&nbsp;    arrayList.add(<span class = "literal">2</span>);
+  8&nbsp;&nbsp;    arrayList.add(<span class = "literal">3</span>);
+  9&nbsp;&nbsp;    arrayList.add(<span class = "literal">1</span>);
+ 10&nbsp;&nbsp;    arrayList.add(<span class = "literal">4</span>);
+ 11&nbsp;&nbsp;    arrayList.add(<span class = "literal">0</span>, <span class = "literal">10</span>);
+ 12&nbsp;&nbsp;    arrayList.add(<span class = "literal">3</span>, <span class = "literal">30</span>);
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;    System.out.println(<span class = "literal">"A list of integers in the array list:"</span>);
+ 15&nbsp;&nbsp;    System.out.println(arrayList);
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    LinkedList&lt;Object&gt; linkedList = <span class = "keyword">new</span> LinkedList&lt;&gt;(arrayList);
+ 18&nbsp;&nbsp;    linkedList.add(<span class = "literal">1</span>, <span class = "literal">"red"</span>);
+ 19&nbsp;&nbsp;    linkedList.removeLast();
+ 20&nbsp;&nbsp;    linkedList.addFirst(<span class = "literal">"green"</span>);
+ 21&nbsp;&nbsp;
+ 22&nbsp;&nbsp;    System.out.println(<span class = "literal">"Display the linked list backward:"</span>);
+ 23&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = linkedList.size() - <span class = "literal">1</span>; i &gt;= <span class = "literal">0</span>; i--) {
+ 24&nbsp;&nbsp;      System.out.print(linkedList.get(i) + <span class = "literal">" "</span>);
+ 25&nbsp;&nbsp;    }
+ 26&nbsp;&nbsp;  }
+ 27&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestArrayAndLinkedList" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

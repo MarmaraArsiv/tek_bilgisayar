@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - Tree24Animation.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> javax.swing.JApplet;
+<span class = "keyword">import</span> javax.swing.JFrame;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> Tree24Animation <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">public</span> Tree24Animation() {
+    Tree24&lt;Integer&gt; tree = <span class = "keyword">new</span> Tree24&lt;Integer&gt;();
+    
+    add(<span class = "keyword">new</span> Tree24View(tree));
+    
+<span class = "comment">/*    tree.insert(16); 
+    tree.insert(17); 
+    tree.insert(18); 
+    tree.insert(19); 
+    tree.insert(20); 
+    tree.insert(21); 
+    tree.insert(22); 
+    tree.insert(15);
+    tree.insert(27);
+    tree.insert(38);
+    tree.insert(4);
+    tree.insert(5);
+    tree.insert(6);
+    tree.insert(7);
+    tree.insert(8);
+    tree.insert(9);
+    tree.insert(10);
+    tree.insert(11);
+    tree.insert(12);
+    tree.insert(13);
+    tree.insert(14); 
+    tree.insert(15); */</span>
+
+  }
+  
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"Tree24Animation"</span>);
+    JApplet applet = <span class = "keyword">new</span> Tree24Animation();
+    frame.add(applet);
+    frame.setSize(<span class = "literal">500</span>, <span class = "literal">300</span>);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

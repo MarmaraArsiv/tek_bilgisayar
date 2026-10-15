@@ -1,0 +1,38 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - BounceBallApp.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "BounceBallApp.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> BounceBallApp <span class = "keyword">extends</span> JApplet {
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> BounceBallApp() {
+  6&nbsp;&nbsp;    add(<span class = "keyword">new</span> BallControl());
+  7&nbsp;&nbsp;  }
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 10&nbsp;&nbsp;    BounceBallApp applet = <span class = "keyword">new</span> BounceBallApp();
+ 11&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 12&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 13&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"BounceBallApp"</span>);
+ 14&nbsp;&nbsp;    frame.add(applet, BorderLayout.CENTER);
+ 15&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>, <span class = "literal">320</span>);
+ 16&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 17&nbsp;&nbsp;  }
+ 18&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

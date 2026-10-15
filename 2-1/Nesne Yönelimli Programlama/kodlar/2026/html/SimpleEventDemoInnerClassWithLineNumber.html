@@ -1,0 +1,60 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SimpleEventDemoInnerClass.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "SimpleEventDemoInnerClass.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> SimpleEventDemoInnerClass <span class = "keyword">extends</span> JFrame {
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> SimpleEventDemoInnerClass() {
+  6&nbsp;&nbsp;    <span class = "comment">// Create two buttons</span>
+  7&nbsp;&nbsp;    JButton jbtOK = <span class = "keyword">new</span> JButton(<span class = "literal">"OK"</span>);
+  8&nbsp;&nbsp;    JButton jbtCancel = <span class = "keyword">new</span> JButton(<span class = "literal">"Cancel"</span>);
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;    <span class = "comment">// Create a panel to hold buttons</span>
+ 11&nbsp;&nbsp;    JPanel panel = <span class = "keyword">new</span> JPanel();
+ 12&nbsp;&nbsp;    panel.add(jbtOK);
+ 13&nbsp;&nbsp;    panel.add(jbtCancel);
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;    add(panel); <span class = "comment">// Add panel to the frame</span>
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    <span class = "comment">// Register listeners</span>
+ 18&nbsp;&nbsp;    ListenerClass listener = <span class = "keyword">new</span> ListenerClass();
+ 19&nbsp;&nbsp;    jbtOK.addActionListener(listener);
+ 20&nbsp;&nbsp;    jbtCancel.addActionListener(listener);
+ 21&nbsp;&nbsp;  }
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 24&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 25&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> SimpleEventDemoInnerClass();
+ 26&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"SimpleEventDemoInnerClass"</span>);
+ 27&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+ 28&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 29&nbsp;&nbsp;    frame.setSize(<span class = "literal">220</span>, <span class = "literal">80</span>);
+ 30&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 31&nbsp;&nbsp;  }
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">static</span> <span class = "keyword">class</span> ListenerClass <span class = "keyword">implements</span> ActionListener {
+ 34&nbsp;&nbsp;    @Override
+ 35&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 36&nbsp;&nbsp;      System.out.println(<span class = "literal">"The "</span> + e.getActionCommand() + <span class = "literal">" button "</span>
+ 37&nbsp;&nbsp;        + <span class = "literal">"is clicked at\n  "</span> + <span class = "keyword">new</span> java.util.Date(e.getWhen()));
+ 38&nbsp;&nbsp;    }
+ 39&nbsp;&nbsp;  }
+ 40&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

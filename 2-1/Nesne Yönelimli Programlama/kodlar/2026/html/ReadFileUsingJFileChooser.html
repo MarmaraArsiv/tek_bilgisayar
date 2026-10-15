@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ReadFileUsingJFileChooser.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ReadFileUsingJFileChooserWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.Scanner; 
+<span class = "keyword">import</span> javax.swing.JFileChooser;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ReadFileUsingJFileChooser {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) <span class = "keyword">throws</span> Exception {
+    JFileChooser fileChooser = <span class = "keyword">new</span> JFileChooser();
+    <span class = "keyword">if</span> (fileChooser.showOpenDialog(<span class = "keyword">null</span>)
+        == JFileChooser.APPROVE_OPTION) {
+      <span class = "comment">// Get the selected file</span>
+      java.io.File file = fileChooser.getSelectedFile();
+
+      <span class = "comment">// Create a Scanner for the file</span>
+      Scanner input = <span class = "keyword">new</span> Scanner(file);
+
+      <span class = "comment">// Read text from the file</span>
+      <span class = "keyword">while</span> (input.hasNext()) {
+        System.out.println(input.nextLine());
+      }
+
+      <span class = "comment">// Close the file</span>
+      input.close();
+    }
+    <span class = "keyword">else</span> {
+      System.out.println(<span class = "literal">"No file selected"</span>);
+    }
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - ControlCircle1.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ControlCircle1 <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">private</span> JButton jbtEnlarge = <span class = "keyword">new</span> JButton(<span class = "literal">"Enlarge"</span>);
+  <span class = "keyword">private</span> JButton jbtShrink = <span class = "keyword">new</span> JButton(<span class = "literal">"Shrink"</span>);
+  <span class = "keyword">private</span> CirclePanel canvas = <span class = "keyword">new</span> CirclePanel();
+  
+  <span class = "keyword">public</span> ControlCircle1() {
+    JPanel panel = <span class = "keyword">new</span> JPanel(); <span class = "comment">// Use the panel to group buttons</span>
+    panel.add(jbtEnlarge);
+    panel.add(jbtShrink);
+    
+    <span class = "keyword">this</span>.add(canvas, BorderLayout.CENTER); <span class = "comment">// Add canvas to center</span>
+    <span class = "keyword">this</span>.add(panel, BorderLayout.SOUTH); <span class = "comment">// Add buttons to the frame   </span>
+  }
+  
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    JFrame frame = <span class = "keyword">new</span> ControlCircle1();
+    frame.setTitle(<span class = "literal">"ControlCircle1"</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(<span class = "literal">200</span>, <span class = "literal">200</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+  
+<span class = "keyword">class</span> CirclePanel <span class = "keyword">extends</span> JPanel {
+  <span class = "keyword">private</span> <span class = "keyword">int</span> radius = <span class = "literal">5</span>; <span class = "comment">// Default circle radius</span>
+    
+  <span class = "comment">/** Repaint the circle */</span>
+  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+    <span class = "keyword">super</span>.paintComponent(g);
+    g.drawOval(getWidth() / <span class = "literal">2</span> - radius, getHeight() / <span class = "literal">2</span> - radius, 
+      <span class = "literal">2</span> * radius, <span class = "literal">2</span> * radius);
+  }
+}   
+</pre>
+</body>
+</html>

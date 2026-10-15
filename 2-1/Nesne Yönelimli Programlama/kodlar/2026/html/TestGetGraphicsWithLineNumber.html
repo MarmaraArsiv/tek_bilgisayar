@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestGetGraphics.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestGetGraphics.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.Graphics;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestGetGraphics <span class = "keyword">extends</span> JFrame {
+  5&nbsp;&nbsp;  <span class = "keyword">private</span> JLabel jlblBanner = <span class = "keyword">new</span> JLabel(<span class = "literal">"Banner"</span>);
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;  <span class = "keyword">public</span> TestGetGraphics() {
+  8&nbsp;&nbsp;    add(jlblBanner);
+  9&nbsp;&nbsp;    System.out.println(jlblBanner.getGraphics());
+ 10&nbsp;&nbsp;  }
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 13&nbsp;&nbsp;    TestGetGraphics frame = <span class = "keyword">new</span> TestGetGraphics();
+ 14&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"TestGetGraphics"</span>);
+ 15&nbsp;&nbsp;    frame.setSize(<span class = "literal">200</span>, <span class = "literal">100</span>);
+ 16&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+ 17&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 18&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 19&nbsp;&nbsp;    JOptionPane.showMessageDialog(<span class = "keyword">null</span>,
+ 20&nbsp;&nbsp;      <span class = "literal">"Delay on purpose\nClick OK to dismiss the dialog"</span>);
+ 21&nbsp;&nbsp;    Graphics graphics = frame.jlblBanner.getGraphics();
+ 22&nbsp;&nbsp;    graphics.drawLine(<span class = "literal">0</span>, <span class = "literal">0</span>, <span class = "literal">50</span>, <span class = "literal">50</span>);
+ 23&nbsp;&nbsp;  }
+ 24&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

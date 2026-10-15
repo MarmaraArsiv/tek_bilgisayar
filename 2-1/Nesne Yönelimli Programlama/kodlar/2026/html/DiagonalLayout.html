@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DiagonalLayout.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "DiagonalLayoutWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> DiagonalLayout <span class = "keyword">implements</span> LayoutManager,
+    java.io.Serializable {
+  <span class = "comment">/** Vertical gap between the components */</span>
+  <span class = "keyword">private</span> <span class = "keyword">int</span> gap = <span class = "literal">10</span>;
+
+  <span class = "comment">/** True if components are placed along the major diagonal */</span>
+  <span class = "keyword">private</span> <span class = "keyword">boolean</span> majorDiagonal = <span class = "keyword">true</span>;
+
+  <span class = "comment">/*True if the last component is stretched to fill the space */</span>
+  <span class = "keyword">private</span> <span class = "keyword">boolean</span> lastFill = <span class = "keyword">false</span>;
+
+  <span class = "comment">/** Constructor */</span>
+  <span class = "keyword">public</span> DiagonalLayout() {
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> addLayoutComponent(String name, Component comp) {
+    <span class = "comment">// No need to implement it for DiaganolLayout</span>
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> removeLayoutComponent(Component comp) {
+    <span class = "comment">// No need to implement it for DiaganolLayout</span>
+  }
+
+  <span class = "keyword">public</span> Dimension preferredLayoutSize(Container parent) {
+    <span class = "keyword">return</span> minimumLayoutSize(parent);
+  }
+
+  <span class = "keyword">public</span> Dimension minimumLayoutSize(Container parent) {
+    <span class = "keyword">return</span> <span class = "keyword">new</span> Dimension(<span class = "literal">0</span>, <span class = "literal">0</span>);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> layoutContainer(Container parent) {
+    <span class = "keyword">int</span> numberOfComponents = parent.getComponentCount();
+
+    Insets insets = parent.getInsets();
+    <span class = "keyword">int</span> w = parent.getSize().width - insets.left - insets.right;
+    <span class = "keyword">int</span> h = parent.getSize().height - insets.bottom - insets.top;
+
+    <span class = "keyword">if</span> (majorDiagonal) {
+      <span class = "keyword">int</span> x = <span class = "literal">10</span>, y = <span class = "literal">10</span>;
+
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> j = <span class = "literal">0</span>; j &lt; numberOfComponents; j++) {
+        Component c = parent.getComponent(j);
+        Dimension d = c.getPreferredSize();
+
+        <span class = "keyword">if</span> (c.isVisible())
+          <span class = "keyword">if</span> (lastFill && (j == numberOfComponents - <span class = "literal">1</span>))
+            c.setBounds(x, y, w - x, h - y);
+          <span class = "keyword">else</span>
+            c.setBounds(x, y, d.width, d.height);
+        x += d.height + gap;
+        y += d.height + gap;
+      }
+    }
+    <span class = "keyword">else</span> { <span class = "comment">// It is subdiagonal</span>
+      <span class = "keyword">int</span> x = w - <span class = "literal">10</span>, y = <span class = "literal">10</span>;
+
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> j = <span class = "literal">0</span>; j &lt; numberOfComponents; j++) {
+        Component c = parent.getComponent(j);
+        Dimension d = c.getPreferredSize();
+
+        <span class = "keyword">if</span> (c.isVisible())
+          <span class = "keyword">if</span> (lastFill & (j == numberOfComponents - <span class = "literal">1</span>))
+            c.setBounds(<span class = "literal">0</span>, y, x, h - y);
+          <span class = "keyword">else</span>
+            c.setBounds(x - d.width, y, d.width, d.height);
+
+        x -= (d.height + gap);
+        y += d.height + gap;
+      }
+    }
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getGap() {
+    <span class = "keyword">return</span> gap;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setGap(<span class = "keyword">int</span> gap) {
+    <span class = "keyword">this</span>.gap = gap;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setMajorDiagonal(<span class = "keyword">boolean</span> newMajorDiagonal) {
+    majorDiagonal = newMajorDiagonal;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">boolean</span> isMajorDiagonal() {
+    <span class = "keyword">return</span> majorDiagonal;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setLastFill(<span class = "keyword">boolean</span> newLastFill) {
+    lastFill = newLastFill;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">boolean</span> isLastFill() {
+    <span class = "keyword">return</span> lastFill;
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - PrintPyramid.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "PrintPyramidWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.Scanner; 
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> PrintPyramid {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a Scanner</span>
+    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+
+    <span class = "comment">// Prompt the user to enter the number of lines</span>
+    System.out.print(<span class = "literal">"Enter the number of lines: "</span>);
+    <span class = "keyword">int</span> numberOfLines = input.nextInt();
+
+    <span class = "keyword">if</span> (numberOfLines &lt; <span class = "literal">1</span> || numberOfLines &gt; <span class = "literal">15</span>) {
+      System.out.println(<span class = "literal">"You must enter a number from <span class = "literal">1</span> to 15"</span>);
+      System.exit(<span class = "literal">0</span>);
+    }
+
+    <span class = "comment">// Print lines</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> row = <span class = "literal">1</span>; row &lt;= numberOfLines; row++) {
+      <span class = "comment">// Print NUMBER_OF_LINES – row) leading spaces</span>
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> column = <span class = "literal">1</span>; column &lt;= numberOfLines - row; column++)
+        System.out.print(<span class = "literal">"   "</span>);
+
+      <span class = "comment">// Print leading numbers row, row – 1, ..., 1</span>
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> num = row; num &gt;= <span class = "literal">1</span>; num--)
+        System.out.print((num &gt;= <span class = "literal">10</span>) ? <span class = "literal">" "</span> + num : <span class = "literal">"  "</span> + num);
+
+      <span class = "comment">// Print ending numbers 2, 3, ..., row – 1, row</span>
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> num = <span class = "literal">2</span>; num &lt;= row; num++)
+        System.out.print((num &gt;= <span class = "literal">10</span>) ? <span class = "literal">" "</span> + num : <span class = "literal">"  "</span> + num);
+
+      <span class = "comment">// Start a new line</span>
+      System.out.println();
+    }
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "PrintPyramid" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

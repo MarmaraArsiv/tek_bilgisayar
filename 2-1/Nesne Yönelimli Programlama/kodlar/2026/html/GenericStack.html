@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - GenericStack.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "GenericStackWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> GenericStack&lt;E&gt; {
+  <span class = "keyword">private</span> java.util.ArrayList&lt;E&gt; list = <span class = "keyword">new</span> java.util.ArrayList&lt;&gt;();
+
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getSize() {
+    <span class = "keyword">return</span> list.size();
+  }
+
+  <span class = "keyword">public</span> E peek() {
+    <span class = "keyword">return</span> list.get(getSize() - <span class = "literal">1</span>);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> push(E o) {
+    list.add(o);
+  }
+
+  <span class = "keyword">public</span> E pop() {
+    E o = list.get(getSize() - <span class = "literal">1</span>);
+    list.remove(getSize() - <span class = "literal">1</span>);
+    <span class = "keyword">return</span> o;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">boolean</span> isEmpty() {
+    <span class = "keyword">return</span> list.isEmpty();
+  }
+  
+  @Override
+  <span class = "keyword">public</span> String toString() {
+    <span class = "keyword">return</span> <span class = "literal">"stack: "</span> + list.toString();
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "GenericStack" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

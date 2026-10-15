@@ -1,0 +1,81 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestTreePath.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestTreePathWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.tree.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestTreePath <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> JTree jTree = <span class = "keyword">new</span> JTree();
+  <span class = "keyword">private</span> JTextArea jtaOutput = <span class = "keyword">new</span> JTextArea();
+  <span class = "keyword">private</span> JButton jbtShowPath = <span class = "keyword">new</span> JButton(<span class = "literal">"Show Path"</span>);
+  <span class = "keyword">private</span> JButton jbtShowPaths = <span class = "keyword">new</span> JButton(<span class = "literal">"Show Paths"</span>);
+
+  <span class = "keyword">public</span> TestTreePath() {
+    JSplitPane splitPane = <span class = "keyword">new</span> JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
+      <span class = "keyword">new</span> JScrollPane(jTree), <span class = "keyword">new</span> JScrollPane(jtaOutput));
+
+    JPanel panel = <span class = "keyword">new</span> JPanel();
+    panel.add(jbtShowPath);
+    panel.add(jbtShowPaths);
+
+    add(splitPane, BorderLayout.CENTER);
+    add(panel, BorderLayout.NORTH);
+
+    jbtShowPath.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        TreePath path = jTree.getSelectionPath();
+        jtaOutput.append(<span class = "literal">"\nProcessing a single path\n"</span>);
+        jtaOutput.append(<span class = "literal">"# of elements: "</span> + path.getPathCount());
+        jtaOutput.append(<span class = "literal">"\nlast element: "</span>
+          + path.getLastPathComponent());
+        jtaOutput.append(<span class = "literal">"\nfrom last node in the path to the root: "</span>);
+        TreeNode node = (TreeNode)path.getLastPathComponent();
+        <span class = "keyword">while</span> (node != <span class = "keyword">null</span>) {
+          jtaOutput.append(node.toString() + <span class = "literal">" "</span>);
+          node = node.getParent();
+        }
+      }});
+
+    jbtShowPaths.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jtaOutput.append(<span class = "literal">"\nProcessing multiple paths\n"</span>);
+        javax.swing.tree.TreePath[] paths = jTree.getSelectionPaths();
+        <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; paths.length; i++)
+          jtaOutput.append(paths[i].toString() + <span class = "literal">"\n"</span>);
+      }});
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TestTreePath applet = <span class = "keyword">new</span> TestTreePath();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"TestTreePath"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

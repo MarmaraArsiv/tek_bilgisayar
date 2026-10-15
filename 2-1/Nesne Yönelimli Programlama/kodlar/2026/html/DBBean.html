@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<TITLE>JBuilder - DBBean.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+<META NAME="KEYWORDS" CONTENT="BorlandHtml">
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">
+DBBean.java</FONT>
+</center><FONT SIZE=-2>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">
+Created with <a href="http://www.borland.com">JBuilder</a></FONT></FONT></TD></TR></TABLE></FONT>
+<PRE><FONT COLOR="#000080"><B>package</B></FONT><FONT COLOR="#000000"> chapter35;
+
+</FONT><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.sql.*;
+
+</FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> DBBean {
+  </FONT><FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> Connection </FONT><FONT COLOR="#800080">connection</FONT><FONT COLOR="#000000"> = </FONT><FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">;
+  </FONT><FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> String </FONT><FONT COLOR="#800080">username</FONT><FONT COLOR="#000000">;
+  </FONT><FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> String </FONT><FONT COLOR="#800080">password</FONT><FONT COLOR="#000000">;
+  </FONT><FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> String </FONT><FONT COLOR="#800080">driver</FONT><FONT COLOR="#000000">;
+  </FONT><FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> String </FONT><FONT COLOR="#800080">url</FONT><FONT COLOR="#000000">;
+
+  </FONT><FONT COLOR="#008000">/** Initialize database connection */</FONT><FONT COLOR="#000000">
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> initializeJdbc() {
+    </FONT><FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+      <I>System</I>.<I>out</I>.println(</FONT><FONT COLOR="#0000ff">"Driver is "</FONT><FONT COLOR="#000000"> + </FONT><FONT COLOR="#800080">driver</FONT><FONT COLOR="#000000">);
+      <I>Class</I>.<I>forName</I>(</FONT><FONT COLOR="#800080">driver</FONT><FONT COLOR="#000000">);
+
+      </FONT><FONT COLOR="#008000">// Connect to the sample database</FONT><FONT COLOR="#000000">
+      </FONT><FONT COLOR="#800080">connection</FONT><FONT COLOR="#000000"> = <I>DriverManager</I>.<I>getConnection</I>(</FONT><FONT COLOR="#800080">url</FONT><FONT COLOR="#000000">, </FONT><FONT COLOR="#800080">username</FONT><FONT COLOR="#000000">,
+        </FONT><FONT COLOR="#800080">password</FONT><FONT COLOR="#000000">);
+    }
+    </FONT><FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (Exception ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  </FONT><FONT COLOR="#008000">/** Get tables in the database */</FONT><FONT COLOR="#000000">
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> String[] getTables() {
+    String[] tables = </FONT><FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">;
+
+    </FONT><FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+      DatabaseMetaData dbMetaData = </FONT><FONT COLOR="#800080">connection</FONT><FONT COLOR="#000000">.getMetaData();
+      ResultSet rsTables = dbMetaData.getTables(</FONT><FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">, </FONT><FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">, </FONT><FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">,
+        </FONT><FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> String[] {</FONT><FONT COLOR="#0000ff">"TABLE"</FONT><FONT COLOR="#000000">});
+
+      </FONT><FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> size = </FONT><FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">;
+      </FONT><FONT COLOR="#000080"><B>while</B></FONT><FONT COLOR="#000000"> (rsTables.next()) size++;
+
+      rsTables = dbMetaData.getTables(</FONT><FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">, </FONT><FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">, </FONT><FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">,
+        </FONT><FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> String[] {</FONT><FONT COLOR="#0000ff">"TABLE"</FONT><FONT COLOR="#000000">});
+
+      tables = </FONT><FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> String[size];
+      </FONT><FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i = </FONT><FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">;
+      </FONT><FONT COLOR="#000080"><B>while</B></FONT><FONT COLOR="#000000"> (rsTables.next())
+        tables[i++] = rsTables.getString(</FONT><FONT COLOR="#0000ff">"TABLE_NAME"</FONT><FONT COLOR="#000000">);
+    }
+    </FONT><FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (Exception ex) {
+      ex.printStackTrace();
+    }
+
+    </FONT><FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> tables;
+  }
+
+  </FONT><FONT COLOR="#008000">/** Return connection property */</FONT><FONT COLOR="#000000">
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> Connection getConnection() {
+    </FONT><FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#800080">connection</FONT><FONT COLOR="#000000">;
+  }
+
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> setUsername(String newUsername) {
+    </FONT><FONT COLOR="#800080">username</FONT><FONT COLOR="#000000"> = newUsername;
+  }
+
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> String getUsername() {
+    </FONT><FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#800080">username</FONT><FONT COLOR="#000000">;
+  }
+
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> setPassword(String newPassword) {
+    </FONT><FONT COLOR="#800080">password</FONT><FONT COLOR="#000000"> = newPassword;
+  }
+
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> String getPassword() {
+    </FONT><FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#800080">password</FONT><FONT COLOR="#000000">;
+  }
+
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> setDriver(String newDriver) {
+    </FONT><FONT COLOR="#800080">driver</FONT><FONT COLOR="#000000"> = newDriver;
+  }
+
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> String getDriver() {
+    </FONT><FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#800080">driver</FONT><FONT COLOR="#000000">;
+  }
+
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> setUrl(String newUrl) {
+    </FONT><FONT COLOR="#800080">url</FONT><FONT COLOR="#000000"> = newUrl;
+  }
+
+  </FONT><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> String getUrl() {
+    </FONT><FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> </FONT><FONT COLOR="#800080">url</FONT><FONT COLOR="#000000">;
+  }
+}
+
+</FONT>
+</PRE>
+<TABLE CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#C0C0C0" >
+<TR><TD><CENTER>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">
+DBBean.java</FONT
+></CENTER><FONT SIZE=-2>
+<FONT FACE="Arial,Helvetica" COLOR="#000000">Created with <a href="http://www.borland.com">JBuilder</a></FONT></FONT></TD></TR></TABLE></FONT></BODY></HTML>

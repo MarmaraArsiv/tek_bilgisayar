@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - FindSalesAmount.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "FindSalesAmount.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> FindSalesAmount {
+  2&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+  3&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  4&nbsp;&nbsp;    <span class = "comment">// The commission sought</span>
+  5&nbsp;&nbsp;    <span class = "keyword">final</span> <span class = "keyword">double</span> COMMISSION_SOUGHT = <span class = "literal">25000</span>;
+  6&nbsp;&nbsp;    <span class = "keyword">final</span> <span class = "keyword">double</span> INITIAL_SALES_AMOUNT = <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">01</span>;
+  7&nbsp;&nbsp;    <span class = "keyword">double</span> commission = <span class = "literal">0</span>;
+  8&nbsp;&nbsp;    <span class = "keyword">double</span> salesAmount = INITIAL_SALES_AMOUNT;
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;    <span class = "keyword">do</span> {
+ 11&nbsp;&nbsp;      <span class = "comment">// Increase salesAmount by 1 cent</span>
+ 12&nbsp;&nbsp;      salesAmount += <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">01</span>;
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;      <span class = "comment">// Compute the commission from the current salesAmount;</span>
+ 15&nbsp;&nbsp;      <span class = "keyword">if</span> (salesAmount &gt;= <span class = "literal">10000</span><span class = "literal">.</span><span class = "literal">01</span>)
+ 16&nbsp;&nbsp;        commission =
+ 17&nbsp;&nbsp;          <span class = "literal">5000</span> * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">08</span> + <span class = "literal">5000</span> * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">1</span> + (salesAmount - <span class = "literal">10000</span>) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">12</span>;
+ 18&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (salesAmount &gt;= <span class = "literal">5000</span><span class = "literal">.</span><span class = "literal">01</span>)
+ 19&nbsp;&nbsp;        commission = <span class = "literal">5000</span> * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">08</span> + (salesAmount - <span class = "literal">5000</span>) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">10</span>;
+ 20&nbsp;&nbsp;      <span class = "keyword">else</span>
+ 21&nbsp;&nbsp;        commission = salesAmount * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">08</span>;
+ 22&nbsp;&nbsp;    } <span class = "keyword">while</span> (commission &lt; COMMISSION_SOUGHT);
+ 23&nbsp;&nbsp;
+ 24&nbsp;&nbsp;    <span class = "comment">// Display the sales amount</span>
+ 25&nbsp;&nbsp;    System.out.println(
+ 26&nbsp;&nbsp;      <span class = "literal">"The sales amount $"</span> + (<span class = "keyword">int</span>)(salesAmount * <span class = "literal">100</span>) / <span class = "literal">100</span><span class = "literal">.</span><span class = "literal">0</span> +
+ 27&nbsp;&nbsp;      <span class = "literal">"\nis needed to make a commission of $"</span> + COMMISSION_SOUGHT);
+ 28&nbsp;&nbsp;  }
+ 29&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "FindSalesAmount" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

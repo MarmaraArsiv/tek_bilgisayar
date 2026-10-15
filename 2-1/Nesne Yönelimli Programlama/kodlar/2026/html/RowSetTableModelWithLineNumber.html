@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - RowSetTableModel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "RowSetTableModel.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.sql.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.sql.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.table.AbstractTableModel;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> RowSetTableModel <span class = "keyword">extends</span> AbstractTableModel
+  6&nbsp;&nbsp;    <span class = "keyword">implements</span> RowSetListener {
+  7&nbsp;&nbsp;  <span class = "comment">// RowSet for the result set</span>
+  8&nbsp;&nbsp;  <span class = "keyword">private</span> RowSet rowSet;
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;  <span class = "comment">/** Return the rowset */</span>
+ 11&nbsp;&nbsp;  <span class = "keyword">public</span> RowSet getRowSet() {
+ 12&nbsp;&nbsp;    <span class = "keyword">return</span> rowSet;
+ 13&nbsp;&nbsp;  }
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;  <span class = "comment">/** Set a new rowset */</span>
+ 16&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setRowSet(RowSet rowSet) {
+ 17&nbsp;&nbsp;    <span class = "keyword">if</span> (rowSet != <span class = "keyword">null</span>) {
+ 18&nbsp;&nbsp;      <span class = "keyword">this</span>.rowSet = rowSet;
+ 19&nbsp;&nbsp;      rowSet.addRowSetListener(<span class = "keyword">this</span>);
+ 20&nbsp;&nbsp;      fireTableStructureChanged();
+ 21&nbsp;&nbsp;    }
+ 22&nbsp;&nbsp;  }
+ 23&nbsp;&nbsp;
+ 24&nbsp;&nbsp;  <span class = "comment">/** Return the number of rows in the row set */</span>
+ 25&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> getRowCount() {
+ 26&nbsp;&nbsp;    <span class = "keyword">try</span> {
+ 27&nbsp;&nbsp;      rowSet.last();
+ 28&nbsp;&nbsp;      <span class = "keyword">return</span> rowSet.getRow(); <span class = "comment">// Get the current row number</span>
+ 29&nbsp;&nbsp;    }
+ 30&nbsp;&nbsp;    <span class = "keyword">catch</span> (Exception ex) {
+ 31&nbsp;&nbsp;      ex.printStackTrace();
+ 32&nbsp;&nbsp;    }
+ 33&nbsp;&nbsp;
+ 34&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">0</span>;
+ 35&nbsp;&nbsp;  }
+ 36&nbsp;&nbsp;
+ 37&nbsp;&nbsp;  <span class = "comment">/** Return the number of columns in the row set */</span>
+ 38&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> getColumnCount() {
+ 39&nbsp;&nbsp;    <span class = "keyword">try</span> {
+ 40&nbsp;&nbsp;      <span class = "keyword">if</span> (rowSet != <span class = "keyword">null</span>) {
+ 41&nbsp;&nbsp;        <span class = "keyword">return</span> rowSet.getMetaData().getColumnCount();
+ 42&nbsp;&nbsp;      }
+ 43&nbsp;&nbsp;    }
+ 44&nbsp;&nbsp;    <span class = "keyword">catch</span> (SQLException ex) {
+ 45&nbsp;&nbsp;      ex.printStackTrace();
+ 46&nbsp;&nbsp;    }
+ 47&nbsp;&nbsp;
+ 48&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">0</span>;
+ 49&nbsp;&nbsp;  }
+ 50&nbsp;&nbsp;
+ 51&nbsp;&nbsp;  <span class = "comment">/** Return value at the specified row and column */</span>
+ 52&nbsp;&nbsp;  <span class = "keyword">public</span> Object getValueAt(<span class = "keyword">int</span> row, <span class = "keyword">int</span> column) {
+ 53&nbsp;&nbsp;    <span class = "keyword">try</span> {
+ 54&nbsp;&nbsp;      rowSet.absolute(row + <span class = "literal">1</span>);
+ 55&nbsp;&nbsp;      <span class = "keyword">return</span> rowSet.getObject(column + <span class = "literal">1</span>);
+ 56&nbsp;&nbsp;    }
+ 57&nbsp;&nbsp;    <span class = "keyword">catch</span> (SQLException sqlex) {
+ 58&nbsp;&nbsp;      sqlex.printStackTrace();
+ 59&nbsp;&nbsp;    }
+ 60&nbsp;&nbsp;
+ 61&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "keyword">null</span>;
+ 62&nbsp;&nbsp;  }
+ 63&nbsp;&nbsp;
+ 64&nbsp;&nbsp;  <span class = "comment">/** Return the column name at a specified column */</span>
+ 65&nbsp;&nbsp;  <span class = "keyword">public</span> String getColumnName(<span class = "keyword">int</span> column) {
+ 66&nbsp;&nbsp;    <span class = "keyword">try</span> {
+ 67&nbsp;&nbsp;      <span class = "keyword">return</span> rowSet.getMetaData().getColumnLabel(column + <span class = "literal">1</span>);
+ 68&nbsp;&nbsp;    }
+ 69&nbsp;&nbsp;    <span class = "keyword">catch</span> (SQLException ex) {
+ 70&nbsp;&nbsp;      ex.printStackTrace();
+ 71&nbsp;&nbsp;    }
+ 72&nbsp;&nbsp;
+ 73&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">""</span>;
+ 74&nbsp;&nbsp;  }
+ 75&nbsp;&nbsp;
+ 76&nbsp;&nbsp;  <span class = "comment">/** Implement rowSetChanged */</span>
+ 77&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> rowSetChanged(RowSetEvent e) {
+ 78&nbsp;&nbsp;    System.out.println(<span class = "literal">"RowSet changed"</span>);
+ 79&nbsp;&nbsp;    fireTableStructureChanged();
+ 80&nbsp;&nbsp;  }
+ 81&nbsp;&nbsp;
+ 82&nbsp;&nbsp;  <span class = "comment">/** Implement rowChanged */</span>
+ 83&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> rowChanged(RowSetEvent e) {
+ 84&nbsp;&nbsp;    System.out.println(<span class = "literal">"Row changed"</span>);
+ 85&nbsp;&nbsp;    fireTableDataChanged();
+ 86&nbsp;&nbsp;  }
+ 87&nbsp;&nbsp;
+ 88&nbsp;&nbsp;  <span class = "comment">/** Implement cursorMoved */</span>
+ 89&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> cursorMoved(RowSetEvent e) {
+ 90&nbsp;&nbsp;    System.out.println(<span class = "literal">"Cursor moved"</span>);
+ 91&nbsp;&nbsp;  }
+ 92&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

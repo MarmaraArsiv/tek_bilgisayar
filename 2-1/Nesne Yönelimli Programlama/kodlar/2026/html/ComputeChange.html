@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ComputeChange.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ComputeChangeWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.Scanner;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ComputeChange {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {   
+    <span class = "comment">// Create a Scanner</span>
+    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+
+    <span class = "comment">// Receive the amount </span>
+    System.out.print(
+      <span class = "literal">"Enter an amount in double, for example <span class = "literal">11</span><span class = "literal">.</span>56: "</span>);
+    <span class = "keyword">double</span> amount = input.nextDouble();
+
+    <span class = "keyword">int</span> remainingAmount = (<span class = "keyword">int</span>)(amount * <span class = "literal">100</span>);
+
+    <span class = "comment">// Find the number of one dollars</span>
+    <span class = "keyword">int</span> numberOfOneDollars = remainingAmount / <span class = "literal">100</span>;
+    remainingAmount = remainingAmount % <span class = "literal">100</span>;
+
+    <span class = "comment">// Find the number of quarters in the remaining amount</span>
+    <span class = "keyword">int</span> numberOfQuarters = remainingAmount / <span class = "literal">25</span>;
+    remainingAmount = remainingAmount % <span class = "literal">25</span>;
+
+    <span class = "comment">// Find the number of dimes in the remaining amount</span>
+    <span class = "keyword">int</span> numberOfDimes = remainingAmount / <span class = "literal">10</span>;
+    remainingAmount = remainingAmount % <span class = "literal">10</span>;
+
+    <span class = "comment">// Find the number of nickels in the remaining amount</span>
+    <span class = "keyword">int</span> numberOfNickels = remainingAmount / <span class = "literal">5</span>;
+    remainingAmount = remainingAmount % <span class = "literal">5</span>;
+
+    <span class = "comment">// Find the number of pennies in the remaining amount</span>
+    <span class = "keyword">int</span> numberOfPennies = remainingAmount;
+
+    <span class = "comment">// Display results</span>
+    System.out.println(<span class = "literal">"Your amount "</span> + amount + <span class = "literal">" consists of"</span>); 
+    System.out.println(<span class = "literal">"    "</span> + numberOfOneDollars + <span class = "literal">" dollars"</span>);
+    System.out.println(<span class = "literal">"    "</span> + numberOfQuarters + <span class = "literal">" quarters "</span>);
+    System.out.println(<span class = "literal">"    "</span> + numberOfDimes + <span class = "literal">" dimes"</span>); 
+    System.out.println(<span class = "literal">"    "</span> + numberOfNickels + <span class = "literal">" nickels"</span>);
+    System.out.println(<span class = "literal">"    "</span> + numberOfPennies + <span class = "literal">" pennies"</span>);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "ComputeChange" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

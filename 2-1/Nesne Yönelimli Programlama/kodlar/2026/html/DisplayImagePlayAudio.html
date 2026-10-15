@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DisplayImagePlayAudio.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "DisplayImagePlayAudioWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.net.URL;
+<span class = "keyword">import</span> java.applet.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> DisplayImagePlayAudio <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> AudioClip audioClip;
+
+  <span class = "keyword">public</span> DisplayImagePlayAudio() {
+    URL urlForImage = getClass().getResource(<span class = "literal">"image/denmark.gif"</span>);
+    add(<span class = "keyword">new</span> JLabel(<span class = "keyword">new</span> ImageIcon(urlForImage)));
+
+    URL urlForAudio = getClass().getResource(<span class = "literal">"audio/denmark.mid"</span>);
+    audioClip = Applet.newAudioClip(urlForAudio);
+    audioClip.loop();
+  }
+
+  @Override
+  <span class = "keyword">public</span> <span class = "keyword">void</span> start() {
+    <span class = "keyword">if</span> (audioClip != <span class = "keyword">null</span>) audioClip.loop();
+  }
+
+  @Override
+  <span class = "keyword">public</span> <span class = "keyword">void</span> stop() {
+    <span class = "keyword">if</span> (audioClip != <span class = "keyword">null</span>) audioClip.stop();
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a frame</span>
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"DisplayImagePlayAudio"</span>);
+
+    <span class = "comment">// Create an instance of the applet</span>
+    DisplayImagePlayAudio applet = <span class = "keyword">new</span> DisplayImagePlayAudio();
+    applet.init();
+
+    <span class = "comment">// Add the applet instance to the frame</span>
+    frame.add(applet, java.awt.BorderLayout.CENTER);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+    <span class = "comment">// Display the frame</span>
+    frame.setSize(<span class = "literal">200</span>, <span class = "literal">500</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

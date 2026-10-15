@@ -1,0 +1,181 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TableEditor.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TableEditorWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.table.*;
+<span class = "keyword">import</span> javax.swing.event.*;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.sql.*;
+<span class = "keyword">import</span> com.sun.rowset.CachedRowSetImpl;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TableEditor <span class = "keyword">extends</span> JPanel {
+  <span class = "keyword">private</span> JButton jbtFirst = <span class = "keyword">new</span> JButton(<span class = "literal">"First"</span>);
+  <span class = "keyword">private</span> JButton jbtNext = <span class = "keyword">new</span> JButton(<span class = "literal">"Next"</span>);
+  <span class = "keyword">private</span> JButton jbtPrior = <span class = "keyword">new</span> JButton(<span class = "literal">"Prior"</span>);
+  <span class = "keyword">private</span> JButton jbtLast = <span class = "keyword">new</span> JButton(<span class = "literal">"Last"</span>);
+  <span class = "keyword">private</span> JButton jbtDelete = <span class = "keyword">new</span> JButton(<span class = "literal">"Delete"</span>);
+  <span class = "keyword">private</span> JButton jbtCommit = <span class = "keyword">new</span> JButton(<span class = "literal">"Commit"</span>);
+  <span class = "keyword">private</span> JLabel jlblStatus = <span class = "keyword">new</span> JLabel();
+
+  <span class = "comment">// Table model, table selection model, table, rowset</span>
+  <span class = "keyword">private</span> RowSetTableModel tableModel = <span class = "keyword">new</span> RowSetTableModel();
+  <span class = "keyword">private</span> DefaultListSelectionModel listSelectionModel =
+    <span class = "keyword">new</span> DefaultListSelectionModel();
+  <span class = "keyword">private</span> JTable jTable1 = <span class = "keyword">new</span> JTable();
+  <span class = "keyword">private</span> RowSet rowSet;
+
+  <span class = "comment">/** Set a new row set */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setRowSet(RowSet rowSet) {
+    <span class = "keyword">this</span>.rowSet = rowSet;
+    tableModel.setRowSet(rowSet);
+    jTable1.setModel(tableModel);
+
+    <span class = "comment">// Enable auto sort on columns</span>
+    TableRowSorter&lt;TableModel&gt; sorter =
+      <span class = "keyword">new</span> TableRowSorter&lt;TableModel&gt;(tableModel);
+    jTable1.setRowSorter(sorter);
+  }
+
+  <span class = "comment">/** Create a TableEditor */</span>
+  <span class = "keyword">public</span> TableEditor() {
+    JPanel jPanel1 = <span class = "keyword">new</span> JPanel();
+    jPanel1.add(jbtFirst);
+    jPanel1.add(jbtNext);
+    jPanel1.add(jbtPrior);
+    jPanel1.add(jbtLast);
+    jPanel1.add(jbtDelete);
+    jPanel1.add(jbtCommit);
+
+    setLayout(<span class = "keyword">new</span> BorderLayout());
+    add(jPanel1, BorderLayout.NORTH);
+    add(<span class = "keyword">new</span> JScrollPane(jTable1), BorderLayout.CENTER);
+    add(jlblStatus, BorderLayout.SOUTH);
+
+    <span class = "comment">// Set selection model for the table</span>
+    jTable1.setSelectionModel(listSelectionModel);
+
+    <span class = "comment">// Register listeners</span>
+    jbtFirst.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        moveCursor(<span class = "literal">"first"</span>);
+      }
+    });
+    jbtNext.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        moveCursor(<span class = "literal">"next"</span>);
+      }
+    });
+    jbtPrior.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        moveCursor(<span class = "literal">"previous"</span>);
+      }
+    });
+    jbtLast.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        moveCursor(<span class = "literal">"last"</span>);
+      }
+    });
+    jbtDelete.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        delete();
+      }
+    });
+    jbtCommit.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent evt) {
+        <span class = "keyword">try</span> {
+          ((CachedRowSetImpl)rowSet).acceptChanges();
+        }
+        <span class = "keyword">catch</span> (java.sql.SQLException ex) {
+          ex.printStackTrace();
+        }
+      }
+    });
+    listSelectionModel.addListSelectionListener(
+        <span class = "keyword">new</span> ListSelectionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> valueChanged(ListSelectionEvent e) {
+        handleSelectionValueChanged(e);
+      }
+    });
+  }
+
+  <span class = "comment">/* Delete a row */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> delete() {
+    <span class = "keyword">try</span> {
+      <span class = "comment">// Delete the record from the database</span>
+      <span class = "keyword">int</span> currentRow = rowSet.getRow();
+      rowSet.deleteRow();
+      <span class = "keyword">if</span> (rowSet.isAfterLast())
+        rowSet.last();
+      <span class = "keyword">else</span> <span class = "keyword">if</span> (rowSet.getRow() &gt;= currentRow)
+        rowSet.absolute(currentRow);
+      setTableCursor();
+    }
+    <span class = "keyword">catch</span> (java.sql.SQLException ex) {
+      jlblStatus.setText(ex.toString());
+    }
+  }
+
+  <span class = "comment">/** Set cursor in the table and set the row number in the status */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> setTableCursor() <span class = "keyword">throws</span> java.sql.SQLException {
+    <span class = "keyword">int</span> row = rowSet.getRow();
+    listSelectionModel.setSelectionInterval(row - <span class = "literal">1</span>, row - <span class = "literal">1</span>);
+    jlblStatus.setText(<span class = "literal">"Current row number: "</span> + row);
+  }
+
+  <span class = "comment">/** Move cursor to the specified location */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> moveCursor(String whereToMove) {
+    <span class = "keyword">try</span> {
+      <span class = "keyword">if</span> (whereToMove.equals(<span class = "literal">"first"</span>))
+        rowSet.first();
+      <span class = "keyword">else</span> <span class = "keyword">if</span> (whereToMove.equals(<span class = "literal">"next"</span>) && !rowSet.isLast())
+        rowSet.next();
+      <span class = "keyword">else</span> <span class = "keyword">if</span> (whereToMove.equals(<span class = "literal">"previous"</span>) && !rowSet.isFirst())
+        rowSet.previous();
+      <span class = "keyword">else</span> <span class = "keyword">if</span> (whereToMove.equals(<span class = "literal">"last"</span>))
+        rowSet.last();
+      setTableCursor();
+    }
+    <span class = "keyword">catch</span> (java.sql.SQLException ex) {
+      jlblStatus.setText(ex.toString());
+    }
+  }
+
+  <span class = "comment">/** Handle the selection in the table */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> handleSelectionValueChanged(ListSelectionEvent e) {
+    <span class = "keyword">int</span> selectedRow = jTable1.getSelectedRow();
+
+    <span class = "keyword">try</span> {
+      <span class = "keyword">if</span> (selectedRow != <span class = "literal">-</span><span class = "literal">1</span>) {
+        rowSet.absolute(selectedRow + <span class = "literal">1</span>);
+        setTableCursor();
+      }
+    }
+    <span class = "keyword">catch</span> (java.sql.SQLException ex) {
+      jlblStatus.setText(ex.toString());
+    }
+  }
+}
+</pre>
+</body>
+</html>

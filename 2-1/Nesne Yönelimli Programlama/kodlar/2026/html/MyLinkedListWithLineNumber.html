@@ -1,0 +1,277 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - MyLinkedList.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "MyLinkedList.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> MyLinkedList&lt;E&gt; <span class = "keyword">extends</span> MyAbstractList&lt;E&gt; {
+  2&nbsp;&nbsp;  <span class = "keyword">private</span> Node&lt;E&gt; head, tail;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;  <span class = "comment">/** Create a default list */</span>
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> MyLinkedList() {
+  6&nbsp;&nbsp;  }
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;  <span class = "comment">/** Create a list from an array of objects */</span>
+  9&nbsp;&nbsp;  <span class = "keyword">public</span> MyLinkedList(E[] objects) {
+ 10&nbsp;&nbsp;    <span class = "keyword">super</span>(objects);
+ 11&nbsp;&nbsp;  }
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;  <span class = "comment">/** Return the head element in the list */</span>
+ 14&nbsp;&nbsp;  <span class = "keyword">public</span> E getFirst() {
+ 15&nbsp;&nbsp;    <span class = "keyword">if</span> (size == <span class = "literal">0</span>) {
+ 16&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "keyword">null</span>;
+ 17&nbsp;&nbsp;    }
+ 18&nbsp;&nbsp;    <span class = "keyword">else</span> {
+ 19&nbsp;&nbsp;      <span class = "keyword">return</span> head.element;
+ 20&nbsp;&nbsp;    }
+ 21&nbsp;&nbsp;  }
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;  <span class = "comment">/** Return the last element in the list */</span>
+ 24&nbsp;&nbsp;  <span class = "keyword">public</span> E getLast() {
+ 25&nbsp;&nbsp;    <span class = "keyword">if</span> (size == <span class = "literal">0</span>) {
+ 26&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "keyword">null</span>;
+ 27&nbsp;&nbsp;    }
+ 28&nbsp;&nbsp;    <span class = "keyword">else</span> {
+ 29&nbsp;&nbsp;      <span class = "keyword">return</span> tail.element;
+ 30&nbsp;&nbsp;    }
+ 31&nbsp;&nbsp;  }
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;  <span class = "comment">/** Add an element to the beginning of the list */</span>
+ 34&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> addFirst(E e) {
+ 35&nbsp;&nbsp;    Node&lt;E&gt; newNode = <span class = "keyword">new</span> Node&lt;E&gt;(e); <span class = "comment">// Create a new node</span>
+ 36&nbsp;&nbsp;    newNode.next = head; <span class = "comment">// link the new node with the head</span>
+ 37&nbsp;&nbsp;    head = newNode; <span class = "comment">// head points to the new node</span>
+ 38&nbsp;&nbsp;    size++; <span class = "comment">// Increase list size</span>
+ 39&nbsp;&nbsp;
+ 40&nbsp;&nbsp;    <span class = "keyword">if</span> (tail == <span class = "keyword">null</span>) <span class = "comment">// the new node is the only node in list</span>
+ 41&nbsp;&nbsp;      tail = head;
+ 42&nbsp;&nbsp;  }
+ 43&nbsp;&nbsp;
+ 44&nbsp;&nbsp;  <span class = "comment">/** Add an element to the end of the list */</span>
+ 45&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> addLast(E e) {
+ 46&nbsp;&nbsp;    Node&lt;E&gt; newNode = <span class = "keyword">new</span> Node&lt;E&gt;(e); <span class = "comment">// Create a new for element e</span>
+ 47&nbsp;&nbsp;
+ 48&nbsp;&nbsp;    <span class = "keyword">if</span> (tail == <span class = "keyword">null</span>) {
+ 49&nbsp;&nbsp;      head = tail = newNode; <span class = "comment">// The new node is the only node in list</span>
+ 50&nbsp;&nbsp;    }
+ 51&nbsp;&nbsp;    <span class = "keyword">else</span> {
+ 52&nbsp;&nbsp;      tail.next = newNode; <span class = "comment">// Link the new with the last node</span>
+ 53&nbsp;&nbsp;      tail = tail.next; <span class = "comment">// tail now points to the last node</span>
+ 54&nbsp;&nbsp;    }
+ 55&nbsp;&nbsp;
+ 56&nbsp;&nbsp;    size++; <span class = "comment">// Increase size</span>
+ 57&nbsp;&nbsp;  }
+ 58&nbsp;&nbsp;
+ 59&nbsp;&nbsp;
+ 60&nbsp;&nbsp;  @Override <span class = "comment">/** Add a new element at the specified index 
+ 61&nbsp;&nbsp;   * in this list. The index of the head element is 0 */</span>
+ 62&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> add(<span class = "keyword">int</span> index, E e) {
+ 63&nbsp;&nbsp;    <span class = "keyword">if</span> (index == <span class = "literal">0</span>) {
+ 64&nbsp;&nbsp;      addFirst(e);
+ 65&nbsp;&nbsp;    }
+ 66&nbsp;&nbsp;    <span class = "keyword">else</span> <span class = "keyword">if</span> (index &gt;= size) {
+ 67&nbsp;&nbsp;      addLast(e);
+ 68&nbsp;&nbsp;    }
+ 69&nbsp;&nbsp;    <span class = "keyword">else</span> {
+ 70&nbsp;&nbsp;      Node&lt;E&gt; current = head;
+ 71&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">1</span>; i &lt; index; i++) {
+ 72&nbsp;&nbsp;        current = current.next;
+ 73&nbsp;&nbsp;      }
+ 74&nbsp;&nbsp;      Node&lt;E&gt; temp = current.next;
+ 75&nbsp;&nbsp;      current.next = <span class = "keyword">new</span> Node&lt;E&gt;(e);
+ 76&nbsp;&nbsp;      (current.next).next = temp;
+ 77&nbsp;&nbsp;      size++;
+ 78&nbsp;&nbsp;    }
+ 79&nbsp;&nbsp;  }
+ 80&nbsp;&nbsp;
+ 81&nbsp;&nbsp;  <span class = "comment">/** Remove the head node and
+ 82&nbsp;&nbsp;   *  return the object that is contained in the removed node. */</span>
+ 83&nbsp;&nbsp;  <span class = "keyword">public</span> E removeFirst() {
+ 84&nbsp;&nbsp;    <span class = "keyword">if</span> (size == <span class = "literal">0</span>) {
+ 85&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "keyword">null</span>;
+ 86&nbsp;&nbsp;    }
+ 87&nbsp;&nbsp;    <span class = "keyword">else</span> {
+ 88&nbsp;&nbsp;      Node&lt;E&gt; temp = head;
+ 89&nbsp;&nbsp;      head = head.next;
+ 90&nbsp;&nbsp;      size--;
+ 91&nbsp;&nbsp;      <span class = "keyword">if</span> (head == <span class = "keyword">null</span>) {
+ 92&nbsp;&nbsp;        tail = <span class = "keyword">null</span>;
+ 93&nbsp;&nbsp;      }
+ 94&nbsp;&nbsp;      <span class = "keyword">return</span> temp.element;
+ 95&nbsp;&nbsp;    }
+ 96&nbsp;&nbsp;  }
+ 97&nbsp;&nbsp;
+ 98&nbsp;&nbsp;  <span class = "comment">/** Remove the last node and
+ 99&nbsp;&nbsp;   * return the object that is contained in the removed node. */</span>
+100&nbsp;&nbsp;  <span class = "keyword">public</span> E removeLast() {
+101&nbsp;&nbsp;    <span class = "keyword">if</span> (size == <span class = "literal">0</span>) {
+102&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "keyword">null</span>;
+103&nbsp;&nbsp;    }
+104&nbsp;&nbsp;    <span class = "keyword">else</span> <span class = "keyword">if</span> (size == <span class = "literal">1</span>) {
+105&nbsp;&nbsp;      Node&lt;E&gt; temp = head;
+106&nbsp;&nbsp;      head = tail = <span class = "keyword">null</span>;
+107&nbsp;&nbsp;      size = <span class = "literal">0</span>;
+108&nbsp;&nbsp;      <span class = "keyword">return</span> temp.element;
+109&nbsp;&nbsp;    }
+110&nbsp;&nbsp;    <span class = "keyword">else</span> {
+111&nbsp;&nbsp;      Node&lt;E&gt; current = head;
+112&nbsp;&nbsp;
+113&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; size - <span class = "literal">2</span>; i++) {
+114&nbsp;&nbsp;        current = current.next;
+115&nbsp;&nbsp;      }
+116&nbsp;&nbsp;
+117&nbsp;&nbsp;      Node&lt;E&gt; temp = tail;
+118&nbsp;&nbsp;      tail = current;
+119&nbsp;&nbsp;      tail.next = <span class = "keyword">null</span>;
+120&nbsp;&nbsp;      size--;
+121&nbsp;&nbsp;      <span class = "keyword">return</span> temp.element;
+122&nbsp;&nbsp;    }
+123&nbsp;&nbsp;  }
+124&nbsp;&nbsp;
+125&nbsp;&nbsp;  @Override <span class = "comment">/** Remove the element at the specified position in this 
+126&nbsp;&nbsp;   *  list. Return the element that was removed from the list. */</span>
+127&nbsp;&nbsp;  <span class = "keyword">public</span> E remove(<span class = "keyword">int</span> index) {   
+128&nbsp;&nbsp;    <span class = "keyword">if</span> (index &lt; <span class = "literal">0</span> || index &gt;= size) {
+129&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "keyword">null</span>;
+130&nbsp;&nbsp;    }
+131&nbsp;&nbsp;    <span class = "keyword">else</span> <span class = "keyword">if</span> (index == <span class = "literal">0</span>) {
+132&nbsp;&nbsp;      <span class = "keyword">return</span> removeFirst();
+133&nbsp;&nbsp;    }
+134&nbsp;&nbsp;    <span class = "keyword">else</span> <span class = "keyword">if</span> (index == size - <span class = "literal">1</span>) {
+135&nbsp;&nbsp;      <span class = "keyword">return</span> removeLast();
+136&nbsp;&nbsp;    }
+137&nbsp;&nbsp;    <span class = "keyword">else</span> {
+138&nbsp;&nbsp;      Node&lt;E&gt; previous = head;
+139&nbsp;&nbsp;
+140&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">1</span>; i &lt; index; i++) {
+141&nbsp;&nbsp;        previous = previous.next;
+142&nbsp;&nbsp;      }
+143&nbsp;&nbsp;
+144&nbsp;&nbsp;      Node&lt;E&gt; current = previous.next;
+145&nbsp;&nbsp;      previous.next = current.next;
+146&nbsp;&nbsp;      size--;
+147&nbsp;&nbsp;      <span class = "keyword">return</span> current.element;
+148&nbsp;&nbsp;    }
+149&nbsp;&nbsp;  }
+150&nbsp;&nbsp;
+151&nbsp;&nbsp;  @Override <span class = "comment">/** Override toString() to return elements in the list */</span>
+152&nbsp;&nbsp;  <span class = "keyword">public</span> String toString() {
+153&nbsp;&nbsp;    StringBuilder result = <span class = "keyword">new</span> StringBuilder(<span class = "literal">"["</span>);
+154&nbsp;&nbsp;
+155&nbsp;&nbsp;    Node&lt;E&gt; current = head;
+156&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; size; i++) {
+157&nbsp;&nbsp;      result.append(current.element);
+158&nbsp;&nbsp;      current = current.next;
+159&nbsp;&nbsp;      <span class = "keyword">if</span> (current != <span class = "keyword">null</span>) {
+160&nbsp;&nbsp;        result.append(<span class = "literal">", "</span>); <span class = "comment">// Separate two elements with a comma</span>
+161&nbsp;&nbsp;      }
+162&nbsp;&nbsp;      <span class = "keyword">else</span> {
+163&nbsp;&nbsp;        result.append(<span class = "literal">"]"</span>); <span class = "comment">// Insert the closing ] in the string</span>
+164&nbsp;&nbsp;      }
+165&nbsp;&nbsp;    }
+166&nbsp;&nbsp;
+167&nbsp;&nbsp;    <span class = "keyword">return</span> result.toString();
+168&nbsp;&nbsp;  }
+169&nbsp;&nbsp;
+170&nbsp;&nbsp;  @Override <span class = "comment">/** Clear the list */</span>
+171&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> clear() {
+172&nbsp;&nbsp;    size = <span class = "literal">0</span>;
+173&nbsp;&nbsp;    head = tail = <span class = "keyword">null</span>;
+174&nbsp;&nbsp;  }
+175&nbsp;&nbsp;
+176&nbsp;&nbsp;  @Override <span class = "comment">/** Return true if this list contains the element e */</span>
+177&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> contains(E e) {
+178&nbsp;&nbsp;    System.out.println(<span class = "literal">"Implementation left as an exercise"</span>);
+179&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "keyword">true</span>;
+180&nbsp;&nbsp;  }
+181&nbsp;&nbsp;
+182&nbsp;&nbsp;  @Override <span class = "comment">/** Return the element at the specified index */</span>
+183&nbsp;&nbsp;  <span class = "keyword">public</span> E get(<span class = "keyword">int</span> index) {
+184&nbsp;&nbsp;    System.out.println(<span class = "literal">"Implementation left as an exercise"</span>);
+185&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "keyword">null</span>;
+186&nbsp;&nbsp;  }
+187&nbsp;&nbsp;
+188&nbsp;&nbsp;  @Override <span class = "comment">/** Return the index of the head matching element in 
+189&nbsp;&nbsp;   *  this list. Return -1 if no match. */</span>
+190&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> indexOf(E e) {
+191&nbsp;&nbsp;    System.out.println(<span class = "literal">"Implementation left as an exercise"</span>);
+192&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">0</span>;
+193&nbsp;&nbsp;  }
+194&nbsp;&nbsp;
+195&nbsp;&nbsp;  @Override <span class = "comment">/** Return the index of the last matching element in 
+196&nbsp;&nbsp;   *  this list. Return -1 if no match. */</span>
+197&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> lastIndexOf(E e) {
+198&nbsp;&nbsp;    System.out.println(<span class = "literal">"Implementation left as an exercise"</span>);
+199&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">0</span>;
+200&nbsp;&nbsp;  }
+201&nbsp;&nbsp;
+202&nbsp;&nbsp;  @Override <span class = "comment">/** Replace the element at the specified position 
+203&nbsp;&nbsp;   *  in this list with the specified element. */</span>
+204&nbsp;&nbsp;  <span class = "keyword">public</span> E set(<span class = "keyword">int</span> index, E e) {
+205&nbsp;&nbsp;    System.out.println(<span class = "literal">"Implementation left as an exercise"</span>);
+206&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "keyword">null</span>;
+207&nbsp;&nbsp;  }
+208&nbsp;&nbsp;
+209&nbsp;&nbsp;  @Override <span class = "comment">/** Override iterator() defined in Iterable */</span>
+210&nbsp;&nbsp;  <span class = "keyword">public</span> java.util.Iterator&lt;E&gt; iterator() {
+211&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "keyword">new</span> LinkedListIterator();
+212&nbsp;&nbsp;  }
+213&nbsp;&nbsp;
+214&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">void</span> checkIndex(<span class = "keyword">int</span> index) {
+215&nbsp;&nbsp;    <span class = "keyword">if</span> (index &lt; <span class = "literal">0</span> || index &gt;= size)
+216&nbsp;&nbsp;      <span class = "keyword">throw</span> <span class = "keyword">new</span> IndexOutOfBoundsException
+217&nbsp;&nbsp;        (<span class = "literal">"Index: "</span> + index + <span class = "literal">", Size: "</span> + size);
+218&nbsp;&nbsp;  }
+219&nbsp;&nbsp;  
+220&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">class</span> LinkedListIterator 
+221&nbsp;&nbsp;      <span class = "keyword">implements</span> java.util.Iterator&lt;E&gt; {
+222&nbsp;&nbsp;    <span class = "keyword">private</span> Node&lt;E&gt; current = head; <span class = "comment">// Current index </span>
+223&nbsp;&nbsp;    
+224&nbsp;&nbsp;    @Override
+225&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">boolean</span> hasNext() {
+226&nbsp;&nbsp;      <span class = "keyword">return</span> (current != <span class = "keyword">null</span>);
+227&nbsp;&nbsp;    }
+228&nbsp;&nbsp;
+229&nbsp;&nbsp;    @Override
+230&nbsp;&nbsp;    <span class = "keyword">public</span> E next() {
+231&nbsp;&nbsp;      E e = current.element;
+232&nbsp;&nbsp;      current = current.next;
+233&nbsp;&nbsp;      <span class = "keyword">return</span> e;
+234&nbsp;&nbsp;    }
+235&nbsp;&nbsp;
+236&nbsp;&nbsp;    @Override
+237&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> remove() {
+238&nbsp;&nbsp;      System.out.println(<span class = "literal">"Implementation left as an exercise"</span>);
+239&nbsp;&nbsp;    }
+240&nbsp;&nbsp;  }
+241&nbsp;&nbsp;  
+242&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">static</span> <span class = "keyword">class</span> Node&lt;E&gt; {
+243&nbsp;&nbsp;    E element;
+244&nbsp;&nbsp;    Node&lt;E&gt; next;
+245&nbsp;&nbsp;
+246&nbsp;&nbsp;    <span class = "keyword">public</span> Node(E element) {
+247&nbsp;&nbsp;      <span class = "keyword">this</span>.element = element;
+248&nbsp;&nbsp;    }
+249&nbsp;&nbsp;  }
+250&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "MyLinkedList" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

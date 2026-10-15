@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowPolygon.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ShowPolygon.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javafx.application.Application;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javafx.collections.ObservableList;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.Scene;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.layout.Pane;
+  5&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.paint.Color;
+  6&nbsp;&nbsp;<span class = "keyword">import</span> javafx.stage.Stage;
+  7&nbsp;&nbsp;<span class = "keyword">import</span> javafx.scene.shape.Polygon;
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ShowPolygon <span class = "keyword">extends</span> Application {
+ 10&nbsp;&nbsp;  @Override <span class = "comment">// Override the start method in the Application class</span>
+ 11&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {   
+ 12&nbsp;&nbsp;    <span class = "comment">// Create a pane, a polygon, and place polygon to pane</span>
+ 13&nbsp;&nbsp;    Pane pane = <span class = "keyword">new</span> Pane();
+ 14&nbsp;&nbsp;    Polygon polygon = <span class = "keyword">new</span> Polygon();
+ 15&nbsp;&nbsp;    pane.getChildren().add(polygon); 
+ 16&nbsp;&nbsp;    polygon.setFill(Color.WHITE);
+ 17&nbsp;&nbsp;    polygon.setStroke(Color.BLACK);
+ 18&nbsp;&nbsp;    ObservableList&lt;Double&gt; list = polygon.getPoints();
+ 19&nbsp;&nbsp;    
+ 20&nbsp;&nbsp;    <span class = "keyword">final</span> <span class = "keyword">double</span> WIDTH = <span class = "literal">200</span>, HEIGHT = <span class = "literal">200</span>;
+ 21&nbsp;&nbsp;    <span class = "keyword">double</span> centerX = WIDTH / <span class = "literal">2</span>, centerY = HEIGHT / <span class = "literal">2</span>;
+ 22&nbsp;&nbsp;    <span class = "keyword">double</span> radius = Math.min(WIDTH, HEIGHT) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">4</span>;
+ 23&nbsp;&nbsp;
+ 24&nbsp;&nbsp;    <span class = "comment">// Add points to the polygon list</span>
+ 25&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">6</span>; i++) {
+ 26&nbsp;&nbsp;      list.add(centerX + radius * Math.cos(<span class = "literal">2</span> * i * Math.PI / <span class = "literal">6</span>)); 
+ 27&nbsp;&nbsp;      list.add(centerY - radius * Math.sin(<span class = "literal">2</span> * i * Math.PI / <span class = "literal">6</span>));
+ 28&nbsp;&nbsp;    }     
+ 29&nbsp;&nbsp;    
+ 30&nbsp;&nbsp;    <span class = "comment">// Create a scene and place it in the stage</span>
+ 31&nbsp;&nbsp;    Scene scene = <span class = "keyword">new</span> Scene(pane, WIDTH, HEIGHT);
+ 32&nbsp;&nbsp;    primaryStage.setTitle(<span class = "literal">"ShowPolygon"</span>); <span class = "comment">// Set the stage title</span>
+ 33&nbsp;&nbsp;    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the stage</span>
+ 34&nbsp;&nbsp;    primaryStage.show(); <span class = "comment">// Display the stage</span>
+ 35&nbsp;&nbsp;  }
+ 36&nbsp;&nbsp;  
+ 37&nbsp;&nbsp;  <span class = "comment">/**
+ 38&nbsp;&nbsp;   * The main method is only needed for the IDE with limited
+ 39&nbsp;&nbsp;   * JavaFX support. Not needed for running from the command line.
+ 40&nbsp;&nbsp;   */</span>
+ 41&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 42&nbsp;&nbsp;    launch(args);
+ 43&nbsp;&nbsp;  }
+ 44&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "ShowPolygon" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestHashSet.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestHashSet.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestHashSet {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  5&nbsp;&nbsp;    <span class = "comment">// Create a hash set</span>
+  6&nbsp;&nbsp;    Set&lt;String&gt; set = <span class = "keyword">new</span> HashSet&lt;&gt;();
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;    <span class = "comment">// Add strings to the set</span>
+  9&nbsp;&nbsp;    set.add(<span class = "literal">"London"</span>);
+ 10&nbsp;&nbsp;    set.add(<span class = "literal">"Paris"</span>);
+ 11&nbsp;&nbsp;    set.add(<span class = "literal">"New York"</span>);
+ 12&nbsp;&nbsp;    set.add(<span class = "literal">"San Francisco"</span>);
+ 13&nbsp;&nbsp;    set.add(<span class = "literal">"Beijing"</span>);
+ 14&nbsp;&nbsp;    set.add(<span class = "literal">"New York"</span>);
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;    System.out.println(set);
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;    <span class = "comment">// Display the elements in the hash set</span>
+ 19&nbsp;&nbsp;    <span class = "keyword">for</span> (String s: set) {
+ 20&nbsp;&nbsp;      System.out.print(s.toUpperCase() + <span class = "literal">" "</span>);
+ 21&nbsp;&nbsp;    }
+ 22&nbsp;&nbsp;  }
+ 23&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestHashSet" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

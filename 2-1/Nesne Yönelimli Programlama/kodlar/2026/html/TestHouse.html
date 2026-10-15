@@ -1,0 +1,36 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestHouse.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestHouseWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestHouse {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    House house1 = <span class = "keyword">new</span> House(<span class = "literal">1</span>, <span class = "literal">1750</span><span class = "literal">.</span><span class = "literal">0</span>);
+    House house2 = (House) (house1.clone());
+    System.out.println(<span class = "literal">"house1: "</span> + house1);
+    System.out.println(<span class = "literal">"house2: "</span> + house2);
+
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestHouse" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

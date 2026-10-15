@@ -1,0 +1,155 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - StoreAndRetrieveImageOnOracle.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "StoreAndRetrieveImageOnOracle.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.sql.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.io.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  5&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> StoreAndRetrieveImageOnOracle <span class = "keyword">extends</span> JApplet {
+  8&nbsp;&nbsp;  <span class = "comment">// Connection to the database</span>
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> Connection connection;
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;  <span class = "comment">// Statement for static SQL statements</span>
+ 12&nbsp;&nbsp;  <span class = "keyword">private</span> Statement stmt;
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;  <span class = "comment">// Prepared statement</span>
+ 15&nbsp;&nbsp;  <span class = "keyword">private</span> PreparedStatement pstmt = <span class = "keyword">null</span>;
+ 16&nbsp;&nbsp;  <span class = "keyword">private</span> DescriptionPanel descriptionPanel1
+ 17&nbsp;&nbsp;    = <span class = "keyword">new</span> DescriptionPanel();
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;  <span class = "keyword">private</span> JComboBox jcboCountry = <span class = "keyword">new</span> JComboBox();
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;  <span class = "comment">/** Creates new form StoreAndRetrieveImageOnOracle */</span>
+ 22&nbsp;&nbsp;  <span class = "keyword">public</span> StoreAndRetrieveImageOnOracle() {
+ 23&nbsp;&nbsp;    <span class = "keyword">try</span> {
+ 24&nbsp;&nbsp;      connectDB(); <span class = "comment">// Connect to DB</span>
+ 25&nbsp;&nbsp;      storeDataToTable(); //Store data to the table (including image)
+ 26&nbsp;&nbsp;      fillDataInComboBox(); <span class = "comment">// Fill in combo box</span>
+ 27&nbsp;&nbsp;      retrieveFlagInfo((String)(jcboCountry.getSelectedItem()));
+ 28&nbsp;&nbsp;    }
+ 29&nbsp;&nbsp;    <span class = "keyword">catch</span> (Exception ex) {
+ 30&nbsp;&nbsp;      ex.printStackTrace();
+ 31&nbsp;&nbsp;    }
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;    jcboCountry.addItemListener(<span class = "keyword">new</span> ItemListener() {
+ 34&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> itemStateChanged(ItemEvent evt) {
+ 35&nbsp;&nbsp;        retrieveFlagInfo((String)(evt.getItem()));
+ 36&nbsp;&nbsp;      }
+ 37&nbsp;&nbsp;    });
+ 38&nbsp;&nbsp;
+ 39&nbsp;&nbsp;    add(jcboCountry, BorderLayout.NORTH);
+ 40&nbsp;&nbsp;    add(descriptionPanel1, BorderLayout.CENTER);
+ 41&nbsp;&nbsp;  }
+ 42&nbsp;&nbsp;
+ 43&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">void</span> connectDB() <span class = "keyword">throws</span> Exception {
+ 44&nbsp;&nbsp;    <span class = "comment">// Load the driver</span>
+ 45&nbsp;&nbsp;    Class.forName(<span class = "literal">"oracle.jdbc.driver.OracleDriver"</span>);
+ 46&nbsp;&nbsp;    System.out.println(<span class = "literal">"Driver loaded"</span>);
+ 47&nbsp;&nbsp;
+ 48&nbsp;&nbsp;    <span class = "comment">// Establish connection</span>
+ 49&nbsp;&nbsp;    connection = DriverManager.getConnection
+ 50&nbsp;&nbsp;      (<span class = "literal">"jdbc:oracle:thin:@tiger.armstrong.edu:1521:orcl"</span>, <span class = "literal">"scott"</span>, <span class = "literal">"tiger"</span>);
+ 51&nbsp;&nbsp;    System.out.println(<span class = "literal">"Database connected"</span>);
+ 52&nbsp;&nbsp;
+ 53&nbsp;&nbsp;    <span class = "comment">// Create a statement for static SQL</span>
+ 54&nbsp;&nbsp;    stmt = connection.createStatement();
+ 55&nbsp;&nbsp;
+ 56&nbsp;&nbsp;    <span class = "comment">// Create a prepared statement to retrieve flag and description</span>
+ 57&nbsp;&nbsp;    pstmt = connection.prepareStatement(<span class = "literal">"select flag, description "</span> +
+ 58&nbsp;&nbsp;      <span class = "literal">"from Country where name = ?"</span>);
+ 59&nbsp;&nbsp;  }
+ 60&nbsp;&nbsp;
+ 61&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">void</span> storeDataToTable() {
+ 62&nbsp;&nbsp;    String[] countries = {<span class = "literal">"Canada"</span>, <span class = "literal">"UK"</span>, <span class = "literal">"USA"</span>, <span class = "literal">"Germany"</span>,
+ 63&nbsp;&nbsp;      <span class = "literal">"Indian"</span>, <span class = "literal">"China"</span>};
+ 64&nbsp;&nbsp;
+ 65&nbsp;&nbsp;    String[] imageFilenames = {<span class = "literal">"/image/ca.gif"</span>, <span class = "literal">"/image/uk.gif"</span>,
+ 66&nbsp;&nbsp;      <span class = "literal">"/image/us.gif"</span>, <span class = "literal">"/image/germany.gif"</span>, <span class = "literal">"/image/india.gif"</span>,
+ 67&nbsp;&nbsp;      <span class = "literal">"/image/china.gif"</span>};
+ 68&nbsp;&nbsp;
+ 69&nbsp;&nbsp;    String[] descriptions = {<span class = "literal">"A text to describe Canadian "</span> +
+ 70&nbsp;&nbsp;      <span class = "literal">"flag is omitted"</span>, <span class = "literal">"British flag ..."</span>, <span class = "literal">"American flag ..."</span>,
+ 71&nbsp;&nbsp;      <span class = "literal">"German flag ..."</span>, <span class = "literal">"Indian flag ..."</span>, <span class = "literal">"Chinese flag ..."</span>};
+ 72&nbsp;&nbsp;
+ 73&nbsp;&nbsp;    <span class = "keyword">try</span> {
+ 74&nbsp;&nbsp;      <span class = "comment">// Create a prepared statement to insert records</span>
+ 75&nbsp;&nbsp;      PreparedStatement pstmt = connection.prepareStatement(
+ 76&nbsp;&nbsp;        <span class = "literal">"insert into Country values(?, ?, ?)"</span>);
+ 77&nbsp;&nbsp;
+ 78&nbsp;&nbsp;      <span class = "comment">// Store all predefined records</span>
+ 79&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; countries.length; i++) {
+ 80&nbsp;&nbsp;        pstmt.setString(<span class = "literal">1</span>, countries[i]);
+ 81&nbsp;&nbsp;
+ 82&nbsp;&nbsp;        <span class = "comment">// Store image to the table cell</span>
+ 83&nbsp;&nbsp;        java.net.URL url =
+ 84&nbsp;&nbsp;          <span class = "keyword">this</span>.getClass().getResource(imageFilenames[i]);
+ 85&nbsp;&nbsp;        InputStream inputImage = url.openStream();
+ 86&nbsp;&nbsp;        pstmt.setBinaryStream(<span class = "literal">2</span>, inputImage,
+ 87&nbsp;&nbsp;          (<span class = "keyword">int</span>)(inputImage.available()));
+ 88&nbsp;&nbsp;
+ 89&nbsp;&nbsp;        pstmt.setString(<span class = "literal">3</span>, descriptions[i]);
+ 90&nbsp;&nbsp;        pstmt.executeUpdate();
+ 91&nbsp;&nbsp;      }
+ 92&nbsp;&nbsp;
+ 93&nbsp;&nbsp;      System.out.println(<span class = "literal">"Table Country populated"</span>);
+ 94&nbsp;&nbsp;    }
+ 95&nbsp;&nbsp;    <span class = "keyword">catch</span> (Exception ex) {
+ 96&nbsp;&nbsp;      ex.printStackTrace();
+ 97&nbsp;&nbsp;    }
+ 98&nbsp;&nbsp;  }
+ 99&nbsp;&nbsp;
+100&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">void</span> fillDataInComboBox() <span class = "keyword">throws</span> Exception {
+101&nbsp;&nbsp;    ResultSet rs = stmt.executeQuery(<span class = "literal">"select name from Country"</span>);
+102&nbsp;&nbsp;    <span class = "keyword">while</span> (rs.next()) {
+103&nbsp;&nbsp;      jcboCountry.addItem(rs.getString(<span class = "literal">1</span>));
+104&nbsp;&nbsp;    }
+105&nbsp;&nbsp;  }
+106&nbsp;&nbsp;
+107&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">void</span> retrieveFlagInfo(String name) {
+108&nbsp;&nbsp;    <span class = "keyword">try</span> {
+109&nbsp;&nbsp;      pstmt.setString(<span class = "literal">1</span>, name);
+110&nbsp;&nbsp;      ResultSet rs = pstmt.executeQuery();
+111&nbsp;&nbsp;      <span class = "keyword">if</span> (rs.next()) {
+112&nbsp;&nbsp;        Blob blob = rs.getBlob(<span class = "literal">1</span>);
+113&nbsp;&nbsp;        ImageIcon imageIcon = <span class = "keyword">new</span> ImageIcon(
+114&nbsp;&nbsp;          blob.getBytes(<span class = "literal">1</span>, (<span class = "keyword">int</span>)blob.length()));
+115&nbsp;&nbsp;        descriptionPanel1.setImageIcon(imageIcon);
+116&nbsp;&nbsp;        descriptionPanel1.setName(name);
+117&nbsp;&nbsp;        String description = rs.getString(<span class = "literal">2</span>);
+118&nbsp;&nbsp;        descriptionPanel1.setDescription(description);
+119&nbsp;&nbsp;      }
+120&nbsp;&nbsp;    }
+121&nbsp;&nbsp;    <span class = "keyword">catch</span> (Exception ex) {
+122&nbsp;&nbsp;      System.err.println(ex);
+123&nbsp;&nbsp;    }
+124&nbsp;&nbsp;  }
+125&nbsp;&nbsp;
+126&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+127&nbsp;&nbsp;    StoreAndRetrieveImageOnOracle applet = <span class = "keyword">new</span> StoreAndRetrieveImageOnOracle();
+128&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+129&nbsp;&nbsp;    frame.getContentPane().add(applet);
+130&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+131&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"StoreAndRetrieveImageOnOracle"</span>);
+132&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>, <span class = "literal">320</span>);
+133&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+134&nbsp;&nbsp;  }
+135&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

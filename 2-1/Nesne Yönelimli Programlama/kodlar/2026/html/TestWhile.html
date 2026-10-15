@@ -1,0 +1,33 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - TestWhile.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.JOptionPane;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> TestWhile {
+  <FONT COLOR="#008000">/** Main method */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    <FONT COLOR="#008000">// Read an initial data
+<FONT COLOR="#000000">    String dataString = JOptionPane.showInputDialog(<FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">,
+      <FONT COLOR="#0000ff">"Enter an int value, \nthe program exits if the input is 0"</FONT>,
+      <FONT COLOR="#0000ff">"Example 3.2 Input"</FONT>, JOptionPane.QUESTION_MESSAGE);
+    <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> data = Integer.parseInt(dataString);
+
+    <FONT COLOR="#008000">// Keep reading data until the input is 0
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> sum = <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">;
+    <FONT COLOR="#000080"><B>while</B></FONT><FONT COLOR="#000000"> (data != <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">) {
+      sum += data;
+
+      <FONT COLOR="#008000">// Read the next data
+<FONT COLOR="#000000">      dataString = JOptionPane.showInputDialog(<FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">,
+        <FONT COLOR="#0000ff">"Enter an int value, \nthe program exits if the input is 0"</FONT>,
+        <FONT COLOR="#0000ff">"Example 3.2 Input"</FONT>, JOptionPane.QUESTION_MESSAGE);
+      data = Integer.parseInt(dataString);
+    }
+
+    JOptionPane.showMessageDialog(<FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">"The sum is "</FONT> + sum,
+      <FONT COLOR="#0000ff">"Example 3.2 Output"</FONT>, JOptionPane.INFORMATION_MESSAGE);
+  }
+}
+</pre>

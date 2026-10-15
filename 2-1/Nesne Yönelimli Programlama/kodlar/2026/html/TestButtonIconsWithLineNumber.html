@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Intro to Java Programming, 9E, Y. Daniel Liang - TestButtonIcons.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestButtonIcons.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestButtonIcons <span class = "keyword">extends</span> JFrame  {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  5&nbsp;&nbsp;    <span class = "comment">// Create a frame and set its properties</span>
+  6&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> TestButtonIcons();
+  7&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"ButtonIcons"</span>);
+  8&nbsp;&nbsp;    frame.setSize(<span class = "literal">200</span>, <span class = "literal">100</span>);
+  9&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+ 10&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 11&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 12&nbsp;&nbsp;  }
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;  <span class = "keyword">public</span> TestButtonIcons() {
+ 15&nbsp;&nbsp;    ImageIcon usIcon = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/usIcon.gif"</span>);
+ 16&nbsp;&nbsp;    ImageIcon caIcon = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/caIcon.gif"</span>);
+ 17&nbsp;&nbsp;    ImageIcon ukIcon = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/ukIcon.gif"</span>);
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;    JButton jbt = <span class = "keyword">new</span> JButton(<span class = "literal">"Click it"</span>, usIcon);
+ 20&nbsp;&nbsp;    jbt.setPressedIcon(caIcon);
+ 21&nbsp;&nbsp;    jbt.setRolloverIcon(ukIcon);
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;    add(jbt);
+ 24&nbsp;&nbsp;  }
+ 25&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

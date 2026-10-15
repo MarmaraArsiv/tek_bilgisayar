@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 6E - Cylinder.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> Cylinder <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> Circle {
+  <FONT COLOR="#008000">/** length of this cylinder */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> length;
+
+  <FONT COLOR="#008000">/** Construct a cylinder with default radius and length */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> Cylinder() {
+    <FONT COLOR="#000080"><B>super</B></FONT><FONT COLOR="#000000">(); <FONT COLOR="#008000">// Default behavior and can be omitted
+<FONT COLOR="#000000">    length = <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">.<FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">;
+  }
+
+  <FONT COLOR="#008000">/** Construct a cylinder with specified radius and length */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> Cylinder(<FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> radius, <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> length) {
+    <FONT COLOR="#000080"><B>super</B></FONT><FONT COLOR="#000000">(radius);
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.length = length;
+  }
+
+  <FONT COLOR="#008000">/** Return length */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> getLength() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> length;
+  }
+
+  <FONT COLOR="#008000">/** Set length */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> setLength(<FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> length) {
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.length = length;
+  }
+
+  <FONT COLOR="#008000">/** Return the surface area of this cylinder. The formula is
+   * 2 * circle area + cylinder body area
+    */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> findArea() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#0000ff">2</FONT><FONT COLOR="#000000"> * <FONT COLOR="#000080"><B>super</B></FONT><FONT COLOR="#000000">.findArea() + <FONT COLOR="#0000ff">2</FONT><FONT COLOR="#000000"> * getRadius() * Math.PI * length;
+  }
+
+  <FONT COLOR="#008000">/** Return the volume of this cylinder */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> findVolume() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>super</B></FONT><FONT COLOR="#000000">.findArea() * length;
+  }
+
+  <FONT COLOR="#008000">/** Override the toString method */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> String toString() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#0000ff">"Cylinder length = "</FONT> + length +
+      <FONT COLOR="#0000ff">" radius = "</FONT> + getRadius();
+  }
+}
+</pre>

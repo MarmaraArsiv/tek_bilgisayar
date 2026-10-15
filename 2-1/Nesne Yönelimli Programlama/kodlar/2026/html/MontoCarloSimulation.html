@@ -1,0 +1,33 @@
+<html>
+<head>
+<title>Intro to Java Programming, 7E - MontoCarloSimulation.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> MontoCarloSimulation {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "keyword">final</span> <span class = "keyword">int</span> NUMBER_OF_TRIALS = <span class = "literal">10000000</span>;
+    <span class = "keyword">int</span> numberOfHits = <span class = "literal">0</span>;
+
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; NUMBER_OF_TRIALS; i++)
+    {
+      <span class = "keyword">double</span> x = Math.random() * <span class = "literal">2</span>.<span class = "literal">0</span> - <span class = "literal">1</span>;
+      <span class = "keyword">double</span> y = Math.random() * <span class = "literal">2</span>.<span class = "literal">0</span>  - <span class = "literal">1</span>;
+      <span class = "keyword">if</span> (x * x + y * y &lt;= <span class = "literal">1</span>)
+        numberOfHits++;
+    }
+
+    <span class = "keyword">double</span> pi = <span class = "literal">4</span>.<span class = "literal">0</span> * numberOfHits / NUMBER_OF_TRIALS;
+    System.out.println(<span class = "literal">"PI is "</span> + pi);
+  }
+}
+</pre>
+</body>
+</html>

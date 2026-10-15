@@ -1,0 +1,59 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 6E - TestThread.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> TestThread {
+  <FONT COLOR="#008000">/** Main method */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    <FONT COLOR="#008000">// Create threads
+<FONT COLOR="#000000">    PrintChar printA = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> PrintChar('a', <FONT COLOR="#0000ff">100</FONT><FONT COLOR="#000000">);
+    PrintChar printB = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> PrintChar('b', <FONT COLOR="#0000ff">100</FONT><FONT COLOR="#000000">);
+    PrintNum  print100 = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> PrintNum(<FONT COLOR="#0000ff">100</FONT><FONT COLOR="#000000">);
+
+    <FONT COLOR="#008000">// Start threads
+<FONT COLOR="#000000">    print100.start();
+    printA.start();
+    printB.start();
+  }
+}
+
+<FONT COLOR="#008000">// The thread class for printing a specified character
+<FONT COLOR="#000000"><FONT COLOR="#008000">// in specified times
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> PrintChar <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> Thread {
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>char</B></FONT><FONT COLOR="#000000"> charToPrint;  <FONT COLOR="#008000">// The character to print
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> times;  <FONT COLOR="#008000">// The times to repeat
+<FONT COLOR="#000000">
+  <FONT COLOR="#008000">/** Construct a thread with specified character and number of
+     times to print the character
+    */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> PrintChar(<FONT COLOR="#000080"><B>char</B></FONT><FONT COLOR="#000000"> c, <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> t) {
+    charToPrint = c;
+    times = t;
+  }
+
+  <FONT COLOR="#008000">/** Override the run() method to tell the system
+     what the thread will do
+    */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> run() {
+    <FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i = <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">; i &lt; times; i++)
+      System.out.print(charToPrint);
+  }
+}
+
+<FONT COLOR="#008000">// The thread class for printing number from 1 to n for a given n
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> PrintNum <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> Thread {
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> lastNum;
+
+  <FONT COLOR="#008000">/** Construct a thread for print 1, 2, ... i */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> PrintNum(<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> n) {
+    lastNum = n;
+  }
+
+  <FONT COLOR="#008000">/** Tell the thread how to run */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> run() {
+    <FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i = <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">; i &lt;= lastNum; i++)
+      System.out.print(<FONT COLOR="#0000ff">" "</FONT> + i);
+  }
+}
+</pre>

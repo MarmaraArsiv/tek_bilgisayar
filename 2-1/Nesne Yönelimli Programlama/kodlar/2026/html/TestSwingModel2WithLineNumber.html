@@ -1,0 +1,40 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestSwingModel2.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestSwingModel2.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestSwingModel2 {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  3&nbsp;&nbsp;    javax.swing.JButton jbt = <span class = "keyword">new</span> javax.swing.JButton();
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;    <span class = "comment">// Create a new button model</span>
+  6&nbsp;&nbsp;    javax.swing.ButtonModel model =
+  7&nbsp;&nbsp;      <span class = "keyword">new</span> javax.swing.DefaultButtonModel();
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;    <span class = "comment">// Set properties in the model</span>
+ 10&nbsp;&nbsp;    model.setActionCommand(<span class = "literal">"OK"</span>);
+ 11&nbsp;&nbsp;    model.setMnemonic(<span class = "literal">'O'</span>);
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;    <span class = "comment">// Assign the model to the button</span>
+ 14&nbsp;&nbsp;    jbt.setModel(model);
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;    <span class = "comment">// Display the property values from the component</span>
+ 17&nbsp;&nbsp;    System.out.println(<span class = "literal">"actionCommand is "</span> + jbt.getActionCommand());
+ 18&nbsp;&nbsp;    System.out.println(<span class = "literal">"mnemonic is "</span> + jbt.getMnemonic());
+ 19&nbsp;&nbsp;  }
+ 20&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

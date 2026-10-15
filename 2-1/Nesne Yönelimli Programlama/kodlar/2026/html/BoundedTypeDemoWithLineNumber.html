@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - BoundedTypeDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "BoundedTypeDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> BoundedTypeDemo {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args ) {
+  3&nbsp;&nbsp;    Rectangle rectangle = <span class = "keyword">new</span> Rectangle(<span class = "literal">2</span>, <span class = "literal">2</span>);
+  4&nbsp;&nbsp;    Circle circle = <span class = "keyword">new</span> Circle(<span class = "literal">2</span>);
+  5&nbsp;&nbsp;
+  6&nbsp;&nbsp;    System.out.println(<span class = "literal">"Same area? "</span> +
+  7&nbsp;&nbsp;      equalArea(rectangle, circle));
+  8&nbsp;&nbsp;  }
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> &lt;E <span class = "keyword">extends</span> GeometricObject&gt; <span class = "keyword">boolean</span> equalArea(
+ 11&nbsp;&nbsp;      E object1, E object2) {
+ 12&nbsp;&nbsp;    <span class = "keyword">return</span> object1.getArea() == object2.getArea();
+ 13&nbsp;&nbsp;  }
+ 14&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "BoundedTypeDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

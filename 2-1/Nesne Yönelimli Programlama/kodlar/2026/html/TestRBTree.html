@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestRBTree.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestRBTreeWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestRBTree {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create an RB tree</span>
+    RBTree&lt;Integer&gt; tree = <span class = "keyword">new</span> RBTree&lt;&gt;(<span class = "keyword">new</span> Integer[]{<span class = "literal">34</span>, <span class = "literal">3</span>, <span class = "literal">50</span>});
+    printTree(tree);
+    
+    tree.insert(<span class = "literal">20</span>);
+    printTree(tree);
+
+    tree.insert(<span class = "literal">15</span>);
+    printTree(tree);
+
+    tree.insert(<span class = "literal">16</span>);
+    printTree(tree);
+
+    tree.insert(<span class = "literal">25</span>);
+    printTree(tree);
+
+    tree.insert(<span class = "literal">27</span>);
+    printTree(tree);
+
+    tree.delete(<span class = "literal">50</span>);
+    printTree(tree);
+
+    tree.delete(<span class = "literal">20</span>);
+    printTree(tree);
+
+    tree.delete(<span class = "literal">15</span>);
+    printTree(tree);
+
+    tree.delete(<span class = "literal">3</span>);
+    printTree(tree);
+
+    tree.delete(<span class = "literal">25</span>);
+    printTree(tree);
+
+    tree.delete(<span class = "literal">16</span>);
+    printTree(tree);
+
+    tree.delete(<span class = "literal">34</span>);
+    printTree(tree);
+
+    tree.delete(<span class = "literal">27</span>);
+    printTree(tree);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> &lt;E <span class = "keyword">extends</span> Comparable&lt;E&gt;&gt; 
+      <span class = "keyword">void</span> printTree(BST&lt;E&gt; tree) {
+    <span class = "comment">// Traverse tree</span>
+    System.out.print(<span class = "literal">"\nInorder (sorted): "</span>);
+    tree.inorder();
+    System.out.print(<span class = "literal">"\nPostorder: "</span>);
+    tree.postorder();
+    System.out.print(<span class = "literal">"\nPreorder: "</span>);
+    tree.preorder();
+    System.out.print(<span class = "literal">"\nThe number of nodes is "</span> + tree.getSize());
+    System.out.println();
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestRBTree" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

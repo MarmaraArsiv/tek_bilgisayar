@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowNoLayout.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ShowNoLayout.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ShowNoLayout <span class = "keyword">extends</span> JApplet {
+  5&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtRed = <span class = "keyword">new</span> JButton(<span class = "literal">"Red"</span> );
+  6&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtBlue = <span class = "keyword">new</span> JButton(<span class = "literal">"Blue"</span> );
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtGreen = <span class = "keyword">new</span> JButton(<span class = "literal">"Green"</span> );
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;  <span class = "keyword">public</span> ShowNoLayout() {
+ 10&nbsp;&nbsp;    <span class = "comment">// Set foreground color for the buttons</span>
+ 11&nbsp;&nbsp;    jbtRed.setForeground(Color.RED);
+ 12&nbsp;&nbsp;    jbtBlue.setForeground(Color.BLUE);
+ 13&nbsp;&nbsp;    jbtGreen.setForeground(Color.GREEN);
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;    <span class = "comment">// Specify no layout manager</span>
+ 16&nbsp;&nbsp;    setLayout(<span class = "keyword">null</span>);
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;    <span class = "comment">// Add components to container</span>
+ 19&nbsp;&nbsp;    add(jbtRed);
+ 20&nbsp;&nbsp;    add(jbtBlue);
+ 21&nbsp;&nbsp;    add(jbtGreen);
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;    <span class = "comment">// Put components in the right place</span>
+ 24&nbsp;&nbsp;    jbtRed.setBounds(<span class = "literal">150</span>, <span class = "literal">50</span>, <span class = "literal">100</span>, <span class = "literal">50</span>);
+ 25&nbsp;&nbsp;    jbtBlue.setBounds(<span class = "literal">100</span>, <span class = "literal">100</span>, <span class = "literal">100</span>, <span class = "literal">50</span>);
+ 26&nbsp;&nbsp;    jbtGreen.setBounds(<span class = "literal">200</span>, <span class = "literal">100</span>, <span class = "literal">100</span>, <span class = "literal">50</span>);
+ 27&nbsp;&nbsp;  }
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 30&nbsp;&nbsp;    ShowNoLayout applet = <span class = "keyword">new</span> ShowNoLayout();
+ 31&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 32&nbsp;&nbsp;    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+ 33&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+ 34&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"ShowNoLayout"</span>);
+ 35&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+ 36&nbsp;&nbsp;    applet.init();
+ 37&nbsp;&nbsp;    applet.start();
+ 38&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>, <span class = "literal">200</span>);
+ 39&nbsp;&nbsp;    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+ 40&nbsp;&nbsp;    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>, (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+ 41&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 42&nbsp;&nbsp;  }
+ 43&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

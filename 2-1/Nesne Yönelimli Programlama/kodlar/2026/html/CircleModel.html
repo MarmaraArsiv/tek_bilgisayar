@@ -1,0 +1,100 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - CircleModel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "CircleModelWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> java.util.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> CircleModel {
+  <span class = "comment">/** Property radius. */</span>
+  <span class = "keyword">private</span> <span class = "keyword">double</span> radius = <span class = "literal">20</span>;
+
+  <span class = "comment">/** Property filled. */</span>
+  <span class = "keyword">private</span> <span class = "keyword">boolean</span> filled;
+
+  <span class = "comment">/** Property color. */</span>
+  <span class = "keyword">private</span> java.awt.Color color;
+
+  <span class = "comment">/** Utility field used by event firing mechanism. */</span>
+  <span class = "keyword">private</span> ArrayList&lt;ActionListener&gt; actionListenerList;
+
+  <span class = "keyword">public</span> <span class = "keyword">double</span> getRadius() {
+    <span class = "keyword">return</span> radius;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setRadius(<span class = "keyword">double</span> radius) {
+    <span class = "keyword">this</span>.radius = radius;
+
+    <span class = "comment">// Notify the listener for the change on radius</span>
+    processEvent(
+      <span class = "keyword">new</span> ActionEvent(<span class = "keyword">this</span>, ActionEvent.ACTION_PERFORMED, <span class = "literal">"radius"</span>));
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">boolean</span> isFilled() {
+    <span class = "keyword">return</span> filled;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setFilled(<span class = "keyword">boolean</span> filled) {
+    <span class = "keyword">this</span>.filled = filled;
+
+    <span class = "comment">// Notify the listener for the change on filled</span>
+    processEvent(
+      <span class = "keyword">new</span> ActionEvent(<span class = "keyword">this</span>, ActionEvent.ACTION_PERFORMED, <span class = "literal">"filled"</span>));
+  }
+
+  <span class = "keyword">public</span> java.awt.Color getColor() {
+    <span class = "keyword">return</span> color;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setColor(java.awt.Color color) {
+    <span class = "keyword">this</span>.color = color;
+
+    <span class = "comment">// Notify the listener for the change on color</span>
+    processEvent(
+      <span class = "keyword">new</span> ActionEvent(<span class = "keyword">this</span>, ActionEvent.ACTION_PERFORMED, <span class = "literal">"color"</span>));
+  }
+
+  <span class = "comment">/** Register an action event listener */</span>
+  <span class = "keyword">public</span> <span class = "keyword">synchronized</span> <span class = "keyword">void</span> addActionListener(ActionListener l) {
+    <span class = "keyword">if</span> (actionListenerList == <span class = "keyword">null</span>)
+      actionListenerList = <span class = "keyword">new</span> ArrayList&lt;ActionListener&gt;();
+
+    actionListenerList.add(l);
+  }
+
+  <span class = "comment">/** Remove an action event listener */</span>
+  <span class = "keyword">public</span> <span class = "keyword">synchronized</span> <span class = "keyword">void</span> removeActionListener(ActionListener l) {
+    <span class = "keyword">if</span> (actionListenerList != <span class = "keyword">null</span> && actionListenerList.contains(l))
+      actionListenerList.remove(l);
+  }
+
+  <span class = "comment">/** Fire TickEvent */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> processEvent(ActionEvent e) {
+    ArrayList&lt;ActionListener&gt; list;
+
+    <span class = "keyword">synchronized</span> (<span class = "keyword">this</span>) {
+      <span class = "keyword">if</span> (actionListenerList == <span class = "keyword">null</span>) <span class = "keyword">return</span>;
+      list = (ArrayList&lt;ActionListener&gt;)(actionListenerList.clone());
+    }
+
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; list.size(); i++) {
+      ActionListener listener = list.get(i);
+      listener.actionPerformed(e);
+    }
+  }
+}
+</pre>
+</body>
+</html>

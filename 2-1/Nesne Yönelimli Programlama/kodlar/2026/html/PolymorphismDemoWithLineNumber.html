@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - PolymorphismDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "PolymorphismDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> PolymorphismDemo {
+  2&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+  3&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  4&nbsp;&nbsp;    <span class = "comment">// Display circle and rectangle properties</span>
+  5&nbsp;&nbsp;    displayObject(<span class = "keyword">new</span> CircleFromSimpleGeometricObject
+  6&nbsp;&nbsp;        (<span class = "literal">1</span>, <span class = "literal">"red"</span>, <span class = "keyword">false</span>));
+  7&nbsp;&nbsp;    displayObject(<span class = "keyword">new</span> RectangleFromSimpleGeometricObject
+  8&nbsp;&nbsp;        (<span class = "literal">1</span>, <span class = "literal">1</span>, <span class = "literal">"black"</span>, <span class = "keyword">true</span>));
+  9&nbsp;&nbsp;  }
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;  <span class = "comment">/** Display geometric object properties */</span>
+ 12&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> displayObject(SimpleGeometricObject object) {
+ 13&nbsp;&nbsp;    System.out.println(<span class = "literal">"Created on "</span> + object.getDateCreated() +
+ 14&nbsp;&nbsp;      <span class = "literal">". Color is "</span> + object.getColor());
+ 15&nbsp;&nbsp;  }
+ 16&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "PolymorphismDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

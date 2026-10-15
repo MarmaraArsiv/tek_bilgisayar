@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Exercise33_08.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "Exercise33_08WithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "comment">/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */</span>
+<span class = "keyword">package</span> jsfexercise;
+
+<span class = "keyword">import</span> javax.faces.bean.ManagedBean;
+<span class = "keyword">import</span> javax.faces.bean.SessionScoped;
+<span class = "keyword">import</span> java.util.*;
+
+@ManagedBean
+@SessionScoped
+<span class = "keyword">public</span> <span class = "keyword">class</span> Exercise33_08 {
+  <span class = "keyword">private</span> String answer = <span class = "literal">""</span>;
+  <span class = "keyword">private</span> String guess = <span class = "literal">""</span>;
+  <span class = "keyword">private</span> String[][] stateCapitals = {{<span class = "literal">"Alabama"</span>, <span class = "literal">"Montgomery"</span>},
+    {<span class = "literal">"Alaska"</span>, <span class = "literal">"Juneau"</span>}, {<span class = "literal">"Arizona"</span>, <span class = "literal">"Phoenix"</span>},
+    {<span class = "literal">"Arkansas"</span>, <span class = "literal">"Little Rock"</span>}, {<span class = "literal">"California"</span>, <span class = "literal">"Sacramento"</span>},
+    {<span class = "literal">"Colorado"</span>, <span class = "literal">"Denver"</span>}, {<span class = "literal">"Connecticut"</span>, <span class = "literal">"Hartford"</span>},
+    {<span class = "literal">"Delaware"</span>, <span class = "literal">"Dover"</span>}, {<span class = "literal">"Florida"</span>, <span class = "literal">"Tallahassee"</span>},
+    {<span class = "literal">"Georgia"</span>, <span class = "literal">"Atlanta"</span>}, {<span class = "literal">"Hawaii"</span>, <span class = "literal">"Honolulu"</span>}, {<span class = "literal">"Idaho"</span>, <span class = "literal">"Boise"</span>},
+    {<span class = "literal">"Illinois"</span>, <span class = "literal">"Springfield"</span>}, {<span class = "literal">"Maryland"</span>, <span class = "literal">"Annapolis"</span>},
+    {<span class = "literal">"Minnesota"</span>, <span class = "literal">"Saint Paul"</span>},
+    {<span class = "literal">"Iowa"</span>, <span class = "literal">"Des Moines"</span>}, {<span class = "literal">"Maine"</span>, <span class = "literal">"Augusta"</span>},
+    {<span class = "literal">"Kentucky"</span>, <span class = "literal">"Frankfort"</span>}, {<span class = "literal">"Indiana"</span>, <span class = "literal">"Indianapolis"</span>},
+    {<span class = "literal">"Kansas"</span>, <span class = "literal">"Topeka"</span>}, {<span class = "literal">"Louisiana"</span>, <span class = "literal">"Baton Rouge"</span>},
+    {<span class = "literal">"Oregon"</span>, <span class = "literal">"Salem"</span>}, {<span class = "literal">"Oklahoma"</span>, <span class = "literal">"Oklahoma City"</span>},
+    {<span class = "literal">"Ohio"</span>, <span class = "literal">"Columbus"</span>}, {<span class = "literal">"North Dakota"</span>, <span class = "literal">"Bismark"</span>},
+    {<span class = "literal">"New York"</span>, <span class = "literal">"Albany"</span>}, {<span class = "literal">"New Mexico"</span>, <span class = "literal">"Santa Fe"</span>},
+    {<span class = "literal">"New Jersey"</span>, <span class = "literal">"Trenton"</span>}, {<span class = "literal">"New Hampshire"</span>, <span class = "literal">"Concord"</span>},
+    {<span class = "literal">"Nevada"</span>, <span class = "literal">"Carson City"</span>}, {<span class = "literal">"Nebraska"</span>, <span class = "literal">"Lincoln"</span>},
+    {<span class = "literal">"Montana"</span>, <span class = "literal">"Helena"</span>}, {<span class = "literal">"Missouri"</span>, <span class = "literal">"Jefferson City"</span>},
+    {<span class = "literal">"Mississippi"</span>, <span class = "literal">"Jackson"</span>}, {<span class = "literal">"Massachusettes"</span>, <span class = "literal">"Boston"</span>},
+    {<span class = "literal">"Michigan"</span>, <span class = "literal">"Lansing"</span>}, {<span class = "literal">"Pennslyvania"</span>, <span class = "literal">"Harrisburg"</span>},
+    {<span class = "literal">"Rhode Island"</span>, <span class = "literal">"Providence"</span>}, {<span class = "literal">"South Carolina"</span>, <span class = "literal">"Columbia"</span>},
+    {<span class = "literal">"South Dakota"</span>, <span class = "literal">"Pierre"</span>}, {<span class = "literal">"Tennessee"</span>, <span class = "literal">"Nashville"</span>},
+    {<span class = "literal">"Texas"</span>, <span class = "literal">"Austin"</span>}, {<span class = "literal">"Utah"</span>, <span class = "literal">"Salt Lake City"</span>},
+    {<span class = "literal">"Vermont"</span>, <span class = "literal">"Montpelier"</span>}, {<span class = "literal">"Virginia"</span>, <span class = "literal">"Richmond"</span>},
+    {<span class = "literal">"Washington"</span>, <span class = "literal">"Olympia"</span>}, {<span class = "literal">"West Virginia"</span>, <span class = "literal">"Charleston"</span>},
+    {<span class = "literal">"Wisconsin"</span>, <span class = "literal">"Madison"</span>}, {<span class = "literal">"Wyoming"</span>, <span class = "literal">"Cheyenne"</span>}
+  };
+  List list = Arrays.asList(stateCapitals);
+
+  <span class = "keyword">public</span> Exercise33_08() {
+    Collections.shuffle(list);
+  }
+
+  <span class = "keyword">public</span> String getAnswer() {
+    evaluateGuess();
+    <span class = "keyword">return</span> answer;
+  }
+
+  <span class = "keyword">public</span> String getGuess() {
+    <span class = "keyword">return</span> guess;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setGuess(String guess) {
+    <span class = "keyword">this</span>.guess = guess;
+  }
+
+  <span class = "keyword">public</span> String getQuestion() {
+    System.out.println(<span class = "literal">"i is "</span> + i);
+    <span class = "keyword">return</span> <span class = "literal">"What is the capital of "</span> + stateCapitals[i][<span class = "literal">0</span>] + <span class = "literal">"?"</span>;
+  }
+
+  //Evaluates the guess, forms the correct answer, and resets
+  //the guess
+  <span class = "keyword">private</span> <span class = "keyword">void</span> evaluateGuess() {
+    answer = <span class = "literal">""</span>;
+
+    <span class = "keyword">if</span> (guess.toLowerCase().equals(stateCapitals[<span class = "literal">0</span>][<span class = "literal">1</span>].toLowerCase())) {
+      answer += <span class = "literal">"Yes. The capital of "</span> + stateCapitals[<span class = "literal">0</span>][<span class = "literal">0</span>]
+              + <span class = "literal">" is "</span> + stateCapitals[<span class = "literal">0</span>][<span class = "literal">1</span>] + <span class = "literal">"."</span>;
+      guess = <span class = "literal">""</span>;
+    } <span class = "keyword">else</span> {
+      answer += <span class = "literal">"No. The capital of "</span> + stateCapitals[<span class = "literal">0</span>][<span class = "literal">0</span>]
+              + <span class = "literal">" is "</span> + stateCapitals[<span class = "literal">0</span>][<span class = "literal">1</span>] + <span class = "literal">"."</span>;
+      guess = <span class = "literal">""</span>;
+    }
+  }
+  <span class = "keyword">int</span> i = <span class = "literal">0</span>;
+
+  <span class = "keyword">public</span> String next() {
+    <span class = "keyword">if</span> (getGuess().trim().length() == <span class = "literal">0</span>) {
+      <span class = "keyword">return</span> <span class = "keyword">null</span>;
+    } <span class = "keyword">else</span> {
+      <span class = "keyword">return</span> <span class = "literal">"Exercise33_08a"</span>;
+    }
+  }
+
+  <span class = "keyword">public</span> String goToMainPage() {
+    i = (i + <span class = "literal">1</span>) % stateCapitals.length;
+    <span class = "keyword">return</span> <span class = "literal">"Exercise33_08"</span>;
+  }
+}
+</pre>
+</body>
+</html>

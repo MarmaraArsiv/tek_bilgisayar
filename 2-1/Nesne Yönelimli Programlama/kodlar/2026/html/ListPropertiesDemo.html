@@ -1,0 +1,124 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ListPropertiesDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ListPropertiesDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.event.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ListPropertiesDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> JList&lt;String&gt; jlst = <span class = "keyword">new</span> JList&lt;String&gt;(<span class = "keyword">new</span> String[] {
+    <span class = "literal">"Item1"</span>, <span class = "literal">"Item2"</span>, <span class = "literal">"Item3"</span>, <span class = "literal">"Item4"</span>, <span class = "literal">"Item5"</span>, <span class = "literal">"Item6"</span>});
+  <span class = "keyword">private</span> JSpinner jspVisibleRowCount =
+    <span class = "keyword">new</span> JSpinner(<span class = "keyword">new</span> SpinnerNumberModel(<span class = "literal">8</span>, <span class = "literal">-</span><span class = "literal">1</span>, <span class = "literal">20</span>, <span class = "literal">1</span>));
+  <span class = "keyword">private</span> JComboBox jcboLayoutOrientation =
+    <span class = "keyword">new</span> JComboBox(<span class = "keyword">new</span> String[] {<span class = "literal">"VERTICAL (<span class = "literal">0</span>)"</span>,
+    <span class = "literal">"VERTICAL_WRAP (<span class = "literal">1</span>)"</span>, <span class = "literal">"HORIZONTAL_WRAP (<span class = "literal">2</span>)"</span>});
+  <span class = "keyword">private</span> JComboBox jcboSelectionMode =
+    <span class = "keyword">new</span> JComboBox(<span class = "keyword">new</span> String[] {<span class = "literal">"SINGLE_SELECTION (<span class = "literal">0</span>)"</span>,
+    <span class = "literal">"SINGLE_INTERVAL_SELECTION (<span class = "literal">1</span>)"</span>,
+    <span class = "literal">"MULTIPLE_INTERVAL_SELECTION (<span class = "literal">2</span>)"</span>});
+  <span class = "keyword">private</span> JLabel jlblStatus = <span class = "keyword">new</span> JLabel();
+
+  <span class = "comment">/** Construct the applet */</span>
+  <span class = "keyword">public</span> ListPropertiesDemo() {
+    <span class = "comment">// Place labels in a panel</span>
+    JPanel panel1 = <span class = "keyword">new</span> JPanel();
+    panel1.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">3</span>, <span class = "literal">1</span>));
+    panel1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"visibleRowCount"</span>));
+    panel1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"layoutOrientation"</span>));
+    panel1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"selectionMode"</span>));
+
+    <span class = "comment">// Place text fields in a panel</span>
+    JPanel panel2 = <span class = "keyword">new</span> JPanel();
+    panel2.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">3</span>, <span class = "literal">1</span>));
+    panel2.add(jspVisibleRowCount);
+    panel2.add(jcboLayoutOrientation);
+    panel2.add(jcboSelectionMode);
+
+    <span class = "comment">// Place panel1 and panel2</span>
+    JPanel panel3 = <span class = "keyword">new</span> JPanel();
+    panel3.setLayout(<span class = "keyword">new</span> BorderLayout(<span class = "literal">5</span>, <span class = "literal">5</span>));
+    panel3.add(panel1, BorderLayout.WEST);
+    panel3.add(panel2, BorderLayout.CENTER);
+
+    <span class = "comment">// Place elements in the applet</span>
+    add(panel3, BorderLayout.NORTH);
+    add(<span class = "keyword">new</span> JScrollPane(jlst), BorderLayout.CENTER);
+    add(jlblStatus, BorderLayout.SOUTH);
+
+    <span class = "comment">// Set initial property values</span>
+    jlst.setFixedCellWidth(<span class = "literal">50</span>);
+    jlst.setFixedCellHeight(<span class = "literal">20</span>);
+    jlst.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+    <span class = "comment">// Register listeners</span>
+    jspVisibleRowCount.addChangeListener(<span class = "keyword">new</span> ChangeListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> stateChanged(ChangeEvent e) {
+        jlst.setVisibleRowCount(
+          ((Integer)jspVisibleRowCount.getValue()).intValue());
+      }
+    });
+
+    jcboLayoutOrientation.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jlst.setLayoutOrientation(
+          jcboLayoutOrientation.getSelectedIndex());
+      }
+    });
+
+    jcboSelectionMode.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        jlst.setSelectionMode(
+          jcboSelectionMode.getSelectedIndex());
+      }
+    });
+
+    jlst.addListSelectionListener(<span class = "keyword">new</span> ListSelectionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> valueChanged(ListSelectionEvent e) {
+        Object[] values = jlst.getSelectedValues();
+        String display = <span class = "literal">""</span>;
+
+        <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; values.length; i++) {
+          display += (String)values[i] + <span class = "literal">" "</span>;
+        }
+
+        jlblStatus.setText(display);
+      }
+    });
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ListPropertiesDemo applet = <span class = "keyword">new</span> ListPropertiesDemo();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"ListPropertiesDemo"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>, <span class = "literal">320</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

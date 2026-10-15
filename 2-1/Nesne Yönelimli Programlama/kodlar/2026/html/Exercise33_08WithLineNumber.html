@@ -1,0 +1,115 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Exercise33_08.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "Exercise33_08.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "comment">/*
+  2&nbsp;&nbsp; * To change this template, choose Tools | Templates
+  3&nbsp;&nbsp; * and open the template in the editor.
+  4&nbsp;&nbsp; */</span>
+  5&nbsp;&nbsp;<span class = "keyword">package</span> jsfexercise;
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;<span class = "keyword">import</span> javax.faces.bean.ManagedBean;
+  8&nbsp;&nbsp;<span class = "keyword">import</span> javax.faces.bean.SessionScoped;
+  9&nbsp;&nbsp;<span class = "keyword">import</span> java.util.*;
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;@ManagedBean
+ 12&nbsp;&nbsp;@SessionScoped
+ 13&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> Exercise33_08 {
+ 14&nbsp;&nbsp;  <span class = "keyword">private</span> String answer = <span class = "literal">""</span>;
+ 15&nbsp;&nbsp;  <span class = "keyword">private</span> String guess = <span class = "literal">""</span>;
+ 16&nbsp;&nbsp;  <span class = "keyword">private</span> String[][] stateCapitals = {{<span class = "literal">"Alabama"</span>, <span class = "literal">"Montgomery"</span>},
+ 17&nbsp;&nbsp;    {<span class = "literal">"Alaska"</span>, <span class = "literal">"Juneau"</span>}, {<span class = "literal">"Arizona"</span>, <span class = "literal">"Phoenix"</span>},
+ 18&nbsp;&nbsp;    {<span class = "literal">"Arkansas"</span>, <span class = "literal">"Little Rock"</span>}, {<span class = "literal">"California"</span>, <span class = "literal">"Sacramento"</span>},
+ 19&nbsp;&nbsp;    {<span class = "literal">"Colorado"</span>, <span class = "literal">"Denver"</span>}, {<span class = "literal">"Connecticut"</span>, <span class = "literal">"Hartford"</span>},
+ 20&nbsp;&nbsp;    {<span class = "literal">"Delaware"</span>, <span class = "literal">"Dover"</span>}, {<span class = "literal">"Florida"</span>, <span class = "literal">"Tallahassee"</span>},
+ 21&nbsp;&nbsp;    {<span class = "literal">"Georgia"</span>, <span class = "literal">"Atlanta"</span>}, {<span class = "literal">"Hawaii"</span>, <span class = "literal">"Honolulu"</span>}, {<span class = "literal">"Idaho"</span>, <span class = "literal">"Boise"</span>},
+ 22&nbsp;&nbsp;    {<span class = "literal">"Illinois"</span>, <span class = "literal">"Springfield"</span>}, {<span class = "literal">"Maryland"</span>, <span class = "literal">"Annapolis"</span>},
+ 23&nbsp;&nbsp;    {<span class = "literal">"Minnesota"</span>, <span class = "literal">"Saint Paul"</span>},
+ 24&nbsp;&nbsp;    {<span class = "literal">"Iowa"</span>, <span class = "literal">"Des Moines"</span>}, {<span class = "literal">"Maine"</span>, <span class = "literal">"Augusta"</span>},
+ 25&nbsp;&nbsp;    {<span class = "literal">"Kentucky"</span>, <span class = "literal">"Frankfort"</span>}, {<span class = "literal">"Indiana"</span>, <span class = "literal">"Indianapolis"</span>},
+ 26&nbsp;&nbsp;    {<span class = "literal">"Kansas"</span>, <span class = "literal">"Topeka"</span>}, {<span class = "literal">"Louisiana"</span>, <span class = "literal">"Baton Rouge"</span>},
+ 27&nbsp;&nbsp;    {<span class = "literal">"Oregon"</span>, <span class = "literal">"Salem"</span>}, {<span class = "literal">"Oklahoma"</span>, <span class = "literal">"Oklahoma City"</span>},
+ 28&nbsp;&nbsp;    {<span class = "literal">"Ohio"</span>, <span class = "literal">"Columbus"</span>}, {<span class = "literal">"North Dakota"</span>, <span class = "literal">"Bismark"</span>},
+ 29&nbsp;&nbsp;    {<span class = "literal">"New York"</span>, <span class = "literal">"Albany"</span>}, {<span class = "literal">"New Mexico"</span>, <span class = "literal">"Santa Fe"</span>},
+ 30&nbsp;&nbsp;    {<span class = "literal">"New Jersey"</span>, <span class = "literal">"Trenton"</span>}, {<span class = "literal">"New Hampshire"</span>, <span class = "literal">"Concord"</span>},
+ 31&nbsp;&nbsp;    {<span class = "literal">"Nevada"</span>, <span class = "literal">"Carson City"</span>}, {<span class = "literal">"Nebraska"</span>, <span class = "literal">"Lincoln"</span>},
+ 32&nbsp;&nbsp;    {<span class = "literal">"Montana"</span>, <span class = "literal">"Helena"</span>}, {<span class = "literal">"Missouri"</span>, <span class = "literal">"Jefferson City"</span>},
+ 33&nbsp;&nbsp;    {<span class = "literal">"Mississippi"</span>, <span class = "literal">"Jackson"</span>}, {<span class = "literal">"Massachusettes"</span>, <span class = "literal">"Boston"</span>},
+ 34&nbsp;&nbsp;    {<span class = "literal">"Michigan"</span>, <span class = "literal">"Lansing"</span>}, {<span class = "literal">"Pennslyvania"</span>, <span class = "literal">"Harrisburg"</span>},
+ 35&nbsp;&nbsp;    {<span class = "literal">"Rhode Island"</span>, <span class = "literal">"Providence"</span>}, {<span class = "literal">"South Carolina"</span>, <span class = "literal">"Columbia"</span>},
+ 36&nbsp;&nbsp;    {<span class = "literal">"South Dakota"</span>, <span class = "literal">"Pierre"</span>}, {<span class = "literal">"Tennessee"</span>, <span class = "literal">"Nashville"</span>},
+ 37&nbsp;&nbsp;    {<span class = "literal">"Texas"</span>, <span class = "literal">"Austin"</span>}, {<span class = "literal">"Utah"</span>, <span class = "literal">"Salt Lake City"</span>},
+ 38&nbsp;&nbsp;    {<span class = "literal">"Vermont"</span>, <span class = "literal">"Montpelier"</span>}, {<span class = "literal">"Virginia"</span>, <span class = "literal">"Richmond"</span>},
+ 39&nbsp;&nbsp;    {<span class = "literal">"Washington"</span>, <span class = "literal">"Olympia"</span>}, {<span class = "literal">"West Virginia"</span>, <span class = "literal">"Charleston"</span>},
+ 40&nbsp;&nbsp;    {<span class = "literal">"Wisconsin"</span>, <span class = "literal">"Madison"</span>}, {<span class = "literal">"Wyoming"</span>, <span class = "literal">"Cheyenne"</span>}
+ 41&nbsp;&nbsp;  };
+ 42&nbsp;&nbsp;  List list = Arrays.asList(stateCapitals);
+ 43&nbsp;&nbsp;
+ 44&nbsp;&nbsp;  <span class = "keyword">public</span> Exercise33_08() {
+ 45&nbsp;&nbsp;    Collections.shuffle(list);
+ 46&nbsp;&nbsp;  }
+ 47&nbsp;&nbsp;
+ 48&nbsp;&nbsp;  <span class = "keyword">public</span> String getAnswer() {
+ 49&nbsp;&nbsp;    evaluateGuess();
+ 50&nbsp;&nbsp;    <span class = "keyword">return</span> answer;
+ 51&nbsp;&nbsp;  }
+ 52&nbsp;&nbsp;
+ 53&nbsp;&nbsp;  <span class = "keyword">public</span> String getGuess() {
+ 54&nbsp;&nbsp;    <span class = "keyword">return</span> guess;
+ 55&nbsp;&nbsp;  }
+ 56&nbsp;&nbsp;
+ 57&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setGuess(String guess) {
+ 58&nbsp;&nbsp;    <span class = "keyword">this</span>.guess = guess;
+ 59&nbsp;&nbsp;  }
+ 60&nbsp;&nbsp;
+ 61&nbsp;&nbsp;  <span class = "keyword">public</span> String getQuestion() {
+ 62&nbsp;&nbsp;    System.out.println(<span class = "literal">"i is "</span> + i);
+ 63&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"What is the capital of "</span> + stateCapitals[i][<span class = "literal">0</span>] + <span class = "literal">"?"</span>;
+ 64&nbsp;&nbsp;  }
+ 65&nbsp;&nbsp;
+ 66&nbsp;&nbsp;  //Evaluates the guess, forms the correct answer, and resets
+ 67&nbsp;&nbsp;  //the guess
+ 68&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">void</span> evaluateGuess() {
+ 69&nbsp;&nbsp;    answer = <span class = "literal">""</span>;
+ 70&nbsp;&nbsp;
+ 71&nbsp;&nbsp;    <span class = "keyword">if</span> (guess.toLowerCase().equals(stateCapitals[<span class = "literal">0</span>][<span class = "literal">1</span>].toLowerCase())) {
+ 72&nbsp;&nbsp;      answer += <span class = "literal">"Yes. The capital of "</span> + stateCapitals[<span class = "literal">0</span>][<span class = "literal">0</span>]
+ 73&nbsp;&nbsp;              + <span class = "literal">" is "</span> + stateCapitals[<span class = "literal">0</span>][<span class = "literal">1</span>] + <span class = "literal">"."</span>;
+ 74&nbsp;&nbsp;      guess = <span class = "literal">""</span>;
+ 75&nbsp;&nbsp;    } <span class = "keyword">else</span> {
+ 76&nbsp;&nbsp;      answer += <span class = "literal">"No. The capital of "</span> + stateCapitals[<span class = "literal">0</span>][<span class = "literal">0</span>]
+ 77&nbsp;&nbsp;              + <span class = "literal">" is "</span> + stateCapitals[<span class = "literal">0</span>][<span class = "literal">1</span>] + <span class = "literal">"."</span>;
+ 78&nbsp;&nbsp;      guess = <span class = "literal">""</span>;
+ 79&nbsp;&nbsp;    }
+ 80&nbsp;&nbsp;  }
+ 81&nbsp;&nbsp;  <span class = "keyword">int</span> i = <span class = "literal">0</span>;
+ 82&nbsp;&nbsp;
+ 83&nbsp;&nbsp;  <span class = "keyword">public</span> String next() {
+ 84&nbsp;&nbsp;    <span class = "keyword">if</span> (getGuess().trim().length() == <span class = "literal">0</span>) {
+ 85&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "keyword">null</span>;
+ 86&nbsp;&nbsp;    } <span class = "keyword">else</span> {
+ 87&nbsp;&nbsp;      <span class = "keyword">return</span> <span class = "literal">"Exercise33_08a"</span>;
+ 88&nbsp;&nbsp;    }
+ 89&nbsp;&nbsp;  }
+ 90&nbsp;&nbsp;
+ 91&nbsp;&nbsp;  <span class = "keyword">public</span> String goToMainPage() {
+ 92&nbsp;&nbsp;    i = (i + <span class = "literal">1</span>) % stateCapitals.length;
+ 93&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"Exercise33_08"</span>;
+ 94&nbsp;&nbsp;  }
+ 95&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DescriptionPanel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "DescriptionPanel.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> DescriptionPanel <span class = "keyword">extends</span> JPanel {
+  5&nbsp;&nbsp;  <span class = "comment">/** Label for displaying an image icon and a title */</span>
+  6&nbsp;&nbsp;  <span class = "keyword">private</span> JLabel jlblImageTitle = <span class = "keyword">new</span> JLabel();
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;  <span class = "comment">/** Text area for displaying text */</span>
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> JTextArea jtaDescription = <span class = "keyword">new</span> JTextArea();
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;  <span class = "keyword">public</span> DescriptionPanel() {
+ 12&nbsp;&nbsp;    <span class = "comment">// Center the icon and text and place the text under the icon</span>
+ 13&nbsp;&nbsp;    jlblImageTitle.setHorizontalAlignment(JLabel.CENTER);
+ 14&nbsp;&nbsp;    jlblImageTitle.setHorizontalTextPosition(JLabel.CENTER);
+ 15&nbsp;&nbsp;    jlblImageTitle.setVerticalTextPosition(JLabel.BOTTOM);
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    <span class = "comment">// Set the font in the label and the text field</span>
+ 18&nbsp;&nbsp;    jlblImageTitle.setFont(<span class = "keyword">new</span> Font(<span class = "literal">"SansSerif"</span>, Font.BOLD, <span class = "literal">16</span>));
+ 19&nbsp;&nbsp;    jtaDescription.setFont(<span class = "keyword">new</span> Font(<span class = "literal">"Serif"</span>, Font.PLAIN, <span class = "literal">14</span>));
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;    <span class = "comment">// Set lineWrap and wrapStyleWord true for the text area</span>
+ 22&nbsp;&nbsp;    jtaDescription.setLineWrap(<span class = "keyword">true</span>);
+ 23&nbsp;&nbsp;    jtaDescription.setWrapStyleWord(<span class = "keyword">true</span>);
+ 24&nbsp;&nbsp;    jtaDescription.setEditable(<span class = "keyword">false</span>);
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;    <span class = "comment">// Create a scroll pane to hold the text area</span>
+ 27&nbsp;&nbsp;    JScrollPane scrollPane = <span class = "keyword">new</span> JScrollPane(jtaDescription);
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;    <span class = "comment">// Set BorderLayout for the panel, add label and scrollpane</span>
+ 30&nbsp;&nbsp;    setLayout(<span class = "keyword">new</span> BorderLayout(<span class = "literal">5</span>, <span class = "literal">5</span>));
+ 31&nbsp;&nbsp;    add(scrollPane, BorderLayout.CENTER);
+ 32&nbsp;&nbsp;    add(jlblImageTitle, BorderLayout.WEST);
+ 33&nbsp;&nbsp;  }
+ 34&nbsp;&nbsp;
+ 35&nbsp;&nbsp;  <span class = "comment">/** Set the title */</span>
+ 36&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setTitle(String title) {
+ 37&nbsp;&nbsp;    jlblImageTitle.setText(title);
+ 38&nbsp;&nbsp;  }
+ 39&nbsp;&nbsp;
+ 40&nbsp;&nbsp;  <span class = "comment">/** Set the image icon */</span>
+ 41&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setImageIcon(ImageIcon icon) {
+ 42&nbsp;&nbsp;    jlblImageTitle.setIcon(icon);
+ 43&nbsp;&nbsp;  }
+ 44&nbsp;&nbsp;
+ 45&nbsp;&nbsp;  <span class = "comment">/** Set the text description */</span>
+ 46&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setDescription(String text) {
+ 47&nbsp;&nbsp;    jtaDescription.setText(text);
+ 48&nbsp;&nbsp;  }
+ 49&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

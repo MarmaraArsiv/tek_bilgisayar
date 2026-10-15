@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ParityGameDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ParityGameDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.border.LineBorder;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ParityGameDemo <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">int</span> SIZE = <span class = "literal">10</span>;
+  <span class = "comment">// Create and initialize cells</span>
+  <span class = "keyword">private</span> Cell[][] cells =  <span class = "keyword">new</span> Cell[SIZE][SIZE];
+
+  <span class = "comment">/** Initialize UI */</span>
+  <span class = "keyword">public</span> ParityGameDemo() {
+    <span class = "comment">// Panel p to hold cells</span>
+    JPanel p = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> GridLayout(SIZE, SIZE, <span class = "literal">0</span>, <span class = "literal">0</span>));
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; SIZE; i++)
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> j = <span class = "literal">0</span>; j &lt; SIZE; j++)
+        p.add(cells[i][j] = <span class = "keyword">new</span> Cell());
+
+    <span class = "comment">// Set line borders on the cells panel and the status label</span>
+    p.setBorder(<span class = "keyword">new</span> LineBorder(Color.red, <span class = "literal">1</span>));
+
+    <span class = "comment">// Place the panel and the label to the applet</span>
+    add(p, BorderLayout.CENTER);
+  }
+
+  <span class = "comment">// An inner class for a cell</span>
+  <span class = "keyword">public</span> <span class = "keyword">class</span> Cell <span class = "keyword">extends</span> JPanel {
+    <span class = "comment">// Token used for this cell</span>
+    <span class = "keyword">private</span> <span class = "keyword">char</span> token = <span class = "literal">' '</span>;
+
+    <span class = "keyword">public</span> Cell() {
+      setBorder(<span class = "keyword">new</span> LineBorder(Color.black, <span class = "literal">1</span>)); <span class = "comment">// Set cell's border</span>
+      addMouseListener(<span class = "keyword">new</span> MyMouseListener());  <span class = "comment">// Register listener</span>
+    }
+
+    <span class = "comment">/** Return token */</span>
+    <span class = "keyword">public</span> <span class = "keyword">char</span> getToken() {
+      <span class = "keyword">return</span> token;
+    }
+
+    <span class = "comment">/** Set a new token */</span>
+    <span class = "keyword">public</span> <span class = "keyword">void</span> setToken(<span class = "keyword">char</span> c) {
+      token = c;
+      repaint();
+    }
+
+    @Override
+    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+      <span class = "keyword">super</span>.paintComponent(g);
+
+      <span class = "keyword">if</span> (token == <span class = "literal">'X'</span>) {
+        g.drawLine(<span class = "literal">10</span>, <span class = "literal">10</span>, getWidth() - <span class = "literal">10</span>, getHeight() - <span class = "literal">10</span>);
+        g.drawLine(getWidth() - <span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">10</span>, getHeight() - <span class = "literal">10</span>);
+      }
+    }
+
+    <span class = "keyword">private</span> <span class = "keyword">class</span> MyMouseListener <span class = "keyword">extends</span> MouseAdapter {
+      <span class = "comment">/** Handle mouse click on a cell */</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> mouseClicked(MouseEvent e) {
+        <span class = "comment">// If cell is empty and game is not over</span>
+        <span class = "keyword">if</span> (token == <span class = "literal">' '</span>) 
+          setToken(<span class = "literal">'X'</span>); <span class = "comment">// Set token in the cell</span>
+        <span class = "keyword">else</span> 
+          setToken(<span class = "literal">' '</span>); <span class = "comment">// Set token in the cell</span>
+      }
+    }
+  }
+
+  <span class = "comment">/** This main method enables the applet to run as an application */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a frame</span>
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"ParityGameDemo"</span>);
+
+    <span class = "comment">// Create an instance of the applet</span>
+    ParityGameDemo applet = <span class = "keyword">new</span> ParityGameDemo();
+
+    <span class = "comment">// Add the applet instance to the frame</span>
+    frame.add(applet, BorderLayout.CENTER);
+
+    <span class = "comment">// Display the frame</span>
+    frame.setSize(<span class = "literal">300</span>, <span class = "literal">300</span>);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestWindowEvent.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestWindowEventWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.JFrame;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestWindowEvent <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TestWindowEvent frame = <span class = "keyword">new</span> TestWindowEvent();
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setTitle(<span class = "literal">"TestWindowEvent"</span>);
+    frame.setSize(<span class = "literal">220</span>, <span class = "literal">80</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+
+  <span class = "keyword">public</span> TestWindowEvent() {
+    addWindowListener(<span class = "keyword">new</span> WindowListener() {
+      <span class = "comment">/**
+       * Handler for window deiconified event
+       * Invoked when a window is changed from a minimized
+       * to a normal state.
+       */</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> windowDeiconified(WindowEvent event) {
+        System.out.println(<span class = "literal">"Window deiconified"</span>);
+      }
+
+      <span class = "comment">/**
+       * Handler for window iconified event
+       * Invoked when a window is changed from a normal to a
+       * minimized state. For many platforms, a minimized window
+       * is displayed as the icon specified in the window's
+       * iconImage property.
+       */</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> windowIconified(WindowEvent event) {
+        System.out.println(<span class = "literal">"Window iconified"</span>);
+      }
+
+      <span class = "comment">/**
+       * Handler for window activated event
+       * Invoked when the window is set to be the user's
+       * active window, which means the window (or one of its
+       * subcomponents) will receive keyboard events.
+       */</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> windowActivated(WindowEvent event) {
+        System.out.println(<span class = "literal">"Window activated"</span>);
+      }
+
+      <span class = "comment">/**
+       * Handler for window deactivated event
+       * Invoked when a window is no longer the user's active
+       * window, which means that keyboard events will no longer
+       * be delivered to the window or its subcomponents.
+       */</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> windowDeactivated(WindowEvent event) {
+        System.out.println(<span class = "literal">"Window deactivated"</span>);
+      }
+
+      <span class = "comment">/**
+       * Handler for window opened event
+       * Invoked the first time a window is made visible.
+       */</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> windowOpened(WindowEvent event) {
+        System.out.println(<span class = "literal">"Window opened"</span>);
+      }
+
+      <span class = "comment">/**
+       * Handler for window closing event
+       * Invoked when the user attempts to close the window
+       * from the window's system menu.  If the program does not
+       * explicitly hide or dispose the window while processing
+       * this event, the window close operation will be cancelled.
+       */</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> windowClosing(WindowEvent event) {
+        System.out.println(<span class = "literal">"Window closing"</span>);
+      }
+
+      <span class = "comment">/**
+       * Handler for window closed event
+       * Invoked when a window has been closed as the result
+       * of calling dispose on the window.
+       */</span>
+      <span class = "keyword">public</span> <span class = "keyword">void</span> windowClosed(WindowEvent event) {
+        System.out.println(<span class = "literal">"Window closed"</span>);
+      }
+    });
+  }
+}
+</pre>
+</body>
+</html>

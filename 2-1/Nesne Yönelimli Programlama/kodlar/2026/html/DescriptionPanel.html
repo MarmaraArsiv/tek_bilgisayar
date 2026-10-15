@@ -1,0 +1,68 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DescriptionPanel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "DescriptionPanelWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> DescriptionPanel <span class = "keyword">extends</span> JPanel {
+  <span class = "comment">/** Label for displaying an image icon and a title */</span>
+  <span class = "keyword">private</span> JLabel jlblImageTitle = <span class = "keyword">new</span> JLabel();
+
+  <span class = "comment">/** Text area for displaying text */</span>
+  <span class = "keyword">private</span> JTextArea jtaDescription = <span class = "keyword">new</span> JTextArea();
+
+  <span class = "keyword">public</span> DescriptionPanel() {
+    <span class = "comment">// Center the icon and text and place the text under the icon</span>
+    jlblImageTitle.setHorizontalAlignment(JLabel.CENTER);
+    jlblImageTitle.setHorizontalTextPosition(JLabel.CENTER);
+    jlblImageTitle.setVerticalTextPosition(JLabel.BOTTOM);
+
+    <span class = "comment">// Set the font in the label and the text field</span>
+    jlblImageTitle.setFont(<span class = "keyword">new</span> Font(<span class = "literal">"SansSerif"</span>, Font.BOLD, <span class = "literal">16</span>));
+    jtaDescription.setFont(<span class = "keyword">new</span> Font(<span class = "literal">"Serif"</span>, Font.PLAIN, <span class = "literal">14</span>));
+
+    <span class = "comment">// Set lineWrap and wrapStyleWord true for the text area</span>
+    jtaDescription.setLineWrap(<span class = "keyword">true</span>);
+    jtaDescription.setWrapStyleWord(<span class = "keyword">true</span>);
+    jtaDescription.setEditable(<span class = "keyword">false</span>);
+
+    <span class = "comment">// Create a scroll pane to hold the text area</span>
+    JScrollPane scrollPane = <span class = "keyword">new</span> JScrollPane(jtaDescription);
+
+    <span class = "comment">// Set BorderLayout for the panel, add label and scrollpane</span>
+    setLayout(<span class = "keyword">new</span> BorderLayout(<span class = "literal">5</span>, <span class = "literal">5</span>));
+    add(scrollPane, BorderLayout.CENTER);
+    add(jlblImageTitle, BorderLayout.WEST);
+  }
+
+  <span class = "comment">/** Set the title */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setTitle(String title) {
+    jlblImageTitle.setText(title);
+  }
+
+  <span class = "comment">/** Set the image icon */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setImageIcon(ImageIcon icon) {
+    jlblImageTitle.setIcon(icon);
+  }
+
+  <span class = "comment">/** Set the text description */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setDescription(String text) {
+    jtaDescription.setText(text);
+  }
+}
+</pre>
+</body>
+</html>

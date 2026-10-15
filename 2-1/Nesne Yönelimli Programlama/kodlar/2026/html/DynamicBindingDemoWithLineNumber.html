@@ -1,0 +1,56 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DynamicBindingDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "DynamicBindingDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> DynamicBindingDemo {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  3&nbsp;&nbsp;    m(<span class = "keyword">new</span> GraduateStudent());
+  4&nbsp;&nbsp;    m(<span class = "keyword">new</span> Student());
+  5&nbsp;&nbsp;    m(<span class = "keyword">new</span> Person());
+  6&nbsp;&nbsp;    m(<span class = "keyword">new</span> Object());
+  7&nbsp;&nbsp;  }
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> m(Object x) {
+ 10&nbsp;&nbsp;    System.out.println(x.toString());
+ 11&nbsp;&nbsp;  }
+ 12&nbsp;&nbsp;}
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;<span class = "keyword">class</span> GraduateStudent <span class = "keyword">extends</span> Student {
+ 15&nbsp;&nbsp;}
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;<span class = "keyword">class</span> Student <span class = "keyword">extends</span> Person {
+ 18&nbsp;&nbsp;  @Override 
+ 19&nbsp;&nbsp;  <span class = "keyword">public</span> String toString() {
+ 20&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"Student"</span>;
+ 21&nbsp;&nbsp;  }
+ 22&nbsp;&nbsp;}
+ 23&nbsp;&nbsp;
+ 24&nbsp;&nbsp;<span class = "keyword">class</span> Person <span class = "keyword">extends</span> Object {
+ 25&nbsp;&nbsp;  @Override 
+ 26&nbsp;&nbsp;  <span class = "keyword">public</span> String toString() {
+ 27&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "literal">"Person"</span>;
+ 28&nbsp;&nbsp;  }
+ 29&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "DynamicBindingDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

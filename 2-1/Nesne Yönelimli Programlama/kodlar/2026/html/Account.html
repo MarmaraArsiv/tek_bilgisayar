@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - Account.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">// Account.java: The class for describing an account
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> Account {
+  <FONT COLOR="#008000">// Two data fields in an account
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> id;
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> balance;
+
+  <FONT COLOR="#008000">/** Construct an account with specified id and balance */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> Account(<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> id, <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> balance) {
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.id = id;
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.balance = balance;
+  }
+
+  <FONT COLOR="#008000">/** Return id */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> getId() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> id;
+  }
+
+  <FONT COLOR="#008000">/** Setter method for balance */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> setBalance(<FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> balance) {
+    <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.balance = balance;
+  }
+
+  <FONT COLOR="#008000">/** Return balance */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> getBalance() {
+    <FONT COLOR="#000080"><B>return</B></FONT><FONT COLOR="#000000"> balance;
+  }
+
+  <FONT COLOR="#008000">/** Deposit an amount to this account */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> deposit(<FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> amount)
+    <FONT COLOR="#000080"><B>throws</B></FONT><FONT COLOR="#000000"> NegativeAmountException {
+    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (amount &lt; <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">)
+      <FONT COLOR="#000080"><B>throw</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> NegativeAmountException
+        (<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">, amount, <FONT COLOR="#0000ff">"deposit"</FONT>);
+    balance = balance + amount;
+  }
+
+  <FONT COLOR="#008000">/** Withdraw an amount from this account */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> withdraw(<FONT COLOR="#000080"><B>double</B></FONT><FONT COLOR="#000000"> amount)
+    <FONT COLOR="#000080"><B>throws</B></FONT><FONT COLOR="#000000"> NegativeAmountException, InsufficientFundException {
+    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (amount &lt; <FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">)
+      <FONT COLOR="#000080"><B>throw</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> NegativeAmountException
+        (<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">, amount, <FONT COLOR="#0000ff">"withdraw"</FONT>);
+    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (balance &lt; amount)
+      <FONT COLOR="#000080"><B>throw</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> InsufficientFundException(<FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">, amount);
+    balance = balance - amount;
+  }
+}
+</pre>

@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - AnimationDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "AnimationDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> AnimationDemo <span class = "keyword">extends</span> JFrame {
+  6&nbsp;&nbsp;  <span class = "keyword">public</span> AnimationDemo() {
+  7&nbsp;&nbsp;    <span class = "comment">// Create two MovingMessagePanel for displaying two moving messages</span>
+  8&nbsp;&nbsp;    <span class = "keyword">this</span>.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">1</span>));
+  9&nbsp;&nbsp;    add(<span class = "keyword">new</span> MovingMessagePanel(<span class = "literal">"message <span class = "literal">1</span> moving?"</span>));
+ 10&nbsp;&nbsp;    add(<span class = "keyword">new</span> MovingMessagePanel(<span class = "literal">"message <span class = "literal">2</span> moving?"</span>));
+ 11&nbsp;&nbsp;  }
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 14&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 15&nbsp;&nbsp;    AnimationDemo frame = <span class = "keyword">new</span> AnimationDemo();
+ 16&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"AnimationDemo"</span>);
+ 17&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+ 18&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 19&nbsp;&nbsp;    frame.setSize(<span class = "literal">280</span>, <span class = "literal">100</span>);
+ 20&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 21&nbsp;&nbsp;  }
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;  <span class = "comment">// Inner class: Displaying a moving message</span>
+ 24&nbsp;&nbsp;  <span class = "keyword">static</span> <span class = "keyword">class</span> MovingMessagePanel <span class = "keyword">extends</span> JPanel {
+ 25&nbsp;&nbsp;    <span class = "keyword">private</span> String message = <span class = "literal">"Welcome to Java"</span>;
+ 26&nbsp;&nbsp;    <span class = "keyword">private</span> <span class = "keyword">int</span> xCoordinate = <span class = "literal">0</span>;
+ 27&nbsp;&nbsp;    <span class = "keyword">private</span> <span class = "keyword">int</span> yCoordinate = <span class = "literal">20</span>;
+ 28&nbsp;&nbsp;    <span class = "keyword">private</span> Timer timer = <span class = "keyword">new</span> Timer(<span class = "literal">1000</span>, <span class = "keyword">new</span> TimerListener());
+ 29&nbsp;&nbsp;     
+ 30&nbsp;&nbsp;    <span class = "keyword">public</span> MovingMessagePanel(String message) {
+ 31&nbsp;&nbsp;      <span class = "keyword">this</span>.message = message;
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;      <span class = "comment">// Start timer for animation</span>
+ 34&nbsp;&nbsp;      timer.start();
+ 35&nbsp;&nbsp;      
+ 36&nbsp;&nbsp;      <span class = "comment">// Control animation speed using mouse buttons</span>
+ 37&nbsp;&nbsp;      <span class = "keyword">this</span>.addMouseListener(<span class = "keyword">new</span> MouseAdapter() {
+ 38&nbsp;&nbsp;        @Override 
+ 39&nbsp;&nbsp;        <span class = "keyword">public</span> <span class = "keyword">void</span> mouseClicked(MouseEvent e) {
+ 40&nbsp;&nbsp;          <span class = "keyword">int</span> delay = timer.getDelay();
+ 41&nbsp;&nbsp;      	  <span class = "keyword">if</span> (e.getButton() == MouseEvent.BUTTON1) 
+ 42&nbsp;&nbsp;      	    timer.setDelay(delay &gt; <span class = "literal">10</span> ? delay - <span class = "literal">10</span> : <span class = "literal">0</span>);
+ 43&nbsp;&nbsp;      	  <span class = "keyword">else</span> <span class = "keyword">if</span> (e.getButton() == MouseEvent.BUTTON3) 
+ 44&nbsp;&nbsp;      	    timer.setDelay(delay &lt; <span class = "literal">50000</span> ? delay + <span class = "literal">10</span> : <span class = "literal">50000</span>);
+ 45&nbsp;&nbsp;      	}
+ 46&nbsp;&nbsp;      });
+ 47&nbsp;&nbsp;    }
+ 48&nbsp;&nbsp;
+ 49&nbsp;&nbsp;    @Override
+ 50&nbsp;&nbsp;    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+ 51&nbsp;&nbsp;      <span class = "keyword">super</span>.paintComponent(g);
+ 52&nbsp;&nbsp;
+ 53&nbsp;&nbsp;      <span class = "keyword">if</span> (xCoordinate &gt; getWidth()) {
+ 54&nbsp;&nbsp;        xCoordinate = <span class = "literal">-</span><span class = "literal">20</span>;
+ 55&nbsp;&nbsp;      }
+ 56&nbsp;&nbsp;      xCoordinate += <span class = "literal">5</span>;
+ 57&nbsp;&nbsp;      g.drawString(message, xCoordinate, yCoordinate);
+ 58&nbsp;&nbsp;    }
+ 59&nbsp;&nbsp;
+ 60&nbsp;&nbsp;    <span class = "keyword">class</span> TimerListener <span class = "keyword">implements</span> ActionListener {
+ 61&nbsp;&nbsp;      @Override 
+ 62&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 63&nbsp;&nbsp;        repaint();
+ 64&nbsp;&nbsp;      }
+ 65&nbsp;&nbsp;    }
+ 66&nbsp;&nbsp;  }
+ 67&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

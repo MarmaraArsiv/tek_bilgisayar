@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestContinue.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestContinueWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestContinue {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "keyword">int</span> sum = <span class = "literal">0</span>;
+    <span class = "keyword">int</span> number = <span class = "literal">0</span>;
+
+    <span class = "keyword">while</span> (number &lt; <span class = "literal">20</span>) {
+      number++;
+      <span class = "keyword">if</span> (number == <span class = "literal">10</span> || number == <span class = "literal">11</span>) 
+        <span class = "keyword">continue</span>;
+      sum += number;
+    }
+
+    System.out.println(<span class = "literal">"The sum is "</span> + sum);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestContinue" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

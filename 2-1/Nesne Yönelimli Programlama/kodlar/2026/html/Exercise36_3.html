@@ -1,0 +1,146 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - Exercise36_3.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> java.sql.*;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.table.AbstractTableModel;
+<span class = "keyword">import</span> javax.swing.table.TableModel;
+<span class = "keyword">import</span> javax.swing.table.TableRowSorter;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> Exercise36_3 <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> TableEditor tableEditor1 = <span class = "keyword">new</span> TableEditor();
+  <span class = "keyword">private</span> JTable jTable1 = <span class = "keyword">new</span> JTable();
+
+  <span class = "comment">/** Creates new form TestTableEditor */</span>
+  <span class = "keyword">public</span> Exercise36_3() {
+    <span class = "keyword">try</span> {
+      Class.forName(<span class = "literal">"oracle.jdbc.driver.OracleDriver"</span>);
+      Connection connection = DriverManager.getConnection(
+        <span class = "literal">"jdbc:oracle:thin:@tiger.armstrong.edu:1521:orcl"</span>,
+        <span class = "literal">"scott"</span>, <span class = "literal">"tiger"</span>);
+
+      <span class = "comment">// Create a statement</span>
+      Statement statement = connection.createStatement(
+        ResultSet.TYPE_SCROLL_INSENSITIVE,
+        ResultSet.CONCUR_UPDATABLE);
+
+      <span class = "comment">// Execute a statement</span>
+      ResultSet resultSet = statement.executeQuery
+        (<span class = "literal">"select * from Course"</span>);
+
+      ResultSetTableModel model = <span class = "keyword">new</span> ResultSetTableModel(resultSet);
+      jTable1.setModel(model);
+
+      <span class = "comment">// Enable auto sort on columns</span>
+      TableRowSorter&lt;TableModel&gt; sorter =
+        <span class = "keyword">new</span> TableRowSorter&lt;TableModel&gt;(model);
+      jTable1.setRowSorter(sorter);
+    }
+    <span class = "keyword">catch</span> (Exception ex) {
+      ex.printStackTrace();
+    }
+
+    add(<span class = "keyword">new</span> JScrollPane(jTable1), BorderLayout.CENTER);
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    Exercise36_3 applet = <span class = "keyword">new</span> Exercise36_3();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"Exercise36_3"</span>);
+    frame.add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.pack();
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+
+<span class = "keyword">class</span> ResultSetTableModel <span class = "keyword">extends</span> AbstractTableModel {
+  <span class = "comment">// RowSet for the result set</span>
+  <span class = "keyword">private</span> ResultSet resultSet;
+
+  <span class = "comment">/** Return the ResultSet */</span>
+  <span class = "keyword">public</span> ResultSet getResultSet() {
+
+    <span class = "keyword">return</span> resultSet;
+  }
+
+  <span class = "keyword">public</span> ResultSetTableModel(ResultSet resultSet) {
+    setResultSet(resultSet);
+  }
+
+  <span class = "comment">/** Set a new ResultSet */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setResultSet(ResultSet resultSet) {
+    <span class = "keyword">this</span>.resultSet = resultSet;
+    fireTableStructureChanged();
+  }
+
+  <span class = "comment">/** Return the number of rows in the row set */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getRowCount() {
+    <span class = "keyword">try</span> {
+      resultSet.last();
+      <span class = "keyword">return</span> resultSet.getRow();
+    }
+    <span class = "keyword">catch</span> (Exception ex) {
+      ex.printStackTrace();
+    }
+
+    <span class = "keyword">return</span> <span class = "literal">0</span>;
+  }
+
+  <span class = "comment">/** Return the number of columns in the row set */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getColumnCount() {
+    <span class = "keyword">try</span> {
+      <span class = "keyword">if</span> (resultSet != <span class = "keyword">null</span>) {
+        <span class = "keyword">return</span> resultSet.getMetaData().getColumnCount();
+      }
+    }
+    <span class = "keyword">catch</span> (SQLException ex) {
+      ex.printStackTrace();
+    }
+
+    <span class = "keyword">return</span> <span class = "literal">0</span>;
+  }
+
+  <span class = "comment">/** Return value at the specified row and column */</span>
+  <span class = "keyword">public</span> Object getValueAt(<span class = "keyword">int</span> row, <span class = "keyword">int</span> column) {
+    <span class = "keyword">try</span> {
+      resultSet.absolute(row + <span class = "literal">1</span>);
+      <span class = "keyword">return</span> resultSet.getObject(column + <span class = "literal">1</span>);
+    }
+    <span class = "keyword">catch</span> (SQLException sqlex) {
+      sqlex.printStackTrace();
+    }
+
+    <span class = "keyword">return</span> <span class = "keyword">null</span>;
+  }
+
+  <span class = "comment">/** Return the column name at a specified column */</span>
+  <span class = "keyword">public</span> String getColumnName(<span class = "keyword">int</span> column) {
+    <span class = "keyword">try</span> {
+      <span class = "keyword">return</span> resultSet.getMetaData().getColumnLabel(column + <span class = "literal">1</span>);
+    }
+    <span class = "keyword">catch</span> (SQLException ex) {
+      ex.printStackTrace();
+    }
+
+    <span class = "keyword">return</span> <span class = "literal">""</span>;
+  }
+}
+</pre>
+</body>
+</html>

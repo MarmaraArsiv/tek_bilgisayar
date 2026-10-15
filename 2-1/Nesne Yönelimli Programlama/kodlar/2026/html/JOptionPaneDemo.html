@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - JOptionPaneDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "JOptionPaneDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> JOptionPaneDemo {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String args[]) {
+    <span class = "comment">// Create an array for annual interest rates</span>
+    Object[] rateList = <span class = "keyword">new</span> Object[<span class = "literal">25</span>];
+    <span class = "keyword">int</span> i = <span class = "literal">0</span>;
+    <span class = "keyword">for</span> (<span class = "keyword">double</span> rate = <span class = "literal">5</span>; rate &lt;= <span class = "literal">8</span>; rate += <span class = "literal">1</span><span class = "literal">.</span><span class = "literal">0</span> / <span class = "literal">8</span>)
+      rateList[i++] = <span class = "keyword">new</span> Double(rate);
+
+    <span class = "comment">// Prompt the user to select an annual interest rate</span>
+    Object annualInterstRateObject = JOptionPane.showInputDialog(
+      <span class = "keyword">null</span>, <span class = "literal">"Select annual interest rate:"</span>, <span class = "literal">"JOptionPaneDemo"</span>,
+      JOptionPane.QUESTION_MESSAGE, <span class = "keyword">null</span>, rateList, <span class = "keyword">null</span>);
+    <span class = "keyword">double</span> annualInterestRate =
+      ((Double)annualInterstRateObject).doubleValue();
+
+    <span class = "comment">// Create an array for number of years</span>
+    Object[] yearList = {<span class = "keyword">new</span> Integer(<span class = "literal">7</span>), <span class = "keyword">new</span> Integer(<span class = "literal">15</span>),
+      <span class = "keyword">new</span> Integer(<span class = "literal">30</span>)};
+
+    <span class = "comment">// Prompt the user to enter number of years</span>
+    Object numberOfYearsObject = JOptionPane.showInputDialog(<span class = "keyword">null</span>,
+      <span class = "literal">"Select number of years:"</span>, <span class = "literal">"JOptionPaneDemo"</span>,
+      JOptionPane.QUESTION_MESSAGE, <span class = "keyword">null</span>, yearList, <span class = "keyword">null</span>);
+    <span class = "keyword">int</span> numberOfYears = ((Integer)numberOfYearsObject).intValue();
+
+    <span class = "comment">// Prompt the user to enter loan amount</span>
+    String loanAmountString = JOptionPane.showInputDialog(<span class = "keyword">null</span>,
+      <span class = "literal">"Enter loan amount,\nfor example, <span class = "literal">150000</span> for $150000"</span>,
+      <span class = "literal">"JOptionPaneDemo"</span>, JOptionPane.QUESTION_MESSAGE);
+    <span class = "keyword">double</span> loanAmount = Double.parseDouble(loanAmountString);
+
+    <span class = "comment">// Obtain monthly payment and total payment</span>
+    Loan loan = <span class = "keyword">new</span> Loan(
+      annualInterestRate, numberOfYears, loanAmount);
+    <span class = "keyword">double</span> monthlyPayment = loan.getMonthlyPayment();
+    <span class = "keyword">double</span> totalPayment = loan.getTotalPayment();
+
+    <span class = "comment">// Prepare output string</span>
+    String output = <span class = "literal">"Interest Rate: "</span> + annualInterestRate + <span class = "literal">"%"</span> +
+      <span class = "literal">" Number of Years: "</span> + numberOfYears + <span class = "literal">" Loan Amount: $"</span>
+      + loanAmount;
+    output += <span class = "literal">"\nMonthly Payment: "</span> + <span class = "literal">"$"</span> +
+      (<span class = "keyword">int</span>)(monthlyPayment * <span class = "literal">100</span>) / <span class = "literal">100</span><span class = "literal">.</span><span class = "literal">0</span>;
+    output += <span class = "literal">"\nTotal Payment: $"</span> +
+      (<span class = "keyword">int</span>)(monthlyPayment * <span class = "literal">12</span> * numberOfYears * <span class = "literal">100</span>) / <span class = "literal">100</span><span class = "literal">.</span><span class = "literal">0</span> + <span class = "literal">"\n"</span>;
+
+    <span class = "comment">// Obtain monthly interest rate</span>
+    <span class = "keyword">double</span> monthlyInterestRate = annualInterestRate / <span class = "literal">1200</span>;
+
+    <span class = "keyword">double</span> balance = loanAmount;
+    <span class = "keyword">double</span> interest;
+    <span class = "keyword">double</span> principal;
+
+    <span class = "comment">// Display the header</span>
+    output += <span class = "literal">"\nPayment#\tInterest\tPrincipal\tBalance\n"</span>;
+
+    <span class = "keyword">for</span> (i = <span class = "literal">1</span>; i &lt;= numberOfYears * <span class = "literal">12</span>; i++) {
+      interest = (<span class = "keyword">int</span>)(monthlyInterestRate * balance * <span class = "literal">100</span>) / <span class = "literal">100</span><span class = "literal">.</span><span class = "literal">0</span>;
+      principal = (<span class = "keyword">int</span>)((monthlyPayment - interest) * <span class = "literal">100</span>) / <span class = "literal">100</span><span class = "literal">.</span><span class = "literal">0</span>;
+      balance = (<span class = "keyword">int</span>)((balance - principal) * <span class = "literal">100</span>) / <span class = "literal">100</span><span class = "literal">.</span><span class = "literal">0</span>;
+      output += i + <span class = "literal">"\t"</span> + interest + <span class = "literal">"\t"</span> + principal + <span class = "literal">"\t"</span> +
+        balance + <span class = "literal">"\n"</span>;
+    }
+
+    <span class = "comment">// Display monthly payment and total payment</span>
+    JScrollPane jsp = <span class = "keyword">new</span> JScrollPane(<span class = "keyword">new</span> JTextArea(output));
+    jsp.setPreferredSize(<span class = "keyword">new</span> java.awt.Dimension(<span class = "literal">400</span>, <span class = "literal">200</span>));
+    JOptionPane.showMessageDialog(<span class = "keyword">null</span>, jsp,
+      <span class = "literal">"JOptionPaneDemo"</span>, JOptionPane.INFORMATION_MESSAGE, <span class = "keyword">null</span>);
+  }
+}
+</pre>
+</body>
+</html>

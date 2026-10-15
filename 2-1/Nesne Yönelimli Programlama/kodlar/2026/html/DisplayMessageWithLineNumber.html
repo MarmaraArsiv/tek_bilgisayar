@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DisplayMessage.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "DisplayMessage.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> DisplayMessage <span class = "keyword">extends</span> JApplet {
+  4&nbsp;&nbsp;  <span class = "comment">/** Initialize the applet */</span>
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> init() {
+  6&nbsp;&nbsp;    <span class = "comment">// Get parameter values from the HTML file</span>
+  7&nbsp;&nbsp;    String message = getParameter(<span class = "literal">"MESSAGE"</span>);
+  8&nbsp;&nbsp;    <span class = "keyword">int</span> x = Integer.parseInt(getParameter(<span class = "literal">"X"</span>));
+  9&nbsp;&nbsp;    <span class = "keyword">int</span> y = Integer.parseInt(getParameter(<span class = "literal">"Y"</span>));
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;    <span class = "comment">// Create a message panel</span>
+ 12&nbsp;&nbsp;    MessagePanel messagePanel = <span class = "keyword">new</span> MessagePanel(message);
+ 13&nbsp;&nbsp;    messagePanel.setXCoordinate(x);
+ 14&nbsp;&nbsp;    messagePanel.setYCoordinate(y);
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;    <span class = "comment">// Add the message panel to the applet</span>
+ 17&nbsp;&nbsp;    add(messagePanel);
+ 18&nbsp;&nbsp;  }
+ 19&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

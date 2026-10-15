@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestMessagePanel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestMessagePanelWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestMessagePanel <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">public</span> TestMessagePanel() {
+    MessagePanel messagePanel1 = <span class = "keyword">new</span> MessagePanel(<span class = "literal">"Wecome to Java"</span>);
+    MessagePanel messagePanel2 = <span class = "keyword">new</span> MessagePanel(<span class = "literal">"Java is fun"</span>);
+    MessagePanel messagePanel3 = <span class = "keyword">new</span> MessagePanel(<span class = "literal">"Java is cool"</span>);
+    MessagePanel messagePanel4 = <span class = "keyword">new</span> MessagePanel(<span class = "literal">"I love Java"</span>);
+    messagePanel1.setFont(<span class = "keyword">new</span> Font(<span class = "literal">"SansSerif"</span>, Font.ITALIC, <span class = "literal">20</span>));
+    messagePanel2.setFont(<span class = "keyword">new</span> Font(<span class = "literal">"Courie"</span>, Font.BOLD, <span class = "literal">20</span>));
+    messagePanel3.setFont(<span class = "keyword">new</span> Font(<span class = "literal">"Times"</span>, Font.ITALIC, <span class = "literal">20</span>));
+    messagePanel4.setFont(<span class = "keyword">new</span> Font(<span class = "literal">"Californian FB"</span>, Font.PLAIN, <span class = "literal">20</span>));
+    messagePanel1.setBackground(Color.red);
+    messagePanel2.setBackground(Color.cyan);
+    messagePanel3.setBackground(Color.green);
+    messagePanel4.setBackground(Color.white);
+    messagePanel1.setCentered(<span class = "keyword">true</span>);
+
+    setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">2</span>, <span class = "literal">2</span>));
+    add(messagePanel1);
+    add(messagePanel2);
+    add(messagePanel3);
+    add(messagePanel4);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TestMessagePanel frame = <span class = "keyword">new</span> TestMessagePanel();
+    frame.setSize(<span class = "literal">300</span>, <span class = "literal">200</span>);
+    frame.setTitle(<span class = "literal">"TestMessagePanel"</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

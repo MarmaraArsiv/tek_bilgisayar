@@ -1,0 +1,170 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - CalendarPanel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "CalendarPanelWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.border.LineBorder;
+<span class = "keyword">import</span> java.util.*;
+<span class = "keyword">import</span> java.text.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> CalendarPanel <span class = "keyword">extends</span> JPanel {
+  <span class = "comment">// The header label</span>
+  <span class = "keyword">private</span> JLabel jlblHeader = <span class = "keyword">new</span> JLabel(<span class = "literal">" "</span>, JLabel.CENTER);
+
+  <span class = "comment">// Maximun number of labels to display day names and days</span>
+  <span class = "keyword">private</span> JLabel[] jlblDay = <span class = "keyword">new</span> JLabel[<span class = "literal">49</span>];
+
+  <span class = "keyword">private</span> java.util.Calendar calendar;
+  <span class = "keyword">private</span> <span class = "keyword">int</span> month;  <span class = "comment">// The specified month</span>
+  <span class = "keyword">private</span> <span class = "keyword">int</span> year;  <span class = "comment">// The specified year</span>
+
+  <span class = "comment">// Panel jpDays to hold day names and days</span>
+  <span class = "keyword">private</span> JPanel jpDays = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> GridLayout(<span class = "literal">0</span>, <span class = "literal">7</span>));
+
+  <span class = "keyword">public</span> CalendarPanel() {
+    <span class = "comment">// Create labels for displaying days</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">49</span>; i++) {
+      jlblDay[i] = <span class = "keyword">new</span> JLabel();
+      jlblDay[i].setBorder(<span class = "keyword">new</span> LineBorder(Color.black, <span class = "literal">1</span>));
+      jlblDay[i].setHorizontalAlignment(JLabel.RIGHT);
+      jlblDay[i].setVerticalAlignment(JLabel.TOP);
+    }
+
+    <span class = "comment">// Place header and calendar body in the panel</span>
+    <span class = "keyword">this</span>.setLayout(<span class = "keyword">new</span> BorderLayout());
+    <span class = "keyword">this</span>.add(jlblHeader, BorderLayout.NORTH);
+    <span class = "keyword">this</span>.add(jpDays, BorderLayout.CENTER);
+
+    <span class = "comment">// Set current month and year</span>
+    calendar = <span class = "keyword">new</span> GregorianCalendar();
+    month = calendar.get(Calendar.MONTH);
+    year = calendar.get(Calendar.YEAR);
+    updateCalendar();
+
+    <span class = "comment">// Show calendar</span>
+    showHeader();
+    showDays();
+  }
+
+  <span class = "comment">/** Update the header based on locale */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> showHeader() {
+    SimpleDateFormat sdf =
+      <span class = "keyword">new</span> SimpleDateFormat(<span class = "literal">"MMMM yyyy"</span>, getLocale());
+    String header = sdf.format(calendar.getTime());
+    jlblHeader.setText(header);
+  }
+
+  <span class = "comment">/** Update the day names based on locale */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> showDayNames() {
+    DateFormatSymbols dfs = <span class = "keyword">new</span> DateFormatSymbols(getLocale());
+    String dayNames[] = dfs.getWeekdays();
+
+    <span class = "comment">// jlblDay[0], jlblDay[1], ..., jlblDay[6] for day names</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">7</span>; i++) {
+      jlblDay[i].setText(dayNames[i + <span class = "literal">1</span>]);
+      jlblDay[i].setHorizontalAlignment(JLabel.CENTER);
+      jpDays.add(jlblDay[i]); <span class = "comment">// Add to jpDays</span>
+    }
+  }
+
+  <span class = "comment">/** Display days */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> showDays() {
+    jpDays.removeAll(); <span class = "comment">// Remove all labels from jpDays</span>
+
+    showDayNames(); <span class = "comment">// Display day names</span>
+
+    <span class = "comment">// Get the day of the first day in a month</span>
+    <span class = "keyword">int</span> startingDayOfMonth = calendar.get(Calendar.DAY_OF_WEEK);
+
+    <span class = "comment">// Fill the calendar with the days before this month</span>
+    Calendar cloneCalendar = (Calendar)calendar.clone();
+    cloneCalendar.add(Calendar.DATE, <span class = "literal">-</span><span class = "literal">1</span>); <span class = "comment">// Becomes preceding month</span>
+    <span class = "keyword">int</span> daysInPrecedingMonth = cloneCalendar.getActualMaximum(
+          Calendar.DAY_OF_MONTH);
+
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; startingDayOfMonth - <span class = "literal">1</span>; i++) {
+      jlblDay[i + <span class = "literal">7</span>].setForeground(Color.LIGHT_GRAY);
+      jlblDay[i + <span class = "literal">7</span>].setText(daysInPrecedingMonth -
+        startingDayOfMonth + <span class = "literal">2</span> + i + <span class = "literal">""</span>);
+      jpDays.add(jlblDay[i + <span class = "literal">7</span>]); <span class = "comment">// Add to jpDays</span>
+    }
+
+    <span class = "comment">// Display days of this month</span>
+    <span class = "keyword">int</span> daysInCurrentMonth = calendar.getActualMaximum(
+          Calendar.DAY_OF_MONTH);
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">1</span>; i &lt;= daysInCurrentMonth; i++) {
+      jlblDay[i - <span class = "literal">2</span> + startingDayOfMonth + <span class = "literal">7</span>].
+        setForeground(Color.black);
+      jlblDay[i - <span class = "literal">2</span> + startingDayOfMonth + <span class = "literal">7</span>].setText(i + <span class = "literal">""</span>);
+      jpDays.add(jlblDay[i - <span class = "literal">2</span> + startingDayOfMonth + <span class = "literal">7</span>]);
+    }
+
+    <span class = "comment">// Fill the calendar with the days after this month</span>
+    <span class = "keyword">int</span> j = <span class = "literal">1</span>;
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = daysInCurrentMonth - <span class = "literal">1</span> + startingDayOfMonth + <span class = "literal">7</span>;
+        i % <span class = "literal">7</span> != <span class = "literal">0</span>; i++) {
+      jlblDay[i].setForeground(Color.LIGHT_GRAY);
+      jlblDay[i].setText(j++ + <span class = "literal">""</span>);
+      jpDays.add(jlblDay[i]); <span class = "comment">// Add to jpDays</span>
+    }
+
+    jpDays.repaint(); <span class = "comment">// Repaint the labels in jpDays</span>
+  }
+
+  <span class = "comment">/** Set the calendar to the first day of the
+    * specified month and year */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> updateCalendar() {
+    calendar.set(Calendar.YEAR, year);
+    calendar.set(Calendar.MONTH, month);
+    calendar.set(Calendar.DATE, <span class = "literal">1</span>);
+  }
+
+  <span class = "comment">/** Return month */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getMonth() {
+    <span class = "keyword">return</span> month;
+  }
+
+  <span class = "comment">/** Set a new month */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setMonth(<span class = "keyword">int</span> newMonth) {
+    month = newMonth;
+    updateCalendar();
+    showHeader();
+    showDays();
+  }
+
+  <span class = "comment">/** Return year */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getYear() {
+    <span class = "keyword">return</span> year;
+  }
+
+  <span class = "comment">/** Set a new year */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setYear(<span class = "keyword">int</span> newYear) {
+    year = newYear;
+    updateCalendar();
+    showHeader();
+    showDays();
+  }
+
+  <span class = "comment">/** Set a new locale */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> changeLocale(Locale newLocale) {
+    setLocale(newLocale);
+    showHeader();
+    showDays();
+  }
+}
+</pre>
+</body>
+</html>

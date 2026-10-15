@@ -1,0 +1,64 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestDFS.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestDFSWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestDFS {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    String[] vertices = {<span class = "literal">"Seattle"</span>, <span class = "literal">"San Francisco"</span>, <span class = "literal">"Los Angeles"</span>,
+      <span class = "literal">"Denver"</span>, <span class = "literal">"Kansas City"</span>, <span class = "literal">"Chicago"</span>, <span class = "literal">"Boston"</span>, <span class = "literal">"New York"</span>,
+      <span class = "literal">"Atlanta"</span>, <span class = "literal">"Miami"</span>, <span class = "literal">"Dallas"</span>, <span class = "literal">"Houston"</span>};
+
+    <span class = "keyword">int</span>[][] edges = {
+      {<span class = "literal">0</span>, <span class = "literal">1</span>}, {<span class = "literal">0</span>, <span class = "literal">3</span>}, {<span class = "literal">0</span>, <span class = "literal">5</span>},
+      {<span class = "literal">1</span>, <span class = "literal">0</span>}, {<span class = "literal">1</span>, <span class = "literal">2</span>}, {<span class = "literal">1</span>, <span class = "literal">3</span>},
+      {<span class = "literal">2</span>, <span class = "literal">1</span>}, {<span class = "literal">2</span>, <span class = "literal">3</span>}, {<span class = "literal">2</span>, <span class = "literal">4</span>}, {<span class = "literal">2</span>, <span class = "literal">10</span>},
+      {<span class = "literal">3</span>, <span class = "literal">0</span>}, {<span class = "literal">3</span>, <span class = "literal">1</span>}, {<span class = "literal">3</span>, <span class = "literal">2</span>}, {<span class = "literal">3</span>, <span class = "literal">4</span>}, {<span class = "literal">3</span>, <span class = "literal">5</span>},
+      {<span class = "literal">4</span>, <span class = "literal">2</span>}, {<span class = "literal">4</span>, <span class = "literal">3</span>}, {<span class = "literal">4</span>, <span class = "literal">5</span>}, {<span class = "literal">4</span>, <span class = "literal">7</span>}, {<span class = "literal">4</span>, <span class = "literal">8</span>}, {<span class = "literal">4</span>, <span class = "literal">10</span>},
+      {<span class = "literal">5</span>, <span class = "literal">0</span>}, {<span class = "literal">5</span>, <span class = "literal">3</span>}, {<span class = "literal">5</span>, <span class = "literal">4</span>}, {<span class = "literal">5</span>, <span class = "literal">6</span>}, {<span class = "literal">5</span>, <span class = "literal">7</span>},
+      {<span class = "literal">6</span>, <span class = "literal">5</span>}, {<span class = "literal">6</span>, <span class = "literal">7</span>},
+      {<span class = "literal">7</span>, <span class = "literal">4</span>}, {<span class = "literal">7</span>, <span class = "literal">5</span>}, {<span class = "literal">7</span>, <span class = "literal">6</span>}, {<span class = "literal">7</span>, <span class = "literal">8</span>},
+      {<span class = "literal">8</span>, <span class = "literal">4</span>}, {<span class = "literal">8</span>, <span class = "literal">7</span>}, {<span class = "literal">8</span>, <span class = "literal">9</span>}, {<span class = "literal">8</span>, <span class = "literal">10</span>}, {<span class = "literal">8</span>, <span class = "literal">11</span>},
+      {<span class = "literal">9</span>, <span class = "literal">8</span>}, {<span class = "literal">9</span>, <span class = "literal">11</span>},
+      {<span class = "literal">10</span>, <span class = "literal">2</span>}, {<span class = "literal">10</span>, <span class = "literal">4</span>}, {<span class = "literal">10</span>, <span class = "literal">8</span>}, {<span class = "literal">10</span>, <span class = "literal">11</span>},
+      {<span class = "literal">11</span>, <span class = "literal">8</span>}, {<span class = "literal">11</span>, <span class = "literal">9</span>}, {<span class = "literal">11</span>, <span class = "literal">10</span>}
+    };
+
+    Graph&lt;String&gt; graph = <span class = "keyword">new</span> UnweightedGraph&lt;&gt;(vertices, edges);
+    AbstractGraph&lt;String&gt;.Tree dfs = 
+      graph.dfs(graph.getIndex(<span class = "literal">"Chicago"</span>)); 
+
+    java.util.List&lt;Integer&gt; searchOrders = dfs.getSearchOrder();
+    System.out.println(dfs.getNumberOfVerticesFound() +
+      <span class = "literal">" vertices are searched in this DFS order:"</span>);
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; searchOrders.size(); i++)
+      System.out.print(graph.getVertex(searchOrders.get(i)) + <span class = "literal">" "</span>);
+    System.out.println();
+
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; searchOrders.size(); i++)
+      <span class = "keyword">if</span> (dfs.getParent(i) != <span class = "literal">-</span><span class = "literal">1</span>)
+        System.out.println(<span class = "literal">"parent of "</span> + graph.getVertex(i) +
+          <span class = "literal">" is "</span> + graph.getVertex(dfs.getParent(i)));
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestDFS" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

@@ -1,0 +1,76 @@
+<html>
+<head>
+<title>Intro to Java Programming, 9E - BallPanel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<form action = "BallPanel.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.Timer;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  5&nbsp;&nbsp;
+  6&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> BallPanel <span class = "keyword">extends</span> JPanel {
+  7&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span> delay = <span class = "literal">10</span>;
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;  <span class = "comment">// Create a timer with delay 1000 ms</span>
+ 10&nbsp;&nbsp;  <span class = "keyword">private</span> Timer timer = <span class = "keyword">new</span> Timer(delay, <span class = "keyword">new</span> TimerListener());
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span> x = <span class = "literal">100</span>; <span class = "keyword">private</span> <span class = "keyword">int</span> y = <span class = "literal">10</span>; <span class = "comment">// Current ball position</span>
+ 13&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span> radius = <span class = "literal">5</span>; <span class = "comment">// Ball radius</span>
+ 14&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span> dx = <span class = "literal">2</span>; <span class = "comment">// Increment on ball's x-coordinate</span>
+ 15&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span> dy = <span class = "literal">2</span>; <span class = "comment">// Increment on ball's y-coordinate</span>
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;  <span class = "keyword">public</span> BallPanel() {
+ 18&nbsp;&nbsp;    timer.start();
+ 19&nbsp;&nbsp;  }
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">class</span> TimerListener <span class = "keyword">implements</span> ActionListener {
+ 22&nbsp;&nbsp;    <span class = "comment">/** Handle the action event */</span>
+ 23&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 24&nbsp;&nbsp;      repaint();
+ 25&nbsp;&nbsp;    }
+ 26&nbsp;&nbsp;  }
+ 27&nbsp;&nbsp;
+ 28&nbsp;&nbsp;  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+ 29&nbsp;&nbsp;    <span class = "keyword">super</span>.paintComponent(g);
+ 30&nbsp;&nbsp;
+ 31&nbsp;&nbsp;    g.setColor(Color.red);
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;    <span class = "comment">// Check boundaries</span>
+ 34&nbsp;&nbsp;    <span class = "keyword">if</span> (x &lt; radius) dx = Math.abs(dx);
+ 35&nbsp;&nbsp;    <span class = "keyword">if</span> (x &gt; getWidth() - radius) dx = -Math.abs(dx);
+ 36&nbsp;&nbsp;    <span class = "keyword">if</span> (y &lt; radius) dy = Math.abs(dy);
+ 37&nbsp;&nbsp;    <span class = "keyword">if</span> (y &gt; getHeight() - radius) dy = -Math.abs(dy);
+ 38&nbsp;&nbsp;
+ 39&nbsp;&nbsp;    <span class = "comment">// Adjust ball position</span>
+ 40&nbsp;&nbsp;    x += dx;
+ 41&nbsp;&nbsp;    y += dy;
+ 42&nbsp;&nbsp;    g.fillOval(x - radius, y - radius, radius * <span class = "literal">2</span>, radius * <span class = "literal">2</span>);
+ 43&nbsp;&nbsp;  }
+ 44&nbsp;&nbsp;
+ 45&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> suspend() {
+ 46&nbsp;&nbsp;    timer.stop(); <span class = "comment">// Suspend timer</span>
+ 47&nbsp;&nbsp;  }
+ 48&nbsp;&nbsp;
+ 49&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> resume() {
+ 50&nbsp;&nbsp;    timer.start(); <span class = "comment">// Resume timer</span>
+ 51&nbsp;&nbsp;  }
+ 52&nbsp;&nbsp;
+ 53&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setDelay(<span class = "keyword">int</span> delay) {
+ 54&nbsp;&nbsp;    <span class = "keyword">this</span>.delay = delay;
+ 55&nbsp;&nbsp;    timer.setDelay(delay);
+ 56&nbsp;&nbsp;  }
+ 57&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

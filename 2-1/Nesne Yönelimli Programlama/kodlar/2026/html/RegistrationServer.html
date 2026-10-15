@@ -1,0 +1,144 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - RegistrationServer.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">// RegistrationServer.java: The server for the applet responsible for
+<FONT COLOR="#000000"><FONT COLOR="#008000">// writing on the server side
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.io.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.net.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.util.Date;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> RegistrationServer <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JFrame {
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> JTextArea jtaLog;
+
+  <FONT COLOR="#008000">// The file to store the records
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> RandomAccessFile raf = <FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">;
+
+  <FONT COLOR="#008000">/** Main method */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> RegistrationServer();
+  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> RegistrationServer() {
+    <FONT COLOR="#008000">// Create a scroll pane to hold text area
+<FONT COLOR="#000000">    JScrollPane scrollPane = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JScrollPane(
+      jtaLog = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> JTextArea());
+
+    <FONT COLOR="#008000">// Add the scroll pane to the frame
+<FONT COLOR="#000000">    getContentPane().add(scrollPane, BorderLayout.CENTER);
+
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setSize(<FONT COLOR="#0000ff">300</FONT><FONT COLOR="#000000">, <FONT COLOR="#0000ff">300</FONT><FONT COLOR="#000000">);
+    setTitle(<FONT COLOR="#0000ff">"Registration Server"</FONT>);
+    setVisible(<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">);
+
+    <FONT COLOR="#008000">// Open the local file on the server side
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+      <FONT COLOR="#008000">// Open the file if the file exists, create a new file
+<FONT COLOR="#000000">      <FONT COLOR="#008000">// if the file does not exist
+<FONT COLOR="#000000">      raf = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> RandomAccessFile(<FONT COLOR="#0000ff">"student.dat"</FONT>, <FONT COLOR="#0000ff">"rw"</FONT>);
+    }
+    <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000">(IOException ex) {
+      jtaLog.append(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Date() + <FONT COLOR="#0000ff">": Error: "</FONT> + ex);
+      System.exit(<FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">);
+    }
+
+    <FONT COLOR="#008000">// Establish server socket
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+      <FONT COLOR="#008000">// Create a server socket
+<FONT COLOR="#000000">      ServerSocket serverSocket = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> ServerSocket(<FONT COLOR="#0000ff">8000</FONT><FONT COLOR="#000000">);
+      jtaLog.append(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Date() + <FONT COLOR="#0000ff">": Start a new server\n"</FONT>);
+
+      <FONT COLOR="#008000">// Count the number of threads started
+<FONT COLOR="#000000">      <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> count = <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">;
+
+      <FONT COLOR="#000080"><B>while</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>true</B></FONT><FONT COLOR="#000000">) {
+        <FONT COLOR="#008000">// Connect to a client
+<FONT COLOR="#000000">        Socket socket = serverSocket.accept();
+        jtaLog.append(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Date() + <FONT COLOR="#0000ff">": A client at "</FONT> +
+          socket.getInetAddress().getHostAddress() + <FONT COLOR="#0000ff">" connected\n"</FONT>);
+
+        <FONT COLOR="#008000">// Start a new thread to register a client
+<FONT COLOR="#000000">        <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> RegistrationThread(socket, count++).start();
+      }
+    }
+    <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (IOException ex) {
+      jtaLog.append(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Date() + <FONT COLOR="#0000ff">": "</FONT> + ex);
+    }
+  }
+
+  <FONT COLOR="#008000">/** Write student information to the file */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>synchronized</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> writeToFile(Student student) {
+    <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+      <FONT COLOR="#008000">// Append it to <FONT COLOR="#0000ff">"student.dat"</FONT>
+<FONT COLOR="#000000">      raf.seek(raf.length());
+      student.writeStudent(raf);
+
+      <FONT COLOR="#008000">// Display data saved
+<FONT COLOR="#000000">      jtaLog.append(<FONT COLOR="#0000ff">"The following info saved in the file\n"</FONT>);
+      jtaLog.append(student.toString());
+    }
+    <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (Exception ex) {
+      jtaLog.append(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Date() + <FONT COLOR="#0000ff">": "</FONT> + ex);
+    }
+  }
+
+  <FONT COLOR="#008000">// Define a thread to process the client registration
+<FONT COLOR="#000000">  <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> RegistrationThread <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> Thread {
+    <FONT COLOR="#008000">// The socket to serve a client
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> Socket socket;
+
+    <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> clientNo; <FONT COLOR="#008000">// The thread number
+<FONT COLOR="#000000">
+    <FONT COLOR="#008000">// Buffered reader to get input from the client
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> BufferedReader in;
+
+    <FONT COLOR="#008000">// Create a registration thread
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> RegistrationThread(Socket socket, <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> clientNo) {
+      <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.socket = socket;
+      <FONT COLOR="#000080"><B>this</B></FONT><FONT COLOR="#000000">.clientNo = clientNo;
+
+      jtaLog.append(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Date() + <FONT COLOR="#0000ff">": Thread "</FONT> + clientNo
+        + <FONT COLOR="#0000ff">" started\n"</FONT>);
+
+      <FONT COLOR="#008000">// Create an input stream to receive data from a client
+<FONT COLOR="#000000">      <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+        in = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> BufferedReader
+          (<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> InputStreamReader(socket.getInputStream()));
+      }
+      <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000">(IOException ex) {
+        jtaLog.append(<FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Date() + <FONT COLOR="#0000ff">": "</FONT> + ex);
+      }
+    }
+
+    <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> run() {
+      String name;
+      String street;
+      String city;
+      String state;
+      String zip;
+
+      <FONT COLOR="#000080"><B>try</B></FONT><FONT COLOR="#000000"> {
+        <FONT COLOR="#008000">// Receive data from the client
+<FONT COLOR="#000000">        name = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> String(in.readLine());
+        street = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> String(in.readLine());
+        city = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> String(in.readLine());
+        state = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> String(in.readLine());
+        zip = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> String(in.readLine());
+
+        <FONT COLOR="#008000">// Create a student instance
+<FONT COLOR="#000000">        Student student =
+          <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> Student(name, street, city, state, zip);
+
+        writeToFile(student);
+      }
+      <FONT COLOR="#000080"><B>catch</B></FONT><FONT COLOR="#000000"> (IOException ex) {
+        System.out.println(ex);
+      }
+    }
+  }
+}
+</pre>

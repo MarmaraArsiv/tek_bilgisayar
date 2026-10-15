@@ -1,0 +1,41 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - AdapterDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "AdapterDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JFrame;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> AdapterDemo <span class = "keyword">extends</span> JFrame {
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  6&nbsp;&nbsp;    AdapterDemo frame = <span class = "keyword">new</span> AdapterDemo();
+  7&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+  8&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+  9&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"AdapterDemo"</span>);
+ 10&nbsp;&nbsp;    frame.setSize(<span class = "literal">220</span>, <span class = "literal">80</span>);
+ 11&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 12&nbsp;&nbsp;  }
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;  <span class = "keyword">public</span> AdapterDemo() {
+ 15&nbsp;&nbsp;    addWindowListener(<span class = "keyword">new</span> WindowAdapter() {
+ 16&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> windowActivated(WindowEvent event) {
+ 17&nbsp;&nbsp;        System.out.println(<span class = "literal">"Window activated"</span>);
+ 18&nbsp;&nbsp;      }
+ 19&nbsp;&nbsp;    });
+ 20&nbsp;&nbsp;  }
+ 21&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

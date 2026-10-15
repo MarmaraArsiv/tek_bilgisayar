@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - MathQuiz.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "MathQuizWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> MathQuiz {
+  <span class = "keyword">private</span> String user;
+  <span class = "keyword">private</span> <span class = "keyword">int</span> totalCount;
+  <span class = "keyword">private</span> <span class = "keyword">int</span> correctCount;
+
+  <span class = "comment">/** Construct a MathQuiz object with the specified user */</span>
+  <span class = "keyword">public</span> MathQuiz(String user) {
+    <span class = "keyword">this</span>.user = user;
+  }
+
+  <span class = "comment">/** Construct a default MathQuiz object */</span>
+  <span class = "keyword">public</span> MathQuiz() {
+    user = <span class = "literal">""</span>; <span class = "comment">// Anonymous user</span>
+  }
+
+  <span class = "comment">/** Return the user for the test */</span>
+  <span class = "keyword">public</span> String getUser() {
+    <span class = "keyword">return</span> user;
+  }
+
+  <span class = "comment">/** Return the total number of the questions */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getTotalCount() {
+    <span class = "keyword">return</span> totalCount;
+  }
+
+  <span class = "comment">/** Return the number of the correct answers */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getCorrectCount() {
+    <span class = "keyword">return</span> correctCount;
+  }
+
+  <span class = "comment">/** Increase the total number of the questions */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> increaseTotalCount() {
+    totalCount++;
+  }
+
+  <span class = "comment">/** Increase the number of the correct answers */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> increaseCorrectCount() {
+    correctCount++;
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "MathQuiz" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

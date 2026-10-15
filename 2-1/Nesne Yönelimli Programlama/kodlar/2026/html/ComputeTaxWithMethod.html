@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ComputeTaxWithMethod.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ComputeTaxWithMethodWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.Scanner; 
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ComputeTaxWithMethod {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+
+    <span class = "comment">// Prompt the user to enter filing status</span>
+    System.out.print(<span class = "literal">"Enter the filing status: "</span>);
+    <span class = "keyword">int</span> status = input.nextInt();
+
+    <span class = "comment">// Prompt the user to enter taxable income</span>
+    System.out.print(<span class = "literal">"Enter the taxable income: "</span>);
+    <span class = "keyword">double</span> income = input.nextDouble();
+
+    <span class = "comment">// Display the result</span>
+    System.out.println(<span class = "literal">"Tax is "</span> +
+      (<span class = "keyword">int</span>)(computeTax(status, income) * <span class = "literal">100</span>) / <span class = "literal">100</span><span class = "literal">.</span><span class = "literal">0</span>);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">double</span> computeTax(<span class = "keyword">double</span> income,
+      <span class = "keyword">int</span> r1, <span class = "keyword">int</span> r2, <span class = "keyword">int</span> r3, <span class = "keyword">int</span> r4, <span class = "keyword">int</span> r5) {
+    <span class = "keyword">double</span> tax = <span class = "literal">0</span>;
+
+    <span class = "keyword">if</span> (income &lt;= r1)
+      tax = income * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">10</span>;
+    <span class = "keyword">else</span> <span class = "keyword">if</span> (income &lt;= r2)
+      tax = r1 * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">10</span> + (income - r1) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">15</span>;
+    <span class = "keyword">else</span> <span class = "keyword">if</span> (income &lt;= r3)
+      tax = r1 * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">10</span> + (r2 - r1) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">15</span> + (income - r2) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">27</span>;
+    <span class = "keyword">else</span> <span class = "keyword">if</span> (income &lt;= r4)
+      tax = r1 * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">10</span> + (r2 - r1) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">15</span> +
+        (r3 - r2) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">27</span> + (income - r3) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">30</span>;
+    <span class = "keyword">else</span> <span class = "keyword">if</span> (income &lt;= r5)
+      tax = r1 * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">10</span> + (r2 - r1) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">15</span> + (r3 - r2) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">27</span> +
+        (r4 - r3) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">30</span> + (income - r4) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">35</span>;
+    <span class = "keyword">else</span>
+      tax = r1 * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">10</span> + (r2 - r1) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">15</span> + (r3 - r2) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">27</span> +
+        (r4 - r3) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">30</span> + (r5 - r4) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">35</span> + (income - r5) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">386</span>;
+
+    <span class = "keyword">return</span> tax;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">double</span> computeTax(<span class = "keyword">int</span> status, <span class = "keyword">double</span> income) {
+    <span class = "keyword">switch</span> (status) {
+      <span class = "keyword">case</span> 0: <span class = "keyword">return</span>
+        computeTax(income, <span class = "literal">6000</span>, <span class = "literal">27950</span>, <span class = "literal">67700</span>, <span class = "literal">141250</span>, <span class = "literal">307050</span>);
+      <span class = "keyword">case</span> 1: <span class = "keyword">return</span>
+        computeTax(income, <span class = "literal">12000</span>, <span class = "literal">46700</span>, <span class = "literal">112850</span>, <span class = "literal">171950</span>, <span class = "literal">307050</span>);
+      <span class = "keyword">case</span> 2: <span class = "keyword">return</span>
+        computeTax(income, <span class = "literal">6000</span>, <span class = "literal">23350</span>, <span class = "literal">56425</span>, <span class = "literal">85975</span>, <span class = "literal">153525</span>);
+      <span class = "keyword">case</span> 3: <span class = "keyword">return</span>
+        computeTax(income, <span class = "literal">10000</span>, <span class = "literal">37450</span>, <span class = "literal">96700</span>, <span class = "literal">156600</span>, <span class = "literal">307050</span>);
+      default: <span class = "keyword">return</span> <span class = "literal">0</span>;
+    }
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "ComputeTaxWithMethod" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

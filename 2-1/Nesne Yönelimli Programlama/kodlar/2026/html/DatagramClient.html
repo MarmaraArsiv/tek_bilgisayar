@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DatagramClient.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "DatagramClientWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.io.*;
+<span class = "keyword">import</span> java.net.*;
+<span class = "keyword">import</span> java.util.*;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> DatagramClient <span class = "keyword">extends</span> JFrame {
+  <span class = "comment">// Text field for receiving radius</span>
+  <span class = "keyword">private</span> JTextField jtf = <span class = "keyword">new</span> JTextField();
+
+  <span class = "comment">// Text area to display contents</span>
+  <span class = "keyword">private</span> JTextArea jta = <span class = "keyword">new</span> JTextArea();
+
+  <span class = "comment">// Datagram socket</span>
+  <span class = "keyword">private</span> DatagramSocket socket;
+
+  <span class = "comment">// The byte array for sending and receiving datagram packets</span>
+  <span class = "keyword">private</span> <span class = "keyword">byte</span>[] buf = <span class = "keyword">new</span> <span class = "keyword">byte</span>[<span class = "literal">256</span>];
+
+  <span class = "comment">// Server InetAddress</span>
+  <span class = "keyword">private</span> InetAddress address;
+
+  <span class = "comment">// The packet sent to the server</span>
+  <span class = "keyword">private</span> DatagramPacket sendPacket;
+
+  <span class = "comment">// The packet received from the server</span>
+  <span class = "keyword">private</span> DatagramPacket receivePacket;
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "keyword">new</span> DatagramClient();
+  }
+
+  <span class = "keyword">public</span> DatagramClient() {
+    <span class = "comment">// Panel p to hold the label and text field</span>
+    JPanel p = <span class = "keyword">new</span> JPanel();
+    p.setLayout(<span class = "keyword">new</span> BorderLayout());
+    p.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Enter radius"</span>), BorderLayout.WEST);
+    p.add(jtf, BorderLayout.CENTER);
+    jtf.setHorizontalAlignment(JTextField.RIGHT);
+
+    setLayout(<span class = "keyword">new</span> BorderLayout());
+    add(p, BorderLayout.NORTH);
+    add(<span class = "keyword">new</span> JScrollPane(jta), BorderLayout.CENTER);
+
+    jtf.addActionListener(<span class = "keyword">new</span> ButtonListener()); <span class = "comment">// Register listener</span>
+
+    setTitle(<span class = "literal">"DatagramClient"</span>);
+    setSize(<span class = "literal">500</span>, <span class = "literal">300</span>);
+    setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    setVisible(<span class = "keyword">true</span>); <span class = "comment">// It is necessary to show the frame here!</span>
+
+    <span class = "keyword">try</span> {
+      <span class = "comment">// get a datagram socket</span>
+      socket = <span class = "keyword">new</span> DatagramSocket();
+      address = InetAddress.getByName(<span class = "literal">"localhost"</span>);
+      sendPacket =
+        <span class = "keyword">new</span> DatagramPacket(buf, buf.length, address, <span class = "literal">8000</span>);
+      receivePacket = <span class = "keyword">new</span> DatagramPacket(buf, buf.length);
+    }
+    <span class = "keyword">catch</span> (IOException ex) {
+      ex.printStackTrace();
+    }
+  }
+
+  <span class = "keyword">private</span> <span class = "keyword">class</span> ButtonListener <span class = "keyword">implements</span> ActionListener {
+    @Override
+    <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+      <span class = "keyword">try</span> {
+        <span class = "comment">// Initialize buffer for each iteration</span>
+        Arrays.fill(buf, (<span class = "keyword">byte</span>)<span class = "literal">0</span>);
+
+        <span class = "comment">// send radius to the server in a packet</span>
+        sendPacket.setData(jtf.getText().trim().getBytes());
+        socket.send(sendPacket);
+
+        <span class = "comment">// receive area from the server in a packet</span>
+        socket.receive(receivePacket);
+
+        <span class = "comment">// Display to the text area</span>
+        jta.append(<span class = "literal">"Radius is "</span> + jtf.getText().trim() + <span class = "literal">"\n"</span>);
+        jta.append(<span class = "literal">"Area received from the server is "</span>
+          +  Double.parseDouble(<span class = "keyword">new</span> String(buf).trim()) + <span class = "literal">'\n'</span>);
+      }
+      <span class = "keyword">catch</span> (IOException ex) {
+        ex.printStackTrace();
+      }
+    }
+  }
+}
+</pre>
+</body>
+</html>

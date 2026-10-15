@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - Circle3.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> Circle3 {
+  <span class = "comment">/** The radius of the circle */</span>
+  <span class = "keyword">private</span> <span class = "keyword">double</span> radius = <span class = "literal">1</span>;
+
+  <span class = "comment">/** The number of the objects created */</span>
+  <span class = "keyword">private</span> <span class = "keyword">static</span> <span class = "keyword">int</span> numberOfObjects = <span class = "literal">0</span>;
+
+  <span class = "comment">/** Construct a circle with radius 1 */</span>
+  <span class = "keyword">public</span> Circle3() {
+    numberOfObjects++;
+  }
+
+  <span class = "comment">/** Construct a circle with a specified radius */</span>
+  <span class = "keyword">public</span> Circle3(<span class = "keyword">double</span> newRadius) {
+    radius = newRadius;
+    numberOfObjects++;
+  }
+
+  <span class = "comment">/** Return radius */</span>
+  <span class = "keyword">public</span> <span class = "keyword">double</span> getRadius() {
+    <span class = "keyword">return</span> radius;
+  }
+
+  <span class = "comment">/** Set a new radius */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setRadius(<span class = "keyword">double</span> newRadius) {
+    radius = (newRadius &gt;= <span class = "literal">0</span>) ? newRadius : <span class = "literal">0</span>;
+  }
+
+  <span class = "comment">/** Return numberOfObjects */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">int</span> getNumberOfObjects() {
+    <span class = "keyword">return</span> numberOfObjects;
+  }
+
+  <span class = "comment">/** Return the area of this circle */</span>
+  <span class = "keyword">public</span> <span class = "keyword">double</span> getArea() {
+    <span class = "keyword">return</span> radius * radius * Math.PI;
+  }
+}
+</pre>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listing 1.1 Animation by Y. Daniel Liang</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="css/animation.css" />
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="js/animation.js"></script>
+    <script>
+      function init() {
+        document.getElementById('highlight').style.visibility = 'hidden';
+        document.getElementById('nextButton').style.visibility = 'hidden';
+        document.getElementById('prevButton').style.visibility = 'hidden';
+        document.getElementById('commandPrompt').style.visibility = 'hidden';
+      }
+    </script>
+  </head>
+
+  <body onload="init()" onresize="draw()">   
+    <div style="text-align: left; margin-top: 1em">
+      <span style="padding: 3px">
+        <button id = "nextButton" type="button" onclick="next()">></button>
+        <button id = "prevButton" type="button" onclick="prev()"><</button>
+        <button id ="startButton" type="button" onclick="start()">Start Animation</button>     
+        <span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+          Introduction to Java Programming, Tenth Edition,
+          <a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+      </span>    
+    </div>
+
+    <div id="highlight"></div>
+    <div id="explanation"></div>
+    <div id="commandPrompt">
+      <div id="commandPromptHeader">   Command Prompt</div>
+      <div id="commandPromptContent">c:\book>java Welcome</div>
+    </div>
+
+    <div id = "program" style="font-family: courier; font-size: 12; margin: 0px auto; border: 1px solid red; text-align: left">
+      <pre>
+  1&nbsp;&nbsp;<span class = "comment">// This application program prints Welcome to Java!</span>
+  2&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> Welcome {
+  3&nbsp;&nbsp;  <span id = "line0"><span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {</span>
+  4&nbsp;&nbsp;    <span id = "line1">System.out.println(<span class = "literal">"Welcome to Java!"</span>)</span>;
+  5&nbsp;&nbsp;  <span id = "line2">}</span>
+  6&nbsp;&nbsp;}
+      </pre>
+    </div>
+
+    <script type="text/javascript">
+      function step() {
+        $("#explanation").animate({top: explanation[currentLine].top, left: explanation[currentLine].left,
+          width: explanation[currentLine].width}, animationSpeed);
+        $("#commandPrompt").animate({top: commandPrompt[currentLine].top, left: commandPrompt[currentLine].left}, animationSpeed);
+        document.getElementById('explanation').innerHTML = explanation[currentLine].innerHTML;
+        document.getElementById('commandPromptContent').innerHTML = commandPrompt[currentLine].innerHTML;
+
+        if (currentLine == 0) {
+          document.getElementById('prevButton').style.visibility = 'hidden';
+          var pos = getElementPos(document.getElementById('line0'));
+          $("#highlight").animate({top: pos.y, left: pos.x,
+            width: pos.w, height: pos.h}, animationSpeed);
+        }
+        if (currentLine == 1) {
+          document.getElementById('prevButton').style.visibility = 'visible';
+          var pos = getElementPos(document.getElementById('line1'));
+          $("#highlight").animate({top: pos.y, left: pos.x,
+            width: pos.w, height: pos.h}, animationSpeed);
+        }
+        else if (currentLine == 2) {
+          var pos = getElementPos(document.getElementById('line2'));
+          $("#highlight").animate({top: pos.y, left: pos.x,
+            width: pos.w, height: pos.h}, animationSpeed);
+          document.getElementById('nextButton').style.visibility = 'hidden';
+          document.getElementById('prevButton').style.visibility = 'hidden';
+          document.getElementById('startButton').style.visibility = 'visible';
+          document.getElementById('startButton').innerHTML = 'Restart Animation';
+          currentLine = 0;
+        }
+      }
+
+      $("#nextButton").click(function() {
+        currentLine = currentLine + 1;
+        step();
+      });
+
+      $("#prevButton").click(function() {
+        currentLine = currentLine - 1;
+        step();
+      });
+
+      $("#startButton").click(function() {
+        currentLine = 0;
+        var pos = getElementPos(document.getElementById('line0'));
+        $("#highlight").animate({top: pos.y, left: pos.x,
+          width: pos.w, height: pos.h}, 'fast');
+        $("#explanation").animate({top: explanation[currentLine].top, left: explanation[currentLine].left,
+          width: explanation[currentLine].width, height: explanation[currentLine].height}, 'fast');
+        $("#commandPrompt").animate({top: commandPrompt[currentLine].top, left: commandPrompt[currentLine].left}, 'fast');
+        document.getElementById('explanation').innerHTML = explanation[currentLine].innerHTML;
+        document.getElementById('commandPromptContent').innerHTML = commandPrompt[currentLine].innerHTML;
+
+        document.getElementById('startButton').style.visibility = 'hidden';
+        document.getElementById('nextButton').style.visibility = 'visible';
+        document.getElementById('commandPrompt').style.visibility = 'visible';
+
+        document.getElementById('highlight').style.visibility = 'visible';
+        document.getElementById('explanation').style.visibility = 'visible';
+      });
+    </script>
+  </body>
+</html>

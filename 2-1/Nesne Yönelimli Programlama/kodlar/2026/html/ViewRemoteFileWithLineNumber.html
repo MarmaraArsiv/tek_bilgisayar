@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ViewRemoteFile.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ViewRemoteFile.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.io.*;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> java.net.*;
+  5&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ViewRemoteFile <span class = "keyword">extends</span> JApplet {
+  8&nbsp;&nbsp;  <span class = "comment">// Button to view the file</span>
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> JButton jbtView = <span class = "keyword">new</span> JButton(<span class = "literal">"View"</span>);
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;  <span class = "comment">// Text field to receive file name</span>
+ 12&nbsp;&nbsp;  <span class = "keyword">private</span> JTextField jtfURL = <span class = "keyword">new</span> JTextField(<span class = "literal">12</span>);
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;  <span class = "comment">// Text area to store file</span>
+ 15&nbsp;&nbsp;  <span class = "keyword">private</span> JTextArea jtaFile = <span class = "keyword">new</span> JTextArea();
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;  <span class = "comment">// Label to display status</span>
+ 18&nbsp;&nbsp;  <span class = "keyword">private</span> JLabel jlblStatus = <span class = "keyword">new</span> JLabel();
+ 19&nbsp;&nbsp;
+ 20&nbsp;&nbsp;  <span class = "comment">/** Initialize the applet */</span>
+ 21&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> init() {
+ 22&nbsp;&nbsp;    <span class = "comment">// Create a panel to hold a label, a text field, and a button</span>
+ 23&nbsp;&nbsp;    JPanel p1 = <span class = "keyword">new</span> JPanel();
+ 24&nbsp;&nbsp;    p1.setLayout(<span class = "keyword">new</span> BorderLayout());
+ 25&nbsp;&nbsp;    p1.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Filename"</span>), BorderLayout.WEST);
+ 26&nbsp;&nbsp;    p1.add(jtfURL, BorderLayout.CENTER);
+ 27&nbsp;&nbsp;    p1.add(jbtView, BorderLayout.EAST);
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;    <span class = "comment">// Place text area and panel p to the applet</span>
+ 30&nbsp;&nbsp;    setLayout(<span class = "keyword">new</span> BorderLayout());
+ 31&nbsp;&nbsp;    add(<span class = "keyword">new</span> JScrollPane(jtaFile), BorderLayout.CENTER);
+ 32&nbsp;&nbsp;    add(p1, BorderLayout.NORTH);
+ 33&nbsp;&nbsp;    add(jlblStatus, BorderLayout.SOUTH);
+ 34&nbsp;&nbsp;
+ 35&nbsp;&nbsp;    <span class = "comment">// Register listener to handle the "View" button</span>
+ 36&nbsp;&nbsp;    jbtView.addActionListener(<span class = "keyword">new</span> ActionListener() {
+ 37&nbsp;&nbsp;      @Override
+ 38&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 39&nbsp;&nbsp;        showFile();
+ 40&nbsp;&nbsp;      }
+ 41&nbsp;&nbsp;    });
+ 42&nbsp;&nbsp;  }
+ 43&nbsp;&nbsp;
+ 44&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">void</span> showFile() {
+ 45&nbsp;&nbsp;	java.util.Scanner input = <span class = "keyword">null</span>; <span class = "comment">// Use Scanner for getting text input</span>
+ 46&nbsp;&nbsp;    URL url = <span class = "keyword">null</span>;
+ 47&nbsp;&nbsp;
+ 48&nbsp;&nbsp;    <span class = "keyword">try</span> {
+ 49&nbsp;&nbsp;      <span class = "comment">// Obtain URL from the text field</span>
+ 50&nbsp;&nbsp;      url = <span class = "keyword">new</span> URL(jtfURL.getText().trim());
+ 51&nbsp;&nbsp;
+ 52&nbsp;&nbsp;      <span class = "comment">// Create a Scanner for input stream</span>
+ 53&nbsp;&nbsp;      input = <span class = "keyword">new</span> java.util.Scanner(url.openStream());
+ 54&nbsp;&nbsp;
+ 55&nbsp;&nbsp;      <span class = "comment">// Read a line and append the line to the text area</span>
+ 56&nbsp;&nbsp;      <span class = "keyword">while</span> (input.hasNext()) {
+ 57&nbsp;&nbsp;        jtaFile.append(input.nextLine() + <span class = "literal">"\n"</span>);
+ 58&nbsp;&nbsp;      }
+ 59&nbsp;&nbsp;
+ 60&nbsp;&nbsp;      jlblStatus.setText(<span class = "literal">"File loaded successfully"</span>);
+ 61&nbsp;&nbsp;    }
+ 62&nbsp;&nbsp;    <span class = "keyword">catch</span> (MalformedURLException ex) {
+ 63&nbsp;&nbsp;	  jlblStatus.setText(<span class = "literal">"URL "</span> + url + <span class = "literal">" not found."</span>);
+ 64&nbsp;&nbsp;    }
+ 65&nbsp;&nbsp;    <span class = "keyword">catch</span> (IOException e) {
+ 66&nbsp;&nbsp;      jlblStatus.setText(e.getMessage());
+ 67&nbsp;&nbsp;    }
+ 68&nbsp;&nbsp;    <span class = "keyword">finally</span> {
+ 69&nbsp;&nbsp;      <span class = "keyword">if</span> (input != <span class = "keyword">null</span>) input.close();
+ 70&nbsp;&nbsp;    }
+ 71&nbsp;&nbsp;  }
+ 72&nbsp;&nbsp;
+ 73&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 74&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 75&nbsp;&nbsp;    <span class = "comment">// Create a frame</span>
+ 76&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"View File From a Web Server"</span>);
+ 77&nbsp;&nbsp;
+ 78&nbsp;&nbsp;    <span class = "comment">// Create an instance of ViewRemoteFile</span>
+ 79&nbsp;&nbsp;    ViewRemoteFile applet = <span class = "keyword">new</span> ViewRemoteFile();
+ 80&nbsp;&nbsp;
+ 81&nbsp;&nbsp;    <span class = "comment">// Add the applet instance to the frame</span>
+ 82&nbsp;&nbsp;    frame.add(applet, BorderLayout.CENTER);
+ 83&nbsp;&nbsp;
+ 84&nbsp;&nbsp;    <span class = "comment">// Invoke init() and start()</span>
+ 85&nbsp;&nbsp;    applet.init();
+ 86&nbsp;&nbsp;    applet.start();
+ 87&nbsp;&nbsp;
+ 88&nbsp;&nbsp;    <span class = "comment">// Display the frame</span>
+ 89&nbsp;&nbsp;    frame.setSize(<span class = "literal">300</span>, <span class = "literal">300</span>);
+ 90&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 91&nbsp;&nbsp;  }
+ 92&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

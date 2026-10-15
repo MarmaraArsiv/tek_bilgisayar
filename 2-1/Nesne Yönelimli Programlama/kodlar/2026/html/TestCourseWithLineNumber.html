@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestCourse.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestCourse.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestCourse {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  3&nbsp;&nbsp;    Course course1 = <span class = "keyword">new</span> Course(<span class = "literal">"Data Structures"</span>);
+  4&nbsp;&nbsp;    Course course2 = <span class = "keyword">new</span> Course(<span class = "literal">"Database Systems"</span>);
+  5&nbsp;&nbsp;
+  6&nbsp;&nbsp;    course1.addStudent(<span class = "literal">"Peter Jones"</span>);
+  7&nbsp;&nbsp;    course1.addStudent(<span class = "literal">"Brian Smith"</span>);
+  8&nbsp;&nbsp;    course1.addStudent(<span class = "literal">"Anne Kennedy"</span>);
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;    course2.addStudent(<span class = "literal">"Peter Jones"</span>);
+ 11&nbsp;&nbsp;    course2.addStudent(<span class = "literal">"Steve Smith"</span>);
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;    System.out.println(<span class = "literal">"Number of students in course1: "</span>
+ 14&nbsp;&nbsp;      + course1.getNumberOfStudents());
+ 15&nbsp;&nbsp;    String[] students = course1.getStudents();
+ 16&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; course1.getNumberOfStudents(); i++)
+ 17&nbsp;&nbsp;      System.out.print(students[i] + <span class = "literal">", "</span>);
+ 18&nbsp;&nbsp;    
+ 19&nbsp;&nbsp;    System.out.println();
+ 20&nbsp;&nbsp;    System.out.print(<span class = "literal">"Number of students in course2: "</span>
+ 21&nbsp;&nbsp;      + course2.getNumberOfStudents());
+ 22&nbsp;&nbsp;  }
+ 23&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestCourse" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestColorDialog.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestColorDialogWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestColorDialog <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> ColorDialog colorDialog1 = <span class = "keyword">new</span> ColorDialog();
+  <span class = "keyword">private</span> JButton jbtChangeColor = <span class = "keyword">new</span> JButton(<span class = "literal">"Choose color"</span>);
+
+  <span class = "keyword">public</span> TestColorDialog() {
+    setLayout(<span class = "keyword">new</span> java.awt.FlowLayout());
+    jbtChangeColor.setText(<span class = "literal">"Change Button Text Color"</span>);
+    jbtChangeColor.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        colorDialog1.setVisible(<span class = "keyword">true</span>);
+
+        <span class = "keyword">if</span> (colorDialog1.getColor() != <span class = "keyword">null</span>)
+          jbtChangeColor.setForeground(colorDialog1.getColor());
+      }
+    });
+    add(jbtChangeColor);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TestColorDialog applet = <span class = "keyword">new</span> TestColorDialog();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"TestColorDialog"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

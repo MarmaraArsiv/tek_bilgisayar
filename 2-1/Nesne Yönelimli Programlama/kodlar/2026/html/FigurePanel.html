@@ -1,0 +1,117 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - FigurePanel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "FigurePanelWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.JPanel;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> FigurePanel <span class = "keyword">extends</span> JPanel {
+  <span class = "comment">// Define constants</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">final</span> <span class = "keyword">int</span> LINE = <span class = "literal">1</span>;
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">final</span> <span class = "keyword">int</span> RECTANGLE = <span class = "literal">2</span>;
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">final</span> <span class = "keyword">int</span> ROUND_RECTANGLE = <span class = "literal">3</span>;
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">final</span> <span class = "keyword">int</span> OVAL = <span class = "literal">4</span>;
+
+  <span class = "keyword">private</span> <span class = "keyword">int</span> type = <span class = "literal">1</span>;
+  <span class = "keyword">private</span> <span class = "keyword">boolean</span> filled = <span class = "keyword">false</span>;
+
+  <span class = "comment">/** Construct a default FigurePanel */</span>
+  <span class = "keyword">public</span> FigurePanel() {
+  }
+
+  <span class = "comment">/** Construct a FigurePanel with the specified type */</span>
+  <span class = "keyword">public</span> FigurePanel(<span class = "keyword">int</span> type) {
+    <span class = "keyword">this</span>.type = type;
+  }
+
+  <span class = "comment">/** Construct a FigurePanel with the specified type and filled */</span>
+  <span class = "keyword">public</span> FigurePanel(<span class = "keyword">int</span> type, <span class = "keyword">boolean</span> filled) {
+    <span class = "keyword">this</span>.type = type;
+    <span class = "keyword">this</span>.filled = filled;
+  }
+
+  @Override <span class = "comment">// Draw a figure on the panel</span>
+  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+    <span class = "keyword">super</span>.paintComponent(g);
+
+    <span class = "comment">// Get the appropriate size for the figure</span>
+    <span class = "keyword">int</span> width = getWidth();
+    <span class = "keyword">int</span> height = getHeight();
+
+    <span class = "keyword">switch</span> (type) {
+      <span class = "keyword">case</span> LINE: <span class = "comment">// Display two cross lines</span>
+        g.setColor(Color.BLACK);
+        g.drawLine(<span class = "literal">10</span>, <span class = "literal">10</span>, width - <span class = "literal">10</span>, height - <span class = "literal">10</span>);
+        g.drawLine(width - <span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">10</span>, height - <span class = "literal">10</span>);
+        <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> RECTANGLE: <span class = "comment">// Display a rectangle</span>
+        g.setColor(Color.BLUE);
+        <span class = "keyword">if</span> (filled)
+          g.fillRect((<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">1</span> * width), (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">1</span> * height),
+            (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span> * width), (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span> * height));
+        <span class = "keyword">else</span>
+          g.drawRect((<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">1</span> * width), (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">1</span> * height),
+            (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span> * width), (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span> * height));
+        <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> ROUND_RECTANGLE: <span class = "comment">// Display a round-cornered rectangle</span>
+        g.setColor(Color.RED);
+        <span class = "keyword">if</span> (filled)
+          g.fillRoundRect((<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">1</span> * width), (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">1</span> * height),
+            (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span> * width), (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span> * height), <span class = "literal">20</span>, <span class = "literal">20</span>);
+        <span class = "keyword">else</span>
+          g.drawRoundRect((<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">1</span> * width), (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">1</span> * height),
+            (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span> * width), (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span> * height), <span class = "literal">20</span>, <span class = "literal">20</span>);
+        <span class = "keyword">break</span>;
+      <span class = "keyword">case</span> OVAL: <span class = "comment">// Display an oval</span>
+        g.setColor(Color.BLACK);
+        <span class = "keyword">if</span> (filled)
+          g.fillOval((<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">1</span> * width), (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">1</span> * height),
+            (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span> * width), (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span> * height));
+        <span class = "keyword">else</span>
+          g.drawOval((<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">1</span> * width), (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">1</span> * height),
+            (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span> * width), (<span class = "keyword">int</span>)(<span class = "literal">0</span><span class = "literal">.</span><span class = "literal">8</span> * height));
+    }
+  }
+
+  <span class = "comment">/** Set a new figure type */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setType(<span class = "keyword">int</span> type) {
+    <span class = "keyword">this</span>.type = type;
+    repaint();
+  }
+
+  <span class = "comment">/** Return figure type */</span>
+  <span class = "keyword">public</span> <span class = "keyword">int</span> getType() {
+    <span class = "keyword">return</span> type;
+  }
+
+  <span class = "comment">/** Set a new filled property */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> setFilled(<span class = "keyword">boolean</span> filled) {
+    <span class = "keyword">this</span>.filled = filled;
+    repaint();
+  }
+
+  <span class = "comment">/** Check if the figure is filled */</span>
+  <span class = "keyword">public</span> <span class = "keyword">boolean</span> isFilled() {
+    <span class = "keyword">return</span> filled;
+  }
+
+  @Override <span class = "comment">// Specify preferred size</span>
+  <span class = "keyword">public</span> Dimension getPreferredSize() {
+    <span class = "keyword">return</span> <span class = "keyword">new</span> Dimension(<span class = "literal">80</span>, <span class = "literal">80</span>);
+  }
+}
+</pre>
+</body>
+</html>

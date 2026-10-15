@@ -1,0 +1,137 @@
+<html>
+<head>
+<title>Intro to Java Programming, 7E - BinaryTreeView.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> BinaryTreeView <span class = "keyword">extends</span> JPanel {
+  <span class = "keyword">private</span> BinaryTree&lt;Integer&gt; tree; <span class = "comment">// A binary tree to be displayed</span>
+  <span class = "keyword">private</span> JTextField jtfKey = <span class = "keyword">new</span> JTextField(<span class = "literal">5</span>);
+  <span class = "keyword">private</span> PaintTree paintTree = <span class = "keyword">new</span> PaintTree(); 
+  <span class = "keyword">private</span> JButton jbtInsert = <span class = "keyword">new</span> JButton(<span class = "literal">"Insert"</span>);
+  <span class = "keyword">private</span> JButton jbtDelete = <span class = "keyword">new</span> JButton(<span class = "literal">"Delete"</span>);
+  
+  <span class = "comment">/** Construct a view for a binary tree */</span>
+  <span class = "keyword">public</span> BinaryTreeView(BinaryTree&lt;Integer&gt; tree) {   
+    <span class = "keyword">this</span>.tree = tree; <span class = "comment">// Set a binary tree to be displayed</span>
+    setUI();
+  }
+  
+  <span class = "comment">/** Initialize UI for binary tree */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> setUI() {
+    <span class = "keyword">this</span>.setLayout(<span class = "keyword">new</span> BorderLayout()); 
+    add(paintTree, BorderLayout.CENTER);    
+    JPanel panel = <span class = "keyword">new</span> JPanel();
+    panel.add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Enter a key: "</span>));
+    panel.add(jtfKey);
+    panel.add(jbtInsert);
+    panel.add(jbtDelete);
+    add(panel, BorderLayout.SOUTH);
+    
+    <span class = "comment">// Listener for the Insert button</span>
+    jbtInsert.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "keyword">int</span> key = Integer.parseInt(jtfKey.getText());
+        <span class = "keyword">if</span> (tree.search(key)) { <span class = "comment">// key is in the tree already</span>
+          JOptionPane.showMessageDialog(<span class = "keyword">null</span>, 
+            key + <span class = "literal">" is already in the tree"</span>);
+        }
+        <span class = "keyword">else</span> {
+          tree.insert(key); <span class = "comment">// Insert a new key</span>
+          paintTree.repaint(); <span class = "comment">// Redisplay the tree</span>
+        }
+      }
+    });
+    
+    <span class = "comment">// Listener for the Delete button</span>
+    jbtDelete.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        <span class = "keyword">int</span> key = Integer.parseInt(jtfKey.getText());
+        <span class = "keyword">if</span> (!tree.search(key)) { <span class = "comment">// key is not in the tree</span>
+          JOptionPane.showMessageDialog(<span class = "keyword">null</span>, 
+            key + <span class = "literal">" is not in the tree"</span>);
+        }
+        <span class = "keyword">else</span> {
+          tree.delete(key); <span class = "comment">// Delete a key</span>
+          paintTree.repaint(); <span class = "comment">// Redisplay the tree</span>
+        }
+      }
+    });
+  }
+  
+  <span class = "comment">// Inner class PaintTree for displaying a tree on a panel</span>
+  <span class = "keyword">class</span> PaintTree <span class = "keyword">extends</span> JPanel {   
+    <span class = "keyword">private</span> <span class = "keyword">int</span> radius = <span class = "literal">20</span>; <span class = "comment">// Tree node radius</span>
+    <span class = "keyword">private</span> <span class = "keyword">int</span> vGap = <span class = "literal">50</span>; <span class = "comment">// Gap between two levels in a tree</span>
+        
+    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+      <span class = "keyword">super</span>.paintComponent(g);
+
+      <span class = "keyword">if</span> (tree.getRoot() != <span class = "keyword">null</span>) {
+        <span class = "comment">// Display tree recursively    </span>
+        displayTree(g, tree.getRoot(), getWidth() / <span class = "literal">2</span>, <span class = "literal">30</span>, 
+          getWidth() / <span class = "literal">4</span>); 
+      }
+    }
+        
+    <span class = "comment">/** Display a subtree rooted at position (x, y) */</span>
+    <span class = "keyword">private</span> <span class = "keyword">void</span> displayTree(Graphics g, BinaryTree.TreeNode root, 
+        <span class = "keyword">int</span> x, <span class = "keyword">int</span> y, <span class = "keyword">int</span> hGap) {
+      <span class = "comment">// Display the root</span>
+      g.drawOval(x - radius, y - radius, <span class = "literal">2</span> * radius, <span class = "literal">2</span> * radius);
+      g.drawString(root.element + <span class = "literal">""</span>, x - <span class = "literal">6</span>, y + <span class = "literal">4</span>);
+            
+      <span class = "keyword">if</span> (root.left != <span class = "keyword">null</span>) {
+        <span class = "comment">// Draw a line to the left node</span>
+        connectLeftChild(g, x - hGap, y + vGap, x, y);
+        <span class = "comment">// Draw the left subtree recursively</span>
+        displayTree(g, root.left, x - hGap, y + vGap, hGap / <span class = "literal">2</span>);
+      }
+          
+      <span class = "keyword">if</span> (root.right != <span class = "keyword">null</span>) {
+        <span class = "comment">// Draw a line to the right node</span>
+        connectRightChild(g, x + hGap, y + vGap, x, y);
+        <span class = "comment">// Draw the right subtree recursively</span>
+        displayTree(g, root.right, x + hGap, y + vGap, hGap / <span class = "literal">2</span>);  
+      }
+    }
+        
+    <span class = "comment">/** Connect a parent at (x2, y2) with 
+     * its left child at (x1, y1) */</span>
+    <span class = "keyword">private</span> <span class = "keyword">void</span> connectLeftChild(Graphics g, 
+        <span class = "keyword">int</span> x1, <span class = "keyword">int</span> y1, <span class = "keyword">int</span> x2, <span class = "keyword">int</span> y2) { 
+      <span class = "keyword">double</span> d = Math.sqrt(vGap * vGap + (x2 - x1) * (x2 - x1));
+      <span class = "keyword">int</span> x11 = (<span class = "keyword">int</span>)(x1 + radius * (x2 - x1) / d);
+      <span class = "keyword">int</span> y11 = (<span class = "keyword">int</span>)(y1 - radius * vGap / d);
+      <span class = "keyword">int</span> x21 = (<span class = "keyword">int</span>)(x2 - radius * (x2 - x1) / d);
+      <span class = "keyword">int</span> y21 = (<span class = "keyword">int</span>)(y2 + radius * vGap / d);
+      g.drawLine(x11, y11, x21, y21);
+    }
+        
+    <span class = "comment">/** Connect a parent at (x2, y2) with 
+     * its right child at (x1, y1) */</span>
+    <span class = "keyword">private</span> <span class = "keyword">void</span> connectRightChild(Graphics g, 
+        <span class = "keyword">int</span> x1, <span class = "keyword">int</span> y1, <span class = "keyword">int</span> x2, <span class = "keyword">int</span> y2) {
+      <span class = "keyword">double</span> d = Math.sqrt(vGap * vGap + (x2 - x1) * (x2 - x1));
+      <span class = "keyword">int</span> x11 = (<span class = "keyword">int</span>)(x1 - radius * (x1 - x2) / d);
+      <span class = "keyword">int</span> y11 = (<span class = "keyword">int</span>)(y1 - radius * vGap / d);
+      <span class = "keyword">int</span> x21 = (<span class = "keyword">int</span>)(x2 + radius * (x1 - x2) / d);
+      <span class = "keyword">int</span> y21 = (<span class = "keyword">int</span>)(y2 + radius * vGap / d);
+      g.drawLine(x11, y11, x21, y21);
+    }
+  }
+}
+</pre>
+</body>
+</html>

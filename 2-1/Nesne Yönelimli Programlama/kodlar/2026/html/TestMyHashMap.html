@@ -1,0 +1,53 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestMyHashMap.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestMyHashMapWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestMyHashMap {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a map</span>
+    MyMap&lt;String, Integer&gt; map = <span class = "keyword">new</span> MyHashMap&lt;&gt;();
+    map.put(<span class = "literal">"Smith"</span>, <span class = "literal">30</span>);
+    map.put(<span class = "literal">"Anderson"</span>, <span class = "literal">31</span>);
+    map.put(<span class = "literal">"Lewis"</span>, <span class = "literal">29</span>);
+    map.put(<span class = "literal">"Cook"</span>, <span class = "literal">29</span>);
+    map.put(<span class = "literal">"Smith"</span>, <span class = "literal">65</span>);
+
+    System.out.println(<span class = "literal">"Entries in map: "</span> + map);
+
+    System.out.println(<span class = "literal">"The age for "</span> + <span class = "literal">"Lewis is "</span> +
+      map.get(<span class = "literal">"Lewis"</span>));
+
+    System.out.println(<span class = "literal">"Is Smith in the map? "</span> + 
+      map.containsKey(<span class = "literal">"Smith"</span>));
+    System.out.println(<span class = "literal">"Is age <span class = "literal">33</span> in the map? "</span> + 
+      map.containsValue(<span class = "literal">33</span>));
+
+    map.remove(<span class = "literal">"Smith"</span>);
+    System.out.println(<span class = "literal">"Entries in map: "</span> + map);
+
+    map.clear();
+    System.out.println(<span class = "literal">"Entries in map: "</span> + map);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestMyHashMap" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

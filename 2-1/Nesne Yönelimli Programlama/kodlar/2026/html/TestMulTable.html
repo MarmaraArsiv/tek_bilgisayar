@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - TestMulTable.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#008000">// TestMulTable.java: Display a multiplication table
+<FONT COLOR="#000000"><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.JOptionPane;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> TestMulTable {
+  <FONT COLOR="#008000">/** Main method */<FONT COLOR="#000000">
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>static</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> main(String[] args) {
+    <FONT COLOR="#008000">// Display the table heading
+<FONT COLOR="#000000">    String output = <FONT COLOR="#0000ff">"                Multiplication Table\n"</FONT>;
+    output += <FONT COLOR="#0000ff">"-------------------------------------------------\n"</FONT>;
+
+    <FONT COLOR="#008000">// Display the number title
+<FONT COLOR="#000000">    output += <FONT COLOR="#0000ff">"   | "</FONT>;
+    <FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> j = <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">; j &lt;= <FONT COLOR="#0000ff">9</FONT><FONT COLOR="#000000">; j++)
+      output += <FONT COLOR="#0000ff">"    "</FONT> + j;
+
+    output += <FONT COLOR="#0000ff">"\n"</FONT>;
+
+    <FONT COLOR="#008000">// Print table body
+<FONT COLOR="#000000">    <FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> i = <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">; i &lt;= <FONT COLOR="#0000ff">9</FONT><FONT COLOR="#000000">; i++) {
+      output += i + <FONT COLOR="#0000ff">" | "</FONT>;
+      <FONT COLOR="#000080"><B>for</B></FONT><FONT COLOR="#000000"> (<FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> j = <FONT COLOR="#0000ff">1</FONT><FONT COLOR="#000000">; j &lt;= <FONT COLOR="#0000ff">9</FONT><FONT COLOR="#000000">; j++) {
+        <FONT COLOR="#008000">// Display the product and align properly
+<FONT COLOR="#000000">        <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (i * j &lt; <FONT COLOR="#0000ff">10</FONT><FONT COLOR="#000000">)
+          output += <FONT COLOR="#0000ff">"    "</FONT> + i * j;
+        <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000">
+          output += <FONT COLOR="#0000ff">"  "</FONT> + i * j;
+      }
+      output += <FONT COLOR="#0000ff">"\n"</FONT>;
+    }
+
+    <FONT COLOR="#008000">// Display result
+<FONT COLOR="#000000">    JOptionPane.showMessageDialog(<FONT COLOR="#000080"><B>null</B></FONT><FONT COLOR="#000000">, output,
+      <FONT COLOR="#0000ff">"Example 3.4 Output"</FONT>, JOptionPane.INFORMATION_MESSAGE);
+
+    System.exit(<FONT COLOR="#0000ff">0</FONT><FONT COLOR="#000000">);
+  }
+}
+</pre>

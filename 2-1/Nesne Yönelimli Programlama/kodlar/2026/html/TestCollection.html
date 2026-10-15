@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestCollection.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestCollectionWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> java.util.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestCollection {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ArrayList&lt;String&gt; collection1 = <span class = "keyword">new</span> ArrayList&lt;&gt;();
+    collection1.add(<span class = "literal">"New York"</span>); 
+    collection1.add(<span class = "literal">"Atlanta"</span>); 
+    collection1.add(<span class = "literal">"Dallas"</span>); 
+    collection1.add(<span class = "literal">"Madison"</span>); 
+
+    System.out.println(<span class = "literal">"A list of cities in collection1:"</span>);
+    System.out.println(collection1);
+
+    System.out.println(<span class = "literal">"\nIs Dallas in collection1? "</span>
+      + collection1.contains(<span class = "literal">"Dallas"</span>));
+
+    collection1.remove(<span class = "literal">"Dallas"</span>);
+    System.out.println(<span class = "literal">"\n"</span> + collection1.size() + 
+       <span class = "literal">" cities are in collection1 now"</span>);
+
+    Collection&lt;String&gt; collection2 = <span class = "keyword">new</span> ArrayList&lt;&gt;();
+    collection2.add(<span class = "literal">"Seattle"</span>); 
+    collection2.add(<span class = "literal">"Portland"</span>); 
+    collection2.add(<span class = "literal">"Los Angles"</span>); 
+    collection2.add(<span class = "literal">"Atlanta"</span>); 
+
+    System.out.println(<span class = "literal">"\nA list of cities in collection2:"</span>);
+    System.out.println(collection2);
+
+    ArrayList&lt;String&gt; c1 = (ArrayList&lt;String&gt;)(collection1.clone());
+    c1.addAll(collection2);
+    System.out.println(<span class = "literal">"\nCities in collection1 or collection2: "</span>);
+    System.out.println(c1);
+
+    c1 = (ArrayList&lt;String&gt;)(collection1.clone());
+    c1.retainAll(collection2);
+    System.out.print(<span class = "literal">"\nCities in collection1 and collection2: "</span>);
+    System.out.println(c1);
+
+    c1 = (ArrayList&lt;String&gt;)(collection1.clone());
+    c1.removeAll(collection2);
+    System.out.print(<span class = "literal">"\nCities in collection1, but not in 2: "</span>);
+    System.out.println(c1);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestCollection" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

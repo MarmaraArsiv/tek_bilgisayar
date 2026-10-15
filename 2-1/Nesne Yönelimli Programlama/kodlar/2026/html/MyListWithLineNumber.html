@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - MyList.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "MyList.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">interface</span> MyList&lt;E&gt; <span class = "keyword">extends</span> java.lang.Iterable&lt;E&gt; {
+  2&nbsp;&nbsp;  <span class = "comment">/** Add a new element at the end of this list */</span>
+  3&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> add(E e);
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;  <span class = "comment">/** Add a new element at the specified index in this list */</span>
+  6&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> add(<span class = "keyword">int</span> index, E e);
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;  <span class = "comment">/** Clear the list */</span>
+  9&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> clear();
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;  <span class = "comment">/** Return true if this list contains the element */</span>
+ 12&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> contains(E e);
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;  <span class = "comment">/** Return the element from this list at the specified index */</span>
+ 15&nbsp;&nbsp;  <span class = "keyword">public</span> E get(<span class = "keyword">int</span> index);
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;  <span class = "comment">/** Return the index of the first matching element in this list.
+ 18&nbsp;&nbsp;   *  Return -1 if no match. */</span>
+ 19&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> indexOf(E e);
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;  <span class = "comment">/** Return true if this list contains no elements */</span>
+ 22&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> isEmpty();
+ 23&nbsp;&nbsp;
+ 24&nbsp;&nbsp;  <span class = "comment">/** Return the index of the last matching element in this list
+ 25&nbsp;&nbsp;   *  Return -1 if no match. */</span>
+ 26&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> lastIndexOf(E e);
+ 27&nbsp;&nbsp;
+ 28&nbsp;&nbsp;  <span class = "comment">/** Remove the first occurrence of the element o from this list.
+ 29&nbsp;&nbsp;   *  Shift any subsequent elements to the left.
+ 30&nbsp;&nbsp;   *  Return true if the element is removed. */</span>
+ 31&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> remove(E e);
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;  <span class = "comment">/** Remove the element at the specified position in this list
+ 34&nbsp;&nbsp;   *  Shift any subsequent elements to the left.
+ 35&nbsp;&nbsp;   *  Return the element that was removed from the list. */</span>
+ 36&nbsp;&nbsp;  <span class = "keyword">public</span> E remove(<span class = "keyword">int</span> index);
+ 37&nbsp;&nbsp;
+ 38&nbsp;&nbsp;  <span class = "comment">/** Replace the element at the specified position in this list
+ 39&nbsp;&nbsp;   *  with the specified element and returns the new set. */</span>
+ 40&nbsp;&nbsp;  <span class = "keyword">public</span> Object set(<span class = "keyword">int</span> index, E e);
+ 41&nbsp;&nbsp;
+ 42&nbsp;&nbsp;  <span class = "comment">/** Return the number of elements in this list */</span>
+ 43&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> size();
+ 44&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "MyList" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

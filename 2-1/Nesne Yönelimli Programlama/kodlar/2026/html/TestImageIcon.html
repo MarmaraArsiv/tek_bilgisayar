@@ -1,0 +1,46 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestImageIcon.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestImageIconWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestImageIcon <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">private</span> ImageIcon usIcon = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/us.gif"</span>);
+  <span class = "keyword">private</span> ImageIcon myIcon = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/my.jpg"</span>);
+  <span class = "keyword">private</span> ImageIcon frIcon = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/fr.gif"</span>);
+  <span class = "keyword">private</span> ImageIcon ukIcon = <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/uk.gif"</span>);
+
+  <span class = "keyword">public</span> TestImageIcon() {
+    setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">1</span>, <span class = "literal">4</span>, <span class = "literal">5</span>, <span class = "literal">5</span>));
+    add(<span class = "keyword">new</span> JLabel(usIcon));
+    add(<span class = "keyword">new</span> JLabel(myIcon));
+    add(<span class = "keyword">new</span> JButton(frIcon));
+    add(<span class = "keyword">new</span> JButton(ukIcon));
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TestImageIcon frame = <span class = "keyword">new</span> TestImageIcon();
+    frame.setTitle(<span class = "literal">"TestImageIcon"</span>);
+    frame.setSize(<span class = "literal">500</span>, <span class = "literal">125</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

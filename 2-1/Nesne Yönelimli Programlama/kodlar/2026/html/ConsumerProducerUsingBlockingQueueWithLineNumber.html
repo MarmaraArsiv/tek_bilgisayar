@@ -1,0 +1,75 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ConsumerProducerUsingBlockingQueue.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ConsumerProducerUsingBlockingQueue.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.concurrent.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ConsumerProducerUsingBlockingQueue {
+  4&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">static</span> ArrayBlockingQueue&lt;Integer&gt; buffer =
+  5&nbsp;&nbsp;    <span class = "keyword">new</span> ArrayBlockingQueue&lt;&gt;(<span class = "literal">2</span>);
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  8&nbsp;&nbsp;    <span class = "comment">// Create a thread pool with two threads</span>
+  9&nbsp;&nbsp;    ExecutorService executor = Executors.newFixedThreadPool(<span class = "literal">2</span>);
+ 10&nbsp;&nbsp;    executor.execute(<span class = "keyword">new</span> ProducerTask());
+ 11&nbsp;&nbsp;    executor.execute(<span class = "keyword">new</span> ConsumerTask());
+ 12&nbsp;&nbsp;    executor.shutdown();
+ 13&nbsp;&nbsp;  }
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;  <span class = "comment">// A task for adding an int to the buffer</span>
+ 16&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">static</span> <span class = "keyword">class</span> ProducerTask <span class = "keyword">implements</span> Runnable {
+ 17&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> run() {
+ 18&nbsp;&nbsp;      <span class = "keyword">try</span> {
+ 19&nbsp;&nbsp;        <span class = "keyword">int</span> i = <span class = "literal">1</span>;
+ 20&nbsp;&nbsp;        <span class = "keyword">while</span> (<span class = "keyword">true</span>) {
+ 21&nbsp;&nbsp;          System.out.println(<span class = "literal">"Producer writes "</span> + i);
+ 22&nbsp;&nbsp;          buffer.put(i++); <span class = "comment">// Add any value to the buffer, say, 1</span>
+ 23&nbsp;&nbsp;          <span class = "comment">// Put the thread into sleep</span>
+ 24&nbsp;&nbsp;          Thread.sleep((<span class = "keyword">int</span>)(Math.random() * <span class = "literal">10000</span>));
+ 25&nbsp;&nbsp;        }
+ 26&nbsp;&nbsp;      } 
+ 27&nbsp;&nbsp;      <span class = "keyword">catch</span> (InterruptedException ex) {
+ 28&nbsp;&nbsp;        ex.printStackTrace();
+ 29&nbsp;&nbsp;      }
+ 30&nbsp;&nbsp;    }
+ 31&nbsp;&nbsp;  }
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;  <span class = "comment">// A task for reading and deleting an int from the buffer</span>
+ 34&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">static</span> <span class = "keyword">class</span> ConsumerTask <span class = "keyword">implements</span> Runnable {
+ 35&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> run() {
+ 36&nbsp;&nbsp;      <span class = "keyword">try</span> {
+ 37&nbsp;&nbsp;        <span class = "keyword">while</span> (<span class = "keyword">true</span>) {
+ 38&nbsp;&nbsp;          System.out.println(<span class = "literal">"\t\t\tConsumer reads "</span> + buffer.take());
+ 39&nbsp;&nbsp;          <span class = "comment">// Put the thread into sleep</span>
+ 40&nbsp;&nbsp;          Thread.sleep((<span class = "keyword">int</span>)(Math.random() * <span class = "literal">10000</span>));
+ 41&nbsp;&nbsp;        }
+ 42&nbsp;&nbsp;      } 
+ 43&nbsp;&nbsp;      <span class = "keyword">catch</span> (InterruptedException ex) {
+ 44&nbsp;&nbsp;        ex.printStackTrace();
+ 45&nbsp;&nbsp;      }
+ 46&nbsp;&nbsp;    }
+ 47&nbsp;&nbsp;  }
+ 48&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "ConsumerProducerUsingBlockingQueue" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

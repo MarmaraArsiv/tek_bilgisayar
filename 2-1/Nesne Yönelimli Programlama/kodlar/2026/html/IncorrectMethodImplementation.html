@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - IncorrectMethodImplementation.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "IncorrectMethodImplementationWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> IncorrectMethodImplementation {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    System.out.printf(<span class = "literal">"%15s%15s\n"</span>, <span class = "literal">"n"</span>, <span class = "literal">"m(n)"</span>);
+    System.out.println(<span class = "literal">"-------------------------------------------"</span>);
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> n = <span class = "literal">1</span>; n &lt;= <span class = "literal">10</span>; n++) {
+      <span class = "keyword">double</span> result = <span class = "literal">0</span>;
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">1</span>; i &lt;= n; i++) {
+        result += m(i);
+      }
+      System.out.printf(<span class = "literal">"%<span class = "literal">15d</span>%<span class = "literal">15</span><span class = "literal">.</span>2f\n"</span>, n, result);
+    }
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">double</span> m(<span class = "keyword">int</span> n) {
+    <span class = "keyword">return</span> (<span class = "literal">2</span> * n + <span class = "literal">1</span><span class = "literal">.</span><span class = "literal">0</span>) / (<span class = "literal">3</span> * n - <span class = "literal">2</span>);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "IncorrectMethodImplementation" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

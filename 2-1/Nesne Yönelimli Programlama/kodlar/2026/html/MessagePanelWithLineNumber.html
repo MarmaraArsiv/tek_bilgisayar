@@ -1,0 +1,154 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - MessagePanel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "MessagePanel.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.FontMetrics;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.Dimension;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.Graphics;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JPanel;
+  5&nbsp;&nbsp;
+  6&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> MessagePanel <span class = "keyword">extends</span> JPanel {
+  7&nbsp;&nbsp;  <span class = "comment">/** The message to be displayed */</span>
+  8&nbsp;&nbsp;  <span class = "keyword">private</span> String message = <span class = "literal">"Welcome to Java"</span>;
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;  <span class = "comment">/** The x coordinate where the message is displayed */</span>
+ 11&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span> xCoordinate = <span class = "literal">20</span>;
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;  <span class = "comment">/** The y coordinate where the message is displayed */</span>
+ 14&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span> yCoordinate = <span class = "literal">20</span>;
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;  <span class = "comment">/** Indicate whether the message is displayed in the center */</span>
+ 17&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">boolean</span> centered;
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;  <span class = "comment">/** The interval for moving the message horizontally 
+ 20&nbsp;&nbsp;   * and vertically */</span>
+ 21&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">int</span> interval = <span class = "literal">10</span>;
+ 22&nbsp;&nbsp;
+ 23&nbsp;&nbsp;  <span class = "comment">/** Construct with default properties */</span>
+ 24&nbsp;&nbsp;  <span class = "keyword">public</span> MessagePanel() {
+ 25&nbsp;&nbsp;  }
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;  <span class = "comment">/** Construct a message panel with a specified message */</span>
+ 28&nbsp;&nbsp;  <span class = "keyword">public</span> MessagePanel(String message) {
+ 29&nbsp;&nbsp;    <span class = "keyword">this</span>.message = message;
+ 30&nbsp;&nbsp;  }
+ 31&nbsp;&nbsp;
+ 32&nbsp;&nbsp;  <span class = "comment">/** Return message */</span>
+ 33&nbsp;&nbsp;  <span class = "keyword">public</span> String getMessage() {
+ 34&nbsp;&nbsp;    <span class = "keyword">return</span> message;
+ 35&nbsp;&nbsp;  }
+ 36&nbsp;&nbsp;
+ 37&nbsp;&nbsp;  <span class = "comment">/** Set a new message */</span>
+ 38&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setMessage(String message) {
+ 39&nbsp;&nbsp;    <span class = "keyword">this</span>.message = message;
+ 40&nbsp;&nbsp;    repaint();
+ 41&nbsp;&nbsp;  }
+ 42&nbsp;&nbsp;
+ 43&nbsp;&nbsp;  <span class = "comment">/** Return xCoordinator */</span>
+ 44&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> getXCoordinate() {
+ 45&nbsp;&nbsp;    <span class = "keyword">return</span> xCoordinate;
+ 46&nbsp;&nbsp;  }
+ 47&nbsp;&nbsp;
+ 48&nbsp;&nbsp;  <span class = "comment">/** Set a new xCoordinator */</span>
+ 49&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setXCoordinate(<span class = "keyword">int</span> x) {
+ 50&nbsp;&nbsp;    <span class = "keyword">this</span>.xCoordinate = x;
+ 51&nbsp;&nbsp;    repaint();
+ 52&nbsp;&nbsp;  }
+ 53&nbsp;&nbsp;
+ 54&nbsp;&nbsp;  <span class = "comment">/** Return yCoordinator */</span>
+ 55&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> getYCoordinate() {
+ 56&nbsp;&nbsp;    <span class = "keyword">return</span> yCoordinate;
+ 57&nbsp;&nbsp;  }
+ 58&nbsp;&nbsp;
+ 59&nbsp;&nbsp;  <span class = "comment">/** Set a new yCoordinator */</span>
+ 60&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setYCoordinate(<span class = "keyword">int</span> y) {
+ 61&nbsp;&nbsp;    <span class = "keyword">this</span>.yCoordinate = y;
+ 62&nbsp;&nbsp;    repaint();
+ 63&nbsp;&nbsp;  }
+ 64&nbsp;&nbsp;
+ 65&nbsp;&nbsp;  <span class = "comment">/** Return centered */</span>
+ 66&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">boolean</span> isCentered() {
+ 67&nbsp;&nbsp;    <span class = "keyword">return</span> centered;
+ 68&nbsp;&nbsp;  }
+ 69&nbsp;&nbsp;
+ 70&nbsp;&nbsp;  <span class = "comment">/** Set a new centered */</span>
+ 71&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setCentered(<span class = "keyword">boolean</span> centered) {
+ 72&nbsp;&nbsp;    <span class = "keyword">this</span>.centered = centered;
+ 73&nbsp;&nbsp;    repaint();
+ 74&nbsp;&nbsp;  }
+ 75&nbsp;&nbsp;
+ 76&nbsp;&nbsp;  <span class = "comment">/** Return interval */</span>
+ 77&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">int</span> getInterval() {
+ 78&nbsp;&nbsp;    <span class = "keyword">return</span> interval;
+ 79&nbsp;&nbsp;  }
+ 80&nbsp;&nbsp;
+ 81&nbsp;&nbsp;  <span class = "comment">/** Set a new interval */</span>
+ 82&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> setInterval(<span class = "keyword">int</span> interval) {
+ 83&nbsp;&nbsp;    <span class = "keyword">this</span>.interval = interval;
+ 84&nbsp;&nbsp;    repaint();
+ 85&nbsp;&nbsp;  }
+ 86&nbsp;&nbsp;
+ 87&nbsp;&nbsp;  @Override
+ 88&nbsp;&nbsp;  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+ 89&nbsp;&nbsp;    <span class = "keyword">super</span>.paintComponent(g);
+ 90&nbsp;&nbsp;
+ 91&nbsp;&nbsp;    <span class = "keyword">if</span> (centered) {
+ 92&nbsp;&nbsp;      <span class = "comment">// Get font metrics for the current font</span>
+ 93&nbsp;&nbsp;      FontMetrics fm = g.getFontMetrics();
+ 94&nbsp;&nbsp;
+ 95&nbsp;&nbsp;      <span class = "comment">// Find the center location to display</span>
+ 96&nbsp;&nbsp;      <span class = "keyword">int</span> stringWidth = fm.stringWidth(message);
+ 97&nbsp;&nbsp;      <span class = "keyword">int</span> stringAscent = fm.getAscent();
+ 98&nbsp;&nbsp;      <span class = "comment">// Get the position of the leftmost character in the baseline</span>
+ 99&nbsp;&nbsp;      xCoordinate = getWidth() / <span class = "literal">2</span> - stringWidth / <span class = "literal">2</span>;
+100&nbsp;&nbsp;      yCoordinate = getHeight() / <span class = "literal">2</span> + stringAscent / <span class = "literal">2</span>;
+101&nbsp;&nbsp;    }
+102&nbsp;&nbsp;
+103&nbsp;&nbsp;    g.drawString(message, xCoordinate, yCoordinate);
+104&nbsp;&nbsp;  }
+105&nbsp;&nbsp;
+106&nbsp;&nbsp;  <span class = "comment">/** Move the message left */</span>
+107&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> moveLeft() {
+108&nbsp;&nbsp;    xCoordinate -= interval;
+109&nbsp;&nbsp;    repaint();
+110&nbsp;&nbsp;  }
+111&nbsp;&nbsp;
+112&nbsp;&nbsp;  <span class = "comment">/** Move the message right */</span>
+113&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> moveRight() {
+114&nbsp;&nbsp;    xCoordinate += interval;
+115&nbsp;&nbsp;    repaint();
+116&nbsp;&nbsp;  }
+117&nbsp;&nbsp;
+118&nbsp;&nbsp;  <span class = "comment">/** Move the message up */</span>
+119&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> moveUp() {
+120&nbsp;&nbsp;    yCoordinate -= interval;
+121&nbsp;&nbsp;    repaint();
+122&nbsp;&nbsp;  }
+123&nbsp;&nbsp;
+124&nbsp;&nbsp;  <span class = "comment">/** Move the message down */</span>
+125&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> moveDown() {
+126&nbsp;&nbsp;    yCoordinate += interval;
+127&nbsp;&nbsp;    repaint();
+128&nbsp;&nbsp;  }
+129&nbsp;&nbsp;
+130&nbsp;&nbsp;  <span class = "comment">/** Override get method for preferredSize */</span>
+131&nbsp;&nbsp;  <span class = "keyword">public</span> Dimension getPreferredSize() {
+132&nbsp;&nbsp;    <span class = "keyword">return</span> <span class = "keyword">new</span> Dimension(<span class = "literal">200</span>, <span class = "literal">30</span>);
+133&nbsp;&nbsp;  }
+134&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - SimpleEventDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "SimpleEventDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.*;
+  3&nbsp;&nbsp;
+  4&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> SimpleEventDemo <span class = "keyword">extends</span> JFrame {
+  5&nbsp;&nbsp;  <span class = "keyword">public</span> SimpleEventDemo() {
+  6&nbsp;&nbsp;    <span class = "comment">// Create two buttons</span>
+  7&nbsp;&nbsp;    JButton jbtOK = <span class = "keyword">new</span> JButton(<span class = "literal">"OK"</span>);
+  8&nbsp;&nbsp;    JButton jbtCancel = <span class = "keyword">new</span> JButton(<span class = "literal">"Cancel"</span>);
+  9&nbsp;&nbsp;    JButton jbtRed = <span class = "keyword">new</span> JButton(<span class = "literal">"Red"</span>);
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;    <span class = "comment">// Create a panel to hold buttons</span>
+ 12&nbsp;&nbsp;    JPanel panel = <span class = "keyword">new</span> JPanel();
+ 13&nbsp;&nbsp;    panel.add(jbtOK);
+ 14&nbsp;&nbsp;    panel.add(jbtCancel);
+ 15&nbsp;&nbsp;    panel.add(jbtRed);
+ 16&nbsp;&nbsp;
+ 17&nbsp;&nbsp;    add(panel); <span class = "comment">// Add panel to the frame</span>
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;    <span class = "comment">// Register listeners</span>
+ 20&nbsp;&nbsp;    ListenerClass listener = <span class = "keyword">new</span> ListenerClass();
+ 21&nbsp;&nbsp;    jbtOK.addActionListener(listener);
+ 22&nbsp;&nbsp;    jbtCancel.addActionListener(listener);
+ 23&nbsp;&nbsp;    jbtRed.addActionListener(listener);
+ 24&nbsp;&nbsp;  }
+ 25&nbsp;&nbsp;
+ 26&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 27&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> SimpleEventDemo();
+ 28&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"SimpleEventDemo"</span>);
+ 29&nbsp;&nbsp;    frame.setSize(<span class = "literal">200</span>, <span class = "literal">150</span>);
+ 30&nbsp;&nbsp;    frame.setLocation(<span class = "literal">200</span>, <span class = "literal">100</span>);
+ 31&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 32&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 33&nbsp;&nbsp;  }
+ 34&nbsp;&nbsp;}
+ 35&nbsp;&nbsp;
+ 36&nbsp;&nbsp;<span class = "keyword">class</span> ListenerClass <span class = "keyword">implements</span> ActionListener {
+ 37&nbsp;&nbsp;  @Override
+ 38&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+ 39&nbsp;&nbsp;    System.out.println(<span class = "literal">"The "</span> + e.getActionCommand() + <span class = "literal">" button "</span>
+ 40&nbsp;&nbsp;      + <span class = "literal">"is clicked at\n  "</span> + <span class = "keyword">new</span> java.util.Date(e.getWhen()));
+ 41&nbsp;&nbsp;  }
+ 42&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

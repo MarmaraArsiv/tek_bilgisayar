@@ -1,0 +1,174 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - NineTailApp.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "NineTailAppWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> javax.swing.border.LineBorder;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> NineTailApp <span class = "keyword">extends</span> JApplet {
+  <span class = "comment">// Create the initial board</span>
+  <span class = "keyword">private</span> InitialNodePanel initialNodePanel = <span class = "keyword">new</span> InitialNodePanel();
+  <span class = "keyword">private</span> JButton jbtSolve = <span class = "keyword">new</span> JButton(<span class = "literal">"Solve"</span>);
+  <span class = "keyword">private</span> JButton jbtStartOver = <span class = "keyword">new</span> JButton(<span class = "literal">"Start Over"</span>);
+  <span class = "comment">// solutionPanel holds a sequence of panels for displaying nodes</span>
+  <span class = "keyword">private</span> JPanel solutionPanel = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> FlowLayout(FlowLayout.LEFT, <span class = "literal">10</span>,
+      <span class = "literal">10</span>));
+  <span class = "keyword">private</span> NineTailModel model = <span class = "keyword">new</span> NineTailModel();
+
+  <span class = "comment">/** Initialize UI */</span>
+  <span class = "keyword">public</span> NineTailApp() {
+    <span class = "comment">// Place solutionPanel in a scroll pane</span>
+    solutionPanel.add(initialNodePanel);
+    add(<span class = "keyword">new</span> JScrollPane(solutionPanel), BorderLayout.CENTER);
+
+    <span class = "comment">// buttonPanel holds two buttons</span>
+    JPanel buttonPanel = <span class = "keyword">new</span> JPanel();
+    buttonPanel.add(jbtSolve);
+    buttonPanel.add(jbtStartOver);
+    add(buttonPanel, BorderLayout.SOUTH);
+
+    <span class = "comment">// Listener for the Solve button</span>
+    jbtSolve.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        solutionPanel.removeAll();
+
+        <span class = "comment">// Get a shortest path</span>
+        java.util.List&lt;Integer&gt; list = model.getShortestPath(NineTailModel
+            .getIndex(initialNodePanel.getNode()));
+
+        <span class = "comment">// Display nodes in the shortest path</span>
+        <span class = "keyword">for</span> (<span class = "keyword">int</span> nodeIndex : list) {
+          solutionPanel.add(<span class = "keyword">new</span> NodePanel(NineTailModel.getNode(nodeIndex)));
+        }
+
+        solutionPanel.revalidate();
+      }
+    });
+
+    <span class = "comment">// Listener for the Start Over button</span>
+    jbtStartOver.addActionListener(<span class = "keyword">new</span> ActionListener() {
+      @Override
+      <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+        solutionPanel.removeAll();
+        solutionPanel.add(initialNodePanel); <span class = "comment">// Display initial node</span>
+        solutionPanel.repaint();
+      }
+    });
+  }
+
+  <span class = "comment">/** An inner class for displaying a node on a panel */</span>
+  <span class = "keyword">static</span> <span class = "keyword">class</span> NodePanel <span class = "keyword">extends</span> JPanel {
+    <span class = "keyword">public</span> NodePanel(<span class = "keyword">char</span>[] node) {
+      <span class = "keyword">this</span>.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">3</span>, <span class = "literal">3</span>));
+
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">9</span>; i++)
+        add(<span class = "keyword">new</span> Cell(node[i] + <span class = "literal">""</span>));
+    }
+  }
+
+  <span class = "comment">/** An inner class for displaying a cell */</span>
+  <span class = "keyword">static</span> <span class = "keyword">class</span> Cell <span class = "keyword">extends</span> JLabel {
+    <span class = "keyword">public</span> Cell(String s) {
+      <span class = "keyword">this</span>.setBorder(<span class = "keyword">new</span> LineBorder(Color.black, <span class = "literal">1</span>)); <span class = "comment">// Cell border</span>
+      <span class = "keyword">this</span>.setHorizontalAlignment(JLabel.CENTER);
+      <span class = "keyword">this</span>.setFont(<span class = "keyword">new</span> Font(<span class = "literal">"TimesRoman"</span>, Font.BOLD, <span class = "literal">20</span>));
+      setText(s);
+    }
+  }
+
+  <span class = "comment">/** An inner class for displaying the initial node */</span>
+  <span class = "keyword">static</span> <span class = "keyword">class</span> InitialNodePanel <span class = "keyword">extends</span> JPanel {
+    <span class = "comment">// Each cell represents a coin, which can be flipped</span>
+    ClickableCell[][] clickableCells = <span class = "keyword">new</span> ClickableCell[<span class = "literal">3</span>][<span class = "literal">3</span>];
+
+    <span class = "keyword">public</span> InitialNodePanel() {
+      <span class = "keyword">this</span>.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">3</span>, <span class = "literal">3</span>));
+
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">3</span>; i++) {
+        <span class = "keyword">for</span> (<span class = "keyword">int</span> j = <span class = "literal">0</span>; j &lt; <span class = "literal">3</span>; j++) {
+          add(clickableCells[i][j] = <span class = "keyword">new</span> ClickableCell(<span class = "literal">"H"</span>));
+        }
+      }
+    }
+
+    <span class = "comment">/** Get an array of characters for a node from a GUI node */</span>
+    <span class = "comment">/** This implementation is wrong by purpose */</span>
+    <span class = "keyword">public</span> <span class = "keyword">char</span>[] getNode() {
+      <span class = "keyword">char</span>[] node = <span class = "keyword">new</span> <span class = "keyword">char</span>[<span class = "literal">9</span>];
+      <span class = "keyword">int</span> k = <span class = "literal">8</span>;
+      <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">3</span>; i++)
+        <span class = "keyword">for</span> (<span class = "keyword">int</span> j = <span class = "literal">0</span>; j &lt; <span class = "literal">3</span>; j++) {
+          node[k] = clickableCells[i][j].getText().charAt(<span class = "literal">0</span>);
+          k--;
+        }
+
+      <span class = "keyword">return</span> node;
+    } 
+
+    <span class = "comment">/** correct implementation 
+    public char[] getNode() {
+      char[] node = new char[9];
+      int k = 8;
+      for (int i = 2; i &gt;= 0; i--) {
+        for (int j = 2; j &gt;= 0; j--) {
+          node[k] = clickableCells[i][j].getText().charAt(0);
+          k--;
+        }
+      }
+
+      return node;
+    }
+    */</span>
+  }
+
+  <span class = "comment">/** An inner class for displaying a clickable cell */</span>
+  <span class = "keyword">static</span> <span class = "keyword">class</span> ClickableCell <span class = "keyword">extends</span> Cell {
+    <span class = "keyword">public</span> ClickableCell(String s) {
+      <span class = "keyword">super</span>(s);
+      addMouseListener(<span class = "keyword">new</span> MouseAdapter() {
+        <span class = "keyword">public</span> <span class = "keyword">void</span> mouseClicked(MouseEvent e) {
+          <span class = "keyword">if</span> (getText().equals(<span class = "literal">"H"</span>)) {
+            setText(<span class = "literal">"T"</span>); <span class = "comment">// Flip from H to T</span>
+          } <span class = "keyword">else</span> {
+            setText(<span class = "literal">"H"</span>); <span class = "comment">// Flip from T to H</span>
+          }
+        }
+      });
+    }
+  }
+
+  <span class = "comment">/** This main method enables the applet to run as an application */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a frame</span>
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"Nine Tail Problem"</span>);
+
+    <span class = "comment">// Create an instance of the applet</span>
+    NineTailApp applet = <span class = "keyword">new</span> NineTailApp();
+
+    <span class = "comment">// Add the applet instance to the frame</span>
+    frame.add(applet, BorderLayout.CENTER);
+
+    <span class = "comment">// Display the frame</span>
+    frame.setSize(<span class = "literal">300</span>, <span class = "literal">180</span>);
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

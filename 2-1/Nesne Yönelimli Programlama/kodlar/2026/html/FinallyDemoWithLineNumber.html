@@ -1,0 +1,49 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - FinallyDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "FinallyDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> FinallyDemo {
+  2&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  3&nbsp;&nbsp;    java.io.PrintWriter output = <span class = "keyword">null</span>;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;    <span class = "keyword">try</span> {
+  6&nbsp;&nbsp;      <span class = "comment">// Create a file</span>
+  7&nbsp;&nbsp;      output = <span class = "keyword">new</span> java.io.PrintWriter(<span class = "literal">"text.txt"</span>);
+  8&nbsp;&nbsp;
+  9&nbsp;&nbsp;      <span class = "comment">// Write formatted output to the file</span>
+ 10&nbsp;&nbsp;      output.println(<span class = "literal">"Welcome to Java"</span>);
+ 11&nbsp;&nbsp;    }
+ 12&nbsp;&nbsp;    <span class = "keyword">catch</span> (java.io.IOException ex) {
+ 13&nbsp;&nbsp;      ex.printStackTrace();
+ 14&nbsp;&nbsp;    }
+ 15&nbsp;&nbsp;    <span class = "keyword">finally</span> {
+ 16&nbsp;&nbsp;      <span class = "comment">// Close the file</span>
+ 17&nbsp;&nbsp;      <span class = "keyword">if</span> (output != <span class = "keyword">null</span>) output.close();
+ 18&nbsp;&nbsp;    }
+ 19&nbsp;&nbsp;    
+ 20&nbsp;&nbsp;    System.out.println(<span class = "literal">"End of the program"</span>);  
+ 21&nbsp;&nbsp;  }
+ 22&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "FinallyDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

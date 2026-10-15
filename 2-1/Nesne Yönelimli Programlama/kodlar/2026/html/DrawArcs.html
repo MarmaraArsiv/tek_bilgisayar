@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DrawArcs.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "DrawArcsWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.JFrame;
+<span class = "keyword">import</span> javax.swing.JPanel;
+<span class = "keyword">import</span> java.awt.Graphics;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> DrawArcs <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">public</span> DrawArcs() {
+    setTitle(<span class = "literal">"DrawArcs"</span>);
+    add(<span class = "keyword">new</span> ArcsPanel());
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    DrawArcs frame = <span class = "keyword">new</span> DrawArcs();
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setSize(<span class = "literal">250</span>, <span class = "literal">300</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+
+<span class = "comment">// The class for drawing arcs on a panel</span>
+<span class = "keyword">class</span> ArcsPanel <span class = "keyword">extends</span> JPanel {
+  @Override
+  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+    <span class = "keyword">super</span>.paintComponent(g);
+
+    <span class = "keyword">int</span> xCenter = getWidth() / <span class = "literal">2</span>;
+    <span class = "keyword">int</span> yCenter = getHeight() / <span class = "literal">2</span>;
+    <span class = "keyword">int</span> radius = (<span class = "keyword">int</span>)(Math.min(getWidth(), getHeight()) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">4</span>);
+
+    <span class = "keyword">int</span> x = xCenter - radius;
+    <span class = "keyword">int</span> y = yCenter - radius;
+
+    g.fillArc(x, y, <span class = "literal">2</span> * radius, <span class = "literal">2</span> * radius, <span class = "literal">0</span>, <span class = "literal">30</span>);
+    g.fillArc(x, y, <span class = "literal">2</span> * radius, <span class = "literal">2</span> * radius, <span class = "literal">90</span>, <span class = "literal">30</span>);
+    g.fillArc(x, y, <span class = "literal">2</span> * radius, <span class = "literal">2</span> * radius, <span class = "literal">180</span>, <span class = "literal">30</span>);
+    g.fillArc(x, y, <span class = "literal">2</span> * radius, <span class = "literal">2</span> * radius, <span class = "literal">270</span>, <span class = "literal">30</span>);
+  }
+}
+</pre>
+</body>
+</html>

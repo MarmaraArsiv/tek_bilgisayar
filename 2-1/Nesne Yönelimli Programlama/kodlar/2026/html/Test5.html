@@ -1,0 +1,82 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Test5.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "Test5WithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> java.awt.event.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> Test5 <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">private</span> KeyboardPanel keyboardPanel = <span class = "keyword">new</span> KeyboardPanel();
+
+  <span class = "comment">/** Initialize UI */</span>
+  <span class = "keyword">public</span> Test5() {
+    <span class = "comment">// Add the keyboard panel to accept and display user input</span>
+    add(keyboardPanel);
+
+    <span class = "comment">// Set focus</span>
+    keyboardPanel.setFocusable(<span class = "keyword">true</span>);
+  }
+
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    Test5 frame = <span class = "keyword">new</span> Test5();
+    frame.setTitle(<span class = "literal">"Test5"</span>);
+    frame.setSize(<span class = "literal">300</span>, <span class = "literal">300</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame   </span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+
+  <span class = "comment">// Inner class: KeyboardPanel for receiving key input</span>
+  <span class = "keyword">static</span> <span class = "keyword">class</span> KeyboardPanel <span class = "keyword">extends</span> JPanel {
+    <span class = "keyword">private</span> <span class = "keyword">int</span> x = <span class = "literal">100</span>;
+    <span class = "keyword">private</span> <span class = "keyword">int</span> y = <span class = "literal">100</span>;
+    <span class = "keyword">private</span> <span class = "keyword">char</span> keyChar = <span class = "literal">'A'</span>; <span class = "comment">// Default key</span>
+
+    <span class = "keyword">public</span> KeyboardPanel() {
+      addKeyListener(<span class = "keyword">new</span> KeyAdapter() {
+        @Override
+        <span class = "keyword">public</span> <span class = "keyword">void</span> keyPressed(KeyEvent e) {
+          <span class = "keyword">switch</span> (e.getKeyCode()) {
+            <span class = "keyword">case</span> KeyEvent.VK_DOWN: y += <span class = "literal">10</span>; <span class = "keyword">break</span>;
+            <span class = "keyword">case</span> KeyEvent.VK_UP: y -= <span class = "literal">10</span>; <span class = "keyword">break</span>;
+            <span class = "keyword">case</span> KeyEvent.VK_LEFT: x -= <span class = "literal">10</span>; <span class = "keyword">break</span>;
+            <span class = "keyword">case</span> KeyEvent.VK_RIGHT: x += <span class = "literal">10</span>; <span class = "keyword">break</span>;
+            default: keyChar = e.getKeyChar();
+          }
+
+          repaint();
+        }
+        
+        <span class = "keyword">public</span> <span class = "keyword">void</span> keyTyped(KeyEvent e) {
+          System.out.println(e.getKeyCode());
+          System.out.println(e.VK_UNDEFINED);
+        }
+      });
+    }
+
+    @Override
+    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+      <span class = "keyword">super</span>.paintComponent(g);
+
+      g.setFont(<span class = "keyword">new</span> Font(<span class = "literal">"TimesRoman"</span>, Font.PLAIN, <span class = "literal">24</span>));
+      g.drawString(String.valueOf(keyChar), x, y);
+    }
+  }
+}
+</pre>
+</body>
+</html>

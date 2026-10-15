@@ -1,0 +1,83 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - WindingRuleDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "WindingRuleDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.geom.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> WindingRuleDemo <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  <span class = "keyword">public</span> WindingRuleDemo() {
+  7&nbsp;&nbsp;    add(<span class = "keyword">new</span> ShapePanel());
+  8&nbsp;&nbsp;  }
+  9&nbsp;&nbsp;
+ 10&nbsp;&nbsp;  <span class = "keyword">class</span> ShapePanel <span class = "keyword">extends</span> JPanel {
+ 11&nbsp;&nbsp;    @Override
+ 12&nbsp;&nbsp;    <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+ 13&nbsp;&nbsp;      <span class = "keyword">super</span>.paintComponent(g);
+ 14&nbsp;&nbsp;  
+ 15&nbsp;&nbsp;      Graphics2D g2d = (Graphics2D)g; <span class = "comment">// Create Graphics2D</span>
+ 16&nbsp;&nbsp;  
+ 17&nbsp;&nbsp;      g2d.translate(<span class = "literal">10</span>, <span class = "literal">10</span>); <span class = "comment">// Translate to a new origin     </span>
+ 18&nbsp;&nbsp;      g2d.draw(createAPath()); <span class = "comment">// Create and draw a path</span>
+ 19&nbsp;&nbsp;
+ 20&nbsp;&nbsp;      g2d.translate(<span class = "literal">160</span>, <span class = "literal">0</span>); <span class = "comment">// Translate to a new origin</span>
+ 21&nbsp;&nbsp;      Path2D path2 = createAPath(); <span class = "comment">// Create a path</span>
+ 22&nbsp;&nbsp;      path2.setWindingRule(Path2D.WIND_EVEN_ODD); <span class = "comment">// Set a new rule</span>
+ 23&nbsp;&nbsp;      g2d.fill(path2); <span class = "comment">// Create and fill a path</span>
+ 24&nbsp;&nbsp;      
+ 25&nbsp;&nbsp;      g2d.translate(<span class = "literal">160</span>, <span class = "literal">0</span>); <span class = "comment">// Translate to a new origin</span>
+ 26&nbsp;&nbsp;      Path2D path3 = createAPath(); <span class = "comment">// Create a path</span>
+ 27&nbsp;&nbsp;      path3.setWindingRule(Path2D.WIND_NON_ZERO); <span class = "comment">// Set a new rule</span>
+ 28&nbsp;&nbsp;      g2d.fill(path3); <span class = "comment">// Create and fill a path</span>
+ 29&nbsp;&nbsp;    }
+ 30&nbsp;&nbsp;    
+ 31&nbsp;&nbsp;    <span class = "keyword">private</span> Path2D createAPath() {
+ 32&nbsp;&nbsp;      <span class = "comment">// Define the outer rectangle</span>
+ 33&nbsp;&nbsp;      Path2D path = <span class = "keyword">new</span> Path2D.Double();
+ 34&nbsp;&nbsp;      path.moveTo(<span class = "literal">0</span>, <span class = "literal">0</span>);
+ 35&nbsp;&nbsp;      path.lineTo(<span class = "literal">0</span>, <span class = "literal">100</span>);
+ 36&nbsp;&nbsp;      path.lineTo(<span class = "literal">100</span>, <span class = "literal">100</span>);
+ 37&nbsp;&nbsp;      path.lineTo(<span class = "literal">100</span>, <span class = "literal">0</span>);
+ 38&nbsp;&nbsp;      path.lineTo(<span class = "literal">0</span>, <span class = "literal">0</span>);
+ 39&nbsp;&nbsp;
+ 40&nbsp;&nbsp;      <span class = "comment">// Define the inner rectangle</span>
+ 41&nbsp;&nbsp;      path.moveTo(<span class = "literal">30</span>, <span class = "literal">30</span>);
+ 42&nbsp;&nbsp;      path.lineTo(<span class = "literal">30</span>, <span class = "literal">70</span>);
+ 43&nbsp;&nbsp;      path.lineTo(<span class = "literal">70</span>, <span class = "literal">70</span>);
+ 44&nbsp;&nbsp;      path.lineTo(<span class = "literal">70</span>, <span class = "literal">30</span>);
+ 45&nbsp;&nbsp;      path.lineTo(<span class = "literal">30</span>, <span class = "literal">30</span>);
+ 46&nbsp;&nbsp;      
+ 47&nbsp;&nbsp;      <span class = "keyword">return</span> path;
+ 48&nbsp;&nbsp;    }
+ 49&nbsp;&nbsp;  }
+ 50&nbsp;&nbsp;
+ 51&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+ 52&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 53&nbsp;&nbsp;    WindingRuleDemo applet = <span class = "keyword">new</span> WindingRuleDemo();
+ 54&nbsp;&nbsp;    applet.init();
+ 55&nbsp;&nbsp;    applet.start();
+ 56&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 57&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 58&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"WindingRuleDemo"</span>);
+ 59&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+ 60&nbsp;&nbsp;    frame.setSize(<span class = "literal">450</span>, <span class = "literal">160</span>);
+ 61&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 62&nbsp;&nbsp;  }
+ 63&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

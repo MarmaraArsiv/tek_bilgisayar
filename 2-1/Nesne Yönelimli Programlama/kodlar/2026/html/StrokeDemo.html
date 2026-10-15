@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - StrokeDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "StrokeDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> javafx.application.Application;
+<span class = "keyword">import</span> javafx.scene.Scene;
+<span class = "keyword">import</span> javafx.scene.layout.Pane;
+<span class = "keyword">import</span> javafx.scene.paint.Color;
+<span class = "keyword">import</span> javafx.stage.Stage;
+<span class = "keyword">import</span> javafx.scene.shape.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> StrokeDemo <span class = "keyword">extends</span> Application {
+  @Override <span class = "comment">// Override the start method in the Application class</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) { 
+    RectangleBuilder rectangleBuilder = RectangleBuilder.create()
+      .x(<span class = "literal">20</span>).y(<span class = "literal">20</span>).width(<span class = "literal">70</span>).height(<span class = "literal">120</span>).fill(Color.WHITE)
+      .strokeWidth(<span class = "literal">15</span>).stroke(Color.ORANGE);
+
+    Rectangle rectangle1 = rectangleBuilder.build();
+    
+    Rectangle rectangle2 = rectangleBuilder.build();
+    rectangle2.setTranslateX(<span class = "literal">100</span>);
+    rectangle2.setStrokeLineJoin(StrokeLineJoin.BEVEL);
+    
+    Rectangle rectangle3 = rectangleBuilder.build();
+    rectangle3.setTranslateX(<span class = "literal">200</span>);
+    rectangle3.setStrokeLineJoin(StrokeLineJoin.ROUND);
+       
+    Line line1 = <span class = "keyword">new</span> Line(<span class = "literal">320</span>, <span class = "literal">20</span>, <span class = "literal">420</span>, <span class = "literal">20</span>);
+    line1.setStrokeLineCap(StrokeLineCap.BUTT);
+    line1.setStrokeWidth(<span class = "literal">20</span>);
+    
+    Line line2 = <span class = "keyword">new</span> Line(<span class = "literal">320</span>, <span class = "literal">70</span>, <span class = "literal">420</span>, <span class = "literal">70</span>);
+    line2.setStrokeLineCap(StrokeLineCap.ROUND);
+    line2.setStrokeWidth(<span class = "literal">20</span>);
+    
+    Line line3 = <span class = "keyword">new</span> Line(<span class = "literal">320</span>, <span class = "literal">120</span>, <span class = "literal">420</span>, <span class = "literal">120</span>);
+    line3.setStrokeLineCap(StrokeLineCap.SQUARE);
+    line3.setStrokeWidth(<span class = "literal">20</span>);
+
+    Line line4 = <span class = "keyword">new</span> Line(<span class = "literal">460</span>, <span class = "literal">20</span>, <span class = "literal">560</span>, <span class = "literal">120</span>);
+    line4.getStrokeDashArray().addAll(<span class = "literal">10</span><span class = "literal">.</span><span class = "literal">0</span>, <span class = "literal">20</span><span class = "literal">.</span><span class = "literal">0</span>, <span class = "literal">30</span><span class = "literal">.</span><span class = "literal">0</span>, <span class = "literal">40</span><span class = "literal">.</span><span class = "literal">0</span>);
+   
+    Pane pane = <span class = "keyword">new</span> Pane();
+    pane.getChildren().addAll(rectangle1, rectangle2, rectangle3,
+      line1, line2, line3, line4);
+
+    Scene scene = <span class = "keyword">new</span> Scene(pane, <span class = "literal">610</span>, <span class = "literal">180</span>);           
+    primaryStage.setTitle(<span class = "literal">"StrokeDemo"</span>); <span class = "comment">// Set the window title</span>
+    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the window</span>
+    primaryStage.show(); <span class = "comment">// Display the window</span>
+  }
+
+  <span class = "comment">// Lauch the program from command-line</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    launch(args);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "StrokeDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

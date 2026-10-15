@@ -1,0 +1,39 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestFrame.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestFrame.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.JFrame;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestFrame {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  5&nbsp;&nbsp;    JFrame frame1 = <span class = "keyword">new</span> JFrame();
+  6&nbsp;&nbsp;    frame1.setTitle(<span class = "literal">"Window 1"</span>);
+  7&nbsp;&nbsp;    frame1.setSize(<span class = "literal">200</span>, <span class = "literal">150</span>);
+  8&nbsp;&nbsp;    frame1.setLocation(<span class = "literal">200</span>, <span class = "literal">100</span>);
+  9&nbsp;&nbsp;    frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 10&nbsp;&nbsp;    frame1.setVisible(<span class = "keyword">true</span>);
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;    JFrame frame2 = <span class = "keyword">new</span> JFrame();
+ 13&nbsp;&nbsp;    frame2.setTitle(<span class = "literal">"Window 2"</span>);
+ 14&nbsp;&nbsp;    frame2.setSize(<span class = "literal">200</span>, <span class = "literal">150</span>);
+ 15&nbsp;&nbsp;    frame2.setLocation(<span class = "literal">410</span>, <span class = "literal">100</span>);
+ 16&nbsp;&nbsp;    frame2.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 17&nbsp;&nbsp;    frame2.setVisible(<span class = "keyword">true</span>);
+ 18&nbsp;&nbsp;  }
+ 19&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

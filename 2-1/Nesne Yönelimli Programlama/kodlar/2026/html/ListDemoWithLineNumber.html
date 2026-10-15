@@ -1,0 +1,95 @@
+<html>
+<head>
+<title>Intro to Java Programming, 9E, Y. Daniel Liang - ListDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ListDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.event.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ListDemo <span class = "keyword">extends</span> JFrame {
+  6&nbsp;&nbsp;  <span class = "keyword">final</span> <span class = "keyword">int</span> NUMBER_OF_FLAGS = <span class = "literal">9</span>;
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;  <span class = "comment">// Declare an array of Strings for flag titles</span>
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> String[] flagTitles = {<span class = "literal">"Canada"</span>, <span class = "literal">"China"</span>, <span class = "literal">"Denmark"</span>,
+ 10&nbsp;&nbsp;    <span class = "literal">"France"</span>, <span class = "literal">"Germany"</span>, <span class = "literal">"India"</span>, <span class = "literal">"Norway"</span>, <span class = "literal">"United Kingdom"</span>,
+ 11&nbsp;&nbsp;    <span class = "literal">"United States of America"</span>};
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;  <span class = "comment">// The list for selecting countries</span>
+ 14&nbsp;&nbsp;  <span class = "keyword">private</span> JList&lt;String&gt; jlst = <span class = "keyword">new</span> JList&lt;String&gt;(flagTitles);
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;  <span class = "comment">// Declare an ImageIcon array for the national flags of 9 countries</span>
+ 17&nbsp;&nbsp;  <span class = "keyword">private</span> ImageIcon[] imageIcons = {
+ 18&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/ca.gif"</span>),
+ 19&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/china.gif"</span>),
+ 20&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/denmark.gif"</span>),
+ 21&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/fr.gif"</span>),
+ 22&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/germany.gif"</span>),
+ 23&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/india.gif"</span>),
+ 24&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/norway.gif"</span>),
+ 25&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/uk.gif"</span>),
+ 26&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/us.gif"</span>)
+ 27&nbsp;&nbsp;  };
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;  <span class = "comment">// Arrays of labels for displaying images</span>
+ 30&nbsp;&nbsp;  <span class = "keyword">private</span> JLabel[] jlblImageViewer = <span class = "keyword">new</span> JLabel[NUMBER_OF_FLAGS];
+ 31&nbsp;&nbsp;
+ 32&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 33&nbsp;&nbsp;    ListDemo frame = <span class = "keyword">new</span> ListDemo();
+ 34&nbsp;&nbsp;    frame.setSize(<span class = "literal">650</span>, <span class = "literal">500</span>);
+ 35&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"ListDemo"</span>);
+ 36&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame</span>
+ 37&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 38&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 39&nbsp;&nbsp;  }
+ 40&nbsp;&nbsp;
+ 41&nbsp;&nbsp;  <span class = "keyword">public</span> ListDemo() {
+ 42&nbsp;&nbsp;    <span class = "comment">// Create a panel to hold nine labels</span>
+ 43&nbsp;&nbsp;    JPanel p = <span class = "keyword">new</span> JPanel(<span class = "keyword">new</span> GridLayout(<span class = "literal">3</span>, <span class = "literal">3</span>, <span class = "literal">5</span>, <span class = "literal">5</span>));
+ 44&nbsp;&nbsp;
+ 45&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; NUMBER_OF_FLAGS; i++) {
+ 46&nbsp;&nbsp;      p.add(jlblImageViewer[i] = <span class = "keyword">new</span> JLabel());
+ 47&nbsp;&nbsp;      jlblImageViewer[i].setHorizontalAlignment
+ 48&nbsp;&nbsp;        (SwingConstants.CENTER);
+ 49&nbsp;&nbsp;    }
+ 50&nbsp;&nbsp;
+ 51&nbsp;&nbsp;    <span class = "comment">// Add p and the list to the frame</span>
+ 52&nbsp;&nbsp;    add(p, BorderLayout.CENTER);
+ 53&nbsp;&nbsp;    add(<span class = "keyword">new</span> JScrollPane(jlst), BorderLayout.WEST);
+ 54&nbsp;&nbsp;
+ 55&nbsp;&nbsp;    <span class = "comment">// Register listeners</span>
+ 56&nbsp;&nbsp;    jlst.addListSelectionListener(<span class = "keyword">new</span> ListSelectionListener() {
+ 57&nbsp;&nbsp;      @Override <span class = "comment">/** Handle list selection */</span>
+ 58&nbsp;&nbsp;      <span class = "keyword">public</span> <span class = "keyword">void</span> valueChanged(ListSelectionEvent e) {
+ 59&nbsp;&nbsp;        <span class = "comment">// Get selected indices</span>
+ 60&nbsp;&nbsp;        <span class = "keyword">int</span>[] indices = jlst.getSelectedIndices();
+ 61&nbsp;&nbsp;
+ 62&nbsp;&nbsp;        <span class = "keyword">int</span> i;
+ 63&nbsp;&nbsp;        <span class = "comment">// Set icons in the labels</span>
+ 64&nbsp;&nbsp;        <span class = "keyword">for</span> (i = <span class = "literal">0</span>; i &lt; indices.length; i++) {
+ 65&nbsp;&nbsp;          jlblImageViewer[i].setIcon(imageIcons[indices[i]]);
+ 66&nbsp;&nbsp;        }
+ 67&nbsp;&nbsp;
+ 68&nbsp;&nbsp;        <span class = "comment">// Remove icons from the rest of the labels</span>
+ 69&nbsp;&nbsp;        <span class = "keyword">for</span> (; i &lt; NUMBER_OF_FLAGS; i++) {
+ 70&nbsp;&nbsp;          jlblImageViewer[i].setIcon(<span class = "keyword">null</span>);
+ 71&nbsp;&nbsp;        }
+ 72&nbsp;&nbsp;      }
+ 73&nbsp;&nbsp;    });
+ 74&nbsp;&nbsp;  }
+ 75&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

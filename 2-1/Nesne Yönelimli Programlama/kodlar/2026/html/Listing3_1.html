@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listing 3.1 Animation by Y. Daniel Liang</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="GetElementPosition.js"></script>
+    <style type = "text/css">
+      body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+      .keyword {color: #000080; font-weight: bold}
+      .comment {color: gray}
+      .literal {font-weight: bold; color: #3366FF}
+    </style>
+
+    <STYLE>
+      #highlight {
+        background-color:green;
+        opacity: 0.25;
+        position:absolute;
+        width:318px;
+        height: 10px;
+        padding: 3px;
+        margin-top:0px;
+        top: 79px;
+        left: 62px;
+      }
+
+      #explanation {
+        color: green;
+        position:absolute;
+        width: 158px;
+        height: 40px;
+        padding: 3px;
+        margin-top:5px;
+        top: 75px;
+        left: 448px;
+        font-size: 90%;
+        font-family: Times New Roman;
+      }
+
+      #commandPrompt {
+        font-family: times;  border: 1px solid gray; text-align: left;  
+        position:absolute;         
+        width: 268.5px;
+        height: 60px;
+        top: 80px;
+        left: 600px;
+        font-size: 80%;
+      }
+
+      #commandPromptHeader {
+        background-color: navy; color: white; font-size: 80%;
+        border-bottom: 2px solid gray; border-right: 2px solid gray;
+      }
+
+      #commandPromptContent {
+        background-color: black;
+        color: white;
+        width: 268px;
+        height: 70px;
+        font-family: courier; 
+        font-size: 80%;
+      }
+    </STYLE>
+
+    <script>
+      function HighLight() {
+        this.width = 318;
+        this.height = 10;
+        this.top = 77;
+        this.left = 62;
+      }
+
+      function Explanation() {
+        this.innerHTML = "The program starts the execution from the main method.";
+        this.left = 448;
+        this.width = 158;
+        this.height = 40;
+        this.top = 75;
+      }
+
+      function CommandPrompt() {
+        this.innerHTML = "The program starts the execution from the main method.";
+        this.left = 448;
+        this.width = 158;
+        this.height = 40;
+        this.top = 75;
+        this.isVisible = true;
+      }
+
+      number1 = 8;
+      number2 = 7;
+      answer = 15;
+      result = true;
+
+      steps = 7;
+      animationSpeed = 500;
+      slowAnimationSpeed = 3000;
+      lineOffSet = 15;
+      highLight = [];
+      highLight[0] = new HighLight();
+      highLight[0].top = 95;
+      highLight[0].left = 62;
+      highLight[0].width = 318;
+
+      highLight[1] = new HighLight();
+      highLight[1].top = 109;
+      highLight[1].left = 60 + 20;
+      highLight[1].width = 417;
+
+      highLight[2] = new HighLight();
+      highLight[2].top = 125;
+      highLight[2].left = 60 + 20;
+      highLight[2].width = 457;
+
+      highLight[3] = new HighLight();
+      highLight[3].top = 169;
+      highLight[3].left = 60 + 20;
+      highLight[3].width = 304;
+
+      highLight[4] = new HighLight();
+      highLight[4].top = 198;
+      highLight[4].left = 60 + 20;
+      highLight[4].width = 385;
+      highLight[4].height = 25;
+
+      highLight[5] = new HighLight();
+      highLight[5].top = 243;
+      highLight[5].left = 60 + 20;
+      highLight[5].width = 232;
+
+      highLight[6] = new HighLight();
+      highLight[6].top = 273;
+      highLight[6].left = 60 + 20;
+      highLight[6].width = 435;
+      highLight[6].height = 38;
+
+      highLight[7] = new HighLight();
+      highLight[7].top = 314;
+      highLight[7].width = 6;
+      highLight[7].left = 62;
+
+      explanation = [];
+      explanation[0] = new Explanation();
+      explanation[0].innerHTML = "The program starts the execution from the main method.";
+      explanation[0].top = 95;
+      explanation[0].left = 548;
+
+      explanation[1] = new Explanation();
+      explanation[1].innerHTML = "The statement generates a random number " + number1 + " and assigns it to variable number1.";
+      explanation[1].top = 107;
+      explanation[1].left = 550;
+
+      explanation[2] = new Explanation();
+      explanation[2].innerHTML = "The statement assigns a random integer to number2. Assume the integer is 7.";
+      explanation[2].top = 137;
+      explanation[2].left = 570;
+
+      explanation[3] = new Explanation();
+      explanation[3].innerHTML = "The statement creates an object for performing console input and assigns the object to the reference variable named input.";
+      explanation[3].top = 157;
+      explanation[3].left = 430;
+      explanation[3].width = 470;
+
+      explanation[4] = new Explanation();
+      explanation[4].innerHTML = "The statement displays a prompting message for the user input.";
+      explanation[4].top = 190;
+      explanation[4].left = 480;
+      explanation[4].width = 160;
+
+      explanation[5] = new Explanation();
+      explanation[5].innerHTML = "The statement receives an input from the user.";
+      explanation[5].top = 225;
+      explanation[5].left = 325;
+      explanation[5].width = 205;
+
+      explanation[6] = new Explanation();
+      explanation[6].innerHTML = "The statement displays the result.";
+      explanation[6].top = 257;
+      explanation[6].left = 325;
+      explanation[6].width = 205;
+
+      explanation[7] = new Explanation();
+      explanation[7].innerHTML = "The main method exits. The program is finished.";
+      explanation[7].top = 320;
+      explanation[7].left = 128;
+
+      commandPrompt = [];
+      commandPrompt[0] = new CommandPrompt();
+      commandPrompt[0].innerHTML = "c:\\book>java AdditionQuiz";
+      commandPrompt[0].top = 95;
+      commandPrompt[0].left = 700;
+      commandPrompt[1] = new CommandPrompt();
+      commandPrompt[1].isVisible = false;
+      commandPrompt[2] = new CommandPrompt();
+      commandPrompt[2].isVisible = false;
+      commandPrompt[2].innerHTML = "c:\\book>java AdditionQuiz<br>Enter a number for radius: ";
+      commandPrompt[2].top = 161;
+      commandPrompt[2].left = 640;
+
+      commandPrompt[3] = new CommandPrompt();
+      commandPrompt[3].isVisible = false;
+
+      commandPrompt[4] = new CommandPrompt();
+      commandPrompt[4].isVisible = true;
+      commandPrompt[4].innerHTML = "c:\\book>java AdditionQuiz<br>What is " + number1 + " + " + number2 + "? ";
+      commandPrompt[4].top = 200;
+      commandPrompt[4].left = 640;
+
+      commandPrompt[5] = new CommandPrompt();
+      commandPrompt[5].isVisible = true;
+      commandPrompt[5].innerHTML = commandPrompt[4].innerHTML + answer;
+      commandPrompt[5].top = 232;
+      commandPrompt[5].left = 550;
+
+      commandPrompt[6] = new CommandPrompt();
+      commandPrompt[6].isVisible = true;
+      commandPrompt[6].innerHTML = commandPrompt[5].innerHTML + "<br>" + number1 + " + " + number2 + " = " + answer + " is " + result;
+      commandPrompt[6].top = 232;
+      commandPrompt[6].left = 550;
+
+      commandPrompt[7] = new CommandPrompt();
+      commandPrompt[7].isVisible = true;
+      commandPrompt[7].innerHTML = commandPrompt[6].innerHTML + "<br><br>c:\\book";
+      commandPrompt[7].top = 329;
+      commandPrompt[7].left = 300;
+
+      currentLine = 0;
+
+      function init() {
+        document.getElementById('highlight').style.visibility = 'hidden';
+        document.getElementById('nextButton').style.visibility = 'hidden';
+        document.getElementById('prevButton').style.visibility = 'hidden';
+        document.getElementById('commandPrompt').style.visibility = 'hidden';
+        document.getElementById('memory').style.visibility = 'hidden';
+        document.getElementById('area').style.visibility = 'hidden';
+        document.getElementById('flyingRadius').style.visibility = 'hidden';
+        document.getElementById('flyingArea').style.visibility = 'hidden';
+        document.getElementById('answer').style.visibility = 'hidden';
+        document.getElementById('flyingAnswer').style.visibility = 'hidden';
+      }
+    </script>
+  </head>
+
+  <body onload="init()" onresize="draw()">   
+    <div style="text-align: left; margin-top: 1em">
+      <span style="padding: 3px">
+        <button id = "nextButton" type="button" onclick="next()">></button>
+        <button id = "prevButton" type="button" onclick="prev()"><</button>
+        <button id ="startButton" type="button" onclick="start()">Start Animation</button>  
+        <span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+          Introduction to Java Programming, Tenth Edition,
+          <a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+
+      </span>    
+    </div>
+
+    <div id="highlight"></div>
+    <div id="explanation"></div>
+    <div id="commandPrompt">
+      <div id="commandPromptHeader">   Command Prompt</div>
+      <div id="commandPromptContent">c:\book>java AdditionQuiz</div>
+    </div>
+
+    <div id="memory" style = "background-color: lightyellow;">
+      <div id="variable" style = "font-family: times; text-align: left;  background-color: lightyellow;
+           position:absolute; top: 50px; left: 520px; font-size: 80%;">
+        Variable Name &nbsp;&nbsp;&nbsp;&nbsp;  Value in Memory</div>
+      <div id ="radius">
+        <div id="memory1" style = "font-family: times; text-align: left; font-style: italic;
+             position:absolute; top: 70px; left: 520px; font-size: 80%;">number1</div> 
+        <div id="value1" style = "font-family: courier; text-align: center; 
+             border: 1px solid green; width: 80px; top: 70px; left: 615px; height: 20px;
+             position:absolute;  font-size: 80%;"></div> 
+      </div>
+      <div id ="area">
+        <div id="memory2" style = "font-family: times; text-align: left;  font-style: italic;
+             position:absolute; top: 90px; left: 520px; font-size: 80%;">number2</div> 
+        <div id="value2" style = "font-family: courier; text-align: center;  
+             border: 1px solid green; width: 80px; top: 90px; left: 615px; height: 20px;
+             position:absolute;  font-size: 80%;"></div>
+      </div>
+      <div id ="answer">
+        <div id="memory3" style = "font-family: times; text-align: left;  font-style: italic;
+             position:absolute; top: 110px; left: 520px; font-size: 80%;">answer</div> 
+        <div id="value3" style = "font-family: courier; text-align: center;  
+             border: 1px solid green; width: 80px; top: 110px; left: 615px; height: 20px;
+             position:absolute;  font-size: 80%;"></div>
+      </div>
+    </div>
+
+    <div id="flyingRadius" style = "font-family: courier; text-align: center; 
+         width: 80px; top: 187px; left: 100px; height: 20px; color:red; font-weight: bold;
+         position:absolute;  font-size: 80%;"></div> 
+    <! //top start: 177px; left: 80px;>
+    <! //top end: 120px; left: 615px;>
+
+    <div id="flyingArea" style = "font-family: courier; text-align: center; 
+         width: 80px; top: 187px; left: 100px; height: 20px; color:red; font-weight: bold;
+         position:absolute;  font-size: 80%;"></div> 
+    <! //top start: 229px; left: 120px;>
+    <! //top: 140px; left: 615px;>
+
+    <div id="flyingAnswer" style = "font-family: courier; text-align: center; 
+         width: 80px; top: 187px; left: 100px; height: 20px; color:red; font-weight: bold;
+         position:absolute;  font-size: 80%;"></div> 
+    <! //top start: 229px; left: 120px;>
+    <! //top: 140px; left: 615px;>
+
+    <div id = "program" style="font-family: courier; font-size: 12; margin: 0px auto; border: 1px solid red; text-align: left">
+      <pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.Scanner;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> AdditionQuiz {
+  4&nbsp;&nbsp;  <span id = "line0"><span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {</span>
+  5&nbsp;&nbsp;    <span id = "line1"><span class = "keyword">int</span> number1 = (<span class = "keyword">int</span>)(System.currentTimeMillis() % <span class = "literal">10</span>);</span>
+  6&nbsp;&nbsp;    <span id = "line2"><span class = "keyword">int</span> number2 = (<span class = "keyword">int</span>)(System.currentTimeMillis() / <span class = "literal">7</span> % <span class = "literal">10</span>);</span>
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;    <span class = "comment">// Create a Scanner</span>
+  9&nbsp;&nbsp;    <span id = "line3">Scanner input = <span class = "keyword">new</span> Scanner(System.in);</span>
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;    <span id = "line4">System.out.print(</span>
+ 12&nbsp;&nbsp;      <span class = "literal">"What is "</span> + number1 + <span class = "literal">" + "</span> + number2 + <span class = "literal">"? "</span>);
+ 13&nbsp;&nbsp;
+ 14&nbsp;&nbsp;    <span id = "line5"><span class = "keyword">int</span> answer = input.nextInt();</span>
+ 15&nbsp;&nbsp;
+ 16&nbsp;&nbsp;    <span id = "line6">System.out.println(</span>
+ 17&nbsp;&nbsp;      number1 + <span class = "literal">" + "</span> + number2 + <span class = "literal">" = "</span> + answer + <span class = "literal">" is "</span> +
+ 18&nbsp;&nbsp;      (number1 + number2 == answer));
+ 19&nbsp;&nbsp;  <span id = "line7">}</span>
+ 20&nbsp;&nbsp;}
+      </pre>
+    </div>
+
+    <script type="text/javascript">
+      $("#nextButton").click(function() {
+        currentLine = currentLine + 1;
+        step();
+      });
+
+      $("#prevButton").click(function() {
+        currentLine = currentLine - 1;
+        step();
+      });
+
+      function step() {
+        if (currentLine == 0) {
+          document.getElementById('prevButton').style.visibility = 'hidden';
+          document.getElementById('memory').style.visibility = 'hidden';
+          document.getElementById('flyingRadius').style.visibility = 'hidden';
+          document.getElementById('flyingRadius').innerHTML = '';
+          document.getElementById('value1').innerHTML = '';
+          document.getElementById('radius').style.visibility = 'hidden';
+        }
+        else if (currentLine == 1) {
+          document.getElementById('prevButton').style.visibility = 'visible';
+          number1 = Math.floor(Math.random() * 10);
+          explanation[1].innerHTML = "The statement generates a random number " + number1 + " and assigns it to variable number1.";
+
+          document.getElementById('memory').style.visibility = 'visible';
+          document.getElementById('flyingRadius').style.visibility = 'visible';
+          document.getElementById('flyingRadius').innerHTML = '';
+          document.getElementById('value1').innerHTML = '';
+          document.getElementById('radius').style.visibility = 'visible';
+//
+//          document.getElementById('value1').style.visibility = 'visible';
+          $("#highlight").animate({top: highLight[currentLine].top, left: highLight[currentLine].left,
+            width: highLight[currentLine].width}, animationSpeed, function() {
+            $("#flyingRadius").css("top", highLight[1].top).css("left", 120);
+            document.getElementById('flyingRadius').innerHTML = number1;
+            $("#flyingRadius").animate({top: 75, left: 615}, slowAnimationSpeed);
+          });
+
+          document.getElementById('flyingArea').style.visibility = 'hidden';
+          document.getElementById('value2').innerHTML = '';
+          document.getElementById('area').style.visibility = 'hidden';
+        }
+        else if (currentLine == 2) {
+          document.getElementById('flyingArea').innerHTML = '';
+          number2 = Math.floor(Math.random() * 10);
+          explanation[2].innerHTML = "The statement generates a random number " + number2 + " and assigns it to variable number1.";
+          commandPrompt[4].innerHTML = "c:\\book>java AdditionQuiz<br>What is " + number1 + " + " + number2 + "? ";
+
+          document.getElementById('flyingArea').style.visibility = 'visible';
+          document.getElementById('value2').innerHTML = '';
+          document.getElementById('area').style.visibility = 'visible';
+//
+//          document.getElementById('value1').style.visibility = 'visible';
+          $("#highlight").animate({top: highLight[currentLine].top, left: highLight[currentLine].left,
+            width: highLight[currentLine].width, height: highLight[currentLine].height}, animationSpeed, function() {
+            $("#flyingArea").css("top", highLight[2].top).css("left", 120);
+            document.getElementById('flyingArea').innerHTML = number2;
+            $("#flyingArea").animate({top: 95, left: 615}, slowAnimationSpeed);
+          });
+        }
+        else if (currentLine == 4) {
+          document.getElementById('flyingAnswer').style.visibility = 'hidden';
+          document.getElementById('flyingAnswer').innerHTML = '';
+          document.getElementById('value3').innerHTML = '';
+          document.getElementById('answer').style.visibility = 'hidden';
+        }
+        else if (currentLine == 5) {
+          document.getElementById('memory').style.visibility = 'visible';
+          document.getElementById('flyingAnswer').style.visibility = 'visible';
+          document.getElementById('flyingAnswer').innerHTML = '';
+          document.getElementById('value3').innerHTML = '';
+          document.getElementById('answer').style.visibility = 'visible';
+
+          answer = prompt("Here is your chance to enter an answer for " + number1 + " + " + number2 + "? ");
+          result = (answer == number1 + number2);
+          explanation[5].innerHTML = "The statement receives the input " + answer + " from the user.";
+          commandPrompt[5].innerHTML = commandPrompt[4].innerHTML + answer;
+          commandPrompt[6].innerHTML = commandPrompt[5].innerHTML + "<br>" + number1 + " + " + number2 + " = " + answer + " is " + result;
+          commandPrompt[7].innerHTML = commandPrompt[6].innerHTML + "<br><br>c:\\book";
+
+          $("#highlight").animate({top: highLight[currentLine].top, left: highLight[currentLine].left,
+            width: highLight[currentLine].width, height: highLight[currentLine].height}, animationSpeed, function() {
+            $("#flyingAnswer").css("top", highLight[currentLine].top).css("left", 120);
+            document.getElementById('flyingAnswer').innerHTML = answer;
+            $("#flyingAnswer").animate({top: 115, left: 615}, slowAnimationSpeed);
+          });
+        }
+        else {
+          $("#highlight").animate({top: highLight[currentLine].top, left: highLight[currentLine].left,
+            width: highLight[currentLine].width, height: highLight[currentLine].height}, animationSpeed);
+        }
+
+        $("#explanation").animate({top: explanation[currentLine].top, left: explanation[currentLine].left,
+          width: explanation[currentLine].width}, animationSpeed);
+
+        document.getElementById('explanation').innerHTML = explanation[currentLine].innerHTML;
+
+        if (currentLine == 5) {
+          document.getElementById('commandPrompt').style.visibility = 'visible';
+        }
+
+        if (commandPrompt[currentLine].isVisible) {
+          document.getElementById('commandPrompt').style.visibility = 'visible';
+          $("#commandPrompt").animate({top: commandPrompt[currentLine].top, left: commandPrompt[currentLine].left}, animationSpeed);
+          document.getElementById('commandPromptContent').innerHTML = commandPrompt[currentLine].innerHTML;
+        }
+        else {
+          document.getElementById('commandPrompt').style.visibility = 'hidden';
+        }
+
+        if (currentLine == 0) {
+          pos = getElementPos(document.getElementById('line0'));
+        }
+        else if (currentLine == 1) {
+          pos = getElementPos(document.getElementById('line1'));
+        }
+        else if (currentLine == 2) {
+          pos = getElementPos(document.getElementById('line2'));
+        }
+        else if (currentLine == 3) {
+          pos = getElementPos(document.getElementById('line3'));
+        }
+        else if (currentLine == 4) {
+          pos = getElementPos(document.getElementById('line4'));
+        }
+        else if (currentLine == 5) {
+          pos = getElementPos(document.getElementById('line5'));
+        }
+        else if (currentLine == 6) {
+          pos = getElementPos(document.getElementById('line6'));
+        }
+        else if (currentLine == 7) {
+          pos = getElementPos(document.getElementById('line7'));
+        }
+
+        $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+
+        if (currentLine == steps) {
+          document.getElementById('nextButton').style.visibility = 'hidden';
+          document.getElementById('prevButton').style.visibility = 'hidden';
+          document.getElementById('memory').style.visibility = 'hidden';
+          document.getElementById('radius').style.visibility = 'hidden';
+          document.getElementById('area').style.visibility = 'hidden';
+          document.getElementById('startButton').style.visibility = 'visible';
+          document.getElementById('startButton').innerHTML = 'Restart Animation';
+          document.getElementById('flyingRadius').style.visibility = 'hidden';
+          document.getElementById('flyingArea').style.visibility = 'hidden';
+          document.getElementById('flyingAnswer').style.visibility = 'hidden';
+          document.getElementById('answer').style.visibility = 'hidden';
+          document.getElementById('flyingRadius').innerHTML = '';
+          document.getElementById('flyingArea').innerHTML = '';
+          document.getElementById('flyingAnswer').innerHTML = '';
+
+          currentLine = 0;
+        }
+      }
+
+      $("#startButton").click(function() {
+        currentLine = 0;
+
+        var pos = getElementPos(document.getElementById('line0'));
+        $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, 'fast');
+        $("#explanation").animate({top: explanation[currentLine].top, left: explanation[currentLine].left,
+          width: explanation[currentLine].width}, 'fast');
+        $("#commandPrompt").animate({top: commandPrompt[currentLine].top, left: commandPrompt[currentLine].left}, 'fast');
+        document.getElementById('explanation').innerHTML = explanation[currentLine].innerHTML;
+        document.getElementById('commandPromptContent').innerHTML = commandPrompt[currentLine].innerHTML;
+
+        document.getElementById('startButton').style.visibility = 'hidden';
+        document.getElementById('nextButton').style.visibility = 'visible';
+        document.getElementById('commandPrompt').style.visibility = 'visible';
+
+        document.getElementById('highlight').style.visibility = 'visible';
+        document.getElementById('explanation').style.visibility = 'visible';
+      });
+    </script>
+  </body>
+</html>

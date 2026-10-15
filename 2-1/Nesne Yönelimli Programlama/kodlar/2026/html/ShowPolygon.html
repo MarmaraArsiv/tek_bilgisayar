@@ -1,0 +1,70 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowPolygon.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ShowPolygonWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> javafx.application.Application;
+<span class = "keyword">import</span> javafx.collections.ObservableList;
+<span class = "keyword">import</span> javafx.scene.Scene;
+<span class = "keyword">import</span> javafx.scene.layout.Pane;
+<span class = "keyword">import</span> javafx.scene.paint.Color;
+<span class = "keyword">import</span> javafx.stage.Stage;
+<span class = "keyword">import</span> javafx.scene.shape.Polygon;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ShowPolygon <span class = "keyword">extends</span> Application {
+  @Override <span class = "comment">// Override the start method in the Application class</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {   
+    <span class = "comment">// Create a pane, a polygon, and place polygon to pane</span>
+    Pane pane = <span class = "keyword">new</span> Pane();
+    Polygon polygon = <span class = "keyword">new</span> Polygon();
+    pane.getChildren().add(polygon); 
+    polygon.setFill(Color.WHITE);
+    polygon.setStroke(Color.BLACK);
+    ObservableList&lt;Double&gt; list = polygon.getPoints();
+    
+    <span class = "keyword">final</span> <span class = "keyword">double</span> WIDTH = <span class = "literal">200</span>, HEIGHT = <span class = "literal">200</span>;
+    <span class = "keyword">double</span> centerX = WIDTH / <span class = "literal">2</span>, centerY = HEIGHT / <span class = "literal">2</span>;
+    <span class = "keyword">double</span> radius = Math.min(WIDTH, HEIGHT) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">4</span>;
+
+    <span class = "comment">// Add points to the polygon list</span>
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; <span class = "literal">6</span>; i++) {
+      list.add(centerX + radius * Math.cos(<span class = "literal">2</span> * i * Math.PI / <span class = "literal">6</span>)); 
+      list.add(centerY - radius * Math.sin(<span class = "literal">2</span> * i * Math.PI / <span class = "literal">6</span>));
+    }     
+    
+    <span class = "comment">// Create a scene and place it in the stage</span>
+    Scene scene = <span class = "keyword">new</span> Scene(pane, WIDTH, HEIGHT);
+    primaryStage.setTitle(<span class = "literal">"ShowPolygon"</span>); <span class = "comment">// Set the stage title</span>
+    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the stage</span>
+    primaryStage.show(); <span class = "comment">// Display the stage</span>
+  }
+  
+  <span class = "comment">/**
+   * The main method is only needed for the IDE with limited
+   * JavaFX support. Not needed for running from the command line.
+   */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    launch(args);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "ShowPolygon" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

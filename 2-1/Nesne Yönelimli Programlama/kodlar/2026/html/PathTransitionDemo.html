@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - PathTransitionDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "PathTransitionDemoWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">import</span> javafx.animation.PathTransition;
+<span class = "keyword">import</span> javafx.animation.Timeline;
+<span class = "keyword">import</span> javafx.application.Application;
+<span class = "keyword">import</span> javafx.scene.Scene;
+<span class = "keyword">import</span> javafx.scene.layout.Pane;
+<span class = "keyword">import</span> javafx.scene.paint.Color;
+<span class = "keyword">import</span> javafx.scene.shape.Rectangle;
+<span class = "keyword">import</span> javafx.scene.shape.Circle;
+<span class = "keyword">import</span> javafx.stage.Stage;
+<span class = "keyword">import</span> javafx.util.Duration;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> PathTransitionDemo <span class = "keyword">extends</span> Application {
+  @Override <span class = "comment">// Override the start method in the Application class</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> start(Stage primaryStage) {
+    <span class = "comment">// Create a pane </span>
+    Pane pane = <span class = "keyword">new</span> Pane();
+    
+    <span class = "comment">// Create a rectangle</span>
+    Rectangle rectangle = <span class = "keyword">new</span> Rectangle (<span class = "literal">0</span>, <span class = "literal">0</span>, <span class = "literal">25</span>, <span class = "literal">50</span>);
+    rectangle.setFill(Color.ORANGE);
+    
+    <span class = "comment">// Create a circle</span>
+    Circle circle = <span class = "keyword">new</span> Circle(<span class = "literal">125</span>, <span class = "literal">100</span>, <span class = "literal">50</span>);
+    circle.setFill(Color.WHITE);
+    circle.setStroke(Color.BLACK);
+    
+    <span class = "comment">// Add circle and rectangle to the pane</span>
+    pane.getChildren().add(circle);
+    pane.getChildren().add(rectangle);
+    
+    <span class = "comment">// Create a path transition </span>
+    PathTransition pt = <span class = "keyword">new</span> PathTransition();
+    pt.setDuration(Duration.millis(<span class = "literal">4000</span>));
+    pt.setPath(circle);
+    pt.setNode(rectangle);
+    pt.setOrientation(
+      PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+    pt.setCycleCount(Timeline.INDEFINITE);
+    pt.setAutoReverse(<span class = "keyword">true</span>);
+    pt.play(); <span class = "comment">// Start animation </span>
+    
+    circle.setOnMousePressed(e -&gt; pt.pause());
+    circle.setOnMouseReleased(e -&gt; pt.play());
+    
+    <span class = "comment">// Create a scene and place it in the stage</span>
+    Scene scene = <span class = "keyword">new</span> Scene(pane, <span class = "literal">250</span>, <span class = "literal">200</span>);
+    primaryStage.setTitle(<span class = "literal">"PathTransitionDemo"</span>); <span class = "comment">// Set the stage title</span>
+    primaryStage.setScene(scene); <span class = "comment">// Place the scene in the stage</span>
+    primaryStage.show(); <span class = "comment">// Display the stage</span>
+  }
+  
+  <span class = "comment">/**
+   * The main method is only needed for the IDE with limited
+   * JavaFX support. Not needed for running from the command line.
+   */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    launch(args);
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "PathTransitionDemo" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ReadData.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "ReadData.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.Scanner; 
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> ReadData {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) <span class = "keyword">throws</span> Exception {
+  5&nbsp;&nbsp;    <span class = "comment">// Create a File instance</span>
+  6&nbsp;&nbsp;    java.io.File file = <span class = "keyword">new</span> java.io.File(<span class = "literal">"scores.txt"</span>);
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;    <span class = "comment">// Create a Scanner for the file</span>
+  9&nbsp;&nbsp;    Scanner input = <span class = "keyword">new</span> Scanner(file);
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;    <span class = "comment">// Read data from a file</span>
+ 12&nbsp;&nbsp;    <span class = "keyword">while</span> (input.hasNext()) {
+ 13&nbsp;&nbsp;      String firstName = input.next();
+ 14&nbsp;&nbsp;      String mi = input.next();
+ 15&nbsp;&nbsp;      String lastName = input.next();
+ 16&nbsp;&nbsp;      <span class = "keyword">int</span> score = input.nextInt();
+ 17&nbsp;&nbsp;      System.out.println(
+ 18&nbsp;&nbsp;        firstName + <span class = "literal">" "</span> + mi + <span class = "literal">" "</span> + lastName + <span class = "literal">" "</span> + score);
+ 19&nbsp;&nbsp;    }
+ 20&nbsp;&nbsp;
+ 21&nbsp;&nbsp;    <span class = "comment">// Close the file</span>
+ 22&nbsp;&nbsp;    input.close();
+ 23&nbsp;&nbsp;  }
+ 24&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "ReadData" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

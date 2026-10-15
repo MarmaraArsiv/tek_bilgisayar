@@ -1,0 +1,241 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - BorderDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "BorderDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.ActionListener;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.event.ActionEvent;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  5&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.border.*;
+  6&nbsp;&nbsp;
+  7&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> BorderDemo <span class = "keyword">extends</span> JApplet {
+  8&nbsp;&nbsp;  <span class = "comment">// Declare a label for displaying message</span>
+  9&nbsp;&nbsp;  <span class = "keyword">private</span> JLabel jLabel1 = <span class = "keyword">new</span> JLabel(<span class = "literal">"Display the border type"</span>,
+ 10&nbsp;&nbsp;    JLabel.CENTER);
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;  <span class = "comment">// A check box for selecting a border with or without a title</span>
+ 13&nbsp;&nbsp;  <span class = "keyword">private</span> JCheckBox jchkTitled;
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;  <span class = "comment">// Radio buttons for border styles</span>
+ 16&nbsp;&nbsp;  <span class = "keyword">private</span> JRadioButton jrbLoweredBevel, jrbRaisedBevel,
+ 17&nbsp;&nbsp;    jrbEtched, jrbLine, jrbMatte, jrbEmpty;
+ 18&nbsp;&nbsp;
+ 19&nbsp;&nbsp;  <span class = "comment">// Radio buttons for titled border options</span>
+ 20&nbsp;&nbsp;  <span class = "keyword">private</span> JRadioButton jrbAboveBottom, jrbBottom,
+ 21&nbsp;&nbsp;    jrbBelowBottom, jrbAboveTop, jrbTop, jrbBelowTop,
+ 22&nbsp;&nbsp;    jrbLeft, jrbCenter, jrbRight;
+ 23&nbsp;&nbsp;
+ 24&nbsp;&nbsp;  <span class = "comment">// TitledBorder for the label</span>
+ 25&nbsp;&nbsp;  <span class = "keyword">private</span> TitledBorder jLabel1Border;
+ 26&nbsp;&nbsp;
+ 27&nbsp;&nbsp;  <span class = "comment">/** Constructor */</span>
+ 28&nbsp;&nbsp;  <span class = "keyword">public</span> BorderDemo() {
+ 29&nbsp;&nbsp;    <span class = "comment">// Create a JLabel instance and set colors</span>
+ 30&nbsp;&nbsp;    jLabel1.setBackground(Color.yellow);
+ 31&nbsp;&nbsp;    jLabel1.setBorder(jLabel1Border);
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;    <span class = "comment">// Place title position radio buttons</span>
+ 34&nbsp;&nbsp;    JPanel jpPosition = <span class = "keyword">new</span> JPanel();
+ 35&nbsp;&nbsp;    jpPosition.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">3</span>, <span class = "literal">2</span>));
+ 36&nbsp;&nbsp;    jpPosition.add(
+ 37&nbsp;&nbsp;      jrbAboveBottom = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"ABOVE_BOTTOM"</span>));
+ 38&nbsp;&nbsp;    jpPosition.add(jrbAboveTop = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"ABOVE_TOP"</span>));
+ 39&nbsp;&nbsp;    jpPosition.add(jrbBottom = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"BOTTOM"</span>));
+ 40&nbsp;&nbsp;    jpPosition.add(jrbTop = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"TOP"</span>));
+ 41&nbsp;&nbsp;    jpPosition.add(
+ 42&nbsp;&nbsp;      jrbBelowBottom = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"BELOW_BOTTOM"</span>));
+ 43&nbsp;&nbsp;    jpPosition.add(jrbBelowTop = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"BELOW_TOP"</span>));
+ 44&nbsp;&nbsp;    jpPosition.setBorder(<span class = "keyword">new</span> TitledBorder(<span class = "literal">"Position"</span>));
+ 45&nbsp;&nbsp;
+ 46&nbsp;&nbsp;    <span class = "comment">// Place title justification radio buttons</span>
+ 47&nbsp;&nbsp;    JPanel jpJustification = <span class = "keyword">new</span> JPanel();
+ 48&nbsp;&nbsp;    jpJustification.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">3</span>,<span class = "literal">1</span>));
+ 49&nbsp;&nbsp;    jpJustification.add(jrbLeft = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"LEFT"</span>));
+ 50&nbsp;&nbsp;    jpJustification.add(jrbCenter = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"CENTER"</span>));
+ 51&nbsp;&nbsp;    jpJustification.add(jrbRight = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"RIGHT"</span>));
+ 52&nbsp;&nbsp;    jpJustification.setBorder(<span class = "keyword">new</span> TitledBorder(<span class = "literal">"Justification"</span>));
+ 53&nbsp;&nbsp;
+ 54&nbsp;&nbsp;    <span class = "comment">// Create panel jpTitleOptions to hold jpPosition and</span>
+ 55&nbsp;&nbsp;    <span class = "comment">// jpJustification</span>
+ 56&nbsp;&nbsp;    JPanel jpTitleOptions = <span class = "keyword">new</span> JPanel();
+ 57&nbsp;&nbsp;    jpTitleOptions.setLayout(<span class = "keyword">new</span> BorderLayout());
+ 58&nbsp;&nbsp;    jpTitleOptions.add(jpPosition, BorderLayout.CENTER);
+ 59&nbsp;&nbsp;    jpTitleOptions.add(jpJustification, BorderLayout.EAST);
+ 60&nbsp;&nbsp;
+ 61&nbsp;&nbsp;    <span class = "comment">// Create Panel jpTitle to hold a check box and title position</span>
+ 62&nbsp;&nbsp;    <span class = "comment">// radio buttons, and title justification radio buttons</span>
+ 63&nbsp;&nbsp;    JPanel jpTitle = <span class = "keyword">new</span> JPanel();
+ 64&nbsp;&nbsp;    jpTitle.setBorder(<span class = "keyword">new</span> TitledBorder(<span class = "literal">"Border Title"</span>));
+ 65&nbsp;&nbsp;    jpTitle.setLayout(<span class = "keyword">new</span> BorderLayout());
+ 66&nbsp;&nbsp;    jpTitle.add(jchkTitled = <span class = "keyword">new</span> JCheckBox(<span class = "literal">"Titled"</span>),
+ 67&nbsp;&nbsp;      BorderLayout.NORTH);
+ 68&nbsp;&nbsp;    jpTitle.add(jpTitleOptions, BorderLayout.CENTER);
+ 69&nbsp;&nbsp;
+ 70&nbsp;&nbsp;    <span class = "comment">// Group radio buttons for title position</span>
+ 71&nbsp;&nbsp;    ButtonGroup btgTitlePosition = <span class = "keyword">new</span> ButtonGroup();
+ 72&nbsp;&nbsp;    btgTitlePosition.add(jrbAboveBottom);
+ 73&nbsp;&nbsp;    btgTitlePosition.add(jrbBottom);
+ 74&nbsp;&nbsp;    btgTitlePosition.add(jrbBelowBottom);
+ 75&nbsp;&nbsp;    btgTitlePosition.add(jrbAboveTop);
+ 76&nbsp;&nbsp;    btgTitlePosition.add(jrbTop);
+ 77&nbsp;&nbsp;    btgTitlePosition.add(jrbBelowTop);
+ 78&nbsp;&nbsp;
+ 79&nbsp;&nbsp;    <span class = "comment">// Group radio buttons for title justification</span>
+ 80&nbsp;&nbsp;    ButtonGroup btgTitleJustification = <span class = "keyword">new</span> ButtonGroup();
+ 81&nbsp;&nbsp;    btgTitleJustification.add(jrbLeft);
+ 82&nbsp;&nbsp;    btgTitleJustification.add(jrbCenter);
+ 83&nbsp;&nbsp;    btgTitleJustification.add(jrbRight);
+ 84&nbsp;&nbsp;
+ 85&nbsp;&nbsp;    <span class = "comment">// Create Panel jpBorderStyle to hold border style radio buttons</span>
+ 86&nbsp;&nbsp;    JPanel jpBorderStyle = <span class = "keyword">new</span> JPanel();
+ 87&nbsp;&nbsp;    jpBorderStyle.setBorder(<span class = "keyword">new</span> TitledBorder(<span class = "literal">"Border Style"</span>));
+ 88&nbsp;&nbsp;    jpBorderStyle.setLayout(<span class = "keyword">new</span> GridLayout(<span class = "literal">6</span>, <span class = "literal">1</span>));
+ 89&nbsp;&nbsp;    jpBorderStyle.add(jrbLoweredBevel =
+ 90&nbsp;&nbsp;      <span class = "keyword">new</span> JRadioButton(<span class = "literal">"Lowered Bevel"</span>));
+ 91&nbsp;&nbsp;    jpBorderStyle.add(jrbRaisedBevel =
+ 92&nbsp;&nbsp;      <span class = "keyword">new</span> JRadioButton(<span class = "literal">"Raised Bevel"</span>));
+ 93&nbsp;&nbsp;    jpBorderStyle.add(jrbEtched = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"Etched"</span>));
+ 94&nbsp;&nbsp;    jpBorderStyle.add(jrbLine = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"Line"</span>));
+ 95&nbsp;&nbsp;    jpBorderStyle.add(jrbMatte = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"Matte"</span>));
+ 96&nbsp;&nbsp;    jpBorderStyle.add(jrbEmpty = <span class = "keyword">new</span> JRadioButton(<span class = "literal">"Empty"</span>));
+ 97&nbsp;&nbsp;
+ 98&nbsp;&nbsp;    <span class = "comment">// Group radio buttons for border styles</span>
+ 99&nbsp;&nbsp;    ButtonGroup btgBorderStyle = <span class = "keyword">new</span> ButtonGroup();
+100&nbsp;&nbsp;    btgBorderStyle.add(jrbLoweredBevel);
+101&nbsp;&nbsp;    btgBorderStyle.add(jrbRaisedBevel);
+102&nbsp;&nbsp;    btgBorderStyle.add(jrbEtched);
+103&nbsp;&nbsp;    btgBorderStyle.add(jrbLine);
+104&nbsp;&nbsp;    btgBorderStyle.add(jrbMatte);
+105&nbsp;&nbsp;    btgBorderStyle.add(jrbEmpty);
+106&nbsp;&nbsp;
+107&nbsp;&nbsp;    <span class = "comment">// Create Panel jpAllChoices to place jpTitle and jpBorderStyle</span>
+108&nbsp;&nbsp;    JPanel jpAllChoices = <span class = "keyword">new</span> JPanel();
+109&nbsp;&nbsp;    jpAllChoices.setLayout(<span class = "keyword">new</span> BorderLayout());
+110&nbsp;&nbsp;    jpAllChoices.add(jpTitle, BorderLayout.CENTER);
+111&nbsp;&nbsp;    jpAllChoices.add(jpBorderStyle, BorderLayout.EAST);
+112&nbsp;&nbsp;
+113&nbsp;&nbsp;    <span class = "comment">// Place panels in the frame</span>
+114&nbsp;&nbsp;    setLayout(<span class = "keyword">new</span> BorderLayout());
+115&nbsp;&nbsp;    add(jLabel1, BorderLayout.CENTER);
+116&nbsp;&nbsp;    add(jpAllChoices, BorderLayout.SOUTH);
+117&nbsp;&nbsp;
+118&nbsp;&nbsp;    <span class = "comment">// Register listeners</span>
+119&nbsp;&nbsp;    ActionListener listener = <span class = "keyword">new</span> EventListener();
+120&nbsp;&nbsp;    jchkTitled.addActionListener(listener);
+121&nbsp;&nbsp;    jrbAboveBottom.addActionListener(listener);
+122&nbsp;&nbsp;    jrbBottom.addActionListener(listener);
+123&nbsp;&nbsp;    jrbBelowBottom.addActionListener(listener);
+124&nbsp;&nbsp;    jrbAboveTop.addActionListener(listener);
+125&nbsp;&nbsp;    jrbTop.addActionListener(listener);
+126&nbsp;&nbsp;    jrbBelowTop.addActionListener(listener);
+127&nbsp;&nbsp;    jrbLeft.addActionListener(listener);
+128&nbsp;&nbsp;    jrbCenter.addActionListener(listener);
+129&nbsp;&nbsp;    jrbRight.addActionListener(listener);
+130&nbsp;&nbsp;    jrbLoweredBevel.addActionListener(listener);
+131&nbsp;&nbsp;    jrbRaisedBevel.addActionListener(listener);
+132&nbsp;&nbsp;    jrbLine.addActionListener(listener);
+133&nbsp;&nbsp;    jrbEtched.addActionListener(listener);
+134&nbsp;&nbsp;    jrbMatte.addActionListener(listener);
+135&nbsp;&nbsp;    jrbEmpty.addActionListener(listener);
+136&nbsp;&nbsp;  }
+137&nbsp;&nbsp;
+138&nbsp;&nbsp;  <span class = "keyword">private</span> <span class = "keyword">class</span> EventListener <span class = "keyword">implements</span> ActionListener {
+139&nbsp;&nbsp;    @Override <span class = "comment">/** Handle ActionEvents on check box and radio buttons */</span>
+140&nbsp;&nbsp;    <span class = "keyword">public</span> <span class = "keyword">void</span> actionPerformed(ActionEvent e) {
+141&nbsp;&nbsp;      <span class = "comment">// Get border style</span>
+142&nbsp;&nbsp;      Border border = <span class = "keyword">new</span> EmptyBorder(<span class = "literal">2</span>, <span class = "literal">2</span>, <span class = "literal">2</span>, <span class = "literal">2</span>);
+143&nbsp;&nbsp;
+144&nbsp;&nbsp;      <span class = "keyword">if</span> (jrbLoweredBevel.isSelected()) {
+145&nbsp;&nbsp;        border = <span class = "keyword">new</span> BevelBorder(BevelBorder.LOWERED);
+146&nbsp;&nbsp;        jLabel1.setText(<span class = "literal">"Lowered Bevel Style"</span>);
+147&nbsp;&nbsp;      }
+148&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (jrbRaisedBevel.isSelected()) {
+149&nbsp;&nbsp;        border = <span class = "keyword">new</span> BevelBorder(BevelBorder.RAISED);
+150&nbsp;&nbsp;        jLabel1.setText(<span class = "literal">"Raised Bevel Style"</span>);
+151&nbsp;&nbsp;      }
+152&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (jrbEtched.isSelected()) {
+153&nbsp;&nbsp;        border = <span class = "keyword">new</span> EtchedBorder();
+154&nbsp;&nbsp;        jLabel1.setText(<span class = "literal">"Etched Style"</span>);
+155&nbsp;&nbsp;      }
+156&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (jrbLine.isSelected()) {
+157&nbsp;&nbsp;        border = <span class = "keyword">new</span> LineBorder(Color.black, <span class = "literal">5</span>);
+158&nbsp;&nbsp;        jLabel1.setText(<span class = "literal">"Line Style"</span>);
+159&nbsp;&nbsp;      }
+160&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (jrbMatte.isSelected()) {
+161&nbsp;&nbsp;        border = <span class = "keyword">new</span> MatteBorder(<span class = "literal">15</span>, <span class = "literal">15</span>, <span class = "literal">15</span>, <span class = "literal">15</span>,
+162&nbsp;&nbsp;          <span class = "keyword">new</span> ImageIcon(getClass().getResource
+163&nbsp;&nbsp;            (<span class = "literal">"/image/caIcon.gif"</span>)));
+164&nbsp;&nbsp;        jLabel1.setText(<span class = "literal">"Matte Style"</span>);
+165&nbsp;&nbsp;      }
+166&nbsp;&nbsp;      <span class = "keyword">else</span> <span class = "keyword">if</span> (jrbEmpty.isSelected()) {
+167&nbsp;&nbsp;        border = <span class = "keyword">new</span> EmptyBorder(<span class = "literal">2</span>, <span class = "literal">2</span>, <span class = "literal">2</span>, <span class = "literal">2</span>);
+168&nbsp;&nbsp;        jLabel1.setText(<span class = "literal">"Empty Style"</span>);
+169&nbsp;&nbsp;      }
+170&nbsp;&nbsp;
+171&nbsp;&nbsp;      <span class = "keyword">if</span> (jchkTitled.isSelected()) {
+172&nbsp;&nbsp;        <span class = "comment">// Get the title position and justification</span>
+173&nbsp;&nbsp;        <span class = "keyword">int</span> titlePosition = TitledBorder.DEFAULT_POSITION;
+174&nbsp;&nbsp;        <span class = "keyword">int</span> titleJustification = TitledBorder.DEFAULT_JUSTIFICATION;
+175&nbsp;&nbsp;
+176&nbsp;&nbsp;        <span class = "keyword">if</span> (jrbAboveBottom.isSelected())
+177&nbsp;&nbsp;          titlePosition = TitledBorder.ABOVE_BOTTOM;
+178&nbsp;&nbsp;        <span class = "keyword">else</span> <span class = "keyword">if</span> (jrbBottom.isSelected())
+179&nbsp;&nbsp;          titlePosition = TitledBorder.BOTTOM;
+180&nbsp;&nbsp;        <span class = "keyword">else</span> <span class = "keyword">if</span> (jrbBelowBottom.isSelected())
+181&nbsp;&nbsp;          titlePosition = TitledBorder.BELOW_BOTTOM;
+182&nbsp;&nbsp;        <span class = "keyword">else</span> <span class = "keyword">if</span> (jrbAboveTop.isSelected())
+183&nbsp;&nbsp;          titlePosition = TitledBorder.ABOVE_TOP;
+184&nbsp;&nbsp;        <span class = "keyword">else</span> <span class = "keyword">if</span> (jrbTop.isSelected())
+185&nbsp;&nbsp;          titlePosition = TitledBorder.TOP;
+186&nbsp;&nbsp;        <span class = "keyword">else</span> <span class = "keyword">if</span> (jrbBelowTop.isSelected())
+187&nbsp;&nbsp;          titlePosition = TitledBorder.BELOW_TOP;
+188&nbsp;&nbsp;
+189&nbsp;&nbsp;        <span class = "keyword">if</span> (jrbLeft.isSelected())
+190&nbsp;&nbsp;          titleJustification = TitledBorder.LEFT;
+191&nbsp;&nbsp;        <span class = "keyword">else</span> <span class = "keyword">if</span> (jrbCenter.isSelected())
+192&nbsp;&nbsp;          titleJustification = TitledBorder.CENTER;
+193&nbsp;&nbsp;        <span class = "keyword">else</span> <span class = "keyword">if</span> (jrbRight.isSelected())
+194&nbsp;&nbsp;          titleJustification = TitledBorder.RIGHT;
+195&nbsp;&nbsp;
+196&nbsp;&nbsp;        jLabel1Border = <span class = "keyword">new</span> TitledBorder(<span class = "literal">"A Title"</span>);
+197&nbsp;&nbsp;        jLabel1Border.setBorder(border);
+198&nbsp;&nbsp;        jLabel1Border.setTitlePosition(titlePosition);
+199&nbsp;&nbsp;        jLabel1Border.setTitleJustification(titleJustification);
+200&nbsp;&nbsp;        jLabel1.setBorder(jLabel1Border);
+201&nbsp;&nbsp;      }
+202&nbsp;&nbsp;      <span class = "keyword">else</span> {
+203&nbsp;&nbsp;        jLabel1.setBorder(border);
+204&nbsp;&nbsp;      }
+205&nbsp;&nbsp;    }
+206&nbsp;&nbsp;  }
+207&nbsp;&nbsp;
+208&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+209&nbsp;&nbsp;    BorderDemo applet = <span class = "keyword">new</span> BorderDemo();
+210&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+211&nbsp;&nbsp;    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+212&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+213&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"BorderDemo"</span>);
+214&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+215&nbsp;&nbsp;    applet.init();
+216&nbsp;&nbsp;    applet.start();
+217&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+218&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>);
+219&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+220&nbsp;&nbsp;  }
+221&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

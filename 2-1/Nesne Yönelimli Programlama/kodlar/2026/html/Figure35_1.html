@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Figure35_1.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "Figure35_1WithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "comment">// Figure35_1.java: Figures 24.1</span>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> Figure35_1 <span class = "keyword">extends</span> JApplet {
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    JToolBar toolBar = <span class = "keyword">new</span> JToolBar();
+    toolBar.setLayout(<span class = "keyword">new</span> GridLayout());
+    toolBar.add(<span class = "keyword">new</span> JButton(<span class = "literal">"ABC"</span>));
+    toolBar.add(<span class = "keyword">new</span> JButton(<span class = "literal">"DEF"</span>));
+
+    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"My Menus"</span>);
+
+<span class = "comment">//    frame.getContentPane().add(toolBar, BorderLayout.SOUTH);</span>
+
+    frame.setSize(<span class = "literal">300</span>, <span class = "literal">200</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+    JMenuBar jmb = <span class = "keyword">new</span> JMenuBar();
+    frame.setJMenuBar(jmb);  <span class = "comment">// Attach a menu bar to a frame</span>
+
+    JMenu fileMenu = <span class = "keyword">new</span> JMenu(<span class = "literal">"File"</span>);
+    JMenu helpMenu = <span class = "keyword">new</span> JMenu(<span class = "literal">"Help"</span>);
+    jmb.add(fileMenu);
+    jmb.add(helpMenu);
+
+    JMenuItem jmiNew, jmiOpen;
+fileMenu.add(jmiNew = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"New"</span>));
+fileMenu.add(jmiOpen = <span class = "keyword">new</span> JMenuItem(<span class = "literal">"Open"</span>));
+jmiNew.setIcon(<span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/new.gif"</span>));
+jmiOpen.setIcon(<span class = "keyword">new</span> ImageIcon(<span class = "literal">"image/open.gif"</span>));
+helpMenu.setMnemonic(<span class = "literal">'H'</span>);
+fileMenu.setMnemonic(<span class = "literal">'F'</span>);
+jmiNew.setMnemonic(<span class = "literal">'N'</span>);
+jmiOpen.setMnemonic(<span class = "literal">'O'</span>);
+<span class = "comment">//    fileMenu.add(new JMenuItem("New"));</span>
+//fileMenu.add(<span class = "keyword">new</span> JMenuItem(<span class = "literal">"Open"</span>));
+fileMenu.addSeparator();
+fileMenu.add(<span class = "keyword">new</span> JMenuItem(<span class = "literal">"Print"</span>));
+fileMenu.addSeparator();
+fileMenu.add(<span class = "keyword">new</span> JMenuItem(<span class = "literal">"Exit"</span>));
+
+    JMenu softwareHelpSubMenu = <span class = "keyword">new</span> JMenu(<span class = "literal">"Software"</span>);
+JMenu hardwareHelpSubMenu = <span class = "keyword">new</span> JMenu(<span class = "literal">"Hardware"</span>);
+helpMenu.add(softwareHelpSubMenu);
+helpMenu.add(hardwareHelpSubMenu);
+softwareHelpSubMenu.add(<span class = "keyword">new</span> JMenuItem(<span class = "literal">"Unix"</span>));
+softwareHelpSubMenu.add(<span class = "keyword">new</span> JMenuItem(<span class = "literal">"NT"</span>));
+softwareHelpSubMenu.add(<span class = "keyword">new</span> JMenuItem(<span class = "literal">"Win95"</span>));
+
+helpMenu.add(<span class = "keyword">new</span> JCheckBoxMenuItem(<span class = "literal">"Check it"</span>));
+
+    JMenu colorHelpSubMenu = <span class = "keyword">new</span> JMenu(<span class = "literal">"Color"</span>);
+    helpMenu.add(colorHelpSubMenu);
+
+    JRadioButtonMenuItem jrbmiBlue, jrbmiYellow, jrbmiRed;
+    colorHelpSubMenu.add(jrbmiBlue =
+      <span class = "keyword">new</span> JRadioButtonMenuItem(<span class = "literal">"Blue"</span>));
+    colorHelpSubMenu.add(jrbmiYellow =
+      <span class = "keyword">new</span> JRadioButtonMenuItem(<span class = "literal">"Yellow"</span>));
+    colorHelpSubMenu.add(jrbmiRed =
+      <span class = "keyword">new</span> JRadioButtonMenuItem(<span class = "literal">"Red"</span>));
+
+    ButtonGroup btg = <span class = "keyword">new</span> ButtonGroup();
+<span class = "comment">//    btg.add(jrbmiBlue);</span>
+<span class = "comment">//    btg.add(jrbmiYellow);</span>
+<span class = "comment">//    btg.add(jrbmiRed);</span>
+
+
+
+
+  }
+}
+</pre>
+</body>
+</html>

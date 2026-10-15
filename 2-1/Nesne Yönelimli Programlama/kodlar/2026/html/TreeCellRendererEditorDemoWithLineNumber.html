@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TreeCellRendererEditorDemo.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TreeCellRendererEditorDemo.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.awt.*;
+  2&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.tree.*;
+  4&nbsp;&nbsp;
+  5&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TreeCellRendererEditorDemo <span class = "keyword">extends</span> JApplet {
+  6&nbsp;&nbsp;  ImageIcon yourCustomLeafImageIcon =
+  7&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/caIcon.gif"</span>));
+  8&nbsp;&nbsp;  ImageIcon yourCustomOpenImageIcon =
+  9&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/flag16.gif"</span>));
+ 10&nbsp;&nbsp;  ImageIcon yourCustomClosedImageIcon =
+ 11&nbsp;&nbsp;    <span class = "keyword">new</span> ImageIcon(getClass().getResource(<span class = "literal">"/image/rbs.gif"</span>));
+ 12&nbsp;&nbsp;
+ 13&nbsp;&nbsp;  <span class = "keyword">public</span> TreeCellRendererEditorDemo() {
+ 14&nbsp;&nbsp;    JTree jTree1 = <span class = "keyword">new</span> JTree();
+ 15&nbsp;&nbsp;    getContentPane().add(<span class = "keyword">new</span> JScrollPane(jTree1),
+ 16&nbsp;&nbsp;      BorderLayout.CENTER);
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;    DefaultTreeCellRenderer renderer =
+ 19&nbsp;&nbsp;      (DefaultTreeCellRenderer)jTree1.getCellRenderer();
+ 20&nbsp;&nbsp;    renderer.setLeafIcon(yourCustomLeafImageIcon);
+ 21&nbsp;&nbsp;    renderer.setOpenIcon(yourCustomOpenImageIcon);
+ 22&nbsp;&nbsp;    renderer.setClosedIcon(yourCustomClosedImageIcon);
+ 23&nbsp;&nbsp;    renderer.setBackgroundSelectionColor(Color.red);
+ 24&nbsp;&nbsp;
+ 25&nbsp;&nbsp;    <span class = "comment">// Customize editor</span>
+ 26&nbsp;&nbsp;    JComboBox jcboColor = <span class = "keyword">new</span> JComboBox();
+ 27&nbsp;&nbsp;    jcboColor.addItem(<span class = "literal">"red"</span>);
+ 28&nbsp;&nbsp;    jcboColor.addItem(<span class = "literal">"green"</span>);
+ 29&nbsp;&nbsp;    jcboColor.addItem(<span class = "literal">"blue"</span>);
+ 30&nbsp;&nbsp;    jcboColor.addItem(<span class = "literal">"yellow"</span>);
+ 31&nbsp;&nbsp;    jcboColor.addItem(<span class = "literal">"orange"</span>);
+ 32&nbsp;&nbsp;
+ 33&nbsp;&nbsp;    jTree1.setCellEditor(<span class = "keyword">new</span> DefaultCellEditor(jcboColor));
+ 34&nbsp;&nbsp;    jTree1.setEditable(<span class = "keyword">true</span>);
+ 35&nbsp;&nbsp;
+ 36&nbsp;&nbsp;    jTree1.setCellEditor
+ 37&nbsp;&nbsp;  (<span class = "keyword">new</span> javax.swing.tree.DefaultTreeCellEditor(jTree1,
+ 38&nbsp;&nbsp;   <span class = "keyword">new</span> javax.swing.tree.DefaultTreeCellRenderer(),
+ 39&nbsp;&nbsp;     <span class = "keyword">new</span> javax.swing.DefaultCellEditor(jcboColor)));
+ 40&nbsp;&nbsp;
+ 41&nbsp;&nbsp;  }
+ 42&nbsp;&nbsp;
+ 43&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 44&nbsp;&nbsp;    TreeCellRendererEditorDemo applet = <span class = "keyword">new</span> TreeCellRendererEditorDemo();
+ 45&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame();
+ 46&nbsp;&nbsp;    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+ 47&nbsp;&nbsp;    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+ 48&nbsp;&nbsp;    frame.setTitle(<span class = "literal">"TreeCellRendererEditorDemo"</span>);
+ 49&nbsp;&nbsp;    frame.getContentPane().add(applet, BorderLayout.CENTER);
+ 50&nbsp;&nbsp;    applet.init();
+ 51&nbsp;&nbsp;    applet.start();
+ 52&nbsp;&nbsp;    frame.setSize(<span class = "literal">400</span>, <span class = "literal">320</span>);
+ 53&nbsp;&nbsp;    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+ 54&nbsp;&nbsp;    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+ 55&nbsp;&nbsp;      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+ 56&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 57&nbsp;&nbsp;  }
+ 58&nbsp;&nbsp;
+ 59&nbsp;&nbsp;  //<span class = "keyword">static</span> initializer <span class = "keyword">for</span> setting look & feel
+ 60&nbsp;&nbsp;  <span class = "keyword">static</span> {
+ 61&nbsp;&nbsp;    <span class = "keyword">try</span> {
+ 62&nbsp;&nbsp;      //UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+ 63&nbsp;&nbsp;      //UIManager.setLookAndFeel(UIManager.getCrossPlatformLookAndFeelClassName());
+ 64&nbsp;&nbsp;    }
+ 65&nbsp;&nbsp;    <span class = "keyword">catch</span>(Exception e) {
+ 66&nbsp;&nbsp;    }
+ 67&nbsp;&nbsp;  }
+ 68&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

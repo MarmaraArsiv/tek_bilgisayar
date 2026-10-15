@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - QuotientWithException.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "QuotientWithException.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.util.Scanner;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> QuotientWithException { 
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">int</span> quotient(<span class = "keyword">int</span> number1, <span class = "keyword">int</span> number2) {
+  5&nbsp;&nbsp;    <span class = "keyword">if</span> (number2 == <span class = "literal">0</span>)
+  6&nbsp;&nbsp;      <span class = "keyword">throw</span> <span class = "keyword">new</span> ArithmeticException(<span class = "literal">"Divisor cannot be zero"</span>);
+  7&nbsp;&nbsp;
+  8&nbsp;&nbsp;    <span class = "keyword">return</span> number1 / number2;
+  9&nbsp;&nbsp;  }
+ 10&nbsp;&nbsp;  
+ 11&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+ 12&nbsp;&nbsp;    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+ 13&nbsp;&nbsp;    
+ 14&nbsp;&nbsp;    <span class = "comment">// Prompt the user to enter two integers</span>
+ 15&nbsp;&nbsp;    System.out.print(<span class = "literal">"Enter two integers: "</span>);
+ 16&nbsp;&nbsp;    <span class = "keyword">int</span> number1 = input.nextInt();
+ 17&nbsp;&nbsp;    <span class = "keyword">int</span> number2 = input.nextInt();
+ 18&nbsp;&nbsp;    
+ 19&nbsp;&nbsp;    <span class = "keyword">try</span> {
+ 20&nbsp;&nbsp;      <span class = "keyword">int</span> result = quotient(number1, number2);
+ 21&nbsp;&nbsp;      System.out.println(number1 + <span class = "literal">" / "</span> + number2 + <span class = "literal">" is "</span> 
+ 22&nbsp;&nbsp;        + result);
+ 23&nbsp;&nbsp;    }
+ 24&nbsp;&nbsp;    <span class = "keyword">catch</span> (ArithmeticException ex) {
+ 25&nbsp;&nbsp;      System.out.println(<span class = "literal">"Exception: an integer "</span> + 
+ 26&nbsp;&nbsp;        <span class = "literal">"cannot be divided by zero "</span>);
+ 27&nbsp;&nbsp;    }
+ 28&nbsp;&nbsp;
+ 29&nbsp;&nbsp;    System.out.println(<span class = "literal">"Execution continues ..."</span>);
+ 30&nbsp;&nbsp;  }
+ 31&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "QuotientWithException" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<HTML>
+<HEAD>
+<TITLE>Intro to Java Programming, 5E - DisplayingMessageUsingActionEvent.java</TITLE>
+<META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=windows-1252">
+</HEAD>
+<basefont size=5><pre><FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> javax.swing.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.*;
+<FONT COLOR="#000080"><B>import</B></FONT><FONT COLOR="#000000"> java.awt.event.*;
+
+<FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> DisplayingMessageUsingActionEvent <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JApplet {
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> DisplayingMessageUsingActionEvent() {
+    MovingMessageNew messagePanel = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> MovingMessageNew();
+    getContentPane().add(messagePanel);
+    TickUsingActionEvent tick = <FONT COLOR="#000080"><B>new</B></FONT><FONT COLOR="#000000"> TickUsingActionEvent();
+    tick.setTickInterval(100);
+    tick.addActionListener(messagePanel);
+  }
+}
+
+<FONT COLOR="#000080"><B>class</B></FONT><FONT COLOR="#000000"> MovingMessageNew <FONT COLOR="#000080"><B>extends</B></FONT><FONT COLOR="#000000"> JPanel <FONT COLOR="#000080"><B>implements</B></FONT><FONT COLOR="#000000"> ActionListener {
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> xCoordinate = 20;
+  <FONT COLOR="#000080"><B>private</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>int</B></FONT><FONT COLOR="#000000"> yCoordinate = 20;
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> paintComponent(Graphics g) {
+    <FONT COLOR="#000080"><B>super</B></FONT><FONT COLOR="#000000">.paintComponent(g);
+    <FONT COLOR="#000080"><B>if</B></FONT><FONT COLOR="#000000"> (xCoordinate &gt; getWidth())
+      xCoordinate = -20;
+    <FONT COLOR="#000080"><B>else</B></FONT><FONT COLOR="#000000">
+      xCoordinate += 5;
+    g.drawString(<FONT COLOR="#0000ff">"I am moving"</FONT>, xCoordinate, yCoordinate);
+  }
+
+  <FONT COLOR="#000080"><B>public</B></FONT><FONT COLOR="#000000"> <FONT COLOR="#000080"><B>void</B></FONT><FONT COLOR="#000000"> actionPerformed(ActionEvent e) {
+    repaint();
+  }
+}
+</pre>

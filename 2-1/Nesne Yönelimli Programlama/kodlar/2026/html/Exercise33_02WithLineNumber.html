@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Exercise33_02.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "Exercise33_02.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">package</span> jsfexercise;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">import</span> javax.enterprise.context.RequestScoped;
+  4&nbsp;&nbsp;<span class = "keyword">import</span> javax.inject.Named;
+  5&nbsp;&nbsp;
+  6&nbsp;&nbsp;@Named
+  7&nbsp;&nbsp;@RequestScoped
+  8&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> Exercise33_02 {
+  9&nbsp;&nbsp;  <span class = "keyword">public</span> String getResponse() {
+ 10&nbsp;&nbsp;    String s = <span class = "literal">"&lt;table border=\"1\"&gt;"</span> +
+ 11&nbsp;&nbsp;      <span class = "literal">"&lt;tr&gt;&lt;th colspan=\"10\"&gt;Multiplication Table&lt;/th&gt;&lt;/tr&gt;"</span> +
+ 12&nbsp;&nbsp;      <span class = "literal">"&lt;tr&gt;"</span> +
+ 13&nbsp;&nbsp;      <span class = "literal">"&lt;td width=\"50\" height=\"17\"&gt;&lt;/td&gt;"</span>;
+ 14&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> j = <span class = "literal">1</span>; j &lt;= <span class = "literal">9</span>; j++)
+ 15&nbsp;&nbsp;      s += <span class = "literal">"&lt;td width=\"50\" height=\"17\"&gt;"</span> + j + <span class = "literal">"&lt;/td&gt;"</span>;
+ 16&nbsp;&nbsp;    s += <span class = "literal">"&lt;/tr&gt;"</span>;
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">1</span>; i &lt;= <span class = "literal">9</span>; i++) {
+ 19&nbsp;&nbsp;      s += <span class = "literal">"&lt;tr&gt;"</span>;
+ 20&nbsp;&nbsp;      s += <span class = "literal">"&lt;td width=\"50\" height=\"17\"&gt;"</span> + i + <span class = "literal">"&lt;/td&gt;"</span>;
+ 21&nbsp;&nbsp;      <span class = "keyword">for</span> (<span class = "keyword">int</span> j = <span class = "literal">1</span>; j &lt;= <span class = "literal">9</span>; j++) {
+ 22&nbsp;&nbsp;        s += <span class = "literal">"&lt;td width=\"50\" height=\"17\"&gt;"</span> + i * j + <span class = "literal">"&lt;/td&gt;"</span>;
+ 23&nbsp;&nbsp;      }
+ 24&nbsp;&nbsp;      s += <span class = "literal">"&lt;tr&gt;"</span>;
+ 25&nbsp;&nbsp;    }
+ 26&nbsp;&nbsp;    s += <span class = "literal">"&lt;/table&gt;"</span>;
+ 27&nbsp;&nbsp;
+ 28&nbsp;&nbsp;    <span class = "keyword">return</span> s;
+ 29&nbsp;&nbsp;  }
+ 30&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

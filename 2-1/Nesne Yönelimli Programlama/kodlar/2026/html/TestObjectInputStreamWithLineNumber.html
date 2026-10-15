@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - TestObjectInputStream.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "TestObjectInputStream.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> java.io.*;
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestObjectInputStream {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args)
+  5&nbsp;&nbsp;    <span class = "keyword">throws</span> ClassNotFoundException, IOException {
+  6&nbsp;&nbsp;    <span class = "keyword">try</span> ( <span class = "comment">// Create an input stream for file object.dat</span>
+  7&nbsp;&nbsp;      ObjectInputStream input =
+  8&nbsp;&nbsp;        <span class = "keyword">new</span> ObjectInputStream(<span class = "keyword">new</span> FileInputStream(<span class = "literal">"object.dat"</span>));
+  9&nbsp;&nbsp;    ) {
+ 10&nbsp;&nbsp;      <span class = "comment">// Read a string, double value, and object from the file</span>
+ 11&nbsp;&nbsp;      String name = input.readUTF();
+ 12&nbsp;&nbsp;      <span class = "keyword">double</span> score = input.readDouble();
+ 13&nbsp;&nbsp;      java.util.Date date = (java.util.Date)(input.readObject());
+ 14&nbsp;&nbsp;      System.out.println(name + <span class = "literal">" "</span> + score + <span class = "literal">" "</span> + date);
+ 15&nbsp;&nbsp;    }
+ 16&nbsp;&nbsp;  }
+ 17&nbsp;&nbsp;}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "TestObjectInputStream" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

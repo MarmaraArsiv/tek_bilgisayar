@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - ShowGridBagLayout.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "ShowGridBagLayoutWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> java.awt.*;
+<span class = "keyword">import</span> javax.swing.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> ShowGridBagLayout <span class = "keyword">extends</span> JApplet {
+  <span class = "keyword">private</span> JLabel jlbl = <span class = "keyword">new</span> JLabel(
+    <span class = "literal">"Resize the Window and Study GridBagLayout"</span>, JLabel.CENTER);
+  <span class = "keyword">private</span> JTextArea jta1 = <span class = "keyword">new</span> JTextArea(<span class = "literal">"Text Area 1"</span>, <span class = "literal">5</span>, <span class = "literal">15</span> );
+  <span class = "keyword">private</span> JTextArea jta2 = <span class = "keyword">new</span> JTextArea(<span class = "literal">"Text Area 2"</span>, <span class = "literal">5</span>, <span class = "literal">15</span> );
+  <span class = "keyword">private</span> JTextField jtf = <span class = "keyword">new</span> JTextField(<span class = "literal">"JTextField"</span>);
+  <span class = "keyword">private</span> JPanel jp = <span class = "keyword">new</span> JPanel();
+  <span class = "keyword">private</span> JButton jbt1 = <span class = "keyword">new</span> JButton(<span class = "literal">"Button 1"</span>);
+  <span class = "keyword">private</span> JButton jbt2 = <span class = "keyword">new</span> JButton(<span class = "literal">"Button 2"</span>);
+
+  <span class = "keyword">public</span> ShowGridBagLayout() {
+    <span class = "comment">// Set GridBagLayout in the container</span>
+    setLayout(<span class = "keyword">new</span> GridBagLayout());
+
+    <span class = "comment">// Create an GridBagConstraints object</span>
+    GridBagConstraints gbConstraints = <span class = "keyword">new</span> GridBagConstraints();
+
+    gbConstraints.fill = GridBagConstraints.BOTH;
+    gbConstraints.anchor = GridBagConstraints.CENTER;
+
+    Container container = getContentPane();
+
+    <span class = "comment">// Place JLabel to occupy row 0 (the first row)</span>
+    addComp(jlbl, container, gbConstraints, <span class = "literal">0</span>, <span class = "literal">0</span>, <span class = "literal">1</span>, <span class = "literal">4</span>, <span class = "literal">0</span>, <span class = "literal">0</span>);
+
+    <span class = "comment">// Place text area 1 in row 1 and 2, and column 0</span>
+    addComp(jta1, container, gbConstraints, <span class = "literal">1</span>, <span class = "literal">0</span>, <span class = "literal">2</span>, <span class = "literal">1</span>, <span class = "literal">5</span>, <span class = "literal">1</span>);
+
+    <span class = "comment">// Place text area 2 in row 1 and column 3</span>
+    addComp(jta2, container, gbConstraints, <span class = "literal">1</span>, <span class = "literal">3</span>, <span class = "literal">1</span>, <span class = "literal">1</span>, <span class = "literal">5</span>, <span class = "literal">1</span>);
+
+    <span class = "comment">// Place text field in row 2 and column 3</span>
+    addComp(jtf, container, gbConstraints, <span class = "literal">2</span>, <span class = "literal">3</span>, <span class = "literal">1</span>, <span class = "literal">1</span>, <span class = "literal">5</span>, <span class = "literal">0</span>);
+
+    <span class = "comment">// Place JButton 1 in row 3 and column 1</span>
+    addComp(jbt1, container, gbConstraints, <span class = "literal">3</span>, <span class = "literal">1</span>, <span class = "literal">1</span>, <span class = "literal">1</span>, <span class = "literal">5</span>, <span class = "literal">0</span>);
+
+    <span class = "comment">// Place JButton 2 in row 3 and column 2</span>
+    addComp(jbt2, container, gbConstraints, <span class = "literal">3</span>, <span class = "literal">2</span>, <span class = "literal">1</span>, <span class = "literal">1</span>, <span class = "literal">5</span>, <span class = "literal">0</span>);
+
+    <span class = "comment">// Place Panel in row 1 and 2, and column 1 and 2</span>
+    jp.setBackground(Color.red);
+    jp.setBorder(<span class = "keyword">new</span> javax.swing.border.LineBorder(Color.black));
+    gbConstraints.insets = <span class = "keyword">new</span> Insets(<span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">10</span>, <span class = "literal">10</span>);
+    addComp(jp, container, gbConstraints, <span class = "literal">1</span>, <span class = "literal">1</span>, <span class = "literal">2</span>, <span class = "literal">2</span>, <span class = "literal">10</span>, <span class = "literal">1</span>);
+  }
+
+  <span class = "comment">/** Add a component to the container of GridBagLayout */</span>
+  <span class = "keyword">private</span> <span class = "keyword">void</span> addComp(Component c, Container container,
+                       GridBagConstraints gbConstraints,
+                       <span class = "keyword">int</span> row, <span class = "keyword">int</span> column,
+                       <span class = "keyword">int</span> numberOfRows,  <span class = "keyword">int</span> numberOfColumns,
+                       <span class = "keyword">double</span> weightx, <span class = "keyword">double</span> weighty) {
+    <span class = "comment">// Set parameters</span>
+    gbConstraints.gridx = column;
+    gbConstraints.gridy = row;
+    gbConstraints.gridwidth = numberOfColumns;
+    gbConstraints.gridheight = numberOfRows;
+    gbConstraints.weightx = weightx;
+    gbConstraints.weighty = weighty;
+
+    <span class = "comment">// Add component to the container with the specified layout</span>
+    container.add(c, gbConstraints);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    ShowGridBagLayout applet = <span class = "keyword">new</span> ShowGridBagLayout();
+    JFrame frame = <span class = "keyword">new</span> JFrame();
+    //EXIT_ON_CLOSE == <span class = "literal">3</span>
+    frame.setDefaultCloseOperation(<span class = "literal">3</span>);
+    frame.setTitle(<span class = "literal">"ShowGridBagLayout"</span>);
+    frame.getContentPane().add(applet, BorderLayout.CENTER);
+    applet.init();
+    applet.start();
+    frame.setSize(<span class = "literal">400</span>,<span class = "literal">320</span>);
+    Dimension d = Toolkit.getDefaultToolkit().getScreenSize();
+    frame.setLocation((d.width - frame.getSize().width) / <span class = "literal">2</span>,
+      (d.height - frame.getSize().height) / <span class = "literal">2</span>);
+    frame.setVisible(<span class = "keyword">true</span>);
+  }
+}
+</pre>
+</body>
+</html>

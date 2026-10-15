@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listing 6.1 Animation by Y. Daniel Liang</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="GetElementPosition.js"></script>
+
+    <style type = "text/css">
+      body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+      .keyword {color: #000080; font-weight: bold}
+      .comment {color: gray}
+      .literal {font-weight: bold; color: #3366FF}
+    </style>
+
+    <STYLE>
+      #highlight {
+        background-color:green;
+        opacity: 0.25;
+        position:absolute;
+        width:318px;
+        height: 10px;
+        padding: 3px;
+        margin-top:0px;
+        top: 79px;
+        left: 62px;
+      }
+
+      #explanation {
+        color: green;
+        position:absolute;
+        width: 158px;
+        height: 40px;
+        padding: 3px;
+        margin-top:5px;
+        top: 75px;
+        left: 448px;
+        font-size: 90%;
+        font-family: Times New Roman;
+      }
+
+      #commandPrompt {
+        font-family: times;  border: 1px solid gray; text-align: left;  
+        position:absolute;         
+        width: 248.5px;
+        height: 70px;
+        top: 80px;
+        left: 600px;
+        font-size: 80%;
+      }
+
+      #commandPromptHeader {
+        background-color: navy; color: white; font-size: 80%;
+        border-bottom: 2px solid gray; border-right: 2px solid gray;
+      }
+
+      #commandPromptContent {
+        background-color: black;
+        color: white;
+        width: 248px;
+        height: 60px;
+        font-family: courier; 
+        font-size: 80%;
+      }
+    </STYLE>
+
+    <script>
+      function HighLight() {
+        this.width = 318;
+        this.height = 10;
+        this.top = 77;
+        this.left = 62;
+      }
+
+      function Explanation() {
+        this.innerHTML = "";
+        this.left = 448;
+        this.width = 158;
+        this.height = 40;
+        this.top = 75;
+      }
+
+      function CommandPrompt() {
+        this.innerHTML = "";
+        this.left = 448;
+        this.width = 158;
+        this.height = 40;
+        this.top = 65;
+        this.isVisible = true;
+      }
+
+      number1 = 8;
+      number2 = 7;
+      num1 = 5;
+      num2 = 2;
+      result = true;
+      steps = 13;
+
+      animationSpeed = 500;
+      slowAnimationSpeed = 3000;
+      lineOffSet = 15;
+      highLight = [];
+      highLight[0] = new HighLight();
+      highLight[0].top = 95;
+      highLight[0].left = 62;
+      highLight[0].width = 318;
+
+      highLight[1] = new HighLight();
+      highLight[1].top = 109;
+      highLight[1].left = 60 + 20;
+      highLight[1].width = 417;
+
+      highLight[2] = new HighLight();
+      highLight[2].top = 125;
+      highLight[2].left = 60 + 20;
+      highLight[2].width = 457;
+
+      highLight[3] = new HighLight();
+      highLight[3].top = 169;
+      highLight[3].left = 60 + 20;
+      highLight[3].width = 304;
+
+      highLight[4] = new HighLight();
+      highLight[4].top = 198;
+      highLight[4].left = 60 + 20;
+      highLight[4].width = 385;
+      highLight[4].height = 25;
+
+      highLight[5] = new HighLight();
+      highLight[5].top = 243;
+      highLight[5].left = 60 + 20;
+      highLight[5].width = 232;
+
+      highLight[6] = new HighLight();
+      highLight[6].top = 273;
+      highLight[6].left = 60 + 20;
+      highLight[6].width = 435;
+      highLight[6].height = 38;
+
+      highLight[7] = new HighLight();
+      highLight[7].top = 314;
+      highLight[7].width = 6;
+      highLight[7].left = 62;
+
+      highLight[8] = new HighLight();
+      highLight[8].top = 314;
+      highLight[8].width = 6;
+      highLight[8].left = 62;
+
+      highLight[9] = new HighLight();
+      highLight[9].top = 314;
+      highLight[9].width = 6;
+      highLight[9].left = 62;
+
+      highLight[10] = new HighLight();
+      highLight[10].top = 314;
+      highLight[10].width = 6;
+      highLight[10].left = 62;
+
+      highLight[11] = new HighLight();
+      highLight[11].top = 314;
+      highLight[11].width = 6;
+      highLight[11].left = 62;
+
+      highLight[12] = new HighLight();
+      highLight[12].top = 314;
+      highLight[12].width = 6;
+      highLight[12].left = 62;
+
+      highLight[12] = new HighLight();
+      highLight[12].top = 314;
+      highLight[12].width = 6;
+      highLight[12].left = 62;
+
+      explanation = [];
+      explanation[0] = new Explanation();
+      explanation[0].innerHTML = "The program starts the execution from the main method.";
+      explanation[0].top = 75;
+      explanation[0].left = 508;
+
+      explanation[1] = new Explanation();
+      explanation[1].innerHTML = "The statement assigns " + number1 + " to variable i.";
+      explanation[1].top = 107;
+      explanation[1].left = 550;
+
+      explanation[2] = new Explanation();
+      explanation[2].innerHTML = "The statement assigns 3 to j.";
+      explanation[2].top = 107;
+      explanation[2].left = 570;
+
+      explanation[3] = new Explanation();
+      explanation[3].innerHTML = "The statement invokes the max method and assigns the return value from the method to k.";
+      explanation[3].top = 117;
+      explanation[3].left = 470;
+      explanation[3].width = 430;
+
+      explanation[4] = new Explanation();
+      explanation[4].innerHTML = "The max method is invoked.";
+      explanation[4].top = 130;
+      explanation[4].left = 480;
+      explanation[4].width = 260;
+
+      explanation[5] = new Explanation();
+      explanation[5].innerHTML = "The statement receives an input from the user.";
+      explanation[5].top = 245;
+      explanation[5].left = 285;
+      explanation[5].width = 205;
+
+      explanation[6] = new Explanation();
+      explanation[6].innerHTML = "Variable result is declared.";
+      explanation[6].top = 247;
+      explanation[6].left = 325;
+      explanation[6].width = 205;
+
+      explanation[7] = new Explanation();
+      explanation[7].innerHTML = "The statements tests if num1 is greated than num2.";
+      explanation[7].top = 250;
+      explanation[7].left = 228;
+      explanation[7].width = 205;
+
+      explanation[8] = new Explanation();
+      explanation[8].innerHTML = "num1 is assigned to num2.";
+      explanation[8].top = 270;
+      explanation[8].left = 228;
+      explanation[8].width = 205;
+
+      explanation[9] = new Explanation();
+      explanation[9].innerHTML = "The result is returned from the max method. The max method is finished.";
+      explanation[9].top = 330;
+      explanation[9].left = 228;
+      explanation[9].width = 255;
+
+      explanation[10] = new Explanation();
+      explanation[10].innerHTML = "The returned value is assigned to variable k.";
+      explanation[10].top = 118;
+      explanation[10].left = 248;
+      explanation[10].width = 280;
+
+      explanation[11] = new Explanation();
+      explanation[11].innerHTML = "The statement displays the result.";
+      explanation[11].top = 130;
+      explanation[11].left = 468;
+      explanation[11].width = 155;
+
+      explanation[12] = new Explanation();
+      explanation[12].innerHTML = "The main method exits. The program is finished.";
+      explanation[12].top = 158;
+      explanation[12].left = 348;
+      explanation[12].width = 150;
+
+      commandPrompt = [];
+      commandPrompt[0] = new CommandPrompt();
+      commandPrompt[0].isVisible = true;
+      commandPrompt[0].innerHTML = "c:\\book>java TestMax";
+      commandPrompt[0].top = 75;
+      commandPrompt[0].left = 660;
+      commandPrompt[0].height = 75;
+      commandPrompt[0].width = 260;
+
+      commandPrompt[1] = new CommandPrompt();
+      commandPrompt[1].isVisible = false;
+
+      commandPrompt[2] = new CommandPrompt();
+      commandPrompt[2].isVisible = false;
+
+      commandPrompt[3] = new CommandPrompt();
+      commandPrompt[3].isVisible = false;
+
+      commandPrompt[4] = new CommandPrompt();
+      commandPrompt[4].isVisible = false;
+
+      commandPrompt[5] = new CommandPrompt();
+      commandPrompt[5].isVisible = false;
+
+      commandPrompt[6] = new CommandPrompt();
+      commandPrompt[6].isVisible = false;
+
+      commandPrompt[7] = new CommandPrompt();
+      commandPrompt[7].isVisible = false;
+
+      commandPrompt[8] = new CommandPrompt();
+      commandPrompt[8].isVisible = false;
+
+      commandPrompt[9] = new CommandPrompt();
+      commandPrompt[9].isVisible = false;
+
+      commandPrompt[10] = new CommandPrompt();
+      commandPrompt[10].isVisible = false;
+
+      commandPrompt[11] = new CommandPrompt();
+      commandPrompt[11].isVisible = true;
+      commandPrompt[11].innerHTML = commandPrompt[0].innerHTML + "<br>The maximum between 5 and 2 is 5";
+      commandPrompt[11].top = 139;
+      commandPrompt[11].left = 650;
+      commandPrompt[11].width = 480;
+
+      commandPrompt[12] = new CommandPrompt();
+      commandPrompt[12].isVisible = true;
+      commandPrompt[12].innerHTML = commandPrompt[11].innerHTML + "<br><br>c:\\book";
+      commandPrompt[12].top = 159;
+      commandPrompt[12].left = 500;
+      commandPrompt[12].width = 480;
+      commandPrompt[12].height = 70;
+
+      currentLine = 0;
+
+      function init() {
+        document.getElementById('highlight').style.visibility = 'hidden';
+        document.getElementById('nextButton').style.visibility = 'hidden';
+        document.getElementById('prevButton').style.visibility = 'hidden';
+        document.getElementById('commandPrompt').style.visibility = 'hidden';
+        document.getElementById('memory').style.visibility = 'hidden';
+        document.getElementById('area').style.visibility = 'hidden';
+        document.getElementById('flyingI').style.visibility = 'hidden';
+        document.getElementById('flyingJ').style.visibility = 'hidden';
+        document.getElementById('num1').style.visibility = 'hidden';
+        document.getElementById('num2').style.visibility = 'hidden';
+        document.getElementById('Result').style.visibility = 'hidden';
+        document.getElementById('flyingNum2').style.visibility = 'hidden';
+        document.getElementById('flyingResult').style.visibility = 'hidden';
+        document.getElementById('valuek').style.visibility = 'hidden';
+      }
+
+      function step() {
+        if (currentLine == 0) {
+          document.getElementById('variable').style.visibility = 'hidden';
+          document.getElementById('radius').style.visibility = 'hidden';
+          document.getElementById('flyingI').style.visibility = 'hidden';
+          document.getElementById('flyingI').innerHTML = '';
+          document.getElementById('value1').innerHTML = '';
+          document.getElementById('prevButton').style.visibility = 'hidden';
+        }
+        else if (currentLine == 1) {
+          number1 = 5;
+          explanation[1].innerHTML = "The statement assigns " + number1 + " to variable i.";
+
+          document.getElementById('variable').style.visibility = 'visible';
+          document.getElementById('radius').style.visibility = 'visible';
+          document.getElementById('flyingI').style.visibility = 'visible';
+          document.getElementById('flyingI').innerHTML = '';
+          document.getElementById('value1').innerHTML = '';
+          document.getElementById('prevButton').style.visibility = 'visible';
+
+          document.getElementById('area').style.visibility = 'hidden';
+          document.getElementById('flyingJ').style.visibility = 'hidden';
+          document.getElementById('value2').innerHTML = '';
+          document.getElementById('area').style.visibility = 'hidden';
+
+          pos = getElementPos(document.getElementById('line1'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed, function() {
+            posLoc1 = getElementPos(document.getElementById('loc1'));
+            $("#flyingI").css("top", posLoc1.y).css("left", posLoc1.x - 35);
+            document.getElementById('flyingI').innerHTML = number1;
+            $("#flyingI").animate({top: 75, left: 615}, slowAnimationSpeed);
+          });
+        }
+        else if (currentLine == 2) {
+          number2 = 2;
+          explanation[2].innerHTML = "The statement assigns " + number2 + " to variable j.";
+          commandPrompt[4].innerHTML = "c:\\book>java TestMax<br>What is " + number1 + " + " + number2 + "? ";
+
+          document.getElementById('area').style.visibility = 'visible';
+          document.getElementById('flyingJ').style.visibility = 'visible';
+          document.getElementById('value2').innerHTML = '';
+          document.getElementById('area').style.visibility = 'visible';
+          pos = getElementPos(document.getElementById('line2'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed, function() {
+            posLoc2 = getElementPos(document.getElementById('loc2'));
+            $("#flyingJ").css("top", posLoc2.y).css("left", posLoc2.x - 35);
+            document.getElementById('flyingJ').innerHTML = number2;
+            $("#flyingJ").animate({top: 95, left: 615}, slowAnimationSpeed);
+          });
+        }
+        else if (currentLine == 4) {
+          document.getElementById('num1').style.visibility = 'hidden';
+          document.getElementById('num2').style.visibility = 'hidden';
+          document.getElementById('flyingNum1').style.visibility = 'hidden';
+          document.getElementById('flyingNum2').style.visibility = 'hidden';
+        }
+        else if (currentLine == 5) {
+          document.getElementById('num1').style.visibility = 'visible';
+          document.getElementById('num2').style.visibility = 'visible';
+          document.getElementById('flyingNum1').style.visibility = 'visible';
+          document.getElementById('flyingNum2').style.visibility = 'visible';
+          document.getElementById('flyingNum1').innerHTML = num1;
+          document.getElementById('flyingNum2').innerHTML = num2;
+
+          explanation[5].innerHTML = "The values of i and j are passed to num1 and num2.";
+          commandPrompt[5].innerHTML = commandPrompt[4].innerHTML + num1;
+          commandPrompt[6].innerHTML = commandPrompt[5].innerHTML + "<br>" + number1 + " + " + number2 + " = " + num1 + " is " + result;
+          commandPrompt[7].innerHTML = commandPrompt[6].innerHTML + "<br><br>c:\\book";
+
+          pos = getElementPos(document.getElementById('line5'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed, function() {
+            document.getElementById('flyingNum1').innerHTML = num1;
+            $("#flyingNum1").css('top', 75);
+            $("#flyingNum2").css('top', 95);
+            $("#flyingNum1").animate({top: 215, left: 615}, slowAnimationSpeed);
+            document.getElementById('flyingNum2').innerHTML = num2;
+            $("#flyingNum2").animate({top: 235, left: 615}, slowAnimationSpeed);
+          });
+          document.getElementById('result').style.visibility = 'hidden';
+        }
+        else if (currentLine == 6) {
+          document.getElementById('result').style.visibility = 'visible';
+          document.getElementById('flyingResult').style.visibility = 'hidden';
+        }
+        else if (currentLine == 7) {
+          document.getElementById('flyingResult').style.visibility = 'hidden';
+        }
+        else if (currentLine == 8) {
+          document.getElementById('flyingResult').style.visibility = 'visible';
+          pos = getElementPos(document.getElementById('line8'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed, function() {
+            document.getElementById('flyingResult').innerHTML = num1;
+            posLoc3 = getElementPos(document.getElementById('loc3'));
+            $("#flyingResult").css("top", posLoc3.y).css("left", posLoc3.x);
+            $("#flyingResult").animate({top: 255, left: 615}, slowAnimationSpeed);
+          });
+        }
+        else if (currentLine == 9) {
+          document.getElementById('num1').style.visibility = 'visible';
+          document.getElementById('num2').style.visibility = 'visible';
+          document.getElementById('result').style.visibility = 'visible';
+          document.getElementById('flyingNum1').style.visibility = 'visible';
+          document.getElementById('flyingNum2').style.visibility = 'visible';
+          document.getElementById('flyingResult').style.visibility = 'visible';
+          document.getElementById('valuek').style.visibility = 'hidden';
+          document.getElementById('flyingReturnValue').style.visibility = 'hidden';
+        }
+        else if (currentLine == 10) {
+          document.getElementById('num1').style.visibility = 'hidden';
+          document.getElementById('num2').style.visibility = 'hidden';
+          document.getElementById('result').style.visibility = 'hidden';
+          document.getElementById('flyingNum1').style.visibility = 'hidden';
+          document.getElementById('flyingNum2').style.visibility = 'hidden';
+          document.getElementById('flyingResult').style.visibility = 'hidden';
+          document.getElementById('valuek').style.visibility = 'visible';
+          document.getElementById('flyingReturnValue').style.visibility = 'visible';
+
+          pos = getElementPos(document.getElementById('line10'));
+          $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed, function() {
+            posLoc4 = getElementPos(document.getElementById('loc4'));
+            $("#flyingReturnValue").css("top", posLoc4.y).css("left", posLoc4.x - 35);
+            document.getElementById('flyingReturnValue').innerHTML = 5;
+            $("#flyingReturnValue").animate({top: 115, left: 615}, slowAnimationSpeed);
+          });
+        }
+
+        if (currentLine == steps) {
+          document.getElementById('nextButton').style.visibility = 'hidden';
+          document.getElementById('prevButton').style.visibility = 'hidden';
+          document.getElementById('variable').style.visibility = 'hidden';
+          document.getElementById('memory').style.visibility = 'hidden';
+          document.getElementById('radius').style.visibility = 'hidden';
+          document.getElementById('area').style.visibility = 'hidden';
+          document.getElementById('startButton').style.visibility = 'visible';
+          document.getElementById('startButton').innerHTML = 'Restart Animation';
+          document.getElementById('flyingI').style.visibility = 'hidden';
+          document.getElementById('flyingJ').style.visibility = 'hidden';
+          document.getElementById('flyingNum1').style.visibility = 'hidden';
+          document.getElementById('flyingResult').style.visibility = 'hidden';
+          document.getElementById('num1').style.visibility = 'hidden';
+          document.getElementById('flyingI').innerHTML = '';
+          document.getElementById('flyingJ').innerHTML = '';
+          document.getElementById('flyingNum1').innerHTML = '';
+          document.getElementById('flyingResult').style.visibility = 'hidden';
+          document.getElementById('highlight').style.visibility = 'hidden';
+          document.getElementById('commandPrompt').style.visibility = 'hidden';
+          document.getElementById('explanation').style.visibility = 'hidden';
+          document.getElementById('valuek').style.visibility = 'hidden';
+          document.getElementById('flyingReturnValue').style.visibility = 'hidden';
+        }
+        else {
+          $("#explanation").animate({top: explanation[currentLine].top, left: explanation[currentLine].left,
+            width: explanation[currentLine].width}, animationSpeed);
+          document.getElementById('explanation').innerHTML = explanation[currentLine].innerHTML;
+
+          if (commandPrompt[currentLine].isVisible) {
+            document.getElementById('commandPrompt').style.visibility = 'visible';
+            document.getElementById('commandPromptContent').innerHTML = commandPrompt[currentLine].innerHTML;
+            $("#commandPrompt").animate({top: commandPrompt[currentLine].top, left: commandPrompt[currentLine].left},
+            animationSpeed);
+          }
+          else {
+            document.getElementById('commandPrompt').style.visibility = 'hidden';
+          }
+        }
+
+        if (currentLine == 0) {
+          pos = getElementPos(document.getElementById('line0'));
+        }
+        else if (currentLine == 1) {
+          pos = getElementPos(document.getElementById('line1'));
+        }
+        else if (currentLine == 2) {
+          pos = getElementPos(document.getElementById('line2'));
+        }
+        else if (currentLine == 3) {
+          pos = getElementPos(document.getElementById('line3'));
+        }
+        else if (currentLine == 4) {
+          pos = getElementPos(document.getElementById('line4'));
+        }
+        else if (currentLine == 5) {
+          pos = getElementPos(document.getElementById('line5'));
+        }
+        else if (currentLine == 6) {
+          pos = getElementPos(document.getElementById('line6'));
+        }
+        else if (currentLine == 7) {
+          pos = getElementPos(document.getElementById('line7'));
+        }
+        else if (currentLine == 8) {
+          pos = getElementPos(document.getElementById('line8'));
+        }
+        else if (currentLine == 9) {
+          pos = getElementPos(document.getElementById('line9'));
+        }
+        else if (currentLine == 10) {
+          pos = getElementPos(document.getElementById('line10'));
+        }
+        else if (currentLine == 11) {
+          pos = getElementPos(document.getElementById('line11'));
+        }
+        else if (currentLine == 12) {
+          pos = getElementPos(document.getElementById('line12'));
+        }
+        else if (currentLine == 13) {
+          pos = getElementPos(document.getElementById('line11'));
+        }
+
+        $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, animationSpeed);
+      }
+    </script>
+  </head>
+
+  <body onload="init()" onresize="draw()">   
+    <div style="text-align: left; margin-top: 1em">
+      <span style="padding: 3px">
+        <button id = "nextButton" type="button" onclick="next()">></button>
+        <button id = "prevButton" type="button" onclick="prev()"><</button>
+        <button id ="startButton" type="button" onclick="start()">Start Animation</button>  
+        <span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+          Introduction to Java Programming, Tenth Edition,
+          <a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+      </span>    
+    </div>
+
+    <div id="highlight"></div>
+    <div id="explanation"></div>
+    <div id="commandPrompt">
+      <div id="commandPromptHeader">   Command Prompt</div>
+      <div id="commandPromptContent">c:\book>java TestMax</div>
+    </div>
+
+    <div id="memory" style = "background-color: lightyellow;">
+      <div id="variable" style = "font-family: times; text-align: left;  background-color: lightyellow;
+           position:absolute; top: 50px; left: 520px; font-size: 80%;">
+        Variable Name &nbsp;&nbsp;&nbsp;&nbsp;  Value in Memory</div>
+      <div id ="radius">
+        <div id="memory1" style = "font-family: times; text-align: left; font-style: italic;
+             position:absolute; top: 70px; left: 520px; font-size: 80%;">i</div> 
+        <div id="value1" style = "font-family: courier; text-align: center; 
+             border: 1px solid green; width: 80px; top: 70px; left: 615px; height: 20px;
+             position:absolute;  font-size: 80%;"></div> 
+      </div>
+      <div id ="area">
+        <div id="memory2" style = "font-family: times; text-align: left;  font-style: italic;
+             position:absolute; top: 90px; left: 520px; font-size: 80%;">j</div> 
+        <div id="value2" style = "font-family: courier; text-align: center;  
+             border: 1px solid green; width: 80px; top: 90px; left: 615px; height: 20px;
+             position:absolute;  font-size: 80%;"></div>
+      </div>
+      <div id ="valuek">
+        <div id="memory3" style = "font-family: times; text-align: left;  font-style: italic;
+             position:absolute; top: 110px; left: 520px; font-size: 80%;">k</div> 
+        <div id="value3" style = "font-family: courier; text-align: center;  
+             border: 1px solid green; width: 80px; top: 110px; left: 615px; height: 20px;
+             position:absolute;  font-size: 80%;"></div>
+      </div>
+      <div id ="num1">
+        <div id="memory3" style = "font-family: times; text-align: left;  font-style: italic;
+             position:absolute; top: 210px; left: 520px; font-size: 80%;">num1</div> 
+        <div id="value3" style = "font-family: courier; text-align: center;  
+             border: 1px solid green; width: 80px; top: 210px; left: 615px; height: 20px;
+             position:absolute;  font-size: 80%;"></div>
+      </div>
+      <div id ="num2">
+        <div id="memory4" style = "font-family: times; text-align: left;  font-style: italic;
+             position:absolute; top: 230px; left: 520px; font-size: 80%;">num2</div> 
+        <div id="value4" style = "font-family: courier; text-align: center;  
+             border: 1px solid green; width: 80px; top: 230px; left: 615px; height: 20px;
+             position:absolute;  font-size: 80%;"></div>
+      </div>
+      <div id ="result">
+        <div id="memory4" style = "font-family: times; text-align: left;  font-style: italic;
+             position:absolute; top: 250px; left: 520px; font-size: 80%;">result</div> 
+        <div id="value4" style = "font-family: courier; text-align: center;  
+             border: 1px solid green; width: 80px; top: 250px; left: 615px; height: 20px;
+             position:absolute;  font-size: 80%;"></div>
+      </div>    </div>
+
+    <div id="flyingI" style = "font-family: courier; text-align: center; 
+         width: 80px; top: 187px; left: 100px; height: 20px; color:red; font-weight: bold;
+         position:absolute;  font-size: 80%;"></div> 
+
+    <div id="flyingJ" style = "font-family: courier; text-align: center; 
+         width: 80px; top: 187px; left: 100px; height: 20px; color:red; font-weight: bold;
+         position:absolute;  font-size: 80%;"></div> 
+
+    <div id="flyingNum1" style = "font-family: courier; text-align: center; 
+         width: 80px; top: 75px; left: 615px; height: 20px; color:red; font-weight: bold;
+         position:absolute;  font-size: 80%;"></div> 
+
+    <div id="flyingNum2" style = "font-family: courier; text-align: center; 
+         width: 80px; top: 95px; left: 615px; height: 20px; color:red; font-weight: bold;
+         position:absolute;  font-size: 80%;"></div> 
+
+    <div id="flyingResult" style = "font-family: courier; text-align: center; 
+         width: 80px; top: 95px; left: 615px; height: 20px; color:red; font-weight: bold;
+         position:absolute;  font-size: 80%;"></div> 
+
+    <div id="flyingReturnValue" style = "font-family: courier; text-align: center; 
+         width: 80px; top: 95px; left: 615px; height: 20px; color:red; font-weight: bold;
+         position:absolute;  font-size: 80%;"></div> 
+
+    <div id = "program" style="font-family: courier; font-size: 12; margin: 0px auto; border: 1px solid red; text-align: left">
+      <pre>
+  1&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> TestMax {
+  2&nbsp;&nbsp;  <span class = "comment">/** Main method */</span>
+  3&nbsp;&nbsp;  <span id="line0"><span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {</span>
+  4&nbsp;&nbsp;    <span id="line1"><span class = "keyword">int</span> i = <span class = "literal"><span id="loc1">5</span></span>;</span>
+  5&nbsp;&nbsp;    <span id="line2"><span class = "keyword">int</span> j = <span class = "literal"><span id="loc2">2</span></span>;</span>
+  6&nbsp;&nbsp;    <span id="line10"><span id="line3"><span class = "keyword">int</span> k = <span id="line4">max(i, j);</span></span></span>
+  7&nbsp;&nbsp;    <span id="line11">System.out.println(<span class = "literal">"The maximum between "</span> + i +</span>
+  8&nbsp;&nbsp;      <span class = "literal">" and "</span> + j + <span class = "literal">" is "</span> + k);
+  9&nbsp;&nbsp;  <span id="line12">}</span>
+ 10&nbsp;&nbsp;
+ 11&nbsp;&nbsp;  <span class = "comment">/** Return the max between two numbers */</span>
+ 12&nbsp;&nbsp;  <span id="line5"><span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">int</span> max(<span class = "keyword">int</span> num1, <span class = "keyword">int</span> num2) {</span>
+ 13&nbsp;&nbsp;    <span id="line6"><span class = "keyword">int</span> result;</span>
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;    <span id="line7"><span class = "keyword">if</span> (num1 &gt; num2)</span>
+ 16&nbsp;&nbsp;      <span id="line8">result = <span id="loc3">num1</span>;</span>
+ 17&nbsp;&nbsp;    <span class = "keyword">else</span>
+ 18&nbsp;&nbsp;      result = num2;
+ 19&nbsp;&nbsp;
+ 20&nbsp;&nbsp;    <span id="line9"><span class = "keyword">return</span> <span id="loc4">result</span>;</span>
+ 21&nbsp;&nbsp;  }
+ 22&nbsp;&nbsp;}
+      </pre>
+
+    </div>
+
+    <script type="text/javascript">
+      $("#nextButton").click(function() {
+        currentLine = currentLine + 1;
+        step();
+      });
+
+      $("#prevButton").click(function() {
+        currentLine = currentLine - 1;
+        step();
+      });
+
+      $("#startButton").click(function() {
+        currentLine = 0;
+
+        var pos = getElementPos(document.getElementById('line0'));
+        $("#highlight").animate({top: pos.y, left: pos.x, width: pos.w, height: pos.h}, 'fast');
+        $("#explanation").animate({top: explanation[currentLine].top, left: explanation[currentLine].left,
+          width: explanation[currentLine].width}, 'fast');
+        $("#commandPrompt").animate({top: commandPrompt[currentLine].top, left: commandPrompt[currentLine].left}, 'fast');
+        document.getElementById('explanation').innerHTML = explanation[currentLine].innerHTML;
+        document.getElementById('commandPromptContent').innerHTML = commandPrompt[currentLine].innerHTML;
+
+        document.getElementById('startButton').style.visibility = 'hidden';
+        document.getElementById('nextButton').style.visibility = 'visible';
+        document.getElementById('commandPrompt').style.visibility = 'visible';
+
+        document.getElementById('highlight').style.visibility = 'visible';
+        document.getElementById('explanation').style.visibility = 'visible';
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+<html>
+<head>
+<title>Intro to Java Programming, 7E - GuessBirthDate.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> java.util.Scanner;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> GuessBirthDate {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    String set1 =
+      <span class = "literal">" <span class = "literal">1</span>  <span class = "literal">3</span>  <span class = "literal">5</span>  7\n"</span> +
+      <span class = "literal">" <span class = "literal">9</span> <span class = "literal">11</span> <span class = "literal">13</span> 15\n"</span> +
+      <span class = "literal">"17 <span class = "literal">19</span> <span class = "literal">21</span> 23\n"</span> +
+      <span class = "literal">"25 <span class = "literal">27</span> <span class = "literal">29</span> 31"</span>;
+
+    String set2 =
+      <span class = "literal">" <span class = "literal">2</span>  <span class = "literal">3</span>  <span class = "literal">6</span>  7\n"</span> +
+      <span class = "literal">"10 <span class = "literal">11</span> <span class = "literal">14</span> 15\n"</span> +
+      <span class = "literal">"18 <span class = "literal">19</span> <span class = "literal">22</span> 23\n"</span> +
+      <span class = "literal">"26 <span class = "literal">27</span> <span class = "literal">30</span> 31"</span>;
+
+    String set3 =
+      <span class = "literal">" <span class = "literal">4</span>  <span class = "literal">5</span>  <span class = "literal">6</span>  7\n"</span> +
+      <span class = "literal">"12 <span class = "literal">13</span> <span class = "literal">14</span> 15\n"</span> +
+      <span class = "literal">"20 <span class = "literal">21</span> <span class = "literal">22</span> 23\n"</span> +
+      <span class = "literal">"28 <span class = "literal">29</span> <span class = "literal">30</span> 31"</span>;
+
+    String set4 =
+      <span class = "literal">" <span class = "literal">8</span>  <span class = "literal">9</span> <span class = "literal">10</span> 11\n"</span> +
+      <span class = "literal">"12 <span class = "literal">13</span> <span class = "literal">14</span> 15\n"</span> +
+      <span class = "literal">"24 <span class = "literal">25</span> <span class = "literal">26</span> 27\n"</span> +
+      <span class = "literal">"28 <span class = "literal">29</span> <span class = "literal">30</span> 31"</span>;
+
+    String set5 =
+      <span class = "literal">"16 <span class = "literal">17</span> <span class = "literal">18</span> 19\n"</span> +
+      <span class = "literal">"20 <span class = "literal">21</span> <span class = "literal">22</span> 23\n"</span> +
+      <span class = "literal">"24 <span class = "literal">25</span> <span class = "literal">26</span> 27\n"</span> +
+      <span class = "literal">"28 <span class = "literal">29</span> <span class = "literal">30</span> 31"</span>;
+
+    <span class = "keyword">int</span> date = <span class = "literal">0</span>;
+
+    <span class = "comment">// Create a Scanner</span>
+    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+
+    <span class = "comment">// Prompt the user to answer questions</span>
+    System.out.print(<span class = "literal">"Is your birthdate in Set1?\n"</span>);
+    System.out.print(set1);
+    System.out.print(<span class = "literal">"\nEnter <span class = "literal">0</span> for No and <span class = "literal">1</span> for Yes: "</span>);
+    <span class = "keyword">int</span> answer = input.nextInt();
+
+    <span class = "keyword">if</span> (answer == <span class = "literal">1</span>)
+      date += <span class = "literal">1</span>;
+
+    <span class = "comment">// Prompt the user to answer questions</span>
+    System.out.print(<span class = "literal">"\nIs your birthdate in Set2?\n"</span>);
+    System.out.print(set2);
+    System.out.print(<span class = "literal">"\nEnter <span class = "literal">0</span> for No and <span class = "literal">1</span> for Yes: "</span>);
+    answer = input.nextInt();
+
+    <span class = "keyword">if</span> (answer == <span class = "literal">1</span>)
+      date += <span class = "literal">2</span>;
+
+    <span class = "comment">// Prompt the user to answer questions</span>
+    System.out.print(<span class = "literal">"\nIs your birthdate in Set3?\n"</span>);
+    System.out.print(set3);
+    System.out.print(<span class = "literal">"\nEnter <span class = "literal">0</span> for No and <span class = "literal">1</span> for Yes: "</span>);
+    answer = input.nextInt();
+
+    <span class = "keyword">if</span> (answer == <span class = "literal">1</span>)
+      date += <span class = "literal">4</span>;
+
+    <span class = "comment">// Prompt the user to answer questions</span>
+    System.out.print(<span class = "literal">"\nIs your birthdate in Set4?\n"</span>);
+    System.out.print(set4);
+    System.out.print(<span class = "literal">"\nEnter <span class = "literal">0</span> for No and <span class = "literal">1</span> for Yes: "</span>);
+    answer = input.nextInt();
+
+    <span class = "keyword">if</span> (answer == <span class = "literal">1</span>)
+      date += <span class = "literal">8</span>;
+
+    <span class = "comment">// Prompt the user to answer questions</span>
+    System.out.print(<span class = "literal">"\nIs your birthdate in Set5?\n"</span>);
+    System.out.print(set5);
+    System.out.print(<span class = "literal">"\nEnter <span class = "literal">0</span> for No and <span class = "literal">1</span> for Yes: "</span>);
+    answer = input.nextInt();
+
+    <span class = "keyword">if</span> (answer == <span class = "literal">1</span>)
+      date += <span class = "literal">16</span>;
+
+    System.out.println(<span class = "literal">"\nYour birthdate is "</span> + date + <span class = "literal">"!"</span>);
+  }
+}
+</pre>
+</body>
+</html>

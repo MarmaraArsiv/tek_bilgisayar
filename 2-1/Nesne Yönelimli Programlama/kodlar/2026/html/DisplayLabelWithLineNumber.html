@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - DisplayLabel.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+.lineNumberStyle {color: black}
+</style>
+</head>
+<body>
+<form action = "DisplayLabel.html" method = "get">
+<input type = "submit" value = "Show Code Without Line Numbers" />
+</form>
+<pre>
+  1&nbsp;&nbsp;<span class = "keyword">import</span> javax.swing.*; 
+  2&nbsp;&nbsp;
+  3&nbsp;&nbsp;<span class = "keyword">public</span> <span class = "keyword">class</span> DisplayLabel <span class = "keyword">extends</span> JApplet {
+  4&nbsp;&nbsp;  <span class = "keyword">public</span> DisplayLabel() {
+  5&nbsp;&nbsp;    add(<span class = "keyword">new</span> JLabel(<span class = "literal">"Great!"</span>, JLabel.CENTER));
+  6&nbsp;&nbsp;  }
+  7&nbsp;&nbsp;  
+  8&nbsp;&nbsp;  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+  9&nbsp;&nbsp;    <span class = "comment">// Create a frame</span>
+ 10&nbsp;&nbsp;    JFrame frame = <span class = "keyword">new</span> JFrame(<span class = "literal">"Applet is in the frame"</span>);
+ 11&nbsp;&nbsp;
+ 12&nbsp;&nbsp;    <span class = "comment">// Create an instance of the applet</span>
+ 13&nbsp;&nbsp;    DisplayLabel applet = <span class = "keyword">new</span> DisplayLabel();
+ 14&nbsp;&nbsp;
+ 15&nbsp;&nbsp;    <span class = "comment">// Add the applet to the frame</span>
+ 16&nbsp;&nbsp;    frame.add(applet);
+ 17&nbsp;&nbsp;
+ 18&nbsp;&nbsp;    <span class = "comment">// Display the frame</span>
+ 19&nbsp;&nbsp;    frame.setSize(<span class = "literal">300</span>, <span class = "literal">100</span>);
+ 20&nbsp;&nbsp;    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame   </span>
+ 21&nbsp;&nbsp;    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+ 22&nbsp;&nbsp;    frame.setVisible(<span class = "keyword">true</span>);
+ 23&nbsp;&nbsp;  }
+ 24&nbsp;&nbsp;}
+</pre>
+</body>
+</html>

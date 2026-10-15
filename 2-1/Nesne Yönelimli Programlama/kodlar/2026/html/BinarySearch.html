@@ -1,0 +1,45 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - BinarySearch.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "BinarySearchWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> BinarySearch {
+  <span class = "comment">/** Use binary search to find the key in the list */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">int</span> binarySearch(<span class = "keyword">int</span>[] list, <span class = "keyword">int</span> key) {
+    <span class = "keyword">int</span> low = <span class = "literal">0</span>;
+    <span class = "keyword">int</span> high = list.length - <span class = "literal">1</span>;
+
+    <span class = "keyword">while</span> (high &gt;= low) {
+      <span class = "keyword">int</span> mid = (low + high) / <span class = "literal">2</span>;
+      <span class = "keyword">if</span> (key &lt; list[mid])
+        high = mid - <span class = "literal">1</span>;
+      <span class = "keyword">else</span> <span class = "keyword">if</span> (key == list[mid])
+        <span class = "keyword">return</span> mid;
+      <span class = "keyword">else</span>
+        low = mid + <span class = "literal">1</span>;
+    }
+
+    <span class = "keyword">return</span> -low - <span class = "literal">1</span>; <span class = "comment">// Now high &lt; low</span>
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "BinarySearch" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

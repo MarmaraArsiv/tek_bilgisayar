@@ -1,0 +1,34 @@
+<html>
+<head>
+<title>Intro to Java Programming, 9E - TestBinaryTreeWithIterator.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "TestBinaryTreeWithIteratorWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestBinaryTreeWithIterator {
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    BST&lt;String&gt; tree = <span class = "keyword">new</span> BST&lt;String&gt;();
+    tree.insert(<span class = "literal">"George"</span>);
+    tree.insert(<span class = "literal">"Michael"</span>);
+    tree.insert(<span class = "literal">"Tom"</span>);
+    tree.insert(<span class = "literal">"Adam"</span>);
+    tree.insert(<span class = "literal">"Jones"</span>);
+    tree.insert(<span class = "literal">"Peter"</span>);
+    tree.insert(<span class = "literal">"Daniel"</span>);
+    
+    <span class = "keyword">for</span> (String s: tree)
+      System.out.print(s.toUpperCase() + <span class = "literal">" "</span>);
+  }
+}
+</pre>
+</body>
+</html>

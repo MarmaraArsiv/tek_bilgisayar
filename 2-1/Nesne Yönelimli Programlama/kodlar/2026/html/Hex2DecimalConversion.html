@@ -1,0 +1,50 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - Hex2DecimalConversion.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> java.util.Scanner;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> Hex2DecimalConversion {
+  <span class = "comment">/** Main method */</span>
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    <span class = "comment">// Create a Scanner</span>
+    Scanner input = <span class = "keyword">new</span> Scanner(System.in);
+
+    <span class = "comment">// Prompt the user to enter a string</span>
+    System.out.print(<span class = "literal">"Enter a hex number: "</span>);
+    String hex = input.nextLine();
+
+    System.out.println(<span class = "literal">"The decimal value for hex number "</span> +
+      <span class = "literal">" is "</span> + hexToDecimal(hex));
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">int</span> hexToDecimal(String hex) {
+    <span class = "keyword">int</span> decimalValue = <span class = "literal">0</span>;
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; hex.length(); i++) {
+      <span class = "keyword">char</span> hexChar = hex.charAt(i);
+      decimalValue = decimalValue * <span class = "literal">16</span> + hexCharToDecimal(hexChar);
+    }
+    
+    <span class = "keyword">return</span> decimalValue;
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">int</span> hexCharToDecimal(<span class = "keyword">char</span> ch) {
+    ch = Character.toUpperCase(ch); <span class = "comment">// Change it to uppercase</span>
+    <span class = "keyword">if</span> (ch &gt;= <span class = "literal">'A'</span> && ch &lt;= <span class = "literal">'F'</span>)
+      <span class = "keyword">return</span> <span class = "literal">10</span> + ch - <span class = "literal">'A'</span>;
+    <span class = "keyword">else</span> <span class = "comment">// ch is '0', '1', ..., or '9'</span>
+      <span class = "keyword">return</span> ch - <span class = "literal">'0'</span>;
+  }
+}
+</pre>
+</body>
+</html>

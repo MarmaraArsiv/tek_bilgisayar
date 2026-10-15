@@ -1,0 +1,58 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - GuessDate.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "GuessDateWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+<span style="text-align: center; font-size: 60%; margin-bottom: 0.2em; color: navy; font-family: Verdana, Helvetica, sans-serif">
+Introduction to Java Programming, Tenth Edition,
+<a href="http://www.cs.armstrong.edu/liang" style="text-decoration: none; color: green">Y. Daniel Liang</a></span>
+</form>
+<pre>
+<span class = "keyword">public</span> <span class = "keyword">class</span> GuessDate {
+  <span class = "keyword">private</span> <span class = "keyword">final</span> <span class = "keyword">static</span> <span class = "keyword">int</span>[][][] dates = {
+    {{ <span class = "literal">1</span>,  <span class = "literal">3</span>,  <span class = "literal">5</span>,  <span class = "literal">7</span>},
+     { <span class = "literal">9</span>, <span class = "literal">11</span>, <span class = "literal">13</span>, <span class = "literal">15</span>},
+     {<span class = "literal">17</span>, <span class = "literal">19</span>, <span class = "literal">21</span>, <span class = "literal">23</span>},
+     {<span class = "literal">25</span>, <span class = "literal">27</span>, <span class = "literal">29</span>, <span class = "literal">31</span>}},
+    {{ <span class = "literal">2</span>,  <span class = "literal">3</span>,  <span class = "literal">6</span>,  <span class = "literal">7</span>},
+     {<span class = "literal">10</span>, <span class = "literal">11</span>, <span class = "literal">14</span>, <span class = "literal">15</span>},
+     {<span class = "literal">18</span>, <span class = "literal">19</span>, <span class = "literal">22</span>, <span class = "literal">23</span>},
+     {<span class = "literal">26</span>, <span class = "literal">27</span>, <span class = "literal">30</span>, <span class = "literal">31</span>}},
+    {{ <span class = "literal">4</span>,  <span class = "literal">5</span>,  <span class = "literal">6</span>,  <span class = "literal">7</span>},
+     {<span class = "literal">12</span>, <span class = "literal">13</span>, <span class = "literal">14</span>, <span class = "literal">15</span>},
+     {<span class = "literal">20</span>, <span class = "literal">21</span>, <span class = "literal">22</span>, <span class = "literal">23</span>},
+     {<span class = "literal">28</span>, <span class = "literal">29</span>, <span class = "literal">30</span>, <span class = "literal">31</span>}},
+    {{ <span class = "literal">8</span>,  <span class = "literal">9</span>, <span class = "literal">10</span>, <span class = "literal">11</span>},
+     {<span class = "literal">12</span>, <span class = "literal">13</span>, <span class = "literal">14</span>, <span class = "literal">15</span>},
+     {<span class = "literal">24</span>, <span class = "literal">25</span>, <span class = "literal">26</span>, <span class = "literal">27</span>},
+     {<span class = "literal">28</span>, <span class = "literal">29</span>, <span class = "literal">30</span>, <span class = "literal">31</span>}},
+    {{<span class = "literal">16</span>, <span class = "literal">17</span>, <span class = "literal">18</span>, <span class = "literal">19</span>},
+     {<span class = "literal">20</span>, <span class = "literal">21</span>, <span class = "literal">22</span>, <span class = "literal">23</span>},
+     {<span class = "literal">24</span>, <span class = "literal">25</span>, <span class = "literal">26</span>, <span class = "literal">27</span>},
+     {<span class = "literal">28</span>, <span class = "literal">29</span>, <span class = "literal">30</span>, <span class = "literal">31</span>}}};
+
+  <span class = "comment">/** Prevent the user from creating objects from GuessDate */</span> 
+  <span class = "keyword">private</span> GuessDate() {
+  }
+
+  <span class = "comment">/** Return a date at the specified row and column in a given set */</span> 
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">int</span> getValue(<span class = "keyword">int</span> setNo, <span class = "keyword">int</span> i, <span class = "keyword">int</span> j) {
+    <span class = "keyword">return</span> dates[setNo][i][j];
+  }
+}
+</pre>
+<form action = "http://liang.armstrong.edu:8080/Simulator/faces/ProgramWithoutInput.xhtml" method = "get" target="_blank">
+<input type = "hidden" name = "programName" value = "GuessDate" />
+<input type = "submit" value = "Compile/Run Example Live" />
+</form>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>Intro to Java Programming, Y. Daniel Liang - Histogram.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: gray}
+.literal {font-weight: bold; color: #3366FF}
+</style>
+</head>
+<body>
+<form action = "HistogramWithLineNumber.html" method = "get">
+<input type = "submit" value = "Show Code With Line Numbers" />
+</form>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> Histogram <span class = "keyword">extends</span> JPanel {
+  <span class = "comment">// Count the occurrence of 26 letters</span>
+  <span class = "keyword">private</span> <span class = "keyword">int</span>[] count;
+
+  <span class = "comment">/** Set the count and display histogram */</span>
+  <span class = "keyword">public</span> <span class = "keyword">void</span> showHistogram(<span class = "keyword">int</span>[] count) {
+    <span class = "keyword">this</span>.count = count;
+    repaint();
+  }
+
+  @Override
+  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+    <span class = "keyword">if</span> (count == <span class = "keyword">null</span>) <span class = "keyword">return</span>; <span class = "comment">// No display if count is null</span>
+
+    <span class = "keyword">super</span>.paintComponent(g);
+
+    <span class = "comment">// Find the panel size and bar width and interval dynamically</span>
+    <span class = "keyword">int</span> width = getWidth();
+    <span class = "keyword">int</span> height = getHeight();
+    <span class = "keyword">int</span> interval = (width - <span class = "literal">40</span>) / count.length;
+    <span class = "keyword">int</span> individualWidth = (<span class = "keyword">int</span>)(((width - <span class = "literal">40</span>) / <span class = "literal">24</span>) * <span class = "literal">0</span><span class = "literal">.</span><span class = "literal">60</span>);
+
+    <span class = "comment">// Find the maximum count. The maximum count has the highest bar</span>
+    <span class = "keyword">int</span> maxCount = <span class = "literal">0</span>;
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; count.length; i++) {
+      <span class = "keyword">if</span> (maxCount &lt; count[i])
+        maxCount = count[i];
+    }
+
+    <span class = "comment">// x is the start position for the first bar in the histogram</span>
+    <span class = "keyword">int</span> x = <span class = "literal">30</span>;
+
+    <span class = "comment">// Draw a horizontal base line</span>
+    g.drawLine(<span class = "literal">10</span>, height - <span class = "literal">45</span>, width - <span class = "literal">10</span>, height - <span class = "literal">45</span>);
+    <span class = "keyword">for</span> (<span class = "keyword">int</span> i = <span class = "literal">0</span>; i &lt; count.length; i++) {
+      <span class = "comment">// Find the bar height</span>
+      <span class = "keyword">int</span> barHeight =
+        (<span class = "keyword">int</span>)(((<span class = "keyword">double</span>)count[i] / (<span class = "keyword">double</span>)maxCount) * (height - <span class = "literal">55</span>));
+
+      <span class = "comment">// Display a bar (i.e. rectangle)</span>
+      g.drawRect(x, height - <span class = "literal">45</span> - barHeight, individualWidth,
+        barHeight);
+
+      <span class = "comment">// Display a letter under the base line</span>
+      g.drawString((<span class = "keyword">char</span>)(<span class = "literal">65</span> + i) + <span class = "literal">""</span>, x, height - <span class = "literal">30</span>);
+
+      <span class = "comment">// Move x for displaying the next character</span>
+      x += interval;
+    }
+  }
+
+  @Override 
+  <span class = "keyword">public</span> Dimension getPreferredSize() {
+    <span class = "keyword">return</span> <span class = "keyword">new</span> Dimension(<span class = "literal">300</span>, <span class = "literal">300</span>);
+  }
+}
+</pre>
+</body>
+</html>

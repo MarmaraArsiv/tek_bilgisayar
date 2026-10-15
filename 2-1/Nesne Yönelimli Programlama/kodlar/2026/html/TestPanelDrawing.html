@@ -1,0 +1,43 @@
+<html>
+<head>
+<title>Intro to Java Programming, 8E - TestPanelDrawing.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<style type = "text/css">
+body {font-family: "Courier New", sans-serif; font-size: 100%; color: black}
+.keyword {color: #000080; font-weight: bold}
+.comment {color: #008000}
+.literal {color: #0000ff}
+</style>
+</head>
+<body>
+<pre>
+<span class = "keyword">import</span> javax.swing.*;
+<span class = "keyword">import</span> java.awt.*;
+
+<span class = "keyword">public</span> <span class = "keyword">class</span> TestPanelDrawing <span class = "keyword">extends</span> JFrame {
+  <span class = "keyword">public</span> TestPanelDrawing() {
+    JComponent j = <span class = "keyword">new</span> NewPanel();
+    j.setBackground(Color.RED);
+    add(j);
+  }
+
+  <span class = "keyword">public</span> <span class = "keyword">static</span> <span class = "keyword">void</span> main(String[] args) {
+    TestPanelDrawing frame = <span class = "keyword">new</span> TestPanelDrawing();
+    frame.setTitle(<span class = "literal">"TestPanelDrawing"</span>);
+    frame.setSize(<span class = "literal">200</span>, <span class = "literal">100</span>);
+    frame.setLocationRelativeTo(<span class = "keyword">null</span>); <span class = "comment">// Center the frame   </span>
+    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    frame.setVisible(<span class = "keyword">true</span>);    
+  }
+}
+
+<span class = "keyword">class</span> NewPanel <span class = "keyword">extends</span> JPanel { 
+  <span class = "keyword">protected</span> <span class = "keyword">void</span> paintComponent(Graphics g) {
+    <span class = "keyword">super</span>.paintComponent(g);
+    g.drawLine(<span class = "literal">0</span>, <span class = "literal">0</span>, <span class = "literal">50</span>, <span class = "literal">50</span>);
+    g.drawString(<span class = "literal">"Banner"</span>, <span class = "literal">0</span>, <span class = "literal">40</span>);
+  }
+}
+</pre>
+</body>
+</html>
