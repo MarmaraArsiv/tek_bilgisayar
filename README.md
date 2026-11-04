@@ -2460,6 +2460,9 @@ Bu bölümde reponun hazırlanmasında katkıda bulunan insanlar listelenmiştir
 <p align='center'><a href='https://github.com/ism00efe'><img src='https://github.com/ism00efe.png?size=200' width='100' alt='İsmail Efe Terlemez'></a></p>
 <h1 align='center'>⭐ <b><i>İsmail Efe Terlemez</i></b> ⭐<br><sub><a href='https://github.com/ism00efe'>GitHub</a></sub></h1>
 
+<p align='center'><a href='https://github.com/taha234'><img src='https://github.com/taha234.png?size=128' width='64' alt='Taha'></a></p>
+<h3 align='center'>💫 <b><i>Taha</i></b> 💫<br><sub><a href='https://github.com/taha234'>GitHub</a></sub></h3>
+
 </details>
 
 
