@@ -2466,6 +2466,9 @@ Bu bölümde reponun hazırlanmasında katkıda bulunan insanlar listelenmiştir
 <p align='center'><a href='https://github.com/taha234'><img src='https://github.com/taha234.png?size=128' width='64' alt='Taha'></a></p>
 <h3 align='center'>💫 <b><i>Taha</i></b> 💫<br><sub><a href='https://github.com/taha234'>GitHub</a></sub></h3>
 
+<p align='center'><a href='https://github.com/arslnnburaak'><img src='https://github.com/arslnnburaak.png?size=128' width='64' alt='arslnnburaak'></a></p>
+<h3 align='center'>💫 <b><i>arslnnburaak</i></b> 💫<br><sub><a href='https://github.com/arslnnburaak'>GitHub</a></sub></h3>
+
 </details>
 
 
